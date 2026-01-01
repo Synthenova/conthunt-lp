@@ -1,0 +1,1790 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContHunt - The Content Intelligence Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-main: 'Plus Jakarta Sans', sans-serif;
+        --font-card: 'Space Grotesk', sans-serif;
+      }
+
+      body {
+        font-family: var(--font-main);
+        background-color: #030303;
+        color: #a3a3a3;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #030303;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #262626;
+        border-radius: 3px;
+      }
+
+      /* Glassmorphism Utilities */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .glass-nav {
+        background: rgba(3, 3, 3, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Soft Glow Backgrounds */
+      .glow-spot {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.08) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Animations */
+      @keyframes fadeUpBlur {
+        0% {
+          opacity: 0;
+          transform: translateY(20px) scale(0.98);
+          filter: blur(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      .reveal-element {
+        opacity: 0;
+      }
+
+      .reveal-element.is-visible {
+        animation: fadeUpBlur 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Marquee Animation */
+      @keyframes marqueeScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .marquee-container {
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+      }
+
+      .marquee-track {
+        animation: marqueeScroll 25s linear infinite;
+      }
+
+      .marquee-track-right {
+        animation: marqueeScroll 40s linear infinite reverse;
+      }
+
+      /* Grid Background */
+      .grid-bg {
+        background-size: 40px 40px;
+        background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px
+          );
+      }
+
+      /* Text Gradient */
+      .text-gradient {
+        background: linear-gradient(to bottom right, #ffffff, #a5a5a5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .text-gradient-sub {
+        background: linear-gradient(to bottom right, #9ca3af, #4b5563);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Custom UI Elements */
+      .toggle-switch {
+        appearance: none;
+        width: 40px;
+        height: 22px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        transition: background 0.3s;
+      }
+      .toggle-switch::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 18px;
+        height: 18px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+      .toggle-switch:checked {
+        background: rgba(99, 102, 241, 0.5);
+      }
+      .toggle-switch:checked::after {
+        transform: translateX(18px);
+      }
+
+      .content-card .card-text,
+      .content-card .card-vignette {
+        transition: opacity 0.3s ease;
+      }
+
+      .content-card .add-to-board-btn {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  </head>
+  <body class="relative min-h-screen">
+    <!-- Background Grid & Glows -->
+    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+    <div class="glow-spot top-0 left-1/2 -translate-x-1/2"></div>
+
+    <!-- Navigation -->
+    <!-- Modified Navigation: replaced icon bowl with contHunt logo image -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav h-16 flex items-center justify-center transition-all duration-300">
+      <div class="w-full max-w-6xl px-6 flex items-center justify-between">
+        <!-- Updated logo to the image with src and alt -->
+        <div class="flex items-center gap-2">
+          <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/icon-white-800px-1765781730722.png?width=8000&height=8000&resize=contain" alt="ContHunt Logo" class="w-8 h-8" />
+          <span class="text-sm font-semibold text-white tracking-tight">
+            ContHunt
+          </span>
+        </div>
+
+        <!-- ... rest of navigation ... -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-xs font-medium text-neutral-400 hover:text-white transition-colors">
+            Features
+          </a>
+          <a href="#workflow" class="text-xs font-medium text-neutral-400 hover:text-white transition-colors">
+            Workflow
+          </a>
+          <a href="#pricing" class="text-xs font-medium text-neutral-400 hover:text-white transition-colors">
+            Pricing
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="hidden md:block text-xs font-medium text-neutral-400 hover:text-white transition-colors">
+            Log in
+          </a>
+          <a
+            href="#waitlist"
+            class="group relative inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-white transition-all duration-200 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900"
+          >
+            <span>Sign up</span>
+            <iconify-icon
+              icon="lucide:arrow-right"
+              class="ml-1 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
+              width="12"
+            ></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-20">
+      <!-- HERO SECTION -->
+      <section class="max-w-6xl mx-auto px-6 mb-32 flex flex-col items-center text-center">
+        <div
+          class="reveal-element inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[10px] font-semibold tracking-wide uppercase mb-6"
+        >
+          <span class="relative flex h-1.5 w-1.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
+          </span>
+          AI Agent V2.0 Live
+        </div>
+
+        <h1
+          class="reveal-element md:text-7xl text-5xl font-semibold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl"
+        >
+          The third eye for your
+          <br class="hidden md:block" />
+          <span
+            id="changing-word"
+            class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
+            style="line-height: 1.2; padding-bottom: 0.1em;"
+            >marketing strategy</span
+          >
+        </h1>
+
+        <p
+          class="reveal-element text-lg md:text-xl text-neutral-400 font-light max-w-2xl mb-10 leading-relaxed"
+        >
+          Aggregates viral signals across platforms, analyzes every frame with
+          AI, and uncovers niche gold before it trends.
+        </p>
+
+        <div
+          class="reveal-element flex flex-col sm:flex-row gap-4 w-full max-w-md"
+        >
+          <button
+            class="flex-1 bg-white text-black hover:bg-neutral-200 transition-colors px-6 py-3 rounded-full text-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+          >
+            Start Hunting Free
+            <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
+          </button>
+          <button
+            class="flex-1 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-6 py-3 rounded-full text-sm font-semibold text-white tracking-tight"
+          >
+            View Interactive Demo
+          </button>
+        </div>
+
+        <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
+        <div class="reveal-element w-full mt-20 relative perspective-1000">
+          <div
+            class="relative w-full aspect-[16/10] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group"
+          >
+            <!-- App Header -->
+            <div
+              class="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#0F0F0F]"
+            >
+              <div class="flex gap-2">
+                <div
+                  class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"
+                ></div>
+                <div
+                  class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"
+                ></div>
+                <div
+                  class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"
+                ></div>
+              </div>
+              <div
+                class="w-1/3 h-8 bg-neutral-900 rounded-lg border border-white/5 flex items-center px-3 gap-2"
+              >
+                <iconify-icon
+                  icon="lucide:search"
+                  class="text-neutral-500 text-xs"
+                ></iconify-icon>
+                <span class="text-[11px] text-neutral-300">
+                  organic skin care
+                </span>
+              </div>
+              <div
+                class="w-8 h-8 rounded-full bg-neutral-800 overflow-hidden border border-white/10"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                  alt="User"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- App Body -->
+            <div class="flex-1 flex overflow-hidden">
+              <!-- Sidebar -->
+              <div
+                class="w-16 border-r border-white/5 flex flex-col items-center py-4 gap-6 bg-[#0A0A0A]"
+              >
+                <button
+                  class="sidebar-btn p-2 rounded-lg bg-indigo-500/10 text-indigo-400 transition-all hover:bg-indigo-500/20"
+                  data-tab="search"
+                >
+                  <iconify-icon icon="lucide:search" width="18"></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="boards"
+                >
+                  <iconify-icon icon="lucide:layout-grid" width="18"></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="settings"
+                >
+                  <iconify-icon icon="lucide:settings" width="18"></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="ai"
+                >
+                  <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
+                </button>
+              </div>
+
+              <!-- Content Area -->
+              <div
+                class="flex-1 p-6 bg-[#050505] overflow-hidden relative"
+              >
+                <!-- Search Tab -->
+                <div class="tab-content active" id="search-tab">
+                  <div class="flex justify-between items-end mb-4">
+                    <div>
+                      <h3 class="text-white text-sm font-medium">
+                        Results for "organic skin care"
+                      </h3>
+                      <p class="text-[10px] text-neutral-500">
+                        AI filtered 1,204 posts across TikTok, Reels, Shorts
+                      </p>
+                    </div>
+                    <div class="flex gap-2">
+                      <div class="sort-dropdown relative" id="sort-dropdown">
+                        <button
+                          class="px-2 py-1 rounded bg-white/5 text-[10px] text-neutral-400 border border-white/5 flex items-center gap-1 hover:bg-white/10 transition-colors"
+                          id="sort-btn"
+                        >
+                          Sort: <span id="sort-value">Velocity</span>
+                          <iconify-icon
+                            icon="lucide:chevron-down"
+                            width="10"
+                          ></iconify-icon>
+                        </button>
+                        <div
+                          class="sort-dropdown-menu absolute top-full right-0 mt-1 bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden z-50 min-w-[120px] hidden"
+                          id="sort-menu"
+                        >
+                          <div
+                            class="sort-dropdown-item px-3 py-2 text-[10px] text-neutral-400 hover:bg-white/5 hover:text-white cursor-pointer"
+                            data-sort="Velocity"
+                          >
+                            Velocity
+                          </div>
+                          <div
+                            class="sort-dropdown-item px-3 py-2 text-[10px] text-neutral-400 hover:bg-white/5 hover:text-white cursor-pointer"
+                            data-sort="Engagement"
+                          >
+                            Engagement
+                          </div>
+                          <div
+                            class="sort-dropdown-item px-3 py-2 text-[10px] text-neutral-400 hover:bg-white/5 hover:text-white cursor-pointer"
+                            data-sort="Recent"
+                          >
+                            Recent
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="grid grid-cols-3 gap-3 opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                    id="cards-container"
+                  >
+                    <!-- Card 1 - Instagram -->
+                    <div
+                      class="content-card aspect-[9/14] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden cursor-pointer hover:border-indigo-500/50 transition-all"
+                      style="font-family: 'Space Grotesk', sans-serif;"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=300&h=500&fit=crop"
+                        alt=""
+                        class="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div
+                        class="card-vignette absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300"
+                      ></div>
+                      <div
+                        class="absolute top-2 left-2 p-1 bg-black/50 rounded-md backdrop-blur-sm"
+                      >
+                        <iconify-icon
+                          icon="simple-icons:instagram"
+                          width="12"
+                          class="text-pink-400"
+                        ></iconify-icon>
+                      </div>
+                      <div
+                        class="absolute top-2 right-2 px-1.5 py-0.5 bg-red-500/30 border border-red-500/30 rounded text-[8px] text-red-300 font-medium backdrop-blur-sm"
+                      >
+                        Viral
+                      </div>
+                      <div
+                        class="card-text absolute bottom-0 left-0 right-0 p-2.5 transition-opacity duration-300"
+                      >
+                        <p class="text-[10px] text-white/90 font-medium truncate"
+                          >@skincare.daily</p
+                        >
+                        <p class="text-[9px] text-white/70 line-clamp-2 mt-0.5"
+                          >My morning routine changed everything...</p
+                        >
+                        <div
+                          class="flex items-center gap-2 mt-1.5 text-[8px] text-white/60"
+                        >
+                          <span>❤️ 124K</span>
+                          <span>💬 2.3K</span>
+                          <span>🔄 8.1K</span>
+                        </div>
+                      </div>
+                      <button
+                        class="add-to-board-btn absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-all duration-300 hover:bg-black/70"
+                      >
+                        <span
+                          class="px-3 py-1.5 bg-indigo-500 text-white text-[10px] font-medium rounded-lg flex items-center gap-1"
+                        >
+                          <iconify-icon icon="lucide:plus" width="12"></iconify-icon>
+                          Add to Board
+                        </span>
+                      </button>
+                    </div>
+
+                    <!-- Card 2 - TikTok -->
+                    <div
+                      class="content-card aspect-[9/14] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden cursor-pointer hover:border-indigo-500/50 transition-all"
+                      style="font-family: 'Space Grotesk', sans-serif;"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=500&fit=crop"
+                        alt=""
+                        class="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div
+                        class="card-vignette absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300"
+                      ></div>
+                      <div
+                        class="absolute top-2 left-2 p-1 bg-black/50 rounded-md backdrop-blur-sm"
+                      >
+                        <iconify-icon
+                          icon="simple-icons:tiktok"
+                          width="12"
+                          class="text-white"
+                        ></iconify-icon>
+                      </div>
+                      <div
+                        class="absolute top-2 right-2 px-1.5 py-0.5 bg-green-500/30 border border-green-500/30 rounded text-[8px] text-green-300 font-medium backdrop-blur-sm"
+                      >
+                        Trending
+                      </div>
+                      <div
+                        class="card-text absolute bottom-0 left-0 right-0 p-2.5 transition-opacity duration-300"
+                      >
+                        <p class="text-[10px] text-white/90 font-medium truncate"
+                          >@beautyhacks</p
+                        >
+                        <p class="text-[9px] text-white/70 line-clamp-2 mt-0.5"
+                          >POV: You finally found the hack</p
+                        >
+                        <div
+                          class="flex items-center gap-2 mt-1.5 text-[8px] text-white/60"
+                        >
+                          <span>❤️ 89K</span>
+                          <span>💬 1.1K</span>
+                          <span>🔄 5.2K</span>
+                        </div>
+                      </div>
+                      <button
+                        class="add-to-board-btn absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-all duration-300 hover:bg-black/70"
+                      >
+                        <span
+                          class="px-3 py-1.5 bg-indigo-500 text-white text-[10px] font-medium rounded-lg flex items-center gap-1"
+                        >
+                          <iconify-icon icon="lucide:plus" width="12"></iconify-icon>
+                          Add to Board
+                        </span>
+                      </button>
+                    </div>
+
+                    <!-- Card 3 - YouTube -->
+                    <div
+                      class="content-card aspect-[9/14] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden cursor-pointer hover:border-indigo-500/50 transition-all"
+                      style="font-family: 'Space Grotesk', sans-serif;"
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=300&h=500&fit=crop"
+                        alt=""
+                        class="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div
+                        class="card-vignette absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300"
+                      ></div>
+                      <div
+                        class="absolute top-2 left-2 p-1 bg-black/50 rounded-md backdrop-blur-sm"
+                      >
+                        <iconify-icon
+                          icon="simple-icons:youtube"
+                          width="12"
+                          class="text-red-500"
+                        ></iconify-icon>
+                      </div>
+                      <div
+                        class="absolute top-2 right-2 px-1.5 py-0.5 bg-amber-500/30 border border-amber-500/30 rounded text-[8px] text-amber-300 font-medium backdrop-blur-sm"
+                      >
+                        Rising
+                      </div>
+                      <div
+                        class="card-text absolute bottom-0 left-0 right-0 p-2.5 transition-opacity duration-300"
+                      >
+                        <p class="text-[10px] text-white/90 font-medium truncate"
+                          >@glowup.shorts</p
+                        >
+                        <p class="text-[9px] text-white/70 line-clamp-2 mt-0.5"
+                          >Watch this before buying...</p
+                        >
+                        <div
+                          class="flex items-center gap-2 mt-1.5 text-[8px] text-white/60"
+                        >
+                          <span>❤️ 45K</span>
+                          <span>💬 890</span>
+                          <span>🔄 3.4K</span>
+                        </div>
+                      </div>
+                      <button
+                        class="add-to-board-btn absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-all duration-300 hover:bg-black/70"
+                      >
+                        <span
+                          class="px-3 py-1.5 bg-indigo-500 text-white text-[10px] font-medium rounded-lg flex items-center gap-1"
+                        >
+                          <iconify-icon icon="lucide:plus" width="12"></iconify-icon>
+                          Add to Board
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- AI Overlay Popup - Bottom Right -->
+                  <div
+                    class="absolute bottom-4 right-4 w-52 bg-[#111] border border-white/10 rounded-xl p-3 shadow-2xl backdrop-blur-md bg-opacity-90 scale-95 group-hover:scale-100 transition-transform duration-500"
+                  >
+                    <div class="flex items-center gap-2 mb-2">
+                      <iconify-icon
+                        icon="lucide:sparkles"
+                        class="text-indigo-400 text-xs"
+                      ></iconify-icon>
+                      <span class="text-[10px] font-semibold text-white"
+                        >Insight Agent</span
+                      >
+                    </div>
+                    <div class="space-y-1.5">
+                      <div class="h-1.5 w-full bg-white/10 rounded"></div>
+                      <div class="h-1.5 w-5/6 bg-white/10 rounded"></div>
+                      <div class="h-1.5 w-4/6 bg-white/10 rounded"></div>
+                    </div>
+                    <div
+                      class="mt-2 pt-2 border-t border-white/5 flex justify-between items-center"
+                    >
+                      <span class="text-[8px] text-neutral-500"
+                        >Frame 0:12 detected</span
+                      >
+                      <span class="text-[8px] text-indigo-300">Hook 98/100</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Boards Tab -->
+                <div class="tab-content hidden" id="boards-tab">
+                  <div class="mb-6">
+                    <h3 class="text-white text-sm font-medium mb-2">Your Boards</h3>
+                    <p class="text-[10px] text-neutral-500">
+                      Organize your content collections
+                    </p>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4">
+                    <div
+                      class="p-4 rounded-xl bg-neutral-900 border border-white/5 hover:border-white/10 transition-all cursor-pointer"
+                    >
+                      <div class="flex items-center gap-2 mb-3">
+                        <iconify-icon
+                          icon="lucide:folder"
+                          class="text-indigo-400"
+                        ></iconify-icon>
+                        <span class="text-xs text-white font-medium"
+                          >Beauty Trends</span
+                        >
+                      </div>
+                      <div class="text-[10px] text-neutral-500">24 items</div>
+                    </div>
+
+                    <div
+                      class="p-4 rounded-xl bg-neutral-900 border border-white/5 hover:border-white/10 transition-all cursor-pointer"
+                    >
+                      <div class="flex items-center gap-2 mb-3">
+                        <iconify-icon
+                          icon="lucide:folder"
+                          class="text-purple-400"
+                        ></iconify-icon>
+                        <span class="text-xs text-white font-medium"
+                          >Viral Hooks</span
+                        >
+                      </div>
+                      <div class="text-[10px] text-neutral-500">12 items</div>
+                    </div>
+
+                    <div
+                      class="p-4 rounded-xl bg-neutral-900 border border-white/5 hover:border-white/10 transition-all cursor-pointer"
+                    >
+                      <div class="flex items-center gap-2 mb-3">
+                        <iconify-icon
+                          icon="lucide:folder"
+                          class="text-green-400"
+                        ></iconify-icon>
+                        <span class="text-xs text-white font-medium"
+                          >Competitors</span
+                        >
+                      </div>
+                      <div class="text-[10px] text-neutral-500">8 items</div>
+                    </div>
+
+                    <div
+                      class="p-4 rounded-xl bg-neutral-900 border border-white/5 hover:border-white/10 transition-all cursor-pointer flex items-center justify-center"
+                    >
+                      <div class="text-center">
+                        <iconify-icon
+                          icon="lucide:plus"
+                          class="text-neutral-600 text-xl mb-2"
+                        ></iconify-icon>
+                        <span class="text-[10px] text-neutral-600"
+                          >New Board</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content hidden" id="settings-tab">
+                  <div class="mb-6">
+                    <h3 class="text-white text-sm font-medium mb-2">Settings</h3>
+                    <p class="text-[10px] text-neutral-500">
+                      Configure your preferences
+                    </p>
+                  </div>
+
+                  <div class="space-y-4">
+                    <div class="p-4 rounded-xl bg-neutral-900 border border-white/5">
+                      <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs text-white">Auto-save searches</span>
+                        <input type="checkbox" class="toggle-switch" checked />
+                      </div>
+                      <p class="text-[10px] text-neutral-500">
+                        Automatically save your search history
+                      </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-neutral-900 border border-white/5">
+                      <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs text-white">Email notifications</span>
+                        <input type="checkbox" class="toggle-switch" />
+                      </div>
+                      <p class="text-[10px] text-neutral-500">
+                        Get notified about trending content
+                      </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-neutral-900 border border-white/5">
+                      <div class="mb-2">
+                        <span class="text-xs text-white">Default platforms</span>
+                      </div>
+                      <div class="flex gap-2 mt-2">
+                        <span
+                          class="px-2 py-1 rounded bg-indigo-500/20 text-[10px] text-indigo-300 border border-indigo-500/30 cursor-pointer"
+                          >TikTok</span
+                        >
+                        <span
+                          class="px-2 py-1 rounded bg-indigo-500/20 text-[10px] text-indigo-300 border border-indigo-500/30 cursor-pointer"
+                          >Reels</span
+                        >
+                        <span
+                          class="px-2 py-1 rounded bg-white/5 text-[10px] text-neutral-500 border border-white/5 cursor-pointer"
+                          >YouTube</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- AI Tab -->
+                <div class="tab-content hidden" id="ai-tab">
+                  <div class="mb-6">
+                    <h3 class="text-white text-sm font-medium mb-2">AI Assistant</h3>
+                    <p class="text-[10px] text-neutral-500">
+                      Ask questions about your content
+                    </p>
+                  </div>
+
+                  <div class="space-y-3 mb-4">
+                    <div
+                      class="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 max-w-[80%]"
+                    >
+                      <div class="flex items-center gap-2 mb-1">
+                        <iconify-icon
+                          icon="lucide:sparkles"
+                          class="text-indigo-400 text-xs"
+                        ></iconify-icon>
+                        <span class="text-[9px] text-indigo-300 font-semibold">AI</span>
+                      </div>
+                      <p class="text-[11px] text-white">
+                        I analyzed "organic skin care" trends. The hook patterns show 3-second rule compliance with 89% retention rate.
+                      </p>
+                    </div>
+
+                    <div class="p-3 rounded-lg bg-neutral-900 border border-white/5 max-w-[80%] ml-auto">
+                      <p class="text-[11px] text-neutral-300 text-right">
+                        Show me the top performing hooks
+                      </p>
+                    </div>
+
+                    <div
+                      class="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 max-w-[80%]"
+                    >
+                      <div class="flex items-center gap-2 mb-1">
+                        <iconify-icon
+                          icon="lucide:sparkles"
+                          class="text-indigo-400 text-xs"
+                        ></iconify-icon>
+                        <span class="text-[9px] text-indigo-300 font-semibold">AI</span>
+                      </div>
+                      <p class="text-[11px] text-white mb-2">
+                        Top 3 hooks detected:
+                      </p>
+                      <div class="space-y-1">
+                        <div class="text-[10px] text-neutral-300">
+                          1. "Stop using [X]..."
+                        </div>
+                        <div class="text-[10px] text-neutral-300">
+                          2. "This changed everything..."
+                        </div>
+                        <div class="text-[10px] text-neutral-300">
+                          3. "Nobody talks about..."
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Ask AI anything..."
+                        class="flex-1 bg-neutral-900 border border-white/5 text-white px-3 py-2 rounded-lg text-[11px] outline-none focus:border-indigo-500/50 transition-colors"
+                      />
+                      <button
+                        class="px-4 py-2 rounded-lg bg-indigo-500 text-white text-[11px] font-medium hover:bg-indigo-600 transition-colors"
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL PROOF MARQUEE -->
+      <section class="w-full border-y border-white/5 bg-white/[0.01] py-12 mb-32">
+        <div class="text-center mb-8">
+          <p class="text-xs font-semibold uppercase tracking-widest text-neutral-600">
+            Your platforms. Covered.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6">
+          <div
+            class="flex items-center justify-center gap-10 md:gap-16 flex-wrap opacity-40 hover:opacity-70 transition-all duration-500"
+          >
+            <iconify-icon icon="simple-icons:tiktok" width="28" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:youtube" width="32" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:instagram" width="28" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:reddit" width="32" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:linkedin" width="28" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:x" width="24" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:pinterest" width="28" class="text-white"></iconify-icon>
+            <iconify-icon icon="simple-icons:snapchat" width="28" class="text-white"></iconify-icon>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAIN POINT REVEAL -->
+      <section class="relative h-[300vh]" id="cinematic-section">
+        <div
+          class="sticky top-0 h-screen flex items-center justify-center overflow-hidden"
+        >
+          <div class="max-w-5xl px-6 text-center">
+            <h2
+              class="text-4xl md:text-7xl font-semibold tracking-tight leading-tight transition-colors duration-300 flex flex-wrap justify-center gap-x-4 gap-y-2"
+              id="cinematic-text-content"
+            >
+              <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >Stop</span
+              >
+              <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >scrolling</span
+              >
+              <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >to</span
+              >
+              <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >find</span
+              >
+              <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >ideas.</span
+              >
+            </h2>
+          </div>
+        </div>
+      </section>
+      <section class="max-w-6xl mx-auto px-6 mb-32 pt-12">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-3xl md:text-4xl font-medium text-white mb-4 tracking-tight">
+            The high cost of manual research.
+          </h2>
+          <p class="text-neutral-400">Why the old way is holding you back.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="reveal-element glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start hover:border-white/10 transition-colors"
+          >
+            <div
+              class="p-3 bg-red-500/10 rounded-xl text-red-400 mb-6 border border-red-500/10"
+            >
+              <iconify-icon icon="lucide:search-x" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">
+              The Problem
+            </h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              You are wasting hours on manual research. Scrolling endlessly
+              through feeds hoping to find a spark of inspiration is not a
+              repeatable strategy.
+            </p>
+          </div>
+          <div
+            class="reveal-element glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start hover:border-white/10 transition-colors delay-100"
+          >
+            <div
+              class="p-3 bg-amber-500/10 rounded-xl text-amber-400 mb-6 border border-amber-500/10"
+            >
+              <iconify-icon icon="lucide:trending-down" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">
+              The Cost
+            </h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              While you scroll, your competitors are automating their content
+              strategy. You lose market share and miss trends before they even
+              peak.
+            </p>
+          </div>
+          <div
+            class="reveal-element glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start hover:border-white/10 transition-colors delay-200"
+          >
+            <div
+              class="p-3 bg-indigo-500/10 rounded-xl text-indigo-400 mb-6 border border-indigo-500/10"
+            >
+              <iconify-icon icon="lucide:bot" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">
+              The Solution
+            </h3>
+            <p class="text-sm text-neutral-400 leading-relaxed">
+              An intelligent engine that scouts, filters, and analyzes viral
+              signals for you. Turn 10 hours of manual digging into 10 minutes
+              of execution.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BENTO GRID BENEFITS -->
+      <section id="features" class="max-w-6xl mx-auto px-6 mb-40">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-3xl md:text-4xl font-medium text-white mb-4 tracking-tight">
+            Intelligence, not just search.
+          </h2>
+          <p class="text-neutral-400">
+            Everything you need to reverse-engineer virality.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-rows-2 h-auto md:h-[600px]"
+        >
+          <!-- Large Item: Cross Platform -->
+          <div
+            class="reveal-element md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10 flex flex-col h-full justify-between">
+              <div class="mb-8">
+                <div
+                  class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+                >
+                  <iconify-icon icon="lucide:globe" width="20"></iconify-icon>
+                </div>
+                <h3 class="text-xl font-medium text-white mb-2">
+                  Multi-Platform Aggregation
+                </h3>
+                <p class="text-sm text-neutral-400 max-w-sm">
+                  Search keywords, hashtags, or creators across TikTok, YouTube
+                  Shorts, Instagram Reels, and LinkedIn simultaneously.
+                </p>
+              </div>
+
+              <!-- Visual -->
+              <div class="w-full h-32 flex items-end gap-3 opacity-60">
+                <div
+                  class="w-full bg-neutral-800/50 rounded-t-lg h-16 border-t border-x border-white/10"
+                ></div>
+                <div
+                  class="w-full bg-neutral-800/80 rounded-t-lg h-24 border-t border-x border-white/10 relative"
+                >
+                  <div
+                    class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-indigo-500 text-[9px] text-white rounded-full"
+                  >
+                    Top
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-neutral-800/50 rounded-t-lg h-12 border-t border-x border-white/10"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tall Item: AI Analysis -->
+          <div
+            class="reveal-element md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 md:row-span-2"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon icon="lucide:scan-eye" width="20"></iconify-icon>
+              </div>
+              <h3 class="text-xl font-medium text-white mb-2">
+                Frame-by-Frame Deep Research
+              </h3>
+              <p class="text-sm text-neutral-400 mb-8">
+                Like NotebookLM for short-form. Our AI analyzes hooks, pacing,
+                visuals, and script structure.
+              </p>
+
+              <!-- Visual: Chat/Analysis -->
+              <div class="space-y-3">
+                <div
+                  class="p-3 rounded-lg bg-white/5 border border-white/5 text-[11px] text-neutral-300"
+                >
+                  <span class="text-indigo-400 font-semibold block mb-1">
+                    Analysis
+                  </span>
+                  "The video retains 80% of viewers at 3s due to the visual
+                  disruption effect."
+                </div>
+                <div
+                  class="p-3 rounded-lg bg-white/5 border border-white/5 text-[11px] text-neutral-300"
+                >
+                  <span class="text-indigo-400 font-semibold block mb-1">
+                    Script
+                  </span>
+                  "Wait, don't throw that away..."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medium Item: Niche Finder -->
+          <div
+            class="reveal-element md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300"
+          >
+            <div class="relative z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon icon="lucide:radar" width="20"></iconify-icon>
+              </div>
+              <h3 class="text-xl font-medium text-white mb-2">Niche Hunter</h3>
+              <p class="text-sm text-neutral-400">
+                Find low-competition, high-velocity topics tailored to your
+                brand.
+              </p>
+            </div>
+          </div>
+
+          <!-- Medium Item: Velocity Metrics -->
+          <div
+            class="reveal-element md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300"
+          >
+            <div class="relative z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon icon="lucide:bar-chart-2" width="20"></iconify-icon>
+              </div>
+              <h3 class="text-xl font-medium text-white mb-2">
+                Velocity Metrics
+              </h3>
+              <p class="text-sm text-neutral-400">
+                Identify videos that are growing faster than the creator's
+                average.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORKFLOW SECTION (Split View) -->
+      <section id="workflow" class="max-w-6xl mx-auto px-6 mb-40">
+        <div class="flex flex-col md:flex-row gap-16">
+          <!-- Left: Sticky Steps -->
+          <div class="md:w-1/2">
+            <div class="sticky top-32 space-y-12">
+              <div class="reveal-element">
+                <span class="text-xs font-mono text-indigo-400 mb-2 block">
+                  01
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Define your parameters
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Input broad keywords or specific creator stats. Set filters
+                  for views-to-follower ratios to find hidden gems, not just
+                  celebrities.
+                </p>
+              </div>
+              <div class="reveal-element opacity-40 hover:opacity-100 transition-opacity">
+                <span class="text-xs font-mono text-neutral-600 mb-2 block">
+                  02
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  AI Agent Scout
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Our agent scans thousands of videos across platforms in
+                  minutes, filtering out noise and flagging high-potential
+                  content structures.
+                </p>
+              </div>
+              <div class="reveal-element opacity-40 hover:opacity-100 transition-opacity">
+                <span class="text-xs font-mono text-neutral-600 mb-2 block">
+                  03
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Synthesize &amp; Create
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Click "Deep Dive" on any video. Get a full breakdown of why it
+                  worked, generate script variations, and export to your content
+                  calendar.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Visual Representation -->
+          <div class="md:w-1/2 flex flex-col gap-8">
+            <div
+              class="reveal-element h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden"
+            >
+              <!-- Abstract UI for Search -->
+              <div class="w-3/4 p-4 rounded-xl bg-neutral-900 border border-white/10">
+                <div class="flex items-center gap-2 mb-4 border-b border-white/5 pb-2">
+                  <iconify-icon
+                    icon="lucide:settings-2"
+                    class="text-neutral-500"
+                  ></iconify-icon>
+                  <div class="h-1.5 w-24 bg-neutral-700 rounded"></div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex justify-between">
+                    <div class="h-1.5 w-16 bg-neutral-800 rounded"></div>
+                    <div class="h-3 w-8 bg-indigo-500 rounded-full"></div>
+                  </div>
+                  <div class="flex justify-between">
+                    <div class="h-1.5 w-20 bg-neutral-800 rounded"></div>
+                    <div class="h-3 w-8 bg-neutral-800 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="reveal-element h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent"
+              ></div>
+              <iconify-icon icon="lucide:bot" class="text-6xl text-white/10"></iconify-icon>
+            </div>
+
+            <div
+              class="reveal-element h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden"
+            >
+              <div class="text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-black mb-4">
+                  <iconify-icon icon="lucide:check" class="text-xl"></iconify-icon>
+                </div>
+                <p class="text-sm font-medium text-white">Ready for production</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS (Marquee Reverse) -->
+      <section class="mb-32 overflow-hidden">
+        <div class="marquee-container relative">
+          <div
+            class="marquee-track-right flex gap-6"
+            style="width: max-content;"
+          >
+            <!-- Card 1 -->
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "The deep research feature is insane. It's like having a
+                dedicated strategist analyzing my niche 24/7."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Sarah Jenkins</div>
+                  <div class="text-neutral-500">Ecom Founder</div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "I stopped guessing what would go viral. ContHunt just shows me
+                the math behind the trends."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Mark D.</div>
+                  <div class="text-neutral-500">Growth Lead</div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Replaced 3 separate tools with this. The AI agent actually
+                understands context, not just keywords."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Alex Rivera</div>
+                  <div class="text-neutral-500">Content Creator</div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Our content team output doubled because we spend zero time on
+                ideation now."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Elena K.</div>
+                  <div class="text-neutral-500">Agency Owner</div>
+                </div>
+              </div>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "The deep research feature is insane. It's like having a
+                dedicated strategist analyzing my niche 24/7."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Sarah Jenkins</div>
+                  <div class="text-neutral-500">Ecom Founder</div>
+                </div>
+              </div>
+            </div>
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "I stopped guessing what would go viral. ContHunt just shows me
+                the math behind the trends."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Mark D.</div>
+                  <div class="text-neutral-500">Growth Lead</div>
+                </div>
+              </div>
+            </div>
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Replaced 3 separate tools with this. The AI agent actually
+                understands context, not just keywords."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Alex Rivera</div>
+                  <div class="text-neutral-500">Content Creator</div>
+                </div>
+              </div>
+            </div>
+            <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Our content team output doubled because we spend zero time on
+                ideation now."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+                <div class="text-xs">
+                  <div class="text-white font-medium">Elena K.</div>
+                  <div class="text-neutral-500">Agency Owner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA INLINE -->
+      <section class="max-w-4xl mx-auto px-6 mb-32 text-center">
+        <div class="reveal-element p-1 rounded-full bg-gradient-to-r from-neutral-800 to-neutral-900 inline-block">
+          <button
+            class="bg-black border border-white/10 px-8 py-3 rounded-full text-white text-sm font-medium hover:scale-105 transition-transform"
+          >
+            Join the waitlist for early access
+          </button>
+        </div>
+      </section>
+
+      <!-- OBJECTIONS / FAQ -->
+      <section class="max-w-3xl mx-auto px-6 mb-32">
+        <h2 class="reveal-element text-3xl font-medium text-white mb-10 text-center">
+          Common Questions
+        </h2>
+
+        <div class="space-y-4">
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Is this just another social listening tool?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-neutral-400 leading-relaxed">
+              No. Listening tools tell you what people are saying. ContHunt
+              tells you what people are
+              <em>watching</em>
+              and
+              <em>why</em>
+              . Our AI analyzes the visual and structural elements of content,
+              not just text mentions.
+            </div>
+          </details>
+
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Which platforms do you support?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-neutral-400 leading-relaxed">
+              Currently, we support TikTok, YouTube Shorts, and Instagram Reels.
+              LinkedIn video and X (Twitter) support is in beta.
+            </div>
+          </details>
+
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Can I cancel anytime?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-sm text-neutral-400 leading-relaxed">
+              Absolutely. We offer monthly billing with no long-term contracts.
+              You can export your data before you leave.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- PRICING & GUARANTEE -->
+      <section id="pricing" class="max-w-6xl mx-auto px-6 mb-32">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-3xl font-medium text-white mb-4">
+            Transparent Pricing
+          </h2>
+          <p class="text-neutral-400">
+            Lock in Beta pricing today. Prices increase after V1.0 launch.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Plan 1 -->
+          <div
+            class="reveal-element p-8 rounded-3xl border border-white/5 bg-[#080808] flex flex-col"
+          >
+            <div class="mb-4">
+              <span class="text-sm font-medium text-neutral-400">Creator</span>
+              <div class="text-4xl font-medium text-white mt-2">
+                $29
+                <span class="text-base text-neutral-500 font-normal">/mo</span>
+              </div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
+                2 Platforms
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
+                50 AI Analyses / mo
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
+                Basic Trends
+              </li>
+            </ul>
+            <button class="w-full py-3 rounded-full border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-colors">
+              Join Waitlist
+            </button>
+          </div>
+
+          <!-- Plan 2 -->
+          <div
+            class="reveal-element p-8 rounded-3xl border border-indigo-500/20 bg-[#0A0A0A] relative flex flex-col shadow-2xl shadow-indigo-900/10"
+          >
+            <div
+              class="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide"
+            >
+              Most Popular
+            </div>
+            <div class="mb-4">
+              <span class="text-sm font-medium text-indigo-400"
+                >Pro Research</span
+              >
+              <div class="text-4xl font-medium text-white mt-2">
+                $79
+                <span class="text-base text-neutral-500 font-normal">/mo</span>
+              </div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-indigo-500"></iconify-icon>
+                All Platforms
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-indigo-500"></iconify-icon>
+                Unlimited AI Analysis
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-indigo-500"></iconify-icon>
+                Deep Frame Breakdown
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-indigo-500"></iconify-icon>
+                Export to Notion/CSV
+              </li>
+            </ul>
+            <button class="w-full py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-colors">
+              Join Waitlist
+            </button>
+          </div>
+        </div>
+
+        <div class="reveal-element mt-12 text-center">
+          <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
+            Risk Reversal
+          </p>
+          <p class="text-sm text-neutral-400">
+            30-day money-back guarantee. No questions asked.
+          </p>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section
+        id="waitlist"
+        class="relative py-32 border-t border-white/5 overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none"
+        ></div>
+        <div
+          class="max-w-4xl mx-auto px-6 text-center relative z-10"
+        >
+          <h2
+            class="reveal-element md:text-6xl text-4xl font-medium text-white tracking-tight mb-8"
+          >
+            Hunt content like
+            <br />
+            a machine.
+          </h2>
+          <p
+            class="reveal-element text-lg text-neutral-400 mb-10 max-w-xl mx-auto"
+          >
+            Stop relying on gut feeling. Get the data-backed tool for modern
+            creators.
+          </p>
+          <div
+            class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="w-full sm:w-80 bg-neutral-900 border border-white/10 text-white px-5 py-3 rounded-full outline-none focus:border-indigo-500/50 transition-colors"
+            />
+            <button
+              class="w-full sm:w-auto px-8 py-3 rounded-full bg-white text-black text-sm font-semibold hover:scale-105 transition-transform"
+            >
+              Join Waitlist
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 bg-[#020202] py-16 text-sm">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+        <div class="col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/icon-white-800px-1765781730722.png?width=8000&height=8000&resize=contain" alt="ContHunt Logo" class="w-6 h-6">
+            <span class="font-semibold text-white">ContHunt</span>
+          </div>
+          <p class="text-neutral-500 max-w-xs mb-6">
+            The all-in-one content aggregation and research intelligence tool
+            for the modern web.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:twitter"></iconify-icon
+            ></a>
+            <a href="#" class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:github"></iconify-icon
+            ></a>
+            <a href="#" class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:discord"></iconify-icon
+            ></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-medium mb-4">Product</h4>
+          <ul class="space-y-2 text-neutral-500">
+            <li>
+              <a href="#" class="hover:text-white transition-colors"
+                >Features</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-colors">Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-colors"
+                >Changelog</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-colors"
+                >Docs</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-medium mb-4">Legal</h4>
+          <ul class="space-y-2 text-neutral-500">
+            <li>
+              <a href="#" class="hover:text-white transition-colors"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-colors"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs"
+      >
+        <p>© 2024 ContHunt Inc. All rights reserved.</p>
+        <div class="flex items-center gap-2 mt-4 md:mt-0">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          <span>Systems Operational</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERSECTION OBSERVER SCRIPT -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const elements = document.querySelectorAll('.reveal-element');
+        elements.forEach(el => observer.observe(el));
+      });
+    </script>
+
+    <!-- Background Animation (Optional: Subtle particle drift could be added here via Canvas, keeping it pure CSS/HTML for strict adherence to request) -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const target = document.getElementById('changing-word');
+        const words = [
+          'marketing strategy',
+          'ecommerce',
+          'content idea',
+          'brand growth'
+        ];
+        let wordIndex = 0;
+        const chars =
+          'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+
+        function scramble(newText) {
+          let iteration = 0;
+          clearInterval(target.interval);
+
+          target.interval = setInterval(() => {
+            target.innerText = newText
+              .split('')
+              .map((letter, index) => {
+                if (index < iteration) {
+                  return newText[index];
+                }
+                return chars[Math.floor(Math.random() * chars.length)];
+              })
+              .join('');
+
+            if (iteration >= newText.length) {
+              clearInterval(target.interval);
+              setTimeout(() => {
+                wordIndex = (wordIndex + 1) % words.length;
+                scramble(words[wordIndex]);
+              }, 3000);
+            }
+
+            iteration += 1 / 2;
+          }, 30);
+        }
+
+        setTimeout(() => {
+          wordIndex = (wordIndex + 1) % words.length;
+          scramble(words[wordIndex]);
+        }, 2000);
+      });
+    </script>
+
+    <script>
+      document.addEventListener('scroll', () => {
+        const section = document.getElementById('cinematic-section');
+        const words = document.querySelectorAll('.cinematic-word');
+        if (!section || !words.length) return;
+        const rect = section.getBoundingClientRect();
+        const scrollDist = rect.height - window.innerHeight;
+        let progress = 0;
+        if (rect.top <= 0) {
+          progress = Math.abs(rect.top) / scrollDist;
+        }
+        if (rect.top > 0) progress = 0;
+        if (progress > 1) progress = 1;
+        const activeIndex = Math.floor(progress * (words.length));
+        words.forEach((word, i) => {
+          if (i <= activeIndex) {
+            word.style.opacity = '1';
+            word.style.filter = 'blur(0px)';
+          } else {
+            word.style.opacity = '0.1';
+            word.style.filter = 'blur(8px)';
+          }
+        });
+      });
+    </script>
+
+    <!-- Tab Switching Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const sidebarBtns = document.querySelectorAll('.sidebar-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        sidebarBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+
+            // Update sidebar button styles
+            sidebarBtns.forEach(b => {
+              b.classList.remove('bg-indigo-500/10', 'text-indigo-400');
+              b.classList.add('text-neutral-600');
+            });
+            btn.classList.remove('text-neutral-600');
+            btn.classList.add('bg-indigo-500/10', 'text-indigo-400');
+
+            // Update tab content visibility
+            tabContents.forEach(tab => {
+              if (tab.id === `${targetTab}`) {
+                tab.classList.remove('hidden');
+                tab.classList.add('active');
+              } else {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
+              }
+            });
+          });
+        });
+      });
+    </script>
+
+    <!-- Card Hover Effects and Sort Dropdown Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const sortBtn = document.getElementById('sort-btn');
+        const sortMenu = document.getElementById('sort-menu');
+        const sortValue = document.getElementById('sort-value');
+        const sortItems = document.querySelectorAll('.sort-dropdown-item');
+        const cardsContainer = document.getElementById('cards-container');
+
+        sortBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sortMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+          sortMenu.classList.add('hidden');
+        });
+
+        sortItems.forEach((item) => {
+          item.addEventListener('click', () => {
+            const value = item.getAttribute('data-sort');
+            sortValue.textContent = value;
+            sortMenu.classList.add('hidden');
+
+            const cards = Array.from(cardsContainer.children);
+            for (let i = cards.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              cardsContainer.appendChild(cards[j]);
+              cards.splice(j, 1);
+            }
+          });
+        });
+
+        const contentCards = document.querySelectorAll('.content-card');
+        contentCards.forEach((card) => {
+          card.addEventListener('mouseenter', () => {
+            const cardText = card.querySelector('.card-text');
+            const cardVignette = card.querySelector('.card-vignette');
+            const addBtn = card.querySelector('.add-to-board-btn');
+            if (cardText) cardText.style.opacity = '0';
+            if (cardVignette) cardVignette.style.opacity = '0';
+            if (addBtn) {
+              addBtn.style.opacity = '1';
+              addBtn.style.transform = 'translateY(0)';
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            const cardText = card.querySelector('.card-text');
+            const cardVignette = card.querySelector('.card-vignette');
+            const addBtn = card.querySelector('.add-to-board-btn');
+            if (cardText) cardText.style.opacity = '1';
+            if (cardVignette) cardVignette.style.opacity = '1';
+            if (addBtn) {
+              addBtn.style.opacity = '0';
+              addBtn.style.transform = 'translateY(10px)';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
