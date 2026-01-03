@@ -1981,6 +1981,13 @@
       if (waitlistBtn && emailInput) {
         const originalBtnContent = waitlistBtn.innerHTML;
 
+        emailInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            waitlistBtn.click();
+          }
+        });
+
         waitlistBtn.addEventListener('click', async (e) => {
           e.preventDefault();
           const email = emailInput.value.trim();
