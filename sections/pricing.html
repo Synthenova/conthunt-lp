@@ -1,0 +1,196 @@
+<!-- PRICING & GUARANTEE -->
+<section id="pricing" class="min-h-screen flex flex-col justify-center py-24 scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 w-full">
+        <div class="text-center mb-16 reveal-element">
+            <h2 class="text-3xl font-medium text-white mb-4">
+                Transparent Pricing
+            </h2>
+            <p class="text-neutral-400 mb-8">
+                Lock in Beta pricing today. Prices increase after V1.0 launch.
+            </p>
+            <!-- Billing Toggle -->
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <span id="annual-label" class="text-sm font-medium text-neutral-400 transition-colors">Paid
+                    Annually</span>
+                <button id="annual-toggle"
+                    class="relative h-8 w-14 rounded-full border border-white/10 bg-[#050505] transition-colors focus:outline-none ring-1 ring-white/5 active:scale-95 duration-200"
+                    aria-pressed="false">
+                    <span class="sr-only">Toggle annual billing</span>
+                    <span id="annual-toggle-knob"
+                        class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
+                </button>
+                <span
+                    class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20 tracking-wide uppercase">Save
+                    up to 20%</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <!-- Tier 1: Free -->
+            <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] flex flex-col">
+                <div class="mb-4">
+                    <span class="text-sm font-medium text-neutral-400">Free</span>
+                    <div class="text-4xl font-medium text-white mt-2">
+                        $0
+                        <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+                    </div>
+                </div>
+                <ul class="space-y-3 mb-8 flex-1">
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>2 Platforms (IG, TikTok)</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>10 Searches / mo</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>10 AI Analyses / mo</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>Gemini Flash Model</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>1 AI Board</span>
+                    </li>
+                </ul>
+                <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+                    GET STARTED
+                </button>
+            </div>
+
+            <!-- Tier 2: Creator -->
+            <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] relative flex flex-col">
+                <div
+                    class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
+                    Popular
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm font-medium text-neutral-400">Creator</span>
+                    <div class="flex items-end gap-1 mt-2">
+                        <span class="text-2xl font-medium text-neutral-500 line-through mr-1">$49</span>
+                        <span class="text-4xl font-medium text-white">$</span>
+                        <div class="text-4xl font-medium text-white price-value mr-2" id="creator-price"
+                            data-monthly="29" data-yearly="25">
+                            29
+                        </div>
+                        <div class="flex flex-col mb-1 text-left">
+                            <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+                            <span
+                                class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
+                                Monthly</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="space-y-3 mb-8 flex-1">
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>All Platforms</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>50 Searches / mo</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>1000 AI Credits / mo</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                        <span>~500 video analysis or </span>
+                    </li>
+                    <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                        <span>~200 video indexing</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>Latest AI Models</span>
+                    </li>
+
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                        <span>5 AI Boards</span>
+                    </li>
+                </ul>
+                <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+                    CHOOSE PLAN
+                </button>
+            </div>
+
+            <!-- Tier 3: Pro Research -->
+            <div
+                class="reveal-element p-6 rounded-3xl border border-white/10 bg-[rgba(26,26,26,0.89)] relative flex flex-col shadow-2xl shadow-indigo-500/10">
+                <div
+                    class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
+                    Full Experience
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm font-medium text-[#CECECE]">Pro Research</span>
+                    <div class="flex items-end gap-1 mt-2">
+                        <span class="text-2xl font-medium text-neutral-600 line-through mr-1">$139</span>
+                        <span class="text-4xl font-medium text-white">$</span>
+                        <div class="text-4xl font-medium text-white price-value mr-2" id="pro-price" data-monthly="79"
+                            data-yearly="63">
+                            79
+                        </div>
+                        <div class="flex flex-col mb-1 text-left">
+                            <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+                            <span
+                                class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
+                                Monthly</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="space-y-3 mb-8 flex-1">
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>All Platforms + Upcoming Platforms</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>300 Searches / mo</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>3000 AI Credits / mo</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                        <span>~ 1500 video analysis or </span>
+                    </li>
+                    <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                        <span>~ 600 video indexing</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>Latest AI Models</span>
+                    </li>
+
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>25 AI Boards</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-neutral-300">
+                        <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                        <span>Deep Search Agent (new)</span>
+                    </li>
+                </ul>
+                <div class="w-full bg-[#070707] rounded-[69px]">
+                    <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+                        CHOOSE PLAN
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal-element mt-12 text-center">
+            <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
+                Risk Reversal
+            </p>
+            <p class="text-sm text-neutral-400">
+                14 day money back guarantee. T&C applied.
+            </p>
+        </div>
+    </div>
+</section>

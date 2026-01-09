@@ -2,8 +2,55 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog && window.posthog.__loaded) || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init ts ns yi rs os Qr es capture Hi calculateEventProperties hs register register_once register_for_session unregister unregister_for_session fs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty vs us createPersonProfile cs Yr ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ls debug O ds getPageViewId captureTraceFeedback captureTraceMetric Vr".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+
+    posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+      api_host: window.location.origin + '/ingest',
+      ui_host: 'https://us.posthog.com',
+      defaults: '2025-11-30',
+      person_profiles: 'identified_only',
+      debug: true,
+    })
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ContHunt - The Content Intelligence Engine</title>
+
+  <!-- Primary Meta Tags -->
+  <title>ContHunt | Analyze Viral Videos</title>
+  <meta name="title" content="ContHunt | Analyze Viral Videos" />
+  <meta name="description"
+    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
+  <meta name="keywords"
+    content="content research, viral video analysis, TikTok analytics, content intelligence, social media research, content strategy, trend analysis" />
+  <meta name="author" content="ContHunt" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="public/favicon.png" />
+  <link rel="apple-touch-icon" href="public/favicon.png" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://conthunt.app/" />
+  <meta property="og:title" content="ContHunt | Analyze Viral Videos" />
+  <meta property="og:description"
+    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
+  <meta property="og:image" content="https://conthunt.app/banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="ContHunt" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://conthunt.app/" />
+  <meta name="twitter:title" content="ContHunt | Analyze Viral Videos" />
+  <meta name="twitter:description"
+    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
+  <meta name="twitter:image" content="https://conthunt.app/banner.png" />
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#030303" />
+  <link rel="canonical" href="https://conthunt.app/" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,400 +59,7 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
     rel="stylesheet" />
 
-  <style>
-    :root {
-      --font-main: 'Plus Jakarta Sans', sans-serif;
-      --font-card: 'Space Grotesk', sans-serif;
-      --font-nav: 'DM Sans', sans-serif;
-    }
-
-    body {
-      font-family: var(--font-main);
-      background-color: #030303;
-      color: #a3a3a3;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #030303;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #262626;
-      border-radius: 3px;
-    }
-
-    /* Glassmorphism Utilities */
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Light Torch Effect for Feature Cards */
-    .light-torch {
-      position: absolute;
-      width: 492px;
-      height: 492px;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-          rgba(255, 255, 255, 0.12) 0%,
-          rgba(255, 255, 255, 0.064) 30%,
-          rgba(255, 255, 255, 0.024) 50%,
-          transparent 70%);
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: overlay;
-      z-index: 1;
-    }
-
-    .glass-panel:hover .light-torch {
-      opacity: 1;
-    }
-
-    .glass-nav {
-      box-sizing: border-box;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(212, 212, 212, 0.0405263) 34.13%, rgba(153, 153, 153, 0) 54.81%, rgba(212, 212, 212, 0.0405263) 77.4%, rgba(255, 255, 255, 0.07) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 69px;
-      /* Ensure pseudo-element positions correctly */
-      position: fixed;
-    }
-
-    /* Gradient Border Pseudo-element */
-    .glass-nav::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 69px;
-      padding: 1px;
-      background: linear-gradient(170deg, rgba(128, 128, 128, 0.6) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(128, 128, 128, 0.6) 100%);
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    /* Refined Glass Button Style */
-    .glass-button {
-      background: linear-gradient(136.19deg, rgba(77, 77, 77, 0.11) 20.93%, rgba(68, 68, 68, 0.07) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 69px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    .glass-button::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 69px;
-      padding: 1.5px;
-      background: linear-gradient(170deg, rgba(128, 128, 128, 0.6) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(128, 128, 128, 0.6) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .glass-button:hover {
-      background: linear-gradient(136.19deg, rgba(10, 10, 10, 0.6) 47.93%, rgba(40, 40, 40, 0.4) 100%);
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
-    }
-
-    /* Dark Zone - Central column that blocks grid torch under content */
-    .dark-zone {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 72rem;
-      /* max-w-6xl */
-      background: linear-gradient(to right,
-          rgba(0, 0, 0, 0.2) 0%,
-          rgba(0, 0, 0, 0.7) 20%,
-          #000000 50%,
-          rgba(0, 0, 0, 0.7) 70%,
-          rgba(0, 0, 0, 0.2) 100%);
-      /* box-shadow removed to let gradient control opacity */
-      pointer-events: none;
-      z-index: 2;
-      /* Above grid-torch (z-1) */
-    }
-
-    /* Ensure content sits above the dark zone */
-    section,
-    footer,
-    header {
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Grid Torch Effect - Static cyan grid revealed by moving mask */
-    /* Grid Torch Effect - Static cyan grid revealed by moving mask */
-    #grid-torch {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-
-      /* Shared Gradient Variable */
-      --grid-gradient:
-        linear-gradient(to right, rgba(200, 196, 196, 0.15) 1.5px, transparent 1px),
-        linear-gradient(to bottom, rgba(200, 202, 202, 0.15) 1.5px, transparent 1px);
-    }
-
-    /* Blurred Layer (Background Glow) */
-    #grid-torch::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--grid-gradient);
-      background-size: 60px 60px;
-      filter: blur(3px);
-      opacity: 0.7;
-
-      mask-image: radial-gradient(1456px 1040px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-          black 0%,
-          transparent 80%);
-      -webkit-mask-image: radial-gradient(1456px 1040px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-          black 0%,
-          transparent 80%);
-    }
-
-    /* Sharp Layer (Core Focus) */
-    #grid-torch::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--grid-gradient);
-      background-size: 60px 60px;
-
-      mask-image: radial-gradient(1456px 1040px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-          black 0%,
-          transparent 40%);
-      -webkit-mask-image: radial-gradient(1456px 1040px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-          black 0%,
-          transparent 40%);
-    }
-
-    /* Animations */
-    @keyframes fadeUpBlur {
-      0% {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-        filter: blur(10px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0px);
-      }
-    }
-
-    .reveal-element {
-      opacity: 0;
-    }
-
-    .reveal-element.is-visible {
-      animation: fadeUpBlur 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Marquee Animation */
-    @keyframes marqueeScroll {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .marquee-container {
-      mask-image: linear-gradient(to right,
-          transparent,
-          black 10%,
-          black 90%,
-          transparent);
-      -webkit-mask-image: linear-gradient(to right,
-          transparent,
-          black 10%,
-          black 90%,
-          transparent);
-    }
-
-    .marquee-track {
-      animation: marqueeScroll 25s linear infinite;
-    }
-
-    .marquee-track-right {
-      animation: marqueeScroll 40s linear infinite reverse;
-    }
-
-    /* Grid Background */
-    .grid-bg {
-      background-size: 40px 40px;
-      background-image: linear-gradient(to right,
-          rgba(255, 255, 255, 0.02) 1px,
-          transparent 1px),
-        linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.02) 1px,
-          transparent 1px);
-    }
-
-    /* Text Gradient */
-    .text-gradient {
-      background: linear-gradient(to bottom right, #ffffff, #a5a5a5);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .text-gradient-sub {
-      background: linear-gradient(to bottom right, #9ca3af, #4b5563);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Custom UI Elements */
-    .toggle-switch {
-      appearance: none;
-      width: 40px;
-      height: 22px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      position: relative;
-      cursor: pointer;
-      outline: none;
-      transition: background 0.3s;
-    }
-
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 18px;
-      height: 18px;
-      background: white;
-      border-radius: 50%;
-      transition: transform 0.3s;
-    }
-
-    .toggle-switch:checked {
-      background: rgba(99, 102, 241, 0.5);
-    }
-
-    .toggle-switch:checked::after {
-      transform: translateX(18px);
-    }
-
-    .content-card .card-text,
-    .content-card .card-vignette {
-      transition: opacity 0.3s ease;
-    }
-
-    .content-card .add-to-board-btn {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .font-nav {
-      font-family: var(--font-nav);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-
-    @media (min-width: 768px) {
-      .md\:max-w-\[1000px\] {
-        max-width: 1000px !important;
-      }
-    }
-
-    .text-xs {
-      font-size: 0.9rem !important;
-      line-height: 1rem !important;
-    }
-
-    @property --border-angle {
-      syntax: '<angle>';
-      initial-value: 170deg;
-      inherits: true;
-    }
-
-    .glass-button-interactive {
-      position: relative;
-      --border-angle: 120deg;
-      /* Subtle easing for smooth hover movement */
-      transition: --border-angle 0.15s ease-out, transform 0.2s ease-out;
-      transform: scale(1);
-    }
-
-    .glass-button-interactive:hover {
-      transform: scale(1.03);
-    }
-
-    .glass-button-interactive.returning {
-      /* Slower transition when returning to default */
-      transition: --border-angle 0.4s ease-in-out, transform 0.3s ease-out;
-    }
-
-    .glass-button-interactive::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 69px;
-      padding: 1.5px;
-      /* Two-peak conic gradient to match navbar button's dual shimmer */
-      background: conic-gradient(from var(--border-angle),
-          rgba(128, 128, 128, 0.6) 0deg,
-          transparent 40deg,
-          transparent 140deg,
-          rgba(128, 128, 128, 0.6) 180deg,
-          transparent 220deg,
-          transparent 320deg,
-          rgba(128, 128, 128, 0.6) 360deg);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -460,38 +114,40 @@
 
 
       <h1
-        class="reveal-element md:text-7xl text-5xl font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
+        class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
         Third eye for your
-        <br class="hidden md:block" />
+        <br />
         <span id="changing-word"
-          class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
-          style="line-height: 1.2; padding-bottom: 0.1em;">marketing strategy</span>
+          class="inline-block text-[13vw] md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
+          style="line-height: 1.2; padding-bottom: 0.1em;">marketing</span>
       </h1>
 
-      <p class="reveal-element text-xl md:text-2xl text-neutral-400 font-light max-w-2xl mb-12 leading-relaxed">
+      <p
+        class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
         Aggregates viral videos across all social media platforms, analyzes every frame and uncovers niche gold before
         it trends.
       </p>
 
       <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
-          class="font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
+          class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
         </button>
         <button id="hero-waitlist-btn"
-          class="glass-button glass-button-interactive w-full sm:w-auto px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2">
+          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2">
           GET STARTED
           <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
         </button>
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
-      <div id="simulated-app-frame" class="reveal-element w-full mt-32 relative perspective-1000">
+      <div id="simulated-app-frame" class="reveal-element w-full mt-8 md:mt-32 relative perspective-1000">
         <div
           class="relative w-full aspect-[3/2] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group">
           <!-- App Header -->
           <!-- App Header -->
-          <div class="h-12 border-b border-white/5 flex items-center px-4 justify-center bg-[#0F0F0F] relative">
+          <div
+            class="hidden md:flex h-12 border-b border-white/5 items-center px-4 justify-center bg-[#0F0F0F] relative">
             <div class="flex gap-2 absolute left-4">
               <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
               <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
@@ -512,7 +168,7 @@
           <!-- App Body -->
           <div class="flex-1 flex overflow-hidden">
             <!-- Sidebar -->
-            <div class="w-16 border-r border-white/5 flex flex-col items-center py-4 gap-6 bg-[#0A0A0A]">
+            <div class="hidden md:flex w-16 border-r border-white/5 flex-col items-center py-4 gap-6 bg-[#0A0A0A]">
               <button
                 class="sidebar-btn p-2 rounded-lg bg-indigo-500/10 text-indigo-400 transition-all hover:bg-indigo-500/20"
                 data-tab="search">
@@ -559,11 +215,11 @@
           <iconify-icon icon="simple-icons:tiktok" width="28" class="text-white"></iconify-icon>
           <iconify-icon icon="simple-icons:youtube" width="32" class="text-white"></iconify-icon>
           <iconify-icon icon="simple-icons:instagram" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:reddit" width="32" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:linkedin" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:x" width="24" class="text-white"></iconify-icon>
+          <iconify-icon icon="simple-icons:reddit" width="32" class="text-white hidden md:block"></iconify-icon>
+          <iconify-icon icon="simple-icons:linkedin" width="28" class="text-white hidden md:block"></iconify-icon>
+          <iconify-icon icon="simple-icons:x" width="24" class="text-white hidden md:block"></iconify-icon>
           <iconify-icon icon="simple-icons:pinterest" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:snapchat" width="28" class="text-white"></iconify-icon>
+          <iconify-icon icon="simple-icons:snapchat" width="28" class="text-white hidden md:block"></iconify-icon>
         </div>
       </div>
     </section>
@@ -835,7 +491,7 @@
 
     <!-- WORKFLOW SECTION (Refined) -->
     <section id="workflow" class="max-w-6xl mx-auto px-6 mb-[13rem] scroll-mt-32">
-      <div class="flex flex-col md:flex-row">
+      <div class="flex flex-col md:flex-row -mb-28">
         <!-- Left: Sticky Steps -->
         <div class="md:w-1/2 hidden md:flex flex-col justify-center h-screen sticky top-0 pr-12"
           style="font-size: 1.25rem;">
@@ -887,22 +543,26 @@
             </div>
           </div>
 
-          <!-- CTA Button (Moved here) -->
-          <div class="mt-20">
-            <button id="cta-waitlist-btn"
-              class="glass-button glass-button-interactive px-12 py-4 text-[0.95rem] font-medium font-nav gap-2">
-              GET STARTED
-              <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
-            </button>
-          </div>
         </div>
 
         <!-- Right: Scrolling Images -->
         <div class="md:w-1/2">
           <!-- Image 1 Container -->
-          <div class="step-image min-h-screen flex items-center justify-center p-6" data-step="1">
+          <div
+            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+            data-step="1">
+            <!-- Mobile Step 1 Text -->
+            <div class="block md:hidden w-full mb-8 reveal-element">
+              <span class="text-xs font-mono text-indigo-400 mb-2 block">01</span>
+              <h3 class="text-2xl text-white font-medium mb-3">Define Parameters</h3>
+              <p class="text-neutral-400 leading-relaxed">
+                Communicate your needs with the agent and watch it spin up niche keywords based on your requests, along
+                with the mainstream ones.
+              </p>
+            </div>
+
             <div
-              class="h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
+              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
               <!-- Lottie Animation for Search -->
               <lottie-player src="public/Scene-1.json" background="transparent" speed="1"
                 style="width: 100%; height: 100%;" loop autoplay preserveAspectRatio="xMidYMid slice"></lottie-player>
@@ -910,9 +570,21 @@
           </div>
 
           <!-- Image 2 Container -->
-          <div class="step-image min-h-screen flex items-center justify-center p-6" data-step="2">
+          <div
+            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+            data-step="2">
+            <!-- Mobile Step 2 Text -->
+            <div class="block md:hidden w-full mb-8 reveal-element">
+              <span class="text-xs font-mono text-indigo-400 mb-2 block">02</span>
+              <h3 class="text-2xl text-white font-medium mb-3">Content Search Engine</h3>
+              <p class="text-neutral-400 leading-relaxed">
+                Scan thousands of videos across platforms in minutes, filtering out noise and flagging high-potential
+                content.
+              </p>
+            </div>
+
             <div
-              class="h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex flex-col p-6 relative overflow-hidden">
+              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex flex-col p-6 relative overflow-hidden">
               <!-- Status Bar -->
               <div class="flex items-center gap-3 text-neutral-400 mb-4 z-20 shrink-0">
                 <iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon>
@@ -938,18 +610,35 @@
           </div>
 
           <!-- Image 3 Container -->
-          <div class="step-image min-h-screen flex items-center justify-center p-6" data-step="3">
+          <div
+            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+            data-step="3">
+            <!-- Mobile Step 3 Text -->
+            <div class="block md:hidden w-full mb-8 reveal-element">
+              <span class="text-xs font-mono text-indigo-400 mb-2 block">03</span>
+              <h3 class="text-2xl text-white font-medium mb-3">Deep Dive</h3>
+              <p class="text-neutral-400 leading-relaxed">
+                Start talking to the video. Get a full breakdown of why it worked, generate similar scripts and set up
+                scouting alerts.
+              </p>
+            </div>
+
             <div
-              class="h-80 w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <div class="text-center">
-                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-black mb-4">
-                  <iconify-icon icon="lucide:check" class="text-xl"></iconify-icon>
-                </div>
-                <p class="text-sm font-medium text-white">Ready for production</p>
-              </div>
+              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
+              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4"
+                class="absolute inset-0 w-full h-full object-cover" muted loop playsinline></video>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- CTA Button (Moved to Center Bottom) -->
+      <div class="mt-20 flex justify-center pb-20 md:pb-0">
+        <button id="cta-waitlist-btn"
+          class="glass-button glass-button-interactive px-9 md:px-16 py-5 text-xl font-medium font-nav gap-3">
+          GET STARTED
+          <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
+        </button>
       </div>
     </section>
 
@@ -1134,90 +823,198 @@
     </section>
 
     <!-- PRICING & GUARANTEE -->
-    <section id="pricing" class="max-w-6xl mx-auto px-6 mb-32 scroll-mt-32">
-      <div class="text-center mb-16 reveal-element">
-        <h2 class="text-3xl font-medium text-white mb-4">
-          Transparent Pricing
-        </h2>
-        <p class="text-neutral-400">
-          Lock in Beta pricing today. Prices increase after V1.0 launch.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Plan 1 -->
-        <div class="reveal-element p-8 rounded-3xl border border-white/5 bg-[#070707] flex flex-col">
-          <div class="mb-4">
-            <span class="text-sm font-medium text-neutral-400">Creator</span>
-            <div class="text-4xl font-medium text-white mt-2">
-              $29
-              <span class="text-base text-neutral-500 font-normal">/mo</span>
-            </div>
+    <section id="pricing" class="min-h-screen flex flex-col justify-center py-24 scroll-mt-16">
+      <div class="max-w-6xl mx-auto px-6 w-full">
+        <div class="text-center mb-16 reveal-element">
+          <h2 class="text-3xl font-medium text-white mb-4">
+            Transparent Pricing
+          </h2>
+          <p class="text-neutral-400 mb-8">
+            Lock in Beta pricing today. Prices increase after V1.0 launch.
+          </p>
+          <!-- Billing Toggle -->
+          <div class="flex items-center justify-center gap-3 mb-10">
+            <span id="annual-label" class="text-sm font-medium text-neutral-400 transition-colors">Paid Annually</span>
+            <button id="annual-toggle"
+              class="relative h-8 w-14 rounded-full border border-white/10 bg-[#050505] transition-colors focus:outline-none ring-1 ring-white/5 active:scale-95 duration-200"
+              aria-pressed="false">
+              <span class="sr-only">Toggle annual billing</span>
+              <span id="annual-toggle-knob"
+                class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
+            </button>
+            <span
+              class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20 tracking-wide uppercase">Save
+              up to 20%</span>
           </div>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
-              2 Platforms
-            </li>
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
-              50 AI Analyses / mo
-            </li>
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-neutral-500"></iconify-icon>
-              Basic Trends
-            </li>
-          </ul>
-          <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
-            CHOOSE PLAN
-          </button>
         </div>
 
-        <!-- Plan 2 -->
-        <div
-          class="reveal-element p-8 rounded-3xl border border-white/10 bg-[rgba(26,26,26,0.89)] relative flex flex-col shadow-2xl shadow-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <!-- Tier 1: Free -->
+          <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] flex flex-col">
+            <div class="mb-4">
+              <span class="text-sm font-medium text-neutral-400">Free</span>
+              <div class="text-4xl font-medium text-white mt-2">
+                $0
+                <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+              </div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>2 Platforms (IG, TikTok)</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>10 Searches / mo</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>10 AI Analyses / mo</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>Gemini Flash Model</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>1 AI Board</span>
+              </li>
+            </ul>
+            <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+              GET STARTED
+            </button>
+          </div>
+
+          <!-- Tier 2: Creator -->
+          <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] relative flex flex-col">
+            <div
+              class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
+              Popular
+            </div>
+            <div class="mb-4">
+              <span class="text-sm font-medium text-neutral-400">Creator</span>
+              <div class="flex items-end gap-1 mt-2">
+                <span class="text-2xl font-medium text-neutral-500 line-through mr-1">$49</span>
+                <span class="text-4xl font-medium text-white">$</span>
+                <div class="text-4xl font-medium text-white price-value mr-2" id="creator-price" data-monthly="29"
+                  data-yearly="25">
+                  29
+                </div>
+                <div class="flex flex-col mb-1 text-left">
+                  <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+                  <span
+                    class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
+                    Monthly</span>
+                </div>
+              </div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>All Platforms</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>50 Searches / mo</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>1000 AI Credits / mo</span>
+              </li>
+              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                <span>~500 video analysis or </span>
+              </li>
+              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                <span>~200 video indexing</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>Latest AI Models</span>
+              </li>
+
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
+                <span>5 AI Boards</span>
+              </li>
+            </ul>
+            <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+              CHOOSE PLAN
+            </button>
+          </div>
+
+          <!-- Tier 3: Pro Research -->
           <div
-            class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
-            Most Popular
-          </div>
-          <div class="mb-4">
-            <span class="text-sm font-medium text-[#CECECE]">Pro Research</span>
-            <div class="text-4xl font-medium text-white mt-2">
-              $79
-              <span class="text-base text-neutral-500 font-normal">/mo</span>
+            class="reveal-element p-6 rounded-3xl border border-white/10 bg-[rgba(26,26,26,0.89)] relative flex flex-col shadow-2xl shadow-indigo-500/10">
+            <div
+              class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
+              Full Experience
+            </div>
+            <div class="mb-4">
+              <span class="text-sm font-medium text-[#CECECE]">Pro Research</span>
+              <div class="flex items-end gap-1 mt-2">
+                <span class="text-2xl font-medium text-neutral-600 line-through mr-1">$139</span>
+                <span class="text-4xl font-medium text-white">$</span>
+                <div class="text-4xl font-medium text-white price-value mr-2" id="pro-price" data-monthly="79"
+                  data-yearly="63">
+                  79
+                </div>
+                <div class="flex flex-col mb-1 text-left">
+                  <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
+                  <span
+                    class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
+                    Monthly</span>
+                </div>
+              </div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>All Platforms + Upcoming Platforms</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>300 Searches / mo</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>3000 AI Credits / mo</span>
+              </li>
+              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                <span>~ 1500 video analysis or </span>
+              </li>
+              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
+                <span>~ 600 video indexing</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>Latest AI Models</span>
+              </li>
+
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>25 AI Boards</span>
+              </li>
+              <li class="flex items-center gap-3 text-sm text-neutral-300">
+                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
+                <span>Deep Search Agent (new)</span>
+              </li>
+            </ul>
+            <div class="w-full bg-[#070707] rounded-[69px]">
+              <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+                CHOOSE PLAN
+              </button>
             </div>
           </div>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-[#CECECE]"></iconify-icon>
-              All Platforms
-            </li>
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-[#CECECE]"></iconify-icon>
-              Unlimited AI Analysis
-            </li>
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-[#CECECE]"></iconify-icon>
-              Deep Frame Breakdown
-            </li>
-            <li class="flex items-center gap-3 text-sm text-neutral-300">
-              <iconify-icon icon="lucide:check" class="text-[#CECECE]"></iconify-icon>
-              Export to Notion/CSV
-            </li>
-          </ul>
-          <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
-            CHOOSE PLAN
-          </button>
         </div>
-      </div>
 
-      <div class="reveal-element mt-12 text-center">
-        <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
-          Risk Reversal
-        </p>
-        <p class="text-sm text-neutral-400">
-          30-day money-back guarantee. No questions asked.
-        </p>
+        <div class="reveal-element mt-12 text-center">
+          <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
+            Risk Reversal
+          </p>
+          <p class="text-sm text-neutral-400">
+            14 day money back guarantee. T&C applied.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -1312,598 +1109,9 @@
     </div>
   </footer>
 
-  <!-- INTERSECTION OBSERVER SCRIPT -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      const elements = document.querySelectorAll('.reveal-element');
-      elements.forEach(el => observer.observe(el));
-    });
-
-    // Interactive Button Script
-    document.addEventListener('DOMContentLoaded', () => {
-      const interactiveButtons = document.querySelectorAll('.glass-button-interactive');
-      interactiveButtons.forEach(btn => {
-        let currentAngle = 120; // Track current angle to avoid wrap-around jumps
-
-        btn.addEventListener('mouseenter', () => {
-          // Remove returning class for responsive tracking
-          btn.classList.remove('returning');
-        });
-
-        btn.addEventListener('mousemove', (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-
-          // Calculate angle in degrees (atan2 returns -180 to 180)
-          let angle = Math.atan2(y, x) * (180 / Math.PI);
-
-          // Normalize to 0-360 range
-          if (angle < 0) angle += 360;
-
-          // Position gradient opposite to mouse (add 180) and adjust for CSS conic coords
-          let targetAngle = (angle + 180 + 90) % 360;
-
-          // Calculate shortest path to avoid 0/360 wrap-around jump
-          let diff = targetAngle - currentAngle;
-
-          // If diff is greater than 180, go the other way
-          if (diff > 180) diff -= 360;
-          if (diff < -180) diff += 360;
-
-          currentAngle += diff;
-
-          btn.style.setProperty('--border-angle', `${currentAngle}deg`);
-        });
-
-        btn.addEventListener('mouseleave', () => {
-          // Add returning class for smooth return animation
-          btn.classList.add('returning');
-          // Reset to default angle when mouse leaves
-          currentAngle = 120;
-          btn.style.setProperty('--border-angle', '120deg');
-        });
-      });
-    });
-
-
-  </script>
-
-  <!-- Background Animation (Optional: Subtle particle drift could be added here via Canvas, keeping it pure CSS/HTML for strict adherence to request) -->
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const target = document.getElementById('changing-word');
-      const words = [
-        'marketing strategy',
-        'ecommerce',
-        'content idea',
-        'brand growth'
-      ];
-      let wordIndex = 0;
-      const chars =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
-
-      function scramble(newText) {
-        let iteration = 0;
-        clearInterval(target.interval);
-
-        target.interval = setInterval(() => {
-          target.innerText = newText
-            .split('')
-            .map((letter, index) => {
-              if (index < iteration) {
-                return newText[index];
-              }
-              return chars[Math.floor(Math.random() * chars.length)];
-            })
-            .join('');
-
-          if (iteration >= newText.length) {
-            clearInterval(target.interval);
-            setTimeout(() => {
-              wordIndex = (wordIndex + 1) % words.length;
-              scramble(words[wordIndex]);
-            }, 3000);
-          }
-
-          iteration += 1 / 2;
-        }, 30);
-      }
-
-      setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
-        scramble(words[wordIndex]);
-      }, 2000);
-    });
-  </script>
-
-  <script>
-    document.addEventListener('scroll', () => {
-      const section = document.getElementById('cinematic-section');
-      const words = document.querySelectorAll('.cinematic-word');
-      if (!section || !words.length) return;
-      const rect = section.getBoundingClientRect();
-      const scrollDist = rect.height - window.innerHeight;
-      let progress = 0;
-      if (rect.top <= 0) {
-        progress = Math.abs(rect.top) / scrollDist;
-      }
-      if (rect.top > 0) progress = 0;
-      if (progress > 1) progress = 1;
-      const activeIndex = Math.floor(progress * (words.length));
-      words.forEach((word, i) => {
-        if (i <= activeIndex) {
-          word.style.opacity = '1';
-          word.style.filter = 'blur(0px)';
-        } else {
-          word.style.opacity = '0.1';
-          word.style.filter = 'blur(8px)';
-        }
-      });
-    });
-  </script>
-
-  <!-- Tab Switching Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sidebarBtns = document.querySelectorAll('.sidebar-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-
-      /*
-      sidebarBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const targetTab = btn.getAttribute('data-tab');
-
-          // Update sidebar button styles
-          sidebarBtns.forEach(b => {
-            b.classList.remove('bg-indigo-500/10', 'text-indigo-400');
-            b.classList.add('text-neutral-600');
-          });
-          btn.classList.remove('text-neutral-600');
-          btn.classList.add('bg-indigo-500/10', 'text-indigo-400');
-
-          // Update tab content visibility
-          tabContents.forEach(tab => {
-            if (tab.id === `${targetTab}`) {
-              tab.classList.remove('hidden');
-              tab.classList.add('active');
-            } else {
-              tab.classList.add('hidden');
-              tab.classList.remove('active');
-            }
-          });
-        });
-      });
-      */
-    });
-  </script>
-
-  <!-- Card Hover Effects and Sort Dropdown Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sortBtn = document.getElementById('sort-btn');
-      const sortMenu = document.getElementById('sort-menu');
-      const sortValue = document.getElementById('sort-value');
-      const sortItems = document.querySelectorAll('.sort-dropdown-item');
-      const cardsContainer = document.getElementById('cards-container');
-
-      sortBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        sortMenu.classList.toggle('hidden');
-      });
-
-      document.addEventListener('click', () => {
-        sortMenu.classList.add('hidden');
-      });
-
-      sortItems.forEach((item) => {
-        item.addEventListener('click', () => {
-          const value = item.getAttribute('data-sort');
-          sortValue.textContent = value;
-          sortMenu.classList.add('hidden');
-
-          const cards = Array.from(cardsContainer.children);
-          for (let i = cards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            cardsContainer.appendChild(cards[j]);
-            cards.splice(j, 1);
-          }
-        });
-      });
-
-      const contentCards = document.querySelectorAll('.content-card');
-      contentCards.forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-          const cardText = card.querySelector('.card-text');
-          const cardVignette = card.querySelector('.card-vignette');
-          const addBtn = card.querySelector('.add-to-board-btn');
-          if (cardText) cardText.style.opacity = '0';
-          if (cardVignette) cardVignette.style.opacity = '0';
-          if (addBtn) {
-            addBtn.style.opacity = '1';
-            addBtn.style.transform = 'translateY(0)';
-          }
-        });
-
-        card.addEventListener('mouseleave', () => {
-          const cardText = card.querySelector('.card-text');
-          const cardVignette = card.querySelector('.card-vignette');
-          const addBtn = card.querySelector('.add-to-board-btn');
-          if (cardText) cardText.style.opacity = '1';
-          if (cardVignette) cardVignette.style.opacity = '1';
-          if (addBtn) {
-            addBtn.style.opacity = '0';
-            addBtn.style.transform = 'translateY(10px)';
-          }
-        });
-      });
-    });
-  </script>
-
-  <!-- Light Torch Effect Script for Feature Cards -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const featureCards = document.querySelectorAll('#features .glass-panel, #manual-research-section .glass-panel');
-
-      featureCards.forEach((card) => {
-        const lightTorch = card.querySelector('.light-torch');
-        if (!lightTorch) return;
-
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentX = 0;
-        let currentY = 0;
-        let isHovering = false;
-
-        // Smooth animation using requestAnimationFrame
-        function animate() {
-          if (isHovering) {
-            // Smooth interpolation for fluid movement
-            currentX += (mouseX - currentX) * 0.1;
-            currentY += (mouseY - currentY) * 0.1;
-
-            lightTorch.style.left = currentX + 'px';
-            lightTorch.style.top = currentY + 'px';
-          }
-          requestAnimationFrame(animate);
-        }
-        animate();
-
-        card.addEventListener('mouseenter', () => {
-          isHovering = true;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          isHovering = false;
-        });
-
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          mouseX = e.clientX - rect.left;
-          mouseY = e.clientY - rect.top;
-        });
-      });
-    });
-  </script>
-
-  <!-- Navbar Hide/Show on Scroll Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const nav = document.querySelector('nav');
-      let lastScrollY = window.scrollY;
-      let ticking = false;
-      let scrollDistance = 0;
-
-      function updateNavbar() {
-        const currentScrollY = window.scrollY;
-        const diff = currentScrollY - lastScrollY;
-
-        // Reset accumulator if we change scroll direction
-        if ((diff > 0 && scrollDistance < 0) || (diff < 0 && scrollDistance > 0)) {
-          scrollDistance = 0;
-        }
-
-        scrollDistance += diff;
-
-        if (scrollDistance >= 30 && currentScrollY > 100) {
-          nav.style.transform = 'translateY(-200%)';
-          scrollDistance = 0;
-        } else if (scrollDistance <= -15 || currentScrollY <= 10) {
-          nav.style.transform = 'translateY(0)';
-          scrollDistance = 0;
-        }
-
-        lastScrollY = currentScrollY;
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateNavbar);
-          ticking = true;
-        }
-      });
-    });
-  </script>
-
-  <!-- Manual Research Scroll Animation -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const section = document.querySelector('#manual-research-section');
-      const header = section.querySelector('.manual-header');
-      const cards = section.querySelectorAll('.manual-card');
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "center center",
-          end: "+=1500",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1
-        }
-      });
-
-      // Header Animation
-      tl.to(header, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out"
-      })
-        // Staggered Cards Animation with Parallax & Blur
-        .to(cards, {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          stagger: 2, // Large stagger for distinct steps during scrub
-          duration: 3,
-          ease: "power2.out",
-          startAt: { y: 100, filter: "blur(10px)", opacity: 0 }
-        }, "-=0.5");
-    });
-  </script>
-
-  <!-- Intelligence Section Scroll Animation -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const featureSection = document.querySelector('#features');
-      const featureHeader = featureSection.querySelector('.features-header');
-      const featureCards = featureSection.querySelectorAll('.features-card');
-
-      const featureTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: featureSection,
-          start: "center center",
-          end: "+=1500",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1
-        }
-      });
-
-      // Header Animation
-      featureTl.to(featureHeader, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        startAt: { y: 30, opacity: 0 }
-      })
-        // Cards Animation (All at once, with parallax & blur)
-        .to(featureCards, {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          stagger: 0, // No stagger, all together
-          duration: 3,
-          ease: "power2.out",
-          startAt: { y: 100, filter: "blur(10px)", opacity: 0 }
-        }, "-=0.2");
-    });
-  </script>
-
-  <!-- Platform Box Hover Effects -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const platformBoxes = document.querySelectorAll('.platform-box');
-
-      platformBoxes.forEach((box) => {
-        const hoverGradient = box.getAttribute('data-hover-gradient');
-        const hoverColor = box.getAttribute('data-hover-color');
-
-        box.addEventListener('mouseenter', () => {
-          if (hoverGradient) {
-            box.style.background = hoverGradient;
-          }
-          if (hoverColor) {
-            box.style.color = hoverColor;
-            box.style.borderColor = hoverColor + '30';
-          }
-        });
-
-        box.addEventListener('mouseleave', () => {
-          box.style.background = '';
-          box.style.color = '';
-          box.style.borderColor = '';
-        });
-      });
-    });
-  </script>
-
-  <!-- Grid Torch Mouse Tracking -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const gridTorch = document.getElementById('grid-torch');
-
-      document.addEventListener('mousemove', (e) => {
-        gridTorch.style.setProperty('--mouse-x', e.clientX + 'px');
-        gridTorch.style.setProperty('--mouse-y', e.clientY + 'px');
-      });
-    });
-  </script>
-  <!-- Steps Section Scroll Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Ensure GSAP and ScrollTrigger are registered
-      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const stepImages = document.querySelectorAll('.step-image');
-        const stepTexts = document.querySelectorAll('.step-text');
-
-        function setActiveStep(index) {
-          stepTexts.forEach((text, i) => {
-            if (i === index) {
-              text.classList.remove('opacity-30');
-              text.classList.add('opacity-100');
-            } else {
-              text.classList.add('opacity-30');
-              text.classList.remove('opacity-100');
-            }
-          });
-        }
-
-        // Initialize first step as active immediately
-        setActiveStep(0);
-
-        stepImages.forEach((img, i) => {
-          ScrollTrigger.create({
-            trigger: img,
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => setActiveStep(i),
-            onEnterBack: () => setActiveStep(i),
-            // markers: false
-          });
-        });
-      }
-    });
-  </script>
   <script src="public/step2-animation.js"></script>
-
-  <!-- Main Lottie Control Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const player = document.getElementById('main-lottie');
-      const replayBtn = document.getElementById('lottie-replay-btn');
-      let hasPlayed = false;
-
-      // Intersection Observer for playing only when visible
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !hasPlayed) {
-            // Check if player is ready
-            if (player.play) {
-              player.play();
-              hasPlayed = true;
-            } else {
-              player.addEventListener('ready', () => {
-                if (!hasPlayed) {
-                  player.play();
-                  hasPlayed = true;
-                }
-              });
-            }
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(player);
-
-      // Show Replay button when animation completes
-      player.addEventListener('complete', () => {
-        replayBtn.classList.remove('hidden');
-        replayBtn.classList.add('flex');
-      });
-
-      // Replay functionality
-      replayBtn.addEventListener('click', () => {
-        replayBtn.classList.add('hidden');
-        replayBtn.classList.remove('flex');
-        player.stop();
-        player.play();
-      });
-
-      // View Demo functionality
-      const viewDemoBtn = document.getElementById('view-demo-btn');
-      const simulatedAppFrame = document.getElementById('simulated-app-frame');
-
-      if (viewDemoBtn && simulatedAppFrame) {
-        viewDemoBtn.addEventListener('click', () => {
-          simulatedAppFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      }
-
-      // Hero Get Started Button Redirect
-      const heroWaitlistBtn = document.getElementById('hero-waitlist-btn');
-      if (heroWaitlistBtn) {
-        heroWaitlistBtn.addEventListener('click', () => {
-          window.location.href = 'https://agent.conthunt.app';
-        });
-      }
-
-      // Newsletter Flow
-      const newsletterBtn = document.getElementById('join-newsletter-btn');
-      const newsletterInput = document.getElementById('newsletter-email-input');
-      const newsletterContainer = document.getElementById('newsletter-form-container');
-
-      if (newsletterBtn && newsletterInput && newsletterContainer) {
-        newsletterBtn.addEventListener('click', () => {
-          // If button is already in "Get Started" state, redirect
-          if (newsletterBtn.dataset.state === 'success') {
-            window.location.href = 'https://agent.conthunt.app';
-            return;
-          }
-
-          const email = newsletterInput.value;
-          if (email && email.includes('@')) {
-            // Simulate API call/Success state
-            // Replace input with success message
-            const successMsg = document.createElement('span');
-            successMsg.className = 'text-green-400 font-medium flex items-center h-[52px] px-4';
-            successMsg.textContent = 'Successfully joined!';
-
-            newsletterInput.style.display = 'none';
-            newsletterContainer.insertBefore(successMsg, newsletterBtn);
-
-            // Change button text and state
-            newsletterBtn.textContent = 'GET STARTED';
-            newsletterBtn.dataset.state = 'success';
-
-            // Optional: Clear input (though it's hidden)
-            newsletterInput.value = '';
-          } else {
-            // Basic validation visual feedback
-            newsletterInput.style.borderColor = '#ef4444'; // red-500
-            setTimeout(() => {
-              newsletterInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            }, 2000);
-          }
-        });
-      }
-    });
-  </script>
+  <script src="assets/js/script.js"></script>
+  <script src="public/analytics.js"></script>
 </body>
 
 </html>
