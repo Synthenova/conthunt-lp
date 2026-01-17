@@ -4,13 +4,6 @@ node_modules/
 # Mac System
 .DS_Store
 
-# Generated Static Content
-blog/
-privacy/
-terms/
-
-# Generated Sitemap
-sitemap.xml
 
 # IDE / Editors
 .vscode/

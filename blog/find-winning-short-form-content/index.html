@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+        Social Search Is Here: A Practical AI Workflow to Find Winning Short-Form Content (Without Guessing) | ContHunt Blog
+    </title>
+    <meta name="title" content="Social Search Is Here: A Practical AI Workflow to Find Winning Short-Form Content (Without Guessing) | ContHunt Blog" />
+    <meta name="description"
+        content="A step-by-step content research workflow using AI to discover, cluster, and reverse-engineer high-performing TikTok/IG/YouTube Shorts ideas—built for creators, marketers, and growth teams." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <link rel="apple-touch-icon" href="/public/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Social Search Is Here: A Practical AI Workflow to Find Winning Short-Form Content (Without Guessing)" />
+    <meta property="og:description" content="A step-by-step content research workflow using AI to discover, cluster, and reverse-engineer high-performing TikTok/IG/YouTube Shorts ideas—built for creators, marketers, and growth teams." />
+    
+            <meta property="og:image" content="https://conthunt.app/public/banner.png" />
+            
+                <meta property="og:site_name" content="ContHunt" />
+
+                <!-- Twitter -->
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Social Search Is Here: A Practical AI Workflow to Find Winning Short-Form Content (Without Guessing)" />
+                <meta name="twitter:description" content="A step-by-step content research workflow using AI to discover, cluster, and reverse-engineer high-performing TikTok/IG/YouTube Shorts ideas—built for creators, marketers, and growth teams." />
+                
+                        <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
+                        
+
+                            <meta name="robots" content="index, follow" />
+                            <meta name="theme-color" content="#030303" />
+
+                            <script src="https://cdn.tailwindcss.com"></script>
+                            <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                            <link rel="preconnect" href="https://fonts.googleapis.com" />
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+                            <link
+                                href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+                                rel="stylesheet" />
+
+                            <link rel="stylesheet" href="/assets/css/style.css" />
+                            <link rel="stylesheet" href="/assets/css/blog.css" />
+
+                            <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="relative min-h-screen">
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- Background Grid & Glows -->
+    <div class="dark-zone"></div>
+    <div id="grid-torch"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
+            <!-- Logo (left) -->
+            <div class="flex items-center">
+                <a href="/">
+                    <img src="/public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
+                </a>
+            </div>
+
+            <!-- Middle nav items -->
+            <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+                <a href="/blog/"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Resources</a>
+                <a href="/#workflow"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
+                <a href="/#pricing"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- Right side nav items -->
+            <div class="flex items-center gap-4 font-nav">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
+                    <span>LOGIN</span>
+                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-44 pb-20">
+        <article class="max-w-3xl mx-auto px-6">
+    <header class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
+            
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
+                        <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                    </div>
+                    <span>
+                        Nirmal
+                    </span>
+                </div>
+                
+                    <span>•</span>
+                    <time datetime="2026-01-13">
+                        January 13, 2026
+                    </time>
+                    <!-- <span>•</span>
+            <span>7 min read</span> -->
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+            Social Search Is Here: A Practical AI Workflow to Find Winning Short-Form Content (Without Guessing)
+        </h1>
+
+        <div class="flex justify-center gap-2 flex-wrap">
+            
+                
+                    <span class="blog-tag">
+                        content-research
+                    </span>
+                    
+                    <span class="blog-tag">
+                        short-form
+                    </span>
+                    
+                    <span class="blog-tag">
+                        social-search
+                    </span>
+                    
+                    <span class="blog-tag">
+                        ai
+                    </span>
+                    
+                    <span class="blog-tag">
+                        creator-economy
+                    </span>
+                    
+                        
+        </div>
+    </header>
+
+    
+
+            <div class="prose-enhanced">
+                <p>If your content strategy still starts with “let’s brainstorm 20 hooks,” you’re working too hard.</p>
+<p>Short-form platforms are no longer <em>just distribution</em>—they’re discovery engines. People search <em>inside</em> TikTok and Instagram the same way they used to search Google, and brands are reacting by shifting effort toward creator-style distribution and faster iteration [1]. Meanwhile, video continues to be one of the most adopted marketing formats across businesses [2], and short-form publishing volume keeps rising—which makes “copy what went viral once” a losing strategy [3].</p>
+<p>So what <em>does</em> work?</p>
+<p>A repeatable research workflow that turns messy internet content into structured patterns you can execute. That’s exactly what conthunt is built for: <strong>search → collect → analyze → cluster → extract patterns → produce briefs</strong>.</p>
+<p>Below is a practical workflow you can run every week—whether you’re a solo creator or a team running multiple brands.</p>
+<hr>
+<h2>The Problem: “Content Ideas” Don’t Scale. Systems Do.</h2>
+<p>Most teams fall into one of these traps:</p>
+<ol>
+<li><strong>Inspiration scrolling</strong> (hours lost, zero structure)</li>
+<li><strong>Vanity benchmarking</strong> (copy big creators; miss why it works)</li>
+<li><strong>Spreadsheet chaos</strong> (links everywhere, no insights)</li>
+<li><strong>Trend chasing</strong> (too late, too saturated)</li>
+</ol>
+<p>The fix is a system that answers four questions fast:</p>
+<ul>
+<li><strong>What is working right now</strong> in my niche?</li>
+<li><strong>Which patterns repeat</strong> across different creators?</li>
+<li><strong>What makes viewers stay</strong> (structure, edits, pacing)?</li>
+<li><strong>How do I turn patterns into briefs</strong> my team can produce?</li>
+</ul>
+<hr>
+<h2>The conthunt Workflow (Weekly)</h2>
+<h3>Step 1: Start With “Search Buckets,” Not Random Keywords</h3>
+<p>Instead of one keyword like “skincare,” create <strong>search buckets</strong> that represent <em>viewer intent</em>.</p>
+<p>Example buckets for a skincare creator:</p>
+<ul>
+<li>“how to get rid of acne scars”</li>
+<li>“dark spots hyperpigmentation routine”</li>
+<li>“retinol purge vs breakout”</li>
+<li>“glass skin routine”</li>
+<li>“dermatologist reacts”</li>
+</ul>
+<p>Example buckets for a SaaS tool:</p>
+<ul>
+<li>“how I automate content”</li>
+<li>“best ai tools for marketing”</li>
+<li>“content calendar template”</li>
+<li>“reels hooks that work”</li>
+<li>“how I grew to 10k followers”</li>
+</ul>
+<p><strong>Goal:</strong> 10–20 buckets that reflect what people <em>want</em>, not what you <em>sell</em>.</p>
+<blockquote>
+<p>Pro tip: if a bucket sounds like a YouTube title, it’s usually a good bucket.</p>
+</blockquote>
+<hr>
+<h3>Step 2: Pull a “Discovery Set” (20–50 Videos per Bucket)</h3>
+<p>For each bucket:</p>
+<ul>
+<li>Run a search in conthunt.</li>
+<li>Save top results into a <strong>Board</strong> (one board per bucket, or group buckets into one “Weekly Research” board).</li>
+<li>Tag quickly:
+<ul>
+<li>format (talking head, montage, screen recording)</li>
+<li>creator type (expert, influencer, brand, meme account)</li>
+<li>angle (tutorial, reaction, storytime, teardown)</li>
+</ul>
+</li>
+</ul>
+<p><strong>You’re building a dataset</strong>, not watching videos for fun.</p>
+<hr>
+<h3>Step 3: Run Video Analysis on the Winners</h3>
+<p>Now use the platform like a lab.</p>
+<p>Pick the top 10–20 videos from your discovery set (the ones with obvious traction, strong hooks, or repeating comments). Run <strong>video analysis</strong> to extract:</p>
+<ul>
+<li>the hook (first 1–3 seconds)</li>
+<li>structure (setup → proof → steps → payoff)</li>
+<li>pacing/edits (cuts, captions, overlays, B-roll)</li>
+<li>CTA style (comment bait, save/share prompt, follow for part 2)</li>
+<li>key claims (what’s being promised)</li>
+</ul>
+<p>This is where AI shines: it reduces “I think this is good” to <strong>explicit components</strong> you can reuse.</p>
+<hr>
+<h3>Step 4: Cluster Into Patterns (Not “Trends”)</h3>
+<p>Trends expire. Patterns repeat.</p>
+<p>Create clusters like:</p>
+<ul>
+<li><strong>Myth-busting</strong> (“Stop doing X. Do this instead.”)</li>
+<li><strong>Before/after proof</strong> (fast visual payoff)</li>
+<li><strong>3-step frameworks</strong> (“Do these 3 things…”)</li>
+<li><strong>Expert reaction</strong> (“Dermatologist reacts to…”)</li>
+<li><strong>Relatable pain</strong> (“If your skin does this…”)</li>
+<li><strong>Tool teardown</strong> (“I tested X so you don’t have to.”)</li>
+</ul>
+<p>Then score each cluster with:</p>
+<ul>
+<li>frequency (how often it appears)</li>
+<li>freshness (how recently top videos were posted)</li>
+<li>variety (does it work across many creators, or just one big account?)</li>
+<li>production cost (easy vs heavy editing)</li>
+</ul>
+<p>Your output is a <strong>Pattern Board</strong>—a collection of clusters with examples.</p>
+<hr>
+<h3>Step 5: Extract the “Creative DNA” of Each Pattern</h3>
+<p>For each cluster, write a mini spec:</p>
+<p><strong>Pattern name:</strong> Myth-busting teardown<br>
+<strong>Viewer promise:</strong> “You’ve been doing it wrong; here’s the fix.”<br>
+<strong>Hook formulas:</strong></p>
+<ul>
+<li>“If you’re doing X, stop.”</li>
+<li>“This is why your Y isn’t working.”</li>
+<li>“The internet lied about Z.”</li>
+</ul>
+<p><strong>Structure template:</strong></p>
+<ol>
+<li>Contrarian claim</li>
+<li>Quick evidence (demo, screenshot, stat, personal result)</li>
+<li>The correct method (2–4 steps)</li>
+<li>Simple CTA (“Save this,” “Comment ‘routine’”)</li>
+</ol>
+<p><strong>Production notes:</strong></p>
+<ul>
+<li>tight captions</li>
+<li>cut every 1–1.5 seconds</li>
+<li>show proof early (first 5 seconds)</li>
+</ul>
+<p>This is the difference between content that “feels inspired” and content that’s <strong>engineered</strong>.</p>
+<hr>
+<h2>A Real Example: Turning Research Into 5 Script Briefs</h2>
+<p>Let’s say you’re researching “hyperpigmentation routine.”</p>
+<p>After clustering, you find 3 repeating patterns:</p>
+<ol>
+<li>Dermatologist reacts</li>
+<li>3-step routine with proof</li>
+<li>Myth-busting ingredient order</li>
+</ol>
+<p>Now produce 5 briefs:</p>
+<h3>Brief 1 — Myth-busting</h3>
+<p><strong>Hook:</strong> “Your niacinamide isn’t helping because you’re layering it wrong.”<br>
+<strong>Beat 1:</strong> show common layering mistake<br>
+<strong>Beat 2:</strong> corrected order (AM + PM)<br>
+<strong>Beat 3:</strong> “Do this for 14 days”<br>
+<strong>CTA:</strong> “Comment ‘ORDER’ and I’ll send the routine.”</p>
+<h3>Brief 2 — Proof first</h3>
+<p><strong>Hook:</strong> “Dark spots in 30 days—here’s what actually changed.”<br>
+<strong>Beat 1:</strong> before/after<br>
+<strong>Beat 2:</strong> 2 product categories (not brands)<br>
+<strong>Beat 3:</strong> 1 lifestyle factor<br>
+<strong>CTA:</strong> “Save this.”</p>
+<h3>Brief 3 — Expert reaction</h3>
+<p><strong>Hook:</strong> “Dermatologist reacts to the ‘lemon on face’ trend.”<br>
+<strong>Beat 1:</strong> stitch reaction<br>
+<strong>Beat 2:</strong> why it’s harmful<br>
+<strong>Beat 3:</strong> safe alternative<br>
+<strong>CTA:</strong> “Drop the next trend to react to.”</p>
+<h3>Brief 4 — “What I stopped doing”</h3>
+<p><strong>Hook:</strong> “I stopped doing this one thing and my pigmentation faded.”<br>
+<strong>Beat 1:</strong> reveal habit (over-exfoliating)<br>
+<strong>Beat 2:</strong> replacement routine<br>
+<strong>Beat 3:</strong> timeline expectations<br>
+<strong>CTA:</strong> “Follow for part 2.”</p>
+<h3>Brief 5 — Comment-driven</h3>
+<p><strong>Hook:</strong> “If you have pigmentation + oily skin, don’t follow dry-skin routines.”<br>
+<strong>Beat 1:</strong> identify wrong routine<br>
+<strong>Beat 2:</strong> correct routine<br>
+<strong>Beat 3:</strong> list product types<br>
+<strong>CTA:</strong> “Comment your skin type.”</p>
+<p>Notice: none of these require “genius ideas.” They’re assembled from repeatable patterns.</p>
+<hr>
+<h2>How to Measure If Your Research System Works</h2>
+<p>A research system should improve:</p>
+<ul>
+<li><strong>Speed:</strong> fewer hours to pick ideas</li>
+<li><strong>Consistency:</strong> less randomness; more repeatable formats</li>
+<li><strong>Iteration:</strong> you can test 10 hooks quickly</li>
+<li><strong>Learning:</strong> every week you build a better library</li>
+</ul>
+<p>Use these simple metrics:</p>
+<ul>
+<li>Hook retention proxy: views in first hour / follower count</li>
+<li>Saves and shares (best indicator for evergreen how-to)</li>
+<li>Comment quality (questions, personal stories, “this helped”)</li>
+<li>Cluster hit rate: how many posts per cluster outperform baseline</li>
+</ul>
+<hr>
+<h2>Your “Do This Every Monday” Checklist</h2>
+<ol>
+<li>Pick 10–20 search buckets</li>
+<li>Pull 200–500 candidate videos total</li>
+<li>Analyze top 20–40</li>
+<li>Cluster into 5–10 patterns</li>
+<li>Write 10 briefs (2 per pattern)</li>
+<li>Ship content; collect results</li>
+<li>Feed results back into next week’s research</li>
+</ol>
+<p>That’s the loop.</p>
+<hr>
+<h2>Final Thought: Your Advantage Is Not “More Content.” It’s Better Research.</h2>
+<p>Most creators and teams are producing content with weak inputs. Strong inputs come from structure: searchable libraries, pattern recognition, and briefs that reduce guesswork.</p>
+<p>The platforms keep changing. But patterns—human attention patterns—don’t.</p>
+<p>Build the system once. Run it weekly. Compound forever.</p>
+<hr>
+<h2>References</h2>
+<p>[1] Social search behavior and shifting discovery patterns among younger audiences.<br>
+[2] Broad adoption of video as a marketing tool among businesses.<br>
+[3] Short-form video performance and publishing volume insights from large-scale analysis.</p>
+
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-white/5 text-center">
+                <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
+                <a href="/blog/" class="glass-button px-6 py-3 text-sm font-bold">
+                    VIEW ALL POSTS
+                </a>
+            </div>
+</article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/public/icon black 800px.png" alt="ContHunt Logo" class="w-6 h-6">
+                    <span class="font-semibold text-white">ContHunt</span>
+                </div>
+                <p class="text-neutral-500 max-w-xs mb-6">
+                    The all-in-one content aggregation and research intelligence tool for the modern web.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://x.com/conthunt_app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:x"></iconify-icon></a>
+                    <a href="https://instagram.com/conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:instagram"></iconify-icon></a>
+                    <a href="https://tiktok.com/@conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:tiktok"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Product</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/blog/" class="hover:text-white transition-colors">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/#workflow" class="hover:text-white transition-colors">Workflow</a>
+                    </li>
+                    <li>
+                        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-white transition-colors">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
+            <p>© 2024 ContHunt Inc. All rights reserved.</p>
+            <div class="flex items-center gap-2 mt-4 md:mt-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span>Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/blog.js"></script>
+</body>
+
+</html>
