@@ -8,7 +8,7 @@ const ejs = require('ejs');
 const CONTENT_DIR = path.join(__dirname, '../content/blog');
 const PAGES_DIR = path.join(__dirname, '../content/pages');
 const OUTPUT_DIR = path.join(__dirname, '../blog');
-const PUBLIC_DIR = path.join(__dirname, '..'); // Root output for pages
+const PUBLIC_DIR = path.join(__dirname, '..');
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
 const DOMAIN = 'https://conthunt.app';
 
