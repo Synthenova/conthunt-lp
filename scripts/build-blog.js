@@ -90,7 +90,7 @@ async function buildStaticPages() {
         console.log(`Generated: ${slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/${slug}`, attributes.updated || new Date().toISOString().split('T')[0], 'monthly', '0.5');
+        addToSitemap(`/${slug}/`, attributes.updated || new Date().toISOString().split('T')[0], 'monthly', '0.5');
     }
 }
 
@@ -100,7 +100,7 @@ function generateSitemap() {
 
     const staticRoutes = [
         { loc: '/', priority: '1.0', changefreq: 'daily' },
-        { loc: '/blog', priority: '0.9', changefreq: 'daily' }
+        { loc: '/blog/', priority: '0.9', changefreq: 'daily' }
     ];
 
     const today = new Date().toISOString().split('T')[0];
@@ -188,7 +188,7 @@ async function build() {
         console.log(`Generated: blog/${slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${slug}`, attributes.date ? new Date(attributes.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
+        addToSitemap(`/blog/${slug}/`, attributes.date ? new Date(attributes.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
     }
 
     // 3. Sort posts by date
