@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog && window.posthog.__loaded) || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init ts ns yi rs os Qr es capture Hi calculateEventProperties hs register register_once register_for_session unregister unregister_for_session fs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty vs us createPersonProfile cs Yr ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ls debug O ds getPageViewId captureTraceFeedback captureTraceMetric Vr".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init ts ns yi rs os Qr es capture Hi calculateEventProperties hs register register_once register_for_session unregister unregister_for_session fs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty vs us createPersonProfile cs Yr ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ls debug O ds getPageViewId captureTraceFeedback captureTraceMetric Vr".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
 
     posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-      api_host: window.location.origin + '/ingest',
+      api_host: 'https://us.i.posthog.com',
       ui_host: 'https://us.posthog.com',
       defaults: '2025-11-30',
       person_profiles: 'identified_only',
@@ -82,8 +82,8 @@
 
       <!-- Middle nav items (absolutely centered) -->
       <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
-        <a href="#features" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Features
+        <a href="/blog" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
+          Resources
         </a>
         <a href="#workflow" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
           Workflow
@@ -133,11 +133,11 @@
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
         </button>
-        <button id="hero-waitlist-btn"
-          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2">
+        <a href="https://agent.conthunt.app" id="hero-waitlist-btn"
+          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2 inline-flex items-center justify-center">
           GET STARTED
           <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
-        </button>
+        </a>
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
@@ -634,11 +634,11 @@
 
       <!-- CTA Button (Moved to Center Bottom) -->
       <div class="mt-20 flex justify-center pb-20 md:pb-0">
-        <button id="cta-waitlist-btn"
-          class="glass-button glass-button-interactive px-9 md:px-16 py-5 text-xl font-medium font-nav gap-3">
+        <a href="https://agent.conthunt.app" id="cta-waitlist-btn"
+          class="glass-button glass-button-interactive px-9 md:px-16 py-5 text-xl font-medium font-nav gap-3 inline-flex items-center justify-center">
           GET STARTED
           <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
-        </button>
+        </a>
       </div>
     </section>
 
@@ -880,9 +880,10 @@
                 <span>1 AI Board</span>
               </li>
             </ul>
-            <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+            <a href="https://agent.conthunt.app"
+              class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
               GET STARTED
-            </button>
+            </a>
           </div>
 
           <!-- Tier 2: Creator -->
@@ -937,9 +938,10 @@
                 <span>5 AI Boards</span>
               </li>
             </ul>
-            <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+            <a href="https://agent.conthunt.app"
+              class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
               CHOOSE PLAN
-            </button>
+            </a>
           </div>
 
           <!-- Tier 3: Pro Research -->
@@ -1000,9 +1002,10 @@
               </li>
             </ul>
             <div class="w-full bg-[#070707] rounded-[69px]">
-              <button class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav">
+              <a href="https://agent.conthunt.app"
+                class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
                 CHOOSE PLAN
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -1057,12 +1060,12 @@
           for the modern web.
         </p>
         <div class="flex gap-4">
-          <a href="#" class="text-neutral-500 hover:text-white"><iconify-icon
-              icon="simple-icons:twitter"></iconify-icon></a>
-          <a href="#" class="text-neutral-500 hover:text-white"><iconify-icon
-              icon="simple-icons:github"></iconify-icon></a>
-          <a href="#" class="text-neutral-500 hover:text-white"><iconify-icon
-              icon="simple-icons:discord"></iconify-icon></a>
+          <a href="https://x.com/conthunt_app" target="_blank" class="text-neutral-500 hover:text-white"><iconify-icon
+              icon="simple-icons:x"></iconify-icon></a>
+          <a href="https://instagram.com/conthunt.app" target="_blank"
+            class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+          <a href="https://tiktok.com/@conthunt.app" target="_blank"
+            class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:tiktok"></iconify-icon></a>
         </div>
       </div>
 
@@ -1070,16 +1073,16 @@
         <h4 class="text-white font-medium mb-4">Product</h4>
         <ul class="space-y-2 text-neutral-500">
           <li>
-            <a href="#" class="hover:text-white transition-colors">Features</a>
+            <a href="/blog" class="hover:text-white transition-colors">Resources</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white transition-colors">Pricing</a>
+            <a href="#workflow" class="hover:text-white transition-colors">Workflow</a>
+          </li>
+          <li>
+            <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
           </li>
           <li>
             <a href="#" class="hover:text-white transition-colors">Changelog</a>
-          </li>
-          <li>
-            <a href="#" class="hover:text-white transition-colors">Docs</a>
           </li>
         </ul>
       </div>
@@ -1088,13 +1091,13 @@
         <h4 class="text-white font-medium mb-4">Legal</h4>
         <ul class="space-y-2 text-neutral-500">
           <li>
-            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white transition-colors">Contact</a>
+            <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
           </li>
         </ul>
       </div>

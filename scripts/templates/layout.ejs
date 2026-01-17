@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+        <%= pageTitle %> | ContHunt Blog
+    </title>
+    <meta name="title" content="<%= pageTitle %> | ContHunt Blog" />
+    <meta name="description"
+        content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <link rel="apple-touch-icon" href="/public/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<%= pageTitle %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <% if (hero) { %>
+        <meta property="og:image" content="<%= hero %>" />
+        <% } else { %>
+            <meta property="og:image" content="https://conthunt.app/public/banner.png" />
+            <% } %>
+                <meta property="og:site_name" content="ContHunt" />
+
+                <!-- Twitter -->
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="<%= pageTitle %>" />
+                <meta name="twitter:description" content="<%= description %>" />
+                <% if (hero) { %>
+                    <meta name="twitter:image" content="<%= hero %>" />
+                    <% } else { %>
+                        <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
+                        <% } %>
+
+                            <meta name="robots" content="index, follow" />
+                            <meta name="theme-color" content="#030303" />
+
+                            <script src="https://cdn.tailwindcss.com"></script>
+                            <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                            <link rel="preconnect" href="https://fonts.googleapis.com" />
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+                            <link
+                                href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+                                rel="stylesheet" />
+
+                            <link rel="stylesheet" href="/assets/css/style.css" />
+                            <link rel="stylesheet" href="/assets/css/blog.css" />
+
+                            <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="relative min-h-screen">
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- Background Grid & Glows -->
+    <div class="dark-zone"></div>
+    <div id="grid-torch"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
+            <!-- Logo (left) -->
+            <div class="flex items-center">
+                <a href="/">
+                    <img src="/public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
+                </a>
+            </div>
+
+            <!-- Middle nav items -->
+            <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+                <a href="/blog"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Resources</a>
+                <a href="/#workflow"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
+                <a href="/#pricing"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- Right side nav items -->
+            <div class="flex items-center gap-4 font-nav">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
+                    <span>LOGIN</span>
+                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-44 pb-20">
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/public/icon black 800px.png" alt="ContHunt Logo" class="w-6 h-6">
+                    <span class="font-semibold text-white">ContHunt</span>
+                </div>
+                <p class="text-neutral-500 max-w-xs mb-6">
+                    The all-in-one content aggregation and research intelligence tool for the modern web.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://x.com/conthunt_app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:x"></iconify-icon></a>
+                    <a href="https://instagram.com/conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:instagram"></iconify-icon></a>
+                    <a href="https://tiktok.com/@conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:tiktok"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Product</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/blog" class="hover:text-white transition-colors">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/#workflow" class="hover:text-white transition-colors">Workflow</a>
+                    </li>
+                    <li>
+                        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-white transition-colors">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
+            <p>© 2024 ContHunt Inc. All rights reserved.</p>
+            <div class="flex items-center gap-2 mt-4 md:mt-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span>Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/blog.js"></script>
+</body>
+
+</html>

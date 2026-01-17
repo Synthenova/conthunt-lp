@@ -1,0 +1,54 @@
+<article class="max-w-3xl mx-auto px-6">
+    <header class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
+            <% if (author) { %>
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
+                        <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                    </div>
+                    <span>
+                        <%= author %>
+                    </span>
+                </div>
+                <% } %>
+                    <span>•</span>
+                    <time datetime="<%= date %>">
+                        <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
+                            day: 'numeric' }) %>
+                    </time>
+                    <!-- <span>•</span>
+            <span><%= readingTime %> min read</span> -->
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+            <%= title %>
+        </h1>
+
+        <div class="flex justify-center gap-2 flex-wrap">
+            <% if (tags && tags.length> 0) { %>
+                <% tags.forEach(tag=> { %>
+                    <span class="blog-tag">
+                        <%= tag %>
+                    </span>
+                    <% }); %>
+                        <% } %>
+        </div>
+    </header>
+
+    <% if (hero) { %>
+        <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
+            <img src="<%= hero %>" alt="<%= title %>" class="w-full h-auto" />
+        </div>
+        <% } %>
+
+            <div class="prose-enhanced">
+                <%- content %>
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-white/5 text-center">
+                <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
+                <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
+                    VIEW ALL POSTS
+                </a>
+            </div>
+</article>

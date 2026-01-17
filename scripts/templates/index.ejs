@@ -1,0 +1,48 @@
+<div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Blog</h1>
+        <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+            Insights, tutorials, and updates from the ContHunt team.
+        </p>
+    </div>
+
+    <div class="blog-grid max-w-4xl mx-auto">
+        <% posts.forEach(post=> { %>
+            <a href="/blog/<%= post.slug %>" class="blog-card-link group">
+                <div
+                    class="glass-panel p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-semibold text-white mb-3 group-hover:text-sky-400 transition-colors">
+                            <%= post.title %>
+                        </h2>
+                        <p class="text-neutral-400 mb-6 line-clamp-2">
+                            <%= post.description %>
+                        </p>
+
+                        <div class="flex items-center justify-between text-sm text-neutral-500">
+                            <div class="flex flex-wrap gap-2 mb-4 md:mb-0">
+                                <% if (post.tags && post.tags.length> 0) { %>
+                                    <% post.tags.slice(0, 4).forEach(tag=> { %>
+                                        <span class="blog-tag">
+                                            <%= tag %>
+                                        </span>
+                                        <% }); %>
+                                            <% } %>
+                            </div>
+
+                            <div class="flex items-center gap-4 shrink-0">
+                                <!-- <span><%= post.readingTime %> min read</span> -->
+                                <span>
+                                    <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric' ,
+                                        month: 'short' , day: 'numeric' }) %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <% }); %>
+    </div>
+</div>
