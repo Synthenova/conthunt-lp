@@ -84,8 +84,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
-                    style="margin-right: -15px;">
+                <a href="javascript:void(0)" data-href="https://agent.conthunt.app"
+                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -314,7 +314,7 @@ Topics they repeat weekly (that keep working). This reveals the niche “money f
 <ul>
 <li>Workflow: <a href="https://conthunt.app/#workflow">https://conthunt.app/#workflow</a></li>
 <li>Demo: <a href="https://conthunt.app/#simulated-app-frame">https://conthunt.app/#simulated-app-frame</a></li>
-<li>Start: <a href="https://agent.conthunt.app/">https://agent.conthunt.app/</a></li>
+<li><a href="https://agent.conthunt.app/">Start using ContHunt →</a></li>
 </ul>
 <p>If your team is drowning in manual scrolling and competitor noise, Content Intelligence collapses the time-to-insight.</p>
 <p><img src="/public/images/blog/social-media-competitive-analysis-tools/dashboard.png" alt="Competitive analysis dashboard showing velocity metrics and winner briefs"></p>
@@ -398,7 +398,7 @@ Topics they repeat weekly (that keep working). This reveals the niche “money f
 <ul>
 <li>View Demo: <a href="https://conthunt.app/#simulated-app-frame">https://conthunt.app/#simulated-app-frame</a></li>
 <li>Workflow: <a href="https://conthunt.app/#workflow">https://conthunt.app/#workflow</a></li>
-<li>Get Started: <a href="https://agent.conthunt.app/">https://agent.conthunt.app/</a></li>
+<li><a href="https://agent.conthunt.app/">Get Started →</a></li>
 </ul>
 
             </div>
@@ -479,6 +479,150 @@ Topics they repeat weekly (that keep working). This reveals the niche “money f
             </div>
         </div>
     </footer>
+
+    <!-- Countdown Modal -->
+    <div id="countdown-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="relative w-full max-w-md glass-panel p-8 rounded-2xl border border-white/10 text-center transform transition-all scale-100">
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors">
+                <iconify-icon icon="lucide:x" width="20"></iconify-icon>
+            </button>
+
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center border border-green-500/20">
+                    <iconify-icon icon="lucide:lock" class="text-green-500 text-2xl"></iconify-icon>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white mb-2">Access Opening Soon</h3>
+            <p class="text-neutral-400 mb-8 text-sm leading-relaxed">
+                We are preparing the agent for public access. The portal will automatically open in:
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-4 mb-8">
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="days">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Days</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="hours">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Hours</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="minutes">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Minutes</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="seconds">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Seconds</span>
+                </div>
+            </div>
+
+            <button id="modal-ok-btn" class="glass-button w-full py-3 text-sm font-bold">
+                GOT IT
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const TARGET_DATE = new Date('2026-01-22T13:30:00+05:30').getTime();
+            const modal = document.getElementById('countdown-modal');
+            const closeBtn = document.getElementById('close-modal');
+            const okBtn = document.getElementById('modal-ok-btn');
+            const backdrop = document.getElementById('modal-backdrop');
+
+            // Timer elements
+            const els = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = TARGET_DATE - now;
+
+                if (distance < 0) {
+                    return false;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Animate changes (simple check to update text only if changed)
+                if (els.days.innerText !== pad(days)) els.days.innerText = pad(days);
+                if (els.hours.innerText !== pad(hours)) els.hours.innerText = pad(hours);
+                if (els.minutes.innerText !== pad(minutes)) els.minutes.innerText = pad(minutes);
+                if (els.seconds.innerText !== pad(seconds)) els.seconds.innerText = pad(seconds);
+
+                return true;
+            }
+
+            function pad(n) {
+                return n < 10 ? '0' + n : n;
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+            }
+
+            function openModal(e) {
+                const now = new Date().getTime();
+                if (now < TARGET_DATE) {
+                    if (e && e.preventDefault) e.preventDefault();
+                    updateTimer();
+                    modal.classList.remove('hidden');
+
+                    // Start interval if not already running
+                    if (!window.countdownInterval) {
+                        window.countdownInterval = setInterval(() => {
+                            const active = updateTimer();
+                            if (!active) {
+                                clearInterval(window.countdownInterval);
+                                closeModal();
+                                // Optional: Reload or redirect? For now just close.
+                            }
+                        }, 1000);
+                    }
+                    return true; // Modal opened
+                }
+                return false; // Modal not opened (date passed)
+            }
+
+            // Expose globally
+            window.openCountdownModal = openModal;
+
+            // Intercept clicks
+            document.body.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (link && link.dataset.href === 'https://agent.conthunt.app') {
+                    e.preventDefault();
+                    if (!openModal(e)) {
+                        window.location.href = link.dataset.href;
+                    }
+                }
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            okBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+        });
+    </script>
 
     <script src="/assets/js/blog.js"></script>
 </body>

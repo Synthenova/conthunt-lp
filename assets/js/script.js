@@ -708,7 +708,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero Get Started Button Redirect
     const heroWaitlistBtn = document.getElementById('hero-waitlist-btn');
     if (heroWaitlistBtn) {
-        heroWaitlistBtn.addEventListener('click', () => {
+        heroWaitlistBtn.addEventListener('click', (e) => {
+            if (window.openCountdownModal && window.openCountdownModal(e)) {
+                return;
+            }
             window.location.href = 'https://agent.conthunt.app';
         });
     }
@@ -722,6 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterBtn.addEventListener('click', () => {
             // If button is already in "Get Started" state, redirect
             if (newsletterBtn.dataset.state === 'success') {
+                if (window.openCountdownModal && window.openCountdownModal(null)) {
+                    return;
+                }
                 window.location.href = 'https://agent.conthunt.app';
                 return;
             }
