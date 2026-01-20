@@ -716,13 +716,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Newsletter Flow
+    // Newsletter Flow / Waitlist API
     const newsletterBtn = document.getElementById('join-newsletter-btn');
     const newsletterInput = document.getElementById('newsletter-email-input');
     const newsletterContainer = document.getElementById('newsletter-form-container');
 
     if (newsletterBtn && newsletterInput && newsletterContainer) {
-        newsletterBtn.addEventListener('click', () => {
+        // Trigger button click on Enter key
+        newsletterInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                newsletterBtn.click();
+            }
+        });
+
+        newsletterBtn.addEventListener('click', async () => {
             // If button is already in "Get Started" state, redirect
             if (newsletterBtn.dataset.state === 'success') {
                 if (window.openCountdownModal && window.openCountdownModal(null)) {
@@ -733,28 +741,84 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const email = newsletterInput.value;
-            if (email && email.includes('@')) {
-                // Simulate API call/Success state
-                // Replace input with success message
-                const successMsg = document.createElement('span');
-                successMsg.className = 'text-green-400 font-medium flex items-center h-[52px] px-4';
-                successMsg.textContent = 'Successfully joined!';
-
-                newsletterInput.style.display = 'none';
-                newsletterContainer.insertBefore(successMsg, newsletterBtn);
-
-                // Change button text and state
-                newsletterBtn.textContent = 'GET STARTED';
-                newsletterBtn.dataset.state = 'success';
-
-                // Optional: Clear input (though it's hidden)
-                newsletterInput.value = '';
-            } else {
-                // Basic validation visual feedback
+            // Basic email validation
+            if (!email || !email.includes('@')) {
                 newsletterInput.style.borderColor = '#ef4444'; // red-500
+                newsletterInput.classList.add('animate-shake'); // Add shake animation if available, or just red border
                 setTimeout(() => {
                     newsletterInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    newsletterInput.classList.remove('animate-shake');
                 }, 2000);
+                return;
+            }
+
+            // Set loading state
+            const originalBtnText = newsletterBtn.textContent;
+            newsletterBtn.innerHTML = '<iconify-icon icon="lucide:loader-2" class="animate-spin text-xl"></iconify-icon>';
+            newsletterBtn.disabled = true;
+            newsletterInput.disabled = true;
+
+            try {
+                const response = await fetch('https://conthunt-976912795426.us-central1.run.app/v1/waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Success or Already Joined
+                    const isAlreadyJoined = data.already_joined === true;
+                    const successText = isAlreadyJoined ? "You're already on the list!" : "You're on the list!";
+                    const icon = isAlreadyJoined ? "lucide:check-circle" : "lucide:sparkles";
+
+                    // Premium Success UI
+                    // We'll replace the input and button with a unified success badge
+                    newsletterContainer.innerHTML = `
+                        <div class="reveal-element flex items-center gap-3 bg-neutral-900/50 border border-green-500/30 text-white px-6 py-3 rounded-full h-[52px] shadow-[0_0_15px_rgba(34,197,94,0.1)] animate-in fade-in zoom-in duration-300">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                                <iconify-icon icon="${icon}" width="14"></iconify-icon>
+                            </div>
+                            <span class="font-medium text-sm text-neutral-200 tracking-wide">${successText}</span>
+                        </div>
+                        <a href="javascript:void(0)" data-href="https://agent.conthunt.app" onclick="window.location.href='https://agent.conthunt.app'"
+                           class="glass-button px-6 py-3 text-[0.85rem] font-bold font-nav h-[52px] animate-in fade-in slide-in-from-right-4 duration-500 delay-100 flex items-center gap-2">
+                           OPEN AGENT <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon>
+                        </a>
+                    `;
+
+                    // Re-attach countdown modal check if needed, but for now direct link is fine or we can re-bind the click manually 
+                    // (simplified for reliability)
+
+                } else if (response.status === 429) {
+                    // Rate Limited
+                    alert('Too many requests. Please try again later.');
+                    resetForm();
+                } else if (response.status === 422) {
+                    // Validation Error (Backend rejected email)
+                    newsletterInput.style.borderColor = '#ef4444';
+                    setTimeout(() => newsletterInput.style.borderColor = 'rgba(255, 255, 255, 0.1)', 2000);
+                    resetForm();
+                } else {
+                    // Generic Error
+                    console.error('Waitlist Error:', data);
+                    alert('Something went wrong. Please try again.');
+                    resetForm();
+                }
+
+            } catch (error) {
+                console.error('Network Error:', error);
+                alert('Connection error. Please check your internet.');
+                resetForm();
+            }
+
+            function resetForm() {
+                newsletterBtn.textContent = originalBtnText;
+                newsletterBtn.disabled = false;
+                newsletterInput.disabled = false;
             }
         });
     }
