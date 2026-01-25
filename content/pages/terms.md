@@ -62,12 +62,12 @@ We offer various subscription tiers ("Plans"), including but not limited to "Fre
 Subscriptions are billed in advance on a recurring monthly or annual basis.
 
 ### 4.3. Payment Processing
-We use **Dodo** (and potentially other third-party payment processors) to securely handle all financial transactions. We do not store your complete credit card information on our servers. By subscribing to a paid plan, you authorize us and our payment processors to charge the applicable fees to your designated payment method.
+We use **[Dodo Payments](https://dodopayments.com/)** and other third-party payment processors to securely handle all financial transactions. We do not store your complete credit card information on our servers. By subscribing to a paid plan, you authorize us and our payment processors to charge the applicable fees to your designated payment method.
 
 ### 4.4. Auto-Renewal
 Your subscription will automatically renew at the end of each billing cycle unless you cancel it before the renewal date. You can manage and cancel your subscription through your account settings on the conthunt platform.
 
-## 5. Refund and Cancellation Policy (Dodo)
+## 5. Refund and Cancellation Policy (Dodo Payments)
 
 ### 5.1 Subscription Cancellation (Stop Future Renewals)
 You may cancel your subscription at any time from your account settings. Cancellation stops future renewals and takes effect at the end of your current billing period. You will continue to have access to the Service until the end of the billing period.
@@ -78,12 +78,12 @@ If you are a consumer, you may have the right to cancel your purchase within **1
 **Important digital-service exception:** This cancellation right may not apply once you have started accessing or receiving the benefit of the digital service/content (for example, once usage/access has begun).
 
 ### 5.3 Refunds
-Payments for conthunt may be processed by **Dodo**, acting as the Merchant of Record. Refunds are handled by Dodo in line with Dodo’s buyer/consumer terms and applicable law. Refund requests may be reviewed on a case-by-case basis and may be refused in cases such as suspected fraud or abuse.
+Payments for conthunt may be processed by **Dodo Payments**, acting as the Merchant of Record. Refunds are handled by Dodo Payments in line with Dodo Payments’ buyer/consumer terms and applicable law. Refund requests may be reviewed on a case-by-case basis and may be refused in cases such as suspected fraud or abuse.
 
 This does not affect your statutory rights (for example, where a product/service is not as described, faulty, or not fit for purpose).
 
 ### 5.4 How to Request a Cancellation or Refund
-For the fastest processing, submit your request through Dodo’s support / buyer help channels. You may also contact us at **support@conthunt.app** and we will help route your request, but Dodo may require additional information to process the request.
+For the fastest processing, submit your request through Dodo Payments’ support / buyer help channels. You may also contact us at **support@conthunt.app** and we will help route your request, but Dodo Payments may require additional information to process the request.
 
 ## 6. User Conduct and Restrictions
 
@@ -115,7 +115,7 @@ The App integrates with various third-party services, including but not limited 
 *   **Google Cloud Platform & Firebase**: For infrastructure and authentication.
 *   **TwelveLabs**: For video understanding and indexing API.
 *   **ScrapeCreators**: For social media data aggregation.
-*   **Dodo**: For payment processing.
+*   **[Dodo Payments](https://dodopayments.com/)**: For payment processing.
 
 We do not control these third parties. We are not responsible for any issues, downtime, or data breaches caused by these third-party providers. Your use of the Service is also subject to the terms and privacy policies of these third-party providers.
 
