@@ -14,6 +14,15 @@
     <meta name="description"
         content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ContHunt",
+            "url": "https://conthunt.app/"
+        }
+    </script>
+
     <% if (typeof canonical !=='undefined' && canonical) { %>
         <link rel="canonical" href="<%= canonical %>" />
         <% } %>
