@@ -36,8 +36,11 @@ function getReadingTime(text) {
 let sitemapUrls = []; // { loc: string, lastmod: string, changefreq: string, priority: string }
 
 function addToSitemap(loc, lastmod = new Date().toISOString().split('T')[0], changefreq = 'weekly', priority = '0.8') {
+    // Ensure no trailing slash for consistency with Google Indexing
+    const cleanLoc = loc.endsWith('/') && loc !== '/' ? loc.slice(0, -1) : loc;
+
     sitemapUrls.push({
-        loc: `${DOMAIN}${loc}`,
+        loc: `${DOMAIN}${cleanLoc}`,
         lastmod,
         changefreq,
         priority
@@ -83,14 +86,15 @@ async function buildStaticPages() {
             body: pageContent,
             pageTitle: attributes.title,
             description: attributes.description || attributes.title,
-            hero: null
+            hero: null,
+            canonical: `${DOMAIN}/${slug}` // No trailing slash
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
         console.log(`Generated: ${slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/${slug}/`, attributes.updated || new Date().toISOString().split('T')[0], 'monthly', '0.5');
+        addToSitemap(`/${slug}`, attributes.updated || new Date().toISOString().split('T')[0], 'monthly', '0.5');
     }
 }
 
@@ -100,7 +104,7 @@ function generateSitemap() {
 
     const staticRoutes = [
         { loc: '/', priority: '1.0', changefreq: 'daily' },
-        { loc: '/blog/', priority: '0.9', changefreq: 'daily' }
+        { loc: '/blog', priority: '0.9', changefreq: 'daily' }
     ];
 
     const today = new Date().toISOString().split('T')[0];
@@ -176,19 +180,23 @@ async function build() {
         const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.ejs'), 'utf8');
 
+        // Allow overrides from frontmatter, otherwise default to standard format
+        const canonicalUrl = attributes.canonical || `${DOMAIN}/blog/${slug}`;
+
         const renderedPost = ejs.render(postTemplate, postData);
         const finalHtml = ejs.render(layout, {
             body: renderedPost,
             pageTitle: attributes.title,
             description: attributes.description,
-            hero: postData.hero
+            hero: postData.hero,
+            canonical: canonicalUrl
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
         console.log(`Generated: blog/${slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${slug}/`, attributes.date ? new Date(attributes.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
+        addToSitemap(`/blog/${slug}`, attributes.date ? new Date(attributes.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
     }
 
     // 3. Sort posts by date
@@ -203,7 +211,8 @@ async function build() {
         body: renderedIndex,
         pageTitle: 'Blog',
         description: 'Latest updates and insights from ContHunt.',
-        hero: null
+        hero: null,
+        canonical: `${DOMAIN}/blog`
     });
 
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);
