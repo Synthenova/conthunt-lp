@@ -23,6 +23,58 @@
         }
     </script>
 
+    <% if (typeof isBlogPost !== 'undefined' && isBlogPost) { %>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": <%= JSON.stringify(pageTitle) %>,
+        "description": <%= JSON.stringify(description || '') %>,
+        "image": <%= JSON.stringify(hero || 'https://conthunt.app/public/banner.png') %>,
+        "datePublished": "<%= (typeof date !== 'undefined') ? date : '' %>",
+        "dateModified": "<%= (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : '') %>",
+        "author": {
+            "@type": "Person",
+            "name": "<%= (typeof author !== 'undefined') ? author : 'ContHunt Team' %>"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ContHunt",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://conthunt.app/public/logo-title-white.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "<%= canonical %>"
+        }
+    }
+    </script>
+    <% } %>
+
+    <% if (typeof isHomepage !== 'undefined' && isHomepage) { %>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ContHunt",
+        "url": "https://conthunt.app",
+        "logo": "https://conthunt.app/public/logo-title-white.png",
+        "sameAs": [
+            "https://x.com/conthunt",
+            "https://instagram.com/conthunt.app",
+            "https://tiktok.com/@conthunt.app"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "support@conthunt.app"
+        }
+    }
+    </script>
+    <% } %>
+
     <% if (typeof canonical !=='undefined' && canonical) { %>
         <link rel="canonical" href="<%= canonical %>" />
         <% } %>

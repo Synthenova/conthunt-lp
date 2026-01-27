@@ -52,3 +52,43 @@
                 </a>
             </div>
 </article>
+
+<% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
+<section class="mt-16 mb-8">
+    <div class="max-w-3xl mx-auto px-6">
+        <h3 class="text-white text-xl font-medium mb-6">Related Articles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <% relatedPosts.forEach(post => { %>
+            <a href="/blog/<%= post.slug %>/" class="glass-panel p-4 rounded-xl border border-white/5 hover:border-white/20 transition-all group">
+                <span class="text-xs text-neutral-500"><%= new Date(post.date).toLocaleDateString('en-US', {month:'short', day:'numeric'}) %></span>
+                <h4 class="text-white font-medium mt-2 group-hover:text-sky-400 transition-colors line-clamp-2"><%= post.title %></h4>
+            </a>
+            <% }); %>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://conthunt.app"
+    },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://conthunt.app/blog"
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": <%= JSON.stringify(title) %>,
+        "item": "<%= canonical %>"
+    }]
+}
+</script>

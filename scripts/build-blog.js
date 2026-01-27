@@ -98,6 +98,55 @@ async function buildStaticPages() {
     }
 }
 
+// Find related posts based on shared tags
+function findRelatedPosts(currentPost, allPosts, limit = 3) {
+    if (!currentPost.tags || !Array.isArray(currentPost.tags)) return [];
+
+    const scored = allPosts
+        .filter(p => p.slug !== currentPost.slug)
+        .map(post => {
+            const sharedTags = post.tags?.filter(t => currentPost.tags.includes(t)) || [];
+            return {
+                post,
+                score: sharedTags.length
+            };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, limit)
+        .map(item => item.post);
+
+    return scored;
+}
+
+// Generate RSS Feed
+function generateRSS(posts) {
+    console.log('Generating rss.xml...');
+
+    const rssContent = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ContHunt Blog</title>
+    <link>https://conthunt.app/blog</link>
+    <description>Latest insights, tutorials, and updates from ContHunt.</description>
+    <language>en-us</language>
+    <atom:link href="https://conthunt.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${posts.map(post => `    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link>https://conthunt.app/blog/${post.slug}</link>
+      <description><![CDATA[${post.excerpt || post.description || ''}]]></description>
+      <category>${post.category || 'Content Strategy'}</category>
+      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/${post.slug}</guid>
+    </item>`).join('\n')}
+  </channel>
+</rss>`;
+
+    fs.writeFileSync(path.join(PUBLIC_DIR, 'rss.xml'), rssContent);
+    console.log('Generated: rss.xml');
+}
+
 // Generate Sitemap XML
 function generateSitemap() {
     console.log('Generating sitemap.xml...');
@@ -133,6 +182,14 @@ ${sitemapUrls.map(url => `  <url>
     console.log('Generated: sitemap.xml');
 }
 
+// Ping Google that sitemap updated
+function pingGoogleSitemap() {
+    console.log('Pinging Google sitemap...');
+    fetch('https://www.google.com/ping?sitemap=https://conthunt.app/sitemap.xml')
+        .then(() => console.log('Google ping successful'))
+        .catch(err => console.log('Google ping failed (non-critical):', err.message));
+}
+
 // Main Build Function
 async function build() {
     sitemapUrls = []; // Reset
@@ -145,22 +202,16 @@ async function build() {
     const files = glob.sync(`${CONTENT_DIR}/*.md`);
     const posts = [];
 
-    // 2. Process each file
+    // 2. First pass: collect all post data (no rendering yet)
     for (const file of files) {
         const rawContent = fs.readFileSync(file, 'utf8');
         const { attributes, body } = matter(rawContent);
 
         const slug = path.basename(file, '.md');
-        const outputDir = path.join(OUTPUT_DIR, slug);
-
-        // Ensure post directory exists
-        if (!fs.existsSync(outputDir)) {
-            fs.mkdirSync(outputDir, { recursive: true });
-        }
 
         let htmlContent = md.render(body);
 
-        // Simple replace for common image paths 
+        // Simple replace for common image paths
         htmlContent = htmlContent.replace(/src="\/images\//g, 'src="/public/images/');
 
         const postData = {
@@ -175,34 +226,53 @@ async function build() {
         };
 
         posts.push(postData);
+    }
+
+    // 3. Sort posts by date
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // 4. Attach related posts to each post (must be after sorting)
+    posts.forEach(post => {
+        post.relatedPosts = findRelatedPosts(post, posts, 3);
+    });
+
+    // 5. Second pass: render each post (now with relatedPosts available)
+    for (const postData of posts) {
+        const outputDir = path.join(OUTPUT_DIR, postData.slug);
+
+        // Ensure post directory exists
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+        }
 
         // Render Post Page
         const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.ejs'), 'utf8');
 
         // Allow overrides from frontmatter, otherwise default to standard format
-        const canonicalUrl = attributes.canonical || `${DOMAIN}/blog/${slug}`;
+        const canonicalUrl = postData.canonical || `${DOMAIN}/blog/${postData.slug}`;
 
         const renderedPost = ejs.render(postTemplate, postData);
         const finalHtml = ejs.render(layout, {
             body: renderedPost,
-            pageTitle: attributes.title,
-            description: attributes.description,
+            pageTitle: postData.title,
+            description: postData.description,
             hero: postData.hero,
-            canonical: canonicalUrl
+            canonical: canonicalUrl,
+            isBlogPost: true,
+            date: postData.date,
+            updated: postData.updated,
+            author: postData.author
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
-        console.log(`Generated: blog/${slug}/index.html`);
+        console.log(`Generated: blog/${postData.slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${slug}`, attributes.date ? new Date(attributes.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
+        addToSitemap(`/blog/${postData.slug}`, postData.date ? new Date(postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
     }
 
-    // 3. Sort posts by date
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // 4. Generate Index Page
+    // 6. Generate Index Page
     const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
     const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.ejs'), 'utf8');
 
@@ -218,8 +288,14 @@ async function build() {
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);
     console.log('Generated: blog/index.html');
 
-    // 5. Generate Sitemap
+    // 7. Generate Sitemap
     generateSitemap();
+
+    // 8. Generate RSS Feed
+    generateRSS(posts);
+
+    // 9. Ping Google (async, don't block)
+    setTimeout(() => pingGoogleSitemap(), 1000);
 
     console.log('Blog build complete!');
 }

@@ -25,6 +25,7 @@ COPY --from=builder /app/privacy /usr/share/nginx/html/privacy
 COPY --from=builder /app/terms /usr/share/nginx/html/terms
 COPY --from=builder /app/robots.txt /usr/share/nginx/html/robots.txt
 COPY --from=builder /app/sitemap.xml /usr/share/nginx/html/sitemap.xml
+COPY --from=builder /app/rss.xml /usr/share/nginx/html/rss.xml
 
 # Copy custom Nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
