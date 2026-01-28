@@ -1,8 +1,8 @@
 ---
-title: "150+ Viral YouTube Shorts Content Ideas for 2026 (Free List)"
-meta_title: "150+ YouTube Shorts Content Ideas needed to go Viral (2026)"
+title: "YouTube Shorts Content Ideas: 150+ Ideas That Actually Get Views"
+meta_title: "150+ YouTube Shorts Content Ideas (2026 Guide)"
 author: "Nirmal"
-description: "Never run out of ideas. Get 150+ viral YouTube Shorts content ideas categorized by niche. Plus, learn how to spot trends before they blow up."
+description: "Discover 150+ YouTube Shorts content ideas organized by niche, trending topics, and viral patterns. Plus learn how to use ContHunt to find winning ideas before they peak."
 date: "2026-01-16"
 updated: "2026-01-16"
 target_keyword: "youtube shorts content ideas"

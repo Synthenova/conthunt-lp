@@ -10,8 +10,8 @@ secondary_keywords: ["how to make youtube shorts", "youtube shorts creation", "s
 keyword_id: "kw_022"
 category: "short_form_strategy"
 difficulty: 62
-priority": "p1"
-tags": ["youtube", "shorts", "how-to", "creation", "tutorial"]
+priority: "p1"
+tags: ["youtube", "shorts", "how-to", "creation", "tutorial"]
 canonical: "https://conthunt.app/blog/how-to-make-a-youtube-short"
 image: "https://conthunt.app/images/blog/how-to-make-a-youtube-short-og.jpg"
 excerpt: "Complete step-by-step guide on how to make a YouTube Short. Learn creation, filming, editing, and optimization strategies for 2026."

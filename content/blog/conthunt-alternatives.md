@@ -256,13 +256,13 @@ Transparency matters when choosing tools. Here's how pricing compares:
 
 | Platform | Starting Price | Free Tier | What You Get at Entry |
 |----------|----------------|-----------|----------------------|
-| **ContHunt** | Contact sales | Yes (limited) | Full multi-platform access |
+| **ContHunt** | Free-$29/mo | Yes (2 platforms, 10 searches) | Full multi-platform access |
 | **ViralStat** | ~$79/month | 7-day trial | TikTok analytics, limited profiles |
 | **Shortimize** | ~$49/month | No | Reels and Shorts basic analytics |
 | **Quso.ai** | ~$29/month | Yes (limited) | AI content generation tools |
 | **ViralMoment** | Contact sales | No | Enterprise UGC tracking |
 
-> **Note:** ContHunt offers custom pricing based on your needs. [Contact us](https://conthunt.app) for a quote tailored to your use case.
+> **Note:** ContHunt offers transparent pricing with a free tier and Creator plan at $29/mo. [View pricing](https://conthunt.app/#pricing) for details.
 
 ---
 

@@ -153,7 +153,7 @@ Content Intelligence is built for:
 This is exactly what Conthunt is designed to do:
 - Workflow: https://conthunt.app/#workflow
 - Demo: https://conthunt.app/#simulated-app-frame
-- [Start using ContHunt →](https://agent.conthunt.app/)
+- Start: https://agent.conthunt.app/
 
 If your team is drowning in manual scrolling and competitor noise, Content Intelligence collapses the time-to-insight.
 
@@ -236,4 +236,4 @@ But if you’re serious about short-form performance, competitive analysis is no
 If you want to run this workflow in minutes (instead of burning half a day scrolling), start here:
 - View Demo: https://conthunt.app/#simulated-app-frame
 - Workflow: https://conthunt.app/#workflow
-- [Get Started →](https://agent.conthunt.app/)
+- Get Started: https://agent.conthunt.app/

@@ -11,7 +11,7 @@ keyword_id: "kw_051"
 category: "content_intelligence"
 difficulty: 18
 priority: "p1"
-tags": ["content-intelligence", "ai-marketing", "data-strategy", "analytics", "content-optimization"]
+tags: ["content-intelligence", "ai-marketing", "data-strategy", "analytics", "content-optimization"]
 canonical: "https://conthunt.app/content-intelligence"
 image: "https://conthunt.app/images/blog/content-intelligence-og.jpg"
 excerpt: "Complete guide to content intelligence. Learn how AI-powered analytics transform content strategy and drive better performance across platforms."

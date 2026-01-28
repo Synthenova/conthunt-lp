@@ -11,7 +11,7 @@ keyword_id: "kw_006"
 category: "youtube_analytics"
 difficulty: 42
 priority: "p0"
-tags": ["youtube", "shorts", "analytics", "how-to", "performance"]
+tags: ["youtube", "shorts", "analytics", "how-to", "performance"]
 canonical: "https://conthunt.app/blog/how-to-analyze-youtube-shorts-performance"
 image: "https://conthunt.app/images/blog/analyze-shorts-performance-og.jpg"
 excerpt: "Complete step-by-step guide to analyzing YouTube Shorts performance. Learn the exact framework top creators use to understand their metrics."

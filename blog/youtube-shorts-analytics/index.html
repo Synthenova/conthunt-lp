@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+        YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance | ContHunt Blog
+    </title>
+    <meta name="title" content="YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance | ContHunt Blog" />
+    <meta name="description"
+        content="Master YouTube Shorts analytics with our complete guide. Learn which metrics matter, how to access your data, and discover insights that native analytics miss." />
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ContHunt",
+            "url": "https://conthunt.app/"
+        }
+    </script>
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": &#34;YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance&#34;,
+        "description": &#34;Master YouTube Shorts analytics with our complete guide. Learn which metrics matter, how to access your data, and discover insights that native analytics miss.&#34;,
+        "image": &#34;/public/images/blog/shorts-analytics-og.jpg&#34;,
+        "datePublished": "2026-01-28",
+        "dateModified": "2026-01-28",
+        "author": {
+            "@type": "Person",
+            "name": "Nirmal"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ContHunt",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://conthunt.app/public/logo-title-white.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://conthunt.app/youtube-shorts-analytics"
+        }
+    }
+    </script>
+    
+
+    
+
+    
+        <link rel="canonical" href="https://conthunt.app/youtube-shorts-analytics" />
+        
+
+            <!-- Favicon -->
+            <link rel="icon" type="image/png" href="/public/favicon.png" />
+            <link rel="apple-touch-icon" href="/public/favicon.png" />
+
+            <!-- Open Graph -->
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content="YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance" />
+            <meta property="og:description" content="Master YouTube Shorts analytics with our complete guide. Learn which metrics matter, how to access your data, and discover insights that native analytics miss." />
+            
+                <meta property="og:image" content="/public/images/blog/shorts-analytics-og.jpg" />
+                
+                        <meta property="og:site_name" content="ContHunt" />
+
+                        <!-- Twitter -->
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:title" content="YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance" />
+                        <meta name="twitter:description" content="Master YouTube Shorts analytics with our complete guide. Learn which metrics matter, how to access your data, and discover insights that native analytics miss." />
+                        
+                            <meta name="twitter:image" content="/public/images/blog/shorts-analytics-og.jpg" />
+                            
+
+                                    <meta name="robots" content="index, follow" />
+                                    <meta name="theme-color" content="#030303" />
+
+                                    <script src="https://cdn.tailwindcss.com"></script>
+                                    <script
+                                        src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+                                    <link
+                                        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+                                        rel="stylesheet" />
+
+                                    <link rel="stylesheet" href="/assets/css/style.css" />
+                                    <link rel="stylesheet" href="/assets/css/blog.css" />
+
+                                    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                    <script
+                                        src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="relative min-h-screen">
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- Background Grid & Glows -->
+    <div class="dark-zone"></div>
+    <div id="grid-torch"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
+            <!-- Logo (left) -->
+            <div class="flex items-center">
+                <a href="/">
+                    <img src="/public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
+                </a>
+            </div>
+
+            <!-- Middle nav items -->
+            <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+                <a href="/blog/"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Resources</a>
+                <a href="/#workflow"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
+                <a href="/#pricing"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- Right side nav items -->
+            <div class="flex items-center gap-4 font-nav">
+                <a href="javascript:void(0)" data-href="https://agent.conthunt.app"
+                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                    <span>LOGIN</span>
+                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-44 pb-20">
+        <article class="max-w-3xl mx-auto px-6">
+    <header class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
+            
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
+                        <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                    </div>
+                    <span>
+                        Nirmal
+                    </span>
+                </div>
+                
+                    <span>•</span>
+                    <time datetime="2026-01-28">
+                        January 28, 2026
+                    </time>
+                    <!-- <span>•</span>
+            <span>8 min read</span> -->
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+            YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance
+        </h1>
+
+        <div class="flex justify-center gap-2 flex-wrap">
+            
+                
+                    <span class="blog-tag">
+                        youtube
+                    </span>
+                    
+                    <span class="blog-tag">
+                        shorts
+                    </span>
+                    
+                    <span class="blog-tag">
+                        analytics
+                    </span>
+                    
+                    <span class="blog-tag">
+                        metrics
+                    </span>
+                    
+                    <span class="blog-tag">
+                        performance
+                    </span>
+                    
+                        
+        </div>
+    </header>
+
+    
+        <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
+            <img src="/public/images/blog/shorts-analytics-og.jpg" alt="YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
+        </div>
+        
+
+            <div class="prose-enhanced">
+                <h1>YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance</h1>
+<p>YouTube Shorts has transformed the platform, but understanding Shorts performance requires analyzing different metrics than traditional long-form videos. Native YouTube Studio provides basic data, but the full picture requires deeper analysis.</p>
+<p>This guide covers everything you need to know about YouTube Shorts analytics, including metrics that matter, how to access your data, and insights that native analytics miss.</p>
+<h2>Understanding YouTube Shorts Analytics: The Fundamentals</h2>
+<p>YouTube Shorts analytics differ significantly from long-form video metrics. The short-form nature, vertical format, and algorithm-driven discovery all change what data matters most.</p>
+<p><strong>Why Shorts Analytics Are Different:</strong></p>
+<ul>
+<li><strong>Views happen faster:</strong> More views in less time require different analysis patterns</li>
+<li><strong>Retention is compressed:</strong> 60-second format changes how we measure engagement</li>
+<li><strong>Discovery dominates:</strong> Browse features and recommendations drive most views</li>
+<li><strong>Engagement patterns differ:</strong> Likes, shares, and comments behave differently</li>
+</ul>
+<p><strong>The Challenge:</strong> Native YouTube Studio Shorts analytics provide basic metrics but lack deeper insights into what’s actually driving performance.</p>
+<h2>Essential YouTube Shorts Metrics Explained</h2>
+<h3>1. Views and View Velocity</h3>
+<p><strong>What It Measures:</strong> Total views and how quickly they accumulate</p>
+<p><strong>Why It Matters:</strong></p>
+<ul>
+<li>View velocity indicates algorithm push</li>
+<li>Fast view growth signals content resonance</li>
+<li>Initial 24-hour performance predicts long-term success</li>
+</ul>
+<p><strong>What to Look For:</strong></p>
+<ul>
+<li>Views in first hour vs. first 24 hours</li>
+<li>Consistent view growth over time</li>
+<li>Comparison to channel average</li>
+</ul>
+<h3>2. Watch Time and Average View Duration</h3>
+<p><strong>What It Measures:</strong> Total watch time and average viewing length</p>
+<p><strong>Why It Matters:</strong></p>
+<ul>
+<li>YouTube prioritizes content that keeps viewers watching</li>
+<li>Longer average view duration signals engaging content</li>
+<li>Critical for algorithm recommendation</li>
+</ul>
+<p><strong>Shorts Benchmark:</strong></p>
+<ul>
+<li><strong>Excellent:</strong> 25+ seconds average view duration</li>
+<li><strong>Good:</strong> 15-24 seconds average view duration</li>
+<li><strong>Needs Improvement:</strong> Under 15 seconds</li>
+</ul>
+<h3>3. Engagement Rate</h3>
+<p><strong>What It Measures:</strong> Combined likes, comments, shares relative to views</p>
+<p><strong>Why It Matters:</strong></p>
+<ul>
+<li>High engagement triggers wider distribution</li>
+<li>Comments indicate community building</li>
+<li>Shares extend reach beyond YouTube</li>
+</ul>
+<p><strong>Calculation:</strong></p>
+<pre><code>Engagement Rate = (Likes + Comments + Shares) / Views × 100
+</code></pre>
+<p><strong>Benchmark:</strong> 5%+ engagement rate is excellent for Shorts</p>
+<h3>4. Audience Retention</h3>
+<p><strong>What It Measures:</strong> Percentage of viewers who watch to the end</p>
+<p><strong>Why It Matters:</strong></p>
+<ul>
+<li>Strong retention signals quality content</li>
+<li>Drop-off points reveal content issues</li>
+<li>Algorithm favors content with high completion rates</li>
+</ul>
+<p><strong>Analysis Tips:</strong></p>
+<ul>
+<li>Identify exact drop-off moments</li>
+<li>Compare retention across similar content</li>
+<li>Test different lengths to find optimal duration</li>
+</ul>
+<h3>5. Traffic Sources</h3>
+<p><strong>What It Measures:</strong> Where viewers discover your Shorts</p>
+<p><strong>Key Sources for Shorts:</strong></p>
+<ul>
+<li><strong>Shorts Feed:</strong> Primary discovery mechanism</li>
+<li><strong>Browse Features:</strong> Homepage, trending sections</li>
+<li><strong>Suggested Videos:</strong> After watching other content</li>
+<li><strong>External:</strong> Social media shares, embeds</li>
+</ul>
+<p><strong>Strategic Value:</strong> Understanding traffic sources helps optimize distribution strategy</p>
+<h3>6. Subscriber Conversion</h3>
+<p><strong>What It Measures:</strong> Views that result in new subscribers</p>
+<p><strong>Why It Matters:</strong></p>
+<ul>
+<li>Ultimate growth metric for Shorts</li>
+<li>Indicates content attracting new audiences</li>
+<li>Helps calculate content ROI</li>
+</ul>
+<h2>How to Access YouTube Shorts Analytics</h2>
+<h3>Native YouTube Studio Analytics</h3>
+<p><strong>Access Steps:</strong></p>
+<ol>
+<li>Open YouTube Studio</li>
+<li>Navigate to Analytics</li>
+<li>Select “Content” tab</li>
+<li>Filter by “Shorts”</li>
+<li>View individual video metrics</li>
+</ol>
+<p><strong>What You Get:</strong></p>
+<ul>
+<li>Basic performance metrics</li>
+<li>Traffic source breakdown</li>
+<li>Audience demographics</li>
+<li>Real-time view tracking</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>No competitor benchmarking</li>
+<li>Limited historical data</li>
+<li>No cross-platform insights</li>
+<li>Surface-level engagement analysis</li>
+</ul>
+<h3>Advanced Analytics with ContHunt</h3>
+<p><strong>Beyond Native Analytics:</strong></p>
+<ul>
+<li><strong>Competitor benchmarking:</strong> See how your metrics compare</li>
+<li><strong>Viral pattern analysis:</strong> Identify what drives virality</li>
+<li><strong>Cross-platform tracking:</strong> Compare performance vs. TikTok, Instagram Reels</li>
+<li><strong>Trend identification:</strong> Spot trends before competitors</li>
+<li><strong>Content optimization:</strong> Data-driven recommendations</li>
+</ul>
+<p><a href="https://conthunt.app">Try ContHunt Shorts analytics free</a></p>
+<h2>Interpreting Your Shorts Analytics: A Framework</h2>
+<h3>The Performance Pyramid</h3>
+<p><strong>Tier 1: Viral Content (Top 5% of content)</strong></p>
+<ul>
+<li>100K+ views within 48 hours</li>
+<li>40%+ average view duration</li>
+<li>8%+ engagement rate</li>
+<li>High subscriber conversion</li>
+</ul>
+<p><strong>Tier 2: Strong Performers (Next 20%)</strong></p>
+<ul>
+<li>10K-100K views</li>
+<li>25-39% average view duration</li>
+<li>5-7% engagement rate</li>
+<li>Moderate subscriber conversion</li>
+</ul>
+<p><strong>Tier 3: Solid Content (Next 40%)</strong></p>
+<ul>
+<li>1K-10K views</li>
+<li>15-24% average view duration</li>
+<li>3-4% engagement rate</li>
+<li>Low subscriber conversion</li>
+</ul>
+<p><strong>Tier 4: Underperforming (Bottom 35%)</strong></p>
+<ul>
+<li>Under 1K views</li>
+<li>Under 15% average view duration</li>
+<li>Under 3% engagement rate</li>
+<li>No subscriber growth</li>
+</ul>
+<h3>Analytics-Based Content Strategy</h3>
+<p><strong>For Viral Content:</strong></p>
+<ul>
+<li>Analyze what made it successful</li>
+<li>Create sequels or variations</li>
+<li>Repurpose format for different topics</li>
+<li>Cross-post to other platforms</li>
+</ul>
+<p><strong>For Strong Performers:</strong></p>
+<ul>
+<li>Identify patterns with top content</li>
+<li>Optimize thumbnails and titles</li>
+<li>Test similar formats</li>
+<li>Build content series</li>
+</ul>
+<p><strong>For Solid Content:</strong></p>
+<ul>
+<li>Improve hooks (first 3 seconds)</li>
+<li>Test different lengths</li>
+<li>Enhance pacing and editing</li>
+<li>Experiment with posting times</li>
+</ul>
+<p><strong>For Underperforming Content:</strong></p>
+<ul>
+<li>Review audience retention graphs</li>
+<li>Compare to successful similar content</li>
+<li>A/B test different approaches</li>
+<li>Consider format viability</li>
+</ul>
+<h2>Beyond Basic Metrics: Advanced Analytics Concepts</h2>
+<h3>1. Viewer Journey Analysis</h3>
+<p>Track how viewers move through your content:</p>
+<ul>
+<li>Shorts to long-form conversion</li>
+<li>Multiple Shorts viewed in session</li>
+<li>Return viewer patterns</li>
+<li>Subscription trigger points</li>
+</ul>
+<h3>2. Content Cohort Analysis</h3>
+<p>Group similar content and compare:</p>
+<ul>
+<li>Same topic, different format</li>
+<li>Same format, different topic</li>
+<li>Consistent creator performance</li>
+<li>Seasonal trend patterns</li>
+</ul>
+<h3>3. Competitive Benchmarking</h3>
+<p>Compare your metrics to competitors:</p>
+<ul>
+<li>View velocity comparison</li>
+<li>Engagement rate benchmarking</li>
+<li>Content format analysis</li>
+<li>Posting frequency correlation</li>
+</ul>
+<h3>4. Trend Impact Analysis</h3>
+<p>Measure how trending topics affect performance:</p>
+<ul>
+<li>Trending audio impact</li>
+<li>Hashtag performance</li>
+<li>Topic relevance score</li>
+<li>Timing advantage measurement</li>
+</ul>
+<h2>Common Shorts Analytics Mistakes</h2>
+<h3>Mistake 1: Focusing Only on Views</h3>
+<p><strong>Why It’s Wrong:</strong> Views alone don’t indicate success or audience value</p>
+<p><strong>Better Approach:</strong> Evaluate views alongside retention, engagement, and conversion metrics</p>
+<h3>Mistake 2: Comparing Shorts to Long-Form</h3>
+<p><strong>Why It’s Wrong:</strong> Different formats have different metrics and benchmarks</p>
+<p><strong>Better Approach:</strong> Compare Shorts to other Shorts, long-form to long-form</p>
+<h3>Mistake 3: Ignoring Traffic Source Data</h3>
+<p><strong>Why It’s Wrong:</strong> Different sources indicate different audience behaviors</p>
+<p><strong>Better Approach:</strong> Analyze performance by traffic source separately</p>
+<h3>Mistake 4: Analyzing in Isolation</h3>
+<p><strong>Why It’s Wrong:</strong> Without context, metrics lack meaning</p>
+<p><strong>Better Approach:</strong> Benchmark against competitors and past performance</p>
+<h3>Mistake 5: Short-Term Focus</h3>
+<p><strong>Why It’s Wrong:</strong> Shorts can gain traction over extended periods</p>
+<p><strong>Better Approach:</strong> Track performance over 7, 14, and 30-day windows</p>
+<h2>Setting Up Your Analytics Dashboard</h2>
+<h3>Key Components</h3>
+<p><strong>Real-Time Monitoring:</strong></p>
+<ul>
+<li>Live view counts</li>
+<li>Current trending content</li>
+<li>Today’s performance vs. averages</li>
+<li>Alert triggers for viral content</li>
+</ul>
+<p><strong>Weekly Analysis:</strong></p>
+<ul>
+<li>Top performing content identification</li>
+<li>Engagement pattern review</li>
+<li>Subscriber conversion tracking</li>
+<li>Competitor movement monitoring</li>
+</ul>
+<p><strong>Monthly Deep Dive:</strong></p>
+<ul>
+<li>Content format performance</li>
+<li>Optimal posting time analysis</li>
+<li>Audience growth trends</li>
+<li>Strategy adjustment recommendations</li>
+</ul>
+<h2>Using Analytics to Drive Growth</h2>
+<h3>Step 1: Establish Baselines</h3>
+<p>Track your metrics for 30 days to establish:</p>
+<ul>
+<li>Average views per Short</li>
+<li>Typical engagement rate</li>
+<li>Standard retention patterns</li>
+<li>Normal subscriber conversion</li>
+</ul>
+<h3>Step 2: Identify Success Patterns</h3>
+<p>Analyze top performers to find:</p>
+<ul>
+<li>Common topics or themes</li>
+<li>Optimal video length</li>
+<li>Best posting times</li>
+<li>Winning formats and styles</li>
+</ul>
+<h3>Step 3: Test and Iterate</h3>
+<p>Run controlled experiments:</p>
+<ul>
+<li>Change one variable at a time</li>
+<li>Document all changes</li>
+<li>Measure impact on metrics</li>
+<li>Scale what works</li>
+</ul>
+<h3>Step 4: Competitive Intelligence</h3>
+<p>Monitor competitor performance:</p>
+<ul>
+<li>Track their top content</li>
+<li>Identify format trends early</li>
+<li>Learn from their successes</li>
+<li>Find content gaps they miss</li>
+</ul>
+<h2>Cross-Platform Analytics Advantage</h2>
+<p><strong>The Multi-Platform Reality:</strong>
+Modern creators don’t just make YouTube Shorts. They create short-form content for TikTok and Instagram Reels too.</p>
+<p><strong>Why Cross-Platform Analytics Wins:</strong></p>
+<ul>
+<li><strong>Trend identification:</strong> Spot trends on TikTok before they hit YouTube</li>
+<li><strong>Content optimization:</strong> See what formats work across platforms</li>
+<li><strong>Audience insights:</strong> Understand different platform demographics</li>
+<li><strong>Efficiency:</strong> One dashboard for all platforms</li>
+</ul>
+<p><strong>ContHunt Difference:</strong>
+Unlike YouTube-only tools, ContHunt provides unified analytics across YouTube Shorts, TikTok, and Instagram Reels—giving you insights others miss.</p>
+<p><a href="https://conthunt.app">Explore multi-platform Shorts analytics</a></p>
+<h2>Bottom Line: Transform Data into Growth</h2>
+<p>YouTube Shorts analytics provide the roadmap to content success. Native YouTube Studio gives you the basic coordinates, but advanced analytics reveal the shortcuts.</p>
+<p><strong>For Beginners:</strong> Start with native YouTube Studio analytics and focus on views, retention, and engagement rate.</p>
+<p><strong>For Growing Creators:</strong> Add competitive benchmarking and trend analysis to identify what content drives growth.</p>
+<p><strong>For Serious Creators:</strong> Implement multi-platform analytics to get insights that single-platform tools miss.</p>
+<p><strong>The ContHunt Advantage:</strong> Get unified YouTube Shorts, TikTok, and Instagram Reels analytics in one dashboard. See what content is working across platforms, identify trends before competitors, and make data-driven decisions that accelerate growth.</p>
+<p><a href="https://conthunt.app">Start with ContHunt’s free tier</a> and transform your Shorts analytics from basic numbers into actionable growth strategy.</p>
+<hr>
+<p>Ready to unlock deeper YouTube Shorts insights? <a href="https://conthunt.app">Try ContHunt free</a> and see why modern creators choose multi-platform analytics.</p>
+
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-white/5 text-center">
+                <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
+                <a href="/blog/" class="glass-button px-6 py-3 text-sm font-bold">
+                    VIEW ALL POSTS
+                </a>
+            </div>
+</article>
+
+
+<section class="mt-16 mb-8">
+    <div class="max-w-6xl mx-auto px-6">
+        <h3 class="text-white text-xl font-medium mb-6">Related Articles</h3>
+        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            
+            <a href="/blog/how-to-analyze-youtube-shorts-performance/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            How to Analyze YouTube Shorts Performance: Step-by-Step Guide
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Learn how to analyze YouTube Shorts performance effectively. Discover which metrics matter, how to use YouTube Studio, and unlock insights beyond native analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                                    <span class="blog-tag text-xs">analytics</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/free-youtube-shorts-analytics/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            Free YouTube Shorts Analytics Tools: Complete Guide to No-Cost Insights
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Discover the best free YouTube Shorts analytics tools and learn how to get comprehensive insights without spending money. Compare free vs paid features.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                                    <span class="blog-tag text-xs">analytics</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/tiktok-vs-youtube-shorts-analytics/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            TikTok vs YouTube Shorts Analytics: Complete Platform Comparison
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Compare TikTok and YouTube Shorts analytics side by side. Learn which platform offers better insights, different metrics, and how to track performance across both.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">tiktok</span>
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/youtube-vs-tiktok-analytics-creators/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            YouTube vs TikTok Analytics for Creators: Which Platform Pays Better in 2026?
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Compare YouTube vs TikTok analytics, monetization, and growth potential for creators in 2026. Learn which platform pays more, has better discoverability, and offers sustainable income.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">tiktok</span>
+                                
+                                    <span class="blog-tag text-xs">creator economy</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/vidiq-pricing-alternatives/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            VidIQ Pricing Breakdown 2026: Complete Analysis and Alternatives
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Detailed VidIQ pricing analysis comparing all plans. See features, limits, and whether the free tier or Pro plan is right for your channel. Includes ContHunt as a multi-platform alternative.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">pricing</span>
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">competitor</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/vidiq-alternatives/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            VidIQ Alternatives 2026: 10 Multi-Platform Tools for Modern Creators
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Looking for VidIQ alternatives? Discover multi-platform analytics tools that support YouTube, TikTok, and Instagram. Compare features, pricing, and find the perfect fit for your content strategy.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">alternatives</span>
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">analytics</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/how-to-make-a-youtube-short/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            How to Make a YouTube Short: Complete Step-by-Step Guide for 2026
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Learn how to make a YouTube Short from scratch. Complete guide covering creation, editing, uploading, and optimizing for the algorithm.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                                    <span class="blog-tag text-xs">how-to</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/youtube-shorts-content-ideas/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            YouTube Shorts Content Ideas: 150+ Ideas That Actually Get Views
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Discover 150+ YouTube Shorts content ideas organized by niche, trending topics, and viral patterns. Plus learn how to use ContHunt to find winning ideas before they peak.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                                    <span class="blog-tag text-xs">content-ideas</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 16, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/youtube-shorts-best-practices/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            YouTube Shorts Best Practices: Complete Guide for Growth in 2026
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Master YouTube Shorts with proven best practices. Learn algorithm tips, content ideas, posting schedules, and growth strategies that actually drive results.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">youtube</span>
+                                
+                                    <span class="blog-tag text-xs">shorts</span>
+                                
+                                    <span class="blog-tag text-xs">short-form-strategy</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 16, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/blog/youtube-tracker/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                            YouTube Tracker: Essential Tool for Monitoring Channel Performance
+                        </h4>
+                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                            Discover how YouTube tracking tools help monitor competitors, track performance, and grow your channel. Learn what to track and why it matters.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            
+                                
+                                    <span class="blog-tag text-xs">tracking</span>
+                                
+                                    <span class="blog-tag text-xs">analytics</span>
+                                
+                                    <span class="blog-tag text-xs">competitors</span>
+                                
+                            
+                        </div>
+                        <span class="text-xs text-neutral-500 mt-4 block">
+                            Jan 28, 2026
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://conthunt.app"
+    },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://conthunt.app/blog"
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": &#34;YouTube Shorts Analytics: The Complete Guide to Understanding Your Performance&#34;,
+        "item": "https://conthunt.app/youtube-shorts-analytics"
+    }]
+}
+</script>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/public/icon black 800px.png" alt="ContHunt Logo" class="w-6 h-6">
+                    <span class="font-semibold text-white">ContHunt</span>
+                </div>
+                <p class="text-neutral-500 max-w-xs mb-6">
+                    The all-in-one content aggregation and research intelligence tool for the modern web.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://x.com/conthunt" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:x"></iconify-icon></a>
+                    <a href="https://instagram.com/conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:instagram"></iconify-icon></a>
+                    <a href="https://tiktok.com/@conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:tiktok"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Product</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/blog/" class="hover:text-white transition-colors">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/#workflow" class="hover:text-white transition-colors">Workflow</a>
+                    </li>
+                    <li>
+                        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-white transition-colors">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
+            <p>© 2024 ContHunt Inc. All rights reserved.</p>
+            <div class="flex items-center gap-2 mt-4 md:mt-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span>Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Countdown Modal -->
+    <div id="countdown-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="relative w-full max-w-md glass-panel p-8 rounded-2xl border border-white/10 text-center transform transition-all scale-100">
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors">
+                <iconify-icon icon="lucide:x" width="20"></iconify-icon>
+            </button>
+
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center border border-green-500/20">
+                    <iconify-icon icon="lucide:lock" class="text-green-500 text-2xl"></iconify-icon>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white mb-2">Access Opening Soon</h3>
+            <p class="text-neutral-400 mb-8 text-sm leading-relaxed">
+                We are preparing the agent for public access. The portal will automatically open in:
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-4 mb-8">
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="days">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Days</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="hours">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Hours</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="minutes">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Minutes</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl font-bold text-white font-mono bg-white/5 w-full py-3 rounded-lg border border-white/10"
+                        id="seconds">00</div>
+                    <span class="text-[10px] uppercase tracking-wider text-neutral-500 mt-2">Seconds</span>
+                </div>
+            </div>
+
+            <button id="modal-ok-btn" class="glass-button w-full py-3 text-sm font-bold">
+                GOT IT
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const TARGET_DATE = new Date('2026-01-22T13:30:00+05:30').getTime();
+            const modal = document.getElementById('countdown-modal');
+            const closeBtn = document.getElementById('close-modal');
+            const okBtn = document.getElementById('modal-ok-btn');
+            const backdrop = document.getElementById('modal-backdrop');
+
+            // Timer elements
+            const els = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = TARGET_DATE - now;
+
+                if (distance < 0) {
+                    return false;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Animate changes (simple check to update text only if changed)
+                if (els.days.innerText !== pad(days)) els.days.innerText = pad(days);
+                if (els.hours.innerText !== pad(hours)) els.hours.innerText = pad(hours);
+                if (els.minutes.innerText !== pad(minutes)) els.minutes.innerText = pad(minutes);
+                if (els.seconds.innerText !== pad(seconds)) els.seconds.innerText = pad(seconds);
+
+                return true;
+            }
+
+            function pad(n) {
+                return n < 10 ? '0' + n : n;
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+            }
+
+            function openModal(e) {
+                const now = new Date().getTime();
+                if (now < TARGET_DATE) {
+                    if (e && e.preventDefault) e.preventDefault();
+                    updateTimer();
+                    modal.classList.remove('hidden');
+
+                    // Start interval if not already running
+                    if (!window.countdownInterval) {
+                        window.countdownInterval = setInterval(() => {
+                            const active = updateTimer();
+                            if (!active) {
+                                clearInterval(window.countdownInterval);
+                                closeModal();
+                                // Optional: Reload or redirect? For now just close.
+                            }
+                        }, 1000);
+                    }
+                    return true; // Modal opened
+                }
+                return false; // Modal not opened (date passed)
+            }
+
+            // Expose globally
+            window.openCountdownModal = openModal;
+
+            // Intercept clicks
+            document.body.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (link && link.dataset.href === 'https://agent.conthunt.app') {
+                    e.preventDefault();
+                    if (!openModal(e)) {
+                        window.location.href = link.dataset.href;
+                    }
+                }
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            okBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+        });
+    </script>
+
+    <script src="/assets/js/blog.js"></script>
+</body>
+
+</html>

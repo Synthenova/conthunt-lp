@@ -10,8 +10,8 @@ secondary_keywords: ["grow youtube shorts", "shorts channel growth", "increase s
 keyword_id: "kw_074"
 category: "youtube_shorts_optimization"
 difficulty: 32
-priority": "p3"
-tags": ["growth", "youtube shorts", "strategy", "tips"]
+priority: "p3"
+tags: ["growth", "youtube shorts", "strategy", "tips"]
 canonical: "https://conthunt.app/blog/how-to-grow-youtube-shorts-channel"
 image: "https://conthunt.app/images/blog/grow-shorts-channel-og.jpg"
 excerpt: "Master YouTube Shorts channel growth with proven strategies. Learn how to increase views, subscribers, and engagement for your Shorts."

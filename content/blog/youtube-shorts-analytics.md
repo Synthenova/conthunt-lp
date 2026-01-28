@@ -11,7 +11,7 @@ keyword_id: "kw_007"
 category: "youtube_analytics"
 difficulty: 48
 priority: "p0"
-tags": ["youtube", "shorts", "analytics", "metrics", "performance"]
+tags: ["youtube", "shorts", "analytics", "metrics", "performance"]
 canonical: "https://conthunt.app/youtube-shorts-analytics"
 image: "https://conthunt.app/images/blog/shorts-analytics-og.jpg"
 excerpt: "Complete guide to YouTube Shorts analytics. Learn which metrics drive growth, how to interpret your data, and unlock insights beyond native YouTube Studio."

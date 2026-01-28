@@ -11,7 +11,7 @@ keyword_id: "kw_009"
 category: "competitor_analysis"
 difficulty: 45
 priority: "p1"
-tags": ["competitor-analysis", "free-tools", "social-media", "analytics", "benchmarking"]
+tags: ["competitor-analysis", "free-tools", "social-media", "analytics", "benchmarking"]
 canonical: "https://conthunt.app/social-media-competitive-analysis-free"
 image: "https://conthunt.app/images/blog/social-media-competitive-analysis-free-og.jpg"
 excerpt: "Track competitors and analyze performance with the best free social media competitive analysis tools. Complete guide to getting competitive intelligence without breaking the bank."

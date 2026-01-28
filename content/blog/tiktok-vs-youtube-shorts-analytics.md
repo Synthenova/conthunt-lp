@@ -10,8 +10,8 @@ secondary_keywords: ["tiktok analytics", "youtube shorts analytics", "short-form
 keyword_id: "kw_014"
 category: "platform_comparison"
 difficulty: 48
-priority": "p0"
-tags": ["tiktok", "youtube", "shorts", "analytics", "comparison"]
+priority: "p0"
+tags: ["tiktok", "youtube", "shorts", "analytics", "comparison"]
 canonical: "https://conthunt.app/tiktok-vs-youtube-shorts-analytics"
 image: "https://conthunt.app/images/blog/tiktok-vs-shorts-analytics-og.jpg"
 excerpt: "Side-by-side comparison of TikTok and YouTube Shorts analytics. Discover key differences, metrics, and how to optimize for both platforms."

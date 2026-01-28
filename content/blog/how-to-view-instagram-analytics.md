@@ -271,7 +271,7 @@ Instagram Insights typically update every 24-48 hours. If you're seeing delays:
 ### What is a "good" engagement rate on Instagram?
 
 There's no universal benchmark because it depends on:
-- **Follower count**: Micro-accounts (&lt;10K) typically have higher rates than large accounts
+- **Follower count**: Micro-accounts (<10K) typically have higher rates than large accounts
 - **Niche**: Some categories (like food and travel) get more engagement than others
 - **Content type**: Reels often get more reach, feed posts get more engagement
 

@@ -11,7 +11,7 @@ keyword_id: "kw_015"
 category: "youtube_analytics"
 difficulty: 35
 priority: "p1"
-tags": ["youtube", "shorts", "analytics", "free-tools", "performance"]
+tags: ["youtube", "shorts", "analytics", "free-tools", "performance"]
 canonical: "https://conthunt.app/free-youtube-shorts-analytics"
 image: "https://conthunt.app/images/blog/free-shorts-analytics-og.jpg"
 excerpt: "Complete guide to free YouTube Shorts analytics. Learn what native YouTube Studio offers and discover free tools that go beyond basic metrics."
