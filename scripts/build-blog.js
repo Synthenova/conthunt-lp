@@ -99,7 +99,7 @@ async function buildStaticPages() {
 }
 
 // Find related posts based on shared tags
-function findRelatedPosts(currentPost, allPosts, limit = 3) {
+function findRelatedPosts(currentPost, allPosts, limit = 10) {
     if (!currentPost.tags || !Array.isArray(currentPost.tags)) return [];
 
     const scored = allPosts
@@ -112,11 +112,22 @@ function findRelatedPosts(currentPost, allPosts, limit = 3) {
             };
         })
         .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, limit)
-        .map(item => item.post);
+        .sort((a, b) => b.score - a.score);
 
-    return scored;
+    // Take top scored posts
+    let related = scored.slice(0, limit).map(item => item.post);
+
+    // If not enough, add random posts from remaining
+    if (related.length < limit) {
+        const remaining = allPosts.filter(p =>
+            p.slug !== currentPost.slug && !related.find(r => r.slug === p.slug)
+        );
+        // Shuffle and add until we hit limit
+        const shuffled = remaining.sort(() => Math.random() - 0.5);
+        related = [...related, ...shuffled.slice(0, limit - related.length)];
+    }
+
+    return related;
 }
 
 // Generate RSS Feed
@@ -233,7 +244,7 @@ async function build() {
 
     // 4. Attach related posts to each post (must be after sorting)
     posts.forEach(post => {
-        post.relatedPosts = findRelatedPosts(post, posts, 3);
+        post.relatedPosts = findRelatedPosts(post, posts, 10);
     });
 
     // 5. Second pass: render each post (now with relatedPosts available)
