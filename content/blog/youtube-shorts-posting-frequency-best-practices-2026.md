@@ -13,7 +13,7 @@ difficulty: 38
 priority: "p2"
 tags: ["youtube-shorts", "posting-strategy", "growth-hacks", "algorithm", "consistency"]
 canonical: "https://conthunt.app/blog/youtube-shorts-posting-frequency-best-practices-2026"
-image: "https://conthunt.app/images/blog/shorts-posting-frequency-og.jpg"
+image: "/public/banner.png"
 excerpt: "How often should you post YouTube Shorts? Discover the data-backed posting frequency strategies that drive growth in 2026."
 reading_time: 10
 word_count: 2050

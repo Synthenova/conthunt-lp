@@ -13,7 +13,7 @@ difficulty: 18
 priority: "p1"
 tags: ["gaming", "youtube shorts", "content ideas", "viral", "gaming channel"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-gaming"
-image: "https://conthunt.app/images/blog/youtube-shorts-gaming-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Level up your gaming YouTube Shorts with 50 proven content ideas that drive views, engagement, and subscribers."
 reading_time: 12
 word_count: 2400

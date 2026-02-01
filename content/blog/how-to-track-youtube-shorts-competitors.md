@@ -13,7 +13,7 @@ difficulty: 38
 priority: "p1"
 tags: ["youtube-shorts", "competitor-analysis", "analytics", "tracking", "strategy"]
 canonical: "https://conthunt.app/blog/how-to-track-youtube-shorts-competitors"
-image: "https://conthunt.app/images/blog/track-shorts-competitors-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts competitor tracking with this complete guide. Learn how to monitor, analyze, and outperform your competition."
 reading_time: 9
 word_count: 1900

@@ -12,8 +12,7 @@ category: "competitor_analysis"
 difficulty: 40
 priority: "p1"
 tags: ["competitor-analysis", "analytics", "tools", "benchmarking", "strategy"]
-canonical: "https://conthunt.app/competitor-analysis-tools"
-image: "https://conthunt.app/images/blog/competitor-analysis-tools-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to competitor analysis tools. Compare features and pricing for social media, SEO, and content intelligence tools."
 reading_time": 12
 word_count": 2400

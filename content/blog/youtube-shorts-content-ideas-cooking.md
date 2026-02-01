@@ -13,7 +13,7 @@ difficulty: 14
 priority: "p2"
 tags: ["cooking", "youtube shorts", "recipes", "food content", "kitchen tips"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-cooking"
-image: "https://conthunt.app/images/blog/youtube-shorts-cooking-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Spice up your cooking YouTube channel with 45 viral recipe ideas, food hacks, and kitchen content that viewers save and share."
 reading_time: 11
 word_count: 2200

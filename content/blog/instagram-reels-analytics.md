@@ -13,7 +13,7 @@ difficulty: 16
 priority: "p0"
 tags: ["instagram", "reels", "analytics", "social-media", "content-intelligence"]
 canonical: "https://conthunt.app/blog/instagram-reels-analytics"
-image: "https://conthunt.app/images/blog/instagram-reels-analytics-og.jpg"
+image: "/public/banner.png"
 excerpt: "Learn which Instagram Reels metrics actually matter and how to track them effectively. Includes comparison of native analytics vs multi-platform tools."
 reading_time: 9
 word_count: 1900

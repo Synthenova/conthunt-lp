@@ -13,7 +13,7 @@ difficulty: 18
 priority: "p2"
 tags: ["fashion", "tiktok", "content ideas", "viral content", "fashion creator"]
 canonical: "https://conthunt.app/blog/viral-tiktok-ideas-fashion"
-image: "https://conthunt.app/images/blog/viral-fashion-tiktok-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "50 viral TikTok ideas specifically for fashion creators. Learn what fashion content drives engagement, shares, and followers on TikTok."
 reading_time: 10
 word_count: 2000

@@ -13,7 +13,7 @@ difficulty: 42
 priority: "p1"
 tags: ["tiktok", "instagram reels", "creator economy", "monetization", "social media"]
 canonical: "https://conthunt.app/blog/tiktok-vs-instagram-reels-creators"
-image: "https://conthunt.app/images/blog/tiktok-vs-reels-creators-og.jpg"
+image: "/public/banner.png"
 excerpt: "The ultimate TikTok vs Instagram Reels comparison for creators. Discover which platform delivers better reach, monetization, and long-term growth potential."
 reading_time: 12
 word_count: 2400

@@ -12,8 +12,7 @@ category: "competitor_analysis"
 difficulty: 16
 priority: "p1"
 tags: ["competitor-analysis", "content-intelligence", "analytics", "benchmarking", "strategy"]
-canonical: "https://conthunt.app/competitive-content-analysis"
-image: "https://conthunt.app/images/blog/competitive-content-analysis-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master competitive content analysis to identify what works, adapt winning strategies, and outperform your competitors across all social platforms."
 reading_time: 10
 word_count: 2050

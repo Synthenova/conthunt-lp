@@ -13,7 +13,7 @@ difficulty: 18
 priority: "p2"
 tags: ["tech", "youtube shorts", "gadgets", "technology", "tech reviews"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-tech"
-image: "https://conthunt.app/images/blog/youtube-shorts-tech-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Power up your tech YouTube channel with 45 viral content ideas including gadget reviews, app recommendations, and tech tutorials."
 reading_time: 11
 word_count: 2200

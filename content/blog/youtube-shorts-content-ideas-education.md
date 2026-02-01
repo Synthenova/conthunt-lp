@@ -13,7 +13,7 @@ difficulty: 12
 priority: "p1"
 tags: ["education", "youtube shorts", "teaching", "edutainment", "learning"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-education"
-image: "https://conthunt.app/images/blog/youtube-shorts-education-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Transform educational content into engaging YouTube Shorts with 40 proven ideas that make learning shareable and effective."
 reading_time: 10
 word_count: 2000

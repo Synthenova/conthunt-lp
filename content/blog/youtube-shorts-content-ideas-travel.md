@@ -13,7 +13,7 @@ difficulty: 20
 priority: "p2"
 tags: ["travel", "youtube shorts", "destination guides", "travel tips", "wanderlust"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-travel"
-image: "https://conthunt.app/images/blog/youtube-shorts-travel-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Fuel wanderlust and grow your travel channel with 40 viral Shorts ideas including destination spots, travel tips, and budget adventures."
 reading_time: 10
 word_count: 2000

@@ -13,7 +13,7 @@ difficulty: 26
 priority: "p2"
 tags: ["tracking", "analytics", "competitors", "tools"]
 canonical: "https://conthunt.app/blog/youtube-tracker"
-image: "https://conthunt.app/images/blog/youtube-tracker-og.jpg"
+image: "/public/banner.png"
 excerpt: "Learn how YouTube tracking tools can help monitor competitors, analyze performance, and accelerate your channel growth with data-driven insights."
 reading_time: 7
 word_count: 1500

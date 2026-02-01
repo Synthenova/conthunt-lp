@@ -13,7 +13,7 @@ difficulty: 10
 priority: "p2"
 tags: ["editing", "youtube shorts", "tutorial", "tools"]
 canonical: "https://conthunt.app/blog/how-to-edit-youtube-shorts"
-image: "https://conthunt.app/images/blog/edit-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Learn how to edit YouTube Shorts like a pro. Discover the best editing apps, techniques, and tips to create engaging viral content."
 reading_time: 8
 word_count: 1650

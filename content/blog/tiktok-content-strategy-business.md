@@ -13,7 +13,7 @@ difficulty: 28
 priority: "p2"
 tags: ["tiktok", "business", "content strategy", "marketing", "small business"]
 canonical: "https://conthunt.app/blog/tiktok-content-strategy-business"
-image: "https://conthunt.app/images/blog/tiktok-business-strategy-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete TikTok content strategy guide for business owners. Learn what content works, how to post, and tactics that build business presence and drive results."
 reading_time: 11
 word_count: 2200

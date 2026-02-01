@@ -13,7 +13,7 @@ difficulty: 26
 priority": "p2"
 tags: ["monetization", "earnings", "youtube shorts", "income"]
 canonical: "https://conthunt.app/blog/how-to-make-money-on-youtube-shorts"
-image: "https://conthunt.app/images/blog/make-money-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover how successful creators make money on YouTube Shorts. Learn multiple income streams, real earnings potential, and strategies that work."
 reading_time: 8
 word_count: 1750

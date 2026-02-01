@@ -13,7 +13,7 @@ difficulty: 30
 priority: "p0"
 tags: ["tiktok", "analytics", "social-media", "creator-tools", "content-intelligence"]
 canonical: "https://conthunt.app/blog/tiktok-analytics-dashboard"
-image: "https://conthunt.app/images/blog/tiktok-analytics-dashboard-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to TikTok analytics dashboard. Learn which metrics drive growth and how multi-platform tools provide insights beyond native TikTok analytics."
 reading_time: 10
 word_count: 2100

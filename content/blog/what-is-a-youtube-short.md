@@ -13,7 +13,7 @@ difficulty: 45
 priority": "p3"
 tags: ["youtube shorts", "beginner", "definition", "guide"]
 canonical: "https://conthunt.app/blog/what-is-a-youtube-short"
-image: "https://conthunt.app/images/blog/what-is-youtube-short-og.jpg"
+image: "/public/banner.png"
 excerpt: "Understanding YouTube Shorts: what they are, how they work, and why they're important for content creators in 2026."
 reading_time: 6
 word_count: 1250

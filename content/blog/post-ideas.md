@@ -13,7 +13,7 @@ difficulty: 18
 priority": "p2"
 tags: ["ideas", "social media", "content", "engagement"]
 canonical: "https://conthunt.app/blog/post-ideas"
-image: "https://conthunt.app/images/blog/post-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Get 50+ proven social media post ideas organized by platform and content type. Never run out of engaging content ideas again."
 reading_time: 9
 word_count: 1850

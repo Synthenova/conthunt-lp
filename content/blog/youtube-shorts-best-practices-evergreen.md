@@ -13,7 +13,7 @@ difficulty: 15
 priority": "p2"
 tags: ["best practices", "youtube shorts", "growth", "strategy"]
 canonical: "https://conthunt.app/blog/youtube-shorts-best-practices-evergreen"
-image: "https://conthunt.app/images/blog/youtube-shorts-best-practices-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover timeless YouTube Shorts best practices that drive sustainable growth. Learn proven strategies that work regardless of algorithm updates."
 reading_time: 8
 word_count: 1700

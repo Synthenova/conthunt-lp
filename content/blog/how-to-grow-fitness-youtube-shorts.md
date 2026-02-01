@@ -13,7 +13,7 @@ difficulty: 22
 priority: "p2"
 tags: ["fitness", "youtube shorts", "growth strategy", "workout content", "fitness channel"]
 canonical: "https://conthunt.app/blog/how-to-grow-fitness-youtube-shorts"
-image: "https://conthunt.app/images/blog/grow-fitness-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to growing a fitness YouTube Shorts channel. Learn proven strategies, workout formats, and optimization tactics that work for fitness creators."
 reading_time: 11
 word_count: 2200

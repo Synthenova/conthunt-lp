@@ -13,7 +13,7 @@ difficulty: 28
 priority: "p1"
 tags: ["analytics", "multi-platform", "social media strategy", "content optimization", "creator tools"]
 canonical: "https://conthunt.app/blog/multi-platform-analytics-strategy"
-image: "https://conthunt.app/images/blog/multi-platform-analytics-strategy-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to multi-platform analytics strategy. Learn how to track, measure, and optimize your content across TikTok, YouTube, Instagram, and more in 2026."
 reading_time: 12
 word_count: 2400

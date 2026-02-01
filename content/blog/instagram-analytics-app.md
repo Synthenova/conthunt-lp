@@ -13,7 +13,7 @@ difficulty: 15
 priority": "p0"
 tags: ["instagram", "analytics", "mobile-app", "social-media", "creator-tools"]
 canonical: "https://conthunt.app/blog/instagram-analytics-app"
-image: "https://conthunt.app/images/blog/instagram-analytics-app-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare the top Instagram analytics apps for 2026. Includes mobile-friendly options and multi-platform tools that don't require app store downloads."
 reading_time: 8
 word_count: 1700

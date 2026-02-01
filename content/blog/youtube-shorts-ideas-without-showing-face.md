@@ -13,7 +13,7 @@ difficulty: 40
 priority: "p1"
 tags: ["youtube-shorts", "faceless-content", "content-ideas", "short-form-strategy", "anonymous"]
 canonical: "https://conthunt.app/blog/youtube-shorts-ideas-without-showing-face"
-image: "https://conthunt.app/images/blog/youtube-shorts-faceless-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Create viral YouTube Shorts without ever showing your face. Discover 100+ proven faceless content ideas that are driving millions of views in 2026."
 reading_time: 12
 word_count: 2400

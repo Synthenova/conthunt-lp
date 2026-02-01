@@ -13,7 +13,7 @@ difficulty: 16
 priority: "p1"
 tags: ["beauty", "youtube shorts", "makeup", "skincare", "beauty content"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-beauty"
-image: "https://conthunt.app/images/blog/youtube-shorts-beauty-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Transform your beauty YouTube channel with 50 viral Shorts ideas including makeup looks, skincare tips, product reviews, and beauty hacks."
 reading_time: 12
 word_count: 2400

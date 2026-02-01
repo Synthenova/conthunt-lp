@@ -13,7 +13,7 @@ difficulty: 64
 priority": "p3"
 tags: ["instagram", "reels", "tutorial", "how-to"]
 canonical: "https://conthunt.app/blog/how-to-make-a-reel-on-instagram"
-image: "https://conthunt.app/images/blog/make-instagram-reel-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master Instagram Reels creation with this complete tutorial. Learn recording, editing, effects, and publishing strategies for 2026."
 reading_time: 7
 word_count: 1450

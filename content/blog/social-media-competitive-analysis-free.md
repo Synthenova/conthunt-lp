@@ -12,8 +12,7 @@ category: "competitor_analysis"
 difficulty: 45
 priority: "p1"
 tags: ["competitor-analysis", "free-tools", "social-media", "analytics", "benchmarking"]
-canonical: "https://conthunt.app/social-media-competitive-analysis-free"
-image: "https://conthunt.app/images/blog/social-media-competitive-analysis-free-og.jpg"
+image: "/public/banner.png"
 excerpt: "Track competitors and analyze performance with the best free social media competitive analysis tools. Complete guide to getting competitive intelligence without breaking the bank."
 reading_time: 11
 word_count: 2250

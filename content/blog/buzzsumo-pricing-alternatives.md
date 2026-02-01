@@ -13,7 +13,7 @@ difficulty: 18
 priority": "p2"
 tags: ["pricing", "alternatives", "content intelligence", "comparison"]
 canonical: "https://conthunt.app/blog/buzzsumo-pricing-alternatives"
-image: "https://conthunt.app/images/blog/buzzsumo-pricing-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare BuzzSumo pricing with top alternatives. Find affordable content intelligence tools that offer multi-platform analytics without the high cost."
 reading_time: 7
 word_count: 1500

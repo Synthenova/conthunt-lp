@@ -13,7 +13,7 @@ difficulty: 35
 priority: "p2"
 tags: ["youtube shorts", "titles", "optimization", "seo", "growth tips"]
 canonical: "https://conthunt.app/blog/youtube-shorts-title-best-practices-2026"
-image: "https://conthunt.app/images/blog/shorts-title-best-practices-2026-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to YouTube Shorts title best practices in 2026. Learn what makes titles drive views, how to optimize for search, and what to avoid."
 reading_time: 10
 word_count: 2000

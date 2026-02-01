@@ -13,7 +13,7 @@ difficulty: 55
 priority": "p2"
 tags: ["instagram", "reels", "length", "duration"]
 canonical: "https://conthunt.app/blog/how-long-can-an-instagram-reel-be"
-image: "https://conthunt.app/images/blog/instagram-reel-length-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover Instagram Reel length limits, optimal duration by content type, and how video length affects your reach and engagement."
 reading_time: 6
 word_count: 1350

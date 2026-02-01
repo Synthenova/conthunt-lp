@@ -13,7 +13,7 @@ difficulty: 12
 priority: "p2"
 tags: ["marketing", "social media", "content ideas", "strategy"]
 canonical: "https://conthunt.app/blog/social-media-marketing-ideas"
-image: "https://conthunt.app/images/blog/social-media-marketing-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Boost your social media presence with these 50+ proven marketing ideas. Learn content strategies, engagement tactics, and growth hacks that work in 2026."
 reading_time: 10
 word_count: 2000

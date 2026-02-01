@@ -13,7 +13,7 @@ difficulty: 19
 priority: "p0"
 tags: ["instagram", "analytics", "tools-comparison", "social-media", "creator-tools"]
 canonical: "https://conthunt.app/blog/best-instagram-analytics-tools"
-image: "https://conthunt.app/images/blog/best-instagram-analytics-tools-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare the top Instagram analytics tools for 2026. Includes multi-platform options that cover TikTok and YouTube Shorts in one dashboard."
 reading_time: 10
 word_count: 2050

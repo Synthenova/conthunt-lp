@@ -13,7 +13,7 @@ difficulty: 60
 priority": "p2"
 tags: ["tutorial", "youtube shorts", "creation", "how-to"]
 canonical: "https://conthunt.app/blog/how-to-make-youtube-shorts"
-image: "https://conthunt.app/images/blog/make-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts creation with this comprehensive guide. Learn planning, filming, editing, and optimization strategies for viral content."
 reading_time: 9
 word_count: 1850

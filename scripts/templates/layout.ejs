@@ -23,6 +23,12 @@
         }
     </script>
 
+    <% 
+        const heroAbs = hero 
+            ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) 
+            : null;
+    %>
+
     <% if (typeof isBlogPost !== 'undefined' && isBlogPost) { %>
     <script type="application/ld+json">
     {
@@ -30,7 +36,7 @@
         "@type": "Article",
         "headline": <%= JSON.stringify(pageTitle) %>,
         "description": <%= JSON.stringify(description || '') %>,
-        "image": <%= JSON.stringify(hero || 'https://conthunt.app/public/banner.png') %>,
+        "image": <%= JSON.stringify(heroAbs || 'https://conthunt.app/public/banner.png') %>,
         "datePublished": "<%= (typeof date !== 'undefined') ? date : '' %>",
         "dateModified": "<%= (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : '') %>",
         "author": {
@@ -87,8 +93,8 @@
             <meta property="og:type" content="article" />
             <meta property="og:title" content="<%= pageTitle %>" />
             <meta property="og:description" content="<%= description %>" />
-            <% if (hero) { %>
-                <meta property="og:image" content="<%= hero %>" />
+            <% if (heroAbs) { %>
+                <meta property="og:image" content="<%= heroAbs %>" />
                 <% } else { %>
                     <meta property="og:image" content="https://conthunt.app/public/banner.png" />
                     <% } %>
@@ -98,8 +104,8 @@
                         <meta name="twitter:card" content="summary_large_image" />
                         <meta name="twitter:title" content="<%= pageTitle %>" />
                         <meta name="twitter:description" content="<%= description %>" />
-                        <% if (hero) { %>
-                            <meta name="twitter:image" content="<%= hero %>" />
+                        <% if (heroAbs) { %>
+                            <meta name="twitter:image" content="<%= heroAbs %>" />
                             <% } else { %>
                                 <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
                                 <% } %>

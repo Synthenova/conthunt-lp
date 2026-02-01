@@ -13,7 +13,7 @@ difficulty: 15
 priority: "p2"
 tags: ["buzzsumo", "alternatives", "content marketing", "research tools", "marketing"]
 canonical: "https://conthunt.app/blog/buzzsumo-alternatives-content-marketers"
-image: "https://conthunt.app/images/blog/buzzsumo-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Content marketers don't need to pay $199/month for BuzzSumo. Discover 7 powerful alternatives for content research and competitive analysis at a fraction of the cost."
 reading_time: 10
 word_count: 2000

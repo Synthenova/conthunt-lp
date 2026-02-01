@@ -13,7 +13,7 @@ difficulty: 36
 priority": "p2"
 tags: ["length", "best practices", "youtube shorts", "optimization"]
 canonical: "https://conthunt.app/blog/youtube-shorts-length-best-practices"
-image: "https://conthunt.app/images/blog/shorts-length-best-practices-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts length with data-backed best practices. Learn how duration affects watch percentage and virality across different content types."
 reading_time: 7
 word_count: 1500

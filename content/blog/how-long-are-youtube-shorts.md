@@ -13,7 +13,7 @@ difficulty: 16
 priority: "p2"
 tags: ["youtube shorts", "video length", "optimization", "best practices"]
 canonical: "https://conthunt.app/blog/how-long-are-youtube-shorts"
-image: "https://conthunt.app/images/blog/youtube-shorts-length-og.jpg"
+image: "/public/banner.png"
 excerpt: "Understanding YouTube Shorts length is crucial for success. Learn the limits, optimal duration by niche, and how length affects your algorithm performance."
 reading_time: 6
 word_count: 1300

@@ -13,7 +13,7 @@ difficulty: 32
 priority: "p1"
 tags: ["youtube", "tiktok", "creator economy", "analytics", "monetization"]
 canonical: "https://conthunt.app/blog/youtube-vs-tiktok-analytics-creators"
-image: "https://conthunt.app/images/blog/youtube-vs-tiktok-analytics-og.jpg"
+image: "/public/banner.png"
 excerpt: "The ultimate YouTube vs TikTok analytics comparison for creators. Discover which platform delivers better monetization, growth, and long-term sustainability for your content."
 reading_time: 11
 word_count: 2200

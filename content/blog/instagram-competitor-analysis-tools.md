@@ -13,7 +13,7 @@ difficulty: 55
 priority: "p0"
 tags: ["instagram", "competitor-analysis", "analytics", "social-media", "reels"]
 canonical: "https://conthunt.app/blog/instagram-competitor-analysis-tools"
-image: "https://conthunt.app/images/blog/instagram-competitor-analysis-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare the top Instagram competitor analysis tools for 2026. Learn which platforms offer Reels analytics, follower insights, and content benchmarking."
 reading_time: 11
 word_count: 2350

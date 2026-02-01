@@ -13,7 +13,7 @@ difficulty: 52
 priority: "p1"
 tags: ["youtube shorts", "algorithm", "viral tips", "growth strategy", "content optimization"]
 canonical: "https://conthunt.app/blog/youtube-shorts-algorithm-2026"
-image: "https://conthunt.app/images/blog/youtube-shorts-algorithm-2026-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to the YouTube Shorts algorithm in 2026. Learn exactly what factors drive viral success and how to optimize your content for maximum reach."
 reading_time: 13
 word_count: 2600

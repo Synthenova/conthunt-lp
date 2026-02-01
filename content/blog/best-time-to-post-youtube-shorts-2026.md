@@ -13,7 +13,7 @@ difficulty: 42
 priority: "p2"
 tags: ["youtube-shorts", "posting-strategy", "algorithm", "timing", "growth-hacks"]
 canonical: "https://conthunt.app/blog/best-time-to-post-youtube-shorts-2026"
-image: "https://conthunt.conthunt.app/images/blog/best-time-to-post-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Find the optimal times to post YouTube Shorts based on your niche and audience. Data-backed posting schedules for maximum reach in 2026."
 reading_time: 9
 word_count: 1850

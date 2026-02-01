@@ -13,7 +13,7 @@ difficulty: 12
 priority: "p2"
 tags: ["copyright", "music", "youtube shorts", "legal"]
 canonical: "https://conthunt.app/blog/can-you-use-copyrighted-music-on-youtube-shorts"
-image: "https://conthunt.app/images/blog/youtube-shorts-music-copyright-og.jpg"
+image: "/public/banner.png"
 excerpt: "Learn the rules for using copyrighted music on YouTube Shorts. Discover legal alternatives, the YouTube Audio Library, and how to avoid copyright strikes."
 reading_time: 7
 word_count: 1450

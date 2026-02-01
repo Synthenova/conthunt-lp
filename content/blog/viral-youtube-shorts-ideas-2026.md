@@ -13,7 +13,7 @@ difficulty: 55
 priority: "p0"
 tags: ["youtube-shorts", "content-ideas", "viral-content", "short-form-strategy", "trending"]
 canonical: "https://conthunt.app/blog/viral-youtube-shorts-ideas-2026"
-image: "https://conthunt.app/images/blog/viral-shorts-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Data-backed viral YouTube Shorts ideas for 2026. From trend-riding formats to evergreen concepts that consistently drive millions of views."
 reading_time: 14
 word_count: 2800

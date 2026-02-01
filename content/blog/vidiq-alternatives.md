@@ -13,7 +13,7 @@ difficulty: 20
 priority: "p1"
 tags: ["alternatives", "youtube", "analytics", "competitor", "multi-platform"]
 canonical: "https://conthunt.app/blog/vidiq-alternatives"
-image: "https://conthunt.app/images/blog/vidiq-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover the best VidIQ alternatives in 2026, including multi-platform tools that analyze YouTube, TikTok, and Instagram in one dashboard."
 reading_time: 12
 word_count: 2500

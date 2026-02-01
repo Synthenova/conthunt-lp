@@ -13,7 +13,7 @@ difficulty: 42
 priority: "p0"
 tags: ["youtube", "shorts", "analytics", "how-to", "performance"]
 canonical: "https://conthunt.app/blog/how-to-analyze-youtube-shorts-performance"
-image: "https://conthunt.app/images/blog/analyze-shorts-performance-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete step-by-step guide to analyzing YouTube Shorts performance. Learn the exact framework top creators use to understand their metrics."
 reading_time: 9
 word_count: 2000

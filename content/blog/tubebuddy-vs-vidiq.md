@@ -13,7 +13,7 @@ difficulty: 15
 priority": "p1"
 tags: ["youtube", "vidiq", "tubebuddy", "tools-comparison", "creator-tools"]
 canonical: "https://conthunt.app/blog/tubebuddy-vs-vidiq"
-image: "https://conthunt.app/images/blog/tubebuddy-vs-vidiq-og.jpg"
+image: "/public/banner.png"
 excerpt: "TubeBuddy vs VidIQ comparison for 2026. See which YouTube tool offers better features, pricing, and discover a multi-platform alternative for short-form creators."
 reading_time: 10
 word_count: 2150

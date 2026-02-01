@@ -13,7 +13,7 @@ difficulty: 30
 priority: "p2"
 tags: ["youtube-shorts", "hooks", "viral-content", "growth-hacks", "content-strategy"]
 canonical: "https://conthunt.app/blog/viral-youtube-shorts-hooks"
-image: "https://conthunt.app/images/blog/viral-shorts-hooks-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master the art of YouTube Shorts hooks with 100+ proven formulas that grab attention and stop viewers from scrolling."
 reading_time: 11
 word_count: 2200

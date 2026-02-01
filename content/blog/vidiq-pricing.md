@@ -13,7 +13,7 @@ difficulty: 14
 priority: "p1"
 tags: ["vidiq", "pricing", "youtube-tools", "alternatives", "analytics"]
 canonical: "https://conthunt.app/blog/vidiq-pricing"
-image: "https://conthunt.app/images/blog/vidiq-pricing-og.jpg"
+image: "/public/banner.png"
 excerpt: "Transparent breakdown of VidIQ pricing for 2026. See exactly what each plan includes, whether Pro is worth $7.50/month, and how ContHunt compares as a multi-platform alternative."
 reading_time: 8
 word_count: 1800

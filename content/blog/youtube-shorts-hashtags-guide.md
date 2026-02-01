@@ -13,7 +13,7 @@ difficulty: 25
 priority: "p2"
 tags: ["youtube-shorts", "hashtags", "discovery", "optimization", "growth-hacks"]
 canonical: "https://conthunt.app/blog/youtube-shorts-hashtags-guide"
-image: "https://conthunt.app/images/blog/shorts-hashtags-guide-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to YouTube Shorts hashtags in 2026. Learn the strategies, best practices, and hashtag lists that drive discovery and growth."
 reading_time: 9
 word_count: 1800

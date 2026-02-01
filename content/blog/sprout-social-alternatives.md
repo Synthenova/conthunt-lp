@@ -13,7 +13,7 @@ difficulty: 24
 priority: "p1"
 tags: ["alternatives", "sprout-social", "social-media", "tools-comparison", "pricing"]
 canonical: "https://conthunt.app/blog/sprout-social-alternatives"
-image: "https://conthunt.app/images/blog/sprout-social-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare the top Sprout Social alternatives for 2026. Find modern, affordable options including multi-platform analytics for short-form creators."
 reading_time": 11
 word_count: 2250

@@ -13,7 +13,7 @@ difficulty: 22
 priority: "p1"
 tags: ["sprout social", "alternatives", "small business", "social media management", "marketing tools"]
 canonical: "https://conthunt.app/blog/sprout-social-alternatives-small-business"
-image: "https://conthunt.app/images/blog/sprout-social-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Small businesses don't need to pay $249/month for Sprout Social. Discover 7 affordable alternatives with the features your business actually uses."
 reading_time: 11
 word_count: 2200

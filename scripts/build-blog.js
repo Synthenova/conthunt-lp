@@ -34,6 +34,7 @@ function getReadingTime(text) {
 
 // Global array to store all URLs for sitemap
 let sitemapUrls = []; // { loc: string, lastmod: string, changefreq: string, priority: string }
+let linkCounts = {}; // { slug: count } - Tracks inbound links for "fairness"
 
 function addToSitemap(loc, lastmod = new Date().toISOString().split('T')[0], changefreq = 'weekly', priority = '0.8') {
     // Ensure no trailing slash for consistency with Google Indexing
@@ -98,34 +99,52 @@ async function buildStaticPages() {
     }
 }
 
-// Find related posts based on shared tags
+// Find related posts based on shared tags, prioritizing "fairness" (low link count) and stability (date)
 function findRelatedPosts(currentPost, allPosts, limit = 10) {
-    if (!currentPost.tags || !Array.isArray(currentPost.tags)) return [];
-
-    const scored = allPosts
+    // 1. Calculate Score for ALL other posts
+    const candidates = allPosts
         .filter(p => p.slug !== currentPost.slug)
         .map(post => {
-            const sharedTags = post.tags?.filter(t => currentPost.tags.includes(t)) || [];
+            const sharedTags = (currentPost.tags && post.tags)
+                ? post.tags.filter(t => currentPost.tags.includes(t))
+                : [];
+
             return {
                 post,
-                score: sharedTags.length
+                score: sharedTags.length,
             };
-        })
-        .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score);
+        });
 
-    // Take top scored posts
-    let related = scored.slice(0, limit).map(item => item.post);
+    // 2. Sort candidates using deterministic tie-breakers
+    // Priority:
+    // 1. Relevance: Higher tag overlap is better (descending)
+    // 2. Fairness: Lower link count is better (ascending)
+    // 3. Stability: Newer posts win ties (descending date)
+    candidates.sort((a, b) => {
+        // Primary: Tag Score (High to Low)
+        if (b.score !== a.score) {
+            return b.score - a.score;
+        }
 
-    // If not enough, add random posts from remaining
-    if (related.length < limit) {
-        const remaining = allPosts.filter(p =>
-            p.slug !== currentPost.slug && !related.find(r => r.slug === p.slug)
-        );
-        // Shuffle and add until we hit limit
-        const shuffled = remaining.sort(() => Math.random() - 0.5);
-        related = [...related, ...shuffled.slice(0, limit - related.length)];
-    }
+        // Secondary: Link Count (Low to High)
+        const countA = linkCounts[a.post.slug] || 0;
+        const countB = linkCounts[b.post.slug] || 0;
+        if (countA !== countB) {
+            return countA - countB;
+        }
+
+        // Tertiary: Date (New to Old) - Deterministic Stability
+        // Using date string comparison (ISO dates work well for this)
+        return new Date(b.post.date) - new Date(a.post.date);
+    });
+
+    // 3. Select top N
+    const related = candidates.slice(0, limit).map(item => item.post);
+
+    // 4. Update Global Link Counts
+    related.forEach(post => {
+        linkCounts[post.slug] = (linkCounts[post.slug] || 0) + 1;
+    });
 
     return related;
 }
@@ -204,6 +223,7 @@ function pingGoogleSitemap() {
 // Main Build Function
 async function build() {
     sitemapUrls = []; // Reset
+    linkCounts = {}; // Reset global link tracker
 
     await buildStaticPages();
 

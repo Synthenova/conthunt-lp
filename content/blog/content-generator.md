@@ -13,7 +13,7 @@ difficulty: 28
 priority": "p2"
 tags: ["tools", "content generation", "ai", "ideas"]
 canonical: "https://conthunt.app/blog/content-generator"
-image: "https://conthunt.app/images/blog/content-generator-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare content generator tools and platforms. Learn how AI-powered content generation can accelerate your creative workflow in 2026."
 reading_time: 7
 word_count: 1500

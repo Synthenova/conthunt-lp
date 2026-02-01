@@ -12,8 +12,7 @@ category: "content_ideas"
 difficulty: 25
 priority: "p1"
 tags: ["content-ideas", "ai-tools", "content-generator", "creativity", "multi-platform"]
-canonical: "https://conthunt.app/content-idea-generator"
-image: "https://conthunt.app/images/blog/content-idea-generator-og.jpg"
+image: "/public/banner.png"
 excerpt: "Generate unlimited viral content ideas with AI-powered tools. Learn how content idea generators work and discover the best tools for creators in 2026."
 reading_time: 10
 word_count: 2100

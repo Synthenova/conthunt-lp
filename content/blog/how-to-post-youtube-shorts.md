@@ -13,7 +13,7 @@ difficulty: 16
 priority: "p2"
 tags: ["youtube shorts", "posting", "tutorial", "how-to"]
 canonical: "https://conthunt.app/blog/how-to-post-youtube-shorts"
-image: "https://conthunt.app/images/blog/post-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master the art of posting YouTube Shorts with this complete guide. Learn mobile and desktop posting methods, plus optimization tips for maximum reach."
 reading_time: 7
 word_count: 1500

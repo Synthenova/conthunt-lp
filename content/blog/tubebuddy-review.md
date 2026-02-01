@@ -13,7 +13,7 @@ difficulty: 14
 priority: "p2"
 tags: ["review", "youtube tools", "tubebuddy", "alternatives"]
 canonical: "https://conthunt.app/blog/tubebuddy-review"
-image: "https://conthunt.app/images/blog/tubebuddy-review-og.jpg"
+image: "/public/banner.png"
 excerpt: "Honest TubeBuddy review covering features, pricing, and limitations. Discover why multi-platform creators are choosing alternatives like ContHunt."
 reading_time: 8
 word_count: 1750

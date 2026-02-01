@@ -13,7 +13,7 @@ difficulty: 6
 priority: "p0"
 tags: ["tiktok", "competitor-analysis", "social-media", "growth-strategy", "content-intelligence"]
 canonical: "https://conthunt.app/blog/tiktok-competitor-analysis"
-image: "https://conthunt.app/images/blog/tiktok-competitor-analysis-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to TikTok competitor analysis. Learn how to track competitors, identify winning content patterns, and accelerate your growth using competitive intelligence."
 reading_time: 9
 word_count: 1850

@@ -13,7 +13,7 @@ difficulty: 55
 priority": "p3"
 tags: ["instagram", "reels", "beginner", "guide"]
 canonical: "https://conthunt.app/blog/what-is-a-reel"
-image: "https://conthunt.app/images/blog/what-is-instagram-reel-og.jpg"
+image: "/public/banner.png"
 excerpt: "Understanding Instagram Reels: what they are, how they work, and why they matter for your Instagram strategy in 2026."
 reading_time: 6
 word_count: 1250

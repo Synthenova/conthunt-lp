@@ -13,7 +13,7 @@ difficulty: 28
 priority: "p2"
 tags: ["hootsuite", "alternatives", "startups", "social media", "budget tools"]
 canonical: "https://conthunt.app/blog/hootsuite-alternatives-startups"
-image: "https://conthunt.app/images/blog/hootsuite-alternatives-startups-og.jpg"
+image: "/public/banner.png"
 excerpt: "Startups don't need to pay $99/month for Hootsuite. Discover 7 affordable alternatives with the features your startup actually uses to manage social media."
 reading_time: 10
 word_count: 2000

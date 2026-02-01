@@ -13,7 +13,7 @@ difficulty: 22
 priority: "p1"
 tags: ["business", "youtube shorts", "marketing", "entrepreneurship", "b2b"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-business"
-image: "https://conthunt.app/images/blog/youtube-shorts-business-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Transform your business YouTube presence with 50 proven Shorts ideas that build brand authority, generate leads, and drive conversions."
 reading_time: 12
 word_count: 2400

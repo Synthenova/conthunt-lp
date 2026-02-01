@@ -13,7 +13,7 @@ difficulty: 15
 priority: "p1"
 tags: ["fitness", "youtube shorts", "workout", "content ideas", "health"]
 canonical: "https://conthunt.app/blog/youtube-shorts-content-ideas-fitness"
-image: "https://conthunt.app/images/blog/youtube-shorts-fitness-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Transform your fitness YouTube Shorts with 45 battle-tested content ideas that engage viewers and build your health and wellness community."
 reading_time: 11
 word_count: 2200

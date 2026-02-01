@@ -12,8 +12,7 @@ category: "content_ideas"
 difficulty: 15
 priority: "p1"
 tags: ["social-media", "content-ideas", "engagement", "viral-content", "multi-platform"]
-canonical: "https://conthunt.app/social-media-content-ideas"
-image: "https://conthunt.app/images/blog/social-media-content-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Explore 150+ social media content ideas organized by platform. Plus, learn how to adapt content across platforms and generate endless ideas."
 reading_time: 11
 word_count": 2300

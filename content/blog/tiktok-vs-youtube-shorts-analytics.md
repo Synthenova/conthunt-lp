@@ -12,8 +12,7 @@ category: "platform_comparison"
 difficulty: 48
 priority: "p0"
 tags: ["tiktok", "youtube", "shorts", "analytics", "comparison"]
-canonical: "https://conthunt.app/tiktok-vs-youtube-shorts-analytics"
-image: "https://conthunt.app/images/blog/tiktok-vs-shorts-analytics-og.jpg"
+image: "/public/banner.png"
 excerpt: "Side-by-side comparison of TikTok and YouTube Shorts analytics. Discover key differences, metrics, and how to optimize for both platforms."
 reading_time: 11
 word_count": 2250

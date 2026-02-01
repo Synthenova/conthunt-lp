@@ -13,7 +13,7 @@ difficulty: 14
 priority": "p2"
 tags: ["promotion", "growth", "marketing", "youtube shorts"]
 canonical: "https://conthunt.app/blog/how-to-promote-youtube-shorts"
-image: "https://conthunt.app/images/blog/promote-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover 15 proven strategies to promote your YouTube Shorts. Learn cross-platform tactics, engagement methods, and growth hacks that work."
 reading_time: 8
 word_count: 1650

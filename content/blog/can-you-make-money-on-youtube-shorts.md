@@ -13,7 +13,7 @@ difficulty: 20
 priority: "p2"
 tags: ["monetization", "youtube shorts", "earnings", "ypp"]
 canonical: "https://conthunt.app/blog/can-you-make-money-on-youtube-shorts"
-image: "https://conthunt.app/images/blog/youtube-shorts-monetization-og.jpg"
+image: "/public/banner.png"
 excerpt: "Discover multiple ways to make money with YouTube Shorts in 2026. From ad revenue to brand deals, learn the complete monetization strategies that work."
 reading_time: 8
 word_count: 1650

@@ -13,7 +13,7 @@ difficulty: 18
 priority": "p2"
 tags: ["vidiq", "alternatives", "gaming", "youtube tools", "channel growth"]
 canonical: "https://conthunt.app/blog/vidiq-alternatives-gaming"
-image: "https://conthunt.app/images/blog/vidiq-alternatives-gaming-og.jpg"
+image: "/public/banner.png"
 excerpt: "Gaming channels need different YouTube analytics. Discover 7 VidIQ alternatives built specifically for gaming creators and competitive analysis."
 reading_time: 10
 word_count: 2000

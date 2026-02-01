@@ -12,8 +12,7 @@ category: "content_ideas"
 difficulty: 17
 priority: "p1"
 tags: ["social-media", "content-ideas", "engagement", "captions", "post-ideas"]
-canonical: "https://conthunt.app/social-media-post-ideas"
-image: "https://conthunt.app/images/blog/social-media-post-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Explore 100+ social media post ideas for every platform. Plus, learn frameworks for generating endless post ideas that drive engagement."
 reading_time: 10
 word_count": 2050

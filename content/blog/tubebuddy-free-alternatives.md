@@ -13,7 +13,7 @@ difficulty: 16
 priority: "p1"
 tags: ["tubebuddy", "alternatives", "free tools", "youtube", "creator tools"]
 canonical: "https://conthunt.app/blog/tubebuddy-free-alternatives"
-image: "https://conthunt.app/images/blog/tubebuddy-free-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Don't pay for TubeBuddy until you've tried these free alternatives. Discover 7 powerful free YouTube tools that deliver core features without the monthly fee."
 reading_time: 10
 word_count: 2000

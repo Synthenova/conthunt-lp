@@ -13,7 +13,7 @@ difficulty: 38
 priority: "p2"
 tags: ["youtube shorts", "thumbnails", "optimization", "design", "growth tips"]
 canonical: "https://conthunt.app/blog/youtube-shorts-thumbnail-best-practices-2026"
-image: "https://conthunt.app/images/blog/shorts-thumbnail-best-practices-2026-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to YouTube Shorts thumbnails in 2026. Learn when thumbnails matter, how to design them, and best practices for maximum impact."
 reading_time: 10
 word_count: 2000

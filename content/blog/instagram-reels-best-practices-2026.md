@@ -13,7 +13,7 @@ difficulty: 28
 priority: "p1"
 tags: ["instagram reels", "best practices", "algorithm", "growth strategy", "social media"]
 canonical: "https://conthunt.app/blog/instagram-reels-best-practices-2026"
-image: "https://conthunt.app/images/blog/instagram-reels-best-practices-2026-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to Instagram Reels best practices in 2026. Learn how the algorithm works, what content performs, and strategies for sustainable growth."
 reading_time: 11
 word_count: 2200

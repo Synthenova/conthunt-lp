@@ -13,7 +13,7 @@ difficulty: 20
 priority: "p2"
 tags: ["instagram reels", "fitness", "strategy", "social media", "fitness marketing"]
 canonical: "https://conthunt.app/blog/instagram-reels-strategy-fitness"
-image: "https://conthunt.app/images/blog/fitness-reels-strategy-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete Instagram Reels strategy guide for fitness creators. Learn what content works, how to optimize, and tactics that build engaged fitness communities."
 reading_time: 10
 word_count: 2000

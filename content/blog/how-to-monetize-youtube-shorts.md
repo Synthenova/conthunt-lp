@@ -13,7 +13,7 @@ difficulty: 17
 priority: "p2"
 tags: ["monetization", "youtube shorts", "earnings", "strategy"]
 canonical: "https://conthunt.app/blog/how-to-monetize-youtube-shorts"
-image: "https://conthunt.app/images/blog/monetize-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts monetization with 7 proven strategies. From ad revenue to brand deals, learn exactly how successful creators make money in 2026."
 reading_time: 9
 word_count: 1850

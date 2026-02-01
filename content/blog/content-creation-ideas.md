@@ -12,8 +12,7 @@ category: "content_ideas"
 difficulty: 5
 priority: "p1"
 tags: ["content-ideas", "creativity", "social-media", "viral-content", "trends"]
-canonical: "https://conthunt.app/content-creation-ideas"
-image: "https://conthunt.app/images/blog/content-creation-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Explore 200+ proven content creation ideas organized by platform and niche. Plus, learn how to generate endless ideas using data-driven insights."
 reading_time: 12
 word_count": 2450

@@ -13,7 +13,7 @@ difficulty: 23
 priority": "p2"
 tags: ["format", "technical", "specs", "youtube shorts"]
 canonical: "https://conthunt.app/blog/youtube-shorts-format"
-image: "https://conthunt.app/images/blog/youtube-shorts-format-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to YouTube Shorts format specifications. Learn the technical requirements for creating professional Shorts that perform well."
 reading_time: 6
 word_count: 1350

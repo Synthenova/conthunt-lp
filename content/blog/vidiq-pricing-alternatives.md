@@ -13,7 +13,7 @@ difficulty: 14
 priority: "p1"
 tags: ["pricing", "youtube", "competitor", "vidiq", "analytics"]
 canonical: "https://conthunt.app/blog/vidiq-pricing-alternatives"
-image: "https://conthunt.app/images/blog/vidiq-pricing-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete breakdown of VidIQ pricing tiers with feature comparison. Discover if the free plan is enough and explore multi-platform alternatives like ContHunt."
 reading_time: 10
 word_count: 2200

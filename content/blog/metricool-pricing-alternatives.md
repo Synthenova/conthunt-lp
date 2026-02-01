@@ -13,7 +13,7 @@ difficulty: 24
 priority": "p2"
 tags: ["pricing", "alternatives", "social analytics", "comparison"]
 canonical: "https://conthunt.app/blog/metricool-pricing-alternatives"
-image: "https://conthunt.app/images/blog/metricool-pricing-alternatives-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare Metricool pricing with top social media analytics alternatives. Find affordable platforms that offer multi-platform analytics and competitive intelligence."
 reading_time: 7
 word_count: 1500

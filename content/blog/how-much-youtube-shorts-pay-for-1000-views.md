@@ -13,7 +13,7 @@ difficulty: 15
 priority: "p2"
 tags: ["monetization", "youtube shorts", "earnings", "rpm"]
 canonical: "https://conthunt.app/blog/how-much-youtube-shorts-pay-for-1000-views"
-image: "https://conthunt.app/images/blog/youtube-shorts-earnings-og.jpg"
+image: "/public/banner.png"
 excerpt: "Learn the real earnings potential of YouTube Shorts with actual RPM data by niche. Find out how much creators make per 1000 views and what factors affect your revenue."
 reading_time: 7
 word_count: 1450

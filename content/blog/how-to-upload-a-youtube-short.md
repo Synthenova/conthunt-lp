@@ -13,7 +13,7 @@ difficulty: 17
 priority: "p2"
 tags: ["youtube shorts", "uploading", "tutorial", "how-to"]
 canonical: "https://conthunt.app/blog/how-to-upload-a-youtube-short"
-image: "https://conthunt.app/images/blog/upload-youtube-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts uploads with this step-by-step guide. Learn mobile and desktop uploading methods, file requirements, and optimization for maximum reach."
 reading_time: 6
 word_count: 1350

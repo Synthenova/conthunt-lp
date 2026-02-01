@@ -13,7 +13,7 @@ difficulty: 25
 priority: "p2"
 tags: ["gaming", "youtube shorts", "growth strategy", "channel building", "gaming content"]
 canonical: "https://conthunt.app/blog/how-to-grow-gaming-youtube-shorts"
-image: "https://conthunt.app/images/blog/grow-gaming-shorts-og.jpg"
+image: "/public/banner.png"
 excerpt: "The complete guide to growing a gaming YouTube Shorts channel. Learn proven strategies, content types, and optimization tactics that work for gaming creators."
 reading_time: 11
 word_count: 2200

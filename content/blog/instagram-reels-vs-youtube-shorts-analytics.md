@@ -13,7 +13,7 @@ difficulty: 35
 priority: "p1"
 tags: ["instagram reels", "youtube shorts", "analytics", "monetization", "social media"]
 canonical: "https://conthunt.app/blog/instagram-reels-vs-youtube-shorts-analytics"
-image: "https://conthunt.app/images/blog/reels-vs-shorts-analytics-og.jpg"
+image: "/public/banner.png"
 excerpt: "The definitive Instagram Reels vs YouTube Shorts analytics comparison. Discover which platform delivers better reach, engagement, and monetization for your content."
 reading_time: 11
 word_count: 2200

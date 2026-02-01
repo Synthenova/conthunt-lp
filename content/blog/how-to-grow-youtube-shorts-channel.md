@@ -13,7 +13,7 @@ difficulty: 32
 priority: "p3"
 tags: ["growth", "youtube shorts", "strategy", "tips"]
 canonical: "https://conthunt.app/blog/how-to-grow-youtube-shorts-channel"
-image: "https://conthunt.app/images/blog/grow-shorts-channel-og.jpg"
+image: "/public/banner.png"
 excerpt: "Master YouTube Shorts channel growth with proven strategies. Learn how to increase views, subscribers, and engagement for your Shorts."
 reading_time: 7
 word_count: 1500

@@ -12,8 +12,7 @@ category: "content_intelligence"
 difficulty: 18
 priority: "p1"
 tags: ["content-intelligence", "ai-marketing", "data-strategy", "analytics", "content-optimization"]
-canonical: "https://conthunt.app/content-intelligence"
-image: "https://conthunt.app/images/blog/content-intelligence-og.jpg"
+image: "/public/banner.png"
 excerpt: "Complete guide to content intelligence. Learn how AI-powered analytics transform content strategy and drive better performance across platforms."
 reading_time": 10
 word_count": 2100

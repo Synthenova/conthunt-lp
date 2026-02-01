@@ -13,7 +13,7 @@ difficulty: 5
 priority: "p1"
 tags: ["vidiq", "youtube-tools", "analytics", "alternatives", "multi-platform"]
 canonical: "https://conthunt.app/blog/vidiq-review"
-image: "https://conthunt.app/images/blog/vidiq-review-og.jpg"
+image: "/public/banner.png"
 excerpt: "In-depth VidIQ review analyzing features, pricing, and limitations. Discover why multi-platform creators are switching to ContHunt for TikTok and YouTube Shorts analytics."
 reading_time: 10
 word_count: 2100

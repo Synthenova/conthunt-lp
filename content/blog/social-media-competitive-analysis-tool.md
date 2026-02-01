@@ -13,7 +13,7 @@ difficulty: 25
 priority: "p2"
 tags: ["tools", "competitive analysis", "analytics", "comparison"]
 canonical: "https://conthunt.app/blog/social-media-competitive-analysis-tool"
-image: "https://conthunt.app/images/blog/competitive-analysis-tool-og.jpg"
+image: "/public/banner.png"
 excerpt: "Compare social media competitive analysis tools and discover features that matter. Learn what to look for and find the right platform for competitive intelligence."
 reading_time: 8
 word_count: 1700

@@ -13,7 +13,7 @@ difficulty: 32
 priority": "p2"
 tags: ["green screen", "content ideas", "youtube shorts", "creative"]
 canonical: "https://conthunt.app/blog/creative-green-screen-ideas-youtube-shorts-2026"
-image: "https://conthunt.app/images/blog/green-screen-ideas-og.jpg"
+image: "/public/banner.png"
 excerpt: "Explore creative green screen ideas for YouTube Shorts. Learn techniques, viral examples, and tips to create engaging green screen content."
 reading_time: 7
 word_count: 1500
