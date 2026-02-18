@@ -13,11 +13,11 @@
     <meta name="title" content="<%= pageTitle %> | ContHunt Blog" />
     <meta name="description"
         content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
-    <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length > 0) { %>
+    <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length> 0) { %>
         <meta name="keywords" content="<%= resolvedKeywords.join(', ') %>" />
-    <% } %>
+        <% } %>
 
-    <script type="application/ld+json">
+            <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
@@ -26,25 +26,19 @@
         }
     </script>
 
-    <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
-    <% const hasAuthorProfile = typeof authorProfile !== 'undefined' && authorProfile && authorProfile.name; %>
-    <% const authorSchema = hasAuthorProfile
-        ? {
-            "@type": "Person",
-            "name": authorProfile.name,
-            ...(authorProfile.urlAbs ? { "url": authorProfile.urlAbs } : (authorProfile.url ? { "url": authorProfile.url } : {})),
-            ...(authorProfile.imageAbs ? { "image": authorProfile.imageAbs } : (authorProfile.image ? { "image": authorProfile.image } : {})),
-            ...(authorProfile.same_as ? { "sameAs": authorProfile.same_as } : {}),
-            ...(authorProfile.job_title ? { "jobTitle": authorProfile.job_title } : {}),
-            ...(authorProfile.description ? { "description": authorProfile.description } : {})
-        }
-        : {
-            "@type": "Person",
-            "name": (typeof author !== 'undefined') ? author : "ContHunt Team"
-        }; %>
+            <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
+                <% const hasAuthorProfile=typeof authorProfile !=='undefined' && authorProfile && authorProfile.name; %>
+                    <% const authorSchema=hasAuthorProfile ? { "@type" : "Person" , "name" : authorProfile.name,
+                        ...(authorProfile.urlAbs ? { "url" : authorProfile.urlAbs } : (authorProfile.url ? { "url" :
+                        authorProfile.url } : {})), ...(authorProfile.imageAbs ? { "image" : authorProfile.imageAbs } :
+                        (authorProfile.image ? { "image" : authorProfile.image } : {})), ...(authorProfile.same_as ?
+                        { "sameAs" : authorProfile.same_as } : {}), ...(authorProfile.job_title ? { "jobTitle" :
+                        authorProfile.job_title } : {}), ...(authorProfile.description ? { "description" :
+                        authorProfile.description } : {}) } : { "@type" : "Person" , "name" : (typeof author
+                        !=='undefined' ) ? author : "ContHunt Team" }; %>
 
-                <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
-                    <script type="application/ld+json">
+                        <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
+                            <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -68,10 +62,10 @@
         }
     }
     </script>
-            <% } %>
+                            <% } %>
 
-                <% if (typeof isHomepage !=='undefined' && isHomepage) { %>
-                    <script type="application/ld+json">
+                                <% if (typeof isHomepage !=='undefined' && isHomepage) { %>
+                                    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -90,8 +84,8 @@
         }
     }
     </script>
-                    <% if (heroAbs) { %>
-                        <script type="application/ld+json">
+                                    <% if (heroAbs) { %>
+                                        <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ImageObject",
@@ -100,63 +94,78 @@
         "caption": <%= JSON.stringify(pageTitle) %>
     }
     </script>
-                        <% } %>
-                    <% } %>
-
-                        <% if (typeof canonical !=='undefined' && canonical) { %>
-                            <link rel="canonical" href="<%= canonical %>" />
-                            <% } %>
-
-                                <!-- Favicon -->
-                                <link rel="icon" type="image/png" href="/public/favicon.png" />
-                                <link rel="icon" type="image/png" sizes="192x192" href="/public/favicon.png" />
-                                <link rel="apple-touch-icon" href="/public/favicon.png" />
-
-                                <!-- Open Graph -->
-                                <meta property="og:type" content="article" />
-                                <meta property="og:title" content="<%= pageTitle %>" />
-                                <meta property="og:description" content="<%= description %>" />
-                                <% if (heroAbs) { %>
-                                    <meta property="og:image" content="<%= heroAbs %>" />
-                                    <% } else { %>
-                                        <meta property="og:image" content="https://conthunt.app/public/banner.png" />
                                         <% } %>
-                                            <meta property="og:site_name" content="ContHunt" />
-                                            <% if (typeof canonical !=='undefined' && canonical) { %>
-                                                <meta property="og:url" content="<%= canonical %>" />
                                             <% } %>
 
-                                            <!-- Twitter -->
-                                            <meta name="twitter:card" content="summary_large_image" />
-                                            <meta name="twitter:title" content="<%= pageTitle %>" />
-                                            <meta name="twitter:description" content="<%= description %>" />
-                                            <% if (heroAbs) { %>
-                                                <meta name="twitter:image" content="<%= heroAbs %>" />
-                                                <% } else { %>
-                                                    <meta name="twitter:image"
-                                                        content="https://conthunt.app/public/banner.png" />
+                                                <% if (typeof canonical !=='undefined' && canonical) { %>
+                                                    <link rel="canonical" href="<%= canonical %>" />
                                                     <% } %>
 
-                                                        <meta name="robots" content="index, follow" />
-                                                        <meta name="theme-color" content="#030303" />
+                                                        <!-- Favicon -->
+                                                        <link rel="icon" type="image/png" href="/public/favicon.png" />
+                                                        <link rel="icon" type="image/png" sizes="192x192"
+                                                            href="/public/favicon.png" />
+                                                        <link rel="apple-touch-icon" href="/public/favicon.png" />
 
-                                                        <script src="https://cdn.tailwindcss.com"></script>
-                                                        <script
-                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-                                                        <link rel="preconnect" href="https://fonts.googleapis.com" />
-                                                        <link rel="preconnect" href="https://fonts.gstatic.com"
-                                                            crossorigin="" />
-                                                        <link
-                                                            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-                                                            rel="stylesheet" />
+                                                        <!-- Open Graph -->
+                                                        <meta property="og:type" content="article" />
+                                                        <meta property="og:title" content="<%= pageTitle %>" />
+                                                        <meta property="og:description" content="<%= description %>" />
+                                                        <% if (heroAbs) { %>
+                                                            <meta property="og:image" content="<%= heroAbs %>" />
+                                                            <% } else { %>
+                                                                <meta property="og:image"
+                                                                    content="https://conthunt.app/public/banner.png" />
+                                                                <% } %>
+                                                                    <meta property="og:site_name" content="ContHunt" />
+                                                                    <% if (typeof canonical !=='undefined' && canonical)
+                                                                        { %>
+                                                                        <meta property="og:url"
+                                                                            content="<%= canonical %>" />
+                                                                        <% } %>
 
-                                                        <link rel="stylesheet" href="/assets/css/style.css" />
-                                                        <link rel="stylesheet" href="/assets/css/blog.css" />
+                                                                            <!-- Twitter -->
+                                                                            <meta name="twitter:card"
+                                                                                content="summary_large_image" />
+                                                                            <meta name="twitter:title"
+                                                                                content="<%= pageTitle %>" />
+                                                                            <meta name="twitter:description"
+                                                                                content="<%= description %>" />
+                                                                            <% if (heroAbs) { %>
+                                                                                <meta name="twitter:image"
+                                                                                    content="<%= heroAbs %>" />
+                                                                                <% } else { %>
+                                                                                    <meta name="twitter:image"
+                                                                                        content="https://conthunt.app/public/banner.png" />
+                                                                                    <% } %>
 
-                                                        <script
-                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-                                                        <script
-                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+                                                                                        <meta name="robots"
+                                                                                            content="index, follow" />
+                                                                                        <meta name="theme-color"
+                                                                                            content="#030303" />
+
+                                                                                        <script
+                                                                                            src="https://cdn.tailwindcss.com"></script>
+                                                                                        <script
+                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                                                                                        <link rel="preconnect"
+                                                                                            href="https://fonts.googleapis.com" />
+                                                                                        <link rel="preconnect"
+                                                                                            href="https://fonts.gstatic.com"
+                                                                                            crossorigin="" />
+                                                                                        <link
+                                                                                            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+                                                                                            rel="stylesheet" />
+
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/style.css" />
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/blog.css" />
+
+                                                                                        <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                                                                        <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -208,7 +217,7 @@
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
             <div class="col-span-2">
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="/public/icon black 800px.png" alt="ContHunt Logo" class="w-6 h-6">
+                    <img src="/public/faviconold.png" alt="ContHunt Logo" class="w-6 h-6">
                     <span class="font-semibold text-white">ContHunt</span>
                 </div>
                 <p class="text-neutral-500 max-w-xs mb-6">

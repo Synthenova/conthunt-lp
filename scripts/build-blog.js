@@ -628,6 +628,9 @@ async function build() {
             readingTime: getReadingTime(body),
             resolvedKeywords: getStringArrayOrNull(attributes.meta_keywords)
                 || getStringArrayOrNull(attributes.secondary_keywords),
+            tags: getStringArrayOrNull(attributes.tags) || [],
+            updated: attributes.updated || null,
+            canonical: attributes.canonical || `${DOMAIN}/blog/${slug}`,
             faqSchemaItems: normalizeFaqItems(attributes.faq_items),
             howToSchema: normalizeHowTo(attributes.howto),
             authorProfile: normalizeAuthorProfile(attributes.author_profile),
