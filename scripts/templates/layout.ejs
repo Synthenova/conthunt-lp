@@ -13,6 +13,9 @@
     <meta name="title" content="<%= pageTitle %> | ContHunt Blog" />
     <meta name="description"
         content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
+    <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length > 0) { %>
+        <meta name="keywords" content="<%= resolvedKeywords.join(', ') %>" />
+    <% } %>
 
     <script type="application/ld+json">
         {
@@ -24,9 +27,24 @@
     </script>
 
     <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
+    <% const hasAuthorProfile = typeof authorProfile !== 'undefined' && authorProfile && authorProfile.name; %>
+    <% const authorSchema = hasAuthorProfile
+        ? {
+            "@type": "Person",
+            "name": authorProfile.name,
+            ...(authorProfile.urlAbs ? { "url": authorProfile.urlAbs } : (authorProfile.url ? { "url": authorProfile.url } : {})),
+            ...(authorProfile.imageAbs ? { "image": authorProfile.imageAbs } : (authorProfile.image ? { "image": authorProfile.image } : {})),
+            ...(authorProfile.same_as ? { "sameAs": authorProfile.same_as } : {}),
+            ...(authorProfile.job_title ? { "jobTitle": authorProfile.job_title } : {}),
+            ...(authorProfile.description ? { "description": authorProfile.description } : {})
+        }
+        : {
+            "@type": "Person",
+            "name": (typeof author !== 'undefined') ? author : "ContHunt Team"
+        }; %>
 
-        <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
-            <script type="application/ld+json">
+                <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
+                    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -35,10 +53,7 @@
         "image": <%= JSON.stringify(heroAbs || 'https://conthunt.app/public/banner.png') %>,
         "datePublished": "<%= (typeof date !== 'undefined') ? date : '' %>",
         "dateModified": "<%= (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : '') %>",
-        "author": {
-            "@type": "Person",
-            "name": "<%= (typeof author !== 'undefined') ? author : 'ContHunt Team' %>"
-        },
+        "author": <%- JSON.stringify(authorSchema) %>,
         "publisher": {
             "@type": "Organization",
             "name": "ContHunt",
@@ -75,6 +90,17 @@
         }
     }
     </script>
+                    <% if (heroAbs) { %>
+                        <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageObject",
+        "url": <%= JSON.stringify(heroAbs) %>,
+        "contentUrl": <%= JSON.stringify(heroAbs) %>,
+        "caption": <%= JSON.stringify(pageTitle) %>
+    }
+    </script>
+                        <% } %>
                     <% } %>
 
                         <% if (typeof canonical !=='undefined' && canonical) { %>
@@ -96,6 +122,9 @@
                                         <meta property="og:image" content="https://conthunt.app/public/banner.png" />
                                         <% } %>
                                             <meta property="og:site_name" content="ContHunt" />
+                                            <% if (typeof canonical !=='undefined' && canonical) { %>
+                                                <meta property="og:url" content="<%= canonical %>" />
+                                            <% } %>
 
                                             <!-- Twitter -->
                                             <meta name="twitter:card" content="summary_large_image" />

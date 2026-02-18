@@ -32,6 +32,379 @@ function getReadingTime(text) {
     return Math.ceil(minutes);
 }
 
+function isNonEmptyString(value) {
+    return typeof value === 'string' && value.trim().length > 0;
+}
+
+function toAbsoluteUrl(value) {
+    if (!isNonEmptyString(value)) return null;
+    const trimmed = value.trim();
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+    if (trimmed.startsWith('/')) return `${DOMAIN}${trimmed}`;
+    return null;
+}
+
+function getStringArrayOrNull(value) {
+    if (!Array.isArray(value)) return null;
+    const normalized = value
+        .filter(item => typeof item === 'string')
+        .map(item => item.trim())
+        .filter(Boolean);
+    return normalized.length > 0 ? normalized : null;
+}
+
+function normalizeFaqItems(value) {
+    if (!Array.isArray(value)) return null;
+
+    const items = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => ({
+            question: isNonEmptyString(item.question) ? item.question.trim() : '',
+            answer: isNonEmptyString(item.answer) ? item.answer.trim() : ''
+        }))
+        .filter(item => item.question && item.answer);
+
+    return items.length > 0 ? items : null;
+}
+
+function normalizeHowTo(value) {
+    if (!value || typeof value !== 'object') return null;
+    if (!isNonEmptyString(value.name) || !Array.isArray(value.steps) || value.steps.length === 0) return null;
+
+    const steps = value.steps
+        .filter(step => step && typeof step === 'object')
+        .map(step => ({
+            name: isNonEmptyString(step.name) ? step.name.trim() : '',
+            text: isNonEmptyString(step.text) ? step.text.trim() : ''
+        }))
+        .filter(step => step.name && step.text);
+
+    if (steps.length === 0) return null;
+
+    const howTo = {
+        name: value.name.trim(),
+        steps
+    };
+
+    if (isNonEmptyString(value.description)) {
+        howTo.description = value.description.trim();
+    }
+
+    if (isNonEmptyString(value.total_time)) {
+        howTo.total_time = value.total_time.trim();
+    }
+
+    if (
+        value.estimated_cost &&
+        typeof value.estimated_cost === 'object' &&
+        isNonEmptyString(value.estimated_cost.currency) &&
+        isNonEmptyString(value.estimated_cost.value)
+    ) {
+        howTo.estimated_cost = {
+            currency: value.estimated_cost.currency.trim(),
+            value: value.estimated_cost.value.trim()
+        };
+    }
+
+    const supply = getStringArrayOrNull(value.supply);
+    if (supply) {
+        howTo.supply = supply;
+    }
+
+    const tool = getStringArrayOrNull(value.tool);
+    if (tool) {
+        howTo.tool = tool;
+    }
+
+    return howTo;
+}
+
+function slugifyHeading(text) {
+    return String(text || '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+}
+
+function renderContentWithToc(body) {
+    const tokens = md.parse(body, {});
+    const tocItems = [];
+    const slugCounts = {};
+
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        if (token.type !== 'heading_open') continue;
+
+        const level = Number(token.tag.slice(1));
+        if (level !== 2 && level !== 3) continue;
+
+        const inlineToken = tokens[i + 1];
+        if (!inlineToken || inlineToken.type !== 'inline') continue;
+
+        const title = (inlineToken.content || '').trim();
+        if (!title) continue;
+
+        const base = slugifyHeading(title) || `section-${tocItems.length + 1}`;
+        slugCounts[base] = (slugCounts[base] || 0) + 1;
+        const id = slugCounts[base] === 1 ? base : `${base}-${slugCounts[base]}`;
+
+        token.attrSet('id', id);
+        tocItems.push({ level, title, id });
+    }
+
+    const htmlContent = md.renderer.render(tokens, md.options, {});
+
+    return {
+        htmlContent,
+        tocItems: tocItems.length >= 2 ? tocItems : null
+    };
+}
+
+function normalizeAuthorProfile(value) {
+    if (!value || typeof value !== 'object') return null;
+    if (!isNonEmptyString(value.name)) return null;
+
+    const profile = {
+        name: value.name.trim()
+    };
+
+    if (isNonEmptyString(value.url)) {
+        profile.url = value.url.trim();
+        profile.urlAbs = toAbsoluteUrl(value.url);
+    }
+
+    if (isNonEmptyString(value.image)) {
+        profile.image = value.image.trim();
+        profile.imageAbs = toAbsoluteUrl(value.image);
+    }
+
+    if (isNonEmptyString(value.job_title)) {
+        profile.job_title = value.job_title.trim();
+    }
+
+    if (isNonEmptyString(value.description)) {
+        profile.description = value.description.trim();
+    }
+
+    const sameAs = getStringArrayOrNull(value.same_as);
+    if (sameAs) {
+        profile.same_as = sameAs;
+    }
+
+    return profile;
+}
+
+function normalizeVideoItems(value) {
+    if (!Array.isArray(value)) return null;
+
+    const validDate = /^\d{4}-\d{2}-\d{2}$/;
+
+    const items = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const name = isNonEmptyString(item.name) ? item.name.trim() : '';
+            const description = isNonEmptyString(item.description) ? item.description.trim() : '';
+            const thumbnail_url = isNonEmptyString(item.thumbnail_url) ? item.thumbnail_url.trim() : '';
+            const upload_date = isNonEmptyString(item.upload_date) ? item.upload_date.trim() : '';
+
+            if (!name || !description || !thumbnail_url || !upload_date || !validDate.test(upload_date)) {
+                return null;
+            }
+
+            const normalized = {
+                name,
+                description,
+                thumbnail_url,
+                thumbnail_url_abs: toAbsoluteUrl(thumbnail_url),
+                upload_date
+            };
+
+            if (isNonEmptyString(item.embed_url)) {
+                normalized.embed_url = item.embed_url.trim();
+            }
+
+            if (isNonEmptyString(item.content_url)) {
+                normalized.content_url = item.content_url.trim();
+            }
+
+            if (isNonEmptyString(item.duration)) {
+                normalized.duration = item.duration.trim();
+            }
+
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return items.length > 0 ? items : null;
+}
+
+function normalizeRelatedLinks(value) {
+    if (!Array.isArray(value)) return null;
+
+    const links = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const url = isNonEmptyString(item.url) ? item.url.trim() : '';
+            const title = isNonEmptyString(item.title) ? item.title.trim() : '';
+            if (!url || !title) return null;
+
+            const normalized = { url, title };
+            if (isNonEmptyString(item.reason)) {
+                normalized.reason = item.reason.trim();
+            }
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return links.length > 0 ? links : null;
+}
+
+function normalizeAnswerFirst(value) {
+    if (isNonEmptyString(value)) {
+        return { text: value.trim() };
+    }
+
+    if (!value || typeof value !== 'object') return null;
+    if (!isNonEmptyString(value.text)) return null;
+
+    const normalized = {
+        text: value.text.trim()
+    };
+
+    if (isNonEmptyString(value.label)) {
+        normalized.label = value.label.trim();
+    }
+
+    return normalized;
+}
+
+function normalizeSourceItems(value) {
+    if (!Array.isArray(value)) return null;
+
+    const items = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const title = isNonEmptyString(item.title) ? item.title.trim() : '';
+            const url = isNonEmptyString(item.url) ? item.url.trim() : '';
+            if (!title || !url) return null;
+
+            const normalized = {
+                title,
+                url,
+                urlAbs: toAbsoluteUrl(url)
+            };
+
+            if (isNonEmptyString(item.publisher)) {
+                normalized.publisher = item.publisher.trim();
+            }
+
+            if (isNonEmptyString(item.published_date)) {
+                normalized.published_date = item.published_date.trim();
+            }
+
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return items.length > 0 ? items : null;
+}
+
+function normalizeExpertQuotes(value) {
+    if (!Array.isArray(value)) return null;
+
+    const quotes = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const quote = isNonEmptyString(item.quote) ? item.quote.trim() : '';
+            const name = isNonEmptyString(item.name) ? item.name.trim() : '';
+            if (!quote || !name) return null;
+
+            const normalized = { quote, name };
+
+            if (isNonEmptyString(item.title)) {
+                normalized.title = item.title.trim();
+            }
+
+            if (isNonEmptyString(item.source_url)) {
+                normalized.source_url = item.source_url.trim();
+                normalized.source_url_abs = toAbsoluteUrl(item.source_url);
+            }
+
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return quotes.length > 0 ? quotes : null;
+}
+
+function normalizeStatItems(value) {
+    if (!Array.isArray(value)) return null;
+
+    const stats = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const label = isNonEmptyString(item.label) ? item.label.trim() : '';
+            const valueText = isNonEmptyString(item.value) ? item.value.trim() : '';
+            if (!label || !valueText) return null;
+
+            const normalized = {
+                label,
+                value: valueText
+            };
+
+            if (isNonEmptyString(item.context)) {
+                normalized.context = item.context.trim();
+            }
+
+            if (isNonEmptyString(item.source_url)) {
+                normalized.source_url = item.source_url.trim();
+                normalized.source_url_abs = toAbsoluteUrl(item.source_url);
+            }
+
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return stats.length > 0 ? stats : null;
+}
+
+function collectSchemaValidationWarnings(attributes, postData) {
+    const warnings = [];
+
+    if (attributes.faq_items && !postData.faqSchemaItems) {
+        warnings.push('invalid faq_items');
+    }
+
+    if (attributes.howto && !postData.howToSchema) {
+        warnings.push('invalid howto');
+    }
+
+    if (attributes.video_items && !postData.videoSchemaItems) {
+        warnings.push('invalid video_items');
+    }
+
+    if (attributes.answer_first && !postData.answerFirst) {
+        warnings.push('invalid answer_first');
+    }
+
+    if (attributes.sources && !postData.sourceItems) {
+        warnings.push('invalid sources');
+    }
+
+    if (attributes.expert_quotes && !postData.expertQuotes) {
+        warnings.push('invalid expert_quotes');
+    }
+
+    if (attributes.stat_items && !postData.statItems) {
+        warnings.push('invalid stat_items');
+    }
+
+    return warnings;
+}
+
 // Global array to store all URLs for sitemap
 let sitemapUrls = []; // { loc: string, lastmod: string, changefreq: string, priority: string }
 let linkCounts = {}; // { slug: count } - Tracks inbound links for "fairness"
@@ -88,7 +461,9 @@ async function buildStaticPages() {
             pageTitle: attributes.title,
             description: attributes.description || attributes.title,
             hero: null,
-            canonical: `${DOMAIN}/${slug}` // No trailing slash
+            canonical: `${DOMAIN}/${slug}`, // No trailing slash
+            resolvedKeywords: null,
+            authorProfile: null
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
@@ -240,7 +615,8 @@ async function build() {
 
         const slug = path.basename(file, '.md');
 
-        let htmlContent = md.render(body);
+        const renderedContent = renderContentWithToc(body);
+        let htmlContent = renderedContent.htmlContent;
 
         // Simple replace for common image paths
         htmlContent = htmlContent.replace(/src="\/images\//g, 'src="/public/images/');
@@ -250,11 +626,28 @@ async function build() {
             slug,
             content: htmlContent,
             readingTime: getReadingTime(body),
+            resolvedKeywords: getStringArrayOrNull(attributes.meta_keywords)
+                || getStringArrayOrNull(attributes.secondary_keywords),
+            faqSchemaItems: normalizeFaqItems(attributes.faq_items),
+            howToSchema: normalizeHowTo(attributes.howto),
+            authorProfile: normalizeAuthorProfile(attributes.author_profile),
+            videoSchemaItems: normalizeVideoItems(attributes.video_items),
+            relatedLinks: normalizeRelatedLinks(attributes.related_links),
+            tocItems: renderedContent.tocItems,
+            answerFirst: normalizeAnswerFirst(attributes.answer_first),
+            sourceItems: normalizeSourceItems(attributes.sources),
+            expertQuotes: normalizeExpertQuotes(attributes.expert_quotes),
+            statItems: normalizeStatItems(attributes.stat_items),
             hero: (attributes.hero || attributes.image) ? (attributes.hero || attributes.image)
                 .replace(/^https:\/\/conthunt\.app\/images\//, '/public/images/')
                 .replace(/^\/images\//, '/public/images/')
                 : null
         };
+
+        const validationWarnings = collectSchemaValidationWarnings(attributes, postData);
+        if (validationWarnings.length > 0) {
+            console.log(`[schema:warn] ${slug}: ${validationWarnings.join('; ')}`);
+        }
 
         posts.push(postData);
     }
@@ -293,7 +686,9 @@ async function build() {
             isBlogPost: true,
             date: postData.date,
             updated: postData.updated,
-            author: postData.author
+            author: postData.author,
+            resolvedKeywords: postData.resolvedKeywords,
+            authorProfile: postData.authorProfile
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
@@ -313,7 +708,9 @@ async function build() {
         pageTitle: 'Blog',
         description: 'Latest updates and insights from ContHunt.',
         hero: null,
-        canonical: `${DOMAIN}/blog`
+        canonical: `${DOMAIN}/blog`,
+        resolvedKeywords: null,
+        authorProfile: null
     });
 
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);

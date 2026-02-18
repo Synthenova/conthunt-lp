@@ -1,13 +1,27 @@
 <article class="max-w-3xl mx-auto px-6">
     <header class="text-center mb-16">
         <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
-            <% if (author) { %>
+            <% if ((typeof authorProfile !== 'undefined' && authorProfile && authorProfile.name) || author) { %>
                 <div class="flex items-center gap-2">
                     <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
-                        <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                        <% if (authorProfile && authorProfile.image) { %>
+                            <img src="<%= authorProfile.image %>" alt="<%= authorProfile.name %>" class="w-6 h-6 rounded-full object-cover" />
+                        <% } else { %>
+                            <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                        <% } %>
                     </div>
                     <span>
-                        <%= author %>
+                        <% if (authorProfile && authorProfile.name) { %>
+                            <% if (authorProfile.url) { %>
+                                <a href="<%= authorProfile.url %>" class="hover:text-white transition-colors">
+                                    <%= authorProfile.name %>
+                                </a>
+                            <% } else { %>
+                                <%= authorProfile.name %>
+                            <% } %>
+                        <% } else { %>
+                            <%= author %>
+                        <% } %>
                     </span>
                 </div>
                 <% } %>
@@ -16,6 +30,10 @@
                         <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
                             day: 'numeric' }) %>
                     </time>
+                    <% if (updated && updated !== date) { %>
+                        <span>•</span>
+                        <span>Updated <%= new Date(updated).toLocaleDateString('en-US', { year: 'numeric' , month: 'short' , day: 'numeric' }) %></span>
+                    <% } %>
                     <!-- <span>•</span>
             <span><%= readingTime %> min read</span> -->
         </div>
@@ -41,9 +59,104 @@
         </div>
         <% } %>
 
+            <% if (Array.isArray(tocItems) && tocItems.length > 0) { %>
+                <aside class="mb-10 p-6 rounded-2xl glass-panel border border-white/5">
+                    <h2 class="text-white text-lg font-medium mb-4">Table of Contents</h2>
+                    <nav aria-label="Table of Contents">
+                        <ul class="space-y-2">
+                            <% tocItems.forEach(item => { %>
+                                <li class="<%= item.level === 3 ? 'pl-4' : '' %>">
+                                    <a href="#<%= item.id %>" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                        <%= item.title %>
+                                    </a>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </nav>
+                </aside>
+            <% } %>
+
+            <% if (answerFirst && answerFirst.text) { %>
+                <section class="mb-10 p-6 rounded-2xl glass-panel border border-sky-500/20 bg-sky-500/5 answer-first">
+                    <h2 class="text-sky-300 text-base font-semibold mb-2">
+                        <%= answerFirst.label || 'Short Answer' %>
+                    </h2>
+                    <p class="text-neutral-100 leading-relaxed"><%= answerFirst.text %></p>
+                </section>
+            <% } %>
+
             <div class="prose-enhanced">
                 <%- content %>
             </div>
+
+            <% if (Array.isArray(statItems) && statItems.length > 0) { %>
+                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+                    <h3 class="text-white text-xl font-medium mb-4">Key Data Points</h3>
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <% statItems.forEach(stat => { %>
+                            <article class="rounded-xl border border-white/5 p-4 bg-white/0">
+                                <p class="text-sm text-neutral-400"><%= stat.label %></p>
+                                <p class="text-xl text-white font-semibold mt-1">
+                                    <data value="<%= stat.value %>"><%= stat.value %></data>
+                                </p>
+                                <% if (stat.context) { %>
+                                    <p class="text-sm text-neutral-300 mt-2"><%= stat.context %></p>
+                                <% } %>
+                                <% if (stat.source_url) { %>
+                                    <p class="text-xs text-neutral-500 mt-2">
+                                        Source:
+                                        <a href="<%= stat.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">View source</a>
+                                    </p>
+                                <% } %>
+                            </article>
+                        <% }); %>
+                    </div>
+                </section>
+            <% } %>
+
+            <% if (Array.isArray(expertQuotes) && expertQuotes.length > 0) { %>
+                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+                    <h3 class="text-white text-xl font-medium mb-4">Expert Quotes</h3>
+                    <div class="space-y-4">
+                        <% expertQuotes.forEach(item => { %>
+                            <blockquote class="border-l-2 border-sky-400/60 pl-4">
+                                <p class="text-neutral-100">"<%= item.quote %>"</p>
+                                <footer class="text-sm text-neutral-400 mt-2">
+                                    <strong class="text-neutral-200"><%= item.name %></strong>
+                                    <% if (item.title) { %>
+                                        <span> · <%= item.title %></span>
+                                    <% } %>
+                                    <% if (item.source_url) { %>
+                                        <span> · <a href="<%= item.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">Source</a></span>
+                                    <% } %>
+                                </footer>
+                            </blockquote>
+                        <% }); %>
+                    </div>
+                </section>
+            <% } %>
+
+            <% if (Array.isArray(sourceItems) && sourceItems.length > 0) { %>
+                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+                    <h3 class="text-white text-xl font-medium mb-4">Sources</h3>
+                    <ol class="space-y-3 list-decimal list-inside">
+                        <% sourceItems.forEach(source => { %>
+                            <li class="text-neutral-300">
+                                <cite class="not-italic"><%= source.title %></cite>
+                                <% if (source.publisher) { %>
+                                    <span class="text-neutral-500"> · <%= source.publisher %></span>
+                                <% } %>
+                                <% if (source.published_date) { %>
+                                    <span class="text-neutral-500"> · <%= source.published_date %></span>
+                                <% } %>
+                                <div>
+                                    <a href="<%= source.url %>" class="text-sky-400 hover:text-sky-300 transition-colors text-sm"><%= source.url %></a>
+                                </div>
+                            </li>
+                        <% }); %>
+                    </ol>
+                </section>
+            <% } %>
 
             <div class="mt-20 pt-10 border-t border-white/5 text-center">
                 <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
@@ -53,37 +166,56 @@
             </div>
 </article>
 
-<% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
+<% if ((typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) || (Array.isArray(relatedLinks) && relatedLinks.length > 0)) { %>
 <section class="mt-16 mb-8">
     <div class="max-w-6xl mx-auto px-6">
         <h3 class="text-white text-xl font-medium mb-6">Related Articles</h3>
-        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-            <% relatedPosts.forEach(post => { %>
-            <a href="/blog/<%= post.slug %>/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                            <%= post.title %>
-                        </h4>
-                        <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                            <%= post.description || '' %>
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <% if (post.tags && post.tags.length > 0) { %>
-                                <% post.tags.slice(0, 3).forEach(tag => { %>
-                                    <span class="blog-tag text-xs"><%= tag %></span>
-                                <% }); %>
-                            <% } %>
+        <% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
+            <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                <% relatedPosts.forEach(post => { %>
+                <a href="/blog/<%= post.slug %>/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                <%= post.title %>
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                <%= post.description || '' %>
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <% if (post.tags && post.tags.length > 0) { %>
+                                    <% post.tags.slice(0, 3).forEach(tag => { %>
+                                        <span class="blog-tag text-xs"><%= tag %></span>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                <%= new Date(post.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) %>
+                            </span>
                         </div>
-                        <span class="text-xs text-neutral-500 mt-4 block">
-                            <%= new Date(post.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) %>
-                        </span>
                     </div>
-                </div>
-            </a>
-            <% }); %>
-        </div>
+                </a>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (Array.isArray(relatedLinks) && relatedLinks.length > 0) { %>
+            <div class="mt-6 p-6 rounded-2xl glass-panel border border-white/5">
+                <ul class="space-y-3">
+                    <% relatedLinks.forEach(link => { %>
+                        <li>
+                            <a href="<%= link.url %>" class="text-sky-400 hover:text-sky-300 transition-colors font-medium">
+                                <%= link.title %>
+                            </a>
+                            <% if (link.reason) { %>
+                                <p class="text-sm text-neutral-400 mt-1"><%= link.reason %></p>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
     </div>
 </section>
 <% } %>
@@ -111,3 +243,89 @@
     }]
 }
 </script>
+
+<% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqSchemaItems.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+        }
+    }))
+}, null, 2) %>
+</script>
+<% } %>
+
+<% if (Array.isArray(videoSchemaItems) && videoSchemaItems.length > 0) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": videoSchemaItems.map(video => ({
+        "@type": "VideoObject",
+        "name": video.name,
+        "description": video.description,
+        "thumbnailUrl": video.thumbnail_url_abs || video.thumbnail_url,
+        "uploadDate": video.upload_date,
+        ...(video.embed_url ? { "embedUrl": video.embed_url } : {}),
+        ...(video.content_url ? { "contentUrl": video.content_url } : {}),
+        ...(video.duration ? { "duration": video.duration } : {})
+    }))
+}, null, 2) %>
+</script>
+<% } %>
+
+<% if (Array.isArray(statItems) && statItems.length > 0) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": statItems.map(stat => ({
+        "@type": "PropertyValue",
+        "name": stat.label,
+        "value": stat.value,
+        ...(stat.context ? { "description": stat.context } : {}),
+        ...(stat.source_url_abs ? { "url": stat.source_url_abs } : (stat.source_url ? { "url": stat.source_url } : {}))
+    }))
+}, null, 2) %>
+</script>
+<% } %>
+
+<% if (howToSchema && typeof howToSchema === 'object') { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": howToSchema.name,
+    ...(howToSchema.description ? { "description": howToSchema.description } : {}),
+    ...(howToSchema.total_time ? { "totalTime": howToSchema.total_time } : {}),
+    ...(howToSchema.estimated_cost ? {
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": howToSchema.estimated_cost.currency,
+            "value": howToSchema.estimated_cost.value
+        }
+    } : {}),
+    ...(Array.isArray(howToSchema.supply) && howToSchema.supply.length > 0 ? {
+        "supply": howToSchema.supply.map(item => ({
+            "@type": "HowToSupply",
+            "name": item
+        }))
+    } : {}),
+    ...(Array.isArray(howToSchema.tool) && howToSchema.tool.length > 0 ? {
+        "tool": howToSchema.tool.map(item => ({
+            "@type": "HowToTool",
+            "name": item
+        }))
+    } : {}),
+    "step": howToSchema.steps.map(step => ({
+        "@type": "HowToStep",
+        "name": step.name,
+        "text": step.text
+    }))
+}, null, 2) %>
+</script>
+<% } %>
