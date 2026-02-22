@@ -12,7 +12,7 @@ meta_keywords: ["how to find competitor websites", "competitor research", "marke
 author_profile:
   name: "ContHunt Editorial Team"
   url: "https://conthunt.app/blog"
-  image: "/public/avatar.png"
+  image: "/public/avatar-team.png"
   job_title: "Market Intelligence Team"
   description: "A team focused on providing actionable insights for competitive strategy and content intelligence."
 

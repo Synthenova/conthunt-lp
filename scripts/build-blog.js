@@ -10,6 +10,7 @@ const PAGES_DIR = path.join(__dirname, '../content/pages');
 const OUTPUT_DIR = path.join(__dirname, '../blog');
 const PUBLIC_DIR = path.join(__dirname, '..');
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
+const RELATED_LOCK_PATH = path.join(__dirname, 'data/related-lock.json');
 const DOMAIN = 'https://conthunt.app';
 
 // Ensure output directory exists
@@ -42,6 +43,34 @@ function toAbsoluteUrl(value) {
     if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
     if (trimmed.startsWith('/')) return `${DOMAIN}${trimmed}`;
     return null;
+}
+
+function stripTrailingSlash(value) {
+    if (!isNonEmptyString(value)) return value;
+    const trimmed = value.trim();
+    if (trimmed === '/') return trimmed;
+    if (/^https?:\/\/[^/]+\/$/.test(trimmed)) return trimmed;
+    return trimmed.replace(/\/+$/, '');
+}
+
+function normalizeCanonicalUrl(value, fallback) {
+    if (isNonEmptyString(value)) return stripTrailingSlash(value);
+    return stripTrailingSlash(fallback);
+}
+
+function normalizeBlogHref(url) {
+    if (!isNonEmptyString(url)) return url;
+    const trimmed = url.trim();
+    const match = trimmed.match(/^https?:\/\/conthunt\.app(\/blog\/[^?#]*)([?#].*)?$/);
+    if (match) {
+        return `https://conthunt.app${stripTrailingSlash(match[1])}${match[2] || ''}`;
+    }
+    if (trimmed.startsWith('/blog/')) {
+        const pathname = trimmed.split(/[?#]/)[0];
+        const suffix = trimmed.slice(pathname.length);
+        return `${stripTrailingSlash(pathname)}${suffix}`;
+    }
+    return trimmed;
 }
 
 function getStringArrayOrNull(value) {
@@ -251,7 +280,10 @@ function normalizeRelatedLinks(value) {
             const title = isNonEmptyString(item.title) ? item.title.trim() : '';
             if (!url || !title) return null;
 
-            const normalized = { url, title };
+            const normalized = {
+                url: normalizeBlogHref(url),
+                title
+            };
             if (isNonEmptyString(item.reason)) {
                 normalized.reason = item.reason.trim();
             }
@@ -291,10 +323,11 @@ function normalizeSourceItems(value) {
             const url = isNonEmptyString(item.url) ? item.url.trim() : '';
             if (!title || !url) return null;
 
+            const normalizedUrl = normalizeBlogHref(url);
             const normalized = {
                 title,
-                url,
-                urlAbs: toAbsoluteUrl(url)
+                url: normalizedUrl,
+                urlAbs: toAbsoluteUrl(normalizedUrl)
             };
 
             if (isNonEmptyString(item.publisher)) {
@@ -408,6 +441,71 @@ function collectSchemaValidationWarnings(attributes, postData) {
 // Global array to store all URLs for sitemap
 let sitemapUrls = []; // { loc: string, lastmod: string, changefreq: string, priority: string }
 let linkCounts = {}; // { slug: count } - Tracks inbound links for "fairness"
+
+function loadRelatedLockMap() {
+    if (!fs.existsSync(RELATED_LOCK_PATH)) return {};
+
+    try {
+        const raw = fs.readFileSync(RELATED_LOCK_PATH, 'utf8');
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+
+        const normalized = {};
+        for (const [slug, slugs] of Object.entries(parsed)) {
+            if (!Array.isArray(slugs)) continue;
+            const cleaned = slugs
+                .filter(item => typeof item === 'string')
+                .map(item => item.trim())
+                .filter(Boolean);
+            if (cleaned.length > 0) {
+                normalized[slug] = cleaned;
+            }
+        }
+        return normalized;
+    } catch (error) {
+        console.warn(`[related-lock] Failed to parse ${RELATED_LOCK_PATH}: ${error.message}`);
+        return {};
+    }
+}
+
+function mergeLockedRelatedPosts(currentPost, fallbackRelatedPosts, postsBySlug, relatedLockMap, limit = 10) {
+    const lockedSlugs = relatedLockMap[currentPost.slug];
+    if (!Array.isArray(lockedSlugs) || lockedSlugs.length === 0) {
+        return fallbackRelatedPosts.slice(0, limit);
+    }
+
+    const merged = [];
+    const used = new Set();
+
+    for (const slug of lockedSlugs) {
+        if (slug === currentPost.slug || used.has(slug)) continue;
+        const post = postsBySlug.get(slug);
+        if (!post) continue;
+        merged.push(post);
+        used.add(slug);
+        if (merged.length >= limit) return merged;
+    }
+
+    for (const post of fallbackRelatedPosts) {
+        if (!post || post.slug === currentPost.slug || used.has(post.slug)) continue;
+        merged.push(post);
+        used.add(post.slug);
+        if (merged.length >= limit) break;
+    }
+
+    return merged;
+}
+
+function cleanGeneratedBlogOutput() {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+        return;
+    }
+
+    for (const name of fs.readdirSync(OUTPUT_DIR)) {
+        fs.rmSync(path.join(OUTPUT_DIR, name), { recursive: true, force: true });
+    }
+}
 
 function addToSitemap(loc, lastmod = new Date().toISOString().split('T')[0], changefreq = 'weekly', priority = '0.8') {
     // Ensure no trailing slash for consistency with Google Indexing
@@ -599,6 +697,7 @@ function pingGoogleSitemap() {
 async function build() {
     sitemapUrls = []; // Reset
     linkCounts = {}; // Reset global link tracker
+    cleanGeneratedBlogOutput();
 
     await buildStaticPages();
 
@@ -620,6 +719,10 @@ async function build() {
 
         // Simple replace for common image paths
         htmlContent = htmlContent.replace(/src="\/images\//g, 'src="/public/images/');
+        // Normalize internal blog links to no-trailing-slash form
+        htmlContent = htmlContent.replace(/href="\/blog\/([^"#?\/]+)\/(?=["?#]?)/g, 'href="/blog/$1');
+        htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/([^"#?\/]+)\/(?=["?#]?)/g, 'href="https://conthunt.app/blog/$1');
+        htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/(?=["?#]?)/g, 'href="https://conthunt.app/blog');
 
         const postData = {
             ...attributes,
@@ -630,7 +733,7 @@ async function build() {
                 || getStringArrayOrNull(attributes.secondary_keywords),
             tags: getStringArrayOrNull(attributes.tags) || [],
             updated: attributes.updated || null,
-            canonical: attributes.canonical || `${DOMAIN}/blog/${slug}`,
+            canonical: normalizeCanonicalUrl(attributes.canonical, `${DOMAIN}/blog/${slug}`),
             faqSchemaItems: normalizeFaqItems(attributes.faq_items),
             howToSchema: normalizeHowTo(attributes.howto),
             authorProfile: normalizeAuthorProfile(attributes.author_profile),
@@ -657,10 +760,19 @@ async function build() {
 
     // 3. Sort posts by date
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const postsBySlug = new Map(posts.map(post => [post.slug, post]));
+    const relatedLockMap = loadRelatedLockMap();
 
     // 4. Attach related posts to each post (must be after sorting)
     posts.forEach(post => {
-        post.relatedPosts = findRelatedPosts(post, posts, 10);
+        const fallbackRelated = findRelatedPosts(post, posts, 10);
+        post.relatedPosts = mergeLockedRelatedPosts(
+            post,
+            fallbackRelated,
+            postsBySlug,
+            relatedLockMap,
+            10
+        );
     });
 
     // 5. Second pass: render each post (now with relatedPosts available)
@@ -677,7 +789,7 @@ async function build() {
         const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.ejs'), 'utf8');
 
         // Allow overrides from frontmatter, otherwise default to standard format
-        const canonicalUrl = postData.canonical || `${DOMAIN}/blog/${postData.slug}`;
+        const canonicalUrl = normalizeCanonicalUrl(postData.canonical, `${DOMAIN}/blog/${postData.slug}`);
 
         const renderedPost = ejs.render(postTemplate, postData);
         const finalHtml = ejs.render(layout, {

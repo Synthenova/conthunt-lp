@@ -705,17 +705,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero Get Started Button Redirect
-    const heroWaitlistBtn = document.getElementById('hero-waitlist-btn');
-    if (heroWaitlistBtn) {
-        heroWaitlistBtn.addEventListener('click', (e) => {
-            if (window.openCountdownModal && window.openCountdownModal(e)) {
-                return;
-            }
-            window.location.href = 'https://agent.conthunt.app';
-        });
-    }
-
     // Newsletter Flow / Waitlist API
     const newsletterBtn = document.getElementById('join-newsletter-btn');
     const newsletterInput = document.getElementById('newsletter-email-input');
@@ -733,9 +722,6 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterBtn.addEventListener('click', async () => {
             // If button is already in "Get Started" state, redirect
             if (newsletterBtn.dataset.state === 'success') {
-                if (window.openCountdownModal && window.openCountdownModal(null)) {
-                    return;
-                }
                 window.location.href = 'https://agent.conthunt.app';
                 return;
             }
@@ -784,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <span class="font-medium text-sm text-neutral-200 tracking-wide">${successText}</span>
                         </div>
-                        <a href="javascript:void(0)" data-href="https://agent.conthunt.app" onclick="window.location.href='https://agent.conthunt.app'"
+                        <a href="https://agent.conthunt.app"
                            class="glass-button px-6 py-3 text-[0.85rem] font-bold font-nav h-[52px] animate-in fade-in slide-in-from-right-4 duration-500 delay-100 flex items-center gap-2">
                            OPEN AGENT <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon>
                         </a>

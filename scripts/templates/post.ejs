@@ -160,7 +160,7 @@
 
             <div class="mt-20 pt-10 border-t border-white/5 text-center">
                 <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
-                <a href="/blog/" class="glass-button px-6 py-3 text-sm font-bold">
+                <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
                     VIEW ALL POSTS
                 </a>
             </div>
@@ -173,7 +173,7 @@
         <% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
             <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
                 <% relatedPosts.forEach(post => { %>
-                <a href="/blog/<%= post.slug %>/" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/<%= post.slug %>" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
