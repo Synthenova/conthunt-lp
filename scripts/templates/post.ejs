@@ -14,6 +14,9 @@
                     <% if (author.role) { %>
                         <span class="text-neutral-600">· <%= author.role %></span>
                     <% } %>
+                    <% if (author.source_url) { %>
+                        <span class="text-sky-400">· <a href="<%= author.source_url %>" target="_blank" rel="noopener" class="hover:text-sky-300">Source</a></span>
+                    <% } %>
                 </div>
             <% } else if (authorProfile && authorProfile.name) { %>
                 <div class="flex items-center gap-2">
@@ -56,8 +59,8 @@
                     <span class="blog-tag">
                         <%= tag %>
                     </span>
-                    <% }); %>
-                        <% } %>
+                <% }); %>
+            <% } %>
         </div>
     </header>
 
@@ -65,113 +68,113 @@
         <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
             <img src="<%= hero %>" alt="<%= title %>" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
         </div>
-        <% } %>
+    <% } %>
 
-            <% if (Array.isArray(tocItems) && tocItems.length > 0) { %>
-                <aside class="mb-10 p-6 rounded-2xl glass-panel border border-white/5">
-                    <h2 class="text-white text-lg font-medium mb-4">Table of Contents</h2>
-                    <nav aria-label="Table of Contents">
-                        <ul class="space-y-2">
-                            <% tocItems.forEach(item => { %>
-                                <li class="<%= item.level === 3 ? 'pl-4' : '' %>">
-                                    <a href="#<%= item.id %>" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
-                                        <%= item.title %>
-                                    </a>
-                                </li>
-                            <% }); %>
-                        </ul>
-                    </nav>
-                </aside>
-            <% } %>
+    <% if (Array.isArray(tocItems) && tocItems.length > 0) { %>
+        <aside class="mb-10 p-6 rounded-2xl glass-panel border border-white/5">
+            <h2 class="text-white text-lg font-medium mb-4">Table of Contents</h2>
+            <nav aria-label="Table of Contents">
+                <ul class="space-y-2">
+                    <% tocItems.forEach(item => { %>
+                        <li class="<%= item.level === 3 ? 'pl-4' : '' %>">
+                            <a href="#<%= item.id %>" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                <%= item.title %>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+            </nav>
+        </aside>
+    <% } %>
 
-            <% if (answerFirst && answerFirst.text) { %>
-                <section class="mb-10 p-6 rounded-2xl glass-panel border border-sky-500/20 bg-sky-500/5 answer-first">
-                    <h2 class="text-sky-300 text-base font-semibold mb-2">
-                        <%= answerFirst.label || 'Short Answer' %>
-                    </h2>
-                    <p class="text-neutral-100 leading-relaxed"><%= answerFirst.text %></p>
-                </section>
-            <% } %>
+    <% if (answerFirst && answerFirst.text) { %>
+        <section class="mb-10 p-6 rounded-2xl glass-panel border border-sky-500/20 bg-sky-500/5 answer-first">
+            <h2 class="text-sky-300 text-base font-semibold mb-2">
+                <%= answerFirst.label || 'Short Answer' %>
+            </h2>
+            <p class="text-neutral-100 leading-relaxed"><%= answerFirst.text %></p>
+        </section>
+    <% } %>
 
-            <div class="prose-enhanced">
-                <%- content %>
+    <div class="prose-enhanced">
+        <%- content %>
+    </div>
+
+    <% if (Array.isArray(statItems) && statItems.length > 0) { %>
+        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+            <h3 class="text-white text-xl font-medium mb-4">Key Data Points</h3>
+            <div class="grid gap-3 md:grid-cols-2">
+                <% statItems.forEach(stat => { %>
+                    <article class="rounded-xl border border-white/5 p-4 bg-white/0">
+                        <p class="text-sm text-neutral-400"><%= stat.label %></p>
+                        <p class="text-xl text-white font-semibold mt-1">
+                            <data value="<%= stat.value %>"><%= stat.value %></data>
+                        </p>
+                        <% if (stat.context) { %>
+                            <p class="text-sm text-neutral-300 mt-2"><%= stat.context %></p>
+                        <% } %>
+                        <% if (stat.source_url) { %>
+                            <p class="text-xs text-neutral-500 mt-2">
+                                Source:
+                                <a href="<%= stat.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">View source</a>
+                            </p>
+                        <% } %>
+                    </article>
+                <% }); %>
             </div>
+        </section>
+    <% } %>
 
-            <% if (Array.isArray(statItems) && statItems.length > 0) { %>
-                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-                    <h3 class="text-white text-xl font-medium mb-4">Key Data Points</h3>
-                    <div class="grid gap-3 md:grid-cols-2">
-                        <% statItems.forEach(stat => { %>
-                            <article class="rounded-xl border border-white/5 p-4 bg-white/0">
-                                <p class="text-sm text-neutral-400"><%= stat.label %></p>
-                                <p class="text-xl text-white font-semibold mt-1">
-                                    <data value="<%= stat.value %>"><%= stat.value %></data>
-                                </p>
-                                <% if (stat.context) { %>
-                                    <p class="text-sm text-neutral-300 mt-2"><%= stat.context %></p>
-                                <% } %>
-                                <% if (stat.source_url) { %>
-                                    <p class="text-xs text-neutral-500 mt-2">
-                                        Source:
-                                        <a href="<%= stat.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">View source</a>
-                                    </p>
-                                <% } %>
-                            </article>
-                        <% }); %>
-                    </div>
-                </section>
-            <% } %>
-
-            <% if (Array.isArray(expertQuotes) && expertQuotes.length > 0) { %>
-                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-                    <h3 class="text-white text-xl font-medium mb-4">Expert Quotes</h3>
-                    <div class="space-y-4">
-                        <% expertQuotes.forEach(item => { %>
-                            <blockquote class="border-l-2 border-sky-400/60 pl-4">
-                                <p class="text-neutral-100">"<%= item.quote %>"</p>
-                                <footer class="text-sm text-neutral-400 mt-2">
-                                    <strong class="text-neutral-200"><%= item.name %></strong>
-                                    <% if (item.title) { %>
-                                        <span> · <%= item.title %></span>
-                                    <% } %>
-                                    <% if (item.source_url) { %>
-                                        <span> · <a href="<%= item.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">Source</a></span>
-                                    <% } %>
-                                </footer>
-                            </blockquote>
-                        <% }); %>
-                    </div>
-                </section>
-            <% } %>
-
-            <% if (Array.isArray(sourceItems) && sourceItems.length > 0) { %>
-                <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-                    <h3 class="text-white text-xl font-medium mb-4">Sources</h3>
-                    <ol class="space-y-3 list-decimal list-inside">
-                        <% sourceItems.forEach(source => { %>
-                            <li class="text-neutral-300">
-                                <cite class="not-italic"><%= source.title %></cite>
-                                <% if (source.publisher) { %>
-                                    <span class="text-neutral-500"> · <%= source.publisher %></span>
-                                <% } %>
-                                <% if (source.published_date) { %>
-                                    <span class="text-neutral-500"> · <%= source.published_date %></span>
-                                <% } %>
-                                <div>
-                                    <a href="<%= source.url %>" class="text-sky-400 hover:text-sky-300 transition-colors text-sm"><%= source.url %></a>
-                                </div>
-                            </li>
-                        <% }); %>
-                    </ol>
-                </section>
-            <% } %>
-
-            <div class="mt-20 pt-10 border-t border-white/5 text-center">
-                <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
-                <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
-                    VIEW ALL POSTS
-                </a>
+    <% if (Array.isArray(expertQuotes) && expertQuotes.length > 0) { %>
+        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+            <h3 class="text-white text-xl font-medium mb-4">Expert Quotes</h3>
+            <div class="space-y-4">
+                <% expertQuotes.forEach(item => { %>
+                    <blockquote class="border-l-2 border-sky-400/60 pl-4">
+                        <p class="text-neutral-100">"<%= item.quote %>"</p>
+                        <footer class="text-sm text-neutral-400 mt-2">
+                            <strong class="text-neutral-200"><%= item.name %></strong>
+                            <% if (item.title) { %>
+                                <span> · <%= item.title %></span>
+                            <% } %>
+                            <% if (item.source_url) { %>
+                                <span> · <a href="<%= item.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">Source</a></span>
+                            <% } %>
+                        </footer>
+                    </blockquote>
+                <% }); %>
             </div>
+        </section>
+    <% } %>
+
+    <% if (Array.isArray(sourceItems) && sourceItems.length > 0) { %>
+        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+            <h3 class="text-white text-xl font-medium mb-4">Sources</h3>
+            <ol class="space-y-3 list-decimal list-inside">
+                <% sourceItems.forEach(source => { %>
+                    <li class="text-neutral-300">
+                        <cite class="not-italic"><%= source.title %></cite>
+                        <% if (source.publisher) { %>
+                            <span class="text-neutral-500"> · <%= source.publisher %></span>
+                        <% } %>
+                        <% if (source.published_date) { %>
+                            <span class="text-neutral-500"> · <%= source.published_date %></span>
+                        <% } %>
+                        <div>
+                            <a href="<%= source.url %>" class="text-sky-400 hover:text-sky-300 transition-colors text-sm"><%= source.url %></a>
+                        </div>
+                    </li>
+                <% }); %>
+            </ol>
+        </section>
+    <% } %>
+
+    <div class="mt-20 pt-10 border-t border-white/5 text-center">
+        <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
+        <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
+            VIEW ALL POSTS
+        </a>
+    </div>
 </article>
 
 <% if (author && (author.name || author.bio)) { %>
@@ -192,6 +195,12 @@
             <% } %>
             <% if (author.bio) { %>
                 <p class="text-sm text-neutral-400"><%= author.bio %></p>
+            <% } %>
+            <% if (author.url) { %>
+                <a href="<%= author.url %>" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 mt-2 inline-block">View Author Profile →</a>
+            <% } %>
+            <% if (author.source_url) { %>
+                <a href="<%= author.source_url %>" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 mt-2 ml-2 inline-block">View Original Article →</a>
             <% } %>
         </div>
     </div>
@@ -358,6 +367,24 @@
         "name": step.name,
         "text": step.text
     }))
+}, null, 2) %>
+</script>
+<% } %>
+
+<% if (author && author.name) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "author": {
+        "@type": "Person",
+        "name": author.name,
+        ...(author.url ? { "url": author.url } : {}),
+        ...(author.bio ? { "description": author.bio } : {})
+    },
+    "datePublished": date,
+    ...(updated ? { "dateModified": updated } : {})
 }, null, 2) %>
 </script>
 <% } %>
