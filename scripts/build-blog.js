@@ -461,6 +461,43 @@ function normalizeStatItems(value) {
     return stats.length > 0 ? stats : null;
 }
 
+// NEW: Normalize External Authors
+function normalizeExternalAuthors(value) {
+    if (!Array.isArray(value)) return null;
+
+    const authors = value
+        .filter(item => item && typeof item === 'object')
+        .map(item => {
+            const name = isNonEmptyString(item.name) ? item.name.trim() : '';
+            if (!name) return null;
+
+            const normalized = { name };
+
+            if (isNonEmptyString(item.role)) {
+                normalized.role = item.role.trim();
+            }
+
+            if (isNonEmptyString(item.bio)) {
+                normalized.bio = item.bio.trim();
+            }
+
+            if (isNonEmptyString(item.url)) {
+                normalized.url = item.url.trim();
+                normalized.urlAbs = toAbsoluteUrl(item.url);
+            }
+
+            if (isNonEmptyString(item.source_url)) {
+                normalized.source_url = item.source_url.trim();
+                normalized.source_url_abs = toAbsoluteUrl(item.source_url);
+            }
+
+            return normalized;
+        })
+        .filter(Boolean);
+
+    return authors.length > 0 ? authors : null;
+}
+
 function collectSchemaValidationWarnings(attributes, postData) {
     const warnings = [];
 
@@ -490,6 +527,11 @@ function collectSchemaValidationWarnings(attributes, postData) {
 
     if (attributes.stat_items && !postData.statItems) {
         warnings.push('invalid stat_items');
+    }
+
+    // NEW: Validate external_authors
+    if (attributes.external_authors && !postData.externalAuthors) {
+        warnings.push('invalid external_authors');
     }
 
     return warnings;
@@ -786,10 +828,19 @@ async function build() {
         htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/([^"#?\/]+)\/(?=["?#]?)/g, 'href="https://conthunt.app/blog/$1');
         htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/(?=["?#]?)/g, 'href="https://conthunt.app/blog');
 
-        // Assign author to post (preserve existing or randomly pick)
-        const assignedAuthor = authors.length > 0
-            ? assignAuthorToPost(slug, authors, authorAssignments)
-            : null;
+        // NEW: Parse external_authors
+        const externalAuthors = normalizeExternalAuthors(attributes.external_authors);
+
+        // Assign author to post - use external author if present, otherwise assign random
+        // External authors take precedence for E-E-A-T
+        let assignedAuthor = null;
+        if (externalAuthors && externalAuthors.length > 0) {
+            // Use first external author as the main author
+            assignedAuthor = externalAuthors[0];
+        } else if (authors.length > 0) {
+            // Fall back to randomly assigned internal author
+            assignedAuthor = assignAuthorToPost(slug, authors, authorAssignments);
+        }
 
         const postData = {
             ...attributes,
@@ -811,12 +862,14 @@ async function build() {
             sourceItems: normalizeSourceItems(attributes.sources),
             expertQuotes: normalizeExpertQuotes(attributes.expert_quotes),
             statItems: normalizeStatItems(attributes.stat_items),
+            // NEW: External authors
+            externalAuthors: externalAuthors,
             hero: (attributes.hero || attributes.image) ? (attributes.hero || attributes.image)
                 .replace(/^https:\/\/conthunt\.app\/images\//, '/public/images/')
                 .replace(/^\/images\//, '/public/images/')
                 : null,
-            // Author assignment for E-E-A-T
-            author: assignedAuthor || null
+            // Author assignment for E-E-A-T - now supports external authors
+            author: assignedAuthor
         };
 
         const validationWarnings = collectSchemaValidationWarnings(attributes, postData);
