@@ -11,7 +11,64 @@ const OUTPUT_DIR = path.join(__dirname, '../blog');
 const PUBLIC_DIR = path.join(__dirname, '..');
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
 const RELATED_LOCK_PATH = path.join(__dirname, 'data/related-lock.json');
+const AUTHORS_PATH = path.join(__dirname, 'data/authors.json');
+const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.json');
 const DOMAIN = 'https://conthunt.app';
+
+// Load authors list
+function loadAuthors() {
+    if (!fs.existsSync(AUTHORS_PATH)) {
+        console.warn('[authors] No authors.json found');
+        return [];
+    }
+    try {
+        const raw = fs.readFileSync(AUTHORS_PATH, 'utf8');
+        const parsed = JSON.parse(raw);
+        return parsed.authors || [];
+    } catch (error) {
+        console.warn(`[authors] Failed to parse ${AUTHORS_PATH}: ${error.message}`);
+        return [];
+    }
+}
+
+// Load existing author assignments (to preserve on rebuild)
+function loadAuthorAssignments() {
+    if (!fs.existsSync(AUTHOR_ASSIGNMENTS_PATH)) {
+        return {};
+    }
+    try {
+        const raw = fs.readFileSync(AUTHOR_ASSIGNMENTS_PATH, 'utf8');
+        return JSON.parse(raw);
+    } catch (error) {
+        console.warn(`[authors] Failed to load assignments: ${error.message}`);
+        return {};
+    }
+}
+
+// Save author assignments (to preserve on rebuild)
+function saveAuthorAssignments(assignments) {
+    try {
+        fs.writeFileSync(AUTHOR_ASSIGNMENTS_PATH, JSON.stringify(assignments, null, 2));
+    } catch (error) {
+        console.warn(`[authors] Failed to save assignments: ${error.message}`);
+    }
+}
+
+// Assign author to post - preserves existing or randomly picks new
+function assignAuthorToPost(slug, authors, existingAssignments) {
+    // If already assigned, return that author
+    if (existingAssignments[slug]) {
+        return authors.find(a => a.id === existingAssignments[slug]) || authors[0];
+    }
+
+    // Randomly pick an author
+    const randomAuthor = authors[Math.floor(Math.random() * authors.length)];
+
+    // Save the assignment
+    existingAssignments[slug] = randomAuthor.id;
+
+    return randomAuthor;
+}
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
@@ -699,6 +756,11 @@ async function build() {
     linkCounts = {}; // Reset global link tracker
     cleanGeneratedBlogOutput();
 
+    // Load authors and existing assignments
+    const authors = loadAuthors();
+    const authorAssignments = loadAuthorAssignments();
+    console.log(`[authors] Loaded ${authors.length} authors`);
+
     await buildStaticPages();
 
     console.log('Starting blog build...');
@@ -724,6 +786,11 @@ async function build() {
         htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/([^"#?\/]+)\/(?=["?#]?)/g, 'href="https://conthunt.app/blog/$1');
         htmlContent = htmlContent.replace(/href="https?:\/\/conthunt\.app\/blog\/(?=["?#]?)/g, 'href="https://conthunt.app/blog');
 
+        // Assign author to post (preserve existing or randomly pick)
+        const assignedAuthor = authors.length > 0
+            ? assignAuthorToPost(slug, authors, authorAssignments)
+            : null;
+
         const postData = {
             ...attributes,
             slug,
@@ -747,7 +814,9 @@ async function build() {
             hero: (attributes.hero || attributes.image) ? (attributes.hero || attributes.image)
                 .replace(/^https:\/\/conthunt\.app\/images\//, '/public/images/')
                 .replace(/^\/images\//, '/public/images/')
-                : null
+                : null,
+            // Author assignment for E-E-A-T
+            author: assignedAuthor || null
         };
 
         const validationWarnings = collectSchemaValidationWarnings(attributes, postData);
@@ -837,7 +906,10 @@ async function build() {
     // 8. Generate RSS Feed
     generateRSS(posts);
 
-    // 9. Ping Google (async, don't block)
+    // 9. Save author assignments (persist across rebuilds)
+    saveAuthorAssignments(authorAssignments);
+
+    // 10. Ping Google (async, don't block)
     setTimeout(() => pingGoogleSitemap(), 1000);
 
     console.log('Blog build complete!');

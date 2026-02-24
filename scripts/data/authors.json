@@ -1,0 +1,39 @@
+{
+  "authors": [
+    {
+      "id": "zach-sanders",
+      "name": "Zach Sanders",
+      "role": "Head of Growth",
+      "bio": "Zach has 8+ years in performance marketing. Formerly at HubSpot and a D2C ecom brand. He's scaled content channels to millions of views.",
+      "image": "/public/faviconold.png"
+    },
+    {
+      "id": "lamrin",
+      "role": "Lead Engineer",
+      "name": "Lamrin",
+      "bio": "Full-stack engineer building AI-powered tools. Lamrin architected ContHunt's video analysis engine and loves breaking down complex tech into simple ideas.",
+      "image": "/public/faviconold.png"
+    },
+    {
+      "id": "elena",
+      "role": "Head of Marketing",
+      "name": "Elena",
+      "bio": "Elena leads marketing at ContHunt. With a background in content strategy for B2B SaaS, she helps brands tell stories that actually convert.",
+      "image": "/public/faviconold.png"
+    },
+    {
+      "id": "alex",
+      "role": "Content Creator",
+      "name": "Alex",
+      "bio": "Alex is a content creator with 500K+ followers across TikTok and YouTube. He breaks down what makes videos go viral and teaches creators how to replicate those patterns.",
+      "image": "/public/faviconold.png"
+    },
+    {
+      "id": "maya",
+      "role": "Social Media Analyst",
+      "name": "Maya",
+      "bio": "Maya analyzes social media trends for a living. She tracks what's working across platforms and helps brands spot opportunities before they go mainstream.",
+      "image": "/public/faviconold.png"
+    }
+  ]
+}

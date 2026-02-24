@@ -1,31 +1,41 @@
 <article class="max-w-3xl mx-auto px-6">
     <header class="text-center mb-16">
         <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
-            <% if ((typeof authorProfile !== 'undefined' && authorProfile && authorProfile.name) || author) { %>
+            <% if (author) { %>
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center overflow-hidden">
+                        <% if (author.image) { %>
+                            <img src="<%= author.image %>" alt="<%= author.name %>" class="w-6 h-6 rounded-full object-cover" />
+                        <% } else { %>
+                            <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                        <% } %>
+                    </div>
+                    <span class="text-white"><%= author.name %></span>
+                    <% if (author.role) { %>
+                        <span class="text-neutral-600">· <%= author.role %></span>
+                    <% } %>
+                </div>
+            <% } else if (authorProfile && authorProfile.name) { %>
                 <div class="flex items-center gap-2">
                     <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
-                        <% if (authorProfile && authorProfile.image) { %>
+                        <% if (authorProfile.image) { %>
                             <img src="<%= authorProfile.image %>" alt="<%= authorProfile.name %>" class="w-6 h-6 rounded-full object-cover" />
                         <% } else { %>
                             <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
                         <% } %>
                     </div>
                     <span>
-                        <% if (authorProfile && authorProfile.name) { %>
-                            <% if (authorProfile.url) { %>
-                                <a href="<%= authorProfile.url %>" class="hover:text-white transition-colors">
-                                    <%= authorProfile.name %>
-                                </a>
-                            <% } else { %>
+                        <% if (authorProfile.url) { %>
+                            <a href="<%= authorProfile.url %>" class="hover:text-white transition-colors">
                                 <%= authorProfile.name %>
-                            <% } %>
+                            </a>
                         <% } else { %>
-                            <%= author %>
+                            <%= authorProfile.name %>
                         <% } %>
                     </span>
                 </div>
-                <% } %>
-                    <span>•</span>
+            <% } %>
+                    <% if (author || (authorProfile && authorProfile.name)) { %><span>•</span><% } %>
                     <time datetime="<%= date %>">
                         <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
                             day: 'numeric' }) %>
@@ -34,8 +44,6 @@
                         <span>•</span>
                         <span>Updated <%= new Date(updated).toLocaleDateString('en-US', { year: 'numeric' , month: 'short' , day: 'numeric' }) %></span>
                     <% } %>
-                    <!-- <span>•</span>
-            <span><%= readingTime %> min read</span> -->
         </div>
 
         <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
@@ -165,6 +173,30 @@
                 </a>
             </div>
 </article>
+
+<% if (author && (author.name || author.bio)) { %>
+<section class="max-w-3xl mx-auto px-6 mt-12 mb-16">
+    <div class="p-6 rounded-2xl glass-panel border border-white/5 flex gap-4 items-start">
+        <% if (author.image) { %>
+            <img src="<%= author.image %>" alt="<%= author.name %>" class="w-16 h-16 rounded-full object-cover shrink-0" />
+        <% } else { %>
+            <div class="w-16 h-16 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
+                <iconify-icon icon="lucide:user" class="text-neutral-400 text-2xl"></iconify-icon>
+            </div>
+        <% } %>
+        <div>
+            <div class="text-xs text-neutral-500 mb-1">Written by</div>
+            <h4 class="text-white font-semibold mb-1"><%= author.name %></h4>
+            <% if (author.role) { %>
+                <div class="text-xs text-sky-400 mb-2"><%= author.role %></div>
+            <% } %>
+            <% if (author.bio) { %>
+                <p class="text-sm text-neutral-400"><%= author.bio %></p>
+            <% } %>
+        </div>
+    </div>
+</section>
+<% } %>
 
 <% if ((typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) || (Array.isArray(relatedLinks) && relatedLinks.length > 0)) { %>
 <section class="mt-16 mb-8">
