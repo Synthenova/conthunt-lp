@@ -39,7 +39,7 @@ answer_first:
 
 ---
 
-# Instagram Analytics: Ultimate Guide
+# Instagram Analytics: Ultimate Guide to Measuring Impact
 
 Understanding your Instagram analytics is essential for growth. Here's your complete guide to measuring impact.
 
