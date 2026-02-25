@@ -12,6 +12,24 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Content visibility for below-fold sections - improves INP and LCP */
+/* Skip content rendering until it's near viewport */
+#cinematic-section,
+#manual-research-section,
+#features,
+#workflow,
+section:has(.marquee-container),
+section:has(details),
+#pricing,
+#waitlist,
+footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* Above-fold sections should not use content-visibility */
+/* The hero section is critical for LCP */
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;

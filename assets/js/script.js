@@ -19,6 +19,50 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.forEach(el => observer.observe(el));
 });
 
+// Lazy Load Lottie Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const lazyLotties = document.querySelectorAll('lottie-player[data-src]');
+
+    if ('IntersectionObserver' in window) {
+        const lottieObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const player = entry.target;
+                    const src = player.getAttribute('data-src');
+                    if (src) {
+                        player.setAttribute('src', src);
+                        player.removeAttribute('data-src');
+                        // Autoplay once loaded
+                        if (player.play) {
+                            player.play();
+                        } else {
+                            player.addEventListener('ready', () => {
+                                player.play();
+                            });
+                        }
+                    }
+                    observer.unobserve(player);
+                }
+            });
+        }, {
+            rootMargin: '200px 0px', // Start loading 200px before entering viewport
+            threshold: 0
+        });
+
+        lazyLotties.forEach(player => {
+            lottieObserver.observe(player);
+        });
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        lazyLotties.forEach(player => {
+            const src = player.getAttribute('data-src');
+            if (src) {
+                player.setAttribute('src', src);
+            }
+        });
+    }
+});
+
 // Interactive Button Script
 document.addEventListener('DOMContentLoaded', () => {
     const interactiveButtons = document.querySelectorAll('.glass-button-interactive');
