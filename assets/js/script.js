@@ -396,6 +396,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Hash navigation helper for pinned sections
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+
+    function getScrollOffset() {
+        if (!nav) return 32;
+        return nav.getBoundingClientRect().height + 40;
+    }
+
+    function scrollToHash(hash, behavior = 'smooth') {
+        if (!hash || hash === '#') return false;
+
+        const target = document.querySelector(hash);
+        if (!target) return false;
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+
+        const top = Math.max(
+            target.getBoundingClientRect().top + window.scrollY - getScrollOffset(),
+            0
+        );
+
+        window.scrollTo({ top, behavior });
+        return true;
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const { hash } = link;
+            if (!hash || hash === '#') return;
+
+            const didScroll = scrollToHash(hash, 'smooth');
+            if (!didScroll) return;
+
+            event.preventDefault();
+            if (window.location.hash !== hash) {
+                history.pushState(null, '', hash);
+            }
+        });
+    });
+
+    function handleInitialHash() {
+        if (!window.location.hash) return;
+
+        const hash = window.location.hash;
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                scrollToHash(hash, 'auto');
+            });
+        });
+
+        window.setTimeout(() => {
+            scrollToHash(hash, 'auto');
+        }, 250);
+    }
+
+    window.addEventListener('hashchange', () => {
+        scrollToHash(window.location.hash, 'smooth');
+    });
+
+    window.addEventListener('load', handleInitialHash, { once: true });
+});
+
 // Manual Research Scroll Animation
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
