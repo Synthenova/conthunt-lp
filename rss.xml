@@ -6,7 +6,15 @@
     <description>Latest insights, tutorials, and updates from ContHunt.</description>
     <language>en-us</language>
     <atom:link href="https://conthunt.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 02 Mar 2026 10:17:58 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 09:12:10 GMT</lastBuildDate>
+    <item>
+      <title><![CDATA[Understanding Virality Index: Measure Your Video Performance]]></title>
+      <link>https://conthunt.app/blog/understanding-virality-index</link>
+      <description><![CDATA[Learn what a virality index is, how virality index software scores short-form videos, and how ContHunt's proprietary virality index platform helps creators make faster decisions.]]></description>
+      <category>Video Analytics</category>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/understanding-virality-index</guid>
+    </item>
     <item>
       <title><![CDATA[The Ultimate YouTube Shorts Guide 2026: Format, Length, Creation & Upload]]></title>
       <link>https://conthunt.app/blog/youtube-shorts-complete-guide</link>
