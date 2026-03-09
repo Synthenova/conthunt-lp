@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'TubeBuddy vs. vidIQ: The Ultimate 2026 Comparison',
+            canonical_url: 'https://conthunt.app/blog/tubebuddy-vs-vidiq',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -471,66 +489,6 @@
                     </div>
                 </a>
                 
-                <a href="/blog/instagram-analytics-app" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                The Top Instagram Analytics Apps for 2026: Track Your Growth on the Go
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Discover the best mobile Instagram analytics apps for 2026. Compare features like real-time engagement tracking, competitor alerts, and AI-driven growth suggestions.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/how-to-view-instagram-analytics" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to View Instagram Analytics: The 2026 Guide
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Learn how to access and interpret your Instagram analytics in 2026. Discover key metrics for growth, from professional dashboards to Reels retention data.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/how-to-track-youtube-shorts-competitors" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to Track YouTube Shorts Competitors: The 2026 Strategy
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master the art of tracking your YouTube Shorts competitors in 2026. Learn about real-time benchmarking, content intelligence, and strategies to stay ahead.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
                 <a href="/blog/how-long-can-an-instagram-reel-be" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -560,6 +518,66 @@
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
                                 Master social operations on a startup budget. Compare top Hootsuite alternatives for 2026, focusing on &#39;Algorithmic Distribution&#39; and ContHunt integration.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/find-winning-short-form-content" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                How to Find Winning Short-Form Content in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the art of algorithmic reconnaissance. Learn how to identify winning short-form content before it peaks using ContHunt&#39;s velocity intelligence.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/educational-content-ideas-youtube-shorts" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Brilliant Educational Content Ideas for YouTube Shorts in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the 2026 &#39;Micro-Learning&#39; explosion. Explore high-retention educational ideas and how ContHunt benchmarks expert authority nodes on YouTube Shorts.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/creative-green-screen-ideas-youtube-shorts-2026" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Creative Green Screen Ideas for YouTube Shorts in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the 2026 &#39;Green Screen&#39; feature on YouTube Shorts. Explore high-retention background ideas and how ContHunt identifies trending visual nodes for overlay content.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 

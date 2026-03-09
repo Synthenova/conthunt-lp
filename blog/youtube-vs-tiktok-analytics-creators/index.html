@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'YouTube vs. TikTok Analytics for Creators: 2026 ROI Analysis',
+            canonical_url: 'https://conthunt.app/blog/youtube-vs-tiktok-analytics-creators',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -571,15 +589,15 @@
                     </div>
                 </a>
                 
-                <a href="/blog/how-to-make-a-reel-on-instagram" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/educational-content-ideas-youtube-shorts" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to Make a Reel on Instagram: The Step-by-Step 2026 Guide
+                                Brilliant Educational Content Ideas for YouTube Shorts in 2026
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Learn how to make a Reel on Instagram in 2026 with our step-by-step guide. Master high-velocity templates, collaborative features, and viral editing secrets.
+                                Master the 2026 &#39;Micro-Learning&#39; explosion. Explore high-retention educational ideas and how ContHunt benchmarks expert authority nodes on YouTube Shorts.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
@@ -591,15 +609,15 @@
                     </div>
                 </a>
                 
-                <a href="/blog/how-to-identify-market-trends" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/creative-green-screen-ideas-youtube-shorts-2026" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to Identify Market Trends: The 2026 Intelligence Guide
+                                Creative Green Screen Ideas for YouTube Shorts in 2026
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master the art of identifying market trends in 2026. Learn about predictive AI tools, social velocity mapping, and strategies to stay ahead of the competition.
+                                Master the 2026 &#39;Green Screen&#39; feature on YouTube Shorts. Explore high-retention background ideas and how ContHunt identifies trending visual nodes for overlay content.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 

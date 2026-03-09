@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'Google Trends: Complete Guide to YouTube Trend Discovery',
+            canonical_url: 'https://conthunt.app/blog/google-trends-youtube-guide',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -397,146 +415,6 @@
                     </div>
                 </a>
                 
-                <a href="/blog/buzzsumo-pricing-alternatives" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                BuzzSumo Pricing vs. 2026 Alternatives: A Value Comparison
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master your content budget in 2026. Compare BuzzSumo&#39;s pricing model with next-gen algorithmic tools like ContHunt, and find the best ROI for your stack.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/buzzsumo-alternatives-content-marketers" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                The Best BuzzSumo Alternatives for Content Marketers in 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Discover the top BuzzSumo alternatives for 2026. Learn why &#39;Predictive Trend Analysis&#39; and &#39;Algorithmic Benchmarking&#39; in ContHunt are replacing legacy search tools.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/best-social-media-monitoring-tools" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                Best Social Media Monitoring &amp; Tracking Tools (2026 Comparison)
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Compare the best social media monitoring and tracking tools for 2026. Get detailed reviews of 15 tools for enterprise and SMB growth, including pricing and AI features.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/best-instagram-analytics-tools" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                The 10 Best Instagram Analytics Tools for 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Data-driven comparison of the top Instagram analytics tools in 2026. Discover which platforms offer the best AI insights, competitor tracking, and ROI reporting.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/youtube-tracker" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                Best YouTube Tracker Tools: Track Channels, Videos &amp; Competitors (2026)
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Compare the 12 best YouTube tracker tools for 2026. Track subscriber growth, video performance, competitor channels, and trending content with detailed reviews and pricing.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Oct 14, 2024
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/what-is-a-reel" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                What Is a Reel? Everything You Need to Know About Instagram Reels (2026)
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Learn what Instagram Reels are, how they work, and why they matter in 2026. Includes Reels vs Stories vs Posts comparison, creation tips, and analytics breakdown.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Oct 14, 2024
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/how-to-monetize-youtube-shorts" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to Monetize YouTube Shorts: Payment Rates, Methods &amp; 2026 YPP Guide
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                The definitive guide to making money on YouTube Shorts in 2026. Covers YPP eligibility, ad revenue sharing, Shorts Fund, sponsorships, affiliate marketing, and how much Shorts actually pay per 1,000 views.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Oct 14, 2024
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
                 <a href="/blog/how-to-check-tiktok-analytics" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -557,6 +435,34 @@
                     </div>
                 </a>
                 
+                <a href="/blog/ugc-ad-testing-framework" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                UGC Ad Testing Framework: Optimize Your Creative Campaigns
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Build a repeatable UGC ad testing framework that helps teams increase win-rate, scale production, and make faster creative decisions.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">UGC</span>
+                                    
+                                        <span class="blog-tag text-xs">Paid Social</span>
+                                    
+                                        <span class="blog-tag text-xs">Creative Strategy</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Mar 9, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
                 <a href="/blog/youtube-shorts-complete-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -566,6 +472,126 @@
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
                                 Master YouTube Shorts in 2026 with our comprehensive guide covering format specs, optimal length, creation steps, and upload process. Learn how to go viral with the Interest-Graph algorithm.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-best-practices" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Best Practices 2026: Complete Growth Playbook
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                The definitive guide to YouTube Shorts best practices covering hooks, retention loops, titles, thumbnails, posting frequency, and timing. Master the 2026 algorithm.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-analytics" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Analytics Guide 2026: Complete Metrics &amp; Tools
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master YouTube Shorts analytics in 2026. Learn the key metrics, best tools (free &amp; paid), and how to analyze performance for viral growth.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-algorithm-2026" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Algorithm &amp; Viral Hooks Guide 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the YouTube Shorts algorithm and viral hooks in 2026. Learn how the algorithm works, retention strategies, and hook techniques to go viral.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/vidiq-review" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                vidIQ Review &amp; Pricing 2026: Complete Guide
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Complete vidIQ review for 2026 covering features, pricing (Pro vs Boost vs Max), and whether it&#39;s worth it for YouTube creators.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/vidiq-alternatives" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Best vidIQ Alternatives for YouTube SEO &amp; Growth in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover the top vidIQ alternatives for 2026. Compare professional YouTube growth tools for viral analytics, hook deconstruction, and interest-node mapping.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 25, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/instagram-reels-content-ideas" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Instagram Reels Guide 2026: Best Practices &amp; Content Ideas
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master Instagram Reels in 2026 with our comprehensive guide covering best practices, content ideas, fitness strategy, and viral optimization.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 

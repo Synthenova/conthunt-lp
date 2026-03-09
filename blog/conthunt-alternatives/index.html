@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'The Best ContHunt Alternatives for 2026: Content Intelligence Comparison',
+            canonical_url: 'https://conthunt.app/blog/conthunt-alternatives',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -522,26 +540,6 @@
                     </div>
                 </a>
                 
-                <a href="/blog/youtube-shorts-content-ideas-tech" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                YouTube Shorts Content Ideas for Tech: 2026 Innovation
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Stay ahead of the curve in the 2026 tech niche. Discover high-velocity YouTube Shorts ideas, from &#39;AI-Workflow&#39; reveals to &#39;Macro-Tech&#39; unboxing, and how ContHunt drives tech discovery.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 18, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
                 <a href="/blog/youtube-shorts-content-ideas-gaming" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -591,6 +589,26 @@
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
                                 Sizzle in the 2026 cooking niche. Discover high-velocity YouTube Shorts ideas, from &#39;ASMR Prep&#39; to &#39;Ingredient Alchemy&#39;, and how ContHunt optimizes food discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-beauty" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Beauty: 2026 Trends
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover high-velocity YouTube Shorts ideas for the beauty niche in 2026. Learn about the &#39;ASMR Routine&#39; trend, &#39;Visual Texture&#39; hooks, and how ContHunt optimizes beauty discovery.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 

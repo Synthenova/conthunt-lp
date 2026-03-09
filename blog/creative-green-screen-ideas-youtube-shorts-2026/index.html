@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'Creative Green Screen Ideas for YouTube Shorts in 2026',
+            canonical_url: 'https://conthunt.app/blog/creative-green-screen-ideas-youtube-shorts-2026',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -542,15 +560,15 @@
                     </div>
                 </a>
                 
-                <a href="/blog/tiktok-hashtags-go-viral" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/social-media-analysis-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                TikTok Hashtags to Go Viral: The Complete Strategy Guide (2026)
+                                Social Media Analysis: A Complete Guide to Analyzing Your Performance (2026)
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master the 2026 TikTok algorithm with the right hashtags. Learn the 3-5 tag rule, TikTok SEO alignment, and category-specific viral sets to explode your reach.
+                                Learn how to analyze social media performance in 2026. This complete guide covers key metrics, step-by-step workflows, platform-specific tips, and reporting frameworks.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
@@ -562,15 +580,15 @@
                     </div>
                 </a>
                 
-                <a href="/blog/social-media-analysis-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/marketing-competitor-analysis" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                Social Media Analysis: A Complete Guide to Analyzing Your Performance (2026)
+                                Marketing Competitor Analysis: How to Spy on &amp; Outperform Your Rivals (2026)
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Learn how to analyze social media performance in 2026. This complete guide covers key metrics, step-by-step workflows, platform-specific tips, and reporting frameworks.
+                                Learn the complete 2026 framework for marketing competitor analysis. This step-by-step guide covers content, SEO, social media, and paid ads analysis to outperform your rivals.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 

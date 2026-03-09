@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'How to Track YouTube Shorts Competitors: The 2026 Strategy',
+            canonical_url: 'https://conthunt.app/blog/how-to-track-youtube-shorts-competitors',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -552,24 +570,24 @@
                     </div>
                 </a>
                 
-                <a href="/blog/tiktok-hashtags-sprout-social" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/tiktok-algorithm-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                TikTok Hashtags to Go Viral: The Complete Strategy Guide
+                                How the TikTok Algorithm Works in 2026
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master TikTok hashtags with this comprehensive guide. Learn how to use the best hashtags for more views and viral growth in 2026.
+                                Understand the TikTok algorithm and how to optimize your content for maximum reach. Expert guide to TikTok algorithm mechanics.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
                                     
                                         <span class="blog-tag text-xs">TikTok</span>
                                     
-                                        <span class="blog-tag text-xs">Social Media</span>
+                                        <span class="blog-tag text-xs">Algorithm</span>
                                     
-                                        <span class="blog-tag text-xs">Content Strategy</span>
+                                        <span class="blog-tag text-xs">Growth</span>
                                     
                                 
                             </div>

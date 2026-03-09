@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'The Ultimate YouTube Shorts Guide 2026: Format, Length, Creation &amp; Upload',
+            canonical_url: 'https://conthunt.app/blog/youtube-shorts-complete-guide',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -639,189 +657,29 @@
         
             <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
                 
-                <a href="/blog/youtube-shorts-best-practices" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/ugc-ad-testing-framework" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                YouTube Shorts Best Practices 2026: Complete Growth Playbook
+                                UGC Ad Testing Framework: Optimize Your Creative Campaigns
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                The definitive guide to YouTube Shorts best practices covering hooks, retention loops, titles, thumbnails, posting frequency, and timing. Master the 2026 algorithm.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/youtube-shorts-analytics" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                YouTube Shorts Analytics Guide 2026: Complete Metrics &amp; Tools
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master YouTube Shorts analytics in 2026. Learn the key metrics, best tools (free &amp; paid), and how to analyze performance for viral growth.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/youtube-shorts-algorithm-2026" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                YouTube Shorts Algorithm &amp; Viral Hooks Guide 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master the YouTube Shorts algorithm and viral hooks in 2026. Learn how the algorithm works, retention strategies, and hook techniques to go viral.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/vidiq-review" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                vidIQ Review &amp; Pricing 2026: Complete Guide
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Complete vidIQ review for 2026 covering features, pricing (Pro vs Boost vs Max), and whether it&#39;s worth it for YouTube creators.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/vidiq-alternatives" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                Best vidIQ Alternatives for YouTube SEO &amp; Growth in 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Discover the top vidIQ alternatives for 2026. Compare professional YouTube growth tools for viral analytics, hook deconstruction, and interest-node mapping.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/instagram-reels-content-ideas" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                Instagram Reels Guide 2026: Best Practices &amp; Content Ideas
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master Instagram Reels in 2026 with our comprehensive guide covering best practices, content ideas, fitness strategy, and viral optimization.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/how-to-grow-youtube-shorts-channel" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How to Grow Your YouTube Shorts Channel: Complete 2026 Guide
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master YouTube Shorts growth in 2026 with our comprehensive guide covering channel strategy, niche growth, promotion, and posting optimization.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/content-ideas" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                The Ultimate Content Ideas Guide for 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master content ideation in 2026 with our comprehensive guide. Learn how to generate viral ideas using Interest Nodes, AI tools, and proven frameworks for all platforms.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/youtube-search-trends" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                YouTube Search Trends: How to Find and Use Trending Topics
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Learn how to find YouTube search trends and use them to grow your channel. Expert guide to YouTube trend discovery.
+                                Build a repeatable UGC ad testing framework that helps teams increase win-rate, scale production, and make faster creative decisions.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
                                     
-                                        <span class="blog-tag text-xs">YouTube</span>
+                                        <span class="blog-tag text-xs">UGC</span>
                                     
-                                        <span class="blog-tag text-xs">SEO</span>
+                                        <span class="blog-tag text-xs">Paid Social</span>
                                     
-                                        <span class="blog-tag text-xs">Content Strategy</span>
+                                        <span class="blog-tag text-xs">Creative Strategy</span>
                                     
                                 
                             </div>
                             <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 24, 2026
+                                Mar 9, 2026
                             </span>
                         </div>
                     </div>
@@ -845,6 +703,230 @@
                                         <span class="blog-tag text-xs">Social Media</span>
                                     
                                         <span class="blog-tag text-xs">Content Strategy</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tiktok-hashtags-hootsuite" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                TikTok Hashtags: The Best Hashtags for Growth in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover the best TikTok hashtags for growth and more views. Expert guide to hashtag discovery and usage strategies.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">TikTok</span>
+                                    
+                                        <span class="blog-tag text-xs">Social Media</span>
+                                    
+                                        <span class="blog-tag text-xs">Growth</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tiktok-algorithm-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                How the TikTok Algorithm Works in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Understand the TikTok algorithm and how to optimize your content for maximum reach. Expert guide to TikTok algorithm mechanics.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">TikTok</span>
+                                    
+                                        <span class="blog-tag text-xs">Algorithm</span>
+                                    
+                                        <span class="blog-tag text-xs">Growth</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/social-media-analytics-guide-2026" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Social Media Analytics: The Complete Guide for 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Learn how to track, measure, and optimize your social media performance with this comprehensive guide to social media analytics.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">Social Media</span>
+                                    
+                                        <span class="blog-tag text-xs">Analytics</span>
+                                    
+                                        <span class="blog-tag text-xs">Marketing</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/seo-competitor-analysis" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                How to Do an SEO Competitor Analysis
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master SEO competitor analysis with this comprehensive guide. Learn how to analyze competitors and build a winning SEO strategy.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">SEO</span>
+                                    
+                                        <span class="blog-tag text-xs">Competitor Analysis</span>
+                                    
+                                        <span class="blog-tag text-xs">Strategy</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/instagram-analytics-ultimate-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Instagram Analytics: Ultimate Guide to Measuring Impact
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master Instagram analytics with this comprehensive guide. Learn how to measure your impact and optimize your strategy.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">Instagram</span>
+                                    
+                                        <span class="blog-tag text-xs">Analytics</span>
+                                    
+                                        <span class="blog-tag text-xs">Measurement</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/instagram-analytics-tools" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                6 Instagram Analytics Tools That Will Help You Grow in 2026
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover the best Instagram analytics tools to grow your audience. Expert guide to measuring and improving your Instagram performance.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">Instagram</span>
+                                    
+                                        <span class="blog-tag text-xs">Analytics</span>
+                                    
+                                        <span class="blog-tag text-xs">Tools</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/instagram-algorithm-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Instagram Algorithm Tips for 2026: Everything You Need to Know
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the Instagram algorithm with these expert tips. Learn how to optimize your content for maximum reach and engagement.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">Instagram</span>
+                                    
+                                        <span class="blog-tag text-xs">Algorithm</span>
+                                    
+                                        <span class="blog-tag text-xs">Growth</span>
+                                    
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 24, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/google-trends-youtube-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Google Trends: Complete Guide to YouTube Trend Discovery
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Learn how to use Google Trends for YouTube content discovery. Official guide from Google on leveraging trends data.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                                    
+                                        <span class="blog-tag text-xs">YouTube</span>
+                                    
+                                        <span class="blog-tag text-xs">Trends</span>
+                                    
+                                        <span class="blog-tag text-xs">Google</span>
                                     
                                 
                             </div>

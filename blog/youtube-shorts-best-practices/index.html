@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'YouTube Shorts Best Practices 2026: Complete Growth Playbook',
+            canonical_url: 'https://conthunt.app/blog/youtube-shorts-best-practices',
+            author_name: '[object Object]'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -154,8 +172,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app"
-                    class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
                 </a>
@@ -801,44 +819,24 @@
                     </div>
                 </a>
                 
-                <a href="/blog/youtube-shorts-complete-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/ai-search-competitor-analysis" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                The Ultimate YouTube Shorts Guide 2026: Format, Length, Creation &amp; Upload
+                                How to Compare Your AI Visibility Against Your Competitors
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Master YouTube Shorts in 2026 with our comprehensive guide covering format specs, optimal length, creation steps, and upload process. Learn how to go viral with the Interest-Graph algorithm.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 25, 2026
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="/blog/tiktok-hashtags-hootsuite" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                TikTok Hashtags: The Best Hashtags for Growth in 2026
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Discover the best TikTok hashtags for growth and more views. Expert guide to hashtag discovery and usage strategies.
+                                Learn how to analyze AI search visibility and compare it with competitors. Essential guide for 2026 SEO strategy.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
                                     
-                                        <span class="blog-tag text-xs">TikTok</span>
+                                        <span class="blog-tag text-xs">SEO</span>
                                     
-                                        <span class="blog-tag text-xs">Social Media</span>
+                                        <span class="blog-tag text-xs">AI Search</span>
                                     
-                                        <span class="blog-tag text-xs">Growth</span>
+                                        <span class="blog-tag text-xs">Competitor Analysis</span>
                                     
                                 
                             </div>
@@ -849,29 +847,41 @@
                     </div>
                 </a>
                 
-                <a href="/blog/tiktok-algorithm-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                <a href="/blog/tiktok-hashtags-go-viral" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
                     <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
                         <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative z-10">
                             <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                How the TikTok Algorithm Works in 2026
+                                TikTok Hashtags to Go Viral: The Complete Strategy Guide (2026)
                             </h4>
                             <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                Understand the TikTok algorithm and how to optimize your content for maximum reach. Expert guide to TikTok algorithm mechanics.
+                                Master the 2026 TikTok algorithm with the right hashtags. Learn the 3-5 tag rule, TikTok SEO alignment, and category-specific viral sets to explode your reach.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 
-                                    
-                                        <span class="blog-tag text-xs">TikTok</span>
-                                    
-                                        <span class="blog-tag text-xs">Algorithm</span>
-                                    
-                                        <span class="blog-tag text-xs">Growth</span>
-                                    
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 19, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/social-media-analysis-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Social Media Analysis: A Complete Guide to Analyzing Your Performance (2026)
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Learn how to analyze social media performance in 2026. This complete guide covers key metrics, step-by-step workflows, platform-specific tips, and reporting frameworks.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
                                 
                             </div>
                             <span class="text-xs text-neutral-500 mt-4 block">
-                                Feb 24, 2026
+                                Feb 19, 2026
                             </span>
                         </div>
                     </div>
