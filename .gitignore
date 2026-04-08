@@ -31,3 +31,7 @@ __pycache__/
 SEO/backend.log
 SEO/service_account_credentials.json
 skills-lock.json
+
+# Generated blog output
+blog/index.html
+blog/**/*.html
