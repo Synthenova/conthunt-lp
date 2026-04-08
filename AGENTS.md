@@ -64,53 +64,8 @@ Location: `SEO/`
 ### Database
 
 `SEO/data/keywords.db` (SQLite, 21MB)
+`SEO/data/schema_dump.sql`
 
-**Key Tables:**
-| Table | Records | Purpose |
-|-------|---------|---------|
-| `queries` | 2,232 | All keywords (2,132 SEO + 100 AI visibility) |
-| `blogs` | 105 | Blog inventory |
-| `blog_query_links` | 4,611 | Blog → keyword mappings |
-| `content_actions` | 15 | AI-generated content tasks |
-| `gsc_query_metrics` | 4,873 | GSC impressions/clicks |
-| `serp_results` | 9,874 | SERP rankings |
-| `ai_visibility_results` | 600 | AI citation data |
-
-### Backend
-
-`SEO/backend/app/` - FastAPI + async worker
-
-- `main.py` - REST API endpoints
-- `worker.py` - Background job processor
-- `db.py` - SQLite connection
-- `settings.py` - Config
-
-### Scripts
-
-`SEO/scripts/` - Job workers
-
-| Script | Purpose |
-|--------|---------|
-| `run_dashboard_jobs.py` | Main job orchestrator |
-| `gsc_fetch.py` | Google Search Console data |
-| `check_rankings.py` | SERP checks via Apify |
-| `google_search_test.py` | AI visibility via Gemini |
-| `get_keyword_data.py` | SERanking enrichment |
-| `prioritize_keywords.py` | Keyword scoring |
-
-### Running Jobs
-
-```bash
-cd SEO
-source .venv/bin/activate
-python scripts/run_dashboard_jobs.py --jobs gsc,serp,ai,refresh
-```
-
-### Frontend
-
-`SEO/frontend/` - Next.js dashboard for viewing SEO data
-
----
 
 ## Querying keywords.db
 
