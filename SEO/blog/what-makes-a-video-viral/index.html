@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- PostHog Analytics -->
+    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script>
+        // Standard Initialization
+        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+        });
+        // Dynamic EJS Telemetry for the Blog
+        posthog.capture('blog_article_viewed', {
+            article_title: 'What Makes a Video Go Viral? The 2026 Algorithmic Formula',
+            canonical_url: 'https://conthunt.app/blog/what-makes-a-video-viral',
+            author_name: ''
+        });
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+        What Makes a Video Go Viral? The 2026 Algorithmic Formula | ContHunt Blog
+    </title>
+    <meta name="title" content="What Makes a Video Go Viral? The 2026 Algorithmic Formula | ContHunt Blog" />
+    <meta name="description"
+        content="Deconstruct the viral mechanics of 2026. Learn about &#39;Vibration Scores&#39;, &#39;Audience Retention Paradox&#39;, and how ContHunt helps you engineer virality with data." />
+    
+        <meta name="keywords" content="what makes a video go viral 2026, how to go viral on tiktok 2026, youtube shorts viral formula, algorithmic virality explained, conthunt viral engineering" />
+        
+
+            <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ContHunt",
+            "url": "https://conthunt.app/"
+        }
+    </script>
+
+            
+                
+                    
+
+                        
+                            <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": &#34;What Makes a Video Go Viral? The 2026 Algorithmic Formula&#34;,
+        "description": &#34;Deconstruct the viral mechanics of 2026. Learn about &#39;Vibration Scores&#39;, &#39;Audience Retention Paradox&#39;, and how ContHunt helps you engineer virality with data.&#34;,
+        "image": &#34;https://conthunt.app/public/banner.png&#34;,
+        "datePublished": "2026-02-18",
+        "dateModified": "2026-02-18",
+        "author": {"@type":"Person","name":"ContHunt Editorial Team","url":"https://conthunt.app/blog","image":"https://conthunt.app/public/avatar-team.png","jobTitle":"Viral Systems Researcher","description":"Specializing in the mathematical modeling of trend propagation and the psychology of social sharing in automated feeds."},
+        "publisher": {
+            "@type": "Organization",
+            "name": "ContHunt",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://conthunt.app/public/logo-title-white.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://conthunt.app/blog/what-makes-a-video-viral"
+        }
+    }
+    </script>
+                            
+
+                                
+
+                                                
+                                                    <link rel="canonical" href="https://conthunt.app/blog/what-makes-a-video-viral" />
+                                                    
+
+                                                        <!-- Favicon -->
+                                                        <link rel="icon" type="image/png" href="/public/favicon.png" />
+                                                        <link rel="icon" type="image/png" sizes="192x192"
+                                                            href="/public/favicon.png" />
+                                                        <link rel="apple-touch-icon" href="/public/favicon.png" />
+
+                                                        <!-- Open Graph -->
+                                                        <meta property="og:type" content="article" />
+                                                        <meta property="og:title" content="What Makes a Video Go Viral? The 2026 Algorithmic Formula" />
+                                                        <meta property="og:description" content="Deconstruct the viral mechanics of 2026. Learn about &#39;Vibration Scores&#39;, &#39;Audience Retention Paradox&#39;, and how ContHunt helps you engineer virality with data." />
+                                                        
+                                                            <meta property="og:image" content="https://conthunt.app/public/banner.png" />
+                                                            
+                                                                    <meta property="og:site_name" content="ContHunt" />
+                                                                    
+                                                                        <meta property="og:url"
+                                                                            content="https://conthunt.app/blog/what-makes-a-video-viral" />
+                                                                        
+
+                                                                            <!-- Twitter -->
+                                                                            <meta name="twitter:card"
+                                                                                content="summary_large_image" />
+                                                                            <meta name="twitter:title"
+                                                                                content="What Makes a Video Go Viral? The 2026 Algorithmic Formula" />
+                                                                            <meta name="twitter:description"
+                                                                                content="Deconstruct the viral mechanics of 2026. Learn about &#39;Vibration Scores&#39;, &#39;Audience Retention Paradox&#39;, and how ContHunt helps you engineer virality with data." />
+                                                                            
+                                                                                <meta name="twitter:image"
+                                                                                    content="https://conthunt.app/public/banner.png" />
+                                                                                
+
+                                                                                        <meta name="robots"
+                                                                                            content="index, follow" />
+                                                                                        <meta name="theme-color"
+                                                                                            content="#030303" />
+
+                                                                                        <script
+                                                                                            src="https://cdn.tailwindcss.com"></script>
+                                                                                        <script
+                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                                                                                        <link rel="preconnect"
+                                                                                            href="https://fonts.googleapis.com" />
+                                                                                        <link rel="preconnect"
+                                                                                            href="https://fonts.gstatic.com"
+                                                                                            crossorigin="" />
+                                                                                        <link
+                                                                                            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+                                                                                            rel="stylesheet" />
+
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/style.css" />
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/blog.css" />
+
+                                                                                        <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                                                                        <script
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="relative min-h-screen">
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- Background Grid & Glows -->
+    <div class="dark-zone"></div>
+    <div id="grid-torch"></div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
+            <!-- Logo (left) -->
+            <div class="flex items-center">
+                <a href="/">
+                    <img src="/public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
+                </a>
+            </div>
+
+            <!-- Middle nav items -->
+            <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+                <a href="/blog"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Resources</a>
+                <a href="/#workflow"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
+                <a href="/#pricing"
+                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            <!-- Right side nav items -->
+            <div class="flex items-center gap-4 font-nav">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
+                    <span>LOGIN</span>
+                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-44 pb-20">
+        <article class="max-w-3xl mx-auto px-6">
+    <header class="text-center mb-16">
+        <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6 font-mono">
+            
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
+                        
+                            <img src="/public/avatar-team.png" alt="ContHunt Editorial Team" class="w-6 h-6 rounded-full object-cover" />
+                        
+                    </div>
+                    <span>
+                        
+                            <a href="https://conthunt.app/blog" class="hover:text-white transition-colors">
+                                ContHunt Editorial Team
+                            </a>
+                        
+                    </span>
+                </div>
+            
+                    <span>•</span>
+                    <time datetime="2026-02-18">
+                        February 18, 2026
+                    </time>
+                    
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+            What Makes a Video Go Viral? The 2026 Algorithmic Formula
+        </h1>
+
+        <div class="flex justify-center gap-2 flex-wrap">
+            
+        </div>
+    </header>
+
+    
+        <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
+            <img src="/public/banner.png" alt="What Makes a Video Go Viral? The 2026 Algorithmic Formula" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
+        </div>
+    
+
+    
+        <aside class="mb-10 p-6 rounded-2xl glass-panel border border-white/5">
+            <h2 class="text-white text-lg font-medium mb-4">Table of Contents</h2>
+            <nav aria-label="Table of Contents">
+                <ul class="space-y-2">
+                    
+                        <li class="">
+                            <a href="#1-the-vibration-metric" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                1. The &#34;Vibration&#34; Metric
+                            </a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="#2-the-audience-retention-paradox" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                2. The Audience Retention Paradox
+                            </a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="#3-the-power-of-cultural-hooks" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                3. The Power of &#34;Cultural Hooks&#34;
+                            </a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="#4-engineering-the-share" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                4. Engineering the Share
+                            </a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="#2026-viral-engineering-checklist" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                2026 Viral Engineering Checklist
+                            </a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="#conclusion" class="text-sm text-neutral-300 hover:text-sky-400 transition-colors">
+                                Conclusion
+                            </a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </aside>
+    
+
+    
+        <section class="mb-10 p-6 rounded-2xl glass-panel border border-sky-500/20 bg-sky-500/5 answer-first">
+            <h2 class="text-sky-300 text-base font-semibold mb-2">
+                Short Answer
+            </h2>
+            <p class="text-neutral-100 leading-relaxed">In 2026, virality is no longer an accident; it is an **Engineering Problem**. A video goes viral when it achieves a high **&#39;Vibration Score&#39;**—a combination of immediate retention (first 3 seconds) and a high **&#39;Watch-Next&#39; correlation**. Using **ContHunt**, creators can now identify the specific &#39;Viral Seed&#39; elements—visual hooks, audio patterns, and node alignments—that trigger the algorithm to push content from niche interest groups to the global mass-audience.</p>
+        </section>
+    
+
+    <div class="prose-enhanced">
+        <p>In the early days of social media, virality was a mystery. Today, it is a science. If you are waiting for “luck” to strike your channel in 2026, you are losing to the creators who are using <strong>Content Intelligence</strong> to engineer their success.</p>
+<h2 id="1-the-vibration-metric">1. The “Vibration” Metric</h2>
+<p>In 2026, the Facebook, TikTok, and YouTube algorithms all use a variation of the <strong>Vibration Score</strong>. This score measures:</p>
+<ul>
+<li><strong>Instant Hook (0.0 - 0.5s):</strong> Does the user stop scrolling immediately?</li>
+<li><strong>Emotional Resonance:</strong> Does the AI detect an emotional reaction (via comments or re-watches)?</li>
+<li><strong>Social Velocity:</strong> How fast is the video being shared outside the platform?</li>
+</ul>
+<h2 id="2-the-audience-retention-paradox">2. The Audience Retention Paradox</h2>
+<p>The biggest mistake creators make in 2026 is trying to please everyone.</p>
+<ul>
+<li><strong>The Paradox:</strong> High retention with a <em>broad</em> audience is impossible in the first 24 hours.</li>
+<li><strong>The Strategy:</strong> Aim for 90% retention with a <em>niche</em> interest node first. Once you win that node, the algorithm handles the broad expansion for you.</li>
+<li><strong>Benchmarking with ContHunt:</strong> Use our <strong>Retention Blueprint</strong> to see where the average user in your niche drops off. If your drop-off is 2 seconds later than your competitors, you are on path to go viral.</li>
+</ul>
+<h2 id="3-the-power-of-cultural-hooks">3. The Power of “Cultural Hooks”</h2>
+<p>Virality in 2026 is often tied to <strong>‘Contextual Glue’</strong>. This means linking your video to an existing cultural conversation or a high-velocity audio track.</p>
+<ul>
+<li><strong>Trend Harvesting:</strong> <strong>ContHunt</strong> identifies these “Hooks” in real-time. We show you which visual styles (e.g., ‘Lo-Fi Grit’ vs ‘Cinematic Polish’) are currently triggering the viral algorithm in your specific industry.</li>
+<li><strong>Interest Overlap:</strong> Discover which other topics your viral audience is watching. If #travel lovers are suddenly watching #cooking, that is your bridge to a massive new audience.</li>
+</ul>
+<h2 id="4-engineering-the-share">4. Engineering the Share</h2>
+<p>Likes are cheap. Shares are premium. To go viral in 2026, your video must be “Saveable” or “Sendable.”</p>
+<ul>
+<li><strong>Utility Virality:</strong> “I need to remember this” (Saves).</li>
+<li><strong>Relatability Virality:</strong> “This is so us” (Shares).</li>
+<li><strong>Aesthetic Virality:</strong> “This looks incredible” (Re-watches).</li>
+</ul>
+<hr>
+<h2 id="2026-viral-engineering-checklist">2026 Viral Engineering Checklist</h2>
+<ul>
+<li>[ ] Does the first 0.5 seconds contain a visual disruption?</li>
+<li>[ ] Is there a ‘Payoff’ every 7 seconds to maintain tension?</li>
+<li>[ ] Have I verified my ‘Node Alignment’ in ContHunt to ensure I hit the right Seed Audience?</li>
+<li>[ ] Is the call-to-action focused on Sharing or Saving rather than Follow/Like?</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Virality is no longer a bolt of lightning; it is a fire you build with the right wood and the right sparks. By understanding the 2026 <strong>Vibration Score</strong> and using <strong>ContHunt</strong> to benchmark your retention against the platform’s best, you can turn your creative efforts into a predictable viral engine. Stop hoping, and start engineering.</p>
+
+    </div>
+
+    
+        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+            <h3 class="text-white text-xl font-medium mb-4">Key Data Points</h3>
+            <div class="grid gap-3 md:grid-cols-2">
+                
+                    <article class="rounded-xl border border-white/5 p-4 bg-white/0">
+                        <p class="text-sm text-neutral-400">Viral Probability Floor</p>
+                        <p class="text-xl text-white font-semibold mt-1">
+                            <data value="75% Retention">75% Retention</data>
+                        </p>
+                        
+                            <p class="text-sm text-neutral-300 mt-2">The minimum retention rate required in the first 5 seconds to even attempt a mass-market viral breakthrough in 2026.</p>
+                        
+                        
+                    </article>
+                
+                    <article class="rounded-xl border border-white/5 p-4 bg-white/0">
+                        <p class="text-sm text-neutral-400">Share Multiplier</p>
+                        <p class="text-xl text-white font-semibold mt-1">
+                            <data value="10x Reach">10x Reach</data>
+                        </p>
+                        
+                            <p class="text-sm text-neutral-300 mt-2">The exponential increase in reach for every 100 direct shares compared to 1,000 algorithmic likes in the 2026 feed.</p>
+                        
+                        
+                    </article>
+                
+            </div>
+        </section>
+    
+
+    
+
+    
+
+    <div class="mt-20 pt-10 border-t border-white/5 text-center">
+        <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
+        <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
+            VIEW ALL POSTS
+        </a>
+    </div>
+</article>
+
+
+
+
+<section class="mt-16 mb-8">
+    <div class="max-w-6xl mx-auto px-6">
+        <h3 class="text-white text-xl font-medium mb-6">Related Articles</h3>
+        
+            <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                
+                <a href="/blog/youtube-trending-searches" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Trending Searches: How to Find &amp; Use Trending Topics (2026)
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the 2026 YouTube trending algorithm. Learn how to find trending search keywords using Google Trends, ContHunt, and AI discovery to explode your reach.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-ideas-without-showing-face" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Ideas Without Showing Your Face: 2026 Edition
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Master the art of faceless content creation on YouTube Shorts in 2026. Discover high-retention ideas, from &#39;Narrative AI&#39; to &#39;Visual ASMR&#39;, and how ContHunt drives faceless growth.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-hashtags-guide" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                Best Hashtags for YouTube Shorts in 2026: The Ultimate Quick-Win Guide
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover the best hashtags for YouTube Shorts in 2026. Get copy-paste hashtag sets for gaming, beauty, tech, and comedy to boost your algorithmic reach.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                100+ YouTube Shorts Ideas for Every Niche (2026 Master List)
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                The definitive 2026 hub for YouTube Shorts ideas. 100+ viral concepts for gaming, cooking, tech, comedy, education, and business to explode your growth.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-travel" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Travel: 2026 Strategic Guide
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Captivate the 2026 travel audience on Shorts. Discover high-velocity ideas, from &#39;Hidden Path&#39; reveals to &#39;Zero-Budget&#39; luxury hacks, and how ContHunt drives travel discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-tech" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Tech: 2026 Innovation
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Stay ahead of the curve in the 2026 tech niche. Discover high-velocity YouTube Shorts ideas, from &#39;AI-Workflow&#39; reveals to &#39;Macro-Tech&#39; unboxing, and how ContHunt drives tech discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-gaming" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Gaming: 2026 Trends
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Level up your gaming Shorts in 2026. Discover high-velocity content ideas, from &#39;Micro-Clutch&#39; clips to &#39;Easter Egg&#39; reveals, and how ContHunt helps you dominate the #gaming node.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-fitness" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Fitness: 2026 Growth
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Revolutionize your fitness brand in 2026. Discover high-velocity YouTube Shorts ideas, from &#39;Form Engineering&#39; to &#39;Metabolism Hacks&#39;, and how ContHunt drives niche discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-cooking" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Cooking: 2026 Trends
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Sizzle in the 2026 cooking niche. Discover high-velocity YouTube Shorts ideas, from &#39;ASMR Prep&#39; to &#39;Ingredient Alchemy&#39;, and how ContHunt optimizes food discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/blog/youtube-shorts-content-ideas-beauty" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
+                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
+                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
+                                YouTube Shorts Content Ideas for Beauty: 2026 Trends
+                            </h4>
+                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
+                                Discover high-velocity YouTube Shorts ideas for the beauty niche in 2026. Learn about the &#39;ASMR Routine&#39; trend, &#39;Visual Texture&#39; hooks, and how ContHunt optimizes beauty discovery.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                
+                            </div>
+                            <span class="text-xs text-neutral-500 mt-4 block">
+                                Feb 18, 2026
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+        
+
+        
+    </div>
+</section>
+
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://conthunt.app"
+    },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://conthunt.app/blog"
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": &#34;What Makes a Video Go Viral? The 2026 Algorithmic Formula&#34;,
+        "item": "https://conthunt.app/blog/what-makes-a-video-viral"
+    }]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can any video go viral in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Technically, yes, because the 2026 algorithms use **'Slot-Testing'**. Every video is given a 'Seed Audience.' If that audience engages, the video moves to a larger tier. Virality is simply the process of passing 5-6 consecutive tier tests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most important viral metric in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the **'Direct Share' velocity**. The algorithm prioritizes videos sent via DM (Direct Message) over those that just get likes. This indicates a high level of personal relevance and social currency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ContHunt predict virality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We analyze your video's **'Interest-Node Alignment'**. If you are posting about #AI in a node that is currently experiencing a 'High-Demand Vacuum,' your chances of going viral increase by over 400%."
+      }
+    }
+  ]
+}
+</script>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "PropertyValue",
+      "name": "Viral Probability Floor",
+      "value": "75% Retention",
+      "description": "The minimum retention rate required in the first 5 seconds to even attempt a mass-market viral breakthrough in 2026."
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Share Multiplier",
+      "value": "10x Reach",
+      "description": "The exponential increase in reach for every 100 direct shares compared to 1,000 algorithmic likes in the 2026 feed."
+    }
+  ]
+}
+</script>
+
+
+
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/public/faviconold.png" alt="ContHunt Logo" class="w-6 h-6">
+                    <span class="font-semibold text-white">ContHunt</span>
+                </div>
+                <p class="text-neutral-500 max-w-xs mb-6">
+                    The all-in-one content aggregation and research intelligence tool for the modern web.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://x.com/conthunt" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:x"></iconify-icon></a>
+                    <a href="https://instagram.com/conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:instagram"></iconify-icon></a>
+                    <a href="https://tiktok.com/@conthunt.app" target="_blank"
+                        class="text-neutral-500 hover:text-white"><iconify-icon
+                            icon="simple-icons:tiktok"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Product</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/blog" class="hover:text-white transition-colors">Resources</a>
+                    </li>
+                    <li>
+                        <a href="/#workflow" class="hover:text-white transition-colors">Workflow</a>
+                    </li>
+                    <li>
+                        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="/blog" class="hover:text-white transition-colors">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li>
+                        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
+            <p>© 2024 ContHunt Inc. All rights reserved.</p>
+            <div class="flex items-center gap-2 mt-4 md:mt-0">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span>Systems Operational</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/blog.js"></script>
+</body>
+
+</html>

@@ -5,14 +5,14 @@ const matter = require('front-matter');
 const markdownIt = require('markdown-it');
 const ejs = require('ejs');
 
-const CONTENT_DIR = path.join(__dirname, '../content/blog');
-const PAGES_DIR = path.join(__dirname, '../content/pages');
+const CONTENT_DIR = path.join(__dirname, '../../content/blog');
+const PAGES_DIR = path.join(__dirname, '../../content/pages');
 const OUTPUT_DIR = path.join(__dirname, '../blog');
 const PUBLIC_DIR = path.join(__dirname, '..');
-const TEMPLATES_DIR = path.join(__dirname, 'templates');
+const TEMPLATES_DIR = path.join(__dirname, '../../scripts/templates');
 const RELATED_LOCK_PATH = path.join(__dirname, 'data/related-lock.json');
 const AUTHORS_PATH = path.join(__dirname, 'data/authors.json');
-const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.json');
+const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, '../data/author-assignments.json');
 const DOMAIN = 'https://conthunt.app';
 
 // Load authors list
@@ -219,12 +219,16 @@ function renderContentWithToc(body) {
     const tokens = md.parse(body, {});
     const tocItems = [];
     const slugCounts = {};
+    let firstH1Index = -1;
 
     for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
         if (token.type !== 'heading_open') continue;
 
         const level = Number(token.tag.slice(1));
+        if (level === 1 && firstH1Index === -1) {
+            firstH1Index = i;
+        }
         if (level !== 2 && level !== 3) continue;
 
         const inlineToken = tokens[i + 1];
@@ -239,6 +243,11 @@ function renderContentWithToc(body) {
 
         token.attrSet('id', id);
         tocItems.push({ level, title, id });
+    }
+
+    if (firstH1Index !== -1) {
+        // Remove the first markdown H1 so the template H1 remains the only H1 on the page.
+        tokens.splice(firstH1Index, 3);
     }
 
     const htmlContent = md.renderer.render(tokens, md.options, {});
