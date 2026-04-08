@@ -1,6 +1,6 @@
 ---
-title: "Instagram Reels Analytics: The 2026 Performance Guide"
-description: "Master the art of tracking and interpreting your Instagram Reels analytics in 2026. Discover key metrics for growth, from Re-watch Velocity to Viral Probability."
+title: "Instagram Reels Analytics 2026: 85% Retention = Viral (Key Metrics Guide)"
+description: "Instagram Reels analytics 2026: target 85% average watch duration for viral reach. Track save rate (1 per 100 views), re-watch signals, and profile visit velocity for growth."
 date: "2026-02-18"
 updated: "2026-02-18"
 category: "Instagram"
@@ -32,7 +32,7 @@ stat_items:
     context: "Reels where 3% of viewers share the video within the first hour are almost 90% likely to hit 100k views in 2026."
 ---
 
-# Instagram Reels Analytics: The 2026 Performance Guide
+# Instagram Reels Analytics 2026: 85% Retention = Viral (Key Metrics Guide)
 
 In 2026, analytics are no longer just about looking at your past—they are about **Predicting Your Future**. The Instagram Professional Dashboard has evolved into a sophisticated AI workstation that provides second-by-second insights into user behavior.
 

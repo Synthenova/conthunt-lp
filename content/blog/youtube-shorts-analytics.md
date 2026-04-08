@@ -1,6 +1,6 @@
 ---
-title: "YouTube Shorts Analytics Guide 2026: Complete Metrics & Tools"
-description: "Master YouTube Shorts analytics in 2026. Learn the key metrics, best tools (free & paid), and how to analyze performance for viral growth."
+title: "YouTube Shorts Analytics 2026: Track Retention, Hooks, and Viral Signals"
+description: "Track YouTube Shorts performance in 2026: retention-to-reach ratio, hook performance (70% viewed target), share/save metrics. Free tools and competitor benchmarking methods."
 date: "2026-02-25"
 updated: "2026-02-25"
 category: "YouTube"
@@ -42,7 +42,7 @@ stat_items:
     context: "The time required to connect your public channel and start receiving free algorithmic intelligence in 2026."
 ---
 
-# YouTube Shorts Analytics Guide 2026: Complete Metrics & Tools
+# YouTube Shorts Analytics 2026: Track Retention, Hooks, and Viral Signals
 
 Analyzing your performance on YouTube Shorts is no longer just about counting views. In the highly competitive landscape of 2026, every creator has access to data, but only the winners know how to turn that data into a better script for their next video.
 

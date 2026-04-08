@@ -1,6 +1,6 @@
 ---
-title: "YouTube Shorts Best Practices 2026: Complete Growth Playbook"
-description: "The definitive guide to YouTube Shorts best practices covering hooks, retention loops, titles, thumbnails, posting frequency, and timing. Master the 2026 algorithm."
+title: "YouTube Shorts Best Practices 2026: 0.5s Hook + Retention Loop = 300% More Reach"
+description: "Master YouTube Shorts in 2026: 0.5-second visual hook, retention-loop structure, interest-node alignment. Proven tactics that boosted reach by 300% for top creators."
 date: "2026-02-25"
 updated: "2026-02-25"
 category: "Best Practices"
@@ -50,7 +50,7 @@ stat_items:
     context: "The average increase in first-hour views for creators who sync their schedule with real-time activity maps."
 ---
 
-# YouTube Shorts Best Practices 2026: Complete Growth Playbook
+# YouTube Shorts Best Practices 2026: 0.5s Hook + Retention Loop = 300% More Reach
 
 The landscape of short-form video is evolving faster than ever. In 2026, simply "posting content" is not enough. You need a technical, data-driven approach to win the attention war. This comprehensive guide covers everything you need to dominate the Shorts feed.
 
