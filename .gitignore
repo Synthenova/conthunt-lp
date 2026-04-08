@@ -19,8 +19,15 @@ yarn-error.log*
 # Claude
 .claude/
 .agent/
+.agents/
+.mcp.json
 
 # pycache
 __pycache__/
 .env
 .env.local
+
+# SEO logs
+SEO/backend.log
+SEO/service_account_credentials.json
+skills-lock.json
