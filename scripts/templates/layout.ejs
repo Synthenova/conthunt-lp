@@ -56,13 +56,13 @@
                         !=='undefined' ) ? author : "ContHunt Team" }; %>
 
                         <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
-                            <script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": <%= JSON.stringify(pageTitle) %>,
-        "description": <%= JSON.stringify(description || '') %>,
-        "image": <%= JSON.stringify(heroAbs || 'https://conthunt.app/public/banner.png') %>,
+        "headline": <%- JSON.stringify(pageTitle) %>,
+        "description": <%- JSON.stringify(description || '') %>,
+        "image": <%- JSON.stringify(heroAbs || 'https://conthunt.app/public/banner.png') %>,
         "datePublished": "<%= (typeof date !== 'undefined') ? date : '' %>",
         "dateModified": "<%= (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : '') %>",
         "author": <%- JSON.stringify(authorSchema) %>,
@@ -103,13 +103,13 @@
     }
     </script>
                                     <% if (heroAbs) { %>
-                                        <script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ImageObject",
-        "url": <%= JSON.stringify(heroAbs) %>,
-        "contentUrl": <%= JSON.stringify(heroAbs) %>,
-        "caption": <%= JSON.stringify(pageTitle) %>
+        "url": <%- JSON.stringify(heroAbs) %>,
+        "contentUrl": <%- JSON.stringify(heroAbs) %>,
+        "caption": <%- JSON.stringify(pageTitle) %>
     }
     </script>
                                         <% } %>
