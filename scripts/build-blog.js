@@ -283,6 +283,10 @@ function normalizeAuthorProfile(value) {
     return profile;
 }
 
+function normalizeCategory(value) {
+    return isNonEmptyString(value) ? value.trim() : '';
+}
+
 function normalizeVideoItems(value) {
     if (!Array.isArray(value)) return null;
 
@@ -672,18 +676,22 @@ async function buildStaticPages() {
 }
 
 // Find related posts based on shared tags, prioritizing "fairness" (low link count) and stability (date)
-function findRelatedPosts(currentPost, allPosts, limit = 10) {
+function findRelatedPosts(currentPost, allPosts, limit = 5) {
+    const currentCategory = normalizeCategory(currentPost.category).toLowerCase();
+
     // 1. Calculate Score for ALL other posts
     const candidates = allPosts
         .filter(p => p.slug !== currentPost.slug)
         .map(post => {
+            const candidateCategory = normalizeCategory(post.category).toLowerCase();
+            const sameCategory = currentCategory && candidateCategory && currentCategory === candidateCategory;
             const sharedTags = (currentPost.tags && post.tags)
                 ? post.tags.filter(t => currentPost.tags.includes(t))
                 : [];
 
             return {
                 post,
-                score: sharedTags.length,
+                score: (sameCategory ? 100 : 0) + (sharedTags.length * 10),
             };
         });
 
@@ -887,13 +895,13 @@ async function build() {
 
     // 4. Attach related posts to each post (must be after sorting)
     posts.forEach(post => {
-        const fallbackRelated = findRelatedPosts(post, posts, 10);
+        const fallbackRelated = findRelatedPosts(post, posts, 5);
         post.relatedPosts = mergeLockedRelatedPosts(
             post,
             fallbackRelated,
             postsBySlug,
             relatedLockMap,
-            10
+            5
         );
     });
 
