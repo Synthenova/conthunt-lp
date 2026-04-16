@@ -279,11 +279,27 @@
     },{
         "@type": "ListItem",
         "position": 3,
-        "name": <%= JSON.stringify(title) %>,
+        "name": <%- JSON.stringify(title) %>,
         "item": "<%= canonical %>"
     }]
 }
 </script>
+
+<% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
+<section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
+    <h3 class="text-white text-xl font-medium mb-4">Frequently Asked Questions</h3>
+    <div class="space-y-3">
+        <% faqSchemaItems.forEach(item => { %>
+            <details class="rounded-xl border border-white/5 bg-white/0 p-4">
+                <summary class="cursor-pointer text-white font-medium list-none">
+                    <%= item.question %>
+                </summary>
+                <p class="text-neutral-300 mt-3 leading-relaxed"><%= item.answer %></p>
+            </details>
+        <% }); %>
+    </div>
+</section>
+<% } %>
 
 <% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
 <script type="application/ld+json">

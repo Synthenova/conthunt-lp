@@ -18,7 +18,7 @@
         posthog.capture('blog_article_viewed', {
             article_title: '<%= pageTitle %>',
             canonical_url: '<%= canonical %>',
-            author_name: '<%- typeof author !== "undefined" ? author : "ContHunt Team" %>'
+            author_name: '<%= typeof author !== "undefined" && author && typeof author === "object" && author.name ? author.name : (typeof author !== "undefined" ? author : "ContHunt Team") %>'
         });
     </script>
 
@@ -55,30 +55,32 @@
                         authorProfile.description } : {}) } : { "@type" : "Person" , "name" : (typeof author
                         !=='undefined' ) ? author : "ContHunt Team" }; %>
 
-                        <% if (typeof isBlogPost !=='undefined' && isBlogPost) { %>
+                        <% if (typeof isBlogPost !=='undefined' && isBlogPost) {
+                            const articleSchema = {
+                                "@context": "https://schema.org",
+                                "@type": "Article",
+                                "headline": pageTitle,
+                                "description": description || '',
+                                "image": heroAbs || 'https://conthunt.app/public/banner.png',
+                                "datePublished": (typeof date !== 'undefined') ? date : '',
+                                "dateModified": (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : ''),
+                                "author": authorSchema,
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": "ContHunt",
+                                    "logo": {
+                                        "@type": "ImageObject",
+                                        "url": "https://conthunt.app/public/logo-title-white.png"
+                                    }
+                                },
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": canonical
+                                }
+                            };
+                        %>
                             <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": <%= JSON.stringify(pageTitle) %>,
-        "description": <%= JSON.stringify(description || '') %>,
-        "image": <%= JSON.stringify(heroAbs || 'https://conthunt.app/public/banner.png') %>,
-        "datePublished": "<%= (typeof date !== 'undefined') ? date : '' %>",
-        "dateModified": "<%= (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : '') %>",
-        "author": <%- JSON.stringify(authorSchema) %>,
-        "publisher": {
-            "@type": "Organization",
-            "name": "ContHunt",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://conthunt.app/public/logo-title-white.png"
-            }
-        },
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "<%= canonical %>"
-        }
-    }
+<%- JSON.stringify(articleSchema, null, 2) %>
     </script>
                             <% } %>
 
@@ -103,13 +105,13 @@
     }
     </script>
                                     <% if (heroAbs) { %>
-                                        <script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ImageObject",
-        "url": <%= JSON.stringify(heroAbs) %>,
-        "contentUrl": <%= JSON.stringify(heroAbs) %>,
-        "caption": <%= JSON.stringify(pageTitle) %>
+        "url": <%- JSON.stringify(heroAbs) %>,
+        "contentUrl": <%- JSON.stringify(heroAbs) %>,
+        "caption": <%- JSON.stringify(pageTitle) %>
     }
     </script>
                                         <% } %>
