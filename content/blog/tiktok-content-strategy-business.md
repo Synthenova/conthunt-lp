@@ -62,6 +62,13 @@ In 2026, the "Like" is a vanity metric. Focus on:
 *   **Share Velocity:** How fast is your content moving through DMs? 
 *   **Node Penetration:** Are you showing up in the 'Suggested for You' feeds of your ideal customer profile?
 
+## TikTok Algorithm Guide
+If you came from the old `tiktok-algorithm-guide` page, the business version of the algorithm is straightforward: TikTok rewards early retention, topic clarity, and repeated signals that your content satisfies a niche audience.
+*   Hook fast, because the first seconds decide whether the post gets pushed further.
+*   Use one clear topic per video so the For You Page can classify it correctly.
+*   Repeat winning structures instead of chasing random virality.
+*   Watch completion rate and rewatches before you chase follower count.
+
 ---
 
 ## 2026 Business TikTok Strategy Checklist

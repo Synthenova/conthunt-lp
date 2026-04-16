@@ -136,6 +136,24 @@ You don't need a massive budget to outsmart your competition. Use the **"Ghost W
 *   **The Ad Library:** Check the Meta and TikTok Ad Libraries. If a competitor is paying to promote a post, it’s because it’s their top-converting asset.
 *   **Manual Hook Audits:** Watch the first 3 seconds of a rival's top 5 videos. Transcribe their hooks. What words are emphasized? This is free data that AI tools sometimes miss.
 
+## How to Find Competitor Websites
+Start with simple search operators, then validate the result set with structured tools.
+*   **Search Operators:** Use `related:`, `site:`, and `intitle:` to surface direct and adjacent rivals.
+*   **SERP Mining:** Check the top 10 results for your core keywords and record recurring domains.
+*   **Tool Validation:** Use ContHunt or a similar competitor analysis stack to confirm which domains are actually growing.
+
+## Marketing Competitor Analysis
+If you came from the old `marketing-competitor-analysis` page, keep the same workflow but narrow the lens to campaign-level signals.
+*   Compare content themes, creative angles, and publishing cadence across the last 30 to 90 days.
+*   Note which channels a competitor uses to push the same offer, not just which post got the most likes.
+*   Build a gap list: topics they own, formats they repeat, and angles they avoid.
+
+## SEO Competitor Analysis
+If you came from the old `seo-competitor-analysis` page, fold the SEO checks into the same competitive review.
+*   Compare keyword ownership, content depth, internal linking, and backlink quality.
+*   Look for pages that rank because they answer the query more completely, not because they simply published earlier.
+*   Use the findings to decide whether to refresh, merge, or create a new support page.
+
 ---
 
 ## Conclusion
@@ -144,4 +162,4 @@ The 2026 creator is a **Data-Driven Strategist**. By equipping yourself with too
 ### Recommended Next Steps:
 *   [How to Identify Market Trends in 2026](/blog/how-to-identify-market-trends)
 *   [The Ultimate Guide to Social Media Intelligence](/blog/social-media-intelligence)
-*   [How to Find Competitor Websites (7 Proven Methods)](/blog/how-to-find-competitor-websites)
+*   [Competitor Analysis Tools](/blog/competitor-analysis-tools)

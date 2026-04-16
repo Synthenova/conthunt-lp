@@ -22,7 +22,7 @@ ContHunt has **96 blog posts** but **zero Google page-1 rankings**. The #1 reaso
 | 6 | `/blog/how-to-make-youtube-shorts` | How to create (duplicate!) |
 | 7 | `/blog/how-to-upload-a-youtube-short` | Upload process |
 
-**→ MERGE into:** `/blog/youtube-shorts-complete-guide` (Ultimate Guide to YouTube Shorts: Format, Length, Creation & Upload)
+**→ MERGE into:** `/blog/youtube-shorts-best-practices` (Expanded YouTube Shorts pillar covering format, length, creation, upload, and optimization)
 **Redirect:** All 6 others → pillar page with 301 redirects
 
 ---
@@ -140,20 +140,19 @@ ContHunt has **96 blog posts** but **zero Google page-1 rankings**. The #1 reaso
 ---
 
 ### 🟡 GROUP 9: Instagram Reels (CONSOLIDATE → 2 pages)
-**Current:** 7 pages
+**Current:** 6 pages
 | # | URL | Focus |
 |---|-----|-------|
 | 1 | `/blog/instagram-reels-content-ideas` | Ideas |
-| 2 | `/blog/instagram-reels-best-practices-2026` | Best practices |
-| 3 | `/blog/instagram-reels-analytics` | Analytics |
-| 4 | `/blog/instagram-reels-strategy-fitness` | Fitness strategy |
-| 5 | `/blog/instagram-reels-vs-youtube-shorts-analytics` | Comparison |
-| 6 | `/blog/instagram-competitor-analysis-tools` | Competitor tools |
-| 7 | `/blog/instagram-analytics-app` | Analytics apps |
+| 2 | `/blog/instagram-reels-analytics` | Analytics |
+| 3 | `/blog/instagram-reels-strategy-fitness` | Fitness strategy |
+| 4 | `/blog/instagram-reels-vs-youtube-shorts-analytics` | Comparison |
+| 5 | `/blog/instagram-competitor-analysis-tools` | Competitor tools |
+| 6 | `/blog/instagram-analytics-app` | Analytics apps |
 
 **→ CONSOLIDATE:**
-- Merge #1 + #2 + #4 → `/blog/instagram-reels-guide` (ideas + best practices + niches)
-- Merge #3 + #5 + #6 + #7 → `/blog/instagram-analytics-guide` (all analytics in one)
+- Merge best-practices content into `/blog/instagram-reels-content-ideas` (ideas + best practices + niches)
+- Merge #2 + #4 + #5 + #6 → `/blog/instagram-analytics-guide` (all analytics in one)
 
 ---
 
@@ -162,10 +161,8 @@ ContHunt has **96 blog posts** but **zero Google page-1 rankings**. The #1 reaso
 |---|-----|-------|
 | 1 | `/blog/competitor-analysis-tools` | Tools roundup |
 | 2 | `/blog/competitive-content-analysis` | Content analysis |
-| 3 | `/blog/marketing-competitor-analysis` | Marketing focus |
-| 4 | `/blog/how-to-find-competitor-websites` | How-to |
 
-**→ KEEP as separate pages** (different search intents) but add strong internal linking between them.
+**→ KEEP as separate pages** (different search intents) but add strong internal linking between them. The `how-to-find-competitor-websites`, `marketing-competitor-analysis`, and `seo-competitor-analysis` articles have been merged into `competitor-analysis-tools` and removed from the live blog.
 
 ---
 
@@ -220,7 +217,6 @@ These pages have unique topics and don't cannibalize others:
 - `/blog/tiktok-vs-instagram-reels-creators`
 - `/blog/tiktok-vs-youtube-shorts-analytics`
 - `/blog/what-is-content-intelligence`
-- `/blog/content-intelligence`
 - `/blog/find-winning-short-form-content`
 - `/blog/creative-green-screen-ideas-youtube-shorts-2026`
 - `/blog/can-you-use-copyrighted-music-on-youtube-shorts`
@@ -237,4 +233,4 @@ These pages have unique topics and don't cannibalize others:
 - `/blog/social-media-marketing-ideas`
 - `/blog/social-media-post-ideas`
 
-**Note:** `/blog/what-is-content-intelligence` and `/blog/content-intelligence` look like they might overlap — check and merge if so.
+**Note:** `/blog/what-is-content-intelligence` now serves as the merged content-intelligence hub.

@@ -129,6 +129,13 @@ Your hashtags confirm the AI's understanding: `#BudgetLaptops2026 #TechDeals #La
 
 **When all three layers match, the AI assigns a high "Topical Confidence" score, and your video is prioritized for both the For You feed and TikTok Search results.**
 
+## Hootsuite and Sprout Social Workflow
+If you came here from the old `tiktok-hashtags-hootsuite` or `tiktok-hashtags-sprout-social` pages, the workflow is the same: use the tool to organize research, not to replace the strategy.
+*   Build a weekly hashtag shortlist in your scheduler or social dashboard.
+*   Compare the reach of posts grouped by hashtag set so you can spot patterns.
+*   Keep a core set of niche tags, then rotate in one or two trend tags when the topic deserves it.
+*   Retire tags that repeatedly fail to attract the right audience, even if they are popular.
+
 ---
 
 ## 4. Category-Specific Viral Hashtag Sets (2026)

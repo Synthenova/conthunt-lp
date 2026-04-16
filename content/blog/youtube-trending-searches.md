@@ -97,6 +97,13 @@ Most creators use Google Trends incorrectly. For 2026 results, you MUST:
 3.  Change "Last 12 Months" to **"Last 7 Days"**.
 4.  Look at **"Rising Queries"**. If you see a term labeled "Breakout," it means search volume has increased by over 5,000% in a week.
 
+### Google Trends Playbook for YouTube
+If you came here from the old `google-trends-youtube-guide` page, this is the practical version.
+*   Compare the exact phrase you want to publish against nearby variations before you write the title.
+*   Watch the 7-day and 30-day curves together so you can separate real momentum from a one-day spike.
+*   Pull related queries and use the strongest one as the primary keyword, then support it with a stronger hook.
+*   Validate the trend against your own GSC data so you know whether the topic is actually relevant for your audience.
+
 ### Method C: ContHunt Automated Intelligence (Best for Pros)
 This is where 2026's elite creators live. **ContHunt** doesn't wait for you to search; it scans the metadata of millions of videos to find the "Sparks."
 *   **Velocity Alerts:** Get a ping when a specific hashtag or keyword starts showing "Outlier Growth" on channels smaller than yours.

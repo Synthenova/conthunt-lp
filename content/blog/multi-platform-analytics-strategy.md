@@ -60,6 +60,13 @@ In 2026, mapping the user journey is critical.
 *   **The Bridge:** Are your TikToks driving people to your Instagram "Link in Bio"?
 *   **The conversion:** Use 2026 tracking pixels to see if a viewer who engaged with a Reel eventually subscribed to your YouTube channel.
 
+## Social Media Analytics Guide for 2026
+If you came here from the old `social-media-analytics-guide-2026` page, this is the reusable version of the same idea.
+*   Track reach, saves, shares, watch time, and conversion rate instead of chasing vanity totals alone.
+*   Compare each platform against its own baseline because TikTok, Instagram, and YouTube reward different behaviors.
+*   Use weekly reviews to spot which topics deserve more budget, more edits, or a full merge into a stronger pillar.
+*   Tie analytics back to action: keep what grows, rework what underperforms, and retire what never earns impressions.
+
 ---
 
 ## 2026 Multi-Platform Audit Checklist

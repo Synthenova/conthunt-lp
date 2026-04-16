@@ -62,6 +62,13 @@ If your Shorts are already getting impressions, the next gains usually come from
 - Use titles, covers, and descriptions as part of Shorts discovery, not as afterthoughts.
 - Review retention, rewatches, and first-hour response before you scale any format.
 
+## YouTube Shorts Complete Guide
+If you came here from the old `youtube-shorts-complete-guide` page, the basics now live here.
+*   A Short is a vertical video built for fast discovery, usually with a strong opening and a single clear idea.
+*   Creation and upload still matter, but the first-frame promise matters more.
+*   Keep the title, caption, and on-screen text aligned so the platform knows exactly who the Short is for.
+*   Use this page as the operating guide, then pair it with analytics and content-ideas pages for deeper execution.
+
 ## 1. Start With a Better Hook
 
 The strongest Shorts usually answer one question right away: why should the viewer stay?

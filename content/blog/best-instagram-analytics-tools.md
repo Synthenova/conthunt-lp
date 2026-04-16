@@ -67,6 +67,13 @@ When choosing a tool this year, prioritize these three features:
 2.  **API Refresh Rates:** Does the data update in real-time or every 24 hours?
 3.  **Cross-Platform Parity:** Does it show how your IG audience behaves differently from your TikTok audience?
 
+## Native vs Third-Party Instagram Analytics Tools
+If you came here from the old `instagram-analytics-tools` page, the practical answer is simple.
+*   Use **Instagram Insights** when you only need your own account data and a quick read on reach, saves, and watch time.
+*   Use **ContHunt** when you need competitor benchmarking, cross-account comparison, or content pattern tracking.
+*   Use **Metricool**, **Sprout Social**, or **Hootsuite** when analytics need to live inside a reporting or scheduling workflow.
+*   Use a mix of native and third-party tools if you want both platform truth and market context.
+
 ---
 
 ## Conclusion

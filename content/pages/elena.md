@@ -17,7 +17,7 @@ Elena leads marketing at ContHunt. With a background in content strategy for B2B
 
 - [Can You Use Copyrighted Music on YouTube Shorts in 2026?](/blog/can-you-use-copyrighted-music-on-youtube-shorts)
 - [Instagram Reels Strategy for Fitness Creators](/blog/instagram-reels-strategy-fitness)
-- [Instagram Reels Best Practices 2026](/blog/instagram-reels-best-practices-2026)
+- [Instagram Reels Guide 2026](/blog/instagram-reels-content-ideas)
 - [Instagram Reels Analytics](/blog/instagram-reels-analytics)
 
 ## Related Pages

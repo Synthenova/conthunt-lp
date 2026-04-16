@@ -15,9 +15,9 @@ Full-stack engineer building AI-powered tools. Lamrin architected ContHunt's vid
 
 ## Featured Articles
 
-- [How to Find Competitor Websites](/blog/how-to-find-competitor-websites)
+- [Competitor Analysis Tools](/blog/competitor-analysis-tools)
 - [How to Identify Market Trends](/blog/how-to-identify-market-trends)
-- [Content Intelligence](/blog/content-intelligence)
+- [What is Content Intelligence?](/blog/what-is-content-intelligence)
 - [BuzzSumo Pricing vs. 2026 Alternatives](/blog/buzzsumo-pricing-alternatives)
 
 ## Related Pages
