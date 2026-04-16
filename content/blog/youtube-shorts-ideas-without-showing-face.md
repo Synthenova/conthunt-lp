@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Ideas Without Showing Your Face: 2026 Edition"
-description: "Master the art of faceless content creation on YouTube Shorts in 2026. Discover high-retention ideas, from 'Narrative AI' to 'Visual ASMR', and how ContHunt drives faceless growth."
+description: "YouTube Shorts Ideas Without Showing Your Face in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

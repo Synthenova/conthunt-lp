@@ -1,8 +1,8 @@
 ---
 title: "TikTok vs. YouTube Shorts Analytics: Decoding the Data in 2026"
-description: "Compare TikTok and YouTube Shorts analytics in 2026. Learn to navigate the 'Retention Curve' vs. the 'Swipe-Away Rate' to optimize your short-form video strategy."
+description: "TikTok vs. YouTube Shorts Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Platform Analytics"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Content Ideas for Travel: 2026 Strategic Guide"
-description: "Captivate the 2026 travel audience on Shorts. Discover high-velocity ideas, from 'Hidden Path' reveals to 'Zero-Budget' luxury hacks, and how ContHunt drives travel discovery."
+description: "YouTube Shorts Content Ideas for Travel in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

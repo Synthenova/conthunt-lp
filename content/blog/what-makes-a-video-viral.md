@@ -1,8 +1,8 @@
 ---
 title: "What Makes a Video Go Viral? The 2026 Algorithmic Formula"
-description: "Deconstruct the viral mechanics of 2026. Learn about 'Vibration Scores', 'Audience Retention Paradox', and how ContHunt helps you engineer virality with data."
+description: "a Video Go Viral? Algorithmic Formula in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Viral Mechanics"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

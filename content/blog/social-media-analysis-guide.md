@@ -1,8 +1,8 @@
 ---
 title: "Social Media Analysis: A Complete Guide to Analyzing Your Performance (2026)"
-description: "Learn how to analyze social media performance in 2026. This complete guide covers key metrics, step-by-step workflows, platform-specific tips, and reporting frameworks."
+description: "Social Media Analysis in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-19"
-updated: "2026-02-19"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

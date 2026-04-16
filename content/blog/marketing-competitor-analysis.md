@@ -1,8 +1,8 @@
 ---
 title: "Marketing Competitor Analysis: How to Spy on & Outperform Your Rivals (2026)"
-description: "Learn the complete 2026 framework for marketing competitor analysis. This step-by-step guide covers content, SEO, social media, and paid ads analysis to outperform your rivals."
+description: "Marketing Competitor Analysis in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-19"
-updated: "2026-02-19"
+updated: "2026-04-16"
 category: "Competitive Intelligence"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

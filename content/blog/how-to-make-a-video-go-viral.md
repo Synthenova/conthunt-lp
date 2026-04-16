@@ -1,8 +1,8 @@
 ---
 title: "How to Make a Video Go Viral: The 2026 Social Momentum Formula"
-description: "Master the art of virality in 2026. Discover the data-driven formula, AI hook optimization, and psychological triggers that drive millions of views."
+description: "Make a Video Go Viral in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Social Media Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

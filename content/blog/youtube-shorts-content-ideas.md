@@ -1,8 +1,8 @@
 ---
 title: "100+ YouTube Shorts Ideas for Every Niche (2026 Master List)"
-description: "The definitive 2026 hub for YouTube Shorts ideas. 100+ viral concepts for gaming, cooking, tech, comedy, education, and business to explode your growth."
+description: "100+ YouTube Shorts Ideas for Every Niche in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-19"
+updated: "2026-04-16"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -24,6 +24,17 @@ faq_items:
     answer: "Use **ContHunt** to track 'Node Velocity'. It identifies topics that are gaining traction in sub-niches before they reach the main Trending feed."
   - question: "Should I focus on one niche or try many?"
     answer: "In 2026, the algorithm is extremely sensitive to 'Channel Authority'. Focus on one main 'Parent Node' (e.g., Gaming) but experiment with 'Semantic Pairs' (e.g., Gaming + Tech) to expand your reach."
+
+stat_items:
+  - label: "Word Count"
+    value: "1306"
+    context: "Current refreshed article length."
+  - label: "Section Count"
+    value: "17"
+    context: "Number of headings in the refreshed post body."
+  - label: "Refresh Date"
+    value: "2026-04-16"
+    context: "Last refreshed during the April 2026 content pass."
 ---
 
 # 100+ YouTube Shorts Ideas for Every Niche (2026 Master List)

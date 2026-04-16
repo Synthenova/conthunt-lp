@@ -1,8 +1,8 @@
 ---
 title: "Instagram Reels Analytics: The 2026 Performance Guide"
-description: "Master the art of tracking and interpreting your Instagram Reels analytics in 2026. Discover key metrics for growth, from Re-watch Velocity to Viral Probability."
+description: "Instagram Reels Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Instagram"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

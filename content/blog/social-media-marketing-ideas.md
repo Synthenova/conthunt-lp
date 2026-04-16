@@ -1,8 +1,8 @@
 ---
 title: "2026 Social Media Marketing Ideas: Beyond the Basics"
-description: "Revolutionize your brand strategy with the most innovative social media marketing ideas for 2026. Explore interest-node targeting, AI-briefed creative, and community-led growth."
+description: "Social Media Marketing Ideas in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Marketing Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

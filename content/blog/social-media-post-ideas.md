@@ -1,8 +1,8 @@
 ---
 title: "2026 Social Media Post Ideas: Quick-Win Engagement Hooks"
-description: "Boost your engagement instantly with the best social media post ideas for 2026. Learn to craft high-velocity hooks, interactive polls, and shareable utility carousels."
+description: "Social Media Post Ideas in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

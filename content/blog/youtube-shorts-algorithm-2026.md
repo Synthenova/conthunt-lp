@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Algorithm & Viral Hooks Guide 2026"
-description: "Master the YouTube Shorts algorithm and viral hooks in 2026. Learn how the algorithm works, retention strategies, and hook techniques to go viral."
+description: "YouTube Shorts Algorithm & Viral Hooks in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-02-25"
+updated: "2026-04-16"
 category: "Algorithmic Research"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

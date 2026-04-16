@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Analytics Guide 2026: Complete Metrics & Tools"
-description: "Master YouTube Shorts analytics in 2026. Learn the key metrics, best tools (free & paid), and how to analyze performance for viral growth."
+description: "YouTube Shorts Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-02-25"
+updated: "2026-04-16"
 category: "YouTube"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

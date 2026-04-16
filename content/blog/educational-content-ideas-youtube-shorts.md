@@ -1,8 +1,8 @@
 ---
 title: "Brilliant Educational Content Ideas for YouTube Shorts in 2026"
-description: "Master the 2026 'Micro-Learning' explosion. Explore high-retention educational ideas and how ContHunt benchmarks expert authority nodes on YouTube Shorts."
+description: "Brilliant Educational Content Ideas for YouTube Shorts in in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

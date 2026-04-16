@@ -1,8 +1,8 @@
 ---
 title: "TikTok Content Strategy for Business: 2026 Growth Framework"
-description: "Build a scalable TikTok content strategy for your business in 2026. Learn to transition from selling to serving through high-utility short-form video and node alignment."
+description: "TikTok Content for Business in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

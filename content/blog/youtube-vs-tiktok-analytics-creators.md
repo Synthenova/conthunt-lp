@@ -1,8 +1,8 @@
 ---
 title: "YouTube vs. TikTok Analytics for Creators: 2026 ROI Analysis"
-description: "Discover the critical differences between YouTube and TikTok analytics in 2026. Learn how 'Intent Graph' vs. 'Interest Graph' data shapes your multi-platform success."
+description: "YouTube vs. TikTok Analytics for Creators in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Strategic Research"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

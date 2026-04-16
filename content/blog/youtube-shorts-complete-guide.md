@@ -1,8 +1,8 @@
 ---
 title: "The Ultimate YouTube Shorts Guide 2026: Format, Length, Creation & Upload"
-description: "Master YouTube Shorts in 2026 with our comprehensive guide covering format specs, optimal length, creation steps, and upload process. Learn how to go viral with the Interest-Graph algorithm."
+description: "YouTube Shorts in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-02-25"
+updated: "2026-04-16"
 category: "Platform Guides"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

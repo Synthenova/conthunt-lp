@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Content Ideas for Beauty: 2026 Trends"
-description: "Discover high-velocity YouTube Shorts ideas for the beauty niche in 2026. Learn about the 'ASMR Routine' trend, 'Visual Texture' hooks, and how ContHunt optimizes beauty discovery."
+description: "YouTube Shorts Content Ideas for Beauty in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

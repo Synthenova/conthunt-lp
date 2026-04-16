@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Content Ideas for Cooking: 2026 Trends"
-description: "Sizzle in the 2026 cooking niche. Discover high-velocity YouTube Shorts ideas, from 'ASMR Prep' to 'Ingredient Alchemy', and how ContHunt optimizes food discovery."
+description: "YouTube Shorts Content Ideas for Cooking in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

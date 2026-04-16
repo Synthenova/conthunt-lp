@@ -1,8 +1,8 @@
 ---
 title: "vidIQ Review & Pricing 2026: Complete Guide"
-description: "Complete vidIQ review for 2026 covering features, pricing (Pro vs Boost vs Max), and whether it's worth it for YouTube creators."
+description: "vidIQ Review & Pricing in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-02-25"
+updated: "2026-04-16"
 category: "Tools & Reviews"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

@@ -1,8 +1,8 @@
 ---
 title: "Social Media Analytics: The Complete Guide for 2026"
-description: "Learn how to track, measure, and optimize your social media performance with this comprehensive guide to social media analytics."
+description: "Social Media Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-24"
-updated: "2026-02-24"
+updated: "2026-04-16"
 author: "ContHunt Team"
 canonical: "https://conthunt.app/blog/social-media-analytics-guide-2026"
 image: "/public/banner.png"
@@ -36,9 +36,20 @@ faq_items:
 answer_first:
   label: "Short Answer"
   text: "Social media analytics is the process of collecting and analyzing data from your social channels to measure performance, understand your audience, and optimize your strategy for better results."
+
+stat_items:
+  - label: "Word Count"
+    value: "485"
+    context: "Current refreshed article length."
+  - label: "Section Count"
+    value: "13"
+    context: "Number of headings in the refreshed post body."
+  - label: "Refresh Date"
+    value: "2026-04-16"
+    context: "Last refreshed during the April 2026 content pass."
 ---
 
-# What is Social Media Analytics?
+# Social Media Analytics: The Complete Guide for 2026
 
 Social media analytics refers to the collection, measurement, and analysis of data from social media platforms. It helps you understand how your content performs, who your audience is, and how you can improve your social media strategy.
 

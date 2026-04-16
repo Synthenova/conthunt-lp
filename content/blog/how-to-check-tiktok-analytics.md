@@ -1,8 +1,8 @@
 ---
 title: "How to Check TikTok Analytics: Complete Dashboard Guide (2026)"
-description: "Learn how to see TikTok analytics on mobile and desktop. This complete 2026 guide covers the analytics dashboard, key metrics, audience insights, and third-party tools."
+description: "Check TikTok Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2024-10-14"
-updated: "2026-02-19"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

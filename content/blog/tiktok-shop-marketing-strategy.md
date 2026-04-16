@@ -1,8 +1,8 @@
 ---
 title: "TikTok Shop Marketing Strategy: The 2026 Social Commerce Playbook"
-description: "Master TikTok Shop in 2026. Learn how to optimize product cards, leverage affiliate networks, and use AI intelligence for high-conversion social commerce."
+description: "TikTok Shop Marketing in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Social Commerce"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

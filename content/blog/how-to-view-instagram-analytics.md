@@ -1,8 +1,8 @@
 ---
 title: "How to View Instagram Analytics: The 2026 Guide"
-description: "Learn how to access and interpret your Instagram analytics in 2026. Discover key metrics for growth, from professional dashboards to Reels retention data."
+description: "View Instagram Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Instagram"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

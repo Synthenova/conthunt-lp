@@ -1,8 +1,8 @@
 ---
 title: "Multi-Platform Analytics Strategy: The 2026 Omnichannel Guide"
-description: "Master the complexity of cross-platform growth in 2026. Learn how to unify your data from TikTok, Instagram, and YouTube into a single actionable strategy."
+description: "Multi-Platform Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

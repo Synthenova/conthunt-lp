@@ -1,8 +1,8 @@
 ---
 title: "Instagram Reels vs. YouTube Shorts Analytics: The 2026 Comparison"
-description: "Which platform's analytics provide more actionable growth insights in 2026? A data-driven comparison of Instagram Reels vs. YouTube Shorts data intelligence."
+description: "Instagram Reels vs. YouTube Shorts Analytics in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-18"
-updated: "2026-02-18"
+updated: "2026-04-16"
 category: "Platform Comparison"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"

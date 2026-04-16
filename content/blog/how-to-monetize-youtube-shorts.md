@@ -1,8 +1,8 @@
 ---
 title: "How to Monetize YouTube Shorts: Payment Rates, Methods & 2026 YPP Guide"
-description: "The definitive guide to making money on YouTube Shorts in 2026. Covers YPP eligibility, ad revenue sharing, Shorts Fund, sponsorships, affiliate marketing, and how much Shorts actually pay per 1,000 views."
+description: "Monetize YouTube Shorts in 2026 with practical steps, examples, and ContHunt tips."
 date: "2024-10-14"
-updated: "2026-02-19"
+updated: "2026-04-16"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
