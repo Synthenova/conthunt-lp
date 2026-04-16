@@ -1,1352 +1,1966 @@
 <html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- PostHog Analytics -->
+    <script
+      src="https://us-assets.i.posthog.com/static/array.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      posthog.init("phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7", {
+        api_host: "/ingest",
+        ui_host: "https://us.posthog.com",
+        person_profiles: "always",
+        cross_subdomain_cookie: true,
+      });
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- PostHog Analytics -->
-  <script src="https://us-assets.i.posthog.com/static/array.js"></script>
-  <script>
-    posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-      api_host: '/ingest',
-      ui_host: 'https://us.posthog.com',
-      person_profiles: 'always',
-      cross_subdomain_cookie: true,
-    })
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>ContHunt | Analyze Viral Videos</title>
+    <meta name="title" content="ContHunt | Analyze Viral Videos" />
+    <meta
+      name="description"
+      content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels."
+    />
+    <meta
+      name="keywords"
+      content="content research, viral video analysis, TikTok analytics, content intelligence, social media research, content strategy, trend analysis"
+    />
+    <meta name="author" content="ContHunt" />
 
-  <!-- Primary Meta Tags -->
-  <title>ContHunt | Analyze Viral Videos</title>
-  <meta name="title" content="ContHunt | Analyze Viral Videos" />
-  <meta name="description"
-    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
-  <meta name="keywords"
-    content="content research, viral video analysis, TikTok analytics, content intelligence, social media research, content strategy, trend analysis" />
-  <meta name="author" content="ContHunt" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      }
+    </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "ContHunt",
-      "url": "https://conthunt.app/"
-    }
-  </script>
-
-  <!-- SoftwareApplication Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "ContHunt",
-    "url": "https://conthunt.app",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ads, download shorts reels.",
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "USD",
-      "lowPrice": "0",
-      "highPrice": "79",
-      "offerCount": "3",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Free",
-          "price": "0",
+    <!-- SoftwareApplication Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ContHunt",
+        "url": "https://conthunt.app",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ads, download shorts reels.",
+        "offers": {
+          "@type": "AggregateOffer",
           "priceCurrency": "USD",
-          "description": "2 Platforms (IG, TikTok), 10 Searches/mo, 10 AI Analyses/mo"
+          "lowPrice": "0",
+          "highPrice": "79",
+          "offerCount": "3",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Free",
+              "price": "0",
+              "priceCurrency": "USD",
+              "description": "2 Platforms (IG, TikTok), 10 Searches/mo, 10 AI Analyses/mo"
+            },
+            {
+              "@type": "Offer",
+              "name": "Creator",
+              "price": "29",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "billingDuration": "P1M"
+              },
+              "description": "All Platforms, 50 Searches/mo, 1000 AI Credits/mo"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pro Research",
+              "price": "79",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "billingDuration": "P1M"
+              },
+              "description": "All Platforms + Upcoming, 300 Searches/mo, 3000 AI Credits/mo"
+            }
+          ]
         },
-        {
+        "featureList": [
+          "Multi-platform video aggregation across TikTok, YouTube Shorts, Instagram Reels",
+          "AI-powered content analysis and virality scoring",
+          "Competitive content discovery and trend identification",
+          "Deep research agent for frame-by-frame video breakdown",
+          "Niche Hunter for low-competition topic discovery",
+          "Velocity metrics for emerging content signals"
+        ],
+        "screenshot": "https://conthunt.app/public/banner.png",
+        "softwareVersion": "2.0",
+        "datePublished": "2025-01-01"
+      }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ContHunt",
+        "url": "https://conthunt.app",
+        "logo": "https://conthunt.app/public/logo-title-white.png",
+        "description": "AI-powered content intelligence platform for discovering viral short-form videos across TikTok, Instagram, YouTube, and more.",
+        "foundingDate": "2024",
+        "sameAs": [
+          "https://x.com/conthunt",
+          "https://instagram.com/conthunt.app",
+          "https://tiktok.com/@conthunt.app"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@conthunt.app"
+        },
+        "brand": {
+          "@type": "Brand",
+          "name": "ContHunt",
+          "description": "AI-powered content discovery and viral video analysis platform"
+        }
+      }
+    </script>
+
+    <!-- Product Schema for Pricing -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "ContHunt Creator",
+        "description": "AI-powered content discovery platform. Search across TikTok, YouTube Shorts, Instagram Reels. Get viral content insights, competitor analysis, and AI-driven content strategy recommendations.",
+        "brand": {
+          "@type": "Brand",
+          "name": "ContHunt"
+        },
+        "category": "Content Marketing Software",
+        "url": "https://conthunt.app/#pricing",
+        "offers": {
           "@type": "Offer",
-          "name": "Creator",
           "price": "29",
           "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "billingDuration": "P1M"
-          },
-          "description": "All Platforms, 50 Searches/mo, 1000 AI Credits/mo"
-        },
-        {
-          "@type": "Offer",
-          "name": "Pro Research",
-          "price": "79",
-          "priceCurrency": "USD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "billingDuration": "P1M"
-          },
-          "description": "All Platforms + Upcoming, 300 Searches/mo, 3000 AI Credits/mo"
+            "price": "29",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M",
+            "unitText": "month"
+          }
         }
-      ]
-    },
-    "featureList": [
-      "Multi-platform video aggregation across TikTok, YouTube Shorts, Instagram Reels",
-      "AI-powered content analysis and virality scoring",
-      "Competitive content discovery and trend identification",
-      "Deep research agent for frame-by-frame video breakdown",
-      "Niche Hunter for low-competition topic discovery",
-      "Velocity metrics for emerging content signals"
-    ],
-    "screenshot": "https://conthunt.app/public/banner.png",
-    "softwareVersion": "2.0",
-    "datePublished": "2025-01-01"
-  }
-  </script>
-
-  <!-- Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ContHunt",
-    "url": "https://conthunt.app",
-    "logo": "https://conthunt.app/public/logo-title-white.png",
-    "description": "AI-powered content intelligence platform for discovering viral short-form videos across TikTok, Instagram, YouTube, and more.",
-    "foundingDate": "2024",
-    "sameAs": [
-      "https://x.com/conthunt",
-      "https://instagram.com/conthunt.app",
-      "https://tiktok.com/@conthunt.app"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "email": "support@conthunt.app"
-    },
-    "brand": {
-      "@type": "Brand",
-      "name": "ContHunt",
-      "description": "AI-powered content discovery and viral video analysis platform"
-    }
-  }
-  </script>
-
-  <!-- Product Schema for Pricing -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "ContHunt Creator",
-    "description": "AI-powered content discovery platform. Search across TikTok, YouTube Shorts, Instagram Reels. Get viral content insights, competitor analysis, and AI-driven content strategy recommendations.",
-    "brand": {
-      "@type": "Brand",
-      "name": "ContHunt"
-    },
-    "category": "Content Marketing Software",
-    "url": "https://conthunt.app/#pricing",
-    "offers": {
-      "@type": "Offer",
-      "price": "29",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "29",
-        "priceCurrency": "USD",
-        "billingDuration": "P1M",
-        "unitText": "month"
       }
-    }
-  }
-  </script>
+    </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="public/favicon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="public/favicon.png" />
-  <link rel="apple-touch-icon" href="public/favicon.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="public/favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="public/favicon.png"
+    />
+    <link rel="apple-touch-icon" href="public/favicon.png" />
 
-  <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://conthunt.app/" />
-  <meta property="og:title" content="ContHunt | Analyze Viral Videos" />
-  <meta property="og:description"
-    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
-  <meta property="og:image" content="https://conthunt.app/public/banner.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="ContHunt" />
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://conthunt.app/" />
+    <meta property="og:title" content="ContHunt | Analyze Viral Videos" />
+    <meta
+      property="og:description"
+      content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels."
+    />
+    <meta
+      property="og:image"
+      content="https://conthunt.app/public/banner.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="ContHunt" />
 
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://conthunt.app/" />
-  <meta name="twitter:title" content="ContHunt | Analyze Viral Videos" />
-  <meta name="twitter:description"
-    content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
-  <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://conthunt.app/" />
+    <meta name="twitter:title" content="ContHunt | Analyze Viral Videos" />
+    <meta
+      name="twitter:description"
+      content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels."
+    />
+    <meta
+      name="twitter:image"
+      content="https://conthunt.app/public/banner.png"
+    />
 
-  <!-- Additional SEO -->
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#030303" />
-  <link rel="canonical" href="https://conthunt.app/" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-    rel="stylesheet" />
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#030303" />
+    <link rel="canonical" href="https://conthunt.app/" />
+    <script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
+    <script
+      src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-</head>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body class="relative min-h-screen">
-  <!-- Background Grid & Glows -->
-  <div class="dark-zone"></div>
-  <div id="grid-torch"></div>
+  <body class="relative min-h-screen">
+    <!-- Background Grid & Glows -->
+    <div class="dark-zone"></div>
+    <div id="grid-torch"></div>
 
-  <!-- Navigation -->
-  <!-- Modified Navigation: replaced icon bowl with contHunt logo image -->
-  <nav
-    class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
-    <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
-      <!-- Logo (left) -->
-      <div class="flex items-center">
-        <img src="public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
-      </div>
+    <!-- Navigation -->
+    <!-- Modified Navigation: replaced icon bowl with contHunt logo image -->
+    <nav
+      class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]"
+    >
+      <div
+        class="w-full max-w-6xl px-6 flex items-center justify-between relative"
+      >
+        <!-- Logo (left) -->
+        <div class="flex items-center">
+          <img
+            src="public/logo-title-white.png"
+            alt="ContHunt Logo"
+            class="h-6 w-auto"
+          />
+        </div>
 
-      <!-- Middle nav items (absolutely centered) -->
-      <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
-        <a href="/blog" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Resources
-        </a>
-        <a href="#workflow" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Workflow
-        </a>
-        <a href="#pricing" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Pricing
-        </a>
-      </div>
+        <!-- Middle nav items (absolutely centered) -->
+        <div
+          class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2"
+        >
+          <a
+            href="/blog"
+            class="text-xs font-bold text-neutral-400 hover:text-white transition-colors"
+          >
+            Resources
+          </a>
+          <a
+            href="#workflow"
+            class="text-xs font-bold text-neutral-400 hover:text-white transition-colors"
+          >
+            Workflow
+          </a>
+          <a
+            href="#pricing"
+            class="text-xs font-bold text-neutral-400 hover:text-white transition-colors"
+          >
+            Pricing
+          </a>
+        </div>
 
-      <!-- Right side nav items -->
-      <div class="flex items-center gap-4 font-nav">
-        <!-- <a href="#" class="hidden md:block text-xs font-bold text-neutral-400 hover:text-white transition-colors">
+        <!-- Right side nav items -->
+        <div class="flex items-center gap-4 font-nav">
+          <!-- <a href="#" class="hidden md:block text-xs font-bold text-neutral-400 hover:text-white transition-colors">
           Log in
         </a> -->
-        <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
-          style="margin-right: -15px;">
-          <span>LOGIN</span>
-          <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="relative z-10 pt-44 pb-0">
-    <!-- HERO SECTION -->
-    <section class="mx-auto px-6 mb-32 flex flex-col items-center text-center"
-      style="max-width: 90rem; font-size: 1.2rem;">
-
-
-      <h1
-        class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
-        Third eye for your
-        <br />
-        <span id="changing-word"
-          class="inline-block text-[13vw] md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
-          style="line-height: 1.2; padding-bottom: 0.1em;">marketing</span>
-      </h1>
-
-      <p
-        class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
-        Aggregates viral videos across all social media platforms, analyzes every frame and uncovers niche gold before
-        it trends.
-      </p>
-
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
-        <button id="view-demo-btn"
-          class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
-          View Demo
-        </button>
-        <a href="https://agent.conthunt.app" id="hero-waitlist-btn"
-          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2 inline-flex items-center justify-center">
-          GET STARTED
-          <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
-        </a>
-      </div>
-
-      <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
-      <div id="simulated-app-frame" class="reveal-element w-full mt-8 md:mt-32 relative perspective-1000">
-        <div
-          class="relative w-full aspect-[3/2] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group">
-          <!-- App Header -->
-          <!-- App Header -->
-          <div
-            class="hidden md:flex h-12 border-b border-white/5 items-center px-4 justify-center bg-[#0F0F0F] relative">
-            <div class="flex gap-2 absolute left-4">
-              <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-            </div>
-            <div class="w-1/3 h-8 bg-neutral-900 rounded-lg border border-white/5 flex items-center px-3 gap-2">
-              <iconify-icon icon="lucide:search" class="text-neutral-500 text-xs"></iconify-icon>
-              <span class="text-[11px] text-neutral-300">
-                organic skin care
-              </span>
-            </div>
-            <button id="lottie-replay-btn"
-              class="absolute right-4 text-xs font-semibold text-neutral-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-md border border-white/10 hidden items-center gap-1">
-              <iconify-icon icon="lucide:rotate-ccw" width="12"></iconify-icon> Replay
-            </button>
-          </div>
-
-          <!-- App Body -->
-          <div class="flex-1 flex overflow-hidden">
-            <!-- Sidebar -->
-            <div class="hidden md:flex w-16 border-r border-white/5 flex-col items-center py-4 gap-6 bg-[#0A0A0A]">
-              <button
-                class="sidebar-btn p-2 rounded-lg bg-indigo-500/10 text-indigo-400 transition-all hover:bg-indigo-500/20"
-                data-tab="search">
-                <iconify-icon icon="lucide:search" width="18"></iconify-icon>
-              </button>
-              <button
-                class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
-                data-tab="boards">
-                <iconify-icon icon="lucide:layout-grid" width="18"></iconify-icon>
-              </button>
-              <button
-                class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
-                data-tab="settings">
-                <iconify-icon icon="lucide:settings" width="18"></iconify-icon>
-              </button>
-              <button
-                class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
-                data-tab="ai">
-                <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
-              </button>
-            </div>
-
-            <!-- Content Area -->
-            <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
-            </div>
-          </div>
+          <a
+            href="https://agent.conthunt.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-button px-5 py-4 text-xs font-bold"
+            style="margin-right: -15px"
+          >
+            <span>LOGIN</span>
+            <iconify-icon
+              icon="lucide:arrow-right"
+              class="ml-1"
+              width="12"
+            ></iconify-icon>
+          </a>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <!-- SOCIAL PROOF MARQUEE -->
-    <section class="w-full border-y border-white/5 bg-[#030303] relative z-20 py-12 mb-32">
-      <div class="text-center mb-8">
-        <p class="text-xs font-semibold uppercase tracking-widest text-neutral-600">
-          Your platforms. Covered.
+    <main class="relative z-10 pt-44 pb-0">
+      <!-- HERO SECTION -->
+      <section
+        class="mx-auto px-6 mb-32 flex flex-col items-center text-center"
+        style="max-width: 90rem; font-size: 1.2rem"
+      >
+        <h1
+          class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl"
+        >
+          Third eye for your
+          <br />
+          <span
+            id="changing-word"
+            class="inline-block text-[13vw] md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
+            style="line-height: 1.2; padding-bottom: 0.1em"
+            >marketing</span
+          >
+        </h1>
+
+        <p
+          class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12"
+        >
+          Aggregates viral videos across all social media platforms, analyzes
+          every frame and uncovers niche gold before it trends.
         </p>
-      </div>
 
-      <div class="max-w-4xl mx-auto px-6">
         <div
-          class="flex items-center justify-center gap-10 md:gap-16 flex-wrap opacity-40 hover:opacity-70 transition-all duration-500">
-          <iconify-icon icon="simple-icons:tiktok" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:youtube" width="32" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:instagram" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:reddit" width="32" class="text-white hidden md:block"></iconify-icon>
-          <iconify-icon icon="simple-icons:linkedin" width="28" class="text-white hidden md:block"></iconify-icon>
-          <iconify-icon icon="simple-icons:x" width="24" class="text-white hidden md:block"></iconify-icon>
-          <iconify-icon icon="simple-icons:pinterest" width="28" class="text-white"></iconify-icon>
-          <iconify-icon icon="simple-icons:snapchat" width="28" class="text-white hidden md:block"></iconify-icon>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAIN POINT REVEAL -->
-    <section class="relative h-[300vh]" id="cinematic-section">
-      <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        <div class="max-w-5xl px-6 text-center">
-          <h2
-            class="text-4xl md:text-7xl font-semibold tracking-tight leading-tight transition-colors duration-300 flex flex-wrap justify-center gap-x-4 gap-y-2"
-            id="cinematic-text-content">
-            <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500">Stop</span>
-            <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500">scrolling</span>
-            <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500">to</span>
-            <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500">find</span>
-            <span class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500">ideas.</span>
-          </h2>
-        </div>
-      </div>
-    </section>
-    <section class="min-h-screen flex flex-col justify-center relative py-20" id="manual-research-section">
-      <div class="max-w-6xl mx-auto px-6 w-full">
-        <div class="text-center mb-16 manual-header opacity-0 translate-y-8">
-          <h2 class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight">
-            The high cost of manual research.
-          </h2>
-          <p class="text-neutral-400 text-xl">Why the old way is holding you back.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-          <div
-            class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-red-500/30 transition-all duration-300">
-            <div class="light-torch"></div>
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-            <div class="relative z-10">
-              <div class="w-fit p-3 bg-red-500/10 rounded-xl text-red-400 mb-6 border border-red-500/10">
-                <iconify-icon icon="lucide:search-x" width="24"></iconify-icon>
-              </div>
-              <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">
-                The Problem
-              </h3>
-              <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
-                You are wasting hours on manual research. Scrolling endlessly
-                through feeds hoping to find a spark of inspiration is not a
-                repeatable strategy.
-              </p>
-            </div>
-          </div>
-          <div
-            class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-amber-500/30 transition-all duration-300">
-            <div class="light-torch"></div>
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-            <div class="relative z-10">
-              <div class="w-fit p-3 bg-amber-500/10 rounded-xl text-amber-400 mb-6 border border-amber-500/10">
-                <iconify-icon icon="lucide:trending-down" width="24"></iconify-icon>
-              </div>
-              <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">
-                The Cost
-              </h3>
-              <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
-                While you scroll, your competitors are automating their content
-                strategy. You lose market share and miss trends before they even
-                peak.
-              </p>
-            </div>
-          </div>
-          <div
-            class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-indigo-500/30 transition-all duration-300">
-            <div class="light-torch"></div>
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-            <div class="relative z-10">
-              <div class="w-fit p-3 bg-indigo-500/10 rounded-xl text-indigo-400 mb-6 border border-indigo-500/10">
-                <iconify-icon icon="lucide:bot" width="24"></iconify-icon>
-              </div>
-              <h3 class="text-2xl font-semibold text-white mb-3 tracking-tight">
-                The Solution
-              </h3>
-              <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
-                An intelligent engine that scouts, filters, and analyzes viral
-                videos for you. Turn 10 hours of manual digging into 10 minutes
-                of execution.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BENTO GRID BENEFITS -->
-    <section id="features" class="max-w-6xl mx-auto px-6 mb-60 scroll-mt-32">
-      <div class="text-center mb-16 features-header opacity-0">
-        <h2 class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight">
-          Intelligence, not just search.
-        </h2>
-        <p class="text-neutral-400">
-          Everything you need to reverse-engineer virality.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-rows-2 h-auto md:h-[600px]">
-        <!-- Large Item: Cross Platform -->
-        <div
-          class="features-card md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0">
-          <div class="light-torch"></div>
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10 flex flex-col md:flex-row h-full">
-            <div class="mb-8 md:mb-0 w-full md:w-1/2">
-              <div
-                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white">
-                <iconify-icon icon="lucide:globe" width="20"></iconify-icon>
-              </div>
-              <h3 class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6">
-                Multi-Platform Aggregation
-              </h3>
-              <p class="text-[1.1rem] leading-6 text-neutral-400 max-w-sm">
-                Search keywords, hashtags, or creators across TikTok, YouTube
-                Shorts, Instagram Reels, and LinkedIn simultaneously.
-              </p>
-            </div>
-
-            <!-- Floating Platform Icons Grid -->
-            <div class="w-full md:w-1/2 flex justify-center items-center">
-              <div class="flex gap-[0.3rem]">
-                <!-- Left Column -->
-                <div class="flex flex-col gap-[0.3rem]">
-                  <!-- Instagram (Big) -->
-                  <div
-                    class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
-                    style="width: 8.4rem; height: 6.9rem; border-radius: 1rem;"
-                    data-hover-gradient="linear-gradient(150.34deg, rgba(225, 48, 108, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
-                    data-hover-color="#E1306C">
-                    <iconify-icon icon="simple-icons:instagram" width="40"></iconify-icon>
-                  </div>
-                  <!-- Row: YouTube + Facebook (Small) -->
-                  <div class="flex gap-[0.3rem]">
-                    <div
-                      class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
-                      style="width: 4.05rem; height: 3.45rem; border-radius: 0.625rem;"
-                      data-hover-gradient="linear-gradient(150.34deg, rgba(255, 0, 0, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
-                      data-hover-color="#FF0000">
-                      <iconify-icon icon="simple-icons:youtube" width="24"></iconify-icon>
-                    </div>
-                    <div
-                      class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
-                      style="width: 4.05rem; height: 3.45rem; border-radius: 0.625rem;"
-                      data-hover-gradient="linear-gradient(150.34deg, rgba(24, 119, 242, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
-                      data-hover-color="#1877F2">
-                      <iconify-icon icon="simple-icons:facebook" width="24"></iconify-icon>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="flex flex-col gap-[0.3rem]">
-                  <!-- Pinterest (Wide Medium) -->
-                  <div
-                    class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
-                    style="width: 8.4rem; height: 3.45rem; border-radius: 0.625rem;"
-                    data-hover-gradient="linear-gradient(150.34deg, rgba(230, 0, 35, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
-                    data-hover-color="#E60023">
-                    <iconify-icon icon="simple-icons:pinterest" width="26"></iconify-icon>
-                  </div>
-                  <!-- TikTok (Big) -->
-                  <div
-                    class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
-                    style="width: 8.4rem; height: 6.9rem; border-radius: 1rem;"
-                    data-hover-gradient="linear-gradient(150.34deg, rgba(0, 242, 234, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
-                    data-hover-color="#00F2EA">
-                    <iconify-icon icon="simple-icons:tiktok" width="26"></iconify-icon>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tall Item: AI Analysis -->
-        <div
-          class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 md:row-span-2 opacity-0">
-          <div class="light-torch"></div>
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10 h-full flex flex-col">
-            <div
-              class="w-10 h-10 shrink-0 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white">
-              <iconify-icon icon="lucide:scan-eye" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6">
-              Deep Research Agent
-            </h3>
-            <p class="text-[1.1rem] leading-6 text-neutral-400 mb-8">
-              Like NotebookLM for short-form. Our AI analyzes hooks, pacing,
-              visuals, and script structure.
-            </p>
-
-            <!-- Visual: Chat/Analysis -->
-            <div class="space-y-3 mt-auto">
-              <div class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
-                style="font-family: var(--font-nav);">
-                <span class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]">
-                  Analysis
-                </span>
-                "The video retains 80% of viewers at 3s due to the visual
-                disruption effect."
-              </div>
-              <div class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
-                style="font-family: var(--font-nav);">
-                <span class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]">
-                  Script
-                </span>
-                "Wait, don't throw that away..."
-              </div>
-              <div class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
-                style="font-family: var(--font-nav);">
-                <span class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]">
-                  Metrics
-                </span>
-                "Hook Score: 92/100 • Virality Index: 8.4x • Est. Reach: 2.1M"
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Medium Item: Niche Finder -->
-        <div
-          class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0">
-          <div class="light-torch"></div>
-          <div class="relative z-10">
-            <div
-              class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white">
-              <iconify-icon icon="lucide:radar" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6">Niche Hunter</h3>
-            <p class="text-[1.1rem] leading-6 text-neutral-400">
-              Find low-competition, high-velocity topics tailored to your
-              brand.
-            </p>
-          </div>
-        </div>
-
-        <!-- Medium Item: Velocity Metrics -->
-        <div
-          class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0">
-          <div class="light-torch"></div>
-          <div class="relative z-10">
-            <div
-              class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white">
-              <iconify-icon icon="lucide:bar-chart-2" width="20"></iconify-icon>
-            </div>
-            <h3 class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6">
-              Velocity Metrics
-            </h3>
-            <p class="text-[1.1rem] leading-6 text-neutral-400">
-              Identify videos that are growing faster than the creator's
-              average.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORKFLOW SECTION (Refined) -->
-    <section id="workflow" class="max-w-6xl mx-auto px-6 mb-[13rem] scroll-mt-32">
-      <div class="flex flex-col md:flex-row -mb-28">
-        <!-- Left: Sticky Steps -->
-        <div class="md:w-1/2 hidden md:flex flex-col justify-center h-screen sticky top-0 pr-12"
-          style="font-size: 1.25rem;">
-          <!-- Header -->
-          <h4 class="font-nav text-[0.9rem] font-bold text-indigo-400 mb-12 uppercase">
-            Get Started
-          </h4>
-
-          <!-- Steps Container -->
-          <div class="space-y-16">
-            <!-- Step 1 Text -->
-            <div class="step-text transition-all duration-500 opacity-30" data-step="1">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">
-                01
-              </span>
-              <h3 class="text-2xl text-white font-medium mb-3">
-                Define Parameters
-              </h3>
-              <p class="text-neutral-400 leading-relaxed max-w-sm">
-                Communicate your needs with the agent and watch it spin up niche keywords based on your requests, along
-                with the mainstream ones.
-              </p>
-            </div>
-            <!-- Step 2 Text -->
-            <div class="step-text transition-all duration-500 opacity-30" data-step="2">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">
-                02
-              </span>
-              <h3 class="text-2xl text-white font-medium mb-3">
-                Content Search Engine
-              </h3>
-              <p class="text-neutral-400 leading-relaxed max-w-sm">
-                Scan thousands of videos across platforms in minutes, filtering out noise and flagging high-potential
-                content.
-              </p>
-            </div>
-            <!-- Step 3 Text -->
-            <div class="step-text transition-all duration-500 opacity-30" data-step="3">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">
-                03
-              </span>
-              <h3 class="text-2xl text-white font-medium mb-3">
-                Deep Dive
-              </h3>
-              <p class="text-neutral-400 leading-relaxed max-w-sm">
-                Start talking to the video. Get a full breakdown of why it worked, generate similar scripts and set up
-                scouting alerts.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right: Scrolling Images -->
-        <div class="md:w-1/2">
-          <!-- Image 1 Container -->
-          <div
-            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
-            data-step="1">
-            <!-- Mobile Step 1 Text -->
-            <div class="block md:hidden w-full mb-8 reveal-element">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">01</span>
-              <h3 class="text-2xl text-white font-medium mb-3">Define Parameters</h3>
-              <p class="text-neutral-400 leading-relaxed">
-                Communicate your needs with the agent and watch it spin up niche keywords based on your requests, along
-                with the mainstream ones.
-              </p>
-            </div>
-
-            <div
-              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <!-- Lottie Animation for Search -->
-              <lottie-player src="public/Scene-1.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" loop autoplay preserveAspectRatio="xMidYMid slice"></lottie-player>
-            </div>
-          </div>
-
-          <!-- Image 2 Container -->
-          <div
-            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
-            data-step="2">
-            <!-- Mobile Step 2 Text -->
-            <div class="block md:hidden w-full mb-8 reveal-element">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">02</span>
-              <h3 class="text-2xl text-white font-medium mb-3">Content Search Engine</h3>
-              <p class="text-neutral-400 leading-relaxed">
-                Scan thousands of videos across platforms in minutes, filtering out noise and flagging high-potential
-                content.
-              </p>
-            </div>
-
-            <div
-              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex flex-col p-6 relative overflow-hidden">
-              <!-- Status Bar -->
-              <div class="flex items-center gap-3 text-neutral-400 mb-4 z-20 shrink-0">
-                <iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon>
-                <span id="code-status" class="text-lg font-mono font-bold">Initializing search...</span>
-              </div>
-
-              <!-- Code Window -->
-              <div class="relative flex-1 overflow-hidden flex items-center" id="code-window">
-                <!-- Gradient Masks -->
-                <div
-                  class="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#080808] to-transparent z-10 pointer-events-none">
-                </div>
-                <div
-                  class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#080808] to-transparent z-10 pointer-events-none">
-                </div>
-
-                <!-- Scrolling Content - Now centered -->
-                <div id="code-content" class="w-full font-mono text-base leading-5 text-neutral-300 flex flex-col">
-                  <!-- Lines injected here -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 3 Container -->
-          <div
-            class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
-            data-step="3">
-            <!-- Mobile Step 3 Text -->
-            <div class="block md:hidden w-full mb-8 reveal-element">
-              <span class="text-xs font-mono text-indigo-400 mb-2 block">03</span>
-              <h3 class="text-2xl text-white font-medium mb-3">Deep Dive</h3>
-              <p class="text-neutral-400 leading-relaxed">
-                Start talking to the video. Get a full breakdown of why it worked, generate similar scripts and set up
-                scouting alerts.
-              </p>
-            </div>
-
-            <div
-              class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4"
-                class="absolute inset-0 w-full h-full object-cover" muted loop playsinline></video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA Button (Moved to Center Bottom) -->
-      <div class="mt-20 flex justify-center pb-20 md:pb-0">
-        <a href="https://agent.conthunt.app" id="cta-waitlist-btn"
-          class="glass-button glass-button-interactive px-9 md:px-16 py-5 text-xl font-medium font-nav gap-3 inline-flex items-center justify-center">
-          GET STARTED
-          <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
-        </a>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="max-w-6xl mx-auto px-6 mb-12 overflow-hidden">
-      <!-- Heading -->
-      <div class="text-center mb-16 reveal-element">
-        <h2 class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight">
-          Trusted by top creators
-        </h2>
-        <p class="text-neutral-400">
-          Join 50+ creative minds
-        </p>
-      </div>
-
-      <div class="marquee-container relative">
-        <div class="marquee-track-right flex gap-6" style="width: max-content;">
-          <!-- Original Cards -->
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "The deep research feature is insane. It's like having a
-              dedicated strategist analyzing my niche 24/7."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-sanya.png" alt="Sanya Verma" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Sanya Verma</div>
-                <div class="text-neutral-500">Ecom Founder</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "I stopped guessing what would go viral. ContHunt just shows me
-              the math behind the trends."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-manish.png" alt="Manish Das" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Manish Das</div>
-                <div class="text-neutral-500">Growth Lead</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "Replaced 3 separate tools with this. The AI agent actually
-              understands context, not just keywords."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-alex.png" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Alex Rivera</div>
-                <div class="text-neutral-500">Content Creator</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "Our content team output doubled because we spend zero time on
-              ideation now."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-elena.png" alt="Elena K." class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Elena K.</div>
-                <div class="text-neutral-500">Agency Owner</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Duplicate Set for Infinite Loop -->
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "The deep research feature is insane. It's like having a
-              dedicated strategist analyzing my niche 24/7."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-sanya.png" alt="Sanya Verma" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Sanya Verma</div>
-                <div class="text-neutral-500">Ecom Founder</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "I stopped guessing what would go viral. ContHunt just shows me
-              the math behind the trends."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-manish.png" alt="Manish Das" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Manish Das</div>
-                <div class="text-neutral-500">Growth Lead</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "Replaced 3 separate tools with this. The AI agent actually
-              understands context, not just keywords."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-alex.png" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Alex Rivera</div>
-                <div class="text-neutral-500">Content Creator</div>
-              </div>
-            </div>
-          </div>
-          <div class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0">
-            <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
-              "Our content team output doubled because we spend zero time on
-              ideation now."
-            </p>
-            <div class="flex items-center gap-3">
-              <img src="public/avatar-elena.png" alt="Elena K." class="w-8 h-8 rounded-full object-cover">
-              <div class="text-xs">
-                <div class="text-white font-medium">Elena K.</div>
-                <div class="text-neutral-500">Agency Owner</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- OBJECTIONS / FAQ -->
-    <section class="max-w-3xl mx-auto px-6 mb-32" style="font-size: 1.25rem;">
-      <h2 class="reveal-element text-3xl font-medium text-white mb-10 text-center">
-        Common Questions
-      </h2>
-
-      <div class="space-y-4">
-        <!-- FAQ 1 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>Is ContHunt just another social listening or ad spy tool?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            No. Tools like BuzzSumo/Hootsuite track mentions; ad spies show paid creatives. ContHunt is true <span
-              class="font-bold text-white"></span>content intelligence</span>—it aggregates organic short-form videos
-            across platforms, then uses agentic AI for
-            frame-by-frame structural breakdown (hooks, pacing, overlays, micro-patterns) to reveal why content goes
-            viral and how to replicate it before saturation hits.
-          </div>
-        </details>
-
-        <!-- FAQ 2 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>Which platforms are actually supported right now?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Full deep integration: TikTok, Instagram Reels, YouTube Shorts. LinkedIn video + X (Twitter) in private
-            beta—rolling wider soon. One canvas, no platform-hopping.
-          </div>
-        </details>
-
-        <!-- FAQ 3 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>How does agentic search actually work—and do I need to be technical?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Zero Boolean or setup. Say: "Women's activewear hooks 10–15s with >2M views, high comment-to-like ratio,
-            last 45 days." AI decomposes → runs smart multi-keyword combos → surfaces winners. Plain English → best
-            results.
-          </div>
-        </details>
-
-        <!-- FAQ 4 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>How deep is the frame-by-frame AI analysis really?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Brutally deep. It indexes visuals, text timing, transitions, expressions, product reveals, sound cues—things
-            humans miss at scale. Chat with your board: "Show every video with a question hook in first 3s" → instant
-            clips + insights.
-          </div>
-        </details>
-
-        <!-- FAQ 5 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>Can I organize videos and turn them into decks fast?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Yes—add to boards instantly. Boards auto-index for AI chat access (no delay). One click → high-performance
-            marketing deck: grouped patterns, virality deconstruct, success metrics, narrative breakdowns, ready for
-            team/client handoff.
-          </div>
-        </details>
-
-        <!-- FAQ 6 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>What's the difference vs. tools like Pipiads, MagicBrief, or Foreplay?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            They spy on ads (saturated winners). We hunt organic virality first—low-competition patterns, early momentum
-            signals, postmortem/premortem virality indexing—so your organic game amplifies paid ROAS instead of copying
-            yesterday's ads.
-          </div>
-        </details>
-
-        <!-- FAQ 7 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>How many videos/searches can I actually run?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Creator: 50 searches/mo + solid analysis volume.<br>
-            Pro Research: 300 searches + unlimited deep dives, priority AI credits.<br>
-            Enough for heavy niche scanning without hitting walls.
-          </div>
-        </details>
-
-        <!-- FAQ 8 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>Is my data secure and private?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Isolated per account. We don't train models on your boards/searches. Export everything anytime. Strict
-            privacy—no sharing.
-          </div>
-        </details>
-
-        <!-- FAQ 9 -->
-        <details
-          class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-          <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-            <span>Can I cancel or get a refund if it's not for me?</span>
-            <span class="transition group-open:rotate-180"><iconify-icon
-                icon="lucide:chevron-down"></iconify-icon></span>
-          </summary>
-          <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-            Monthly, no lock-in. 14-day money-back guarantee (T&Cs apply). Export boards/decks before you go.
-          </div>
-        </details>
-      </div>
-      </summary>
-      </details>
-
-      <details
-        class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors">
-        <summary class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium">
-          <span>Can I cancel anytime?</span>
-          <span class="transition group-open:rotate-180"><iconify-icon icon="lucide:chevron-down"></iconify-icon></span>
-        </summary>
-        <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
-          Absolutely. We offer monthly billing with no long-term contracts.
-          You can export your data before you leave.
-        </div>
-      </details>
-      </div>
-    </section>
-
-    <!-- PRICING & GUARANTEE -->
-    <section id="pricing" class="min-h-screen flex flex-col justify-center py-24 scroll-mt-16">
-      <div class="max-w-6xl mx-auto px-6 w-full">
-        <div class="text-center mb-16 reveal-element">
-          <h2 class="text-3xl font-medium text-white mb-4">
-            Transparent Pricing
-          </h2>
-          <p class="text-neutral-400 mb-8">
-            Lock in Beta pricing today. Prices increase after V1.0 launch.
+          class="reveal-element flex flex-col items-center gap-6 w-full max-w-md"
+        >
+          <button
+            id="view-demo-btn"
+            class="font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase"
+          >
+            View Demo
+          </button>
+          <a
+            href="https://agent.conthunt.app"
+            id="hero-waitlist-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2 inline-flex items-center justify-center"
+          >
+            GET STARTED
+            <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
+          </a>
+          <p
+            class="md:hidden text-[0.78rem] leading-5 text-neutral-500 max-w-[18rem]"
+          >
+            On mobile, open the app in a new tab and keep this page open for the
+            workflow guide.
           </p>
-          <!-- Billing Toggle -->
-          <div class="flex items-center justify-center gap-3 mb-10">
-            <span id="annual-label" class="text-sm font-medium text-neutral-400 transition-colors">Paid Annually</span>
-            <button id="annual-toggle"
-              class="relative h-8 w-14 rounded-full border border-white/10 bg-[#050505] transition-colors focus:outline-none ring-1 ring-white/5 active:scale-95 duration-200"
-              aria-pressed="false">
-              <span class="sr-only">Toggle annual billing</span>
-              <span id="annual-toggle-knob"
-                class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
-            </button>
-            <span
-              class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20 tracking-wide uppercase">Save
-              up to 20%</span>
+        </div>
+
+        <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
+        <div
+          id="simulated-app-frame"
+          class="reveal-element w-full mt-8 md:mt-32 relative perspective-1000"
+        >
+          <div
+            class="relative w-full aspect-[3/2] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group"
+          >
+            <!-- App Header -->
+            <!-- App Header -->
+            <div
+              class="hidden md:flex h-12 border-b border-white/5 items-center px-4 justify-center bg-[#0F0F0F] relative"
+            >
+              <div class="flex gap-2 absolute left-4">
+                <div
+                  class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"
+                ></div>
+                <div
+                  class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"
+                ></div>
+                <div
+                  class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"
+                ></div>
+              </div>
+              <div
+                class="w-1/3 h-8 bg-neutral-900 rounded-lg border border-white/5 flex items-center px-3 gap-2"
+              >
+                <iconify-icon
+                  icon="lucide:search"
+                  class="text-neutral-500 text-xs"
+                ></iconify-icon>
+                <span class="text-[11px] text-neutral-300">
+                  organic skin care
+                </span>
+              </div>
+              <button
+                id="lottie-replay-btn"
+                class="absolute right-4 text-xs font-semibold text-neutral-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-md border border-white/10 hidden items-center gap-1"
+              >
+                <iconify-icon
+                  icon="lucide:rotate-ccw"
+                  width="12"
+                ></iconify-icon>
+                Replay
+              </button>
+            </div>
+
+            <!-- App Body -->
+            <div class="flex-1 flex overflow-hidden">
+              <!-- Sidebar -->
+              <div
+                class="hidden md:flex w-16 border-r border-white/5 flex-col items-center py-4 gap-6 bg-[#0A0A0A]"
+              >
+                <button
+                  class="sidebar-btn p-2 rounded-lg bg-indigo-500/10 text-indigo-400 transition-all hover:bg-indigo-500/20"
+                  data-tab="search"
+                >
+                  <iconify-icon icon="lucide:search" width="18"></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="boards"
+                >
+                  <iconify-icon
+                    icon="lucide:layout-grid"
+                    width="18"
+                  ></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="settings"
+                >
+                  <iconify-icon
+                    icon="lucide:settings"
+                    width="18"
+                  ></iconify-icon>
+                </button>
+                <button
+                  class="sidebar-btn p-2 rounded-lg text-neutral-600 hover:text-white hover:bg-white/5 transition-all"
+                  data-tab="ai"
+                >
+                  <iconify-icon
+                    icon="lucide:sparkles"
+                    width="18"
+                  ></iconify-icon>
+                </button>
+              </div>
+
+              <!-- Content Area -->
+              <div
+                class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center"
+              >
+                <lottie-player
+                  id="main-lottie"
+                  src="public/main_lottie.json"
+                  background="transparent"
+                  speed="1"
+                  style="width: 100%; height: 100%"
+                  preserveAspectRatio="xMidYMid slice"
+                  mode="normal"
+                ></lottie-player>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL PROOF MARQUEE -->
+      <section
+        class="w-full border-y border-white/5 bg-[#030303] relative z-20 py-12 mb-32"
+      >
+        <div class="text-center mb-8">
+          <p
+            class="text-xs font-semibold uppercase tracking-widest text-neutral-600"
+          >
+            Your platforms. Covered.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6">
+          <div
+            class="flex items-center justify-center gap-10 md:gap-16 flex-wrap opacity-40 hover:opacity-70 transition-all duration-500"
+          >
+            <iconify-icon
+              icon="simple-icons:tiktok"
+              width="28"
+              class="text-white"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:youtube"
+              width="32"
+              class="text-white"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:instagram"
+              width="28"
+              class="text-white"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:reddit"
+              width="32"
+              class="text-white hidden md:block"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:linkedin"
+              width="28"
+              class="text-white hidden md:block"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:x"
+              width="24"
+              class="text-white hidden md:block"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:pinterest"
+              width="28"
+              class="text-white"
+            ></iconify-icon>
+            <iconify-icon
+              icon="simple-icons:snapchat"
+              width="28"
+              class="text-white hidden md:block"
+            ></iconify-icon>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAIN POINT REVEAL -->
+      <section class="relative h-[300vh]" id="cinematic-section">
+        <div
+          class="sticky top-0 h-screen flex items-center justify-center overflow-hidden"
+        >
+          <div class="max-w-5xl px-6 text-center">
+            <h2
+              class="text-4xl md:text-7xl font-semibold tracking-tight leading-tight transition-colors duration-300 flex flex-wrap justify-center gap-x-4 gap-y-2"
+              id="cinematic-text-content"
+            >
+              <span
+                class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >Stop</span
+              >
+              <span
+                class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >scrolling</span
+              >
+              <span
+                class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >to</span
+              >
+              <span
+                class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >find</span
+              >
+              <span
+                class="cinematic-word text-white opacity-10 blur-sm transition-all duration-500"
+                >ideas.</span
+              >
+            </h2>
+          </div>
+        </div>
+      </section>
+      <section
+        class="min-h-screen flex flex-col justify-center relative py-20"
+        id="manual-research-section"
+      >
+        <div class="max-w-6xl mx-auto px-6 w-full">
+          <div class="text-center mb-16 manual-header opacity-0 translate-y-8">
+            <h2
+              class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight"
+            >
+              The high cost of manual research.
+            </h2>
+            <p class="text-neutral-400 text-xl">
+              Why the old way is holding you back.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <div
+              class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-red-500/30 transition-all duration-300"
+            >
+              <div class="light-torch"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-fit p-3 bg-red-500/10 rounded-xl text-red-400 mb-6 border border-red-500/10"
+                >
+                  <iconify-icon
+                    icon="lucide:search-x"
+                    width="24"
+                  ></iconify-icon>
+                </div>
+                <h3
+                  class="text-2xl font-semibold text-white mb-3 tracking-tight"
+                >
+                  The Problem
+                </h3>
+                <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
+                  You are wasting hours on manual research. Scrolling endlessly
+                  through feeds hoping to find a spark of inspiration is not a
+                  repeatable strategy.
+                </p>
+              </div>
+            </div>
+            <div
+              class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-amber-500/30 transition-all duration-300"
+            >
+              <div class="light-torch"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-fit p-3 bg-amber-500/10 rounded-xl text-amber-400 mb-6 border border-amber-500/10"
+                >
+                  <iconify-icon
+                    icon="lucide:trending-down"
+                    width="24"
+                  ></iconify-icon>
+                </div>
+                <h3
+                  class="text-2xl font-semibold text-white mb-3 tracking-tight"
+                >
+                  The Cost
+                </h3>
+                <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
+                  While you scroll, your competitors are automating their
+                  content strategy. You lose market share and miss trends before
+                  they even peak.
+                </p>
+              </div>
+            </div>
+            <div
+              class="manual-card opacity-0 glass-panel p-8 rounded-3xl border border-white/5 flex flex-col items-start relative overflow-hidden group hover:border-indigo-500/30 transition-all duration-300"
+            >
+              <div class="light-torch"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-fit p-3 bg-indigo-500/10 rounded-xl text-indigo-400 mb-6 border border-indigo-500/10"
+                >
+                  <iconify-icon icon="lucide:bot" width="24"></iconify-icon>
+                </div>
+                <h3
+                  class="text-2xl font-semibold text-white mb-3 tracking-tight"
+                >
+                  The Solution
+                </h3>
+                <p class="text-[1.1rem] text-neutral-400 leading-relaxed">
+                  An intelligent engine that scouts, filters, and analyzes viral
+                  videos for you. Turn 10 hours of manual digging into 10
+                  minutes of execution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BENTO GRID BENEFITS -->
+      <section id="features" class="max-w-6xl mx-auto px-6 mb-60 scroll-mt-32">
+        <div class="text-center mb-16 features-header opacity-0">
+          <h2
+            class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight"
+          >
+            Intelligence, not just search.
+          </h2>
+          <p class="text-neutral-400">
+            Everything you need to reverse-engineer virality.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-rows-2 h-auto md:h-[600px]"
+        >
+          <!-- Large Item: Cross Platform -->
+          <div
+            class="features-card md:col-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0"
+          >
+            <div class="light-torch"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10 flex flex-col md:flex-row h-full">
+              <div class="mb-8 md:mb-0 w-full md:w-1/2">
+                <div
+                  class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+                >
+                  <iconify-icon icon="lucide:globe" width="20"></iconify-icon>
+                </div>
+                <h3
+                  class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6"
+                >
+                  Multi-Platform Aggregation
+                </h3>
+                <p class="text-[1.1rem] leading-6 text-neutral-400 max-w-sm">
+                  Search keywords, hashtags, or creators across TikTok, YouTube
+                  Shorts, Instagram Reels, and LinkedIn simultaneously.
+                </p>
+              </div>
+
+              <!-- Floating Platform Icons Grid -->
+              <div class="w-full md:w-1/2 flex justify-center items-center">
+                <div class="flex gap-[0.3rem]">
+                  <!-- Left Column -->
+                  <div class="flex flex-col gap-[0.3rem]">
+                    <!-- Instagram (Big) -->
+                    <div
+                      class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
+                      style="width: 8.4rem; height: 6.9rem; border-radius: 1rem"
+                      data-hover-gradient="linear-gradient(150.34deg, rgba(225, 48, 108, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
+                      data-hover-color="#E1306C"
+                    >
+                      <iconify-icon
+                        icon="simple-icons:instagram"
+                        width="40"
+                      ></iconify-icon>
+                    </div>
+                    <!-- Row: YouTube + Facebook (Small) -->
+                    <div class="flex gap-[0.3rem]">
+                      <div
+                        class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
+                        style="
+                          width: 4.05rem;
+                          height: 3.45rem;
+                          border-radius: 0.625rem;
+                        "
+                        data-hover-gradient="linear-gradient(150.34deg, rgba(255, 0, 0, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
+                        data-hover-color="#FF0000"
+                      >
+                        <iconify-icon
+                          icon="simple-icons:youtube"
+                          width="24"
+                        ></iconify-icon>
+                      </div>
+                      <div
+                        class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
+                        style="
+                          width: 4.05rem;
+                          height: 3.45rem;
+                          border-radius: 0.625rem;
+                        "
+                        data-hover-gradient="linear-gradient(150.34deg, rgba(24, 119, 242, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
+                        data-hover-color="#1877F2"
+                      >
+                        <iconify-icon
+                          icon="simple-icons:facebook"
+                          width="24"
+                        ></iconify-icon>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Column -->
+                  <div class="flex flex-col gap-[0.3rem]">
+                    <!-- Pinterest (Wide Medium) -->
+                    <div
+                      class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
+                      style="
+                        width: 8.4rem;
+                        height: 3.45rem;
+                        border-radius: 0.625rem;
+                      "
+                      data-hover-gradient="linear-gradient(150.34deg, rgba(230, 0, 35, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
+                      data-hover-color="#E60023"
+                    >
+                      <iconify-icon
+                        icon="simple-icons:pinterest"
+                        width="26"
+                      ></iconify-icon>
+                    </div>
+                    <!-- TikTok (Big) -->
+                    <div
+                      class="platform-box flex items-center justify-center bg-neutral-800/50 border border-white/5 text-neutral-500 transition-all duration-300 cursor-pointer"
+                      style="width: 8.4rem; height: 6.9rem; border-radius: 1rem"
+                      data-hover-gradient="linear-gradient(150.34deg, rgba(0, 242, 234, 0.12) 34.3%, rgba(116, 88, 88, 0.07) 82.62%)"
+                      data-hover-color="#00F2EA"
+                    >
+                      <iconify-icon
+                        icon="simple-icons:tiktok"
+                        width="26"
+                      ></iconify-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tall Item: AI Analysis -->
+          <div
+            class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 md:row-span-2 opacity-0"
+          >
+            <div class="light-torch"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div
+                class="w-10 h-10 shrink-0 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon icon="lucide:scan-eye" width="20"></iconify-icon>
+              </div>
+              <h3
+                class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6"
+              >
+                Deep Research Agent
+              </h3>
+              <p class="text-[1.1rem] leading-6 text-neutral-400 mb-8">
+                Like NotebookLM for short-form. Our AI analyzes hooks, pacing,
+                visuals, and script structure.
+              </p>
+
+              <!-- Visual: Chat/Analysis -->
+              <div class="space-y-3 mt-auto">
+                <div
+                  class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
+                  style="font-family: var(--font-nav)"
+                >
+                  <span
+                    class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]"
+                  >
+                    Analysis
+                  </span>
+                  "The video retains 80% of viewers at 3s due to the visual
+                  disruption effect."
+                </div>
+                <div
+                  class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
+                  style="font-family: var(--font-nav)"
+                >
+                  <span
+                    class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]"
+                  >
+                    Script
+                  </span>
+                  "Wait, don't throw that away..."
+                </div>
+                <div
+                  class="py-[1.3rem] px-[1rem] rounded-lg bg-white/5 border border-white/5 text-xs text-[#717171]"
+                  style="font-family: var(--font-nav)"
+                >
+                  <span
+                    class="text-indigo-400 font-bold uppercase text-[1rem] block mb-[0.6rem]"
+                  >
+                    Metrics
+                  </span>
+                  "Hook Score: 92/100 • Virality Index: 8.4x • Est. Reach: 2.1M"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medium Item: Niche Finder -->
+          <div
+            class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0"
+          >
+            <div class="light-torch"></div>
+            <div class="relative z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon icon="lucide:radar" width="20"></iconify-icon>
+              </div>
+              <h3
+                class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6"
+              >
+                Niche Hunter
+              </h3>
+              <p class="text-[1.1rem] leading-6 text-neutral-400">
+                Find low-competition, high-velocity topics tailored to your
+                brand.
+              </p>
+            </div>
+          </div>
+
+          <!-- Medium Item: Velocity Metrics -->
+          <div
+            class="features-card md:col-span-1 glass-panel rounded-3xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-300 opacity-0"
+          >
+            <div class="light-torch"></div>
+            <div class="relative z-10">
+              <div
+                class="w-10 h-10 rounded-lg bg-neutral-900 border border-white/10 flex items-center justify-center mb-4 text-white"
+              >
+                <iconify-icon
+                  icon="lucide:bar-chart-2"
+                  width="20"
+                ></iconify-icon>
+              </div>
+              <h3
+                class="text-[1.5rem] leading-7 font-medium text-white mb-2 mt-6"
+              >
+                Velocity Metrics
+              </h3>
+              <p class="text-[1.1rem] leading-6 text-neutral-400">
+                Identify videos that are growing faster than the creator's
+                average.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORKFLOW SECTION (Refined) -->
+      <section
+        id="workflow"
+        class="max-w-6xl mx-auto px-6 mb-[13rem] scroll-mt-32"
+      >
+        <div class="flex flex-col md:flex-row -mb-28">
+          <!-- Left: Sticky Steps -->
+          <div
+            class="md:w-1/2 hidden md:flex flex-col justify-center h-screen sticky top-0 pr-12"
+            style="font-size: 1.25rem"
+          >
+            <!-- Header -->
+            <h4
+              class="font-nav text-[0.9rem] font-bold text-indigo-400 mb-12 uppercase"
+            >
+              Get Started
+            </h4>
+
+            <!-- Steps Container -->
+            <div class="space-y-16">
+              <!-- Step 1 Text -->
+              <div
+                class="step-text transition-all duration-500 opacity-30"
+                data-step="1"
+              >
+                <span class="text-xs font-mono text-indigo-400 mb-2 block">
+                  01
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Define Parameters
+                </h3>
+                <p class="text-neutral-400 leading-relaxed max-w-sm">
+                  Communicate your needs with the agent and watch it spin up
+                  niche keywords based on your requests, along with the
+                  mainstream ones.
+                </p>
+              </div>
+              <!-- Step 2 Text -->
+              <div
+                class="step-text transition-all duration-500 opacity-30"
+                data-step="2"
+              >
+                <span class="text-xs font-mono text-indigo-400 mb-2 block">
+                  02
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Content Search Engine
+                </h3>
+                <p class="text-neutral-400 leading-relaxed max-w-sm">
+                  Scan thousands of videos across platforms in minutes,
+                  filtering out noise and flagging high-potential content.
+                </p>
+              </div>
+              <!-- Step 3 Text -->
+              <div
+                class="step-text transition-all duration-500 opacity-30"
+                data-step="3"
+              >
+                <span class="text-xs font-mono text-indigo-400 mb-2 block">
+                  03
+                </span>
+                <h3 class="text-2xl text-white font-medium mb-3">Deep Dive</h3>
+                <p class="text-neutral-400 leading-relaxed max-w-sm">
+                  Start talking to the video. Get a full breakdown of why it
+                  worked, generate similar scripts and set up scouting alerts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Scrolling Images -->
+          <div class="md:w-1/2">
+            <!-- Image 1 Container -->
+            <div
+              class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+              data-step="1"
+            >
+              <!-- Mobile Step 1 Text -->
+              <div class="block md:hidden w-full mb-8 reveal-element">
+                <span class="text-xs font-mono text-indigo-400 mb-2 block"
+                  >01</span
+                >
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Define Parameters
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Communicate your needs with the agent and watch it spin up
+                  niche keywords based on your requests, along with the
+                  mainstream ones.
+                </p>
+              </div>
+
+              <div
+                class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden"
+              >
+                <!-- Lottie Animation for Search -->
+                <lottie-player
+                  src="public/Scene-1.json"
+                  background="transparent"
+                  speed="1"
+                  style="width: 100%; height: 100%"
+                  loop
+                  autoplay
+                  preserveAspectRatio="xMidYMid slice"
+                ></lottie-player>
+              </div>
+            </div>
+
+            <!-- Image 2 Container -->
+            <div
+              class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+              data-step="2"
+            >
+              <!-- Mobile Step 2 Text -->
+              <div class="block md:hidden w-full mb-8 reveal-element">
+                <span class="text-xs font-mono text-indigo-400 mb-2 block"
+                  >02</span
+                >
+                <h3 class="text-2xl text-white font-medium mb-3">
+                  Content Search Engine
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Scan thousands of videos across platforms in minutes,
+                  filtering out noise and flagging high-potential content.
+                </p>
+              </div>
+
+              <div
+                class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex flex-col p-6 relative overflow-hidden"
+              >
+                <!-- Status Bar -->
+                <div
+                  class="flex items-center gap-3 text-neutral-400 mb-4 z-20 shrink-0"
+                >
+                  <iconify-icon
+                    icon="lucide:loader-2"
+                    class="animate-spin"
+                  ></iconify-icon>
+                  <span id="code-status" class="text-lg font-mono font-bold"
+                    >Initializing search...</span
+                  >
+                </div>
+
+                <!-- Code Window -->
+                <div
+                  class="relative flex-1 overflow-hidden flex items-center"
+                  id="code-window"
+                >
+                  <!-- Gradient Masks -->
+                  <div
+                    class="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#080808] to-transparent z-10 pointer-events-none"
+                  ></div>
+                  <div
+                    class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#080808] to-transparent z-10 pointer-events-none"
+                  ></div>
+
+                  <!-- Scrolling Content - Now centered -->
+                  <div
+                    id="code-content"
+                    class="w-full font-mono text-base leading-5 text-neutral-300 flex flex-col"
+                  >
+                    <!-- Lines injected here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image 3 Container -->
+            <div
+              class="step-image md:min-h-screen min-h-0 mb-20 md:mb-0 flex flex-col md:flex-row items-center justify-center p-6"
+              data-step="3"
+            >
+              <!-- Mobile Step 3 Text -->
+              <div class="block md:hidden w-full mb-8 reveal-element">
+                <span class="text-xs font-mono text-indigo-400 mb-2 block"
+                  >03</span
+                >
+                <h3 class="text-2xl text-white font-medium mb-3">Deep Dive</h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  Start talking to the video. Get a full breakdown of why it
+                  worked, generate similar scripts and set up scouting alerts.
+                </p>
+              </div>
+
+              <div
+                class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden"
+              >
+                <video
+                  id="step3-video"
+                  src="public/conthunt%20agent%20-%20zoom.mp4"
+                  class="absolute inset-0 w-full h-full object-cover"
+                  muted
+                  loop
+                  playsinline
+                ></video>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          <!-- Tier 1: Free -->
-          <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] flex flex-col">
-            <div class="mb-4">
-              <span class="text-sm font-medium text-neutral-400">Free</span>
-              <div class="text-4xl font-medium text-white mt-2">
-                $0
-                <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
-              </div>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>2 Platforms (IG, TikTok)</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>10 Searches / mo</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>10 AI Analyses / mo</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>Gemini Flash Model</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>1 AI Board</span>
-              </li>
-            </ul>
-            <a href="https://agent.conthunt.app"
-              class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
-              GET STARTED
-            </a>
-          </div>
+        <!-- CTA Button (Moved to Center Bottom) -->
+        <div class="mt-20 flex justify-center pb-20 md:pb-0">
+          <a
+            href="https://agent.conthunt.app"
+            id="cta-waitlist-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-button glass-button-interactive px-9 md:px-16 py-5 text-xl font-medium font-nav gap-3 inline-flex items-center justify-center"
+          >
+            GET STARTED
+            <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
+          </a>
+        </div>
+      </section>
 
-          <!-- Tier 2: Creator -->
-          <div class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] relative flex flex-col">
-            <div
-              class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
-              Popular
-            </div>
-            <div class="mb-4">
-              <span class="text-sm font-medium text-neutral-400">Creator</span>
-              <div class="flex items-end gap-1 mt-2">
-                <span class="text-2xl font-medium text-neutral-500 line-through mr-1">$49</span>
-                <span class="text-4xl font-medium text-white">$</span>
-                <div class="text-4xl font-medium text-white price-value mr-2" id="creator-price" data-monthly="29"
-                  data-yearly="25">
-                  29
-                </div>
-                <div class="flex flex-col mb-1 text-left">
-                  <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
-                  <span
-                    class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
-                    Monthly</span>
-                </div>
-              </div>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>All Platforms</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>50 Searches / mo</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>1000 AI Credits / mo</span>
-              </li>
-              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
-                <span>~500 video analysis or </span>
-              </li>
-              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
-                <span>~200 video indexing</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>Latest AI Models</span>
-              </li>
+      <!-- TESTIMONIALS -->
+      <section class="max-w-6xl mx-auto px-6 mb-12 overflow-hidden">
+        <!-- Heading -->
+        <div class="text-center mb-16 reveal-element">
+          <h2
+            class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight"
+          >
+            Trusted by top creators
+          </h2>
+          <p class="text-neutral-400">Join 50+ creative minds</p>
+        </div>
 
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-neutral-500 shrink-0"></iconify-icon>
-                <span>5 AI Boards</span>
-              </li>
-            </ul>
-            <a href="https://agent.conthunt.app"
-              class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
-              CHOOSE PLAN
-            </a>
-          </div>
-
-          <!-- Tier 3: Pro Research -->
+        <div class="marquee-container relative">
           <div
-            class="reveal-element p-6 rounded-3xl border border-white/10 bg-[rgba(26,26,26,0.89)] relative flex flex-col shadow-2xl shadow-indigo-500/10">
+            class="marquee-track-right flex gap-6"
+            style="width: max-content"
+          >
+            <!-- Original Cards -->
             <div
-              class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide">
-              Full Experience
-            </div>
-            <div class="mb-4">
-              <span class="text-sm font-medium text-[#CECECE]">Pro Research</span>
-              <div class="flex items-end gap-1 mt-2">
-                <span class="text-2xl font-medium text-neutral-600 line-through mr-1">$139</span>
-                <span class="text-4xl font-medium text-white">$</span>
-                <div class="text-4xl font-medium text-white price-value mr-2" id="pro-price" data-monthly="79"
-                  data-yearly="63">
-                  79
-                </div>
-                <div class="flex flex-col mb-1 text-left">
-                  <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
-                  <span
-                    class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
-                    Monthly</span>
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "The deep research feature is insane. It's like having a
+                dedicated strategist analyzing my niche 24/7."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-sanya.png"
+                  alt="Sanya Verma"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Sanya Verma</div>
+                  <div class="text-neutral-500">Ecom Founder</div>
                 </div>
               </div>
             </div>
-            <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>All Platforms + Upcoming Platforms</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>300 Searches / mo</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>3000 AI Credits / mo</span>
-              </li>
-              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
-                <span>~ 1500 video analysis or </span>
-              </li>
-              <li class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6">
-                <span>~ 600 video indexing</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>Latest AI Models</span>
-              </li>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "I stopped guessing what would go viral. ContHunt just shows me
+                the math behind the trends."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-manish.png"
+                  alt="Manish Das"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Manish Das</div>
+                  <div class="text-neutral-500">Growth Lead</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Replaced 3 separate tools with this. The AI agent actually
+                understands context, not just keywords."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-alex.png"
+                  alt="Alex Rivera"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Alex Rivera</div>
+                  <div class="text-neutral-500">Content Creator</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Our content team output doubled because we spend zero time on
+                ideation now."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-elena.png"
+                  alt="Elena K."
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Elena K.</div>
+                  <div class="text-neutral-500">Agency Owner</div>
+                </div>
+              </div>
+            </div>
 
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>25 AI Boards</span>
-              </li>
-              <li class="flex items-center gap-3 text-sm text-neutral-300">
-                <iconify-icon icon="lucide:check" class="text-[#CECECE] shrink-0"></iconify-icon>
-                <span>Deep Search Agent (new)</span>
-              </li>
-            </ul>
-            <div class="w-full bg-[#070707] rounded-[69px]">
-              <a href="https://agent.conthunt.app"
-                class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center">
+            <!-- Duplicate Set for Infinite Loop -->
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "The deep research feature is insane. It's like having a
+                dedicated strategist analyzing my niche 24/7."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-sanya.png"
+                  alt="Sanya Verma"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Sanya Verma</div>
+                  <div class="text-neutral-500">Ecom Founder</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "I stopped guessing what would go viral. ContHunt just shows me
+                the math behind the trends."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-manish.png"
+                  alt="Manish Das"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Manish Das</div>
+                  <div class="text-neutral-500">Growth Lead</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Replaced 3 separate tools with this. The AI agent actually
+                understands context, not just keywords."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-alex.png"
+                  alt="Alex Rivera"
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Alex Rivera</div>
+                  <div class="text-neutral-500">Content Creator</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-80 p-6 rounded-2xl bg-[#080808] border border-white/5 shrink-0"
+            >
+              <p class="text-sm text-neutral-400 mb-4 leading-relaxed">
+                "Our content team output doubled because we spend zero time on
+                ideation now."
+              </p>
+              <div class="flex items-center gap-3">
+                <img
+                  src="public/avatar-elena.png"
+                  alt="Elena K."
+                  class="w-8 h-8 rounded-full object-cover"
+                />
+                <div class="text-xs">
+                  <div class="text-white font-medium">Elena K.</div>
+                  <div class="text-neutral-500">Agency Owner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OBJECTIONS / FAQ -->
+      <section class="max-w-3xl mx-auto px-6 mb-32" style="font-size: 1.25rem">
+        <h2
+          class="reveal-element text-3xl font-medium text-white mb-10 text-center"
+        >
+          Common Questions
+        </h2>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span
+                >Is ContHunt just another social listening or ad spy tool?</span
+              >
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              No. Tools like BuzzSumo/Hootsuite track mentions; ad spies show
+              paid creatives. ContHunt is true
+              <span class="font-bold text-white">content intelligence</span>—it
+              aggregates organic short-form videos across platforms, then uses
+              agentic AI for frame-by-frame structural breakdown (hooks, pacing,
+              overlays, micro-patterns) to reveal why content goes viral and how
+              to replicate it before saturation hits.
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Which platforms are actually supported right now?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Full deep integration: TikTok, Instagram Reels, YouTube Shorts.
+              LinkedIn video + X (Twitter) in private beta—rolling wider soon.
+              One canvas, no platform-hopping.
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span
+                >How does agentic search actually work—and do I need to be
+                technical?</span
+              >
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Zero Boolean or setup. Say: "Women's activewear hooks 10–15s with
+              >2M views, high comment-to-like ratio, last 45 days." AI
+              decomposes → runs smart multi-keyword combos → surfaces winners.
+              Plain English → best results.
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>How deep is the frame-by-frame AI analysis really?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Brutally deep. It indexes visuals, text timing, transitions,
+              expressions, product reveals, sound cues—things humans miss at
+              scale. Chat with your board: "Show every video with a question
+              hook in first 3s" → instant clips + insights.
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Can I organize videos and turn them into decks fast?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Yes—add to boards instantly. Boards auto-index for AI chat access
+              (no delay). One click → high-performance marketing deck: grouped
+              patterns, virality deconstruct, success metrics, narrative
+              breakdowns, ready for team/client handoff.
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span
+                >What's the difference vs. tools like Pipiads, MagicBrief, or
+                Foreplay?</span
+              >
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              They spy on ads (saturated winners). We hunt organic virality
+              first—low-competition patterns, early momentum signals,
+              postmortem/premortem virality indexing—so your organic game
+              amplifies paid ROAS instead of copying yesterday's ads.
+            </div>
+          </details>
+
+          <!-- FAQ 7 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>How many videos/searches can I actually run?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Creator: 50 searches/mo + solid analysis volume.<br />
+              Pro Research: 300 searches + unlimited deep dives, priority AI
+              credits.<br />
+              Enough for heavy niche scanning without hitting walls.
+            </div>
+          </details>
+
+          <!-- FAQ 8 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Is my data secure and private?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Isolated per account. We don't train models on your
+              boards/searches. Export everything anytime. Strict privacy—no
+              sharing.
+            </div>
+          </details>
+
+          <!-- FAQ 9 -->
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Can I cancel or get a refund if it's not for me?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Monthly, no lock-in. 14-day money-back guarantee (T&Cs apply).
+              Export boards/decks before you go.
+            </div>
+          </details>
+
+          <details
+            class="reveal-element group bg-[#080808] border border-white/5 rounded-xl open:bg-neutral-900/50 transition-colors"
+          >
+            <summary
+              class="flex justify-between items-center p-6 cursor-pointer list-none text-white font-medium"
+            >
+              <span>Can I cancel anytime?</span>
+              <span class="transition group-open:rotate-180"
+                ><iconify-icon icon="lucide:chevron-down"></iconify-icon
+              ></span>
+            </summary>
+            <div class="px-6 pb-6 text-xl text-neutral-400 leading-relaxed">
+              Absolutely. We offer monthly billing with no long-term contracts.
+              You can export your data before you leave.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- PRICING & GUARANTEE -->
+      <section
+        id="pricing"
+        class="min-h-screen flex flex-col justify-center py-24 scroll-mt-16"
+      >
+        <div class="max-w-6xl mx-auto px-6 w-full">
+          <div class="text-center mb-16 reveal-element">
+            <h2 class="text-3xl font-medium text-white mb-4">
+              Transparent Pricing
+            </h2>
+            <p class="text-neutral-400 mb-8">
+              Lock in Beta pricing today. Prices increase after V1.0 launch.
+            </p>
+            <!-- Billing Toggle -->
+            <div class="flex items-center justify-center gap-3 mb-10">
+              <span
+                id="annual-label"
+                class="text-sm font-medium text-neutral-400 transition-colors"
+                >Paid Annually</span
+              >
+              <button
+                id="annual-toggle"
+                class="relative h-8 w-14 rounded-full border border-white/10 bg-[#050505] transition-colors focus:outline-none ring-1 ring-white/5 active:scale-95 duration-200"
+                aria-pressed="false"
+              >
+                <span class="sr-only">Toggle annual billing</span>
+                <span
+                  id="annual-toggle-knob"
+                  class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                ></span>
+              </button>
+              <span
+                class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20 tracking-wide uppercase"
+                >Save up to 20%</span
+              >
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <!-- Tier 1: Free -->
+            <div
+              class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] flex flex-col"
+            >
+              <div class="mb-4">
+                <span class="text-sm font-medium text-neutral-400">Free</span>
+                <div class="text-4xl font-medium text-white mt-2">
+                  $0
+                  <span
+                    class="text-base text-neutral-500 font-normal pricing-month"
+                    >/mo</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>2 Platforms (IG, TikTok)</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>10 Searches / mo</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>10 AI Analyses / mo</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>Gemini Flash Model</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>1 AI Board</span>
+                </li>
+              </ul>
+              <a
+                href="https://agent.conthunt.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center"
+              >
+                GET STARTED
+              </a>
+            </div>
+
+            <!-- Tier 2: Creator -->
+            <div
+              class="reveal-element p-6 rounded-3xl border border-white/5 bg-[#070707] relative flex flex-col"
+            >
+              <div
+                class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide"
+              >
+                Popular
+              </div>
+              <div class="mb-4">
+                <span class="text-sm font-medium text-neutral-400"
+                  >Creator</span
+                >
+                <div class="flex items-end gap-1 mt-2">
+                  <span
+                    class="text-2xl font-medium text-neutral-500 line-through mr-1"
+                    >$49</span
+                  >
+                  <span class="text-4xl font-medium text-white">$</span>
+                  <div
+                    class="text-4xl font-medium text-white price-value mr-2"
+                    id="creator-price"
+                    data-monthly="29"
+                    data-yearly="25"
+                  >
+                    29
+                  </div>
+                  <div class="flex flex-col mb-1 text-left">
+                    <span
+                      class="text-base text-neutral-500 font-normal pricing-month"
+                      >/mo</span
+                    >
+                    <span
+                      class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text"
+                      >Billed Monthly</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>All Platforms</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>50 Searches / mo</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>1000 AI Credits / mo</span>
+                </li>
+                <li
+                  class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6"
+                >
+                  <span>~500 video analysis or </span>
+                </li>
+                <li
+                  class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6"
+                >
+                  <span>~200 video indexing</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>Latest AI Models</span>
+                </li>
+
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-neutral-500 shrink-0"
+                  ></iconify-icon>
+                  <span>5 AI Boards</span>
+                </li>
+              </ul>
+              <a
+                href="https://agent.conthunt.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center"
+              >
                 CHOOSE PLAN
               </a>
             </div>
+
+            <!-- Tier 3: Pro Research -->
+            <div
+              class="reveal-element p-6 rounded-3xl border border-white/10 bg-[rgba(26,26,26,0.89)] relative flex flex-col shadow-2xl shadow-indigo-500/10"
+            >
+              <div
+                class="absolute top-0 right-0 bg-[#CECECE] text-black text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wide"
+              >
+                Full Experience
+              </div>
+              <div class="mb-4">
+                <span class="text-sm font-medium text-[#CECECE]"
+                  >Pro Research</span
+                >
+                <div class="flex items-end gap-1 mt-2">
+                  <span
+                    class="text-2xl font-medium text-neutral-600 line-through mr-1"
+                    >$139</span
+                  >
+                  <span class="text-4xl font-medium text-white">$</span>
+                  <div
+                    class="text-4xl font-medium text-white price-value mr-2"
+                    id="pro-price"
+                    data-monthly="79"
+                    data-yearly="63"
+                  >
+                    79
+                  </div>
+                  <div class="flex flex-col mb-1 text-left">
+                    <span
+                      class="text-base text-neutral-500 font-normal pricing-month"
+                      >/mo</span
+                    >
+                    <span
+                      class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text"
+                      >Billed Monthly</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-3 mb-8 flex-1">
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>All Platforms + Upcoming Platforms</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>300 Searches / mo</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>3000 AI Credits / mo</span>
+                </li>
+                <li
+                  class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6"
+                >
+                  <span>~ 1500 video analysis or </span>
+                </li>
+                <li
+                  class="flex items-start gap-3 text-xs text-neutral-500 -mt-1 pl-6"
+                >
+                  <span>~ 600 video indexing</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>Latest AI Models</span>
+                </li>
+
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>25 AI Boards</span>
+                </li>
+                <li class="flex items-center gap-3 text-sm text-neutral-300">
+                  <iconify-icon
+                    icon="lucide:check"
+                    class="text-[#CECECE] shrink-0"
+                  ></iconify-icon>
+                  <span>Deep Search Agent (new)</span>
+                </li>
+              </ul>
+              <div class="w-full bg-[#070707] rounded-[69px]">
+                <a
+                  href="https://agent.conthunt.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="glass-button w-full py-3 text-[0.95rem] font-medium font-nav inline-flex items-center justify-center"
+                >
+                  CHOOSE PLAN
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-element mt-12 text-center">
+            <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
+              Risk Reversal
+            </p>
+            <p class="text-sm text-neutral-400">
+              14 day money back guarantee. T&C applied.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section
+        id="waitlist"
+        class="relative min-h-[56vh] flex flex-col justify-center border-t border-white/5 overflow-hidden bg-[#030303] z-20 scroll-mt-32"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none"
+        ></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2
+            class="reveal-element md:text-6xl text-4xl font-medium text-white tracking-tight mb-8"
+          >
+            Hunt content like
+            <br />
+            a machine.
+          </h2>
+          <p
+            class="reveal-element text-xl text-neutral-400 mb-10 max-w-xl mx-auto"
+          >
+            Stop relying on gut feeling. Get the data-backed tool for modern
+            creators.
+          </p>
+          <div
+            id="newsletter-form-container"
+            class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center"
+          >
+            <input
+              id="newsletter-email-input"
+              type="email"
+              placeholder="Enter your email"
+              class="w-full sm:w-80 bg-neutral-900 border border-white/10 text-white px-5 py-3 rounded-full outline-none focus:border-indigo-500/50 transition-colors h-[52px]"
+            />
+            <button
+              id="join-newsletter-btn"
+              class="glass-button px-8 py-3 text-[0.95rem] font-semibold font-nav h-[52px]"
+            >
+              JOIN NEWSLETTER
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
+      <div
+        class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10"
+      >
+        <div class="col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <img
+              src="public/faviconold.png"
+              alt="ContHunt Logo"
+              class="w-6 h-6"
+            />
+            <span class="font-semibold text-white">ContHunt</span>
+          </div>
+          <p class="text-neutral-500 max-w-xs mb-6">
+            The all-in-one content aggregation and research intelligence tool
+            for the modern web.
+          </p>
+          <div class="flex gap-4">
+            <a
+              href="https://x.com/conthunt"
+              target="_blank"
+              class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:x"></iconify-icon
+            ></a>
+            <a
+              href="https://instagram.com/conthunt.app"
+              target="_blank"
+              class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:instagram"></iconify-icon
+            ></a>
+            <a
+              href="https://tiktok.com/@conthunt.app"
+              target="_blank"
+              class="text-neutral-500 hover:text-white"
+              ><iconify-icon icon="simple-icons:tiktok"></iconify-icon
+            ></a>
           </div>
         </div>
 
-        <div class="reveal-element mt-12 text-center">
-          <p class="text-xs text-neutral-500 uppercase tracking-widest mb-2">
-            Risk Reversal
-          </p>
-          <p class="text-sm text-neutral-400">
-            14 day money back guarantee. T&C applied.
-          </p>
+        <div>
+          <h4 class="text-white font-medium mb-4">Product</h4>
+          <ul class="space-y-2 text-neutral-500">
+            <li>
+              <a href="/blog" class="hover:text-white transition-colors"
+                >Resources</a
+              >
+            </li>
+            <li>
+              <a href="#workflow" class="hover:text-white transition-colors"
+                >Workflow</a
+              >
+            </li>
+            <li>
+              <a href="#pricing" class="hover:text-white transition-colors"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a href="/blog" class="hover:text-white transition-colors"
+                >Changelog</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-medium mb-4">Legal</h4>
+          <ul class="space-y-2 text-neutral-500">
+            <li>
+              <a href="/privacy" class="hover:text-white transition-colors"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a href="/terms" class="hover:text-white transition-colors"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a
+                href="mailto:support@conthunt.app"
+                class="hover:text-white transition-colors"
+                >Contact</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section id="waitlist"
-      class="relative min-h-[56vh] flex flex-col justify-center border-t border-white/5 overflow-hidden bg-[#030303] z-20 scroll-mt-32">
-      <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none"></div>
-      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h2 class="reveal-element md:text-6xl text-4xl font-medium text-white tracking-tight mb-8">
-          Hunt content like
-          <br />
-          a machine.
-        </h2>
-        <p class="reveal-element text-xl text-neutral-400 mb-10 max-w-xl mx-auto">
-          Stop relying on gut feeling. Get the data-backed tool for modern
-          creators.
-        </p>
-        <div id="newsletter-form-container"
-          class="reveal-element flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
-          <input id="newsletter-email-input" type="email" placeholder="Enter your email"
-            class="w-full sm:w-80 bg-neutral-900 border border-white/10 text-white px-5 py-3 rounded-full outline-none focus:border-indigo-500/50 transition-colors h-[52px]" />
-          <button id="join-newsletter-btn"
-            class="glass-button px-8 py-3 text-[0.95rem] font-semibold font-nav h-[52px]">
-            JOIN NEWSLETTER
-          </button>
+      <div
+        class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs"
+      >
+        <p>© 2024 ContHunt Inc. All rights reserved.</p>
+        <div class="flex items-center gap-2 mt-4 md:mt-0">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          <span>Systems Operational</span>
         </div>
       </div>
-    </section>
-  </main>
-  <!-- FOOTER -->
-  <footer class="bg-[#030303] pt-0 pb-20 text-sm z-20 relative">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
-      <div class="col-span-2">
-        <div class="flex items-center gap-2 mb-4">
-          <img src="public/faviconold.png" alt="ContHunt Logo" class="w-6 h-6">
-          <span class="font-semibold text-white">ContHunt</span>
-        </div>
-        <p class="text-neutral-500 max-w-xs mb-6">
-          The all-in-one content aggregation and research intelligence tool
-          for the modern web.
-        </p>
-        <div class="flex gap-4">
-          <a href="https://x.com/conthunt" target="_blank" class="text-neutral-500 hover:text-white"><iconify-icon
-              icon="simple-icons:x"></iconify-icon></a>
-          <a href="https://instagram.com/conthunt.app" target="_blank"
-            class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
-          <a href="https://tiktok.com/@conthunt.app" target="_blank"
-            class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:tiktok"></iconify-icon></a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="text-white font-medium mb-4">Product</h4>
-        <ul class="space-y-2 text-neutral-500">
-          <li>
-            <a href="/blog" class="hover:text-white transition-colors">Resources</a>
-          </li>
-          <li>
-            <a href="#workflow" class="hover:text-white transition-colors">Workflow</a>
-          </li>
-          <li>
-            <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
-          </li>
-          <li>
-            <a href="/blog" class="hover:text-white transition-colors">Changelog</a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-white font-medium mb-4">Legal</h4>
-        <ul class="space-y-2 text-neutral-500">
-          <li>
-            <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
-          </li>
-          <li>
-            <a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div
-      class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
-      <p>© 2024 ContHunt Inc. All rights reserved.</p>
-      <div class="flex items-center gap-2 mt-4 md:mt-0">
-        <span class="w-2 h-2 rounded-full bg-green-500"></span>
-        <span>Systems Operational</span>
-      </div>
-    </div>
-  </footer>
-  <script src="public/step2-animation.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="public/analytics.js"></script>
-</body>
-
+    </footer>
+    <script src="public/analytics.js"></script>
+    <script src="public/step2-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
