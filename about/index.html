@@ -16,9 +16,9 @@
         });
         // Dynamic EJS Telemetry for the Blog
         posthog.capture('blog_article_viewed', {
-            article_title: '<%= pageTitle %>',
-            canonical_url: '<%= canonical %>',
-            author_name: '<%= typeof author !== "undefined" && author && typeof author === "object" && author.name ? author.name : (typeof author !== "undefined" ? author : "ContHunt Team") %>'
+            article_title: 'About ContHunt',
+            canonical_url: 'https://conthunt.app/about',
+            author_name: 'ContHunt Team'
         });
     </script>
 
@@ -26,14 +26,12 @@
 
     <!-- Primary Meta Tags -->
     <title>
-        <%= pageTitle %> | ContHunt Blog
+        About ContHunt | ContHunt Blog
     </title>
-    <meta name="title" content="<%= pageTitle %> | ContHunt Blog" />
+    <meta name="title" content="About ContHunt | ContHunt Blog" />
     <meta name="description"
-        content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
-    <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length> 0) { %>
-        <meta name="keywords" content="<%= resolvedKeywords.join(', ') %>" />
-        <% } %>
+        content="Learn what ContHunt does, who operates it, and why the platform exists." />
+    
 
             <script type="application/ld+json">
         {
@@ -44,88 +42,18 @@
         }
     </script>
 
-            <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
-                <% const hasAuthorObject=typeof author !== 'undefined' && author && typeof author === 'object' && author.name; %>
-                    <% const hasAuthorProfile=typeof authorProfile !=='undefined' && authorProfile && authorProfile.name; %>
-                    <% const authorSchema=hasAuthorObject ? { "@type" : "Person" , "name" : author.name,
-                        ...(author.url ? { "url" : author.url.startsWith('http') ? author.url : `https://conthunt.app${author.url}` } : {}),
-                        ...(author.image ? { "image" : author.image.startsWith('http') ? author.image : `https://conthunt.app${author.image}` } : {}),
-                        ...(author.same_as ? { "sameAs" : author.same_as } : {}),
-                        ...(author.role ? { "jobTitle" : author.role } : {}),
-                        ...(author.bio ? { "description" : author.bio } : {}) } : hasAuthorProfile ? { "@type" : "Person" , "name" : authorProfile.name,
-                        ...(authorProfile.urlAbs ? { "url" : authorProfile.urlAbs } : (authorProfile.url ? { "url" :
-                        authorProfile.url } : {})), ...(authorProfile.imageAbs ? { "image" : authorProfile.imageAbs } :
-                        (authorProfile.image ? { "image" : authorProfile.image } : {})), ...(authorProfile.same_as ?
-                        { "sameAs" : authorProfile.same_as } : {}), ...(authorProfile.job_title ? { "jobTitle" :
-                        authorProfile.job_title } : {}), ...(authorProfile.description ? { "description" :
-                        authorProfile.description } : {}) } : { "@type" : "Person" , "name" : (typeof author
-                        !=='undefined' ) ? author : "ContHunt Team" }; %>
+            
+                
+                    
+                    
 
-                        <% if (typeof isBlogPost !=='undefined' && isBlogPost) {
-                            const articleSchema = {
-                                "@context": "https://schema.org",
-                                "@type": "Article",
-                                "headline": pageTitle,
-                                "description": description || '',
-                                "image": heroAbs || 'https://conthunt.app/public/banner.png',
-                                "datePublished": (typeof date !== 'undefined') ? date : '',
-                                "dateModified": (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : ''),
-                                "author": authorSchema,
-                                "publisher": {
-                                    "@type": "Organization",
-                                    "name": "ContHunt",
-                                    "logo": {
-                                        "@type": "ImageObject",
-                                        "url": "https://conthunt.app/public/logo-title-white.png"
-                                    }
-                                },
-                                "mainEntityOfPage": {
-                                    "@type": "WebPage",
-                                    "@id": canonical
-                                }
-                            };
-                        %>
-                            <script type="application/ld+json">
-<%- JSON.stringify(articleSchema, null, 2) %>
-    </script>
-                            <% } %>
+                        
 
-                                <% if (typeof isHomepage !=='undefined' && isHomepage) { %>
-                                    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ContHunt",
-        "url": "https://conthunt.app",
-        "logo": "https://conthunt.app/public/logo-title-white.png",
-        "sameAs": [
-            "https://x.com/conthunt",
-            "https://instagram.com/conthunt.app",
-            "https://tiktok.com/@conthunt.app"
-        ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "email": "support@conthunt.app"
-        }
-    }
-    </script>
-                                    <% if (heroAbs) { %>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ImageObject",
-        "url": <%- JSON.stringify(heroAbs) %>,
-        "contentUrl": <%- JSON.stringify(heroAbs) %>,
-        "caption": <%- JSON.stringify(pageTitle) %>
-    }
-    </script>
-                                        <% } %>
-                                            <% } %>
+                                
 
-                                                <% if (typeof canonical !=='undefined' && canonical) { %>
-                                                    <link rel="canonical" href="<%= canonical %>" />
-                                                    <% } %>
+                                                
+                                                    <link rel="canonical" href="https://conthunt.app/about" />
+                                                    
 
                                                         <!-- Favicon -->
                                                         <link rel="icon" type="image/png" href="/public/favicon.png" />
@@ -135,35 +63,29 @@
 
                                                         <!-- Open Graph -->
                                                         <meta property="og:type" content="article" />
-                                                        <meta property="og:title" content="<%= pageTitle %>" />
-                                                        <meta property="og:description" content="<%= description %>" />
-                                                        <% if (heroAbs) { %>
-                                                            <meta property="og:image" content="<%= heroAbs %>" />
-                                                            <% } else { %>
+                                                        <meta property="og:title" content="About ContHunt" />
+                                                        <meta property="og:description" content="Learn what ContHunt does, who operates it, and why the platform exists." />
+                                                        
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
-                                                                <% } %>
+                                                                
                                                                     <meta property="og:site_name" content="ContHunt" />
-                                                                    <% if (typeof canonical !=='undefined' && canonical)
-                                                                        { %>
+                                                                    
                                                                         <meta property="og:url"
-                                                                            content="<%= canonical %>" />
-                                                                        <% } %>
+                                                                            content="https://conthunt.app/about" />
+                                                                        
 
                                                                             <!-- Twitter -->
                                                                             <meta name="twitter:card"
                                                                                 content="summary_large_image" />
                                                                             <meta name="twitter:title"
-                                                                                content="<%= pageTitle %>" />
+                                                                                content="About ContHunt" />
                                                                             <meta name="twitter:description"
-                                                                                content="<%= description %>" />
-                                                                            <% if (heroAbs) { %>
-                                                                                <meta name="twitter:image"
-                                                                                    content="<%= heroAbs %>" />
-                                                                                <% } else { %>
+                                                                                content="Learn what ContHunt does, who operates it, and why the platform exists." />
+                                                                            
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
-                                                                                    <% } %>
+                                                                                    
 
                                                                                         <meta name="robots"
                                                                                             content="index, follow" />
@@ -235,7 +157,50 @@
     </nav>
 
     <main class="relative z-10 pt-44 pb-20">
-        <%- body %>
+        
+        <article class="max-w-3xl mx-auto px-6">
+            <header class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+                    About ContHunt
+                </h1>
+                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+            </header>
+            <div class="prose-enhanced">
+                <h1>About ContHunt</h1>
+<p>ContHunt is an AI-powered content intelligence platform for creators, marketers, and SEO teams.</p>
+<p>We build tools that help users:</p>
+<ul>
+<li>discover topics with demand</li>
+<li>analyze short-form content</li>
+<li>compare competitors</li>
+<li>track search and content performance</li>
+<li>turn content ideas into repeatable workflows</li>
+</ul>
+<p>ContHunt is operated by <strong>Synthenova Enterprises LLP</strong>, based in Chennai, India.</p>
+<h2>What We Focus On</h2>
+<ul>
+<li>YouTube Shorts and Instagram Reels strategy</li>
+<li>creator growth and short-form analysis</li>
+<li>competitor analysis</li>
+<li>content planning and publishing workflows</li>
+<li>SEO and GEO visibility for content teams</li>
+</ul>
+<h2>Contact</h2>
+<ul>
+<li>Support: <a href="mailto:support@conthunt.app">support@conthunt.app</a></li>
+<li>Website: <a href="https://conthunt.app">https://conthunt.app</a></li>
+</ul>
+<h2>Related Pages</h2>
+<ul>
+<li><a href="/editorial">Editorial Standards</a></li>
+<li><a href="/authors">Authors</a></li>
+<li><a href="/privacy">Privacy Policy</a></li>
+<li><a href="/terms">Terms of Service</a></li>
+</ul>
+
+            </div>
+        </article>
+        
     </main>
 
     <!-- Footer -->

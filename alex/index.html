@@ -16,9 +16,9 @@
         });
         // Dynamic EJS Telemetry for the Blog
         posthog.capture('blog_article_viewed', {
-            article_title: '<%= pageTitle %>',
-            canonical_url: '<%= canonical %>',
-            author_name: '<%= typeof author !== "undefined" && author && typeof author === "object" && author.name ? author.name : (typeof author !== "undefined" ? author : "ContHunt Team") %>'
+            article_title: 'Alex',
+            canonical_url: 'https://conthunt.app/alex',
+            author_name: 'ContHunt Team'
         });
     </script>
 
@@ -26,14 +26,12 @@
 
     <!-- Primary Meta Tags -->
     <title>
-        <%= pageTitle %> | ContHunt Blog
+        Alex | ContHunt Blog
     </title>
-    <meta name="title" content="<%= pageTitle %> | ContHunt Blog" />
+    <meta name="title" content="Alex | ContHunt Blog" />
     <meta name="description"
-        content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
-    <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length> 0) { %>
-        <meta name="keywords" content="<%= resolvedKeywords.join(', ') %>" />
-        <% } %>
+        content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+    
 
             <script type="application/ld+json">
         {
@@ -44,88 +42,18 @@
         }
     </script>
 
-            <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
-                <% const hasAuthorObject=typeof author !== 'undefined' && author && typeof author === 'object' && author.name; %>
-                    <% const hasAuthorProfile=typeof authorProfile !=='undefined' && authorProfile && authorProfile.name; %>
-                    <% const authorSchema=hasAuthorObject ? { "@type" : "Person" , "name" : author.name,
-                        ...(author.url ? { "url" : author.url.startsWith('http') ? author.url : `https://conthunt.app${author.url}` } : {}),
-                        ...(author.image ? { "image" : author.image.startsWith('http') ? author.image : `https://conthunt.app${author.image}` } : {}),
-                        ...(author.same_as ? { "sameAs" : author.same_as } : {}),
-                        ...(author.role ? { "jobTitle" : author.role } : {}),
-                        ...(author.bio ? { "description" : author.bio } : {}) } : hasAuthorProfile ? { "@type" : "Person" , "name" : authorProfile.name,
-                        ...(authorProfile.urlAbs ? { "url" : authorProfile.urlAbs } : (authorProfile.url ? { "url" :
-                        authorProfile.url } : {})), ...(authorProfile.imageAbs ? { "image" : authorProfile.imageAbs } :
-                        (authorProfile.image ? { "image" : authorProfile.image } : {})), ...(authorProfile.same_as ?
-                        { "sameAs" : authorProfile.same_as } : {}), ...(authorProfile.job_title ? { "jobTitle" :
-                        authorProfile.job_title } : {}), ...(authorProfile.description ? { "description" :
-                        authorProfile.description } : {}) } : { "@type" : "Person" , "name" : (typeof author
-                        !=='undefined' ) ? author : "ContHunt Team" }; %>
+            
+                
+                    
+                    
 
-                        <% if (typeof isBlogPost !=='undefined' && isBlogPost) {
-                            const articleSchema = {
-                                "@context": "https://schema.org",
-                                "@type": "Article",
-                                "headline": pageTitle,
-                                "description": description || '',
-                                "image": heroAbs || 'https://conthunt.app/public/banner.png',
-                                "datePublished": (typeof date !== 'undefined') ? date : '',
-                                "dateModified": (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : ''),
-                                "author": authorSchema,
-                                "publisher": {
-                                    "@type": "Organization",
-                                    "name": "ContHunt",
-                                    "logo": {
-                                        "@type": "ImageObject",
-                                        "url": "https://conthunt.app/public/logo-title-white.png"
-                                    }
-                                },
-                                "mainEntityOfPage": {
-                                    "@type": "WebPage",
-                                    "@id": canonical
-                                }
-                            };
-                        %>
-                            <script type="application/ld+json">
-<%- JSON.stringify(articleSchema, null, 2) %>
-    </script>
-                            <% } %>
+                        
 
-                                <% if (typeof isHomepage !=='undefined' && isHomepage) { %>
-                                    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ContHunt",
-        "url": "https://conthunt.app",
-        "logo": "https://conthunt.app/public/logo-title-white.png",
-        "sameAs": [
-            "https://x.com/conthunt",
-            "https://instagram.com/conthunt.app",
-            "https://tiktok.com/@conthunt.app"
-        ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "email": "support@conthunt.app"
-        }
-    }
-    </script>
-                                    <% if (heroAbs) { %>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ImageObject",
-        "url": <%- JSON.stringify(heroAbs) %>,
-        "contentUrl": <%- JSON.stringify(heroAbs) %>,
-        "caption": <%- JSON.stringify(pageTitle) %>
-    }
-    </script>
-                                        <% } %>
-                                            <% } %>
+                                
 
-                                                <% if (typeof canonical !=='undefined' && canonical) { %>
-                                                    <link rel="canonical" href="<%= canonical %>" />
-                                                    <% } %>
+                                                
+                                                    <link rel="canonical" href="https://conthunt.app/alex" />
+                                                    
 
                                                         <!-- Favicon -->
                                                         <link rel="icon" type="image/png" href="/public/favicon.png" />
@@ -135,35 +63,29 @@
 
                                                         <!-- Open Graph -->
                                                         <meta property="og:type" content="article" />
-                                                        <meta property="og:title" content="<%= pageTitle %>" />
-                                                        <meta property="og:description" content="<%= description %>" />
-                                                        <% if (heroAbs) { %>
-                                                            <meta property="og:image" content="<%= heroAbs %>" />
-                                                            <% } else { %>
+                                                        <meta property="og:title" content="Alex" />
+                                                        <meta property="og:description" content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+                                                        
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
-                                                                <% } %>
+                                                                
                                                                     <meta property="og:site_name" content="ContHunt" />
-                                                                    <% if (typeof canonical !=='undefined' && canonical)
-                                                                        { %>
+                                                                    
                                                                         <meta property="og:url"
-                                                                            content="<%= canonical %>" />
-                                                                        <% } %>
+                                                                            content="https://conthunt.app/alex" />
+                                                                        
 
                                                                             <!-- Twitter -->
                                                                             <meta name="twitter:card"
                                                                                 content="summary_large_image" />
                                                                             <meta name="twitter:title"
-                                                                                content="<%= pageTitle %>" />
+                                                                                content="Alex" />
                                                                             <meta name="twitter:description"
-                                                                                content="<%= description %>" />
-                                                                            <% if (heroAbs) { %>
-                                                                                <meta name="twitter:image"
-                                                                                    content="<%= heroAbs %>" />
-                                                                                <% } else { %>
+                                                                                content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+                                                                            
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
-                                                                                    <% } %>
+                                                                                    
 
                                                                                         <meta name="robots"
                                                                                             content="index, follow" />
@@ -235,7 +157,36 @@
     </nav>
 
     <main class="relative z-10 pt-44 pb-20">
-        <%- body %>
+        
+        <article class="max-w-3xl mx-auto px-6">
+            <header class="text-center mb-16">
+                <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+                    Alex
+                </h1>
+                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+            </header>
+            <div class="prose-enhanced">
+                <h1>Alex</h1>
+<p><strong>Role:</strong> Content Creator</p>
+<p>Alex covers viral mechanics, format analysis, Shorts structure, and creator-friendly content examples.</p>
+<h2>Bio</h2>
+<p>Alex is a content creator with 500K+ followers across TikTok and YouTube. He breaks down what makes videos go viral and teaches creators how to replicate those patterns.</p>
+<h2>Featured Articles</h2>
+<ul>
+<li><a href="/blog/best-time-to-post-youtube-shorts-2026">Best Time to Post YouTube Shorts in 2026</a></li>
+<li><a href="/blog/youtube-shorts-analytics">YouTube Shorts Analytics</a></li>
+<li><a href="/blog/what-is-a-reel">What Is a Reel? Everything You Need to Know About Instagram Reels (2026)</a></li>
+<li><a href="/blog/competitive-content-analysis">Competitive Content Analysis: The 2026 Strategy</a></li>
+</ul>
+<h2>Related Pages</h2>
+<ul>
+<li><a href="/authors">Authors</a></li>
+<li><a href="/about">About ContHunt</a></li>
+</ul>
+
+            </div>
+        </article>
+        
     </main>
 
     <!-- Footer -->

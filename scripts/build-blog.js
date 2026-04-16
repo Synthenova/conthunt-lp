@@ -283,6 +283,25 @@ function normalizeAuthorProfile(value) {
     return profile;
 }
 
+function resolvePageAuthor(fallbackAuthor, authorProfile) {
+    if (fallbackAuthor && typeof fallbackAuthor === 'object' && isNonEmptyString(fallbackAuthor.name)) {
+        return fallbackAuthor;
+    }
+
+    if (authorProfile && typeof authorProfile === 'object' && isNonEmptyString(authorProfile.name)) {
+        return {
+            name: authorProfile.name,
+            ...(isNonEmptyString(authorProfile.job_title) ? { role: authorProfile.job_title } : {}),
+            ...(isNonEmptyString(authorProfile.description) ? { bio: authorProfile.description } : {}),
+            ...(isNonEmptyString(authorProfile.image) ? { image: authorProfile.image } : {}),
+            ...(isNonEmptyString(authorProfile.url) ? { url: authorProfile.url } : {}),
+            ...(Array.isArray(authorProfile.same_as) ? { same_as: authorProfile.same_as } : {})
+        };
+    }
+
+    return null;
+}
+
 function normalizeVideoItems(value) {
     if (!Array.isArray(value)) return null;
 
@@ -842,6 +861,7 @@ async function build() {
             assignedAuthor = assignAuthorToPost(slug, authors, authorAssignments);
         }
 
+        const authorProfile = normalizeAuthorProfile(attributes.author_profile);
         const postData = {
             ...attributes,
             slug,
@@ -854,7 +874,7 @@ async function build() {
             canonical: normalizeCanonicalUrl(attributes.canonical, `${DOMAIN}/blog/${slug}`),
             faqSchemaItems: normalizeFaqItems(attributes.faq_items),
             howToSchema: normalizeHowTo(attributes.howto),
-            authorProfile: normalizeAuthorProfile(attributes.author_profile),
+            authorProfile,
             videoSchemaItems: normalizeVideoItems(attributes.video_items),
             relatedLinks: normalizeRelatedLinks(attributes.related_links),
             tocItems: renderedContent.tocItems,
@@ -868,8 +888,8 @@ async function build() {
                 .replace(/^https:\/\/conthunt\.app\/images\//, '/public/images/')
                 .replace(/^\/images\//, '/public/images/')
                 : null,
-            // Author assignment for E-E-A-T - now supports external authors
-            author: assignedAuthor
+            // Use one resolved author object everywhere: UI, telemetry, and schema.
+            author: resolvePageAuthor(assignedAuthor, authorProfile)
         };
 
         const validationWarnings = collectSchemaValidationWarnings(attributes, postData);
