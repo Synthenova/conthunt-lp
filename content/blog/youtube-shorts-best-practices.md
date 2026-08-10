@@ -2,7 +2,7 @@
 title: "YouTube Shorts Best Practices 2026: Hooks, Posting, Retention"
 description: "YouTube Shorts Best Practices in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-04-16"
+updated: "2026-08-10"
 category: "Best Practices"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -140,6 +140,8 @@ Good covers usually do one of these:
 
 If you are also refining packaging, [YouTube Shorts Thumbnail Best Practices 2026](/blog/youtube-shorts-thumbnail-best-practices-2026) is the next page to review.
 
+For title limits and truncation, use [YouTube Title Character Limit 2026](/blog/youtube-title-character-limit-2026). The short version: titles can be up to 100 characters, but the promise should appear early enough to survive mobile truncation.
+
 ## 5. Build a Repeatable Publishing Cadence
 
 The right cadence is the one you can maintain while still learning from each upload.
@@ -153,7 +155,20 @@ A practical baseline:
 
 That gives you enough volume to learn without turning your channel into a content dump.
 
-## 6. Use Retention Loops Carefully
+## 6. Match Length to the Idea
+
+YouTube Shorts can now support longer short-form videos, but length should follow the idea. Use [How Long Can YouTube Shorts Be?](/blog/how-long-can-youtube-shorts-be) for the full duration guide.
+
+Practical starting points:
+
+- 15-25 seconds for one fast tip
+- 20-35 seconds for entertainment and reactions
+- 35-60 seconds for tutorials
+- 60-180 seconds for story, test, and breakdown formats
+
+The best length is the shortest version that pays off the hook. If retention drops before the payoff, shorten the setup before changing posting frequency.
+
+## 7. Use Retention Loops Carefully
 
 A loop can help rewatches, but it does not rescue a weak idea. It works best when the ending naturally reconnects to the opening.
 
@@ -169,7 +184,7 @@ What to avoid:
 - loops that feel accidental
 - endings that repeat instead of resolve
 
-## 7. Review the Right Metrics
+## 8. Review the Right Metrics
 
 For most Shorts creators, these metrics are more useful than vanity totals:
 
