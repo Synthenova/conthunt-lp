@@ -48,6 +48,8 @@ Identify trends before they switch apps.
 *   **The Move:** Translate that visual style or topic into the YouTube Shorts format.
 *   **Result:** You arrive at the "New Platform" as the **Node Authority**, capturing the massive discovery potential before the 'Wave' of other creators arrives.
 
+For the execution layer after discovery, use [Short-Form Video Best Practices 2026](/blog/short-form-video-best-practices) to adapt hooks, captions, hashtags, and retention checks across TikTok, Reels, and Shorts.
+
 ## 3. The "Information Gap" Reconnaissance
 Find what's missing, not what's there.
 *   **The Strategy:** Analyze the top 10 'Winning' videos in your niche.

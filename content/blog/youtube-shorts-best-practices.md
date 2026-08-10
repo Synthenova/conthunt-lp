@@ -88,6 +88,8 @@ Weak hooks usually fail for one of three reasons:
 
 *ContHunt Tip:* Save your best-performing first-second patterns in a small hook library so you can reuse structures without repeating the same script.
 
+If you need the cross-platform version of this workflow, read [Short-Form Video Best Practices 2026](/blog/short-form-video-best-practices) before adapting the same idea for TikTok, Reels, and Shorts.
+
 ## 2. Improve Retention Before You Increase Volume
 
 More uploads do not fix weak retention. If viewers drop early, posting more often usually multiplies the same problem.
