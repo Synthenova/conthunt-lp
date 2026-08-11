@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <!-- PostHog Analytics -->
-  <script defer src="https://us-assets.i.posthog.com/static/array.js"></script>
   <script>
-    window.addEventListener('load', () => {
-      if (!window.posthog) return;
-      posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-        api_host: '/ingest',
-        ui_host: 'https://us.posthog.com',
-        person_profiles: 'always',
-        cross_subdomain_cookie: true,
+    let analyticsStarted = false;
+    const startAnalytics = () => {
+      if (analyticsStarted) return;
+      analyticsStarted = true;
+      const script = document.createElement('script');
+      script.src = 'https://us-assets.i.posthog.com/static/array.js';
+      script.onload = () => posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+        api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
       });
-    });
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'scroll'].forEach(event => addEventListener(event, startAnalytics, { once: true, passive: true }));
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -196,8 +198,6 @@
   <link rel="stylesheet" href="assets/css/tailwind.css" />
   <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <link href="https://conthunt.app/" rel="canonical" />
 </head>
 
