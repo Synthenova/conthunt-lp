@@ -4,5 +4,8 @@
     "front-matter": "^4.0.2",
     "glob": "^13.0.6",
     "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }

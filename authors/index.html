@@ -5,20 +5,21 @@
     <meta charset="UTF-8" />
 
     <!-- PostHog Analytics -->
-    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script defer src="https://us-assets.i.posthog.com/static/array.js"></script>
     <script>
-        // Standard Initialization
-        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-            api_host: '/ingest',
-            ui_host: 'https://us.posthog.com',
-            person_profiles: 'always',
-            cross_subdomain_cookie: true,
-        });
-        // Dynamic EJS Telemetry for the Blog
-        posthog.capture('blog_article_viewed', {
-            article_title: 'Authors',
-            canonical_url: 'https://conthunt.app/authors',
-            author_name: 'ContHunt Team'
+        window.addEventListener('load', () => {
+            if (!window.posthog) return;
+            posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+                api_host: '/ingest',
+                ui_host: 'https://us.posthog.com',
+                person_profiles: 'always',
+                cross_subdomain_cookie: true,
+            });
+            posthog.capture('blog_article_viewed', {
+                article_title: 'Authors',
+                canonical_url: 'https://conthunt.app/authors',
+                author_name: 'ContHunt Team'
+            });
         });
     </script>
 
@@ -86,27 +87,19 @@
                                                                                         <meta name="theme-color"
                                                                                             content="#030303" />
 
-                                                                                        <script
-                                                                                            src="https://cdn.tailwindcss.com"></script>
-                                                                                        <script
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/tailwind.css" />
+                                                                                        <script defer
                                                                                             src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-                                                                                        <link rel="preconnect"
-                                                                                            href="https://fonts.googleapis.com" />
-                                                                                        <link rel="preconnect"
-                                                                                            href="https://fonts.gstatic.com"
-                                                                                            crossorigin="" />
-                                                                                        <link
-                                                                                            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-                                                                                            rel="stylesheet" />
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/blog.css" />
 
-                                                                                        <script
+                                                                                        <script defer
                                                                                             src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-                                                                                        <script
+                                                                                        <script defer
                                                                                             src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
                                                                                                                                                                                     <link href="https://conthunt.app/authors" rel="canonical" />
                                                                                         </head>

@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <!-- PostHog Analytics -->
-  <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+  <script defer src="https://us-assets.i.posthog.com/static/array.js"></script>
   <script>
-    posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-      api_host: '/ingest',
-      ui_host: 'https://us.posthog.com',
-      person_profiles: 'always',
-      cross_subdomain_cookie: true,
-    })
+    window.addEventListener('load', () => {
+      if (!window.posthog) return;
+      posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+        api_host: '/ingest',
+        ui_host: 'https://us.posthog.com',
+        person_profiles: 'always',
+        cross_subdomain_cookie: true,
+      });
+    });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -190,18 +193,11 @@
   <!-- Additional SEO -->
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-    rel="stylesheet" />
-
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <link href="https://conthunt.app/" rel="canonical" />
 </head>
 
@@ -254,21 +250,21 @@
 
 
       <h1
-        class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
+        class="md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
         Content intelligence for your
         <br />
-        <span id="changing-word"
+        <span
           class="inline-block text-[13vw] md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
           style="line-height: 1.2; padding-bottom: 0.1em;">marketing</span>
       </h1>
 
       <p
-        class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
+        class="text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
         Aggregates viral videos across all social media platforms, analyzes every frame and uncovers niche gold before
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
+      <div class="flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
@@ -281,7 +277,7 @@
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
-      <div id="simulated-app-frame" class="reveal-element w-full mt-8 md:mt-32 relative perspective-1000">
+      <div id="simulated-app-frame" class="w-full mt-8 md:mt-32 relative perspective-1000">
         <div
           class="relative w-full aspect-[3/2] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group">
           <!-- App Header -->
@@ -299,10 +295,6 @@
                 organic skin care
               </span>
             </div>
-            <button id="lottie-replay-btn"
-              class="absolute right-4 text-xs font-semibold text-neutral-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-md border border-white/10 hidden items-center gap-1">
-              <iconify-icon icon="lucide:rotate-ccw" width="12"></iconify-icon> Replay
-            </button>
           </div>
 
           <!-- App Body -->
@@ -333,8 +325,8 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
+              <img src="public/main-lottie-poster.webp" alt="ContHunt viral video research dashboard"
+                width="1326" height="879" fetchpriority="high" class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -724,9 +716,8 @@
 
             <div
               class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <!-- Lottie Animation for Search -->
-              <lottie-player src="public/Scene-1.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" loop autoplay preserveAspectRatio="xMidYMid slice"></lottie-player>
+              <img src="public/scene-1-poster.webp" alt="ContHunt search parameter workflow"
+                width="502" height="319" loading="lazy" class="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -786,7 +777,7 @@
 
             <div
               class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4"
+              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4" preload="none"
                 class="absolute inset-0 w-full h-full object-cover" muted loop playsinline></video>
             </div>
           </div>
@@ -1379,9 +1370,9 @@
       </div>
     </div>
   </footer>
-  <script src="public/step2-animation.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="public/analytics.js"></script>
+  <script defer src="public/step2-animation.js"></script>
+  <script defer src="assets/js/script.js"></script>
+  <script defer src="public/analytics.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,7 @@ const glob = require('glob');
 const matter = require('front-matter');
 const markdownIt = require('markdown-it');
 const ejs = require('ejs');
+const { execFileSync } = require('child_process');
 
 const CONTENT_DIR = path.join(__dirname, '../content/blog');
 const PAGES_DIR = path.join(__dirname, '../content/pages');
@@ -802,6 +803,26 @@ function pingGoogleSitemap() {
         .catch(err => console.log('Google ping failed (non-critical):', err.message));
 }
 
+function buildTailwindCss() {
+    console.log('Generating Tailwind CSS...');
+    const executable = path.join(__dirname, '../node_modules/.bin/tailwindcss');
+    const content = [
+        'index.html',
+        'sections/**/*.html',
+        'scripts/templates/**/*.ejs',
+        'assets/js/**/*.js',
+        'public/*.js',
+        'blog/**/*.html',
+        '{about,alex,authors,editorial,elena,lamrin,maya,privacy,terms,zach-sanders}/**/*.html'
+    ].join(',');
+    execFileSync(executable, [
+        '-i', 'assets/css/tailwind-input.css',
+        '-o', 'assets/css/tailwind.css',
+        '--content', content,
+        '--minify'
+    ], { cwd: PUBLIC_DIR, stdio: 'inherit' });
+}
+
 // Main Build Function
 async function build() {
     sitemapUrls = []; // Reset
@@ -969,6 +990,8 @@ async function build() {
 
     // 8. Generate RSS Feed
     generateRSS(posts);
+
+    buildTailwindCss();
 
     // 9. Save author assignments (persist across rebuilds)
     saveAuthorAssignments(authorAssignments);
