@@ -1,0 +1,19 @@
+# ContHunt
+> ContHunt is a content intelligence platform for discovering, comparing, and analyzing viral short-form videos across social platforms.
+
+## Main pages
+- [ContHunt homepage](https://conthunt.app/): Product overview, workflow, supported research signals, and pricing.
+- [ContHunt blog](https://conthunt.app/blog): Research-backed guides for short-form video strategy, analytics, trends, and competitor analysis.
+- [About ContHunt](https://conthunt.app/about): Editorial standards, product context, and team information.
+- [Editorial team](https://conthunt.app/editorial): How ContHunt content is researched and reviewed.
+- [Privacy policy](https://conthunt.app/privacy): Data and privacy terms.
+- [Terms of service](https://conthunt.app/terms): Product terms.
+
+## Key facts
+- ContHunt searches public short-form video content across TikTok, Instagram Reels, YouTube Shorts, and other platforms.
+- Analysis covers velocity, engagement, hooks, pacing, overlays, comments, format, and niche context.
+- Source creators and original links remain available for human review.
+- The product is designed for creators, agencies, and brand content teams.
+
+## Contact
+- [Support](mailto:support@conthunt.app)

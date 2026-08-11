@@ -625,15 +625,13 @@ function cleanGeneratedBlogOutput() {
     }
 }
 
-function addToSitemap(loc, lastmod = new Date().toISOString().split('T')[0], changefreq = 'weekly', priority = '0.8') {
+function addToSitemap(loc, lastmod = new Date().toISOString().split('T')[0]) {
     // Ensure no trailing slash for consistency with Google Indexing
     const cleanLoc = loc.endsWith('/') && loc !== '/' ? loc.slice(0, -1) : loc;
 
     sitemapUrls.push({
         loc: `${DOMAIN}${cleanLoc}`,
-        lastmod,
-        changefreq,
-        priority
+        lastmod
     });
 }
 
@@ -686,7 +684,7 @@ async function buildStaticPages() {
         console.log(`Generated: ${slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/${slug}`, attributes.updated || new Date().toISOString().split('T')[0], 'monthly', '0.5');
+        addToSitemap(`/${slug}`, attributes.updated || new Date().toISOString().split('T')[0]);
     }
 }
 
@@ -772,20 +770,15 @@ ${posts.map(post => `    <item>
 function generateSitemap() {
     console.log('Generating sitemap.xml...');
 
-    const staticRoutes = [
-        { loc: '/', priority: '1.0', changefreq: 'daily' },
-        { loc: '/blog', priority: '0.9', changefreq: 'daily' }
-    ];
+    const staticRoutes = ['/', '/blog'];
 
     const today = new Date().toISOString().split('T')[0];
 
     // Prepend static routes
     for (const route of staticRoutes) {
         sitemapUrls.unshift({
-            loc: `${DOMAIN}${route.loc}`,
-            lastmod: today,
-            changefreq: route.changefreq,
-            priority: route.priority
+            loc: `${DOMAIN}${route}`,
+            lastmod: today
         });
     }
 
@@ -794,8 +787,6 @@ function generateSitemap() {
 ${sitemapUrls.map(url => `  <url>
     <loc>${url.loc}</loc>
     <lastmod>${url.lastmod}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
 
@@ -952,7 +943,7 @@ async function build() {
         console.log(`Generated: blog/${postData.slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${postData.slug}`, postData.date ? new Date(postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
+        addToSitemap(`/blog/${postData.slug}`, postData.date ? new Date(postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]);
     }
 
     // 6. Generate Index Page
