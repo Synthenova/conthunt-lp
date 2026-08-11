@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
 
     <!-- PostHog Analytics -->
-    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
+    <script src="https://us-assets.i.posthog.com/static/array.js" crossorigin="anonymous"></script>
     <script>
         // Standard Initialization
         posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
@@ -171,9 +171,11 @@
                                                                                             content="#030303" />
 
                                                                                         <script
-                                                                                            src="https://cdn.tailwindcss.com"></script>
+                                                                                            src="https://cdn.tailwindcss.com"
+                                                                                            crossorigin="anonymous"></script>
                                                                                         <script
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
+                                                                                            crossorigin="anonymous"></script>
                                                                                         <link rel="preconnect"
                                                                                             href="https://fonts.googleapis.com" />
                                                                                         <link rel="preconnect"
@@ -189,9 +191,11 @@
                                                                                             href="/assets/css/blog.css" />
 
                                                                                         <script
-                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+                                                                                            crossorigin="anonymous"></script>
                                                                                         <script
-                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+                                                                                            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+                                                                                            crossorigin="anonymous"></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -225,7 +229,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                <a href="https://agent.conthunt.app" target="_blank" rel="noopener noreferrer"
+                    class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
