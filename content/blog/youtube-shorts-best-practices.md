@@ -2,7 +2,7 @@
 title: "YouTube Shorts Best Practices 2026: Hooks, Posting, Retention"
 description: "YouTube Shorts Best Practices in 2026 with practical steps, examples, and ContHunt tips."
 date: "2026-02-25"
-updated: "2026-08-10"
+updated: "2026-08-12"
 category: "Best Practices"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -49,6 +49,9 @@ sources:
   - title: "How engagement metrics are counted"
     publisher: "YouTube Studio App Help Center"
     url: "https://support.google.com/youtubecreatorstudio/answer/2991785?hl=en&ref_topic=6323895"
+  - title: "Making thumbnails easier on YouTube"
+    publisher: "YouTube Blog"
+    url: "https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/"
 ---
 
 # YouTube Shorts Best Practices 2026: Hooks, Posting, Retention
@@ -138,6 +141,8 @@ Good covers usually do one of these:
 - highlight the result
 - stay readable on a small screen
 
+YouTube's July 2026 update says YouTube Partner Program creators can start uploading custom thumbnails for Shorts, with access expanding to more creators over time. On desktop, creators can also choose from three suggested frames; the mobile app still supports choosing a frame from the Short. Check your own Studio account before assuming custom uploads are available.
+
 If you are also refining packaging, [YouTube Shorts Thumbnail Best Practices 2026](/blog/youtube-shorts-thumbnail-best-practices-2026) is the next page to review.
 
 For title limits and truncation, use [YouTube Title Character Limit 2026](/blog/youtube-title-character-limit-2026). The short version: titles can be up to 100 characters, but the promise should appear early enough to survive mobile truncation.
@@ -198,7 +203,7 @@ Use YouTube Analytics and your own tracking to compare not just individual winne
 
 For stronger measurement, see [YouTube Shorts Analytics](/blog/youtube-shorts-analytics).
 
-## 8. Keep the Advice Grounded in Your Niche
+## 9. Keep the Advice Grounded in Your Niche
 
 Generic Shorts advice breaks down when it ignores audience type. The right pacing for gaming, education, commentary, and product demos is not identical.
 
