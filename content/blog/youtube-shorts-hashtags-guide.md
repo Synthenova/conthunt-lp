@@ -103,6 +103,8 @@ A broad tag can describe the category while a specific tag describes the actual 
 
 Hashtags help classify a Short, but they do not replace a strong title, thumbnail, or opening frame.
 
+For a workflow that connects the hook, caption, hashtags, retention, and platform fit, use the [short-form video best-practices guide](/blog/short-form-video-best-practices).
+
 Use this order:
 
 1. Write the hook first.
