@@ -1,1 +1,0 @@
-# autoseo backend package

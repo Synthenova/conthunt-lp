@@ -1,5 +1,0 @@
-fastapi
-uvicorn
-aiosqlite
-google-auth
-google-api-python-client
