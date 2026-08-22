@@ -3,25 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <!-- PostHog Analytics -->
+  <script src="https://us-assets.i.posthog.com/static/array.js"></script>
   <script>
-    let analyticsStarted = false;
-    const startAnalytics = () => {
-      if (analyticsStarted) return;
-      analyticsStarted = true;
-      const script = document.createElement('script');
-      script.src = 'https://us-assets.i.posthog.com/static/array.js';
-      script.onload = () => posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-        api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-      });
-      document.head.appendChild(script);
-    };
-    ['pointerdown', 'keydown', 'scroll'].forEach(event => addEventListener(event, startAnalytics, { once: true, passive: true }));
+    posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+      api_host: '/ingest',
+      ui_host: 'https://us.posthog.com',
+      person_profiles: 'always',
+      cross_subdomain_cookie: true,
+    })
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary Meta Tags -->
-  <title>Viral Video Content Intelligence | ContHunt</title>
-  <meta name="title" content="Viral Video Content Intelligence | ContHunt" />
+  <title>ContHunt | Analyze Viral Videos</title>
+  <meta name="title" content="ContHunt | Analyze Viral Videos" />
   <meta name="description"
     content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
   <meta name="keywords"
@@ -34,17 +29,6 @@
       "@type": "WebSite",
       "name": "ContHunt",
       "url": "https://conthunt.app/"
-    }
-  </script>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Viral Video Content Intelligence | ContHunt",
-      "url": "https://conthunt.app/",
-      "description": "Find and analyze viral short-form videos across TikTok, Instagram, YouTube, and other social platforms.",
-      "isPartOf": { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/" }
     }
   </script>
 
@@ -122,8 +106,8 @@
     "foundingDate": "2024",
     "sameAs": [
       "https://x.com/conthunt",
-      "https://instagram.com/_conthunt",
-      "https://tiktok.com/@conthunt_"
+      "https://instagram.com/conthunt.app",
+      "https://tiktok.com/@conthunt.app"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -145,7 +129,6 @@
     "@type": "Product",
     "name": "ContHunt Creator",
     "description": "AI-powered content discovery platform. Search across TikTok, YouTube Shorts, Instagram Reels. Get viral content insights, competitor analysis, and AI-driven content strategy recommendations.",
-    "image": "https://conthunt.app/public/banner.png",
     "brand": {
       "@type": "Brand",
       "name": "ContHunt"
@@ -177,7 +160,7 @@
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://conthunt.app/" />
-  <meta property="og:title" content="Viral Video Content Intelligence | ContHunt" />
+  <meta property="og:title" content="ContHunt | Analyze Viral Videos" />
   <meta property="og:description"
     content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
   <meta property="og:image" content="https://conthunt.app/public/banner.png" />
@@ -188,7 +171,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://conthunt.app/" />
-  <meta name="twitter:title" content="Viral Video Content Intelligence | ContHunt" />
+  <meta name="twitter:title" content="ContHunt | Analyze Viral Videos" />
   <meta name="twitter:description"
     content="Find viral short-form videos from TikTok, Instagram, YouTube & analyze with AI. Discover virality patterns, copy winning UGC ADs, download shorts reels." />
   <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
@@ -196,10 +179,19 @@
   <!-- Additional SEO -->
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
-  <link rel="stylesheet" href="assets/css/tailwind.css" />
-  <script defer src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="canonical" href="https://conthunt.app/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet" />
+
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link href="https://conthunt.app/" rel="canonical" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -214,7 +206,7 @@
     <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
       <!-- Logo (left) -->
       <div class="flex items-center">
-        <img src="public/logo-title-white.webp" alt="ContHunt Logo" width="462" height="78" class="h-6 w-auto" />
+        <img src="public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
       </div>
 
       <!-- Middle nav items (absolutely centered) -->
@@ -251,21 +243,21 @@
 
 
       <h1
-        class="md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
-        Content intelligence for your
+        class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
+        Third eye for your
         <br />
-        <span
+        <span id="changing-word"
           class="inline-block text-[13vw] md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600"
           style="line-height: 1.2; padding-bottom: 0.1em;">marketing</span>
       </h1>
 
       <p
-        class="text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
+        class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
         Aggregates viral videos across all social media platforms, analyzes every frame and uncovers niche gold before
         it trends.
       </p>
 
-      <div class="flex flex-col items-center gap-6 w-full max-w-md">
+      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
@@ -278,7 +270,7 @@
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
-      <div id="simulated-app-frame" class="w-full mt-8 md:mt-32 relative perspective-1000">
+      <div id="simulated-app-frame" class="reveal-element w-full mt-8 md:mt-32 relative perspective-1000">
         <div
           class="relative w-full aspect-[3/2] bg-[#0A0A0A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col transform rotate-x-12 transition-transform duration-700 hover:rotate-0 group">
           <!-- App Header -->
@@ -296,6 +288,10 @@
                 organic skin care
               </span>
             </div>
+            <button id="lottie-replay-btn"
+              class="absolute right-4 text-xs font-semibold text-neutral-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-md border border-white/10 hidden items-center gap-1">
+              <iconify-icon icon="lucide:rotate-ccw" width="12"></iconify-icon> Replay
+            </button>
           </div>
 
           <!-- App Body -->
@@ -326,8 +322,8 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <img src="public/main-lottie-poster.webp" alt="ContHunt viral video research dashboard"
-                width="1326" height="879" fetchpriority="high" class="w-full h-full object-cover" />
+              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
+                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
           </div>
         </div>
@@ -353,27 +349,6 @@
           <iconify-icon icon="simple-icons:x" width="24" class="text-white hidden md:block"></iconify-icon>
           <iconify-icon icon="simple-icons:pinterest" width="28" class="text-white"></iconify-icon>
           <iconify-icon icon="simple-icons:snapchat" width="28" class="text-white hidden md:block"></iconify-icon>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-5xl mx-auto px-6 mb-32">
-      <div class="rounded-3xl border border-white/10 bg-[#080808] p-8 md:p-12">
-        <h2 class="text-3xl md:text-5xl font-medium text-white mb-6">What is content intelligence?</h2>
-        <p class="text-lg text-neutral-300 leading-relaxed mb-8">
-          Content intelligence is the process of collecting public content signals, comparing performance patterns, and turning them into repeatable creative decisions. ContHunt applies that process to short-form video research across TikTok, Instagram Reels, YouTube Shorts, and other social platforms. Instead of ranking ideas by total views alone, it brings together velocity, engagement, format, hook, pacing, overlays, comments, and niche context so creators can see why a video is gaining momentum. Teams can use those findings to validate an idea before production, study competitors without endless manual scrolling, and build briefs from evidence rather than guesswork. The platform supports discovery, frame-by-frame analysis, and cross-platform comparison in one workflow, while the original creator and source link remain visible for review. This makes content intelligence useful for creators, agencies, and brand teams that need faster research without treating any single viral post as a guaranteed formula.
-        </p>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm">
-            <thead class="text-white border-b border-white/10">
-              <tr><th class="py-3 pr-6">Signal</th><th class="py-3 pr-6">What ContHunt compares</th><th class="py-3">Decision supported</th></tr>
-            </thead>
-            <tbody class="text-neutral-400 divide-y divide-white/5">
-              <tr><td class="py-3 pr-6">Velocity</td><td class="py-3 pr-6">Views and engagement over time</td><td class="py-3">Spot emerging formats early</td></tr>
-              <tr><td class="py-3 pr-6">Creative structure</td><td class="py-3 pr-6">Hooks, pacing, overlays, and scenes</td><td class="py-3">Build evidence-led briefs</td></tr>
-              <tr><td class="py-3 pr-6">Niche context</td><td class="py-3 pr-6">Topics, competitors, and audience response</td><td class="py-3">Prioritize relevant ideas</td></tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -717,8 +692,9 @@
 
             <div
               class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <img src="public/scene-1-poster.webp" alt="ContHunt search parameter workflow"
-                width="502" height="319" loading="lazy" class="w-full h-full object-cover" />
+              <!-- Lottie Animation for Search -->
+              <lottie-player src="public/Scene-1.json" background="transparent" speed="1"
+                style="width: 100%; height: 100%;" loop autoplay preserveAspectRatio="xMidYMid slice"></lottie-player>
             </div>
           </div>
 
@@ -778,7 +754,7 @@
 
             <div
               class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4" preload="none"
+              <video id="step3-video" src="public/conthunt%20agent%20-%20zoom.mp4"
                 class="absolute inset-0 w-full h-full object-cover" muted loop playsinline></video>
             </div>
           </div>
@@ -816,7 +792,7 @@
               dedicated strategist analyzing my niche 24/7."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-sanya.webp" alt="Sanya Verma" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-sanya.png" alt="Sanya Verma" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Sanya Verma</div>
                 <div class="text-neutral-500">Ecom Founder</div>
@@ -829,7 +805,7 @@
               the math behind the trends."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-manish.webp" alt="Manish Das" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-manish.png" alt="Manish Das" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Manish Das</div>
                 <div class="text-neutral-500">Growth Lead</div>
@@ -842,7 +818,7 @@
               understands context, not just keywords."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-alex.webp" alt="Alex Rivera" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-alex.png" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Alex Rivera</div>
                 <div class="text-neutral-500">Content Creator</div>
@@ -855,7 +831,7 @@
               ideation now."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-elena.webp" alt="Elena K." width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-elena.png" alt="Elena K." class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Elena K.</div>
                 <div class="text-neutral-500">Agency Owner</div>
@@ -870,7 +846,7 @@
               dedicated strategist analyzing my niche 24/7."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-sanya.webp" alt="Sanya Verma" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-sanya.png" alt="Sanya Verma" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Sanya Verma</div>
                 <div class="text-neutral-500">Ecom Founder</div>
@@ -883,7 +859,7 @@
               the math behind the trends."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-manish.webp" alt="Manish Das" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-manish.png" alt="Manish Das" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Manish Das</div>
                 <div class="text-neutral-500">Growth Lead</div>
@@ -896,7 +872,7 @@
               understands context, not just keywords."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-alex.webp" alt="Alex Rivera" width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-alex.png" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Alex Rivera</div>
                 <div class="text-neutral-500">Content Creator</div>
@@ -909,7 +885,7 @@
               ideation now."
             </p>
             <div class="flex items-center gap-3">
-              <img src="public/avatar-elena.webp" alt="Elena K." width="256" height="256" loading="lazy" class="w-8 h-8 rounded-full object-cover">
+              <img src="public/avatar-elena.png" alt="Elena K." class="w-8 h-8 rounded-full object-cover">
               <div class="text-xs">
                 <div class="text-white font-medium">Elena K.</div>
                 <div class="text-neutral-500">Agency Owner</div>
@@ -1309,7 +1285,7 @@
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
       <div class="col-span-2">
         <div class="flex items-center gap-2 mb-4">
-          <img src="public/faviconold.webp" alt="ContHunt Logo" width="128" height="128" loading="lazy" class="w-6 h-6">
+          <img src="public/faviconold.png" alt="ContHunt Logo" class="w-6 h-6">
           <span class="font-semibold text-white">ContHunt</span>
         </div>
         <p class="text-neutral-500 max-w-xs mb-6">
@@ -1319,9 +1295,9 @@
         <div class="flex gap-4">
           <a href="https://x.com/conthunt" target="_blank" class="text-neutral-500 hover:text-white"><iconify-icon
               icon="simple-icons:x"></iconify-icon></a>
-          <a href="https://instagram.com/_conthunt" target="_blank"
+          <a href="https://instagram.com/conthunt.app" target="_blank"
             class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
-          <a href="https://tiktok.com/@conthunt_" target="_blank"
+          <a href="https://tiktok.com/@conthunt.app" target="_blank"
             class="text-neutral-500 hover:text-white"><iconify-icon icon="simple-icons:tiktok"></iconify-icon></a>
         </div>
       </div>
@@ -1340,9 +1316,6 @@
           </li>
           <li>
             <a href="/blog" class="hover:text-white transition-colors">Changelog</a>
-          </li>
-          <li>
-            <a href="/about" rel="author" class="hover:text-white transition-colors">About the team</a>
           </li>
         </ul>
       </div>
@@ -1371,9 +1344,9 @@
       </div>
     </div>
   </footer>
-  <script defer src="public/step2-animation.js"></script>
-  <script defer src="assets/js/script.js"></script>
-  <script defer src="public/analytics.js"></script>
+  <script src="public/step2-animation.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="public/analytics.js"></script>
 </body>
 
 </html>
