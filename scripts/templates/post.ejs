@@ -1,277 +1,147 @@
-<article class="max-w-6xl mx-auto px-6">
-    <header class="text-center mb-16">
-        <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6">
+<%
+  const tocSkip = /how should you apply|what should you write down|which conthunt workflow/i;
+  const visibleToc = Array.isArray(tocItems)
+    ? tocItems.filter(item => item.level === 2 && !tocSkip.test(item.title || '')).slice(0, 8)
+    : [];
+  const heroSrc = hero || '';
+  const showHero = heroSrc && !/banner\.png|logo-title/i.test(heroSrc);
+%>
+<article class="blog-post">
+    <header class="blog-post-header">
+        <div class="blog-post-meta">
             <% if (author) { %>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center overflow-hidden">
-                        <% if (author.image) { %>
-                            <img src="<%= author.image %>" alt="<%= author.name %>" class="w-6 h-6 rounded-full object-cover" />
-                        <% } else { %>
-                            <span class="text-neutral-400" aria-hidden="true">●</span>
-                        <% } %>
-                    </div>
-                    <span class="text-white author"><% if (author.url) { %><a rel="author" href="<%= author.url %>" class="hover:text-white transition-colors"><%= author.name %></a><% } else { %><%= author.name %><% } %></span>
-                    <% if (author.role) { %>
-                        <span class="text-neutral-600">· <%= author.role %></span>
-                    <% } %>
-                    <% if (author.source_url) { %>
-                        <span class="text-sky-400">· <a href="<%= author.source_url %>" target="_blank" rel="noopener" class="hover:text-sky-300">Source</a></span>
-                    <% } %>
-                </div>
+                <span class="author">
+                    <% if (author.url) { %><a rel="author" href="<%= author.url %>"><%= author.name %></a><% } else { %><%= author.name %><% } %>
+                </span>
+                <% if (author.role) { %>
+                    <span class="blog-post-meta-muted"><%= author.role %></span>
+                <% } %>
+                <span aria-hidden="true">·</span>
             <% } else if (authorProfile && authorProfile.name) { %>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-neutral-800 flex items-center justify-center">
-                        <% if (authorProfile.image) { %>
-                            <img src="<%= authorProfile.image %>" alt="<%= authorProfile.name %>" class="w-6 h-6 rounded-full object-cover" />
-                        <% } else { %>
-                            <span class="text-neutral-400" aria-hidden="true">●</span>
-                        <% } %>
-                    </div>
-                    <span>
-                        <% if (authorProfile.url) { %>
-                            <a rel="author" href="<%= authorProfile.url %>" class="hover:text-white transition-colors author">
-                                <%= authorProfile.name %>
-                            </a>
-                        <% } else { %>
-                            <%= authorProfile.name %>
-                        <% } %>
-                    </span>
-                </div>
+                <span class="author">
+                    <% if (authorProfile.url) { %><a rel="author" href="<%= authorProfile.url %>"><%= authorProfile.name %></a><% } else { %><%= authorProfile.name %><% } %>
+                </span>
+                <span aria-hidden="true">·</span>
             <% } %>
-                    <% if (author || (authorProfile && authorProfile.name)) { %><span>•</span><% } %>
-                    <time datetime="<%= date %>">
-                        <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
-                            day: 'numeric' }) %>
-                    </time>
-                    <% if (updated && updated !== date) { %>
-                        <span>•</span>
-                        <span>Updated <%= new Date(updated).toLocaleDateString('en-US', { year: 'numeric' , month: 'short' , day: 'numeric' }) %></span>
-                    <% } %>
+            <time datetime="<%= date %>">
+                <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+            </time>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-8 leading-[1.1]">
-            <%= title %>
-        </h1>
+        <h1><%= title %></h1>
 
-        <div class="flex justify-center gap-2 flex-wrap">
-            <% if (tags && tags.length> 0) { %>
-                <% tags.forEach(tag=> { %>
-                    <span class="blog-tag">
-                        <%= tag %>
-                    </span>
+        <% if (answerFirst && answerFirst.text) { %>
+            <p class="blog-post-dek"><%= answerFirst.text %></p>
+        <% } %>
+
+        <% if (tags && tags.length > 0) { %>
+            <div class="blog-post-tags">
+                <% tags.slice(0, 4).forEach(tag => { %>
+                    <span class="blog-tag"><%= tag %></span>
                 <% }); %>
-            <% } %>
-        </div>
+            </div>
+        <% } %>
     </header>
 
-    <% if (hero) { %>
-        <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
-            <img src="<%= hero %>" alt="<%= title %>" width="1200" height="630" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
-        </div>
+    <% if (showHero) { %>
+        <figure class="blog-post-hero">
+            <img src="<%= hero %>" alt="<%= title %>" width="1200" height="630" />
+        </figure>
     <% } %>
 
-    <% if (Array.isArray(tocItems) && tocItems.length > 0) { %>
-        <aside class="mb-10 p-6 rounded-2xl glass-panel border border-white/5">
-            <h2 class="text-white text-lg font-medium mb-4">Table of Contents</h2>
-            <nav aria-label="Table of Contents">
-                <ul class="space-y-2">
-                    <% tocItems.forEach(item => { %>
-                        <li class="<%= item.level === 3 ? 'pl-4' : '' %>">
-                            <a href="#<%= item.id %>" class="text-sm text-neutral-400 hover:text-white transition-colors leading-[1.5]">
-                                <%= item.title %>
-                            </a>
-                        </li>
+    <div class="blog-post-layout">
+        <div class="blog-post-body prose-enhanced">
+            <%- content %>
+
+            <% if (Array.isArray(statItems) && statItems.length > 0) { %>
+                <section class="blog-post-section">
+                    <h2>Key data</h2>
+                    <dl class="blog-stat-list">
+                        <% statItems.forEach(stat => { %>
+                            <div>
+                                <dt><%= stat.label %></dt>
+                                <dd><data value="<%= stat.value %>"><%= stat.value %></data>
+                                    <% if (stat.context) { %><span> — <%= stat.context %></span><% } %>
+                                </dd>
+                            </div>
+                        <% }); %>
+                    </dl>
+                </section>
+            <% } %>
+
+            <% if (Array.isArray(sourceItems) && sourceItems.length > 0) { %>
+                <section class="blog-post-section">
+                    <h2>Sources</h2>
+                    <ol class="blog-source-list">
+                        <% sourceItems.forEach(source => { %>
+                            <li>
+                                <a href="<%= source.url %>"><%= source.title %></a>
+                                <% if (source.publisher) { %><span> · <%= source.publisher %></span><% } %>
+                            </li>
+                        <% }); %>
+                    </ol>
+                </section>
+            <% } %>
+
+            <% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
+                <section class="blog-post-section">
+                    <h2>Questions</h2>
+                    <% faqSchemaItems.forEach(item => { %>
+                        <details class="blog-faq">
+                            <summary><%= item.question.endsWith('?') ? item.question : item.question + '?' %></summary>
+                            <p><%= item.answer %></p>
+                        </details>
                     <% }); %>
-                </ul>
-            </nav>
-        </aside>
-    <% } %>
+                </section>
+            <% } %>
+        </div>
 
-    <% if (answerFirst && answerFirst.text) { %>
-        <section class="mb-10 p-6 rounded-2xl glass-panel border border-sky-500/20 bg-sky-500/5 answer-first">
-            <h2 class="text-sky-300 text-base font-semibold mb-2">
-                <%= answerFirst.label || 'Short Answer' %>
-            </h2>
-            <p class="text-neutral-200 leading-[1.5]"><%= answerFirst.text %></p>
-        </section>
-    <% } %>
-
-    <div class="prose-enhanced">
-        <%- content %>
+        <% if (visibleToc.length > 0) { %>
+            <aside class="blog-post-toc" aria-label="On this page">
+                <p class="blog-post-toc-label">On this page</p>
+                <nav>
+                    <ol>
+                        <% visibleToc.forEach(item => { %>
+                            <li><a href="#<%= item.id %>"><%= item.title %></a></li>
+                        <% }); %>
+                    </ol>
+                </nav>
+            </aside>
+        <% } %>
     </div>
 
-    <% if (Array.isArray(statItems) && statItems.length > 0) { %>
-        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-            <h3 class="text-white text-xl font-medium mb-4">Key Data Points</h3>
-            <div class="grid gap-3 md:grid-cols-2">
-                <% statItems.forEach(stat => { %>
-                    <article class="rounded-xl border border-white/5 p-4 bg-white/0">
-                        <p class="text-sm text-neutral-400"><%= stat.label %></p>
-                        <p class="text-xl text-white font-semibold mt-1">
-                            <data value="<%= stat.value %>"><%= stat.value %></data>
-                        </p>
-                        <% if (stat.context) { %>
-                            <p class="text-sm text-neutral-300 mt-2"><%= stat.context %></p>
-                        <% } %>
-                        <% if (stat.source_url) { %>
-                            <p class="text-xs text-neutral-500 mt-2">
-                                Source:
-                                <a href="<%= stat.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">View source</a>
-                            </p>
-                        <% } %>
-                    </article>
-                <% }); %>
-            </div>
-        </section>
-    <% } %>
-
-    <% if (Array.isArray(expertQuotes) && expertQuotes.length > 0) { %>
-        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-            <h3 class="text-white text-xl font-medium mb-4">Expert Quotes</h3>
-            <div class="space-y-4">
-                <% expertQuotes.forEach(item => { %>
-                    <blockquote class="border-l-2 border-sky-400/60 pl-4">
-                        <p class="text-neutral-100">"<%= item.quote %>"</p>
-                        <footer class="text-sm text-neutral-400 mt-2">
-                            <strong class="text-neutral-200"><%= item.name %></strong>
-                            <% if (item.title) { %>
-                                <span> · <%= item.title %></span>
-                            <% } %>
-                            <% if (item.source_url) { %>
-                                <span> · <a href="<%= item.source_url %>" class="text-sky-400 hover:text-sky-300 transition-colors">Source</a></span>
-                            <% } %>
-                        </footer>
-                    </blockquote>
-                <% }); %>
-            </div>
-        </section>
-    <% } %>
-
-    <% if (Array.isArray(sourceItems) && sourceItems.length > 0) { %>
-        <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-            <h3 class="text-white text-xl font-medium mb-4">Sources</h3>
-            <ol class="space-y-3 list-decimal list-inside">
-                <% sourceItems.forEach(source => { %>
-                    <li class="text-neutral-300">
-                        <cite class="not-italic"><%= source.title %></cite>
-                        <% if (source.publisher) { %>
-                            <span class="text-neutral-500"> · <%= source.publisher %></span>
-                        <% } %>
-                        <% if (source.published_date) { %>
-                            <span class="text-neutral-500"> · <%= source.published_date %></span>
-                        <% } %>
-                        <div>
-                            <a href="<%= source.url %>" class="text-sky-400 hover:text-sky-300 transition-colors text-sm"><%= source.url %></a>
-                        </div>
-                    </li>
-                <% }); %>
-            </ol>
-        </section>
-    <% } %>
-
-    <div class="mt-20 pt-10 border-t border-white/5 text-center">
-        <h3 class="text-white text-xl font-medium mb-6">Explore more insights</h3>
-        <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold">
-            VIEW ALL POSTS
-        </a>
+    <div class="blog-post-end">
+        <a href="/blog" class="glass-button px-6 py-3 text-sm font-bold font-nav">All posts</a>
     </div>
 </article>
 
 <% if (author && (author.name || author.bio)) { %>
-<section class="max-w-6xl mx-auto px-6 mt-12 mb-16">
-    <div class="p-6 rounded-2xl glass-panel border border-white/5 flex gap-4 items-start">
+<section class="blog-post">
+    <div class="blog-author">
         <% if (author.image) { %>
-            <img src="<%= author.image %>" alt="<%= author.name %>" class="w-16 h-16 rounded-full object-cover shrink-0" />
-        <% } else { %>
-            <div class="w-16 h-16 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
-                <span class="text-neutral-400 text-2xl" aria-hidden="true">●</span>
-            </div>
+            <img src="<%= author.image %>" alt="<%= author.name %>" width="48" height="48" />
         <% } %>
         <div>
-            <div class="text-xs text-neutral-500 mb-1">Written by</div>
-            <h4 class="text-white font-semibold mb-1"><%= author.name %></h4>
-            <% if (author.role) { %>
-                <div class="text-xs text-sky-400 mb-2"><%= author.role %></div>
-            <% } %>
-            <% if (author.bio) { %>
-                <p class="text-sm text-neutral-400"><%= author.bio %></p>
-            <% } %>
-            <% if (author.url) { %>
-                <a href="<%= author.url %>" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 mt-2 inline-block">View Author Profile →</a>
-            <% } %>
-            <% if (author.source_url) { %>
-                <a href="<%= author.source_url %>" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 mt-2 ml-2 inline-block">View Original Article →</a>
-            <% } %>
+            <p class="blog-post-toc-label">Written by</p>
+            <p class="blog-author-name"><% if (author.url) { %><a rel="author" href="<%= author.url %>"><%= author.name %></a><% } else { %><%= author.name %><% } %></p>
+            <% if (author.role) { %><p class="blog-post-meta-muted"><%= author.role %></p><% } %>
+            <% if (author.bio) { %><p class="blog-author-bio"><%= author.bio %></p><% } %>
         </div>
     </div>
 </section>
 <% } %>
 
-<% if ((typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) || (Array.isArray(relatedLinks) && relatedLinks.length > 0)) { %>
-<section class="mt-16 mb-8">
-    <div class="max-w-6xl mx-auto px-6">
-        <h3 class="text-white text-xl font-medium mb-6">Related Articles</h3>
-        <% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
-            <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-                <% relatedPosts.forEach(post => { %>
-                <a href="/blog/<%= post.slug %>" class="blog-card-link group min-w-[320px] max-w-[320px] snap-start flex-shrink-0">
-                    <div class="glass-panel p-6 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden h-full">
-                        <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="relative z-10">
-                            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors line-clamp-3">
-                                <%= post.title %>
-                            </h4>
-                            <p class="text-neutral-400 text-sm mb-4 line-clamp-2">
-                                <%= post.description || '' %>
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <% if (post.tags && post.tags.length > 0) { %>
-                                    <% post.tags.slice(0, 3).forEach(tag => { %>
-                                        <span class="blog-tag text-xs"><%= tag %></span>
-                                    <% }); %>
-                                <% } %>
-                            </div>
-                            <span class="text-xs text-neutral-500 mt-4 block">
-                                <%= new Date(post.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) %>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <% }); %>
-            </div>
-        <% } %>
-
-        <% if (Array.isArray(relatedLinks) && relatedLinks.length > 0) { %>
-            <div class="mt-6 p-6 rounded-2xl glass-panel border border-white/5">
-                <ul class="space-y-3">
-                    <% relatedLinks.forEach(link => { %>
-                        <li>
-                            <a href="<%= link.url %>" class="text-sky-400 hover:text-sky-300 transition-colors font-medium">
-                                <%= link.title %>
-                            </a>
-                            <% if (link.reason) { %>
-                                <p class="text-sm text-neutral-400 mt-1"><%= link.reason %></p>
-                            <% } %>
-                        </li>
-                    <% }); %>
-                </ul>
-            </div>
-        <% } %>
-    </div>
-</section>
-<% } %>
-
-<% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
-<section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-    <h2 class="text-white text-xl font-medium mb-4">Frequently asked questions</h2>
-    <div class="space-y-3">
-        <% faqSchemaItems.forEach(item => { %>
-            <details class="rounded-xl border border-white/5 bg-white/0 p-4">
-                <h2 class="text-white text-base font-medium"><%= item.question.endsWith('?') ? item.question : item.question + '?' %></h2>
-                <p class="text-neutral-300 mt-3 leading-relaxed"><%= item.answer %></p>
-            </details>
+<% if (typeof relatedPosts !== 'undefined' && relatedPosts && relatedPosts.length > 0) { %>
+<section class="blog-post blog-related">
+    <p class="blog-post-toc-label">More like this</p>
+    <ul>
+        <% relatedPosts.slice(0, 4).forEach(post => { %>
+            <li>
+                <a href="/blog/<%= post.slug %>"><%= post.title %></a>
+                <time datetime="<%= post.date %>"><%= new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></time>
+            </li>
         <% }); %>
-    </div>
+    </ul>
 </section>
 <% } %>
 
@@ -292,5 +162,3 @@
 }, null, 2) %>
 </script>
 <% } %>
-
-

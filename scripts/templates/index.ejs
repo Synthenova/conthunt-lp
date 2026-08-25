@@ -1,50 +1,19 @@
-<div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-24 flex flex-col items-center">
-        <p class="font-nav text-xs font-bold text-neutral-500 tracking-[0.2em] uppercase mb-6">Resources</p>
-        <h1 class="text-[10vw] md:text-[5.5rem] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
-            Blog
-        </h1>
-        <p class="text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-2xl">
-            Insights, tutorials, and updates from the ContHunt team.
-        </p>
+<div class="blog-post">
+    <div class="blog-post-header" style="max-width: none; text-align: left;">
+        <p class="blog-post-toc-label">Resources</p>
+        <h1>Blog</h1>
+        <p class="blog-post-dek">Insights, tutorials, and updates from the ContHunt team.</p>
     </div>
 
-    <div class="blog-grid max-w-6xl mx-auto">
+    <div class="blog-grid">
         <% posts.forEach(post=> { %>
-            <a href="/blog/<%= post.slug %>" class="blog-card-link group">
-                <div
-                    class="glass-panel p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden">
-                    <div class="light-torch opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    <div class="relative z-10">
-                        <h2 class="text-[1.5rem] leading-7 font-medium text-white mb-2 group-hover:text-sky-400 transition-colors">
-                            <%= post.title %>
-                        </h2>
-                        <p class="text-[1.1rem] leading-6 text-neutral-400 mb-6">
-                            <%= post.description %>
-                        </p>
-
-                        <div class="flex items-center justify-between text-sm text-neutral-500">
-                            <div class="flex flex-wrap gap-2 mb-4 md:mb-0">
-                                <% if (post.tags && post.tags.length> 0) { %>
-                                    <% post.tags.slice(0, 4).forEach(tag=> { %>
-                                        <span class="blog-tag">
-                                            <%= tag %>
-                                        </span>
-                                        <% }); %>
-                                            <% } %>
-                            </div>
-
-                            <div class="flex items-center gap-4 shrink-0 font-nav text-xs tracking-[0.1em] uppercase">
-                                <span>
-                                    <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric' ,
-                                        month: 'short' , day: 'numeric' }) %>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <a href="/blog/<%= post.slug %>" class="blog-card-link">
+                <h2 class="text-[1.35rem] leading-snug font-medium text-white mb-2"><%= post.title %></h2>
+                <p class="text-[0.95rem] leading-6 text-neutral-400 mb-6"><%= post.description %></p>
+                <span class="blog-post-toc-label" style="margin: 0;">
+                    <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                </span>
             </a>
-            <% }); %>
+        <% }); %>
     </div>
 </div>
