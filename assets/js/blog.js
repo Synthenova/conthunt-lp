@@ -16,17 +16,35 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener(event, startAnalytics, { once: true, passive: true });
     });
 
-    // Reading Progress Bar
     const progressBar = document.getElementById('reading-progress');
-    
-    // Only run if the progress bar exists on the page
     if (progressBar) {
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
-            progressBar.style.width = `${scrollPercentage}%`;
-        });
+            progressBar.style.width = `${(scrollTop / scrollHeight) * 100}%`;
+        }, { passive: true });
+    }
+
+    const toc = document.querySelector('.blog-post-toc');
+    if (toc) {
+        const links = [...toc.querySelectorAll('a[href^="#"]')];
+        const headings = links
+            .map((link) => document.getElementById(decodeURIComponent(link.getAttribute('href').slice(1))))
+            .filter(Boolean);
+
+        const setActive = () => {
+            const offset = 140;
+            let current = headings[0];
+            headings.forEach((heading) => {
+                if (heading.getBoundingClientRect().top <= offset) current = heading;
+            });
+            links.forEach((link) => {
+                const active = current && link.getAttribute('href') === `#${current.id}`;
+                link.classList.toggle('is-active', Boolean(active));
+            });
+        };
+
+        window.addEventListener('scroll', setActive, { passive: true });
+        setActive();
     }
 });
