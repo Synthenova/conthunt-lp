@@ -8,6 +8,10 @@
     pointer-events: none;
 }
 
+.glass-nav {
+    position: relative;
+}
+
 /* Reading Progress Bar */
 #reading-progress {
     position: fixed;
