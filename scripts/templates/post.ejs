@@ -78,14 +78,19 @@
             <% } %>
 
             <% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
-                <section class="blog-post-section">
-                    <h2>Questions</h2>
-                    <% faqSchemaItems.forEach(item => { %>
-                        <details class="blog-faq">
-                            <summary><%= item.question.endsWith('?') ? item.question : item.question + '?' %></summary>
-                            <p><%= item.answer %></p>
-                        </details>
-                    <% }); %>
+                <section class="blog-faq-section">
+                    <h2>Common Questions</h2>
+                    <div class="blog-faq-list">
+                        <% faqSchemaItems.forEach(item => { %>
+                            <details class="blog-faq">
+                                <summary>
+                                    <span><%= item.question.endsWith('?') ? item.question : item.question + '?' %></span>
+                                    <span class="blog-faq-chevron" aria-hidden="true"></span>
+                                </summary>
+                                <div class="blog-faq-body"><%= item.answer %></div>
+                            </details>
+                        <% }); %>
+                    </div>
                 </section>
             <% } %>
         </div>
