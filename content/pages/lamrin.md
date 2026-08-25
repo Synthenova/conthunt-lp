@@ -1,26 +1,40 @@
 ---
-title: "Lamrin"
-description: "Lamrin is ContHunt's lead engineer profile focused on the product, systems, and analysis layer."
-updated: "2026-04-16"
+title: "Lamrin | ContHunt Engineering Profile"
+description: "Lamrin is ContHunt's lead engineer. He writes about the product workflow, analysis systems, and how to turn public video research into a repeatable process."
+updated: "2026-08-25"
 ---
-# Lamrin
 
-**Role:** Lead Engineer
+**Role:** Lead Engineer  
+**Profile:** [https://conthunt.app/lamrin](https://conthunt.app/lamrin)  
+**Team:** ContHunt editorial team, Synthenova Enterprises LLP
 
-Lamrin covers system design, product workflows, technical analysis, and tooling.
+Lamrin explains how ContHunt’s analysis layer is supposed to be used: as a way to inspect public videos, keep source links, and compare structure. The writing stays close to the product rather than to unverifiable “AI scores.”
 
 ## Bio
 
-Full-stack engineer building AI-powered tools. Lamrin architected ContHunt's video analysis engine and loves breaking down complex tech into simple ideas.
+Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher can actually finish. That includes discovery, comparison, and keeping the original creator visible.
 
-## Featured Articles
+## What does Lamrin research?
+
+- How to describe analysis steps without fake precision
+- Where competitor tools overlap with short-form research and where they do not
+- Market-trend questions that can be answered with public examples
+- Content intelligence as a process, not a dashboard trophy
+
+## How should you use these articles?
+
+If you are evaluating tools, read the comparison as a map of jobs to be done. Confirm current pricing and coverage on the vendor site. If you are using ContHunt, keep the source URL in the brief. Engineering pages should help you trust the workflow, not skip the evidence.
+
+## Featured articles
 
 - [Competitor Analysis Tools](/blog/competitor-analysis-tools)
 - [How to Identify Market Trends](/blog/how-to-identify-market-trends)
 - [What is Content Intelligence?](/blog/what-is-content-intelligence)
-- [BuzzSumo Pricing vs. 2026 Alternatives](/blog/buzzsumo-pricing-alternatives)
+- [BuzzSumo Pricing vs Alternatives](/blog/buzzsumo-pricing-alternatives)
 
-## Related Pages
+## Related pages
 
 - [Authors](/authors)
+- [Editorial standards](/editorial)
 - [About ContHunt](/about)
+- [Blog](/blog)

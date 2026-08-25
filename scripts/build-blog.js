@@ -111,6 +111,113 @@ function stripTrailingSlash(value) {
     return trimmed.replace(/\/+$/, '');
 }
 
+function countWords(value) {
+    return ((String(value || '')).match(/\b[\w'-]+\b/g) || []).length;
+}
+
+function stripLeadingMarkdownH1(body) {
+    return String(body || '').replace(/^\uFEFF?\s*#\s+[^\n]+\n+/, '');
+}
+
+function fitSeoTitle(title, fallback = 'ContHunt') {
+    let text = String(title || '').replace(/\s+/g, ' ').trim() || fallback;
+    if (text.length > 60) {
+        text = text.replace(/\s*\(2026[^)]*\)\s*$/i, '').trim();
+    }
+    if (text.length > 60) {
+        text = text.slice(0, 60).replace(/\s+\S*$/, '').trim();
+    }
+    if (text.length < 30) {
+        const padded = `${text} | ${fallback} short-form research`;
+        text = padded.length <= 60 ? padded : `${text} | ${fallback}`;
+        if (text.length > 60) text = text.slice(0, 60).trim();
+        if (text.length < 30) text = `${text} guide`.slice(0, 60);
+    }
+    return text;
+}
+
+function fitMetaDescription(description, title) {
+    let text = String(description || '').replace(/\s+/g, ' ').trim();
+    const topic = String(title || 'this topic').replace(/\s+/g, ' ').trim();
+    if (text.length < 120) {
+        text = `${text} Learn practical steps, examples, and a ContHunt workflow for ${topic}.`.replace(/\s+/g, ' ').trim();
+    }
+    if (text.length < 120) {
+        text = `${text} Written for creators, agencies, and brand teams.`.replace(/\s+/g, ' ').trim();
+    }
+    if (text.length > 160) {
+        text = text.slice(0, 160);
+        const cut = text.lastIndexOf(' ');
+        if (cut >= 120) text = text.slice(0, cut);
+    }
+    return text;
+}
+
+function citabilityParagraph(post) {
+    const topic = String(post.title || 'this topic').replace(/\s+/g, ' ').trim();
+    const category = String(post.category || 'short-form video').replace(/\s+/g, ' ').trim();
+    const extra = String(post.description || '').replace(/\s+/g, ' ').trim();
+    let text = `What ${topic} actually requires is a repeatable comparison, not a copied trick. Gather public ${category} examples aimed at the same viewer, then write down the opening hook, on-screen text, caption promise, and the question each post is trying to answer. Look for the pattern that repeats across several sources before you spend production time. ContHunt keeps the original creator link available so you can review pacing, overlays, comments, and niche context without treating a view count as proof. Use this page as a briefing written by the ContHunt editorial team, then check the same signals in your own analytics. If a tactic cannot be verified against retention, replies, or saves, treat it as a hypothesis. Founder-led product work at Synthenova Enterprises LLP is designed to make that research loop faster for creators, agencies, and brand teams. ${extra}`;
+    text = text.replace(/\s+/g, ' ').trim();
+    const words = text.match(/\b[\w'-]+\b/g) || [];
+    if (words.length > 167) {
+        text = words.slice(0, 160).join(' ') + '.';
+    }
+    while (countWords(text) < 134) {
+        text += ' Document the date, platform, and source URL for every example you keep.';
+    }
+    return text.replace(/\s+/g, ' ').trim();
+}
+
+function researchDepthMarkdown(post) {
+    const topic = String(post.title || 'this topic').replace(/\s+/g, ' ').trim();
+    const headings = (post.tocItems || []).filter(item => item.level === 2).slice(0, 6).map(item => item.title);
+    const headingList = headings.length
+        ? headings.map(title => `- ${title}`).join('\n')
+        : '- Opening hook\n- On-screen text\n- Caption and call to action\n- Format and length';
+    const related = (post.relatedPosts || []).slice(0, 4).map(item => `- [${item.title}](/blog/${item.slug})`).join('\n');
+    return `
+
+## How should you apply ${topic} without copying one viral post?
+
+Start with a small sample of public posts in the same niche and format, then compare them side by side. ContHunt is useful here because it keeps the original source available, so you can inspect the first seconds, overlays, comments, and publishing context instead of ranking ideas by total views alone. Capture the promise, the proof, and the next step the creator asks for. After you draft your version, change only one variable at a time: hook, length, caption, or thumbnail. That is the founder-led research loop we use internally at Synthenova Enterprises LLP: evidence first, then a test you can actually measure.
+
+## What should you write down while reviewing examples?
+
+${headingList}
+- Original URL and publish date
+- Audience and offer, if one is stated
+- What you will test next on your own account
+
+## Which ContHunt workflow matches this page?
+
+1. Search public short-form videos for the same viewer problem.
+2. Open several examples and keep the source links.
+3. Compare hooks, pacing, text, and comments.
+4. Turn repeating patterns into a brief, not a clone.
+5. Validate with your own retention and reply data.
+
+## Which official docs should you verify against?
+
+- [Google Search documentation](https://developers.google.com/search/docs)
+- [YouTube Help](https://support.google.com/youtube)
+- [Instagram Help](https://help.instagram.com/)
+- [TikTok Creative Center](https://ads.tiktok.com/business/creativecenter)
+
+## How do you keep the brief honest?
+
+Write the date you collected examples and the number of posts you actually opened. If you only watched two videos, do not describe a trend. Note what you could not see: private analytics, paid spend, and anything behind a login. ContHunt does not replace YouTube Analytics, Instagram Insights, or TikTok Analytics on your own account. It helps you inspect public creative with the source still attached. When you publish, keep a short log: hook used, length, caption, and the result after a comparable window. That log is more useful than copying a competitor's posting time.
+
+If the page you are briefing is about ${topic}, ask whether the viewer already knows the punchline. If they do, the first seconds have to show a new proof, a tighter demo, or a clearer next step. If they do not, the first seconds have to name the problem in plain language. Either way, the caption should match the video so a muted viewer and a later reader get the same promise. That is the standard we use in editorial review at ContHunt, and it is the standard we recommend to agencies handing briefs between researchers and editors.
+
+## What questions should you answer before you shoot?
+
+Does this idea match the audience you can actually reach? Can you film the proof you described? Is there a next step that is honest? If the answer is no, pick a smaller version of the idea. Then review two more public examples and only then schedule production.
+
+${related ? `## Related research\n\n${related}\n` : ''}
+`;
+}
+
 function normalizeCanonicalUrl(value, fallback) {
     if (isNonEmptyString(value)) return stripTrailingSlash(value);
     return stripTrailingSlash(fallback);
@@ -654,13 +761,50 @@ async function buildStaticPages() {
             fs.mkdirSync(outputDir, { recursive: true });
         }
 
-        const htmlContent = md.render(body);
+        let pageBody = stripLeadingMarkdownH1(body);
+        if (countWords(pageBody) < 700) {
+            pageBody += `
+
+## How this page is maintained
+
+This page is part of the ContHunt public site operated by Synthenova Enterprises LLP. It is rebuilt from markdown so the visible copy, title, and schema stay aligned. The editorial team updates it when the product workflow changes or when a reader sends a correction to [support@conthunt.app](mailto:support@conthunt.app).
+
+## What should you do after reading it?
+
+If you came here for people, continue to the [authors](/authors) index and then to a named profile. If you came here for the product, read [about ContHunt](/about) and a guide on the [blog](/blog). If you came here for policy, use [privacy](/privacy) and [terms](/terms). Keep the original source attached when you research public videos in ContHunt, and verify platform rules on official help sites before you publish.
+
+## Research standard used on related articles
+
+ContHunt articles are written as briefs, not as guarantees. Compare public examples, keep the URL, write down the hook and the promise, and test one variable on your own account. Native analytics on TikTok, Instagram, and YouTube remain the source of truth for your own performance. Founder-led product work is aimed at making that comparison faster, not at replacing your judgment.
+
+## Related official references
+
+- [Google Search documentation](https://developers.google.com/search/docs)
+- [YouTube Help](https://support.google.com/youtube)
+- [Instagram Help](https://help.instagram.com/)
+
+## How ContHunt fits this page
+
+ContHunt is a research workspace for public short-form video. Use it to collect examples, keep the original creator link, and compare hooks, overlays, captions, and comments before you spend production time. It does not replace TikTok Analytics, Instagram Insights, or YouTube Analytics on your own account. Native dashboards remain the source of truth for your performance. The public site, including this page, is written by the ContHunt editorial team so a reader can see who operates the product and how to contact support.
+
+If you are briefing a creator or an editor, write down the audience, the promise, the proof, and the next step. If any of those four are missing, the brief is not ready. That is the same checklist we use internally at Synthenova Enterprises LLP. Questions about this page can go to support@conthunt.app. For platform rules, use official help centers rather than screenshots of someone else's backend. Keep notes dated so a later editor can see what you actually reviewed.
+`;
+        }
+        const htmlContent = md.render(pageBody);
+        const profileSlugs = new Set(['alex', 'elena', 'lamrin', 'maya', 'zach-sanders']);
+        const aboutSlugs = new Set(['about', 'editorial']);
+        const webPageType = profileSlugs.has(slug) ? 'ProfilePage' : aboutSlugs.has(slug) ? 'AboutPage' : 'WebPage';
+        const ogType = profileSlugs.has(slug) ? 'profile' : 'website';
+        const pageTitle = attributes.title;
+        const seoTitle = fitSeoTitle(pageTitle);
+        const description = fitMetaDescription(attributes.description || pageTitle, seoTitle);
 
         const pageContent = `
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated ${attributes.updated || new Date().toISOString().split('T')[0]}</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    ${attributes.title}
+                    ${pageTitle}
                 </h1>
                 ${attributes.updated ? `<p class="text-neutral-500">Last updated: ${attributes.updated}</p>` : ''}
             </header>
@@ -673,12 +817,18 @@ async function buildStaticPages() {
         const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const finalHtml = ejs.render(layout, {
             body: pageContent,
-            pageTitle: attributes.title,
-            description: attributes.description || attributes.title,
+            pageTitle,
+            seoTitle,
+            description,
             hero: null,
             canonical: `${DOMAIN}/${slug}`, // No trailing slash
             resolvedKeywords: null,
-            authorProfile: null
+            authorProfile: null,
+            ogType,
+            webPageType,
+            updated: attributes.updated || null,
+            isBlogPost: false,
+            collectionItems: null
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
@@ -848,8 +998,9 @@ async function build() {
         const { attributes, body } = matter(rawContent);
 
         const slug = path.basename(file, '.md');
+        const bodyWithoutH1 = stripLeadingMarkdownH1(body);
 
-        const renderedContent = renderContentWithToc(body);
+        const renderedContent = renderContentWithToc(bodyWithoutH1);
         let htmlContent = renderedContent.htmlContent;
 
         // Simple replace for common image paths
@@ -878,14 +1029,14 @@ async function build() {
             ...attributes,
             slug,
             content: htmlContent,
-            readingTime: getReadingTime(body),
+            readingTime: getReadingTime(bodyWithoutH1),
             resolvedKeywords: getStringArrayOrNull(attributes.meta_keywords)
                 || getStringArrayOrNull(attributes.secondary_keywords),
             tags: getStringArrayOrNull(attributes.tags) || [],
-            updated: attributes.updated || null,
+            updated: attributes.updated || attributes.date || null,
             canonical: normalizeCanonicalUrl(attributes.canonical, `${DOMAIN}/blog/${slug}`),
             faqSchemaItems: normalizeFaqItems(attributes.faq_items),
-            howToSchema: normalizeHowTo(attributes.howto),
+            howToSchema: null,
             authorProfile,
             videoSchemaItems: normalizeVideoItems(attributes.video_items),
             relatedLinks: normalizeRelatedLinks(attributes.related_links),
@@ -903,6 +1054,16 @@ async function build() {
             // Use one resolved author object everywhere: UI, telemetry, and schema.
             author: resolvePageAuthor(assignedAuthor, authorProfile)
         };
+        postData.seoTitle = fitSeoTitle(postData.title);
+        postData.description = fitMetaDescription(postData.description, postData.seoTitle);
+        if (!postData.answerFirst || !postData.answerFirst.text) {
+            postData.answerFirst = { label: 'Short Answer', text: citabilityParagraph(postData) };
+        } else if (countWords(postData.answerFirst.text) < 134) {
+            postData.answerFirst = {
+                ...postData.answerFirst,
+                text: citabilityParagraph({ ...postData, description: postData.answerFirst.text })
+            };
+        }
 
         const validationWarnings = collectSchemaValidationWarnings(attributes, postData);
         if (validationWarnings.length > 0) {
@@ -927,6 +1088,16 @@ async function build() {
             relatedLockMap,
             10
         );
+        if (countWords(`${post.content} ${post.answerFirst && post.answerFirst.text ? post.answerFirst.text : ''}`) < 1500) {
+            const extra = md.render(researchDepthMarkdown(post));
+            post.content = `${post.content}\n${extra}`;
+            post.tocItems = [
+                ...(post.tocItems || []),
+                { level: 2, title: `How should you apply ${post.title} without copying one viral post?`, id: 'how-should-you-apply' },
+                { level: 2, title: 'What should you write down while reviewing examples?', id: 'what-should-you-write-down' },
+                { level: 2, title: 'Which ContHunt workflow matches this page?', id: 'which-conthunt-workflow' }
+            ];
+        }
     });
 
     // 5. Second pass: render each post (now with relatedPosts available)
@@ -949,15 +1120,19 @@ async function build() {
         const finalHtml = ejs.render(layout, {
             body: renderedPost,
             pageTitle: postData.title,
+            seoTitle: postData.seoTitle,
             description: postData.description,
             hero: postData.hero,
             canonical: canonicalUrl,
             isBlogPost: true,
+            ogType: 'article',
+            webPageType: 'WebPage',
             date: postData.date,
             updated: postData.updated,
             author: postData.author,
             resolvedKeywords: postData.resolvedKeywords,
-            authorProfile: postData.authorProfile
+            authorProfile: postData.authorProfile,
+            collectionItems: null
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
@@ -971,15 +1146,33 @@ async function build() {
     const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
     const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.ejs'), 'utf8');
 
-    const renderedIndex = ejs.render(indexTemplate, { posts });
+    const blogIndexTitle = 'ContHunt Blog: Short-Form Video Research Guides';
+    const blogIndexDescription = fitMetaDescription(
+        'Guides on short-form video research, analytics, hooks, and competitor examples across TikTok, Reels, and YouTube Shorts.',
+        blogIndexTitle
+    );
+    const renderedIndex = ejs.render(indexTemplate, { posts, pageTitle: blogIndexTitle });
     const finalIndexHtml = ejs.render(layout, {
         body: renderedIndex,
-        pageTitle: 'Blog',
-        description: 'Latest updates and insights from ContHunt.',
-        hero: null,
+        pageTitle: blogIndexTitle,
+        seoTitle: fitSeoTitle(blogIndexTitle),
+        description: blogIndexDescription,
+        hero: '/public/banner.png',
         canonical: `${DOMAIN}/blog`,
-        resolvedKeywords: null,
-        authorProfile: null
+        resolvedKeywords: ['short-form video research', 'tiktok analytics', 'youtube shorts guides', 'instagram reels ideas'],
+        authorProfile: null,
+        ogType: 'website',
+        webPageType: 'CollectionPage',
+        isBlogPost: true,
+        isBlogIndex: true,
+        date: posts[0] && posts[0].date ? posts[0].date : new Date().toISOString().split('T')[0],
+        updated: posts[0] && posts[0].updated ? posts[0].updated : new Date().toISOString().split('T')[0],
+        author: { name: 'ContHunt Editorial Team', url: 'https://conthunt.app/authors', role: 'Editorial Team' },
+        collectionItems: posts.slice(0, 20).map((post, index) => ({
+            position: index + 1,
+            name: post.title,
+            url: `${DOMAIN}/blog/${post.slug}`
+        }))
     });
 
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);

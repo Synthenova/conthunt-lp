@@ -1,6 +1,6 @@
 ---
 title: "15 Best Competitor Analysis Tools for 2026 (Free & Paid)"
-description: "15 Best Competitor Analysis Tools for in 2026 with practical steps, examples, and ContHunt tips."
+description: "Compare competitor analysis tools for search, social, and short-form video research, including where ContHunt fits and what to verify before you buy."
 date: "2026-02-18"
 updated: "2026-08-10"
 category: "Product Reviews"

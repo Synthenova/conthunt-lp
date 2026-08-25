@@ -4,51 +4,52 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: '<%= pageTitle %>', canonical_url: '<%= canonical %>',
-                    author_name: '<%= typeof author !== "undefined" && author && typeof author === "object" && author.name ? author.name : (typeof author !== "undefined" ? author : "ContHunt Team") %>'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <% const titleWithoutYear = pageTitle.replace(/\s*\(2026[^)]*\)\s*$/i, ''); -%>
-    <% const seoTitle = titleWithoutYear.length <= 60 ? titleWithoutYear : titleWithoutYear.includes(':') ? titleWithoutYear.split(':')[0] : titleWithoutYear.slice(0, 60).replace(/\s+\S*$/, ''); -%>
-    <title><%= seoTitle %></title>
-    <meta name="title" content="<%= seoTitle %>" />
+    <% const resolvedTitle = (typeof seoTitle !== 'undefined' && seoTitle) ? seoTitle : pageTitle; -%>
+    <title><%= resolvedTitle %></title>
+    <meta name="title" content="<%= resolvedTitle %>" />
     <meta name="description"
         content="<%= description || 'Insights, tutorials, and updates from the ContHunt team.' %>" />
     <% if (Array.isArray(resolvedKeywords) && resolvedKeywords.length> 0) { %>
         <meta name="keywords" content="<%= resolvedKeywords.join(', ') %>" />
         <% } %>
 
-            <script type="application/ld+json">
+    <% const resolvedWebPageType = (typeof webPageType !== 'undefined' && webPageType) ? webPageType : 'WebPage'; -%>
+    <% const resolvedCanonical = (typeof canonical !== 'undefined' && canonical) ? canonical : 'https://conthunt.app/'; -%>
+    <%
+      const graph = [
+        { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/" },
         {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
+          "@type": resolvedWebPageType === 'WebPage' ? 'WebPage' : [resolvedWebPageType, 'WebPage'],
+          "name": resolvedTitle,
+          "url": resolvedCanonical,
+          "isPartOf": { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/" },
+          "description": description || '',
+          ...(typeof updated !== 'undefined' && updated ? { "dateModified": updated } : {})
         }
-    </script>
+      ];
+      if (Array.isArray(typeof collectionItems !== 'undefined' ? collectionItems : null) && collectionItems.length > 0) {
+        graph.push({
+          "@type": "ItemList",
+          "name": resolvedTitle,
+          "itemListElement": collectionItems.map(item => ({
+            "@type": "ListItem",
+            "position": item.position,
+            "name": item.name,
+            "url": item.url
+          }))
+        });
+        graph.push({
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://conthunt.app" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://conthunt.app/blog" }
+          ]
+        });
+      }
+    %>
 
             <% const heroAbs=hero ? (hero.startsWith('http') ? hero : `https://conthunt.app${hero}`) : null; %>
                 <% const hasAuthorObject=typeof author !== 'undefined' && author && typeof author === 'object' && author.name; %>
@@ -68,8 +69,7 @@
                         !=='undefined' ) ? author : "ContHunt Team" }; %>
 
                         <% if (typeof isBlogPost !=='undefined' && isBlogPost) {
-                            const articleSchema = {
-                                "@context": "https://schema.org",
+                            graph.push({
                                 "@type": "Article",
                                 "headline": pageTitle,
                                 "description": description || '',
@@ -89,12 +89,19 @@
                                     "@type": "WebPage",
                                     "@id": canonical
                                 }
-                            };
-                        %>
+                            });
+                            graph.push({
+                                "@type": "BreadcrumbList",
+                                "itemListElement": [
+                                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://conthunt.app" },
+                                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://conthunt.app/blog" },
+                                    { "@type": "ListItem", "position": 3, "name": pageTitle, "item": canonical }
+                                ]
+                            });
+                        } %>
                             <script type="application/ld+json">
-<%- JSON.stringify(articleSchema, null, 2) %>
+<%- JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2) %>
     </script>
-                            <% } %>
 
                                 <% if (typeof isHomepage !=='undefined' && isHomepage) { %>
                                     <script type="application/ld+json">
@@ -136,7 +143,7 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
+                                                        <meta property="og:type" content="<%= typeof ogType !== 'undefined' && ogType ? ogType : 'website' %>" />
                                                         <meta property="og:title" content="<%= pageTitle %>" />
                                                         <meta property="og:description" content="<%= description %>" />
                                                         <% if (heroAbs) { %>
@@ -174,8 +181,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -221,7 +226,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -244,14 +249,11 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -313,7 +315,7 @@
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>

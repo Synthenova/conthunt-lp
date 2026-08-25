@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 
+# IndexNow protocol is supported for Bing, Yandex, and other IndexNow partners.
+
 User-agent: PerplexityBot
 Allow: /
 

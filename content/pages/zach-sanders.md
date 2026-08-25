@@ -1,26 +1,42 @@
 ---
-title: "Zach Sanders"
-description: "Zach Sanders is ContHunt's Head of Growth, covering short-form growth and content distribution."
-updated: "2026-04-16"
+title: "Zach Sanders | ContHunt Growth Profile"
+description: "Zach Sanders is ContHunt's Head of Growth. He writes about Shorts distribution, packaging, posting cadence, and research-backed publishing workflows."
+updated: "2026-08-25"
 ---
-# Zach Sanders
 
-**Role:** Head of Growth
+**Role:** Head of Growth  
+**Profile:** [https://conthunt.app/zach-sanders](https://conthunt.app/zach-sanders)  
+**Team:** ContHunt editorial team, Synthenova Enterprises LLP
 
-Zach covers growth strategy, Shorts distribution, retention-focused packaging, and publishing workflows.
+Zach writes about growth as a publishing system: packaging, cadence, and whether a format is worth repeating. He is not selling a secret posting time that works for every channel.
 
 ## Bio
 
-Zach has 8+ years in performance marketing. Formerly at HubSpot and a D2C ecom brand, he has scaled content channels to millions of views.
+Zach has more than eight years in performance marketing. He previously worked at HubSpot and at a D2C ecommerce brand, and he has scaled content channels to large view totals. At ContHunt he focuses on how teams turn public examples into a calendar they can actually ship, then measure.
 
-## Featured Articles
+Founder-led product work at Synthenova Enterprises LLP informs the research loop: inspect the source, compare structure, test one variable.
 
-- [YouTube Shorts Best Practices 2026: Hooks, Posting, Retention](/blog/youtube-shorts-best-practices)
-- [Best Time to Post YouTube Shorts in 2026](/blog/best-time-to-post-youtube-shorts-2026)
-- [Tubebuddy Free Alternatives for YouTube Growth in 2026](/blog/tubebuddy-free-alternatives)
+## What does Zach research?
+
+- Shorts hooks, titles, and retention-minded packaging
+- When posting-time advice is useful and when it is folklore
+- Tooling that helps YouTube growth without replacing your own analytics
+- Educational Shorts ideas that still need a real demonstration
+
+## How should you use these articles?
+
+Use a best-practices page as a checklist, then look at public examples in ContHunt before you shoot. Confirm YouTube’s current documented limits in YouTube Help. Track results in YouTube Analytics for your account. Do not copy another channel’s cadence without a reason that matches your audience.
+
+## Featured articles
+
+- [YouTube Shorts Best Practices](/blog/youtube-shorts-best-practices)
+- [Best Time to Post YouTube Shorts](/blog/best-time-to-post-youtube-shorts-2026)
+- [TubeBuddy Free Alternatives](/blog/tubebuddy-free-alternatives)
 - [Educational Content Ideas for YouTube Shorts](/blog/educational-content-ideas-youtube-shorts)
 
-## Related Pages
+## Related pages
 
 - [Authors](/authors)
+- [Editorial standards](/editorial)
 - [About ContHunt](/about)
+- [Blog](/blog)

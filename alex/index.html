@@ -4,47 +4,16 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: 'Alex', canonical_url: 'https://conthunt.app/alex',
-                    author_name: 'ContHunt Team'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-            <title>Alex</title>
-    <meta name="title" content="Alex" />
+        <title>Alex | ContHunt Creator Profile</title>
+    <meta name="title" content="Alex | ContHunt Creator Profile" />
     <meta name="description"
-        content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+        content="Alex covers viral formats, hooks, and creator workflows for ContHunt. Read the profile, research method, and featured short-form articles." />
     
 
-            <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
-        }
-    </script>
+            
 
             
                 
@@ -52,6 +21,33 @@
                     
 
                         
+                            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ContHunt",
+      "url": "https://conthunt.app/"
+    },
+    {
+      "@type": [
+        "ProfilePage",
+        "WebPage"
+      ],
+      "name": "Alex | ContHunt Creator Profile",
+      "url": "https://conthunt.app/alex",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      },
+      "description": "Alex covers viral formats, hooks, and creator workflows for ContHunt. Read the profile, research method, and featured short-form articles.",
+      "dateModified": "2026-08-25"
+    }
+  ]
+}
+    </script>
 
                                 
 
@@ -62,9 +58,9 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
-                                                        <meta property="og:title" content="Alex" />
-                                                        <meta property="og:description" content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+                                                        <meta property="og:type" content="profile" />
+                                                        <meta property="og:title" content="Alex | ContHunt Creator Profile" />
+                                                        <meta property="og:description" content="Alex covers viral formats, hooks, and creator workflows for ContHunt. Read the profile, research method, and featured short-form articles." />
                                                         
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
@@ -79,9 +75,9 @@
                                                                             <meta name="twitter:card"
                                                                                 content="summary_large_image" />
                                                                             <meta name="twitter:title"
-                                                                                content="Alex" />
+                                                                                content="Alex | ContHunt Creator Profile" />
                                                                             <meta name="twitter:description"
-                                                                                content="Alex is a ContHunt content creator profile focused on viral formats, hooks, and creator workflows." />
+                                                                                content="Alex covers viral formats, hooks, and creator workflows for ContHunt. Read the profile, research method, and featured short-form articles." />
                                                                             
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
@@ -94,8 +90,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -139,7 +133,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -147,31 +141,61 @@
 
     <main class="relative z-10 pt-44 pb-20">
         
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" itemscope itemtype="https://schema.org/Person">
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-08-25</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    Alex
+                    Alex | ContHunt Creator Profile
                 </h1>
-                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+                <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
             <div class="prose-enhanced">
-                <h1>Alex</h1>
-<p><strong>Role:</strong> Content Creator</p>
-<p>Alex covers viral mechanics, format analysis, Shorts structure, and creator-friendly content examples.</p>
+                <p><strong>Role:</strong> Content Creator<br>
+<strong>Profile:</strong> <a href="https://conthunt.app/alex">https://conthunt.app/alex</a><br>
+<strong>Team:</strong> ContHunt editorial team, Synthenova Enterprises LLP</p>
+<p>Alex writes for people who make short-form video and need a way to study public examples without turning one viral post into a religion. The work is practical: what appears in the first seconds, what the caption promises, and whether the same pattern shows up more than once.</p>
 <h2>Bio</h2>
-<p>Alex is a content creator with 500K+ followers across TikTok and YouTube. He breaks down what makes videos go viral and teaches creators how to replicate those patterns.</p>
-<h2>Featured Articles</h2>
+<p>Alex is a content creator with a large following across TikTok and YouTube. He breaks down what makes videos travel and teaches creators how to test those patterns on their own accounts. At ContHunt he focuses on format analysis, hook language, and examples that a reader can open in the original source.</p>
+<p>This is not a private analytics dump from other creators. It is a method for reviewing public posts, keeping the link, and writing a brief you can actually shoot.</p>
+<h2>What does Alex research?</h2>
+<ul>
+<li>Opening hooks and the first on-screen line</li>
+<li>How tutorials, transformations, and list videos are structured</li>
+<li>Where captions repeat or contradict the video</li>
+<li>Which ideas are reusable versus one-off stunts</li>
+<li>How to turn a public example into a test, not a clone</li>
+</ul>
+<h2>How should you use these articles?</h2>
+<p>Start with the question you need to answer, not with a view count. If you are looking for Reels ideas, read the ideas page first and then inspect live examples in ContHunt with the source visible. Change one variable when you publish: hook, length, or caption. Measure retention and replies on your account. If a tactic cannot be measured, leave it as a hypothesis.</p>
+<h2>Featured articles</h2>
 <ul>
 <li><a href="/blog/best-time-to-post-youtube-shorts-2026">Best Time to Post YouTube Shorts in 2026</a></li>
 <li><a href="/blog/youtube-shorts-analytics">YouTube Shorts Analytics</a></li>
-<li><a href="/blog/what-is-a-reel">What Is a Reel? Everything You Need to Know About Instagram Reels (2026)</a></li>
-<li><a href="/blog/competitive-content-analysis">Competitive Content Analysis: The 2026 Strategy</a></li>
+<li><a href="/blog/what-is-a-reel">What Is a Reel?</a></li>
+<li><a href="/blog/competitive-content-analysis">Competitive Content Analysis</a></li>
 </ul>
-<h2>Related Pages</h2>
+<h2>Related pages</h2>
 <ul>
 <li><a href="/authors">Authors</a></li>
+<li><a href="/editorial">Editorial standards</a></li>
 <li><a href="/about">About ContHunt</a></li>
+<li><a href="/blog">Blog</a></li>
 </ul>
+<h2>How this page is maintained</h2>
+<p>This page is part of the ContHunt public site operated by Synthenova Enterprises LLP. It is rebuilt from markdown so the visible copy, title, and schema stay aligned. The editorial team updates it when the product workflow changes or when a reader sends a correction to <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
+<h2>What should you do after reading it?</h2>
+<p>If you came here for people, continue to the <a href="/authors">authors</a> index and then to a named profile. If you came here for the product, read <a href="/about">about ContHunt</a> and a guide on the <a href="/blog">blog</a>. If you came here for policy, use <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Keep the original source attached when you research public videos in ContHunt, and verify platform rules on official help sites before you publish.</p>
+<h2>Research standard used on related articles</h2>
+<p>ContHunt articles are written as briefs, not as guarantees. Compare public examples, keep the URL, write down the hook and the promise, and test one variable on your own account. Native analytics on TikTok, Instagram, and YouTube remain the source of truth for your own performance. Founder-led product work is aimed at making that comparison faster, not at replacing your judgment.</p>
+<h2>Related official references</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs">Google Search documentation</a></li>
+<li><a href="https://support.google.com/youtube">YouTube Help</a></li>
+<li><a href="https://help.instagram.com/">Instagram Help</a></li>
+</ul>
+<h2>How ContHunt fits this page</h2>
+<p>ContHunt is a research workspace for public short-form video. Use it to collect examples, keep the original creator link, and compare hooks, overlays, captions, and comments before you spend production time. It does not replace TikTok Analytics, Instagram Insights, or YouTube Analytics on your own account. Native dashboards remain the source of truth for your performance. The public site, including this page, is written by the ContHunt editorial team so a reader can see who operates the product and how to contact support.</p>
+<p>If you are briefing a creator or an editor, write down the audience, the promise, the proof, and the next step. If any of those four are missing, the brief is not ready. That is the same checklist we use internally at Synthenova Enterprises LLP. Questions about this page can go to support@conthunt.app. For platform rules, use official help centers rather than screenshots of someone else’s backend. Keep notes dated so a later editor can see what you actually reviewed.</p>
 
             </div>
         </article>
@@ -191,14 +215,11 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -260,7 +281,7 @@
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>

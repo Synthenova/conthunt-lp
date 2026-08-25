@@ -1,13 +1,47 @@
 <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Blog</h1>
+        <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Updated <%= new Date().toISOString().split('T')[0] %></p>
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6"><%= typeof pageTitle !== 'undefined' ? pageTitle : 'ContHunt Blog: Short-Form Video Research Guides' %></h1>
+        <img src="/public/banner.png" alt="ContHunt short-form video research blog" width="1200" height="630" class="mx-auto mb-8 rounded-2xl max-w-xl w-full h-auto" />
         <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
-            Insights, tutorials, and updates from the ContHunt team.
+            Practical research for TikTok, Instagram Reels, and YouTube Shorts. Founder-led notes from Synthenova Enterprises LLP.
         </p>
     </div>
+    <section class="max-w-3xl mx-auto mb-16 text-left text-neutral-300 leading-relaxed">
+        <h2 class="text-white text-2xl font-semibold mb-4">What is the ContHunt blog for?</h2>
+        <p>What this library is for is a slower, evidence-first way to brief short-form video. Each guide shows how to compare public examples, keep the original source link, and turn repeating hooks, captions, and formats into a test you can measure. ContHunt is the research workspace behind these pages: it is built for creators, agencies, and brand teams who need to inspect pacing, overlays, comments, and niche context without treating a view count as proof. The editorial team updates posts when platform documentation or our own product workflow changes, and we avoid invented benchmarks. Use a guide to frame the question, then validate the pattern in your analytics. If a tactic cannot be checked, leave it as a hypothesis. That founder-led loop is the same process we use internally at Synthenova Enterprises LLP when we review public TikTok, Reels, and Shorts examples for customers.</p>
+        <h2 class="text-white text-2xl font-semibold mt-10 mb-4">How should you use these guides?</h2>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Pick the platform and the decision you need to make.</li>
+            <li>Open two or three related posts and capture the shared pattern.</li>
+            <li>Review live examples in ContHunt with the source link visible.</li>
+            <li>Test one variable on your own account before you scale a format.</li>
+        </ul>
+        <h2 class="text-white text-2xl font-semibold mt-10 mb-4">Which topics does the library cover?</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead class="text-white border-b border-white/10">
+                    <tr><th class="py-3 pr-6">Cluster</th><th class="py-3 pr-6">Use it when</th><th class="py-3">Example</th></tr>
+                </thead>
+                <tbody class="text-neutral-400 divide-y divide-white/5">
+                    <tr><td class="py-3 pr-6">YouTube Shorts</td><td class="py-3 pr-6">Length, hashtags, analytics, ideas</td><td class="py-3">Shorts best practices</td></tr>
+                    <tr><td class="py-3 pr-6">Instagram Reels</td><td class="py-3 pr-6">Ideas, analytics, hooks</td><td class="py-3">Reels content ideas</td></tr>
+                    <tr><td class="py-3 pr-6">TikTok</td><td class="py-3 pr-6">Hashtags, shops, competitor reviews</td><td class="py-3">TikTok hashtags</td></tr>
+                    <tr><td class="py-3 pr-6">Tools</td><td class="py-3 pr-6">Alternatives and pricing questions</td><td class="py-3">vidIQ alternatives</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="text-white text-2xl font-semibold mt-10 mb-4">Who writes and reviews these pages?</h2>
+        <p>Authors include specialists in growth, engineering, creator workflows, and social analysis. See the <a href="/authors" class="text-sky-400">authors</a>, <a href="/editorial" class="text-sky-400">editorial standards</a>, and <a href="/about" class="text-sky-400">about</a> pages. Contact <a href="mailto:support@conthunt.app" class="text-sky-400">support@conthunt.app</a>. Privacy and terms are linked in the footer. Verify platform rules in <a href="https://developers.google.com/search/docs" class="text-sky-400">Google Search docs</a>, <a href="https://support.google.com/youtube" class="text-sky-400">YouTube Help</a>, and <a href="https://help.instagram.com/" class="text-sky-400">Instagram Help</a>. Agencies and brand teams can use the same research loop.</p>
+        <h2 class="text-white text-2xl font-semibold mt-10 mb-4">What should you read first?</h2>
+        <p>If you need ideas, start with Reels or Shorts idea posts. If you need measurement, start with analytics posts. If you are choosing a tool, start with an alternatives page and verify current pricing on the vendor site.</p>
+        <h2 class="text-white text-2xl font-semibold mt-10 mb-4">How do we keep pages current?</h2>
+        <p>When a platform changes a documented limit or a workflow in ContHunt changes, we update the source markdown, rebuild, and refresh the visible updated date. Corrections go through the same editorial path.</p>
+        <img src="/public/logo-title-white.webp" alt="ContHunt wordmark" width="462" height="78" class="h-8 w-auto mt-8" />
+    </section>
 
     <div class="blog-grid max-w-4xl mx-auto">
-        <% posts.forEach(post=> { %>
+        <% posts.slice(0, 24).forEach(post=> { %>
             <a href="/blog/<%= post.slug %>" class="blog-card-link group">
                 <div
                     class="glass-panel p-8 rounded-3xl border border-white/5 hover:border-white/20 transition-all duration-300 relative overflow-hidden">
@@ -45,4 +79,14 @@
             </a>
             <% }); %>
     </div>
+    <% if (posts.length > 24) { %>
+    <section class="max-w-4xl mx-auto mt-16">
+        <h2 class="text-white text-2xl font-semibold mb-4">Which other guides are in the library?</h2>
+        <ul class="grid md:grid-cols-2 gap-2 text-neutral-300">
+            <% posts.slice(24).forEach(post => { %>
+            <li><a href="/blog/<%= post.slug %>" class="text-sky-400 hover:text-sky-300"><%= post.title %></a></li>
+            <% }); %>
+        </ul>
+    </section>
+    <% } %>
 </div>

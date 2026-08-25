@@ -4,47 +4,16 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: 'Editorial Standards', canonical_url: 'https://conthunt.app/editorial',
-                    author_name: 'ContHunt Team'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-            <title>Editorial Standards</title>
-    <meta name="title" content="Editorial Standards" />
+        <title>Editorial Standards | ContHunt short-form research</title>
+    <meta name="title" content="Editorial Standards | ContHunt short-form research" />
     <meta name="description"
-        content="Read how ContHunt articles are written, reviewed, updated, and corrected." />
+        content="How ContHunt writes, reviews, updates, and corrects research pages: evidence rules, author bylines, schema alignment, and how to request a fix." />
     
 
-            <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
-        }
-    </script>
+            
 
             
                 
@@ -52,6 +21,33 @@
                     
 
                         
+                            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ContHunt",
+      "url": "https://conthunt.app/"
+    },
+    {
+      "@type": [
+        "AboutPage",
+        "WebPage"
+      ],
+      "name": "Editorial Standards | ContHunt short-form research",
+      "url": "https://conthunt.app/editorial",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      },
+      "description": "How ContHunt writes, reviews, updates, and corrects research pages: evidence rules, author bylines, schema alignment, and how to request a fix.",
+      "dateModified": "2026-08-25"
+    }
+  ]
+}
+    </script>
 
                                 
 
@@ -62,9 +58,9 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
+                                                        <meta property="og:type" content="website" />
                                                         <meta property="og:title" content="Editorial Standards" />
-                                                        <meta property="og:description" content="Read how ContHunt articles are written, reviewed, updated, and corrected." />
+                                                        <meta property="og:description" content="How ContHunt writes, reviews, updates, and corrects research pages: evidence rules, author bylines, schema alignment, and how to request a fix." />
                                                         
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
@@ -81,7 +77,7 @@
                                                                             <meta name="twitter:title"
                                                                                 content="Editorial Standards" />
                                                                             <meta name="twitter:description"
-                                                                                content="Read how ContHunt articles are written, reviewed, updated, and corrected." />
+                                                                                content="How ContHunt writes, reviews, updates, and corrects research pages: evidence rules, author bylines, schema alignment, and how to request a fix." />
                                                                             
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
@@ -94,8 +90,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -139,7 +133,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -147,50 +141,83 @@
 
     <main class="relative z-10 pt-44 pb-20">
         
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" >
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-08-25</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
                     Editorial Standards
                 </h1>
-                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+                <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
             <div class="prose-enhanced">
-                <h1>Editorial Standards</h1>
-<p>ContHunt content is written to be practical, searchable, and easy to verify.</p>
-<h2>Our Standards</h2>
+                <p>ContHunt content is written to be practical, searchable, and easy to verify. This page is the working standard for blog posts, author pages, and supporting site copy. It is maintained by the ContHunt editorial team at Synthenova Enterprises LLP.</p>
+<h2>What is the purpose of a ContHunt article?</h2>
+<p>A page should help a reader make a research or publishing decision. That usually means:</p>
 <ul>
-<li>We aim for a direct answer near the top of the page.</li>
-<li>We prefer specific examples over vague claims.</li>
-<li>We update pages when the underlying guidance changes.</li>
-<li>We keep titles, schema, and visible content aligned.</li>
-<li>We avoid publishing filler sections that do not help the reader.</li>
+<li>a direct answer near the top</li>
+<li>a process they can repeat</li>
+<li>examples they can inspect</li>
+<li>links to related pages or original sources</li>
+<li>an honest limit: what the page cannot promise</li>
 </ul>
-<h2>Sources And Review</h2>
-<p>When a page includes external facts or policy details, we try to ground it in:</p>
+<p>We avoid filler sections that exist only to hit a word count. If we expand a page, the extra material should be a checklist, a workflow, a comparison table, or a clearer answer.</p>
+<h2>How do we handle claims?</h2>
 <ul>
-<li>official documentation</li>
-<li>platform help centers</li>
-<li>first-party product data</li>
-<li>internal analysis from ContHunt workflows</li>
+<li>Prefer official platform documentation over social posts about “the algorithm.”</li>
+<li>Prefer first-party product behavior over invented feature names.</li>
+<li>Prefer dated samples over forever-true percentages.</li>
+<li>If we cannot source a statistic, we do not publish it as fact.</li>
+<li>Product mentions should describe what ContHunt is for, not what it secretly guarantees.</li>
 </ul>
-<h2>Corrections And Updates</h2>
-<p>If a page needs correction, we update the source content and rebuild the site.</p>
-<p>When the update is significant, we also refresh:</p>
+<p>When a page includes competitor or vendor tools, pricing and coverage can change. Readers should confirm current terms on the vendor site.</p>
+<h2>Who writes and reviews?</h2>
+<p>Bylines use named authors or the ContHunt editorial team. Author pages explain the person’s focus area and link to featured work. Schema, visible byline, and author URL should match.</p>
+<p>Internal review checks:</p>
 <ul>
-<li>the visible <code>updated</code> date</li>
-<li>supporting FAQ content</li>
-<li>schema markup where relevant</li>
+<li>title, H1, and canonical still describe the same page</li>
+<li>FAQ answers do not contradict the body</li>
+<li>deprecated schema types are not introduced</li>
+<li>screenshots and figures have alt text</li>
+<li>related links still resolve</li>
 </ul>
-<h2>Internal Review</h2>
-<p>The editorial process is owned by the ContHunt team. Different authors may cover different topics, but every page should still be internally consistent and useful for readers.</p>
-<h2>Contact</h2>
-<p>If you spot a problem, contact <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
-<h2>Related Pages</h2>
+<h2>When do we update a page?</h2>
+<p>We update when platform documentation changes, when a workflow in ContHunt changes, or when a reader reports an error. Significant updates refresh the visible <code>updated</code> date and, if needed, the FAQ and examples.</p>
+<p>Corrections are made in the markdown source and rebuilt. We do not leave a known false claim live because it ranks.</p>
+<h2>What sources do we cite?</h2>
+<p>Common sources include:</p>
+<ul>
+<li><a href="https://developers.google.com/search/docs">Google Search documentation</a></li>
+<li>YouTube Help and creator documentation</li>
+<li>Instagram Help</li>
+<li>TikTok Creative Center and creator documentation</li>
+<li>vendor pricing or feature pages, with a note that they change</li>
+</ul>
+<p>External links should help the reader verify a claim, not manufacture authority.</p>
+<h2>How can you request a correction?</h2>
+<p>Email <a href="mailto:support@conthunt.app">support@conthunt.app</a> with the URL, the sentence that looks wrong, and a source if you have one. The editorial team reviews those notes as part of the same publishing path.</p>
+<h2>Related pages</h2>
 <ul>
 <li><a href="/about">About ContHunt</a></li>
 <li><a href="/authors">Authors</a></li>
-<li><a href="/privacy">Privacy Policy</a></li>
+<li><a href="/privacy">Privacy policy</a></li>
+<li><a href="/terms">Terms of service</a></li>
+<li><a href="/blog">Blog</a></li>
 </ul>
+<h2>How this page is maintained</h2>
+<p>This page is part of the ContHunt public site operated by Synthenova Enterprises LLP. It is rebuilt from markdown so the visible copy, title, and schema stay aligned. The editorial team updates it when the product workflow changes or when a reader sends a correction to <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
+<h2>What should you do after reading it?</h2>
+<p>If you came here for people, continue to the <a href="/authors">authors</a> index and then to a named profile. If you came here for the product, read <a href="/about">about ContHunt</a> and a guide on the <a href="/blog">blog</a>. If you came here for policy, use <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Keep the original source attached when you research public videos in ContHunt, and verify platform rules on official help sites before you publish.</p>
+<h2>Research standard used on related articles</h2>
+<p>ContHunt articles are written as briefs, not as guarantees. Compare public examples, keep the URL, write down the hook and the promise, and test one variable on your own account. Native analytics on TikTok, Instagram, and YouTube remain the source of truth for your own performance. Founder-led product work is aimed at making that comparison faster, not at replacing your judgment.</p>
+<h2>Related official references</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs">Google Search documentation</a></li>
+<li><a href="https://support.google.com/youtube">YouTube Help</a></li>
+<li><a href="https://help.instagram.com/">Instagram Help</a></li>
+</ul>
+<h2>How ContHunt fits this page</h2>
+<p>ContHunt is a research workspace for public short-form video. Use it to collect examples, keep the original creator link, and compare hooks, overlays, captions, and comments before you spend production time. It does not replace TikTok Analytics, Instagram Insights, or YouTube Analytics on your own account. Native dashboards remain the source of truth for your performance. The public site, including this page, is written by the ContHunt editorial team so a reader can see who operates the product and how to contact support.</p>
+<p>If you are briefing a creator or an editor, write down the audience, the promise, the proof, and the next step. If any of those four are missing, the brief is not ready. That is the same checklist we use internally at Synthenova Enterprises LLP. Questions about this page can go to support@conthunt.app. For platform rules, use official help centers rather than screenshots of someone else’s backend. Keep notes dated so a later editor can see what you actually reviewed.</p>
 
             </div>
         </article>
@@ -210,14 +237,11 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -279,7 +303,7 @@
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>

@@ -4,47 +4,16 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: 'Lamrin', canonical_url: 'https://conthunt.app/lamrin',
-                    author_name: 'ContHunt Team'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-            <title>Lamrin</title>
-    <meta name="title" content="Lamrin" />
+        <title>Lamrin | ContHunt Engineering Profile</title>
+    <meta name="title" content="Lamrin | ContHunt Engineering Profile" />
     <meta name="description"
-        content="Lamrin is ContHunt&#39;s lead engineer profile focused on the product, systems, and analysis layer." />
+        content="Lamrin is ContHunt&#39;s lead engineer. He writes about the product workflow, analysis systems, and how to turn public video research into a repeatable process." />
     
 
-            <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
-        }
-    </script>
+            
 
             
                 
@@ -52,6 +21,33 @@
                     
 
                         
+                            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ContHunt",
+      "url": "https://conthunt.app/"
+    },
+    {
+      "@type": [
+        "ProfilePage",
+        "WebPage"
+      ],
+      "name": "Lamrin | ContHunt Engineering Profile",
+      "url": "https://conthunt.app/lamrin",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      },
+      "description": "Lamrin is ContHunt's lead engineer. He writes about the product workflow, analysis systems, and how to turn public video research into a repeatable process.",
+      "dateModified": "2026-08-25"
+    }
+  ]
+}
+    </script>
 
                                 
 
@@ -62,9 +58,9 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
-                                                        <meta property="og:title" content="Lamrin" />
-                                                        <meta property="og:description" content="Lamrin is ContHunt&#39;s lead engineer profile focused on the product, systems, and analysis layer." />
+                                                        <meta property="og:type" content="profile" />
+                                                        <meta property="og:title" content="Lamrin | ContHunt Engineering Profile" />
+                                                        <meta property="og:description" content="Lamrin is ContHunt&#39;s lead engineer. He writes about the product workflow, analysis systems, and how to turn public video research into a repeatable process." />
                                                         
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
@@ -79,9 +75,9 @@
                                                                             <meta name="twitter:card"
                                                                                 content="summary_large_image" />
                                                                             <meta name="twitter:title"
-                                                                                content="Lamrin" />
+                                                                                content="Lamrin | ContHunt Engineering Profile" />
                                                                             <meta name="twitter:description"
-                                                                                content="Lamrin is ContHunt&#39;s lead engineer profile focused on the product, systems, and analysis layer." />
+                                                                                content="Lamrin is ContHunt&#39;s lead engineer. He writes about the product workflow, analysis systems, and how to turn public video research into a repeatable process." />
                                                                             
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
@@ -94,8 +90,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -139,7 +133,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -147,31 +141,59 @@
 
     <main class="relative z-10 pt-44 pb-20">
         
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" itemscope itemtype="https://schema.org/Person">
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-08-25</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    Lamrin
+                    Lamrin | ContHunt Engineering Profile
                 </h1>
-                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+                <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
             <div class="prose-enhanced">
-                <h1>Lamrin</h1>
-<p><strong>Role:</strong> Lead Engineer</p>
-<p>Lamrin covers system design, product workflows, technical analysis, and tooling.</p>
+                <p><strong>Role:</strong> Lead Engineer<br>
+<strong>Profile:</strong> <a href="https://conthunt.app/lamrin">https://conthunt.app/lamrin</a><br>
+<strong>Team:</strong> ContHunt editorial team, Synthenova Enterprises LLP</p>
+<p>Lamrin explains how ContHunt’s analysis layer is supposed to be used: as a way to inspect public videos, keep source links, and compare structure. The writing stays close to the product rather than to unverifiable “AI scores.”</p>
 <h2>Bio</h2>
-<p>Full-stack engineer building AI-powered tools. Lamrin architected ContHunt’s video analysis engine and loves breaking down complex tech into simple ideas.</p>
-<h2>Featured Articles</h2>
+<p>Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher can actually finish. That includes discovery, comparison, and keeping the original creator visible.</p>
+<h2>What does Lamrin research?</h2>
+<ul>
+<li>How to describe analysis steps without fake precision</li>
+<li>Where competitor tools overlap with short-form research and where they do not</li>
+<li>Market-trend questions that can be answered with public examples</li>
+<li>Content intelligence as a process, not a dashboard trophy</li>
+</ul>
+<h2>How should you use these articles?</h2>
+<p>If you are evaluating tools, read the comparison as a map of jobs to be done. Confirm current pricing and coverage on the vendor site. If you are using ContHunt, keep the source URL in the brief. Engineering pages should help you trust the workflow, not skip the evidence.</p>
+<h2>Featured articles</h2>
 <ul>
 <li><a href="/blog/competitor-analysis-tools">Competitor Analysis Tools</a></li>
 <li><a href="/blog/how-to-identify-market-trends">How to Identify Market Trends</a></li>
 <li><a href="/blog/what-is-content-intelligence">What is Content Intelligence?</a></li>
-<li><a href="/blog/buzzsumo-pricing-alternatives">BuzzSumo Pricing vs. 2026 Alternatives</a></li>
+<li><a href="/blog/buzzsumo-pricing-alternatives">BuzzSumo Pricing vs Alternatives</a></li>
 </ul>
-<h2>Related Pages</h2>
+<h2>Related pages</h2>
 <ul>
 <li><a href="/authors">Authors</a></li>
+<li><a href="/editorial">Editorial standards</a></li>
 <li><a href="/about">About ContHunt</a></li>
+<li><a href="/blog">Blog</a></li>
 </ul>
+<h2>How this page is maintained</h2>
+<p>This page is part of the ContHunt public site operated by Synthenova Enterprises LLP. It is rebuilt from markdown so the visible copy, title, and schema stay aligned. The editorial team updates it when the product workflow changes or when a reader sends a correction to <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
+<h2>What should you do after reading it?</h2>
+<p>If you came here for people, continue to the <a href="/authors">authors</a> index and then to a named profile. If you came here for the product, read <a href="/about">about ContHunt</a> and a guide on the <a href="/blog">blog</a>. If you came here for policy, use <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Keep the original source attached when you research public videos in ContHunt, and verify platform rules on official help sites before you publish.</p>
+<h2>Research standard used on related articles</h2>
+<p>ContHunt articles are written as briefs, not as guarantees. Compare public examples, keep the URL, write down the hook and the promise, and test one variable on your own account. Native analytics on TikTok, Instagram, and YouTube remain the source of truth for your own performance. Founder-led product work is aimed at making that comparison faster, not at replacing your judgment.</p>
+<h2>Related official references</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs">Google Search documentation</a></li>
+<li><a href="https://support.google.com/youtube">YouTube Help</a></li>
+<li><a href="https://help.instagram.com/">Instagram Help</a></li>
+</ul>
+<h2>How ContHunt fits this page</h2>
+<p>ContHunt is a research workspace for public short-form video. Use it to collect examples, keep the original creator link, and compare hooks, overlays, captions, and comments before you spend production time. It does not replace TikTok Analytics, Instagram Insights, or YouTube Analytics on your own account. Native dashboards remain the source of truth for your performance. The public site, including this page, is written by the ContHunt editorial team so a reader can see who operates the product and how to contact support.</p>
+<p>If you are briefing a creator or an editor, write down the audience, the promise, the proof, and the next step. If any of those four are missing, the brief is not ready. That is the same checklist we use internally at Synthenova Enterprises LLP. Questions about this page can go to support@conthunt.app. For platform rules, use official help centers rather than screenshots of someone else’s backend. Keep notes dated so a later editor can see what you actually reviewed.</p>
 
             </div>
         </article>
@@ -191,14 +213,11 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -260,7 +279,7 @@
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>

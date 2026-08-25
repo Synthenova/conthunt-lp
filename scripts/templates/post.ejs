@@ -7,10 +7,10 @@
                         <% if (author.image) { %>
                             <img src="<%= author.image %>" alt="<%= author.name %>" class="w-6 h-6 rounded-full object-cover" />
                         <% } else { %>
-                            <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                            <span class="text-neutral-400" aria-hidden="true">●</span>
                         <% } %>
                     </div>
-                    <span class="text-white"><%= author.name %></span>
+                    <span class="text-white author"><% if (author.url) { %><a rel="author" href="<%= author.url %>" class="hover:text-white transition-colors"><%= author.name %></a><% } else { %><%= author.name %><% } %></span>
                     <% if (author.role) { %>
                         <span class="text-neutral-600">· <%= author.role %></span>
                     <% } %>
@@ -24,12 +24,12 @@
                         <% if (authorProfile.image) { %>
                             <img src="<%= authorProfile.image %>" alt="<%= authorProfile.name %>" class="w-6 h-6 rounded-full object-cover" />
                         <% } else { %>
-                            <iconify-icon icon="lucide:user" class="text-neutral-400"></iconify-icon>
+                            <span class="text-neutral-400" aria-hidden="true">●</span>
                         <% } %>
                     </div>
                     <span>
                         <% if (authorProfile.url) { %>
-                            <a href="<%= authorProfile.url %>" class="hover:text-white transition-colors">
+                            <a rel="author" href="<%= authorProfile.url %>" class="hover:text-white transition-colors author">
                                 <%= authorProfile.name %>
                             </a>
                         <% } else { %>
@@ -66,7 +66,7 @@
 
     <% if (hero) { %>
         <div class="mb-16 rounded-2xl overflow-hidden glass-panel border border-white/5">
-            <img src="<%= hero %>" alt="<%= title %>" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
+            <img src="<%= hero %>" alt="<%= title %>" width="1200" height="630" class="w-full h-auto" onerror="this.src='/public/banner.png';this.onerror=null;" />
         </div>
     <% } %>
 
@@ -184,7 +184,7 @@
             <img src="<%= author.image %>" alt="<%= author.name %>" class="w-16 h-16 rounded-full object-cover shrink-0" />
         <% } else { %>
             <div class="w-16 h-16 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
-                <iconify-icon icon="lucide:user" class="text-neutral-400 text-2xl"></iconify-icon>
+                <span class="text-neutral-400 text-2xl" aria-hidden="true">●</span>
             </div>
         <% } %>
         <div>
@@ -261,39 +261,13 @@
 </section>
 <% } %>
 
-<!-- Breadcrumb Schema -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://conthunt.app"
-    },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://conthunt.app/blog"
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": <%- JSON.stringify(title) %>,
-        "item": "<%= canonical %>"
-    }]
-}
-</script>
-
 <% if (Array.isArray(faqSchemaItems) && faqSchemaItems.length > 0) { %>
 <section class="mt-12 p-6 rounded-2xl glass-panel border border-white/5">
-    <h3 class="text-white text-xl font-medium mb-4">Frequently Asked Questions</h3>
+    <h2 class="text-white text-xl font-medium mb-4">Frequently asked questions</h2>
     <div class="space-y-3">
         <% faqSchemaItems.forEach(item => { %>
             <details class="rounded-xl border border-white/5 bg-white/0 p-4">
-                <summary class="cursor-pointer text-white font-medium list-none">
-                    <%= item.question %>
-                </summary>
+                <h2 class="text-white text-base font-medium"><%= item.question.endsWith('?') ? item.question : item.question + '?' %></h2>
                 <p class="text-neutral-300 mt-3 leading-relaxed"><%= item.answer %></p>
             </details>
         <% }); %>
@@ -319,38 +293,4 @@
 </script>
 <% } %>
 
-<% if (howToSchema && typeof howToSchema === 'object') { %>
-<script type="application/ld+json">
-<%- JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": howToSchema.name,
-    ...(howToSchema.description ? { "description": howToSchema.description } : {}),
-    ...(howToSchema.total_time ? { "totalTime": howToSchema.total_time } : {}),
-    ...(howToSchema.estimated_cost ? {
-        "estimatedCost": {
-            "@type": "MonetaryAmount",
-            "currency": howToSchema.estimated_cost.currency,
-            "value": howToSchema.estimated_cost.value
-        }
-    } : {}),
-    ...(Array.isArray(howToSchema.supply) && howToSchema.supply.length > 0 ? {
-        "supply": howToSchema.supply.map(item => ({
-            "@type": "HowToSupply",
-            "name": item
-        }))
-    } : {}),
-    ...(Array.isArray(howToSchema.tool) && howToSchema.tool.length > 0 ? {
-        "tool": howToSchema.tool.map(item => ({
-            "@type": "HowToTool",
-            "name": item
-        }))
-    } : {}),
-    "step": howToSchema.steps.map(step => ({
-        "@type": "HowToStep",
-        "name": step.name,
-        "text": step.text
-    }))
-}, null, 2) %>
-</script>
-<% } %>
+

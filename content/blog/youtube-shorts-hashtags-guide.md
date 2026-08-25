@@ -1,6 +1,6 @@
 ---
-title: "Best Hashtags for YouTube Shorts in 2026: The Ultimate Quick-Win Guide"
-description: "Best hashtags for YouTube Shorts in 2026, with official YouTube guidance, practical examples, and a focused research workflow."
+title: "Best Hashtags for YouTube Shorts in 2026"
+description: "Best hashtags for YouTube Shorts in 2026, with official YouTube guidance, examples you can inspect, and a ContHunt workflow for comparing public tags."
 date: "2026-02-18"
 updated: "2026-08-12"
 category: "Content Strategy"

@@ -1,6 +1,6 @@
 ---
-title: "Instagram Reels Guide 2026: Best Practices & Content Ideas"
-description: "Instagram Reels in 2026 with practical steps, examples, and ContHunt tips."
+title: "15 Instagram Reels Content Ideas for 2026"
+description: "15 Instagram Reels content ideas for 2026, plus a simple testing workflow, caption checks, and how to review public examples in ContHunt."
 date: "2026-02-25"
 updated: "2026-08-10"
 category: "Instagram"

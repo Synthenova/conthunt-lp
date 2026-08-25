@@ -1,49 +1,71 @@
 ---
 title: "Editorial Standards"
-description: "Read how ContHunt articles are written, reviewed, updated, and corrected."
-updated: "2026-04-16"
+description: "How ContHunt writes, reviews, updates, and corrects research pages: evidence rules, author bylines, schema alignment, and how to request a fix."
+updated: "2026-08-25"
 ---
-# Editorial Standards
 
-ContHunt content is written to be practical, searchable, and easy to verify.
+ContHunt content is written to be practical, searchable, and easy to verify. This page is the working standard for blog posts, author pages, and supporting site copy. It is maintained by the ContHunt editorial team at Synthenova Enterprises LLP.
 
-## Our Standards
+## What is the purpose of a ContHunt article?
 
-- We aim for a direct answer near the top of the page.
-- We prefer specific examples over vague claims.
-- We update pages when the underlying guidance changes.
-- We keep titles, schema, and visible content aligned.
-- We avoid publishing filler sections that do not help the reader.
+A page should help a reader make a research or publishing decision. That usually means:
 
-## Sources And Review
+- a direct answer near the top
+- a process they can repeat
+- examples they can inspect
+- links to related pages or original sources
+- an honest limit: what the page cannot promise
 
-When a page includes external facts or policy details, we try to ground it in:
+We avoid filler sections that exist only to hit a word count. If we expand a page, the extra material should be a checklist, a workflow, a comparison table, or a clearer answer.
 
-- official documentation
-- platform help centers
-- first-party product data
-- internal analysis from ContHunt workflows
+## How do we handle claims?
 
-## Corrections And Updates
+- Prefer official platform documentation over social posts about “the algorithm.”
+- Prefer first-party product behavior over invented feature names.
+- Prefer dated samples over forever-true percentages.
+- If we cannot source a statistic, we do not publish it as fact.
+- Product mentions should describe what ContHunt is for, not what it secretly guarantees.
 
-If a page needs correction, we update the source content and rebuild the site.
+When a page includes competitor or vendor tools, pricing and coverage can change. Readers should confirm current terms on the vendor site.
 
-When the update is significant, we also refresh:
+## Who writes and reviews?
 
-- the visible `updated` date
-- supporting FAQ content
-- schema markup where relevant
+Bylines use named authors or the ContHunt editorial team. Author pages explain the person’s focus area and link to featured work. Schema, visible byline, and author URL should match.
 
-## Internal Review
+Internal review checks:
 
-The editorial process is owned by the ContHunt team. Different authors may cover different topics, but every page should still be internally consistent and useful for readers.
+- title, H1, and canonical still describe the same page
+- FAQ answers do not contradict the body
+- deprecated schema types are not introduced
+- screenshots and figures have alt text
+- related links still resolve
 
-## Contact
+## When do we update a page?
 
-If you spot a problem, contact [support@conthunt.app](mailto:support@conthunt.app).
+We update when platform documentation changes, when a workflow in ContHunt changes, or when a reader reports an error. Significant updates refresh the visible `updated` date and, if needed, the FAQ and examples.
 
-## Related Pages
+Corrections are made in the markdown source and rebuilt. We do not leave a known false claim live because it ranks.
+
+## What sources do we cite?
+
+Common sources include:
+
+- [Google Search documentation](https://developers.google.com/search/docs)
+- YouTube Help and creator documentation
+- Instagram Help
+- TikTok Creative Center and creator documentation
+- vendor pricing or feature pages, with a note that they change
+
+External links should help the reader verify a claim, not manufacture authority.
+
+## How can you request a correction?
+
+Email [support@conthunt.app](mailto:support@conthunt.app) with the URL, the sentence that looks wrong, and a source if you have one. The editorial team reviews those notes as part of the same publishing path.
+
+## Related pages
 
 - [About ContHunt](/about)
 - [Authors](/authors)
-- [Privacy Policy](/privacy)
+- [Privacy policy](/privacy)
+- [Terms of service](/terms)
+- [Blog](/blog)

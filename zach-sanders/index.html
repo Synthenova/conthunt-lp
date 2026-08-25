@@ -4,47 +4,16 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: 'Zach Sanders', canonical_url: 'https://conthunt.app/zach-sanders',
-                    author_name: 'ContHunt Team'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-            <title>Zach Sanders</title>
-    <meta name="title" content="Zach Sanders" />
+        <title>Zach Sanders | ContHunt Growth Profile</title>
+    <meta name="title" content="Zach Sanders | ContHunt Growth Profile" />
     <meta name="description"
-        content="Zach Sanders is ContHunt&#39;s Head of Growth, covering short-form growth and content distribution." />
+        content="Zach Sanders is ContHunt&#39;s Head of Growth. He writes about Shorts distribution, packaging, posting cadence, and research-backed publishing workflows." />
     
 
-            <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
-        }
-    </script>
+            
 
             
                 
@@ -52,6 +21,33 @@
                     
 
                         
+                            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ContHunt",
+      "url": "https://conthunt.app/"
+    },
+    {
+      "@type": [
+        "ProfilePage",
+        "WebPage"
+      ],
+      "name": "Zach Sanders | ContHunt Growth Profile",
+      "url": "https://conthunt.app/zach-sanders",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      },
+      "description": "Zach Sanders is ContHunt's Head of Growth. He writes about Shorts distribution, packaging, posting cadence, and research-backed publishing workflows.",
+      "dateModified": "2026-08-25"
+    }
+  ]
+}
+    </script>
 
                                 
 
@@ -62,9 +58,9 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
-                                                        <meta property="og:title" content="Zach Sanders" />
-                                                        <meta property="og:description" content="Zach Sanders is ContHunt&#39;s Head of Growth, covering short-form growth and content distribution." />
+                                                        <meta property="og:type" content="profile" />
+                                                        <meta property="og:title" content="Zach Sanders | ContHunt Growth Profile" />
+                                                        <meta property="og:description" content="Zach Sanders is ContHunt&#39;s Head of Growth. He writes about Shorts distribution, packaging, posting cadence, and research-backed publishing workflows." />
                                                         
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
@@ -79,9 +75,9 @@
                                                                             <meta name="twitter:card"
                                                                                 content="summary_large_image" />
                                                                             <meta name="twitter:title"
-                                                                                content="Zach Sanders" />
+                                                                                content="Zach Sanders | ContHunt Growth Profile" />
                                                                             <meta name="twitter:description"
-                                                                                content="Zach Sanders is ContHunt&#39;s Head of Growth, covering short-form growth and content distribution." />
+                                                                                content="Zach Sanders is ContHunt&#39;s Head of Growth. He writes about Shorts distribution, packaging, posting cadence, and research-backed publishing workflows." />
                                                                             
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
@@ -94,8 +90,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -139,7 +133,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -147,31 +141,60 @@
 
     <main class="relative z-10 pt-44 pb-20">
         
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" itemscope itemtype="https://schema.org/Person">
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-08-25</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    Zach Sanders
+                    Zach Sanders | ContHunt Growth Profile
                 </h1>
-                <p class="text-neutral-500">Last updated: 2026-04-16</p>
+                <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
             <div class="prose-enhanced">
-                <h1>Zach Sanders</h1>
-<p><strong>Role:</strong> Head of Growth</p>
-<p>Zach covers growth strategy, Shorts distribution, retention-focused packaging, and publishing workflows.</p>
+                <p><strong>Role:</strong> Head of Growth<br>
+<strong>Profile:</strong> <a href="https://conthunt.app/zach-sanders">https://conthunt.app/zach-sanders</a><br>
+<strong>Team:</strong> ContHunt editorial team, Synthenova Enterprises LLP</p>
+<p>Zach writes about growth as a publishing system: packaging, cadence, and whether a format is worth repeating. He is not selling a secret posting time that works for every channel.</p>
 <h2>Bio</h2>
-<p>Zach has 8+ years in performance marketing. Formerly at HubSpot and a D2C ecom brand, he has scaled content channels to millions of views.</p>
-<h2>Featured Articles</h2>
+<p>Zach has more than eight years in performance marketing. He previously worked at HubSpot and at a D2C ecommerce brand, and he has scaled content channels to large view totals. At ContHunt he focuses on how teams turn public examples into a calendar they can actually ship, then measure.</p>
+<p>Founder-led product work at Synthenova Enterprises LLP informs the research loop: inspect the source, compare structure, test one variable.</p>
+<h2>What does Zach research?</h2>
 <ul>
-<li><a href="/blog/youtube-shorts-best-practices">YouTube Shorts Best Practices 2026: Hooks, Posting, Retention</a></li>
-<li><a href="/blog/best-time-to-post-youtube-shorts-2026">Best Time to Post YouTube Shorts in 2026</a></li>
-<li><a href="/blog/tubebuddy-free-alternatives">Tubebuddy Free Alternatives for YouTube Growth in 2026</a></li>
+<li>Shorts hooks, titles, and retention-minded packaging</li>
+<li>When posting-time advice is useful and when it is folklore</li>
+<li>Tooling that helps YouTube growth without replacing your own analytics</li>
+<li>Educational Shorts ideas that still need a real demonstration</li>
+</ul>
+<h2>How should you use these articles?</h2>
+<p>Use a best-practices page as a checklist, then look at public examples in ContHunt before you shoot. Confirm YouTube’s current documented limits in YouTube Help. Track results in YouTube Analytics for your account. Do not copy another channel’s cadence without a reason that matches your audience.</p>
+<h2>Featured articles</h2>
+<ul>
+<li><a href="/blog/youtube-shorts-best-practices">YouTube Shorts Best Practices</a></li>
+<li><a href="/blog/best-time-to-post-youtube-shorts-2026">Best Time to Post YouTube Shorts</a></li>
+<li><a href="/blog/tubebuddy-free-alternatives">TubeBuddy Free Alternatives</a></li>
 <li><a href="/blog/educational-content-ideas-youtube-shorts">Educational Content Ideas for YouTube Shorts</a></li>
 </ul>
-<h2>Related Pages</h2>
+<h2>Related pages</h2>
 <ul>
 <li><a href="/authors">Authors</a></li>
+<li><a href="/editorial">Editorial standards</a></li>
 <li><a href="/about">About ContHunt</a></li>
+<li><a href="/blog">Blog</a></li>
 </ul>
+<h2>How this page is maintained</h2>
+<p>This page is part of the ContHunt public site operated by Synthenova Enterprises LLP. It is rebuilt from markdown so the visible copy, title, and schema stay aligned. The editorial team updates it when the product workflow changes or when a reader sends a correction to <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
+<h2>What should you do after reading it?</h2>
+<p>If you came here for people, continue to the <a href="/authors">authors</a> index and then to a named profile. If you came here for the product, read <a href="/about">about ContHunt</a> and a guide on the <a href="/blog">blog</a>. If you came here for policy, use <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Keep the original source attached when you research public videos in ContHunt, and verify platform rules on official help sites before you publish.</p>
+<h2>Research standard used on related articles</h2>
+<p>ContHunt articles are written as briefs, not as guarantees. Compare public examples, keep the URL, write down the hook and the promise, and test one variable on your own account. Native analytics on TikTok, Instagram, and YouTube remain the source of truth for your own performance. Founder-led product work is aimed at making that comparison faster, not at replacing your judgment.</p>
+<h2>Related official references</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs">Google Search documentation</a></li>
+<li><a href="https://support.google.com/youtube">YouTube Help</a></li>
+<li><a href="https://help.instagram.com/">Instagram Help</a></li>
+</ul>
+<h2>How ContHunt fits this page</h2>
+<p>ContHunt is a research workspace for public short-form video. Use it to collect examples, keep the original creator link, and compare hooks, overlays, captions, and comments before you spend production time. It does not replace TikTok Analytics, Instagram Insights, or YouTube Analytics on your own account. Native dashboards remain the source of truth for your performance. The public site, including this page, is written by the ContHunt editorial team so a reader can see who operates the product and how to contact support.</p>
+<p>If you are briefing a creator or an editor, write down the audience, the promise, the proof, and the next step. If any of those four are missing, the brief is not ready. That is the same checklist we use internally at Synthenova Enterprises LLP. Questions about this page can go to support@conthunt.app. For platform rules, use official help centers rather than screenshots of someone else’s backend. Keep notes dated so a later editor can see what you actually reviewed.</p>
 
             </div>
         </article>
@@ -191,14 +214,11 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -260,7 +280,7 @@
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>

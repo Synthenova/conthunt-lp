@@ -4,47 +4,16 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script>
-        let analyticsStarted = false;
-        const startAnalytics = () => {
-            if (analyticsStarted) return;
-            analyticsStarted = true;
-            const script = document.createElement('script');
-            script.src = 'https://us-assets.i.posthog.com/static/array.js';
-            script.onload = () => {
-                posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-                    api_host: '/ingest', ui_host: 'https://us.posthog.com', person_profiles: 'always', cross_subdomain_cookie: true
-                });
-                posthog.capture('blog_article_viewed', {
-                    article_title: 'Privacy Policy', canonical_url: 'https://conthunt.app/privacy',
-                    author_name: 'ContHunt Team'
-                });
-            };
-            document.head.appendChild(script);
-        };
-        ['pointerdown', 'keydown', 'scroll'].forEach(event => {
-            addEventListener(event, startAnalytics, { once: true, passive: true });
-        });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-            <title>Privacy Policy</title>
-    <meta name="title" content="Privacy Policy" />
+        <title>Privacy Policy | ContHunt short-form research</title>
+    <meta name="title" content="Privacy Policy | ContHunt short-form research" />
     <meta name="description"
-        content="Privacy Policy for Conthunt." />
+        content="Privacy Policy for Conthunt. Learn practical steps, examples, and a ContHunt workflow for Privacy Policy | ContHunt short-form research." />
     
 
-            <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ContHunt",
-            "url": "https://conthunt.app/"
-        }
-    </script>
+            
 
             
                 
@@ -52,6 +21,30 @@
                     
 
                         
+                            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ContHunt",
+      "url": "https://conthunt.app/"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Privacy Policy | ContHunt short-form research",
+      "url": "https://conthunt.app/privacy",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ContHunt",
+        "url": "https://conthunt.app/"
+      },
+      "description": "Privacy Policy for Conthunt. Learn practical steps, examples, and a ContHunt workflow for Privacy Policy | ContHunt short-form research.",
+      "dateModified": "2026-01-13"
+    }
+  ]
+}
+    </script>
 
                                 
 
@@ -62,9 +55,9 @@
                                                         <link rel="apple-touch-icon" href="/public/favicon.png" />
 
                                                         <!-- Open Graph -->
-                                                        <meta property="og:type" content="article" />
+                                                        <meta property="og:type" content="website" />
                                                         <meta property="og:title" content="Privacy Policy" />
-                                                        <meta property="og:description" content="Privacy Policy for Conthunt." />
+                                                        <meta property="og:description" content="Privacy Policy for Conthunt. Learn practical steps, examples, and a ContHunt workflow for Privacy Policy | ContHunt short-form research." />
                                                         
                                                                 <meta property="og:image"
                                                                     content="https://conthunt.app/public/banner.png" />
@@ -81,7 +74,7 @@
                                                                             <meta name="twitter:title"
                                                                                 content="Privacy Policy" />
                                                                             <meta name="twitter:description"
-                                                                                content="Privacy Policy for Conthunt." />
+                                                                                content="Privacy Policy for Conthunt. Learn practical steps, examples, and a ContHunt workflow for Privacy Policy | ContHunt short-form research." />
                                                                             
                                                                                     <meta name="twitter:image"
                                                                                         content="https://conthunt.app/public/banner.png" />
@@ -94,8 +87,6 @@
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/tailwind.css" />
-                                                                                        <script defer
-                                                                                            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/style.css" />
@@ -139,7 +130,7 @@
                 <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
                     style="margin-right: -15px;">
                     <span>LOGIN</span>
-                    <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
+                    <span class="ml-1" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
@@ -147,16 +138,16 @@
 
     <main class="relative z-10 pt-44 pb-20">
         
-        <article class="max-w-3xl mx-auto px-6">
+        <article class="max-w-3xl mx-auto px-6" >
             <header class="text-center mb-16">
+                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-01-13</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
                     Privacy Policy
                 </h1>
                 <p class="text-neutral-500">Last updated: 2026-01-13</p>
             </header>
             <div class="prose-enhanced">
-                <h1>Privacy Policy (conthunt)</h1>
-<p><strong>Last Updated: January 13, 2026</strong></p>
+                <p><strong>Last Updated: January 13, 2026</strong></p>
 <p>This Privacy Policy explains how <strong>Synthenova Enterprises LLP</strong> (“<strong>Synthenova</strong>,” “<strong>Company</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” “<strong>our</strong>”) collects, uses, discloses, stores, and protects information when you access or use <strong>conthunt</strong> (the “<strong>App</strong>,” “<strong>Service</strong>,” “<strong>Platform</strong>”) available at <strong><a href="https://conthunt.app">https://conthunt.app</a></strong>, including our websites, APIs, and related services.</p>
 <p>This Privacy Policy is designed to meet common privacy notice expectations and align with applicable data protection principles (including India’s <strong>Digital Personal Data Protection Act, 2023</strong> and related Rules).</p>
 <p>If you do not agree with this Privacy Policy, please do not use the Service.</p>
@@ -436,14 +427,11 @@ Subject line suggestion: <strong>“Privacy Request – conthunt”</strong></p>
                 </p>
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:x"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">X</a>
                     <a href="https://instagram.com/conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:instagram"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">Instagram</a>
                     <a href="https://tiktok.com/@conthunt.app" target="_blank"
-                        class="text-neutral-500 hover:text-white"><iconify-icon
-                            icon="simple-icons:tiktok"></iconify-icon></a>
+                        class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>
 
@@ -505,7 +493,7 @@ Subject line suggestion: <strong>“Privacy Request – conthunt”</strong></p>
         </div>
     </footer>
 
-    <script src="/assets/js/blog.js"></script>
+    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>
