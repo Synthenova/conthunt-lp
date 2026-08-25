@@ -3,8 +3,6 @@
   const visibleToc = Array.isArray(tocItems)
     ? tocItems.filter(item => item.level === 2 && !tocSkip.test(item.title || '')).slice(0, 8)
     : [];
-  const heroSrc = hero || '';
-  const showHero = heroSrc && !/banner\.png|logo-title/i.test(heroSrc);
 %>
 <article class="blog-post">
     <header class="blog-post-header">
@@ -30,10 +28,6 @@
 
         <h1><%= title %></h1>
 
-        <% if (answerFirst && answerFirst.text) { %>
-            <p class="blog-post-dek"><%= answerFirst.text %></p>
-        <% } %>
-
         <% if (tags && tags.length > 0) { %>
             <div class="blog-post-tags">
                 <% tags.slice(0, 4).forEach(tag => { %>
@@ -43,9 +37,9 @@
         <% } %>
     </header>
 
-    <% if (showHero) { %>
+    <% if (hero) { %>
         <figure class="blog-post-hero">
-            <img src="<%= hero %>" alt="<%= title %>" width="1200" height="630" />
+            <img src="<%= hero %>" alt="<%= title %>" width="1200" height="630" onerror="this.src='/public/banner.png';this.onerror=null;" />
         </figure>
     <% } %>
 
