@@ -208,17 +208,19 @@
                                                                                         <meta name="theme-color"
                                                                                             content="#030303" />
 
-                                                                                        <link rel="stylesheet"
-                                                                                            href="/assets/css/tailwind.css?v=20260825e" />
+                                                                                        <link rel="preconnect" href="https://fonts.googleapis.com" />
+                                                                                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+                                                                                        <link
+                                                                                            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap"
+                                                                                            rel="stylesheet" />
 
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/style.css?v=20260825e" />
+                                                                                            href="/assets/css/tailwind.css?v=20260825f" />
+
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/blog.css?v=20260825e" />
-                                                                                        <style>
-                                                                                          .dark-zone, #grid-torch { position: absolute !important; pointer-events: none; }
-                                                                                          .glass-nav { position: relative !important; }
-                                                                                        </style>
+                                                                                            href="/assets/css/style.css?v=20260825f" />
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/blog.css?v=20260825f" />
 
                                                                                         <% if (typeof canonical !=='undefined' && canonical) { -%>
                                                                                             <link href="<%= canonical %>" rel="canonical" />
@@ -235,7 +237,7 @@
 
     <!-- Navigation -->
     <nav
-        class="relative z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] mt-4">
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
         <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
             <!-- Logo (left) -->
             <div class="flex items-center">
@@ -256,7 +258,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="cta glass-button px-5 py-2 text-xs font-bold">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <span class="ml-1" aria-hidden="true">→</span>
                 </a>
@@ -264,7 +267,7 @@
         </div>
     </nav>
 
-    <main class="relative z-10 pt-24 pb-20">
+    <main class="relative z-10 pt-44 pb-20">
         <%- body %>
     </main>
 
@@ -290,7 +293,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Product.</h4>
+                <h4 class="text-white font-medium mb-4">Product</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/blog" class="hover:text-white transition-colors">Resources</a>
@@ -308,7 +311,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Company.</h4>
+                <h4 class="text-white font-medium mb-4">Company</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/about" class="hover:text-white transition-colors">About</a>
@@ -323,7 +326,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Legal.</h4>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>

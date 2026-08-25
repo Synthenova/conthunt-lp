@@ -115,16 +115,19 @@
                                                                                         <meta name="theme-color"
                                                                                             content="#030303" />
 
-                                                                                        <link rel="stylesheet"
-                                                                                            href="/assets/css/tailwind.css?v=20260825e" />
+                                                                                        <link rel="preconnect" href="https://fonts.googleapis.com" />
+                                                                                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+                                                                                        <link
+                                                                                            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap"
+                                                                                            rel="stylesheet" />
 
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/style.css?v=20260825e" />
+                                                                                            href="/assets/css/tailwind.css?v=20260825f" />
+
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/blog.css?v=20260825e" />
-                                                                                        <style>
-                                                                                          .dark-zone, #grid-torch { position: absolute !important; pointer-events: none; }
-                                                                                        </style>
+                                                                                            href="/assets/css/style.css?v=20260825f" />
+                                                                                        <link rel="stylesheet"
+                                                                                            href="/assets/css/blog.css?v=20260825f" />
 
                                                                                                                                                                                     <link href="https://conthunt.app/about" rel="canonical" />
                                                                                         </head>
@@ -139,7 +142,7 @@
 
     <!-- Navigation -->
     <nav
-        class="sticky top-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
         <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
             <!-- Logo (left) -->
             <div class="flex items-center">
@@ -160,7 +163,8 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="glass-button px-5 py-2 text-xs font-bold">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
+                    style="margin-right: -15px;">
                     <span>LOGIN</span>
                     <span class="ml-1" aria-hidden="true">→</span>
                 </a>
@@ -168,16 +172,15 @@
         </div>
     </nav>
 
-    <main class="relative z-10 pt-16 pb-20">
+    <main class="relative z-10 pt-44 pb-20">
         
         <article class="max-w-3xl mx-auto px-6" >
             <header class="text-center mb-16">
-                <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated 2026-08-25</p>
+                <p class="font-nav text-xs font-bold text-neutral-500 tracking-[0.2em] uppercase mb-6">Company</p>
                 
-                <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    About ContHunt.
+                <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-8 leading-[1.1]">
+                    About ContHunt
                 </h1>
-                <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
             <div class="prose-enhanced">
                 <p>ContHunt is a content intelligence platform for discovering, comparing, and analyzing public short-form videos across TikTok, Instagram Reels, YouTube Shorts, and related social surfaces.</p>
@@ -289,7 +292,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Product.</h4>
+                <h4 class="text-white font-medium mb-4">Product</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/blog" class="hover:text-white transition-colors">Resources</a>
@@ -307,7 +310,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Company.</h4>
+                <h4 class="text-white font-medium mb-4">Company</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/about" class="hover:text-white transition-colors">About</a>
@@ -322,7 +325,7 @@
             </div>
 
             <div>
-                <h4 class="text-white font-medium mb-4">Legal.</h4>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
                         <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>

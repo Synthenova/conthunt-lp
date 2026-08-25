@@ -808,12 +808,11 @@ If you are briefing a creator or an editor, write down the audience, the promise
         const pageContent = `
         <article class="max-w-3xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
             <header class="text-center mb-16">
-                <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated ${attributes.updated || new Date().toISOString().split('T')[0]}</p>
+                <p class="font-nav text-xs font-bold text-neutral-500 tracking-[0.2em] uppercase mb-6">Company</p>
                 ${profileImage}
-                <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    ${pageTitle}.
+                <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-8 leading-[1.1]">
+                    ${pageTitle}
                 </h1>
-                ${attributes.updated ? `<p class="text-neutral-500">Last updated: ${attributes.updated}</p>` : ''}
             </header>
             <div class="prose-enhanced">
                 ${htmlContent}
