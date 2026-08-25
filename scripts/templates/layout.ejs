@@ -19,6 +19,15 @@
     <% const resolvedWebPageType = (typeof webPageType !== 'undefined' && webPageType) ? webPageType : 'WebPage'; -%>
     <% const resolvedCanonical = (typeof canonical !== 'undefined' && canonical) ? canonical : 'https://conthunt.app/'; -%>
     <%
+      const resolvedSameAs = (typeof organizationSameAs !== 'undefined' && Array.isArray(organizationSameAs) && organizationSameAs.length)
+        ? organizationSameAs
+        : [
+          "https://x.com/conthunt",
+          "https://www.instagram.com/_conthunt/",
+          "https://www.tiktok.com/@cont.hunt",
+          "https://www.threads.net/@_conthunt",
+          "https://www.reddit.com/user/conthunt"
+        ];
       const organizationSchema = {
         "@type": "Organization",
         "@id": "https://conthunt.app/#organization",
@@ -32,11 +41,7 @@
           "addressLocality": "Chennai",
           "addressCountry": "IN"
         },
-        "sameAs": [
-          "https://x.com/conthunt",
-          "https://instagram.com/conthunt.app",
-          "https://tiktok.com/@conthunt.app"
-        ],
+        "sameAs": resolvedSameAs,
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer service",
@@ -140,11 +145,7 @@
         "name": "ContHunt",
         "url": "https://conthunt.app",
         "logo": "https://conthunt.app/public/logo-title-white.png",
-        "sameAs": [
-            "https://x.com/conthunt",
-            "https://instagram.com/conthunt.app",
-            "https://tiktok.com/@conthunt.app"
-        ],
+        "sameAs": <%- JSON.stringify(resolvedSameAs) %>,
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
@@ -281,9 +282,9 @@
                 <div class="flex gap-4">
                     <a href="https://x.com/conthunt" target="_blank"
                         class="text-neutral-500 hover:text-white">X</a>
-                    <a href="https://instagram.com/conthunt.app" target="_blank"
+                    <a href="https://www.instagram.com/_conthunt/" target="_blank"
                         class="text-neutral-500 hover:text-white">Instagram</a>
-                    <a href="https://tiktok.com/@conthunt.app" target="_blank"
+                    <a href="https://www.tiktok.com/@cont.hunt" target="_blank"
                         class="text-neutral-500 hover:text-white">TikTok</a>
                 </div>
             </div>

@@ -14,7 +14,28 @@ const TEMPLATES_DIR = path.join(__dirname, 'templates');
 const RELATED_LOCK_PATH = path.join(__dirname, 'data/related-lock.json');
 const AUTHORS_PATH = path.join(__dirname, 'data/authors.json');
 const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.json');
+const ORGANIZATION_SAMEAS_PATH = path.join(__dirname, 'data/organization-sameas.json');
 const DOMAIN = 'https://conthunt.app';
+
+function loadOrganizationSameAs() {
+    const fallback = [
+        'https://x.com/conthunt',
+        'https://www.instagram.com/_conthunt/',
+        'https://www.tiktok.com/@cont.hunt',
+        'https://www.threads.net/@_conthunt',
+        'https://www.reddit.com/user/conthunt',
+    ];
+    try {
+        const parsed = JSON.parse(fs.readFileSync(ORGANIZATION_SAMEAS_PATH, 'utf8'));
+        if (!Array.isArray(parsed) || parsed.length === 0) return fallback;
+        return parsed.filter((item) => typeof item === 'string' && item.startsWith('https://'));
+    } catch (error) {
+        console.warn(`[organization-sameas] ${error.message}`);
+        return fallback;
+    }
+}
+
+const ORGANIZATION_SAME_AS = loadOrganizationSameAs();
 
 // Load authors list
 function loadAuthors() {
@@ -837,6 +858,7 @@ If you are briefing a creator or an editor, write down the audience, the promise
             canonical: `${DOMAIN}/${slug}`, // No trailing slash
             resolvedKeywords: null,
             authorProfile: null,
+            organizationSameAs: ORGANIZATION_SAME_AS,
             ogType,
             webPageType,
             updated: attributes.updated || null,
@@ -1146,6 +1168,7 @@ async function build() {
             author: postData.author,
             resolvedKeywords: postData.resolvedKeywords,
             authorProfile: postData.authorProfile,
+            organizationSameAs: ORGANIZATION_SAME_AS,
             collectionItems: null
         });
 
@@ -1175,6 +1198,7 @@ async function build() {
         canonical: `${DOMAIN}/blog`,
         resolvedKeywords: ['short-form video research', 'tiktok analytics', 'youtube shorts guides', 'instagram reels ideas'],
         authorProfile: null,
+        organizationSameAs: ORGANIZATION_SAME_AS,
         ogType: 'website',
         webPageType: 'CollectionPage',
         isBlogPost: true,

@@ -130,6 +130,23 @@ else fail.push('tracker missing not-a-live-tracker disclaimer');
 if (/ContHunt is a live YouTube tracker/i.test(tracker)) fail.push('fake tracker claim');
 else ok.push('no fake tracker claim');
 
+const sameAsNeed = [
+    'https://x.com/conthunt',
+    'https://www.instagram.com/_conthunt/',
+    'https://www.tiktok.com/@cont.hunt',
+    'https://www.threads.net/@_conthunt',
+    'https://www.reddit.com/user/conthunt',
+];
+for (const rel of ['index.html', 'about/index.html']) {
+    const html = read(path.join(ROOT, rel));
+    for (const url of sameAsNeed) {
+        if (html.includes(url)) ok.push(`sameAs ${rel} ${url}`);
+        else fail.push(`sameAs missing ${rel} ${url}`);
+    }
+    if (html.includes('instagram.com/conthunt.app')) fail.push(`stale IG handle in ${rel}`);
+    else ok.push(`no stale IG in ${rel}`);
+}
+
 console.log(ok.map((s) => `OK  ${s}`).join('\n'));
 if (fail.length) {
     console.error(fail.map((s) => `FAIL ${s}`).join('\n'));
