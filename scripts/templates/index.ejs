@@ -56,7 +56,7 @@
                             <%= post.title %>
                         </h2>
                         <p class="text-neutral-400 mb-6 line-clamp-2">
-                            <%= post.description %>
+                            <%= String(post.description || '').split(/\s+/).slice(0, 16).join(' ') %>
                         </p>
 
                         <div class="flex items-center justify-between text-sm text-neutral-500">
