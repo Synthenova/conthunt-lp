@@ -802,7 +802,7 @@ If you are briefing a creator or an editor, write down the audience, the promise
         const pageContent = `
         <article class="max-w-3xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
             <header class="text-center mb-16">
-                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated ${attributes.updated || new Date().toISOString().split('T')[0]}</p>
+                <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated ${attributes.updated || new Date().toISOString().split('T')[0]}</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
                     ${pageTitle}
                 </h1>
@@ -815,6 +815,16 @@ If you are briefing a creator or an editor, write down the audience, the promise
         `;
 
         const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
+        const profileAuthor = profileSlugs.has(slug)
+            ? (loadAuthors().find(a => a.id === slug || (a.url && a.url.includes(`/${slug}`))) || null)
+            : null;
+        const personSchema = profileAuthor ? {
+            name: profileAuthor.name,
+            url: profileAuthor.url || `${DOMAIN}/${slug}`,
+            image: profileAuthor.image ? (profileAuthor.image.startsWith('http') ? profileAuthor.image : `${DOMAIN}${profileAuthor.image}`) : undefined,
+            jobTitle: profileAuthor.role,
+            description: profileAuthor.bio
+        } : null;
         const finalHtml = ejs.render(layout, {
             body: pageContent,
             pageTitle,
@@ -828,7 +838,8 @@ If you are briefing a creator or an editor, write down the audience, the promise
             webPageType,
             updated: attributes.updated || null,
             isBlogPost: false,
-            collectionItems: null
+            collectionItems: null,
+            personSchema
         });
 
         fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);

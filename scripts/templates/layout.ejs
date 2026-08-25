@@ -19,8 +19,33 @@
     <% const resolvedWebPageType = (typeof webPageType !== 'undefined' && webPageType) ? webPageType : 'WebPage'; -%>
     <% const resolvedCanonical = (typeof canonical !== 'undefined' && canonical) ? canonical : 'https://conthunt.app/'; -%>
     <%
+      const organizationSchema = {
+        "@type": "Organization",
+        "@id": "https://conthunt.app/#organization",
+        "name": "ContHunt",
+        "legalName": "Synthenova Enterprises LLP",
+        "url": "https://conthunt.app",
+        "logo": "https://conthunt.app/public/logo-title-white.png",
+        "email": "support@conthunt.app",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chennai",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://x.com/conthunt",
+          "https://instagram.com/conthunt.app",
+          "https://tiktok.com/@conthunt.app"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "support@conthunt.app"
+        }
+      };
       const graph = [
-        { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/" },
+        organizationSchema,
+        { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/", "publisher": { "@id": "https://conthunt.app/#organization" } },
         {
           "@type": resolvedWebPageType === 'WebPage' ? 'WebPage' : [resolvedWebPageType, 'WebPage'],
           "name": resolvedTitle,
@@ -30,6 +55,17 @@
           ...(typeof updated !== 'undefined' && updated ? { "dateModified": updated } : {})
         }
       ];
+      if (typeof personSchema !== 'undefined' && personSchema && personSchema.name) {
+        graph.push({
+          "@type": "Person",
+          "name": personSchema.name,
+          ...(personSchema.url ? { "url": personSchema.url } : {}),
+          ...(personSchema.image ? { "image": personSchema.image } : {}),
+          ...(personSchema.jobTitle ? { "jobTitle": personSchema.jobTitle } : {}),
+          ...(personSchema.description ? { "description": personSchema.description } : {}),
+          "worksFor": { "@id": "https://conthunt.app/#organization" }
+        });
+      }
       if (Array.isArray(typeof collectionItems !== 'undefined' ? collectionItems : null) && collectionItems.length > 0) {
         graph.push({
           "@type": "ItemList",
@@ -77,14 +113,7 @@
                                 "datePublished": (typeof date !== 'undefined') ? date : '',
                                 "dateModified": (typeof updated !== 'undefined') ? updated : (typeof date !== 'undefined' ? date : ''),
                                 "author": authorSchema,
-                                "publisher": {
-                                    "@type": "Organization",
-                                    "name": "ContHunt",
-                                    "logo": {
-                                        "@type": "ImageObject",
-                                        "url": "https://conthunt.app/public/logo-title-white.png"
-                                    }
-                                },
+                                "publisher": { "@id": "https://conthunt.app/#organization" },
                                 "mainEntityOfPage": {
                                     "@type": "WebPage",
                                     "@id": canonical
@@ -202,7 +231,7 @@
 
     <!-- Navigation -->
     <nav
-        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        class="sticky top-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] mt-4">
         <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
             <!-- Logo (left) -->
             <div class="flex items-center">
@@ -232,7 +261,7 @@
         </div>
     </nav>
 
-    <main class="relative z-10 pt-44 pb-20">
+    <main class="relative z-10 pt-16 pb-20">
         <%- body %>
     </main>
 
@@ -307,7 +336,7 @@
         </div>
         <div
             class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
-            <p>© 2026 Synthenova Enterprises LLP. All rights reserved. <a href="https://www.indexnow.org/" class="hover:text-white">IndexNow</a></p>
+            <p>© 2026 Synthenova Enterprises LLP, Chennai, India. All rights reserved. Contact <a href="mailto:support@conthunt.app" class="hover:text-white">support@conthunt.app</a>. <a href="https://www.indexnow.org/" class="hover:text-white">IndexNow</a></p>
             <div class="flex items-center gap-2 mt-4 md:mt-0">
                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
                 <span>Systems Operational</span>

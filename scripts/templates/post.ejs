@@ -43,6 +43,8 @@
                         <%= new Date(date).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
                             day: 'numeric' }) %>
                     </time>
+                    <span>•</span>
+                    <span>Reviewed by ContHunt editorial team</span>
                     <% if (updated && updated !== date) { %>
                         <span>•</span>
                         <span>Updated <%= new Date(updated).toLocaleDateString('en-US', { year: 'numeric' , month: 'short' , day: 'numeric' }) %></span>
