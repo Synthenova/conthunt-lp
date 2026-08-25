@@ -145,6 +145,13 @@ for (const rel of ['index.html', 'about/index.html']) {
     }
     if (html.includes('instagram.com/conthunt.app')) fail.push(`stale IG handle in ${rel}`);
     else ok.push(`no stale IG in ${rel}`);
+    const footer = html.toLowerCase().includes('aria-label="conthunt profiles"')
+        ? html.slice(html.toLowerCase().indexOf('aria-label="conthunt profiles"'))
+        : '';
+    for (const url of sameAsNeed) {
+        if (footer.includes(url)) ok.push(`footer ${rel} ${url}`);
+        else fail.push(`footer missing ${rel} ${url}`);
+    }
 }
 
 console.log(ok.map((s) => `OK  ${s}`).join('\n'));
