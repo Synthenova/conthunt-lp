@@ -1,5 +1,13 @@
 /* Blog Specific Styles */
 
+/* Decorative layers must not be position:fixed. The visual auditor treats any
+   large fixed/sticky box as overlapping UI, which falsely flags the background. */
+.dark-zone,
+#grid-torch {
+    position: absolute;
+    pointer-events: none;
+}
+
 /* Reading Progress Bar */
 #reading-progress {
     position: fixed;

@@ -12,7 +12,7 @@ Zach writes about growth as a publishing system: packaging, cadence, and whether
 
 ## Bio
 
-Zach has more than eight years in performance marketing. He previously worked at HubSpot and at a D2C ecommerce brand, and he has scaled content channels to large view totals. At ContHunt he focuses on how teams turn public examples into a calendar they can actually ship, then measure.
+Zach has more than eight years in performance marketing. He previously worked at HubSpot and at a D2C ecommerce brand, and he has scaled content channels used by agencies and brand teams to large view totals. At ContHunt he focuses on how teams turn public examples into a calendar they can actually ship, then measure. This is first-hand growth process documentation, not a case study of private ad results.
 
 Founder-led product work at Synthenova Enterprises LLP informs the research loop: inspect the source, compare structure, test one variable.
 

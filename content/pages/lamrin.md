@@ -12,7 +12,7 @@ Lamrin explains how ContHunt’s analysis layer is supposed to be used: as a way
 
 ## Bio
 
-Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher can actually finish. That includes discovery, comparison, and keeping the original creator visible.
+Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher, agency editor, or brand team can actually finish. Founder-led product work stays close to that pipeline. This is first-hand systems documentation, not a case study of private results.
 
 ## What does Lamrin research?
 

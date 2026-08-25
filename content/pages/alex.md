@@ -12,7 +12,7 @@ Alex writes for people who make short-form video and need a way to study public 
 
 ## Bio
 
-Alex is a content creator with a large following across TikTok and YouTube. He breaks down what makes videos travel and teaches creators how to test those patterns on their own accounts. At ContHunt he focuses on format analysis, hook language, and examples that a reader can open in the original source.
+Alex is a content creator with 500K+ followers across TikTok and YouTube. He breaks down what makes videos travel and teaches creators, agencies, and brand teams how to test those patterns on their own accounts. At ContHunt he focuses on format analysis, hook language, and examples that a reader can open in the original source. This is founder-adjacent creator research: first-hand review of public posts, not a case study of private analytics results.
 
 This is not a private analytics dump from other creators. It is a method for reviewing public posts, keeping the link, and writing a brief you can actually shoot.
 

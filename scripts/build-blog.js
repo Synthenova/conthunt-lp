@@ -798,13 +798,20 @@ If you are briefing a creator or an editor, write down the audience, the promise
         const pageTitle = attributes.title;
         const seoTitle = fitSeoTitle(pageTitle);
         const description = fitMetaDescription(attributes.description || pageTitle, seoTitle);
+        const profileAuthor = profileSlugs.has(slug)
+            ? (loadAuthors().find(a => a.id === slug || (a.url && a.url.includes(`/${slug}`))) || null)
+            : null;
+        const profileImage = profileAuthor && profileAuthor.image
+            ? `<img src="${profileAuthor.image}" alt="${pageTitle}" width="96" height="96" loading="lazy" class="mx-auto mb-6 w-16 h-16 rounded-full object-cover" />`
+            : '';
 
         const pageContent = `
         <article class="max-w-3xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
             <header class="text-center mb-16">
                 <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated ${attributes.updated || new Date().toISOString().split('T')[0]}</p>
+                ${profileImage}
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    ${pageTitle}
+                    ${pageTitle}.
                 </h1>
                 ${attributes.updated ? `<p class="text-neutral-500">Last updated: ${attributes.updated}</p>` : ''}
             </header>
@@ -815,9 +822,6 @@ If you are briefing a creator or an editor, write down the audience, the promise
         `;
 
         const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
-        const profileAuthor = profileSlugs.has(slug)
-            ? (loadAuthors().find(a => a.id === slug || (a.url && a.url.includes(`/${slug}`))) || null)
-            : null;
         const personSchema = profileAuthor ? {
             name: profileAuthor.name,
             url: profileAuthor.url || `${DOMAIN}/${slug}`,

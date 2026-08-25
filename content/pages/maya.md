@@ -12,7 +12,7 @@ Maya tracks what is repeating across platforms and writes it down as a method. S
 
 ## Bio
 
-Maya analyzes social media trends for a living. She watches what is working across TikTok, Reels, and Shorts, then helps teams decide what is worth testing. At ContHunt that means comparing public posts with the source still attached, and refusing to treat view count as a complete explanation.
+Maya analyzes social media trends for a living. She watches what is working across TikTok, Reels, and Shorts, then helps creators, agencies, and brand teams decide what is worth testing. At ContHunt that means comparing public posts with the source still attached, and refusing to treat view count as a complete explanation. Founder-led notes stay attached to the URL. This is not a case study of private analytics results.
 
 ## What does Maya research?
 

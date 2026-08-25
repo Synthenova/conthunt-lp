@@ -12,7 +12,7 @@ Elena frames ContHunt pages so a reader knows what the product is for, what it i
 
 ## Bio
 
-Elena leads marketing at ContHunt. Her background is content strategy for B2B SaaS. She helps brands tell stories that can be checked: who the page is for, what evidence it uses, and what the reader should do next. Founder-led product language from Synthenova Enterprises LLP is kept aligned with public documentation rather than slogan math.
+Elena leads marketing at ContHunt. Her background is content strategy for B2B SaaS used by agencies and brand teams. She helps brands tell stories that can be checked: who the page is for, what evidence it uses, and what the reader should do next. Founder-led product language from Synthenova Enterprises LLP is kept aligned with public documentation rather than slogan math. This is not a case study of private campaign results.
 
 ## What does Elena research?
 

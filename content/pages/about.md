@@ -8,6 +8,8 @@ ContHunt is a content intelligence platform for discovering, comparing, and anal
 
 The product is built for creators, agencies, and brand teams who need a repeatable research loop: find examples, keep the original source link, inspect hooks and packaging, and turn repeating patterns into briefs they can test. It is operated by **Synthenova Enterprises LLP**, based in Chennai, India. Founder-led product work stays close to the research workflow rather than treating total views as a ranking of ideas.
 
+This is first-hand process documentation, not a case study of private account results. We review public examples in ContHunt the same way a researcher would: capture the URL, the date, the hook, and the caption, then write one test. Teams used by agencies and brand editors can share that brief without guessing.
+
 ## Who is ContHunt for?
 
 - Creators who want to brief the next batch of Shorts, Reels, or TikToks from public examples instead of scrolling endlessly
@@ -34,6 +36,15 @@ Every observation should stay attached to the original URL. If a claim cannot be
 Synthenova Enterprises LLP operates ContHunt. Support is available at [support@conthunt.app](mailto:support@conthunt.app). Editorial standards, author profiles, privacy, and terms are published on this site so readers can see who wrote a page and how it is reviewed.
 
 The blog is a public research library. It is written by the ContHunt editorial team and topic specialists, then rebuilt from markdown so titles, schema, and visible copy stay aligned.
+
+## How do trust pages fit together?
+
+| Page | What it proves |
+| --- | --- |
+| [About](/about) | Who operates ContHunt and how to contact the team |
+| [Editorial](/editorial) | How claims are sourced, reviewed, and corrected |
+| [Authors](/authors) | Named people behind bylines |
+| [Privacy](/privacy) and [terms](/terms) | Legal and data handling |
 
 ## What should you read next?
 

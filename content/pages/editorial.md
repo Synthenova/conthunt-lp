@@ -4,7 +4,7 @@ description: "How ContHunt writes, reviews, updates, and corrects research pages
 updated: "2026-08-25"
 ---
 
-ContHunt content is written to be practical, searchable, and easy to verify. This page is the working standard for blog posts, author pages, and supporting site copy. It is maintained by the ContHunt editorial team at Synthenova Enterprises LLP.
+ContHunt content is written to be practical, searchable, and easy to verify. This page is the working standard for blog posts, author pages, and supporting site copy. It is maintained by the ContHunt editorial team at Synthenova Enterprises LLP. Founder-led review is for creators, agencies, and brand teams who need a method they can rerun, not a case study of private results.
 
 ## What is the purpose of a ContHunt article?
 

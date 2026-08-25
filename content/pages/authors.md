@@ -4,7 +4,7 @@ description: "Meet the ContHunt editorial team: growth, engineering, creator wor
 updated: "2026-08-25"
 ---
 
-ContHunt uses a small editorial team with topic-specific coverage. The goal is consistency between the person in the byline, the author schema, and the page body. Founder-led product context comes from Synthenova Enterprises LLP; the public library is written so a reader can see who is responsible for a guide.
+ContHunt uses a small editorial team with topic-specific coverage. The goal is consistency between the person in the byline, the author schema, and the page body. Founder-led product context comes from Synthenova Enterprises LLP; the public library is written so a reader can see who is responsible for a guide. Creators, agencies, and brand teams used these profiles to see who researched a page before they trust a workflow.
 
 ## Who is on the team?
 

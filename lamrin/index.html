@@ -142,12 +142,12 @@
     <div id="reading-progress"></div>
 
     <!-- Background Grid & Glows -->
-    <div class="dark-zone"></div>
-    <div id="grid-torch"></div>
+    <div class="dark-zone" aria-hidden="true"></div>
+    <div id="grid-torch" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <nav
-        class="sticky top-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] mt-4">
+        class="sticky top-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
         <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
             <!-- Logo (left) -->
             <div class="flex items-center">
@@ -168,8 +168,7 @@
 
             <!-- Right side nav items -->
             <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
-                    style="margin-right: -15px;">
+                <a href="https://agent.conthunt.app" class="glass-button px-5 py-2 text-xs font-bold">
                     <span>LOGIN</span>
                     <span class="ml-1" aria-hidden="true">→</span>
                 </a>
@@ -182,8 +181,9 @@
         <article class="max-w-3xl mx-auto px-6" itemscope itemtype="https://schema.org/Person">
             <header class="text-center mb-16">
                 <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated 2026-08-25</p>
+                <img src="/public/faviconold.png" alt="Lamrin | ContHunt Engineering Profile" width="96" height="96" loading="lazy" class="mx-auto mb-6 w-16 h-16 rounded-full object-cover" />
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-                    Lamrin | ContHunt Engineering Profile
+                    Lamrin | ContHunt Engineering Profile.
                 </h1>
                 <p class="text-neutral-500">Last updated: 2026-08-25</p>
             </header>
@@ -193,7 +193,7 @@
 <strong>Team:</strong> ContHunt editorial team, Synthenova Enterprises LLP</p>
 <p>Lamrin explains how ContHunt’s analysis layer is supposed to be used: as a way to inspect public videos, keep source links, and compare structure. The writing stays close to the product rather than to unverifiable “AI scores.”</p>
 <h2>Bio</h2>
-<p>Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher can actually finish. That includes discovery, comparison, and keeping the original creator visible.</p>
+<p>Lamrin is a full-stack engineer building AI-powered tools. He architected ContHunt’s video analysis engine and spends a lot of time turning a complicated pipeline into a workflow a researcher, agency editor, or brand team can actually finish. Founder-led product work stays close to that pipeline. This is first-hand systems documentation, not a case study of private results.</p>
 <h2>What does Lamrin research?</h2>
 <ul>
 <li>How to describe analysis steps without fake precision</li>
