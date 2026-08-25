@@ -1,8 +1,8 @@
 ---
-title: "Short-Form Video Best Practices 2026: Hooks, Captions, Hashtags"
-description: "Use these short-form video best practices for hooks, captions, hashtags, retention, and platform fit across TikTok, Reels, and Shorts."
+title: "Short-Form Video Best Practices: Hooks, Captions, Hashtags"
+description: "Short-form video best practices for hooks, captions, hashtags, and retention across TikTok, Reels, and Shorts, plus how to review winning public examples."
 date: "2026-08-10"
-updated: "2026-08-10"
+updated: "2026-08-25"
 category: "Best Practices"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -47,7 +47,7 @@ sources:
     url: "https://ads.tiktok.com/business/creativecenter"
 ---
 
-# Short-Form Video Best Practices 2026: Hooks, Captions, Hashtags
+# Short-Form Video Best Practices: Hooks, Captions, Hashtags
 
 Short-form video is not one tactic anymore. TikTok, Instagram Reels, and YouTube Shorts all reward fast clarity, but they do not reward the same signals in the same order.
 

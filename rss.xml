@@ -6,7 +6,47 @@
     <description>Latest insights, tutorials, and updates from ContHunt.</description>
     <language>en-us</language>
     <atom:link href="https://conthunt.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 25 Aug 2026 09:15:19 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 10:14:08 GMT</lastBuildDate>
+    <item>
+      <title><![CDATA[YouTube Tags vs Hashtags: What to Use on Shorts]]></title>
+      <link>https://conthunt.app/blog/youtube-tags-vs-hashtags</link>
+      <description><![CDATA[YouTube tags vs hashtags explained for Shorts: the old tags field, clickable hashtags, and which one to spend time on when you publish a vertical video.]]></description>
+      <category>Content Strategy</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/youtube-tags-vs-hashtags</guid>
+    </item>
+    <item>
+      <title><![CDATA[YouTube Shorts Hashtags in Title vs Description]]></title>
+      <link>https://conthunt.app/blog/youtube-shorts-hashtags-title-vs-description</link>
+      <description><![CDATA[Where to put YouTube Shorts hashtags: title versus description, how many YouTube may show, and a simple test so you stop stuffing both fields.]]></description>
+      <category>Content Strategy</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-hashtags-title-vs-description</guid>
+    </item>
+    <item>
+      <title><![CDATA[YouTube SEO Tool Options Compared]]></title>
+      <link>https://conthunt.app/blog/youtube-seo-tools</link>
+      <description><![CDATA[Compare YouTube SEO tool options for keywords, titles, and Shorts research. vidIQ is one stack; Studio, TubeBuddy, and ContHunt cover different jobs.]]></description>
+      <category>Tools & Reviews</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/youtube-seo-tools</guid>
+    </item>
+    <item>
+      <title><![CDATA[Instagram Reels Hashtags That Still Help Discovery]]></title>
+      <link>https://conthunt.app/blog/instagram-reels-hashtags</link>
+      <description><![CDATA[How Instagram Reels hashtags work now: how many to use, which types to skip, and how to steal structure from public Reels without copying a dead tag list.]]></description>
+      <category>Instagram</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/instagram-reels-hashtags</guid>
+    </item>
+    <item>
+      <title><![CDATA[Instagram Reels Algorithm: How Distribution Actually Works]]></title>
+      <link>https://conthunt.app/blog/instagram-reels-algorithm</link>
+      <description><![CDATA[A practical read of the Instagram Reels algorithm: who sees a new Reel, which signals matter, and how to test distribution without treating a view spike as]]></description>
+      <category>Instagram</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/instagram-reels-algorithm</guid>
+    </item>
     <item>
       <title><![CDATA[YouTube Title Character Limit 2026: Best Length for Videos and Shorts]]></title>
       <link>https://conthunt.app/blog/youtube-title-character-limit-2026</link>
@@ -24,9 +64,9 @@
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-thumbnail-best-practices-2026</guid>
     </item>
     <item>
-      <title><![CDATA[Short-Form Video Best Practices 2026: Hooks, Captions, Hashtags]]></title>
+      <title><![CDATA[Short-Form Video Best Practices: Hooks, Captions, Hashtags]]></title>
       <link>https://conthunt.app/blog/short-form-video-best-practices</link>
-      <description><![CDATA[Use these short-form video best practices for hooks, captions, hashtags, retention, and platform fit across TikTok, Reels, and Shorts.]]></description>
+      <description><![CDATA[Short-form video best practices for hooks, captions, hashtags, and retention across TikTok, Reels, and Shorts, plus how to review winning public examples.]]></description>
       <category>Best Practices</category>
       <pubDate>Mon, 10 Aug 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/short-form-video-best-practices</guid>
@@ -104,14 +144,6 @@
       <guid isPermaLink="true">https://conthunt.app/blog/social-media-analytics-tools</guid>
     </item>
     <item>
-      <title><![CDATA[Instagram Analytics in 2026: The Metrics That Matter]]></title>
-      <link>https://conthunt.app/blog/instagram-analytics</link>
-      <description><![CDATA[Learn which Instagram analytics metrics matter in 2026 and how to turn them into better posts and Reels. Learn practical steps, examples, and a ContHunt]]></description>
-      <category>Analytics</category>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/instagram-analytics</guid>
-    </item>
-    <item>
       <title><![CDATA[Hashtag Generator in 2026: How to Find Better Tags Fast]]></title>
       <link>https://conthunt.app/blog/hashtag-generator</link>
       <description><![CDATA[Learn how to use a hashtag generator in 2026 to build niche, trending, and brand-safe tag sets. Learn practical steps, examples, and a ContHunt workflow for]]></description>
@@ -168,17 +200,17 @@
       <guid isPermaLink="true">https://conthunt.app/blog/vidiq-review</guid>
     </item>
     <item>
-      <title><![CDATA[4 Best vidIQ Alternatives in 2026 (Free & Paid)]]></title>
+      <title><![CDATA[Best vidIQ Alternatives (Free and Paid)]]></title>
       <link>https://conthunt.app/blog/vidiq-alternatives</link>
-      <description><![CDATA[Compare four vidIQ alternatives for free YouTube research, channel management, Shorts analysis, and cross-platform competitor tracking.]]></description>
+      <description><![CDATA[Compare vidIQ alternatives for free YouTube research, channel management, Shorts analysis, and cross-platform competitor research, including TubeBuddy and]]></description>
       <category>Tools & Reviews</category>
       <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/vidiq-alternatives</guid>
     </item>
     <item>
-      <title><![CDATA[15 Instagram Reels Content Ideas for 2026]]></title>
+      <title><![CDATA[Instagram Reels Content Ideas That Get Watched]]></title>
       <link>https://conthunt.app/blog/instagram-reels-content-ideas</link>
-      <description><![CDATA[15 Instagram Reels content ideas for 2026, plus a simple testing workflow, caption checks, and how to review public examples in ContHunt.]]></description>
+      <description><![CDATA[15 Instagram Reels content ideas you can test this week, with hook and caption checks plus a workflow for reviewing public Reels in ContHunt.]]></description>
       <category>Instagram</category>
       <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/instagram-reels-content-ideas</guid>
@@ -206,14 +238,6 @@
       <category>Content Strategy</category>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-search-trends</guid>
-    </item>
-    <item>
-      <title><![CDATA[Instagram Analytics: Ultimate Guide to Measuring Impact]]></title>
-      <link>https://conthunt.app/blog/instagram-analytics-ultimate-guide</link>
-      <description><![CDATA[Instagram Analytics in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for Instagram]]></description>
-      <category>Content Strategy</category>
-      <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/instagram-analytics-ultimate-guide</guid>
     </item>
     <item>
       <title><![CDATA[How to Compare Your AI Visibility Against Your Competitors]]></title>
@@ -256,17 +280,9 @@
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-trending-searches</guid>
     </item>
     <item>
-      <title><![CDATA[YouTube Shorts Ideas Without Showing Your Face: 2026 Edition]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-ideas-without-showing-face</link>
-      <description><![CDATA[YouTube Shorts Ideas Without Showing Your Face in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-ideas-without-showing-face</guid>
-    </item>
-    <item>
-      <title><![CDATA[Best Hashtags for YouTube Shorts in 2026]]></title>
+      <title><![CDATA[Best Hashtags for YouTube Shorts]]></title>
       <link>https://conthunt.app/blog/youtube-shorts-hashtags-guide</link>
-      <description><![CDATA[Best hashtags for YouTube Shorts in 2026, with official YouTube guidance, examples you can inspect, and a ContHunt workflow for comparing public tags.]]></description>
+      <description><![CDATA[Best hashtags for YouTube Shorts: how many to use, what YouTube actually publishes, and starter tag sets for gaming, beauty, tech, and comedy.]]></description>
       <category>Content Strategy</category>
       <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-hashtags-guide</guid>
@@ -278,54 +294,6 @@
       <category>Content Ideas</category>
       <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Travel: 2026 Strategic Guide]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-travel</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Travel in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-travel</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Tech: 2026 Innovation]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-tech</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Tech in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-tech</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Gaming: 2026 Trends]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-gaming</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Gaming in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-gaming</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Fitness: 2026 Growth]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-fitness</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Fitness in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-fitness</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Cooking: 2026 Trends]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-cooking</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Cooking in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-cooking</guid>
-    </item>
-    <item>
-      <title><![CDATA[YouTube Shorts Content Ideas for Beauty: 2026 Trends]]></title>
-      <link>https://conthunt.app/blog/youtube-shorts-content-ideas-beauty</link>
-      <description><![CDATA[YouTube Shorts Content Ideas for Beauty in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for]]></description>
-      <category>Content Ideas</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-content-ideas-beauty</guid>
     </item>
     <item>
       <title><![CDATA[What Makes a Video Go Viral? The 2026 Algorithmic Formula]]></title>
@@ -488,22 +456,6 @@
       <guid isPermaLink="true">https://conthunt.app/blog/instagram-competitor-analysis-tools</guid>
     </item>
     <item>
-      <title><![CDATA[The Top Instagram Analytics Apps for 2026: Track Your Growth on the Go]]></title>
-      <link>https://conthunt.app/blog/instagram-analytics-app</link>
-      <description><![CDATA[Instagram Analytics Apps for in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for The Top]]></description>
-      <category>Mobile Tools</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/instagram-analytics-app</guid>
-    </item>
-    <item>
-      <title><![CDATA[How to View Instagram Analytics: The 2026 Guide]]></title>
-      <link>https://conthunt.app/blog/how-to-view-instagram-analytics</link>
-      <description><![CDATA[View Instagram Analytics in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for How to View]]></description>
-      <category>Instagram</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/how-to-view-instagram-analytics</guid>
-    </item>
-    <item>
       <title><![CDATA[How to Track YouTube Shorts Competitors: The 2026 Strategy]]></title>
       <link>https://conthunt.app/blog/how-to-track-youtube-shorts-competitors</link>
       <description><![CDATA[Track YouTube Shorts Competitors in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for How to]]></description>
@@ -568,14 +520,6 @@
       <guid isPermaLink="true">https://conthunt.app/blog/find-winning-short-form-content</guid>
     </item>
     <item>
-      <title><![CDATA[Brilliant Educational Content Ideas for YouTube Shorts in 2026]]></title>
-      <link>https://conthunt.app/blog/educational-content-ideas-youtube-shorts</link>
-      <description><![CDATA[Brilliant Educational Content Ideas for YouTube Shorts in in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a]]></description>
-      <category>Content Strategy</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://conthunt.app/blog/educational-content-ideas-youtube-shorts</guid>
-    </item>
-    <item>
       <title><![CDATA[Creative Green Screen Ideas for YouTube Shorts in 2026]]></title>
       <link>https://conthunt.app/blog/creative-green-screen-ideas-youtube-shorts-2026</link>
       <description><![CDATA[Creative Green Screen Ideas for YouTube Shorts in in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt]]></description>
@@ -592,7 +536,7 @@
       <guid isPermaLink="true">https://conthunt.app/blog/conthunt-alternatives</guid>
     </item>
     <item>
-      <title><![CDATA[15 Best Competitor Analysis Tools for 2026 (Free & Paid)]]></title>
+      <title><![CDATA[15 Best Competitor Analysis Tools Compared]]></title>
       <link>https://conthunt.app/blog/competitor-analysis-tools</link>
       <description><![CDATA[Compare competitor analysis tools for search, social, and short-form video research, including where ContHunt fits and what to verify before you buy.]]></description>
       <category>Product Reviews</category>
@@ -640,17 +584,17 @@
       <guid isPermaLink="true">https://conthunt.app/blog/best-social-media-monitoring-tools</guid>
     </item>
     <item>
-      <title><![CDATA[The 10 Best Instagram Analytics Tools for 2026]]></title>
+      <title><![CDATA[Best Instagram Analytics Tools Compared]]></title>
       <link>https://conthunt.app/blog/best-instagram-analytics-tools</link>
-      <description><![CDATA[10 Best Instagram Analytics Tools for in 2026 with practical steps, examples, and ContHunt tips. Learn practical steps, examples, and a ContHunt workflow for]]></description>
+      <description><![CDATA[Compare the best Instagram analytics tools for Reels, competitor checks, and reporting, including native Insights and when ContHunt is the better research]]></description>
       <category>Instagram</category>
       <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/best-instagram-analytics-tools</guid>
     </item>
     <item>
-      <title><![CDATA[YouTube Tracker Tools for Channels and Videos]]></title>
+      <title><![CDATA[Best YouTube Tracker Tools Compared]]></title>
       <link>https://conthunt.app/blog/youtube-tracker</link>
-      <description><![CDATA[Compare YouTube tracker tools for channels, videos, and public competitor checks, plus when ContHunt is the better fit for short-form research.]]></description>
+      <description><![CDATA[Compare YouTube tracker tools for channels, videos, and public competitor checks. ContHunt is listed as short-form research, not as a live subscriber tracker.]]></description>
       <category>Content Strategy</category>
       <pubDate>Mon, 14 Oct 2024 00:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/youtube-tracker</guid>
