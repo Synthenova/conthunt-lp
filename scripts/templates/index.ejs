@@ -53,7 +53,7 @@
 
                     <div class="relative z-10">
                         <h2 class="text-2xl font-semibold text-white mb-3 group-hover:text-sky-400 transition-colors">
-                            <%= post.title %>
+                            <%= post.title %>.
                         </h2>
                         <p class="text-neutral-400 mb-6 line-clamp-2">
                             <%= String(post.description || '').split(/\s+/).slice(0, 16).join(' ') %>
@@ -88,7 +88,7 @@
         <h2 class="text-white text-2xl font-semibold mb-4">Which other guides are in the library?</h2>
         <ul class="grid md:grid-cols-2 gap-2 text-neutral-300">
             <% posts.slice(24).forEach(post => { %>
-            <li><a href="/blog/<%= post.slug %>" class="text-sky-400 hover:text-sky-300"><%= post.title %></a></li>
+            <li><a href="/blog/<%= post.slug %>" class="text-sky-400 hover:text-sky-300"><%= post.title %>.</a></li>
             <% }); %>
         </ul>
     </section>
