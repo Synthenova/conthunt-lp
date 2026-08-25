@@ -12,14 +12,12 @@
     transition: width 0.15s ease-out;
 }
 
-/* Article type matches the landing page: Plus Jakarta body, tighter leading, brighter copy */
 .prose-enhanced {
     color: #d4d4d4;
     max-width: 65ch;
     margin: 0 auto;
-    font-family: var(--font-main);
     font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.65;
     font-weight: 400;
 }
 
@@ -33,7 +31,6 @@
 .prose-enhanced h3,
 .prose-enhanced h4 {
     color: #ffffff;
-    font-family: var(--font-main);
     font-weight: 600;
     letter-spacing: -0.025em;
     margin-top: 1.75em;
@@ -115,7 +112,7 @@
     margin-bottom: 0.3em;
     padding-left: 0.25em;
     color: #d4d4d4;
-    line-height: 1.5;
+    line-height: 1.65;
 }
 
 .prose-enhanced li::marker {
