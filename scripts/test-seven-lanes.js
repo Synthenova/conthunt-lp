@@ -152,6 +152,8 @@ for (const rel of ['index.html', 'about/index.html']) {
         if (footer.includes(url)) ok.push(`footer ${rel} ${url}`);
         else fail.push(`footer missing ${rel} ${url}`);
     }
+    if ((footer.match(/<svg[\s\S]*?<\/svg>/g) || []).length >= 5) ok.push(`footer icons ${rel}`);
+    else fail.push(`footer missing svg icons ${rel}`);
 }
 
 console.log(ok.map((s) => `OK  ${s}`).join('\n'));
