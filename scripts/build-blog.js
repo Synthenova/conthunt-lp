@@ -806,7 +806,7 @@ If you are briefing a creator or an editor, write down the audience, the promise
             : '';
 
         const pageContent = `
-        <article class="max-w-3xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
+        <article class="max-w-6xl mx-auto px-6" ${profileSlugs.has(slug) ? 'itemscope itemtype="https://schema.org/Person"' : ''}>
             <header class="text-center mb-16">
                 <p class="font-nav text-xs font-bold text-neutral-500 tracking-[0.2em] uppercase mb-6">Company</p>
                 ${profileImage}

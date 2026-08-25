@@ -1,4 +1,4 @@
-<article class="max-w-3xl mx-auto px-6">
+<article class="max-w-6xl mx-auto px-6">
     <header class="text-center mb-16">
         <div class="flex items-center justify-center gap-4 text-sm text-neutral-500 mb-6">
             <% if (author) { %>
@@ -178,7 +178,7 @@
 </article>
 
 <% if (author && (author.name || author.bio)) { %>
-<section class="max-w-3xl mx-auto px-6 mt-12 mb-16">
+<section class="max-w-6xl mx-auto px-6 mt-12 mb-16">
     <div class="p-6 rounded-2xl glass-panel border border-white/5 flex gap-4 items-start">
         <% if (author.image) { %>
             <img src="<%= author.image %>" alt="<%= author.name %>" class="w-16 h-16 rounded-full object-cover shrink-0" />

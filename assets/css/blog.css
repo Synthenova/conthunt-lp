@@ -14,8 +14,8 @@
 
 .prose-enhanced {
     color: #d4d4d4;
-    max-width: 65ch;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     font-size: 1.1rem;
     line-height: 1.65;
     font-weight: 400;
