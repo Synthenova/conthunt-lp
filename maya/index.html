@@ -26,9 +26,36 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://conthunt.app/#organization",
+      "name": "ContHunt",
+      "legalName": "Synthenova Enterprises LLP",
+      "url": "https://conthunt.app",
+      "logo": "https://conthunt.app/public/logo-title-white.png",
+      "email": "support@conthunt.app",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chennai",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://x.com/conthunt",
+        "https://instagram.com/conthunt.app",
+        "https://tiktok.com/@conthunt.app"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "support@conthunt.app"
+      }
+    },
+    {
       "@type": "WebSite",
       "name": "ContHunt",
-      "url": "https://conthunt.app/"
+      "url": "https://conthunt.app/",
+      "publisher": {
+        "@id": "https://conthunt.app/#organization"
+      }
     },
     {
       "@type": [
@@ -44,6 +71,17 @@
       },
       "description": "Maya is ContHunt's social media analyst. She writes about trends, performance patterns, and how to compare public posts across platforms.",
       "dateModified": "2026-08-25"
+    },
+    {
+      "@type": "Person",
+      "name": "Maya",
+      "url": "https://conthunt.app/maya",
+      "image": "https://conthunt.app/public/faviconold.png",
+      "jobTitle": "Social Media Analyst",
+      "description": "Maya analyzes social media trends for a living. She tracks what's working across platforms and helps brands spot opportunities before they go mainstream.",
+      "worksFor": {
+        "@id": "https://conthunt.app/#organization"
+      }
     }
   ]
 }
@@ -109,7 +147,7 @@
 
     <!-- Navigation -->
     <nav
-        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+        class="sticky top-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] mt-4">
         <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
             <!-- Logo (left) -->
             <div class="flex items-center">
@@ -139,11 +177,11 @@
         </div>
     </nav>
 
-    <main class="relative z-10 pt-44 pb-20">
+    <main class="relative z-10 pt-16 pb-20">
         
         <article class="max-w-3xl mx-auto px-6" itemscope itemtype="https://schema.org/Person">
             <header class="text-center mb-16">
-                <p class="text-sm text-neutral-500 mb-4">Written by the ContHunt editorial team · Updated 2026-08-25</p>
+                <p class="text-sm text-neutral-500 mb-4 author">Written by the <a rel="author" href="/authors">ContHunt editorial team</a> · Reviewed by ContHunt editors · Updated 2026-08-25</p>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
                     Maya | ContHunt Social Analyst Profile
                 </h1>
@@ -271,7 +309,7 @@
         </div>
         <div
             class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
-            <p>© 2026 Synthenova Enterprises LLP. All rights reserved. <a href="https://www.indexnow.org/" class="hover:text-white">IndexNow</a></p>
+            <p>© 2026 Synthenova Enterprises LLP, Chennai, India. All rights reserved. Contact <a href="mailto:support@conthunt.app" class="hover:text-white">support@conthunt.app</a>. <a href="https://www.indexnow.org/" class="hover:text-white">IndexNow</a></p>
             <div class="flex items-center gap-2 mt-4 md:mt-0">
                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
                 <span>Systems Operational</span>
@@ -279,7 +317,6 @@
         </div>
     </footer>
 
-    <script defer src="/assets/js/blog.js"></script>
 </body>
 
 </html>
