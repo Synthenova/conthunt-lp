@@ -1157,7 +1157,7 @@ async function build() {
         pageTitle: blogIndexTitle,
         seoTitle: fitSeoTitle(blogIndexTitle),
         description: blogIndexDescription,
-        hero: '/public/banner.png',
+        hero: '/public/logo-title-white.webp',
         canonical: `${DOMAIN}/blog`,
         resolvedKeywords: ['short-form video research', 'tiktok analytics', 'youtube shorts guides', 'instagram reels ideas'],
         authorProfile: null,
