@@ -24,7 +24,8 @@ assert.match(
   'the entire prompt panel must be the copy control',
 );
 assert.match(homepage, /id="hero-copy-status"[^>]*aria-live="polite"/, 'copy feedback must be announced accessibly');
-assert.ok(!homepage.includes('id="view-demo-btn"'), 'homepage must not show the dead View demo control');
+assert.match(homepage, /id="hero-agent-prompt"[^>]*class="[^"]*truncate/, 'prompt must stay on one truncated line');
+assert.ok(homepage.indexOf('id="view-demo-btn"') < homepage.indexOf('id="hero-waitlist-btn"'), 'View Demo must sit above Get started');
 
 assert.ok(
   nginx.includes('return 302 https://raw.githubusercontent.com/Synthenova/conthunt-cli/main/install.sh;'),
