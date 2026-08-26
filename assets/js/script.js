@@ -878,23 +878,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Step 3 Video Playback Control Script
 document.addEventListener('DOMContentLoaded', () => {
-    const copyPromptButton = document.getElementById('hero-waitlist-btn');
+    const copyPromptButton = document.getElementById('hero-copy-btn');
     const copyPromptStatus = document.getElementById('hero-copy-status');
+    const copyPromptIcon = document.getElementById('hero-copy-icon');
+    const copyPromptLabel = document.getElementById('hero-copy-label');
 
     if (copyPromptButton && copyPromptStatus) {
         copyPromptButton.addEventListener('click', async () => {
             const promptElement = document.getElementById(copyPromptButton.dataset.copyTarget);
             if (!promptElement) return;
 
+            const text = promptElement.textContent.trim();
+            let copied = false;
+
             try {
-                await navigator.clipboard.writeText(promptElement.textContent.trim());
-                copyPromptStatus.textContent = 'Copied — paste it into your coding agent.';
+                await navigator.clipboard.writeText(text);
+                copied = true;
             } catch {
-                const selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.selectAllChildren(promptElement);
-                copyPromptStatus.textContent = 'Copy failed — the prompt is selected for manual copy.';
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                copied = document.execCommand('copy');
+                textarea.remove();
             }
+
+            copyPromptStatus.textContent = copied ? 'Copied to clipboard.' : 'Copy failed — select the prompt and copy it manually.';
+            if (!copied) return;
+            copyPromptIcon?.setAttribute('icon', 'lucide:check');
+            if (copyPromptLabel) copyPromptLabel.textContent = 'Copied';
         });
     }
 

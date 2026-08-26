@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, '..');
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const nginx = fs.readFileSync(path.join(root, 'nginx.conf'), 'utf8');
 
-const prompt = 'Install the ContHunt skill from Synthenova/conthunt-cli, then help me find viral content in my niche.';
+const prompt = 'Run npx skills add Synthenova/conthunt-cli --skill conthunt -g to install the ContHunt skill, then use it to find viral content in my niche.';
 const unixInstall = 'curl -fsSL https://conthunt.app/install.sh | sh';
 const windowsInstall = 'irm https://conthunt.app/install.ps1 | iex';
 
@@ -15,20 +15,16 @@ assert.ok(!homepage.includes(unixInstall), 'homepage must not show the macOS/Lin
 assert.ok(!homepage.includes(windowsInstall), 'homepage must not show the Windows beta installer');
 assert.match(
   homepage,
-  /<button[^>]*id="hero-waitlist-btn"[^>]*aria-label="Copy prompt"[^>]*data-copy-target="hero-agent-prompt"[^>]*>/,
-  'copy control must retain analytics and point to selectable prompt text',
+  /<a[^>]*href="https:\/\/agent\.conthunt\.app"[^>]*id="hero-waitlist-btn"[^>]*>[\s\S]*?GET STARTED[\s\S]*?<\/a>/,
+  'homepage must retain the premium Get started CTA',
 );
 assert.match(
   homepage,
-  /<p[^>]*id="hero-agent-prompt"[^>]*class="[^"]*truncate[^"]*"[^>]*>[^<]*Install the ContHunt skill/,
-  'prompt must be independently selectable and visually truncated to one line',
+  /<button[^>]*id="hero-copy-btn"[^>]*aria-label="Copy prompt"[^>]*data-copy-target="hero-agent-prompt"[^>]*>[\s\S]*?id="hero-agent-prompt"[\s\S]*?<\/button>/,
+  'the entire prompt panel must be the copy control',
 );
 assert.match(homepage, /id="hero-copy-status"[^>]*aria-live="polite"/, 'copy feedback must be announced accessibly');
-assert.match(
-  homepage,
-  /<a[^>]*href="https:\/\/agent\.conthunt\.app"[^>]*>\s*or check out the ContHunt web app\s*<\/a>/,
-  'homepage must link to the main ContHunt web app directly below the prompt',
-);
+assert.ok(!homepage.includes('id="view-demo-btn"'), 'homepage must not show the dead View demo control');
 
 assert.ok(
   nginx.includes('return 302 https://raw.githubusercontent.com/Synthenova/conthunt-cli/main/install.sh;'),

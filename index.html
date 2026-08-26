@@ -259,27 +259,25 @@
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-5 w-full max-w-3xl">
-        <button id="view-demo-btn"
-          class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
-          View Demo
-        </button>
+      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-3xl">
+        <a href="https://agent.conthunt.app" id="hero-waitlist-btn"
+          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2 inline-flex items-center justify-center">
+          GET STARTED
+          <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
+        </a>
         <div class="w-full">
           <p class="font-nav text-[0.65rem] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-3">
-            Paste into your favorite coding agent
+            Using a coding agent?
           </p>
-          <div class="flex items-center gap-4 w-full rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 md:px-6 md:py-5 text-left transition-all hover:border-cyan-400/40 hover:bg-white/[0.055]">
-            <p id="hero-agent-prompt" class="min-w-0 flex-1 truncate select-text font-mono text-sm md:text-base text-neutral-200">Install the ContHunt skill from Synthenova/conthunt-cli, then help me find viral content in my niche.</p>
-            <button id="hero-waitlist-btn" type="button" aria-label="Copy prompt" data-copy-target="hero-agent-prompt"
-              aria-describedby="hero-copy-status"
-              class="group shrink-0 rounded-lg p-2 text-neutral-500 transition-colors hover:bg-white/5 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70">
-              <iconify-icon icon="lucide:copy" width="19" aria-hidden="true"></iconify-icon>
-            </button>
-          </div>
-          <a href="https://agent.conthunt.app"
-            class="mt-4 inline-flex items-center gap-1.5 font-nav text-sm text-neutral-500 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 rounded-sm">
-            or check out the ContHunt web app
-          </a>
+          <button id="hero-copy-btn" type="button" aria-label="Copy prompt" data-copy-target="hero-agent-prompt"
+            aria-describedby="hero-copy-status"
+            class="group flex items-center gap-4 w-full rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 md:px-6 md:py-5 text-left transition-all hover:border-cyan-400/40 hover:bg-white/[0.055] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70">
+            <span id="hero-agent-prompt" class="min-w-0 flex-1 font-mono text-sm md:text-base leading-relaxed text-neutral-200">Run npx skills add Synthenova/conthunt-cli --skill conthunt -g to install the ContHunt skill, then use it to find viral content in my niche.</span>
+            <span class="shrink-0 flex items-center gap-2 text-xs font-bold text-neutral-500 transition-colors group-hover:text-cyan-300">
+              <iconify-icon id="hero-copy-icon" icon="lucide:copy" width="19" aria-hidden="true"></iconify-icon>
+              <span id="hero-copy-label" class="hidden sm:inline">Copy</span>
+            </span>
+          </button>
           <p id="hero-copy-status" aria-live="polite" class="h-5 mt-2 text-xs text-cyan-300"></p>
         </div>
       </div>
