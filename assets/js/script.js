@@ -883,14 +883,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (copyPromptButton && copyPromptStatus) {
         copyPromptButton.addEventListener('click', async () => {
-            const prompt = copyPromptButton.querySelector('.agent-prompt-text')?.textContent.trim();
-            if (!prompt) return;
+            const promptElement = document.getElementById(copyPromptButton.dataset.copyTarget);
+            if (!promptElement) return;
 
             try {
-                await navigator.clipboard.writeText(prompt);
+                await navigator.clipboard.writeText(promptElement.textContent.trim());
                 copyPromptStatus.textContent = 'Copied — paste it into your coding agent.';
             } catch {
-                copyPromptStatus.textContent = 'Copy failed — select the prompt and copy it manually.';
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.selectAllChildren(promptElement);
+                copyPromptStatus.textContent = 'Copy failed — the prompt is selected for manual copy.';
             }
         });
     }
