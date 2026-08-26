@@ -24,6 +24,7 @@ assert.match(
   'the entire prompt panel must be the copy control',
 );
 assert.match(homepage, /id="hero-copy-status"[^>]*aria-live="polite"/, 'copy feedback must be announced accessibly');
+assert.match(homepage, /id="hero-copy-status"[^>]*class="sr-only"/, 'copy feedback must stay inside the prompt box visually');
 assert.match(homepage, /id="hero-agent-prompt"[^>]*class="[^"]*truncate/, 'prompt must stay on one truncated line');
 assert.ok(homepage.indexOf('id="view-demo-btn"') < homepage.indexOf('id="hero-waitlist-btn"'), 'View Demo must sit above Get started');
 
