@@ -878,6 +878,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Step 3 Video Playback Control Script
 document.addEventListener('DOMContentLoaded', () => {
+    const copyPromptButton = document.getElementById('hero-waitlist-btn');
+    const copyPromptStatus = document.getElementById('hero-copy-status');
+
+    if (copyPromptButton && copyPromptStatus) {
+        copyPromptButton.addEventListener('click', async () => {
+            const prompt = copyPromptButton.querySelector('.agent-prompt-text')?.textContent.trim();
+            if (!prompt) return;
+
+            try {
+                await navigator.clipboard.writeText(prompt);
+                copyPromptStatus.textContent = 'Copied — paste it into your coding agent.';
+            } catch {
+                copyPromptStatus.textContent = 'Copy failed — select the prompt and copy it manually.';
+            }
+        });
+    }
+
     const video = document.getElementById('step3-video');
     if (!video) return;
 

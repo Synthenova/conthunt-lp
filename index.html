@@ -259,16 +259,36 @@
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
+      <div class="reveal-element flex flex-col items-center gap-5 w-full max-w-3xl">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
         </button>
-        <a href="https://agent.conthunt.app" id="hero-waitlist-btn"
-          class="glass-button glass-button-interactive w-auto px-8 md:px-10 py-[1.3rem] font-nav text-[0.95rem] font-[900] whitespace-nowrap gap-2 inline-flex items-center justify-center">
-          GET STARTED
-          <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
-        </a>
+        <div class="w-full">
+          <p class="font-nav text-[0.65rem] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-3">
+            Paste into your favorite coding agent
+          </p>
+          <button id="hero-waitlist-btn" type="button" aria-describedby="hero-copy-status"
+            class="group w-full rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 md:px-6 md:py-5 text-left transition-all hover:border-cyan-400/40 hover:bg-white/[0.055] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70">
+            <span class="flex items-center gap-4">
+              <span class="agent-prompt-text flex-1 font-mono text-sm md:text-base leading-relaxed text-neutral-200">Install the ContHunt skill from Synthenova/conthunt-cli, then help me find viral content in my niche.</span>
+              <iconify-icon icon="lucide:copy" width="19" aria-hidden="true"
+                class="shrink-0 text-neutral-500 transition-colors group-hover:text-cyan-300"></iconify-icon>
+            </span>
+          </button>
+          <p id="hero-copy-status" aria-live="polite" class="h-5 mt-2 text-xs text-cyan-300"></p>
+        </div>
+
+        <div class="w-full flex flex-col sm:flex-row items-stretch gap-2 text-left" aria-label="Direct CLI installation">
+          <div class="flex-1 rounded-xl border border-white/[0.07] bg-black/30 px-4 py-3">
+            <span class="block mb-1 text-[0.6rem] font-bold tracking-[0.16em] uppercase text-neutral-600">macOS / Linux</span>
+            <code class="block overflow-x-auto whitespace-nowrap text-xs text-neutral-400">curl -fsSL https://conthunt.app/install.sh | sh</code>
+          </div>
+          <div class="flex-1 rounded-xl border border-white/[0.07] bg-black/30 px-4 py-3">
+            <span class="block mb-1 text-[0.6rem] font-bold tracking-[0.16em] uppercase text-neutral-600">Windows beta</span>
+            <code class="block overflow-x-auto whitespace-nowrap text-xs text-neutral-400">irm https://conthunt.app/install.ps1 | iex</code>
+          </div>
+        </div>
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
