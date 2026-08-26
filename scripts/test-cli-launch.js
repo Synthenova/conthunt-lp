@@ -11,24 +11,23 @@ const unixInstall = 'curl -fsSL https://conthunt.app/install.sh | sh';
 const windowsInstall = 'irm https://conthunt.app/install.ps1 | iex';
 
 assert.ok(homepage.includes(prompt), 'homepage must show the exact coding-agent prompt');
-assert.ok(homepage.includes(unixInstall), 'homepage must show the macOS/Linux installer');
-assert.ok(homepage.includes(windowsInstall), 'homepage must show the Windows beta installer');
+assert.ok(!homepage.includes(unixInstall), 'homepage must not show the macOS/Linux installer');
+assert.ok(!homepage.includes(windowsInstall), 'homepage must not show the Windows beta installer');
 assert.match(
   homepage,
   /<button[^>]*id="hero-waitlist-btn"[^>]*aria-label="Copy prompt"[^>]*data-copy-target="hero-agent-prompt"[^>]*>/,
   'copy control must retain analytics and point to selectable prompt text',
 );
-assert.match(homepage, /<p[^>]*id="hero-agent-prompt"[^>]*>[^<]*Install the ContHunt skill/, 'prompt must be independently selectable');
+assert.match(
+  homepage,
+  /<p[^>]*id="hero-agent-prompt"[^>]*class="[^"]*truncate[^"]*"[^>]*>[^<]*Install the ContHunt skill/,
+  'prompt must be independently selectable and visually truncated to one line',
+);
 assert.match(homepage, /id="hero-copy-status"[^>]*aria-live="polite"/, 'copy feedback must be announced accessibly');
 assert.match(
   homepage,
-  /data-install-platform="unix"[^>]*class="[^"]*min-w-0[^"]*w-full[^"]*overflow-hidden[^"]*"/,
-  'macOS/Linux install card must shrink within the mobile viewport',
-);
-assert.match(
-  homepage,
-  /data-install-platform="windows"[^>]*class="[^"]*min-w-0[^"]*w-full[^"]*overflow-hidden[^"]*"/,
-  'Windows install card must shrink within the mobile viewport',
+  /<a[^>]*href="https:\/\/agent\.conthunt\.app"[^>]*>\s*or check out the ContHunt web app\s*<\/a>/,
+  'homepage must link to the main ContHunt web app directly below the prompt',
 );
 
 assert.ok(
