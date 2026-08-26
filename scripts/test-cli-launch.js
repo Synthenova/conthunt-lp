@@ -4,6 +4,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const script = fs.readFileSync(path.join(root, 'assets/js/script.js'), 'utf8');
 const nginx = fs.readFileSync(path.join(root, 'nginx.conf'), 'utf8');
 
 const prompt = 'Run npx skills add Synthenova/conthunt-cli --skill conthunt -g to install the ContHunt skill, then use it to find viral content in my niche.';
@@ -25,6 +26,8 @@ assert.match(
 );
 assert.match(homepage, /id="hero-copy-status"[^>]*aria-live="polite"/, 'copy feedback must be announced accessibly');
 assert.match(homepage, /id="hero-copy-status"[^>]*class="sr-only"/, 'copy feedback must stay inside the prompt box visually');
+assert.ok(script.includes('setTimeout(resetCopyState, 2000)'), 'copy feedback must reset after two seconds');
+assert.ok(script.includes("document.addEventListener('pointerdown'"), 'outside interaction must reset copy feedback');
 assert.match(homepage, /id="hero-agent-prompt"[^>]*class="[^"]*truncate/, 'prompt must stay on one truncated line');
 assert.ok(homepage.indexOf('id="view-demo-btn"') < homepage.indexOf('id="hero-waitlist-btn"'), 'View Demo must sit above Get started');
 

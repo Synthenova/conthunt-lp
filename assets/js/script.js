@@ -883,7 +883,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyPromptIcon = document.getElementById('hero-copy-icon');
     const copyPromptLabel = document.getElementById('hero-copy-label');
 
+    const resetCopyState = () => {
+        copyPromptStatus.textContent = '';
+        copyPromptIcon?.setAttribute('icon', 'lucide:copy');
+        if (copyPromptLabel) copyPromptLabel.textContent = 'Copy';
+    };
+
     if (copyPromptButton && copyPromptStatus) {
+        let resetTimer;
         copyPromptButton.addEventListener('click', async () => {
             const promptElement = document.getElementById(copyPromptButton.dataset.copyTarget);
             if (!promptElement) return;
@@ -910,6 +917,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!copied) return;
             copyPromptIcon?.setAttribute('icon', 'lucide:check');
             if (copyPromptLabel) copyPromptLabel.textContent = 'Copied';
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(resetCopyState, 2000);
+        });
+        document.addEventListener('pointerdown', (event) => {
+            if (!copyPromptButton.contains(event.target)) resetCopyState();
         });
     }
 
