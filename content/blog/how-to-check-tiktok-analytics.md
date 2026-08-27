@@ -1,8 +1,8 @@
 ---
 title: "How to Check TikTok Analytics: Complete Dashboard Guide (2026)"
-description: "Check TikTok Analytics in 2026 with practical steps, examples, and ContHunt tips."
+description: "How to open TikTok Analytics in 2026, what the Studio tabs show, and which metrics to review on your own videos."
 date: "2024-10-14"
-updated: "2026-04-16"
+updated: "2026-08-27"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -16,50 +16,49 @@ author_profile:
   description: "Specialists in TikTok algorithm strategy, analytics interpretation, and competitive content intelligence for the 2026 creator economy."
 answer_first:
   label: "Direct Answer"
-  text: "To see your **TikTok analytics**, open TikTok → tap your profile → tap the **☰ menu (top-right)** → tap **Creator Tools** → tap **Analytics**. You'll see three tabs: **Overview** (video views, profile views, likes, followers), **Content** (individual video performance), and **Followers** (demographics and active times). You need a **Business or Creator account** (free to switch). For competitor analytics and benchmarking, use a third-party **TikTok tool** like **ContHunt**."
+  text: "To see **TikTok analytics**, open the app → tap **Profile** → tap the **☰ menu** → open **TikTok Studio** → tap **Analytics**. Creator Academy also lists TikTok Studio on the web and in the Studio app. Tabs typically include **Overview**, **Content**, **Viewers**, and **Followers** (plus **LIVE** if you stream). You need a **Creator or Business** account. Native analytics only cover your own account; use **ContHunt** for public competitor examples."
 faq_items:
   - question: "How do I see TikTok analytics on my phone?"
-    answer: "Open TikTok → tap your profile icon → tap the **3-line menu** (☰) → tap **Creator Tools** → tap **Analytics**. This works on both iPhone and Android. You must have a Business or Creator account (free to switch in Settings → Account → Switch to Business Account)."
+    answer: "Open TikTok → Profile → ☰ menu → TikTok Studio → Analytics. Some accounts still show Creator Tools or Business Suite in the same menu. You need a Creator or Business account (free to switch in Settings)."
   - question: "Can you see TikTok analytics on desktop?"
-    answer: "Yes. Go to **analytics.tiktok.com** and log in with your TikTok credentials. The desktop dashboard provides the same data as mobile but with easier data export options and larger visualizations."
+    answer: "Yes. Open TikTok Studio on the web and use the Analytics tab. Older bookmarks to analytics.tiktok.com may still redirect, but Studio is the path TikTok documents."
   - question: "What is the TikTok Analytics Dashboard?"
-    answer: "The **TikTok Analytics Dashboard** is TikTok's built-in analytics panel accessible through Creator Tools. It contains three main tabs—Overview, Content, and Followers—and provides data on views, engagement, audience demographics, and individual video performance over 7, 28, or 60 days."
+    answer: "It is TikTok's built-in report inside TikTok Studio. Overview covers account totals, Content covers individual posts, Viewers covers unique and returning audience, and Followers covers people who follow you. Date ranges include 7, 28, 60, and 365 days, plus custom ranges on some surfaces."
   - question: "Why can't I see my TikTok analytics?"
-    answer: "You need a **Business or Creator account** to access analytics. Personal accounts don't have this feature. To switch: go to Settings → Manage Account → Switch to Business Account. It's free and instant."
+    answer: "Personal accounts do not get the full dashboard. Switch to a Creator or Business account in Settings. You also need at least one public post before there is data to show."
   - question: "What TikTok tools can I use for analytics?"
-    answer: "The best **TikTok tools** for analytics in 2026 are: **TikTok's native dashboard** (free, own account only), **ContHunt** (competitive analytics and hook intelligence), **Pentos** (hashtag and sound tracking), and **Exolyt** (video-level engagement tracking)."
+    answer: "Start with TikTok Studio (free, your account only). Use ContHunt when you need public competitor examples and hook patterns. Other third-party tools exist for sounds, hashtags, or enterprise reporting; check their current plans before you pay."
   - question: "Can I see analytics for another person's TikTok account?"
-    answer: "TikTok's native analytics only show your own account data. To see competitor analytics, you need a third-party **TikTok tool** like **ContHunt**, which tracks competitor content performance, posting cadence, and engagement benchmarks."
+    answer: "TikTok's native analytics only show your own account. A third-party tool can only show public signals it is allowed to collect, not the other creator's private Studio dashboard."
 howto:
   name: "How to Access TikTok Analytics (Mobile)"
-  description: "Step-by-step guide to accessing TikTok's built-in analytics dashboard on your phone."
+  description: "Step-by-step guide to opening TikTok Studio Analytics on your phone."
   total_time: "PT2M"
   steps:
     - name: "Open TikTok and Go to Profile"
       text: "Open the TikTok app and tap the Profile icon in the bottom-right corner."
     - name: "Open the Menu"
       text: "Tap the three-line menu icon (☰) in the top-right corner of your profile."
-    - name: "Tap Creator Tools"
-      text: "Select 'Creator Tools' from the menu options."
+    - name: "Open TikTok Studio"
+      text: "Select TikTok Studio. Some accounts show Creator Tools or Business Suite instead; open Analytics from there."
     - name: "Tap Analytics"
-      text: "Tap 'Analytics' to open your TikTok Analytics Dashboard. You'll see three tabs: Overview, Content, and Followers."
+      text: "Open Analytics (or View all). You should see Overview, Content, Viewers, and Followers."
     - name: "Switch Account Type (If Needed)"
-      text: "If you don't see Creator Tools, go to Settings → Manage Account → Switch to Business Account (free). Analytics will be available immediately."
+      text: "If you do not see Studio or Analytics, go to Settings → Account and switch to a Creator or Business account (free)."
 stat_items:
-  - label: "Monthly Users"
-    value: "1.59 Billion"
-    context: "TikTok's monthly active users in 2026, making analytics understanding essential for any serious creator."
-  - label: "Data Window"
-    value: "7, 28, or 60 Days"
-    context: "TikTok's native analytics dashboard allows you to view data across three time ranges for trend analysis."
-  - label: "Completion Rate Weight"
-    value: "~82%"
-    context: "The estimated weight the 2026 TikTok algorithm gives to watch completion rate, making it the most important metric to track."
-expert_quotes:
-  - quote: "Your TikTok analytics tell you what happened. Competitive analytics from ContHunt tell you what to do next."
-    name: "TikTok Intelligence Lead"
-    title: "ContHunt Strategy"
+  - label: "Official Path"
+    value: "TikTok Studio"
+    context: "Creator Academy lists in-app Studio, Studio Web, and the Studio app as the three ways to open analytics."
+  - label: "Date Ranges"
+    value: "7 / 28 / 60 / 365"
+    context: "Studio lets you pick these windows, plus custom ranges on some surfaces."
+  - label: "Review First"
+    value: "Watch time + finish rate"
+    context: "TikTok documents retention rate, average watch time, and watched-full-video on each post."
 sources:
+  - title: "Understanding TikTok Analytics for Creators"
+    publisher: "TikTok Creator Academy"
+    url: "https://www.tiktok.com/creator-academy/article/tool-analytics-intro"
   - title: "TikTok Creator Academy"
     publisher: "TikTok"
     url: "https://www.tiktok.com/creators/"
@@ -67,37 +66,46 @@ sources:
 
 # How to Check TikTok Analytics: Complete Dashboard Guide (2026)
 
-If you're creating TikTok content without checking your analytics, you're making videos in the dark. Your **TikTok analytics dashboard** tells you exactly what's working, what's not, who's watching, and when they're online.
+If you're creating TikTok content without checking your analytics, you're making videos in the dark. Your **TikTok analytics dashboard** tells you what happened on your own posts: who watched, how long they stayed, and whether new people found you.
 
-The good news: TikTok analytics are free, detailed, and available on both mobile and desktop. The challenge: knowing which metrics actually matter in 2026 and how to turn data into better content decisions.
+The good news: TikTok analytics are free and available on mobile, Studio Web, and the Studio app. The challenge is reading the tabs you actually have in 2026, then turning those numbers into a better next video.
 
-This guide shows you exactly **how to see TikTok analytics**, breaks down every section of the dashboard, identifies the metrics that matter most for the 2026 algorithm, and recommends the best **TikTok tools** for going beyond native data.
+This guide shows **how to open TikTok analytics**, what each Studio section covers, which metrics to review weekly, and when a third-party **TikTok tool** such as **ContHunt** is useful.
 
 ---
 
 ## How to Access TikTok Analytics (Step-by-Step)
 
-### On Mobile (iPhone & Android):
+TikTok's Creator Academy lists three official doors. Labels can still differ by account type and app version, so use the first path that appears.
+
+### In the TikTok app:
 1.  Open TikTok and tap **Profile** (bottom-right).
 2.  Tap the **☰ menu** (top-right).
-3.  Tap **Creator Tools**.
-4.  Tap **Analytics**.
+3.  Open **TikTok Studio**.
+4.  Tap **Analytics** (or **View all**).
 
-### On Desktop:
-1.  Go to **[analytics.tiktok.com](https://analytics.tiktok.com)**.
-2.  Log in with your TikTok credentials.
-3.  Your full dashboard loads with export options.
+If you see **Creator Tools** or **Business Suite** instead of Studio, open **Analytics** from that menu. The destination is the same report.
 
-### Prerequisite: Business or Creator Account
-TikTok analytics are only available for **Business** and **Creator** accounts. If you have a Personal account, switch for free:
-*   **Settings → Manage Account → Switch to Business Account**
-*   This is instant, free, and doesn't affect your content or followers.
+### TikTok Studio Web:
+1.  Open TikTok Studio in a browser while logged in.
+2.  Select the **Analytics** tab in the left menu.
+3.  Export or widen the date range there when you need a spreadsheet.
+
+Older links to **analytics.tiktok.com** may still work as a redirect. Prefer the Studio tab TikTok documents.
+
+### TikTok Studio app:
+Open the **Analytics** tab in the bottom bar.
+
+### Prerequisite: Creator or Business Account
+Full analytics need a **Creator** or **Business** account and at least one public post.
+*   **Settings → Account** (or Manage Account) → switch to Creator or Business
+*   The switch is free. Creator vs Business changes ads and commercial-sound access more than it changes the existence of Analytics.
 
 ---
 
 ## The TikTok Analytics Dashboard: Every Section Explained
 
-TikTok's native analytics are organized into three main tabs. Here's what each contains and what matters most in 2026.
+TikTok Studio organizes analytics into several tabs. Creator Academy currently lists **Overview**, **Content**, **Viewers**, **Followers**, and **LIVE**. You may still see slightly different labels on a Business account.
 
 ### Tab 1: Overview
 The Overview tab gives you a high-level snapshot of your account performance.
@@ -111,7 +119,7 @@ The Overview tab gives you a high-level snapshot of your account performance.
 | **Shares** | Total shares received | Strongest viral signal |
 | **Followers** | Net follower change | Growth velocity |
 
-**2026 Pro Tip:** Don't obsess over total views. Focus on the **views-to-profile-visits ratio**. If views are high but profile visits are low, your CTA or bio connection is weak.
+*ContHunt Tip:* Don't obsess over total views. Compare **profile views** to video views on your own account. If views are high and profile visits are low, the video may not create a reason to follow.
 
 ### Tab 2: Content
 The Content tab shows individual video performance. This is where the real insights live.
@@ -119,18 +127,27 @@ The Content tab shows individual video performance. This is where the real insig
 **For Each Video You'll See:**
 *   **Total Views**
 *   **Total Likes, Comments, Shares**
-*   **Average Watch Time** — The most important metric for the 2026 algorithm
-*   **Watched Full Video** — Percentage of viewers who completed the video
+*   **Average Watch Time** — How long viewers stayed, as TikTok defines it on the post
+*   **Watched Full Video** — Percentage of viewers who reached the last seconds
 *   **Traffic Source** — Where views came from (For You Page, Following, Search, Profile, Sound)
 *   **Audience Territories** — Geographic breakdown
 
 **Key Metrics to Prioritize:**
-1.  **Average Watch Time / Completion Rate:** This is the #1 signal the algorithm uses to decide whether to push your video further. A completion rate above 60% is strong.
-2.  **Traffic Source: For You Page %:** If most views come from FYP, the algorithm is actively distributing your content. If most come from Following, your content isn't breaking out to new audiences.
-3.  **Shares:** The highest-weight engagement signal in 2026.
+1.  **Average watch time and watched-full-video.** TikTok documents these as the post-level attention metrics. Compare them to your other videos of similar length. A generic example: finishing above 60% on a short clip is a useful internal bar, not a published ranking threshold.
+2.  **Traffic source.** If most views come from For You, new people are seeing the post. If most come from Following or Profile, it is mostly an existing audience.
+3.  **Shares.** A share is a stronger "send this" signal than a like. It is not a published percentage of the ranking formula.
 
-### Tab 3: Followers
-The Followers tab reveals who your audience is and when they're active.
+### Tab 3: Viewers
+The **Viewers** tab (when your account has it) is about people who watched, not only people who follow you.
+*   Unique vs returning viewers
+*   Inferred age, gender, and location
+*   Most active times in the last 7 days
+*   Other creators and posts your viewers also watched
+
+Treat demographic fields as estimates. Creator Academy says they come from predictive models, not confirmed profile data.
+
+### Tab 4: Followers
+The Followers tab reveals who already follows you and when they're active.
 
 **You'll See:**
 *   **Total Followers** and net change
@@ -138,35 +155,35 @@ The Followers tab reveals who your audience is and when they're active.
 *   **Top Territories** (Countries)
 *   **Follower Activity** — Days and hours when your followers are most active
 
-**2026 Pro Tip:** Use "Follower Activity" to schedule your posts. Posting when your audience is most active gives the algorithm an early engagement signal that accelerates distribution.
+Use **Follower Activity** as a scheduling hint for the people who already follow you. It does not tell you when strangers on For You are online.
 
 ---
 
-## The 5 TikTok Metrics That Actually Matter in 2026
+## The 5 TikTok Metrics to Review Weekly
 
-With dozens of data points available, here are the five you should check weekly:
+TikTok does not publish a ranking formula. These five are the ones that change what you film next.
 
-### 1. Completion Rate (Most Important)
-**Where to find it:** Content tab → individual video → "Watched Full Video"
-**Why it matters:** The 2026 algorithm weights completion rate more heavily than any other signal. If people finish your video, TikTok pushes it further.
-**Benchmark:** >60% is good, >80% is excellent.
+### 1. Watched Full Video and Average Watch Time
+**Where to find it:** Content tab → a single video
+**Why it matters:** Creator Academy calls out retention rate, average watch time, and watched-full-video as the post-level attention metrics.
+**How to use it:** Compare videos of similar length. A generic example: 60% finish rate on a short clip is a useful internal bar, not a published cutoff.
 
-### 2. Share Rate
-**Where to find it:** Content tab → individual video → Shares / Views
-**Why it matters:** Shares grew 45% YoY on TikTok. A share means your content is valuable enough for someone to attach their identity to it.
-**Benchmark:** >1% share-to-view ratio is strong.
+### 2. Share Count (and Share-to-View)
+**Where to find it:** Content tab → a single video → Shares
+**Why it matters:** A share means someone passed the video along. That is a clearer "this was useful" signal than a like.
+**How to use it:** Compare share-to-view among your own posts. Do not treat a 1% ratio as an official target.
 
-### 3. FYP Traffic %
-**Where to find it:** Content tab → individual video → Traffic Source
-**Why it matters:** If less than 50% of views come from the For You Page, the algorithm isn't distributing your content to new audiences. Adjust your hooks and hashtags.
+### 3. For You vs Following Traffic
+**Where to find it:** Content tab → a single video → Traffic Source
+**Why it matters:** For You traffic means new people saw the post. Following or Profile traffic means it mostly stayed inside people who already know you.
 
-### 4. Profile Visit Rate
-**Where to find it:** Overview → Profile Views / Video Views
-**Why it matters:** Profile visits convert watchers into followers. A strong profile visit rate means your content creates curiosity about your brand.
+### 4. Profile Views vs Video Views
+**Where to find it:** Overview
+**Why it matters:** Profile visits are a path from a watch to a follow. If views rise and profile visits do not, the video may not create a next step.
 
-### 5. Follower Growth Velocity
-**Where to find it:** Overview → Followers (net change over 7/28 days)
-**Why it matters:** Velocity matters more than total count. Consistent growth of 1-3% monthly is healthy for most accounts.
+### 5. Follower Change Over 7 or 28 Days
+**Where to find it:** Overview or Followers
+**Why it matters:** A 7-day change tells you whether recent posts added people. Total follower count hides that.
 
 ---
 
@@ -174,18 +191,16 @@ With dozens of data points available, here are the five you should check weekly:
 
 TikTok's native dashboard covers your own account. For competitor tracking, advanced analytics, and cross-platform intelligence, you need third-party **TikTok tools**.
 
-| Tool | Best For | Competitor Tracking | Free Plan | Starting Price |
-| :--- | :--- | :--- | :--- | :--- |
-| **ContHunt** | Competitive intelligence | ✅ | ✅ | $29/mo |
-| **Pentos** | Hashtag & sound tracking | ✅ | Trial | $49/mo |
-| **Exolyt** | Video-level analytics | ✅ | ✅ | $49/mo |
-| **Socialinsider** | Cross-platform analytics | ✅ | Trial | $99/mo |
-| **Sprout Social** | Enterprise reporting | ✅ | Trial | $199/mo |
+| Tool | Best For | Competitor Tracking | Notes |
+| :--- | :--- | :--- | :--- |
+| **ContHunt** | Public short-form examples and hooks | ✅ | Your own Studio data stays in TikTok |
+| **TikTok Studio** | Your account only | ❌ | Free; official source for your metrics |
+| **Other third-party tools** | Sounds, hashtags, or agency reporting | Varies | Confirm current features and pricing on the vendor site |
 
 ### ContHunt for TikTok Analytics
 **ContHunt** fills the biggest gap in TikTok's native analytics: **competitive intelligence**. While TikTok only shows your own data, ContHunt lets you:
 *   Track competitor posting frequency and engagement rates
-*   Identify **outlier content** (posts performing 2x+ above average)
+*   Identify **outlier content** (public posts that are clearly ahead of a creator's usual pattern)
 *   Analyze the **hooks and formats** driving competitor success
 *   Benchmark your performance against niche averages
 
@@ -232,22 +247,24 @@ A 15-second dance clip and a 90-second tutorial will have wildly different metri
 ---
 
 ## 2026 TikTok Analytics Checklist
-*   [ ] Have I switched to a Business or Creator account?
+*   [ ] Have I switched to a Creator or Business account?
+*   [ ] Can I open Analytics from TikTok Studio (app or web)?
 *   [ ] Am I checking analytics at least weekly?
-*   [ ] Am I tracking Completion Rate as my #1 metric?
-*   [ ] Am I monitoring FYP Traffic % for each video?
-*   [ ] Do I know my followers' most active times?
-*   [ ] Am I using ContHunt for competitive benchmarking?
-*   [ ] Am I giving videos 48 hours before analyzing?
+*   [ ] Am I comparing watch time and finish rate on similar-length videos?
+*   [ ] Am I checking For You vs Following traffic?
+*   [ ] Do I know when my followers are most active?
+*   [ ] Am I giving videos 48 hours before judging them?
+*   [ ] Am I using ContHunt only for public competitor examples?
 
 ---
 
 ## Conclusion
-TikTok analytics are your content strategy compass. They tell you what the algorithm rewards, what your audience values, and where the gaps are. The creators who check, interpret, and act on their analytics consistently are the ones who grow.
+TikTok analytics tell you what happened on your posts. They do not publish a secret ranking weight. Check Studio weekly, compare similar videos, and change one thing on the next upload.
 
-Start with TikTok's native dashboard for your own data. Layer in **ContHunt** for competitive intelligence. And remember: the most important metric in 2026 is **completion rate**—not likes, not followers, not views. Make videos people can't stop watching, and the algorithm will do the rest.
+Start with TikTok Studio for your own data. Use **ContHunt** when you need public examples from other creators. Watch time and finish rate are the first metrics to review—not because TikTok published a percentage, but because they tell you whether people stayed.
 
 ### Recommended Next Steps:
+*   [TikTok Analytics in 2026: What to Track](/blog/tiktok-analytics)
 *   [TikTok Hashtags to Go Viral: Complete Strategy Guide](/blog/tiktok-hashtags-go-viral)
 *   [TikTok Competitor Analysis: The 2026 Playbook](/blog/tiktok-competitor-analysis)
-*   [Best YouTube Tracker Tools (2026)](/blog/youtube-tracker)
+*   [Instagram Reels vs. YouTube Shorts Analytics](/blog/instagram-reels-vs-youtube-shorts-analytics)
