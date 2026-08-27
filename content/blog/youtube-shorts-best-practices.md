@@ -1,8 +1,8 @@
 ---
 title: "YouTube Shorts Best Practices 2026: Hooks, Posting, Retention"
-description: "YouTube Shorts Best Practices in 2026 with practical steps, examples, and ContHunt tips."
+description: "YouTube Shorts best practices for 2026: hooks, retention, titles, covers, and a posting cadence you can review every week."
 date: "2026-02-25"
-updated: "2026-08-12"
+updated: "2026-08-27"
 category: "Best Practices"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -70,7 +70,7 @@ If you came here from the old `youtube-shorts-complete-guide` page, the basics n
 *   A Short is a vertical video built for fast discovery, usually with a strong opening and a single clear idea.
 *   Creation and upload still matter, but the first-frame promise matters more.
 *   Keep the title, caption, and on-screen text aligned so the platform knows exactly who the Short is for.
-*   Use this page as the operating guide, then pair it with analytics and content-ideas pages for deeper execution.
+*   Use this page as the operating guide. For formats to film, use the [YouTube Shorts content ideas hub](/blog/youtube-shorts-content-ideas). For measurement, use [YouTube Shorts Analytics](/blog/youtube-shorts-analytics).
 
 ## 1. Start With a Better Hook
 
@@ -141,7 +141,7 @@ Good covers usually do one of these:
 - highlight the result
 - stay readable on a small screen
 
-YouTube's July 2026 update says YouTube Partner Program creators can start uploading custom thumbnails for Shorts, with access expanding to more creators over time. On desktop, creators can also choose from three suggested frames; the mobile app still supports choosing a frame from the Short. Check your own Studio account before assuming custom uploads are available.
+YouTube's July 2026 update says YouTube Partner Program creators can start uploading custom thumbnails for Shorts, with access expanding to more creators over time. On desktop, creators can also choose from three suggested frames; the mobile app still supports choosing a frame from the Short. Custom Shorts thumbnail uploads are a desktop Studio path. Ask Studio thumbnail generation, in the same YouTube Blog note, is for long-form videos—do not treat it as a Shorts upload feature. Check your own Studio account before assuming custom uploads are available.
 
 If you are also refining packaging, [YouTube Shorts Thumbnail Best Practices 2026](/blog/youtube-shorts-thumbnail-best-practices-2026) is the next page to review.
 
@@ -215,6 +215,8 @@ Before scaling a format, ask:
 - what similar posts already worked for this audience?
 
 That keeps your experimentation focused and reduces random topic drift.
+
+If you need the next topic, start from the [100+ YouTube Shorts ideas hub](/blog/youtube-shorts-content-ideas) instead of inventing a new niche. For hashtags after the title is set, use [Best Hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide).
 
 ## Checklist
 
