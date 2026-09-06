@@ -30,23 +30,6 @@ faq_items:
     answer: "Yes. When you publish a Reel on Instagram, you have the option to cross-post it to **Facebook Reels** automatically. This doubles your potential reach with zero extra effort."
   - question: "Can I see analytics on my Reels?"
     answer: "Yes. Instagram provides detailed **Reels Insights** including plays, accounts reached, likes, comments, saves, shares, and average watch time. For competitive Reels analytics, **ContHunt** lets you benchmark your Reel performance against competitors' content."
-howto:
-  name: "How to Create an Instagram Reel in 2026"
-  description: "A quick step-by-step guide to creating your first Instagram Reel."
-  total_time: "PT10M"
-  steps:
-    - name: "Open the Reel Creator"
-      text: "Open Instagram, tap the '+' button, and select 'Reel' from the content type options."
-    - name: "Record or Upload"
-      text: "Record a new clip using the in-app camera, or upload an existing video from your camera roll. You can add multiple clips."
-    - name: "Add Audio"
-      text: "Tap the music icon to add a trending sound or original audio. Using trending audio can boost discovery."
-    - name: "Add Text and Effects"
-      text: "Add text overlays, stickers, filters, and effects. Place your primary keyword in the on-screen text within the first 3 seconds for TikTok/Reels SEO alignment."
-    - name: "Write Your Caption and Hashtags"
-      text: "Write a compelling caption (front-load with keywords) and add 3-5 relevant hashtags. Include a clear CTA."
-    - name: "Publish and Monitor"
-      text: "Publish your Reel and monitor performance in Insights after 24-48 hours. Check completion rate and saves as your primary success signals."
 stat_items:
   - label: "Engagement Lift"
     value: "35%"

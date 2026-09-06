@@ -24,19 +24,6 @@ faq_items:
     answer: "The algorithm updates in real-time, but the public Trending tab is a curated 'Snapshot' updated approximately every 15 minutes. For true trending discovery, you need tools that monitor the backend API signals."
   - question: "Do hashtags affect trending searches in 2026?"
     answer: "Hashtags are now used for 'Semantic Mapping' rather than search ranking. The algorithm uses them to confirm which 'Interest Node' your trending content belongs to."
-howto:
-  name: "How to Find Trending YouTube Searches Manually"
-  description: "A quick 5-minute framework for identifying rising topics on YouTube for 2026."
-  total_time: "PT5M"
-  steps:
-    - name: "Incognito Search Suggest"
-      text: "Open an incognito tab and start typing your niche keyword. The top 5 autocomplete suggestions reflect real-time high-volume queries."
-    - name: "Google Trends filter"
-      text: "Go to Google Trends, enter your topic, and change the 'Web Search' filter to 'YouTube Search' for the last 7 days."
-    - name: "Competitor 'Latest' Audit"
-      text: "Visit 3 top rivals. Sort their videos by 'LATEST' and look for any outlier view counts relative to their recent average (1.5x or higher)."
-    - name: "ContHunt Velocity Check"
-      text: "Log into ContHunt to see if those outliers are part of a larger 'Interest Node' expansion across the platform."
 stat_items:
   - label: "Daily Views"
     value: "200 Billion"

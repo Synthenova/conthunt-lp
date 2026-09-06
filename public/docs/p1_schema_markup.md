@@ -4,7 +4,7 @@
 Ready-to-paste JSON-LD structured data for `conthunt.app`. Add these to the `<head>` section of the homepage. These schemas enable rich snippets in Google, AI Overview citations, and product visibility in ChatGPT/Perplexity.
 
 ## Current State
-✅ Blog posts already have: `WebSite`, `Article`, `BreadcrumbList`, `FAQPage`, `HowTo`
+✅ Blog posts already have: `WebSite`, `Article`, `BreadcrumbList`, `FAQPage`
 ❌ Homepage is MISSING: `SoftwareApplication`, `Organization`, `Product/Offer`
 
 ---

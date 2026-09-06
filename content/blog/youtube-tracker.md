@@ -26,21 +26,6 @@ faq_items:
     answer: "Yes. **vidIQ**, **Rival IQ**, and **Social Blade** can watch public competitor channels. ContHunt can surface public short-form videos those channels publish; it is not a live channel tracker and does not report private Studio data."
   - question: "How do I track YouTube subscriber growth over time?"
     answer: "Use **Social Blade** for public subscriber history. Use **YouTube Studio** for a channel you own. Do not expect ContHunt to plot subscriber growth; that is not what the product does."
-howto:
-  name: "How to Set Up YouTube Tracking in 5 Minutes"
-  description: "A quick guide to setting up comprehensive YouTube tracking for your channel and competitors."
-  total_time: "PT5M"
-  steps:
-    - name: "Set Up YouTube Studio"
-      text: "Ensure you have access to YouTube Studio for your own channel. Navigate to Analytics to review your baseline metrics: views, watch time, subscribers, and revenue."
-    - name: "Install vidIQ or TubeBuddy"
-      text: "Add the vidIQ or TubeBuddy browser extension. Both overlay competitor data (tags, view velocity) directly on YouTube pages for instant analysis."
-    - name: "Add Competitors to ContHunt"
-      text: "If you also research Shorts and Reels, open ContHunt and search public examples in the same niche. That is content research, not a YouTube tracker replacement."
-    - name: "Set Up Alerts"
-      text: "Configure alerts for competitor uploads, outlier videos (2x+ average views), and keyword ranking changes so you're notified instantly."
-    - name: "Schedule Monthly Reviews"
-      text: "Set a calendar reminder for a 30-minute monthly analysis using the data from all three tools."
 stat_items:
   - label: "Monthly Users"
     value: "2.5 Billion"

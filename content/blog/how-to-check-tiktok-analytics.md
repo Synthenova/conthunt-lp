@@ -30,21 +30,6 @@ faq_items:
     answer: "Start with TikTok Studio (free, your account only). Use ContHunt when you need public competitor examples and hook patterns. Other third-party tools exist for sounds, hashtags, or enterprise reporting; check their current plans before you pay."
   - question: "Can I see analytics for another person's TikTok account?"
     answer: "TikTok's native analytics only show your own account. A third-party tool can only show public signals it is allowed to collect, not the other creator's private Studio dashboard."
-howto:
-  name: "How to Access TikTok Analytics (Mobile)"
-  description: "Step-by-step guide to opening TikTok Studio Analytics on your phone."
-  total_time: "PT2M"
-  steps:
-    - name: "Open TikTok and Go to Profile"
-      text: "Open the TikTok app and tap the Profile icon in the bottom-right corner."
-    - name: "Open the Menu"
-      text: "Tap the three-line menu icon (☰) in the top-right corner of your profile."
-    - name: "Open TikTok Studio"
-      text: "Select TikTok Studio. Some accounts show Creator Tools or Business Suite instead; open Analytics from there."
-    - name: "Tap Analytics"
-      text: "Open Analytics (or View all). You should see Overview, Content, Viewers, and Followers."
-    - name: "Switch Account Type (If Needed)"
-      text: "If you do not see Studio or Analytics, go to Settings → Account and switch to a Creator or Business account (free)."
 stat_items:
   - label: "Official Path"
     value: "TikTok Studio"

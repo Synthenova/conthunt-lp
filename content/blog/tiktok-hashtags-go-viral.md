@@ -26,21 +26,6 @@ faq_items:
     answer: "For accounts under 100K followers, there is no significant difference. For accounts over 100K, placing hashtags in the **first comment** has shown a ~16% increase in post reach, as it keeps the caption clean for storytelling."
   - question: "Can ContHunt help me find TikTok hashtags?"
     answer: "Yes. **ContHunt** monitors competitor content across platforms and identifies which hashtags and hooks are driving outlier engagement in your niche, giving you data-backed tag suggestions before a trend peaks."
-howto:
-  name: "How to Build a Viral TikTok Hashtag Set in 5 Minutes"
-  description: "A quick framework for creating a high-performance hashtag set for any TikTok video in 2026."
-  total_time: "PT5M"
-  steps:
-    - name: "Identify the 'Node'"
-      text: "Open TikTok Symphony (Creative Center) and search your niche keyword. Filter by 'Rising' to find tags with a steep growth curve over the last 7 days."
-    - name: "Pick 1 Trending Tag"
-      text: "Select the highest-volume rising tag that is directly relevant to your video's content."
-    - name: "Add 2 Niche Tags"
-      text: "Choose 2 tags with under 1 million videos. These should describe the specific sub-topic (e.g., #KetoDogFood instead of #DogFood)."
-    - name: "Add 1-2 Semantic Tags"
-      text: "Use tags that match the exact keywords spoken in your video's audio and written in your on-screen text. This creates 'Triple Alignment' for the AI."
-    - name: "Verify with ContHunt"
-      text: "Check ContHunt to see if competitors in your niche are already using these tags. If they are, look for the next rising tag to maintain a first-mover advantage."
 stat_items:
   - label: "Monthly Users"
     value: "1.59 Billion"

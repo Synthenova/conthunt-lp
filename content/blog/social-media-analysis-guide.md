@@ -26,21 +26,6 @@ faq_items:
     answer: "Run a **weekly pulse check** (5-minute review of top-line metrics), a **monthly deep dive** (30-minute analysis with reporting), and a **quarterly strategic review** (full competitive audit with ContHunt benchmarking)."
   - question: "Can I do social media analysis for free?"
     answer: "Yes. Every major platform offers **native analytics** (Instagram Insights, TikTok Analytics, YouTube Studio). For cross-platform analysis, free tiers of tools like **Buffer** and **Metricool** provide basic dashboards. For competitive analysis, **ContHunt** offers a free tier for tracking rival performance."
-howto:
-  name: "How to Run a Social Media Analysis in 30 Minutes"
-  description: "A repeatable monthly workflow for analyzing your social media performance in 2026."
-  total_time: "PT30M"
-  steps:
-    - name: "Pull Cross-Platform Data"
-      text: "Export or view your analytics from each platform's native dashboard (Instagram Insights, TikTok Analytics, YouTube Studio). Note impressions, reach, and engagement rate for each."
-    - name: "Identify Top and Bottom Performers"
-      text: "Sort your posts by engagement rate. Identify the top 3 and bottom 3. Note the content format, topic, and posting time for each."
-    - name: "Analyze the 'Why'"
-      text: "For your top performers, ask: Was it the hook? The format (Reel vs. carousel)? The topic? For bottom performers, ask: Was it poor timing, a weak CTA, or an irrelevant topic?"
-    - name: "Run Competitive Benchmarking"
-      text: "Use ContHunt to compare your top-performing content against your competitors' best. Are they winning in the same 'Interest Nodes' or different ones?"
-    - name: "Document Insights and Action Items"
-      text: "Write 3 key insights and 3 action items for the next month (e.g., 'Double down on carousel posts about [topic]', 'Test posting at 7 PM instead of 12 PM')."
 stat_items:
   - label: "Global Ad Spend"
     value: "$219 Billion"

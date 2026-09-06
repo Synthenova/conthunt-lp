@@ -30,21 +30,6 @@ faq_items:
     answer: "Brands pay Shorts creators to feature products in their videos. Rates typically range from **$200-$500 for 10K-50K subscribers**, **$500-$2,000 for 50K-500K subscribers**, and **$2,000-$5,000+ for 500K+ subscribers.** Sponsorships are often the most profitable revenue stream for Shorts creators, far exceeding ad revenue."
   - question: "Should I focus on Shorts or long-form for monetization?"
     answer: "Use **Shorts for growth** (reaching new audiences) and **long-form for revenue** (higher RPM). The ideal strategy in 2026 is creating Shorts that funnel viewers to your long-form content, where ad revenue per 1,000 views is 10-20x higher."
-howto:
-  name: "How to Monetize YouTube Shorts in 2026"
-  description: "Step-by-step guide to setting up monetization for YouTube Shorts."
-  total_time: "PT15M"
-  steps:
-    - name: "Meet YPP Eligibility Requirements"
-      text: "You need 1,000 subscribers AND either 10 million Shorts views in 90 days OR 4,000 long-form watch hours in 12 months. Check your progress in YouTube Studio → Monetization."
-    - name: "Apply for the YouTube Partner Program"
-      text: "Once eligible, go to YouTube Studio → Monetization → Apply. You'll need to agree to monetization policies, connect an AdSense account, and wait for review (typically 2-4 weeks)."
-    - name: "Enable Shorts Monetization"
-      text: "After YPP approval, ensure Shorts monetization is enabled in your Monetization settings. You'll start earning from ads shown between Shorts in the feed."
-    - name: "Diversify Revenue Streams"
-      text: "Set up additional monetization: enable Super Thanks for tips, connect merchandise shelf, join affiliate programs in your niche, and start pitching brands for sponsorships."
-    - name: "Track and Optimize"
-      text: "Monitor your Shorts revenue in YouTube Studio Analytics → Revenue tab. Use ContHunt to benchmark your performance against competitors and identify high-RPM content topics."
 stat_items:
   - label: "Shorts RPM Range"
     value: "$0.02-$0.10"
