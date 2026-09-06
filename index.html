@@ -1,17 +1,8 @@
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
-  <!-- PostHog Analytics -->
-  <script src="https://us-assets.i.posthog.com/static/array.js"></script>
-  <script>
-    posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-      api_host: '/ingest',
-      ui_host: 'https://us.posthog.com',
-      person_profiles: 'always',
-      cross_subdomain_cookie: true,
-    })
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary Meta Tags -->
@@ -182,8 +173,9 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
   <link rel="canonical" href="https://conthunt.app/" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="preload" href="public/main-lottie-poster.webp" as="image" fetchpriority="high" />
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=20260906-perf1" />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
   <link
@@ -191,9 +183,8 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -339,8 +330,9 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
+              <img src="public/main-lottie-poster.webp" alt="ContHunt research dashboard preview"
+                width="1280" height="720" loading="eager" fetchpriority="high" decoding="async"
+                style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
           </div>
         </div>
@@ -709,9 +701,9 @@
 
             <div
               class="md:h-80 h-auto aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <!-- Lottie Animation for Search -->
-              <lottie-player src="public/Scene-1.json" background="transparent" speed="1"
-                style="width: 100%; height: 100%;" loop autoplay preserveAspectRatio="xMidYMid slice"></lottie-player>
+              <img src="public/scene-1-poster.webp" alt="ContHunt search workflow preview"
+                width="960" height="640" loading="lazy" decoding="async"
+                style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
           </div>
 
@@ -1385,9 +1377,27 @@
       </div>
     </div>
   </footer>
-  <script src="public/step2-animation.js"></script>
-  <script src="assets/js/script.js?v=20260826-cli2"></script>
-  <script src="public/analytics.js"></script>
+  <script src="public/step2-animation.js" defer></script>
+  <script src="assets/js/script.js?v=20260906-perf1" defer></script>
+  <script src="public/analytics.js" defer></script>
+  <script>
+    window.addEventListener('load', () => {
+      window.setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = 'https://us-assets.i.posthog.com/static/array.js';
+        script.async = true;
+        script.onload = () => {
+          window.posthog?.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
+            api_host: '/ingest',
+            ui_host: 'https://us.posthog.com',
+            person_profiles: 'always',
+            cross_subdomain_cookie: true,
+          });
+        };
+        document.head.appendChild(script);
+      }, 5000);
+    });
+  </script>
 </body>
 
 </html>
