@@ -942,7 +942,7 @@ ${posts.map(post => `    <item>
       <title><![CDATA[${post.title}]]></title>
       <link>https://conthunt.app/blog/${post.slug}</link>
       <description><![CDATA[${post.excerpt || post.description || ''}]]></description>
-      <category>${post.category || 'Content Strategy'}</category>
+      <category>${ejs.escapeXML(post.category || 'Content Strategy')}</category>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/${post.slug}</guid>
     </item>`).join('\n')}
