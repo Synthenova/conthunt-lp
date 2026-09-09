@@ -2,7 +2,7 @@
 title: "YouTube Shorts Analytics Guide 2026: Metrics & Tools"
 description: "Use YouTube Shorts analytics without invented benchmarks: read native Studio metrics, compare your baseline, and research public competitor patterns."
 date: "2026-02-25"
-updated: "2026-08-26"
+updated: "2026-09-09"
 category: "YouTube"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -26,6 +26,12 @@ faq_items:
   - question: "What is the best free Shorts analytics tool?"
     answer: "YouTube Studio is the essential free tool for a channel you manage. Public platform search and Google Trends can support topic research; check each third-party product's current plan before assuming a feature is free."
 sources:
+  - title: "How engagement metrics are counted"
+    publisher: "YouTube Help"
+    url: "https://support.google.com/youtube/answer/2991785?hl=en"
+  - title: "What are Engaged Views on YouTube?"
+    publisher: "YouTube Blog"
+    url: "https://blog.youtube/inside-youtube/engaged-views-youtube-explained/"
   - title: "Content tab analytics tips - Shorts"
     publisher: "YouTube Help"
     url: "https://support.google.com/youtube/answer/12942217?hl=en&co=YOUTUBE._YTVideoType%3Dshorts"
@@ -52,6 +58,12 @@ YouTube changes labels and report layouts over time, so use the definitions in y
 ### Views and shown in feed
 
 Views describe consumption under YouTube's current counting rules. **Shown in feed** describes how often a Short appeared in the Shorts feed when that card is available. Read the two together; a creative problem and a distribution problem are not the same diagnosis.
+
+### Views and engaged views are different measures
+
+YouTube's [current counting rules](https://support.google.com/youtube/answer/2991785?hl=en), checked September 9, 2026, say views count from playback starting across all formats as of August 24, 2026. Its [explanation of engaged views](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/) distinguishes a playback start from clicking to watch or continuing beyond the initial seconds. YouTube says most analytics remain anchored on engaged views, including average view duration and retention.
+
+Record whether a report uses views or engaged views before calculating a rate. A change in the denominator can change the apparent engagement rate without a matching change in viewer behavior. Keep dates and definitions consistent when comparing your baseline, and do not infer a recommendation-system change from a view-count change alone.
 
 ### How many chose to view
 
