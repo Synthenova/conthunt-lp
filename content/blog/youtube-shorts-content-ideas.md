@@ -2,7 +2,7 @@
 title: "100+ YouTube Shorts Ideas for Every Niche (2026 Master List)"
 description: "100+ YouTube Shorts content ideas for 2026, organized by niche, plus how to pick a format without chasing a generic trend."
 date: "2026-02-18"
-updated: "2026-08-27"
+updated: "2026-09-11"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -55,6 +55,8 @@ This hub is the live ideas list. Older niche URLs for gaming, cooking, tech, tra
 *   [Faceless: Creative Automation](#faceless)
 
 For hooks, covers, and retention, use [YouTube Shorts Best Practices 2026](/blog/youtube-shorts-best-practices). For tags after the idea is locked, use [Best Hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide).
+
+For algorithm, niche-growth, and recommendation-system questions, use the [YouTube Shorts Algorithm 2026](/blog/youtube-shorts-algorithm-2026) guide before picking ideas from this list.
 
 ---
 

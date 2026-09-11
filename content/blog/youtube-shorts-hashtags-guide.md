@@ -2,7 +2,7 @@
 title: "Best Hashtags for YouTube Shorts"
 description: "Best hashtags for YouTube Shorts: how many to use, what YouTube actually publishes, and starter tag sets for gaming, beauty, tech, and comedy."
 date: "2026-02-18"
-updated: "2026-08-27"
+updated: "2026-09-11"
 category: "Content Strategy"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -45,6 +45,8 @@ sources:
 Hashtags can connect a Short to related videos and hashtag search pages, but they are only one part of discovery. A relevant hashtag cannot rescue a vague title, misleading cover, or weak opening.
 
 This guide separates YouTube's published rules from practical testing advice, then gives you starter sets you can adapt to the actual topic of your video.
+
+If you need a full hook, caption, retention, and hashtag workflow across TikTok, Reels, and Shorts, use the [short-form video best practices](/blog/short-form-video-best-practices) guide. This page stays focused on YouTube Shorts hashtag selection.
 
 ---
 
