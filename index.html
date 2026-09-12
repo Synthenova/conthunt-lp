@@ -173,7 +173,6 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
   <link rel="canonical" href="https://conthunt.app/" />
-  <link rel="preload" href="public/main-lottie-poster.webp" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/css/tailwind.css?v=20260906-perf1" />
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -185,6 +184,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -255,7 +255,7 @@
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-3xl">
+      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
@@ -320,9 +320,8 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <img src="public/main-lottie-poster.webp" alt="ContHunt research dashboard preview"
-                width="1280" height="720" loading="eager" fetchpriority="high" decoding="async"
-                style="width: 100%; height: 100%; object-fit: cover;" />
+              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
+                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
           </div>
         </div>
