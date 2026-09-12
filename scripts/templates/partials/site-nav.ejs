@@ -10,18 +10,16 @@
             </a>
         </div>
         <div class="hidden md:flex items-center gap-6 lg:gap-8 font-nav absolute left-1/2 -translate-x-1/2">
-            <a href="/blog" class="text-xs font-bold <%= active === 'blog' ? 'text-white' : 'text-neutral-400' %> hover:text-white transition-colors">Resources</a>
-            <a href="<%= home ? '#workflow' : '/#workflow' %>" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
-            <a href="/docs" class="text-xs font-bold <%= active === 'docs' ? 'text-white' : 'text-neutral-400' %> hover:text-white transition-colors">Docs</a>
+            <a href="/blog" class="text-xs font-bold <%= active === 'blog' ? 'text-white' : 'text-neutral-400' %> hover:text-white transition-colors">Blogs</a>
+            <a href="<%= home ? '#mcp' : '/#mcp' %>" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">MCP</a>
             <a href="<%= home ? '#pricing' : '/#pricing' %>" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
         </div>
         <div class="flex items-center gap-2 font-nav">
             <details class="site-nav-menu md:hidden">
                 <summary>Menu</summary>
                 <div class="site-nav-dropdown">
-                    <a href="/blog"<%= active === 'blog' ? ' class="is-active"' : '' %>>Resources</a>
-                    <a href="<%= home ? '#workflow' : '/#workflow' %>">Workflow</a>
-                    <a href="/docs"<%= active === 'docs' ? ' class="is-active"' : '' %>>Docs</a>
+                    <a href="/blog"<%= active === 'blog' ? ' class="is-active"' : '' %>>Blogs</a>
+                    <a href="<%= home ? '#mcp' : '/#mcp' %>">MCP</a>
                     <a href="<%= home ? '#pricing' : '/#pricing' %>">Pricing</a>
                 </div>
             </details>
