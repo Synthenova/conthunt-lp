@@ -1,15 +1,11 @@
 <p class="docs-kicker">Integrations</p>
 <h1>ContHunt MCP</h1>
-<p class="docs-lede">Hosted remote MCP for TikTok, Instagram Reels, and YouTube Shorts research. Streamable HTTP and OAuth. No local process.</p>
+<p class="docs-lede">Connect ContHunt to Codex, Claude, Cursor, and other agents. Your agent can then search and analyze short-form video on your account.</p>
 
 <dl class="docs-meta">
     <div>
         <dt>URL</dt>
         <dd>https://mcp.conthunt.app</dd>
-    </div>
-    <div>
-        <dt>Auth</dt>
-        <dd>OAuth 2.1 + PKCE</dd>
     </div>
 </dl>
 
@@ -35,7 +31,7 @@ codex mcp login conthunt</code></pre>
             <button type="button" class="docs-copy" data-copy>Copy</button>
             <pre><code>claude mcp add --transport http conthunt https://mcp.conthunt.app</code></pre>
         </div>
-        <p>Then run <code>/mcp</code> and complete browser approval.</p>
+        <p>Then run <code>/mcp</code> and sign in when asked.</p>
     </div>
     <div class="docs-panel" data-panel="cursor">
         <p><a href="cursor://anysphere.cursor-deeplink/mcp/install?name=ContHunt&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5jb250aHVudC5hcHAifQ==">Install in Cursor</a>, or add this to <code>~/.cursor/mcp.json</code>:</p>
@@ -51,12 +47,12 @@ codex mcp login conthunt</code></pre>
         </div>
     </div>
     <div class="docs-panel" data-panel="claude">
-        <p>On Pro, Max, Team, or Enterprise, add a custom connector:</p>
+        <p>In Claude, go to Customize, Connectors, Add custom connector. Name it ContHunt and paste this URL:</p>
         <div class="docs-code">
             <button type="button" class="docs-copy" data-copy>Copy</button>
-            <pre><code>https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=ContHunt&connectorUrl=https%3A%2F%2Fmcp.conthunt.app</code></pre>
+            <pre><code>https://mcp.conthunt.app</code></pre>
         </div>
-        <p>Or in Claude: Customize, Connectors, Add custom connector. Name <code>ContHunt</code>, URL <code>https://mcp.conthunt.app</code>.</p>
+        <p>Or open this <a href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=ContHunt&amp;connectorUrl=https%3A%2F%2Fmcp.conthunt.app">pre-filled connector link</a>.</p>
     </div>
     <div class="docs-panel" data-panel="vscode">
         <div class="docs-code">
@@ -78,38 +74,20 @@ codex mcp login conthunt</code></pre>
             <button type="button" class="docs-copy" data-copy>Copy</button>
             <pre><code>gemini mcp add --transport http -s user conthunt https://mcp.conthunt.app</code></pre>
         </div>
-        <p>Then <code>/mcp auth conthunt</code>.</p>
+        <p>Then run <code>/mcp auth conthunt</code> and sign in when asked.</p>
     </div>
 </div>
 
 <h2>What you get</h2>
-<p>After OAuth, the agent can search public short-form video, save boards, analyze media, and run deep research on your ContHunt account. Tool groups:</p>
-<div class="docs-table-wrap">
-<table>
-    <thead>
-        <tr>
-            <th>Group</th>
-            <th>Tools</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td>Search</td><td><code>search_*</code>, <code>agent_search_*</code></td></tr>
-        <tr><td>Creators</td><td><code>creator_get</code>, <code>creator_videos</code>, <code>video_get</code></td></tr>
-        <tr><td>Boards</td><td><code>board_*</code></td></tr>
-        <tr><td>Analysis</td><td><code>analyze_*</code>, <code>insights_*</code>, <code>download_url</code></td></tr>
-        <tr><td>Research</td><td><code>research_*</code> including <code>research_messages</code></td></tr>
-        <tr><td>Trending</td><td><code>trending_youtube</code>, <code>trending_tiktok</code>, <code>trending_niches</code></td></tr>
-        <tr><td>Files</td><td><code>workspace_*</code></td></tr>
-    </tbody>
-</table>
-</div>
-
-<h2>Auth</h2>
-<p>The server challenges unauthenticated clients and sends them through ContHunt login. Approve access in the browser. Do not paste API keys into MCP config.</p>
-<p>If a client still has an old <code>https://agent.conthunt.app/mcp</code> URL, remove it and add <code>https://mcp.conthunt.app</code>.</p>
+<p>Once it is connected, your agent can use ContHunt to:</p>
+<ul>
+    <li>Search TikTok, Reels, and Shorts</li>
+    <li>Look up creators</li>
+    <li>Save videos to boards</li>
+    <li>Run analysis</li>
+    <li>Do deeper research on a niche</li>
+</ul>
+<p>Your agent will ask you to sign in to ContHunt the first time.</p>
 
 <h2>Skill</h2>
-<p>Want the agent to know when to use these tools? Install the <a href="/docs/integrations/skill">ContHunt skill</a> from the same domain.</p>
-
-<h2>Privacy</h2>
-<p>ContHunt uses your account to run research you request. See <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Support: <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
+<p>Want the agent to already know how to use this, instead of you explaining ContHunt each time? Add the <a href="/docs/integrations/skill">ContHunt skill</a>.</p>

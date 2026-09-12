@@ -1050,7 +1050,7 @@ function buildDocs() {
             template: 'docs-home.ejs',
             active: 'overview',
             pageTitle: 'ContHunt Docs',
-            description: 'Install ContHunt in coding agents with a hosted MCP server and an agent skill.',
+            description: 'Connect ContHunt to your coding agent and install the ContHunt skill.',
             canonical: DOMAIN + '/docs'
         },
         {
@@ -1058,7 +1058,7 @@ function buildDocs() {
             template: 'docs-skill.ejs',
             active: 'skill',
             pageTitle: 'ContHunt skill',
-            description: 'Install the ContHunt agent skill from conthunt.app with npx skills add.',
+            description: 'Install the ContHunt skill so your coding agent already knows how to use ContHunt.',
             canonical: DOMAIN + '/docs/integrations/skill'
         },
         {
@@ -1066,7 +1066,7 @@ function buildDocs() {
             template: 'docs-mcp.ejs',
             active: 'mcp',
             pageTitle: 'ContHunt MCP',
-            description: 'Connect the hosted ContHunt MCP server at https://mcp.conthunt.app to Codex, Claude, Cursor, and other agents.',
+            description: 'Connect ContHunt to Codex, Claude, Cursor, and other agents.',
             canonical: DOMAIN + '/docs/integrations/mcp'
         }
     ];
