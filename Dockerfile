@@ -35,6 +35,8 @@ COPY --from=builder /app/robots.txt /usr/share/nginx/html/robots.txt
 COPY --from=builder /app/llms.txt /usr/share/nginx/html/llms.txt
 COPY --from=builder /app/sitemap.xml /usr/share/nginx/html/sitemap.xml
 COPY --from=builder /app/rss.xml /usr/share/nginx/html/rss.xml
+COPY --from=builder /app/docs /usr/share/nginx/html/docs
+COPY --from=builder /app/.well-known /usr/share/nginx/html/.well-known
 
 # Copy custom Nginx config
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -1,0 +1,27 @@
+<p class="docs-kicker">Integrations</p>
+<h1>ContHunt skill</h1>
+<p class="docs-lede">Install agent instructions from conthunt.app. The skill teaches coding agents to use ContHunt, preferably through the hosted MCP server.</p>
+
+<h2>Install</h2>
+<div class="docs-code">
+    <button type="button" class="docs-copy" data-copy>Copy</button>
+    <pre><code id="skill-install">npx skills add https://conthunt.app</code></pre>
+</div>
+<p>Works with Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Windsurf, and other agents that support the skills CLI.</p>
+<p>That command reads <code>/.well-known/skills/index.json</code> on this domain. There is no GitHub repo in the install path.</p>
+
+<h2>What it does</h2>
+<ul>
+    <li>Prefers the hosted MCP at <code>https://mcp.conthunt.app</code> when a ContHunt server is connected.</li>
+    <li>Walks search, boards, analysis, and deep research without dumping raw URLs or tokens.</li>
+    <li>Stops on <code>credits_exhausted</code> and sends the user to billing.</li>
+    <li>Falls back to the ContHunt CLI only when MCP is unavailable.</li>
+</ul>
+
+<h2>Pair it with MCP</h2>
+<p>The skill is instruction. The MCP server is what actually talks to your ContHunt account. Add both:</p>
+<ol>
+    <li>Install the skill with the command above.</li>
+    <li>Connect MCP from the <a href="/docs/integrations/mcp">MCP page</a>.</li>
+    <li>Ask the agent to research a niche, pull competitor examples, or analyze a Short.</li>
+</ol>

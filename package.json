@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "node scripts/build-blog.js",
     "test:cli-launch": "node scripts/test-cli-launch.js",
     "test:seven-lanes": "node scripts/test-seven-lanes.js"
   },

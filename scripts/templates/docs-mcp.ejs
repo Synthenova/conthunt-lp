@@ -1,0 +1,115 @@
+<p class="docs-kicker">Integrations</p>
+<h1>ContHunt MCP</h1>
+<p class="docs-lede">Hosted remote MCP for TikTok, Instagram Reels, and YouTube Shorts research. Streamable HTTP and OAuth. No local process.</p>
+
+<dl class="docs-meta">
+    <div>
+        <dt>URL</dt>
+        <dd>https://mcp.conthunt.app</dd>
+    </div>
+    <div>
+        <dt>Auth</dt>
+        <dd>OAuth 2.1 + PKCE</dd>
+    </div>
+</dl>
+
+<h2>Add to your agent</h2>
+<div class="docs-tabs" data-tabs>
+    <div class="docs-tablist" role="tablist">
+        <button type="button" class="is-active" data-tab="codex">Codex</button>
+        <button type="button" data-tab="claude-code">Claude Code</button>
+        <button type="button" data-tab="cursor">Cursor</button>
+        <button type="button" data-tab="claude">Claude.ai</button>
+        <button type="button" data-tab="vscode">VS Code</button>
+        <button type="button" data-tab="gemini">Gemini CLI</button>
+    </div>
+    <div class="docs-panel is-active" data-panel="codex">
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>codex mcp add conthunt --url https://mcp.conthunt.app
+codex mcp login conthunt</code></pre>
+        </div>
+    </div>
+    <div class="docs-panel" data-panel="claude-code">
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>claude mcp add --transport http conthunt https://mcp.conthunt.app</code></pre>
+        </div>
+        <p>Then run <code>/mcp</code> and complete browser approval.</p>
+    </div>
+    <div class="docs-panel" data-panel="cursor">
+        <p><a href="cursor://anysphere.cursor-deeplink/mcp/install?name=ContHunt&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5jb250aHVudC5hcHAifQ==">Install in Cursor</a>, or add this to <code>~/.cursor/mcp.json</code>:</p>
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>{
+  "mcpServers": {
+    "conthunt": {
+      "url": "https://mcp.conthunt.app"
+    }
+  }
+}</code></pre>
+        </div>
+    </div>
+    <div class="docs-panel" data-panel="claude">
+        <p>On Pro, Max, Team, or Enterprise, add a custom connector:</p>
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=ContHunt&connectorUrl=https%3A%2F%2Fmcp.conthunt.app</code></pre>
+        </div>
+        <p>Or in Claude: Customize, Connectors, Add custom connector. Name <code>ContHunt</code>, URL <code>https://mcp.conthunt.app</code>.</p>
+    </div>
+    <div class="docs-panel" data-panel="vscode">
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>{
+  "mcp": {
+    "servers": {
+      "conthunt": {
+        "type": "http",
+        "url": "https://mcp.conthunt.app"
+      }
+    }
+  }
+}</code></pre>
+        </div>
+    </div>
+    <div class="docs-panel" data-panel="gemini">
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>gemini mcp add --transport http -s user conthunt https://mcp.conthunt.app</code></pre>
+        </div>
+        <p>Then <code>/mcp auth conthunt</code>.</p>
+    </div>
+</div>
+
+<h2>What you get</h2>
+<p>After OAuth, the agent can search public short-form video, save boards, analyze media, and run deep research on your ContHunt account. Tool groups:</p>
+<div class="docs-table-wrap">
+<table>
+    <thead>
+        <tr>
+            <th>Group</th>
+            <th>Tools</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Search</td><td><code>search_*</code>, <code>agent_search_*</code></td></tr>
+        <tr><td>Creators</td><td><code>creator_get</code>, <code>creator_videos</code>, <code>video_get</code></td></tr>
+        <tr><td>Boards</td><td><code>board_*</code></td></tr>
+        <tr><td>Analysis</td><td><code>analyze_*</code>, <code>insights_*</code>, <code>download_url</code></td></tr>
+        <tr><td>Research</td><td><code>research_*</code> including <code>research_messages</code></td></tr>
+        <tr><td>Trending</td><td><code>trending_youtube</code>, <code>trending_tiktok</code>, <code>trending_niches</code></td></tr>
+        <tr><td>Files</td><td><code>workspace_*</code></td></tr>
+    </tbody>
+</table>
+</div>
+
+<h2>Auth</h2>
+<p>The server challenges unauthenticated clients and sends them through ContHunt login. Approve access in the browser. Do not paste API keys into MCP config.</p>
+<p>If a client still has an old <code>https://agent.conthunt.app/mcp</code> URL, remove it and add <code>https://mcp.conthunt.app</code>.</p>
+
+<h2>Skill</h2>
+<p>Want the agent to know when to use these tools? Install the <a href="/docs/integrations/skill">ContHunt skill</a> from the same domain.</p>
+
+<h2>Privacy</h2>
+<p>ContHunt uses your account to run research you request. See <a href="/privacy">privacy</a> and <a href="/terms">terms</a>. Support: <a href="mailto:support@conthunt.app">support@conthunt.app</a>.</p>
