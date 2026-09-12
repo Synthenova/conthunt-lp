@@ -6,6 +6,22 @@
     return Promise.reject();
   }
 
+  document.querySelectorAll('[data-install]').forEach(function (root) {
+    const buttons = Array.from(root.querySelectorAll('[data-install-mode]'));
+    const panels = Array.from(root.querySelectorAll('[data-install-panel]'));
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        const id = button.getAttribute('data-install-mode');
+        buttons.forEach(function (item) {
+          item.classList.toggle('is-active', item === button);
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-install-panel') === id);
+        });
+      });
+    });
+  });
+
   document.querySelectorAll('[data-tabs]').forEach(function (root) {
     const buttons = Array.from(root.querySelectorAll('[data-tab]'));
     const panels = Array.from(root.querySelectorAll('[data-panel]'));

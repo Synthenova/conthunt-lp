@@ -366,3 +366,90 @@
         grid-template-columns: 1fr;
     }
 }
+
+.docs-install {
+    margin: 0 0 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+.docs-install-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.docs-install-label {
+    margin: 0;
+    font-family: var(--font-nav);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a3a3a3;
+}
+
+.docs-install-toggle {
+    display: flex;
+    gap: 0;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.docs-install-toggle button {
+    font-family: var(--font-nav);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #a3a3a3;
+    background: transparent;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.docs-install-toggle button.is-active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.docs-install .docs-code,
+.docs-install-body {
+    display: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.docs-install .docs-code.is-active,
+.docs-install-body.is-active {
+    display: block;
+}
+
+.docs-install-body {
+    padding: 14px 16px 16px;
+}
+
+.docs-install-body .docs-tabs {
+    margin-bottom: 0.75rem;
+}
+
+.docs-install-body .docs-code {
+    display: block;
+    margin: 0 0 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.docs-install .docs-code.is-active {
+    border: 0;
+    background: transparent;
+}

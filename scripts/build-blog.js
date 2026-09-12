@@ -17,6 +17,30 @@ const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.js
 const ORGANIZATION_SAMEAS_PATH = path.join(__dirname, 'data/organization-sameas.json');
 const DOMAIN = 'https://conthunt.app';
 
+
+function renderEjsFile(templateName, data) {
+    const filename = path.join(TEMPLATES_DIR, templateName);
+    const template = fs.readFileSync(filename, 'utf8');
+    return ejs.render(template, data, { filename });
+}
+
+function syncHomepageNav() {
+    const indexPath = path.join(PUBLIC_DIR, 'index.html');
+    const html = fs.readFileSync(indexPath, 'utf8');
+    const nav = renderEjsFile('partials/site-nav.ejs', { navHome: true, navActive: '' }).trim();
+    const startTok = '<!-- ' + 'SITE_NAV_START' + ' -->';
+    const endTok = '<!-- ' + 'SITE_NAV_END' + ' -->';
+    const startAt = html.indexOf(startTok);
+    const endAt = html.indexOf(endTok);
+    if (startAt === -1 || endAt === -1 || endAt < startAt) {
+        throw new Error('Could not find SITE_NAV markers in index.html');
+    }
+    const next = html.slice(0, startAt) + startTok + '\n  ' + nav + '\n  ' + endTok + html.slice(endAt + endTok.length);
+    fs.writeFileSync(indexPath, next);
+    console.log('Synced homepage nav');
+}
+
+
 function loadOrganizationSameAs() {
     const fallback = [
         'https://x.com/conthunt',
@@ -841,7 +865,6 @@ If you are briefing a creator or an editor, write down the audience, the promise
         </article>
         `;
 
-        const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const personSchema = profileAuthor ? {
             name: profileAuthor.name,
             url: profileAuthor.url || `${DOMAIN}/${slug}`,
@@ -849,7 +872,7 @@ If you are briefing a creator or an editor, write down the audience, the promise
             jobTitle: profileAuthor.role,
             description: profileAuthor.bio
         } : null;
-        const finalHtml = ejs.render(layout, {
+        const finalHtml = renderEjsFile('layout.ejs', {
             body: pageContent,
             pageTitle,
             seoTitle,
@@ -1043,7 +1066,6 @@ function buildDocs() {
     cleanGeneratedDocsOutput();
     publishSkillsWellKnown();
 
-    const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'docs-layout.ejs'), 'utf8');
     const pages = [
         {
             slug: '',
@@ -1072,9 +1094,8 @@ function buildDocs() {
     ];
 
     for (const page of pages) {
-        const template = fs.readFileSync(path.join(TEMPLATES_DIR, page.template), 'utf8');
-        const body = ejs.render(template, { active: page.active });
-        const html = ejs.render(layout, {
+        const body = renderEjsFile(page.template, { active: page.active });
+        const html = renderEjsFile('docs-layout.ejs', {
             body,
             active: page.active,
             pageTitle: page.pageTitle,
@@ -1249,14 +1270,13 @@ async function build() {
         }
 
         // Render Post Page
-        const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.ejs'), 'utf8');
 
         // Allow overrides from frontmatter, otherwise default to standard format
         const canonicalUrl = normalizeCanonicalUrl(postData.canonical, `${DOMAIN}/blog/${postData.slug}`);
 
         const renderedPost = ejs.render(postTemplate, postData);
-        const finalHtml = ejs.render(layout, {
+        const finalHtml = renderEjsFile('layout.ejs', {
             body: renderedPost,
             pageTitle: postData.title,
             seoTitle: postData.seoTitle,
@@ -1283,7 +1303,6 @@ async function build() {
     }
 
     // 6. Generate Index Page
-    const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
     const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.ejs'), 'utf8');
 
     const blogIndexTitle = 'ContHunt Blog: Short-Form Video Research Guides';
@@ -1292,7 +1311,7 @@ async function build() {
         blogIndexTitle
     );
     const renderedIndex = ejs.render(indexTemplate, { posts, pageTitle: blogIndexTitle });
-    const finalIndexHtml = ejs.render(layout, {
+    const finalIndexHtml = renderEjsFile('layout.ejs', {
         body: renderedIndex,
         pageTitle: blogIndexTitle,
         seoTitle: fitSeoTitle(blogIndexTitle),
@@ -1320,6 +1339,7 @@ async function build() {
     console.log('Generated: blog/index.html');
 
     buildDocs();
+    syncHomepageNav();
 
     // 7. Generate Sitemap
     generateSitemap();
