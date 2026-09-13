@@ -714,72 +714,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Main Lottie Control Script
 document.addEventListener('DOMContentLoaded', () => {
-    const demoMount = document.getElementById('main-lottie-demo');
-    const startBtn = document.getElementById('main-lottie-start-btn');
+    const player = document.getElementById('main-lottie');
     const replayBtn = document.getElementById('lottie-replay-btn');
-    let player = null;
-    let loader = null;
 
-    function loadPlayerScript() {
-        if (customElements.get('lottie-player')) return Promise.resolve();
-        if (loader) return loader;
-        loader = new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
-            script.async = true;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-        return loader;
-    }
+    if (player) {
+        let hasPlayed = false;
 
-    function playDemo() {
-        if (!demoMount) return;
-        if (player) {
-            player.stop();
-            player.play();
-            return;
-        }
-
-        loadPlayerScript().then(() => {
-            if (startBtn) startBtn.remove();
-            player = document.createElement('lottie-player');
-            player.id = 'main-lottie';
-            player.setAttribute('src', 'public/main_lottie.json');
-            player.setAttribute('disablecheck', '');
-            player.setAttribute('background', 'transparent');
-            player.setAttribute('speed', '1');
-            player.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-            player.setAttribute('mode', 'normal');
-            player.style.width = '100%';
-            player.style.height = '100%';
-            player.addEventListener('complete', () => {
-                if (replayBtn) {
-                    replayBtn.classList.remove('hidden');
-                    replayBtn.classList.add('flex');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasPlayed) {
+                    if (player.play) {
+                        player.play();
+                        hasPlayed = true;
+                    } else {
+                        player.addEventListener('ready', () => {
+                            if (!hasPlayed) {
+                                player.play();
+                                hasPlayed = true;
+                            }
+                        });
+                    }
                 }
             });
-            demoMount.appendChild(player);
-            player.addEventListener('ready', () => player.play(), { once: true });
-        }).catch(() => {
-            if (startBtn) startBtn.disabled = false;
-        });
-    }
+        }, { threshold: 0.5 });
 
-    if (startBtn) {
-        startBtn.addEventListener('click', () => {
-            startBtn.disabled = true;
-            playDemo();
-        });
-    }
+        observer.observe(player);
 
-    if (replayBtn) {
-        replayBtn.addEventListener('click', () => {
-            replayBtn.classList.add('hidden');
-            replayBtn.classList.remove('flex');
-            playDemo();
+        player.addEventListener('complete', () => {
+            if (replayBtn) {
+                replayBtn.classList.remove('hidden');
+                replayBtn.classList.add('flex');
+            }
         });
+
+        if (replayBtn) {
+            replayBtn.addEventListener('click', () => {
+                replayBtn.classList.add('hidden');
+                replayBtn.classList.remove('flex');
+                player.stop();
+                player.play();
+            });
+        }
     }
 
     // View Demo functionality
@@ -789,7 +764,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewDemoBtn && simulatedAppFrame) {
         viewDemoBtn.addEventListener('click', () => {
             simulatedAppFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            playDemo();
         });
     }
 
