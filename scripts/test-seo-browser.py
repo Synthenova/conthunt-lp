@@ -34,8 +34,10 @@ try:
         page.on('request', lambda r: requests.append(r.url) if 'main_lottie.json' in r.url else None)
         base = f'http://127.0.0.1:{server.server_port}'
         page.goto(base, wait_until='networkidle')
-        page.locator('#main-lottie').scroll_into_view_if_needed()
-        page.wait_for_function("document.querySelector('#main-lottie').getLottie()?.currentFrame > 0")
+        page.locator('#main-lottie-start-btn').scroll_into_view_if_needed()
+        assert len(requests) == 0, requests
+        page.locator('#main-lottie-start-btn').click()
+        page.wait_for_function("document.querySelector('#main-lottie')?.getLottie?.()?.currentFrame > 0")
         assert len(requests) == 1, requests
         for route in ['/docs', '/docs/integrations/skill', '/docs/integrations/mcp']:
             page.goto(base + route, wait_until='networkidle')
@@ -45,4 +47,4 @@ try:
         browser.close()
 finally:
     server.shutdown()
-print('PASS: Lottie validates, downloads once and plays; all docs fit four viewports.')
+print('PASS: Lottie validates, waits for user intent, downloads once and plays; all docs fit four viewports.')
