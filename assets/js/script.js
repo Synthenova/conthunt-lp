@@ -725,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasPlayed) {
                     // Check if player is ready
-                    if (player.play) {
+                    if (player.getLottie?.()?.isLoaded) {
                         player.play();
                         hasPlayed = true;
                     } else {

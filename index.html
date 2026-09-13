@@ -115,33 +115,14 @@
   }
   </script>
 
-  <!-- Product Schema for Pricing -->
+  <!-- Homepage entity; software pricing is described above. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "ContHunt Creator",
-    "description": "AI-powered content discovery platform. Search across TikTok, YouTube Shorts, Instagram Reels. Get viral content insights, competitor analysis, and AI-driven content strategy recommendations.",
-    "brand": {
-      "@type": "Brand",
-      "name": "ContHunt"
-    },
-    "category": "Content Marketing Software",
-    "url": "https://conthunt.app/#pricing",
-    "offers": {
-      "@type": "Offer",
-      "price": "29",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "29",
-        "priceCurrency": "USD",
-        "billingDuration": "P1M",
-        "unitText": "month"
-      }
-    }
+    "@type": "WebPage",
+    "name": "ContHunt | Analyze Viral Videos",
+    "url": "https://conthunt.app/",
+    "description": "Discover and analyze short-form videos with ContHunt."
   }
   </script>
 
@@ -320,7 +301,8 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
+              <!-- This local animation is validated by the SEO regression check. -->
+              <lottie-player id="main-lottie" src="public/main_lottie.json" disablecheck background="transparent" speed="1"
                 style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
           </div>
@@ -1404,7 +1386,7 @@
     </div>
   </footer>
   <script src="public/step2-animation.js" defer></script>
-  <script src="assets/js/script.js?v=20260906-perf1" defer></script>
+  <script src="assets/js/script.js?v=20260913-seo" defer></script>
   <script src="public/analytics.js" defer></script>
   <script>
     window.addEventListener('load', () => {

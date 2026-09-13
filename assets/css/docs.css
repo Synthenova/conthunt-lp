@@ -9,6 +9,10 @@
     padding-bottom: 80px;
 }
 
+.docs-shell > * {
+    min-width: 0;
+}
+
 .docs-sidebar {
     position: sticky;
     top: 120px;
