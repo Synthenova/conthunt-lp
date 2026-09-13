@@ -1299,7 +1299,7 @@ async function build() {
         console.log(`Generated: blog/${postData.slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${postData.slug}`, postData.date ? new Date(postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]);
+        addToSitemap(`/blog/${postData.slug}`, postData.updated ? new Date(postData.updated).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]);
     }
 
     // 6. Generate Index Page

@@ -2,8 +2,10 @@
 import functools
 import http.server
 import json
+import re
 from pathlib import Path
 import threading
+import xml.etree.ElementTree as ET
 
 from playwright.sync_api import sync_playwright
 
@@ -11,6 +13,14 @@ root = Path(__file__).resolve().parents[1]
 animation = json.loads((root / 'public/main_lottie.json').read_text())
 assert animation['v'] and animation['fr'] > 0
 assert animation['op'] > animation['ip'] and animation['layers']
+ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+for entry in ET.parse(root / 'sitemap.xml').findall('s:url', ns):
+    slug = entry.findtext('s:loc', namespaces=ns).removeprefix('https://conthunt.app/blog/')
+    source = root / 'content/blog' / (slug + '.md')
+    if source.is_file():
+        updated = re.search(r'^updated: "([\d-]+)"', source.read_text(), re.M)
+        if updated:
+            assert entry.findtext('s:lastmod', namespaces=ns) == updated[1], slug
 server = http.server.ThreadingHTTPServer(
     ('127.0.0.1', 0),
     functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root)),
