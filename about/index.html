@@ -121,9 +121,9 @@
                                                                                         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
                                                                                         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/tailwind.css?v=20260825l" />
+                                                                                            href="/assets/css/tailwind.css?v=20260912b" />
                                                                                         <link rel="stylesheet"
-                                                                                            href="/assets/css/style.css?v=20260825l" />
+                                                                                            href="/assets/css/style.css?v=20260912b" />
                                                                                         <link rel="stylesheet"
                                                                                             href="/assets/css/blog.css?v=20260826a" />
 
@@ -139,36 +139,48 @@
     <div id="grid-torch" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav
-        class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
-        <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
-            <!-- Logo (left) -->
-            <div class="flex items-center">
-                <a href="/">
-                    <img src="/public/logo-title-white.webp" alt="ContHunt Logo" width="462" height="78" class="h-6 w-auto" />
-                </a>
-            </div>
-
-            <!-- Middle nav items -->
-            <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
-                <a href="/blog"
-                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Resources</a>
-                <a href="/#workflow"
-                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Workflow</a>
-                <a href="/#pricing"
-                    class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
-            </div>
-
-            <!-- Right side nav items -->
-            <div class="flex items-center gap-4 font-nav">
-                <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
-                    style="margin-right: -15px;">
-                    <span>LOGIN</span>
-                    <span class="ml-1" aria-hidden="true">→</span>
-                </a>
-            </div>
+    
+    
+<nav class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] site-nav">
+    <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
+        <div class="flex items-center">
+            <a href="/" aria-label="ContHunt home">
+                <img src="/public/logo-title-white.webp" alt="ContHunt Logo" width="462" height="78" class="h-6 w-auto" />
+            </a>
         </div>
-    </nav>
+        <div class="hidden md:flex items-center gap-6 lg:gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+            <a href="/blog" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Blogs</a>
+            <a href="/#mcp" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">MCP</a>
+            <a href="/#pricing" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+        </div>
+        <div class="flex items-center gap-2 font-nav">
+            <details class="site-nav-menu md:hidden">
+                <summary>Menu</summary>
+                <div class="site-nav-dropdown">
+                    <a href="/blog">Blogs</a>
+                    <a href="/#mcp">MCP</a>
+                    <a href="/#pricing">Pricing</a>
+                </div>
+            </details>
+            <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <span>LOGIN</span>
+                <span class="ml-1" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
+</nav>
+<script>
+(function () {
+  document.querySelectorAll(".site-nav-menu").forEach(function (menu) {
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menu.removeAttribute("open");
+      });
+    });
+  });
+})();
+</script>
+
 
     <main class="relative z-10 pt-44 pb-20">
         
@@ -317,10 +329,10 @@
                 <h4 class="text-white font-medium mb-4">Product</h4>
                 <ul class="space-y-2 text-neutral-500">
                     <li>
-                        <a href="/blog" class="hover:text-white transition-colors">Resources</a>
+                        <a href="/blog" class="hover:text-white transition-colors">Blogs</a>
                     </li>
                     <li>
-                        <a href="/#workflow" class="hover:text-white transition-colors">Workflow</a>
+                        <a href="/#mcp" class="hover:text-white transition-colors">MCP</a>
                     </li>
                     <li>
                         <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>

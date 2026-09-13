@@ -3,6 +3,9 @@
 
 ## Main pages
 - [ContHunt homepage](https://conthunt.app/): Product overview, workflow, supported research signals, and pricing.
+- [ContHunt docs](https://conthunt.app/docs): Agent skill and hosted MCP install.
+- [ContHunt MCP](https://conthunt.app/docs/integrations/mcp): Connect https://mcp.conthunt.app to Codex, Claude, Cursor, and other agents.
+- [ContHunt skill](https://conthunt.app/docs/integrations/skill): Install with npx skills add https://conthunt.app.
 - [ContHunt blog](https://conthunt.app/blog): Research-backed guides for short-form video strategy, analytics, trends, and competitor analysis.
 - [About ContHunt](https://conthunt.app/about): Editorial standards, product context, and team information.
 - [Editorial team](https://conthunt.app/editorial): How ContHunt content is researched and reviewed.
@@ -14,6 +17,7 @@
 - Analysis covers velocity, engagement, hooks, pacing, overlays, comments, format, and niche context.
 - Source creators and original links remain available for human review.
 - The product is designed for creators, agencies, and brand content teams.
+- Coding agents connect through the hosted MCP at https://mcp.conthunt.app or install the skill with npx skills add https://conthunt.app.
 
 ## Contact
 - [Support](mailto:support@conthunt.app)

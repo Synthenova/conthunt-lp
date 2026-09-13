@@ -1,0 +1,130 @@
+<p class="docs-kicker">Integrations</p>
+<h1>ContHunt MCP</h1>
+<p class="docs-lede">Connect ContHunt to Codex, Claude, Cursor, Grok, and other agents. Your agent can then search and analyze short-form video on your account.</p>
+
+<dl class="docs-meta">
+    <div>
+        <dt>URL</dt>
+        <dd>https://mcp.conthunt.app</dd>
+    </div>
+</dl>
+
+<h2>Add to your agent</h2>
+<div class="docs-install" data-install>
+    <div class="docs-install-head">
+        <p class="docs-install-label">Installation</p>
+        <div class="docs-install-toggle" role="tablist" aria-label="Install method">
+            <button type="button" class="is-active" data-install-mode="command">Command</button>
+            <button type="button" data-install-mode="prompt">Prompt</button>
+        </div>
+    </div>
+    <div class="docs-install-body is-active" data-install-panel="command">
+        <div class="docs-tabs" data-tabs>
+            <div class="docs-tablist" role="tablist">
+                <button type="button" class="is-active" data-tab="codex">Codex</button>
+                <button type="button" data-tab="claude-code">Claude Code</button>
+                <button type="button" data-tab="cursor">Cursor</button>
+                <button type="button" data-tab="claude">Claude.ai</button>
+                <button type="button" data-tab="vscode">VS Code</button>
+                <button type="button" data-tab="gemini">Gemini CLI</button>
+                <button type="button" data-tab="grok">Grok</button>
+            </div>
+            <div class="docs-panel is-active" data-panel="codex">
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>codex mcp add conthunt --url https://mcp.conthunt.app
+codex mcp login conthunt</code></pre>
+                </div>
+            </div>
+            <div class="docs-panel" data-panel="claude-code">
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>claude mcp add --transport http conthunt https://mcp.conthunt.app</code></pre>
+                </div>
+                <p>Then run <code>/mcp</code> and sign in when asked.</p>
+            </div>
+            <div class="docs-panel" data-panel="cursor">
+                <p><a href="cursor://anysphere.cursor-deeplink/mcp/install?name=ContHunt&amp;config=eyJ1cmwiOiJodHRwczovL21jcC5jb250aHVudC5hcHAifQ==">Install in Cursor</a>, or add this to <code>~/.cursor/mcp.json</code>:</p>
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>{
+  "mcpServers": {
+    "conthunt": {
+      "url": "https://mcp.conthunt.app"
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+            <div class="docs-panel" data-panel="claude">
+                <p>In Claude, go to Customize, Connectors, Add custom connector. Name it ContHunt and paste this URL:</p>
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>https://mcp.conthunt.app</code></pre>
+                </div>
+                <p>Or open this <a href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=ContHunt&amp;connectorUrl=https%3A%2F%2Fmcp.conthunt.app">pre-filled connector link</a>.</p>
+            </div>
+            <div class="docs-panel" data-panel="vscode">
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>{
+  "mcp": {
+    "servers": {
+      "conthunt": {
+        "type": "http",
+        "url": "https://mcp.conthunt.app"
+      }
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+            <div class="docs-panel" data-panel="gemini">
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>gemini mcp add --transport http -s user conthunt https://mcp.conthunt.app</code></pre>
+                </div>
+                <p>Then run <code>/mcp auth conthunt</code> and sign in when asked.</p>
+            </div>
+            <div class="docs-panel" data-panel="grok">
+                <p>Grok has three products. Use the one you already use.</p>
+                <h3>Grok.com</h3>
+                <p>Open <a href="https://grok.com/connectors">grok.com/connectors</a>, add a custom connector, name it ContHunt, and paste:</p>
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>https://mcp.conthunt.app</code></pre>
+                </div>
+                <p>Sign in when Grok asks.</p>
+                <h3>Grok Build</h3>
+                <div class="docs-code">
+                    <button type="button" class="docs-copy" data-copy>Copy</button>
+                    <pre><code>grok mcp add --transport http conthunt https://mcp.conthunt.app</code></pre>
+                </div>
+                <h3>Grok Bot</h3>
+                <p>Grok Bot has no settings form. Switch to the Prompt tab and paste that sentence into the chat.</p>
+            </div>
+        </div>
+        <p>If your agent is not listed, run <code>npx add-mcp https://mcp.conthunt.app --name conthunt</code> and sign in when asked.</p>
+    </div>
+    <div class="docs-install-body" data-install-panel="prompt">
+        <div class="docs-code">
+            <button type="button" class="docs-copy" data-copy>Copy</button>
+            <pre><code>Add a custom MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked.</code></pre>
+        </div>
+        <p>Paste that into Codex, Claude Code, Cursor, Grok Bot, or another agent. On grok.com, use the Grok command steps instead.</p>
+    </div>
+</div>
+
+<h2>What you get</h2>
+<p>Once it is connected, your agent can use ContHunt to:</p>
+<ul>
+    <li>Search TikTok, Reels, and Shorts</li>
+    <li>Look up creators</li>
+    <li>Save videos to boards</li>
+    <li>Run analysis</li>
+    <li>Do deeper research on a niche</li>
+</ul>
+<p>Your agent will ask you to sign in to ContHunt the first time.</p>
+
+<h2>Skill</h2>
+<p>Want the agent to already know how to use this, instead of you explaining ContHunt each time? Add the <a href="/docs/integrations/skill">ContHunt skill</a>.</p>

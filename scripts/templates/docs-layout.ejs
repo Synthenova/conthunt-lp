@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle %></title>
+    <meta name="title" content="<%= pageTitle %>" />
+    <meta name="description" content="<%= description %>" />
+    <link rel="canonical" href="<%= canonical %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%= pageTitle %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:url" content="<%= canonical %>" />
+    <meta property="og:image" content="https://conthunt.app/public/banner.png" />
+    <meta property="og:site_name" content="ContHunt" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= pageTitle %>" />
+    <meta name="twitter:description" content="<%= description %>" />
+    <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#030303" />
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/tailwind.css?v=20260912b" />
+    <link rel="stylesheet" href="/assets/css/style.css?v=20260912b" />
+    <link rel="stylesheet" href="/assets/css/docs.css?v=20260912b" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": <%- JSON.stringify(pageTitle) %>,
+        "description": <%- JSON.stringify(description) %>,
+        "url": <%- JSON.stringify(canonical) %>,
+        "publisher": {
+            "@type": "Organization",
+            "name": "ContHunt",
+            "url": "https://conthunt.app"
+        }
+    }
+    </script>
+</head>
+<body class="relative min-h-screen">
+    <div class="dark-zone" aria-hidden="true"></div>
+    <%- include('partials/site-nav', { navHome: false, navActive: 'docs' }) %>
+
+    <main class="relative z-10 pt-44 pb-12">
+        <div class="docs-shell">
+            <aside class="docs-sidebar" aria-label="Docs">
+                <p class="docs-side-label">Docs</p>
+                <a class="docs-side-link<%= active === 'overview' ? ' is-active' : '' %>" href="/docs">Overview</a>
+                <p class="docs-side-label">Integrations</p>
+                <a class="docs-side-link<%= active === 'skill' ? ' is-active' : '' %>" href="/docs/integrations/skill">Skill</a>
+                <a class="docs-side-link<%= active === 'mcp' ? ' is-active' : '' %>" href="/docs/integrations/mcp">MCP</a>
+            </aside>
+            <div>
+                <details class="docs-mobile-nav">
+                    <summary>Docs menu</summary>
+                    <a class="docs-side-link<%= active === 'overview' ? ' is-active' : '' %>" href="/docs">Overview</a>
+                    <p class="docs-side-label">Integrations</p>
+                    <a class="docs-side-link<%= active === 'skill' ? ' is-active' : '' %>" href="/docs/integrations/skill">Skill</a>
+                    <a class="docs-side-link<%= active === 'mcp' ? ' is-active' : '' %>" href="/docs/integrations/mcp">MCP</a>
+                </details>
+                <article class="docs-article">
+                    <%- body %>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#030303] pt-8 pb-20 text-sm z-20 relative">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="/public/favicon.png" alt="" class="w-6 h-6">
+                    <span class="font-semibold text-white">ContHunt</span>
+                </div>
+                <p class="text-neutral-500 max-w-xs">Install ContHunt in coding agents with a hosted MCP server and an agent skill.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-medium mb-4">Docs</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li><a href="/docs" class="hover:text-white transition-colors">Overview</a></li>
+                    <li><a href="/docs/integrations/skill" class="hover:text-white transition-colors">Skill</a></li>
+                    <li><a href="/docs/integrations/mcp" class="hover:text-white transition-colors">MCP</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500">
+                    <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="mailto:support@conthunt.app" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-neutral-600 text-xs">
+            <p>&copy; 2026 Synthenova Enterprises LLP, Chennai, India. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/assets/js/docs.js?v=20260912b" defer></script>
+</body>
+</html>

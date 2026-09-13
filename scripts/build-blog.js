@@ -17,6 +17,30 @@ const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.js
 const ORGANIZATION_SAMEAS_PATH = path.join(__dirname, 'data/organization-sameas.json');
 const DOMAIN = 'https://conthunt.app';
 
+
+function renderEjsFile(templateName, data) {
+    const filename = path.join(TEMPLATES_DIR, templateName);
+    const template = fs.readFileSync(filename, 'utf8');
+    return ejs.render(template, data, { filename });
+}
+
+function syncHomepageNav() {
+    const indexPath = path.join(PUBLIC_DIR, 'index.html');
+    const html = fs.readFileSync(indexPath, 'utf8');
+    const nav = renderEjsFile('partials/site-nav.ejs', { navHome: true, navActive: '' }).trim();
+    const startTok = '<!-- ' + 'SITE_NAV_START' + ' -->';
+    const endTok = '<!-- ' + 'SITE_NAV_END' + ' -->';
+    const startAt = html.indexOf(startTok);
+    const endAt = html.indexOf(endTok);
+    if (startAt === -1 || endAt === -1 || endAt < startAt) {
+        throw new Error('Could not find SITE_NAV markers in index.html');
+    }
+    const next = html.slice(0, startAt) + startTok + '\n  ' + nav + '\n  ' + endTok + html.slice(endAt + endTok.length);
+    fs.writeFileSync(indexPath, next);
+    console.log('Synced homepage nav');
+}
+
+
 function loadOrganizationSameAs() {
     const fallback = [
         'https://x.com/conthunt',
@@ -841,7 +865,6 @@ If you are briefing a creator or an editor, write down the audience, the promise
         </article>
         `;
 
-        const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const personSchema = profileAuthor ? {
             name: profileAuthor.name,
             url: profileAuthor.url || `${DOMAIN}/${slug}`,
@@ -849,7 +872,7 @@ If you are briefing a creator or an editor, write down the audience, the promise
             jobTitle: profileAuthor.role,
             description: profileAuthor.bio
         } : null;
-        const finalHtml = ejs.render(layout, {
+        const finalHtml = renderEjsFile('layout.ejs', {
             body: pageContent,
             pageTitle,
             seoTitle,
@@ -989,6 +1012,106 @@ function pingGoogleSitemap() {
         .catch(err => console.log('Google ping failed (non-critical):', err.message));
 }
 
+function listSkillFiles(dir, prefix = '') {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = [];
+    for (const entry of entries) {
+        if (entry.name.startsWith('.')) continue;
+        const rel = prefix ? prefix + '/' + entry.name : entry.name;
+        const abs = path.join(dir, entry.name);
+        if (entry.isDirectory()) files.push(...listSkillFiles(abs, rel));
+        else files.push(rel);
+    }
+    return files.sort();
+}
+
+function publishSkillsWellKnown() {
+    const skillSrc = path.join(PUBLIC_DIR, 'skills/conthunt');
+    const wellKnownRoot = path.join(PUBLIC_DIR, '.well-known/skills');
+    const skillDest = path.join(wellKnownRoot, 'conthunt');
+    fs.rmSync(wellKnownRoot, { recursive: true, force: true });
+    fs.mkdirSync(skillDest, { recursive: true });
+    fs.cpSync(skillSrc, skillDest, { recursive: true });
+
+    const raw = fs.readFileSync(path.join(skillSrc, 'SKILL.md'), 'utf8');
+    const parsed = matter(raw);
+    const description = (parsed.attributes && parsed.attributes.description) || 'ContHunt agent skill';
+    const files = listSkillFiles(skillSrc).filter((name) => name !== 'LICENSE');
+    const index = {
+        skills: [
+            {
+                name: 'conthunt',
+                description,
+                files
+            }
+        ]
+    };
+    fs.writeFileSync(path.join(wellKnownRoot, 'index.json'), JSON.stringify(index, null, 2) + '\n');
+    console.log('Generated: .well-known/skills/index.json');
+}
+
+function cleanGeneratedDocsOutput() {
+    const docsDir = path.join(PUBLIC_DIR, 'docs');
+    if (!fs.existsSync(docsDir)) {
+        fs.mkdirSync(docsDir, { recursive: true });
+        return;
+    }
+    for (const name of fs.readdirSync(docsDir)) {
+        fs.rmSync(path.join(docsDir, name), { recursive: true, force: true });
+    }
+}
+
+function buildDocs() {
+    console.log('Generating docs...');
+    cleanGeneratedDocsOutput();
+    publishSkillsWellKnown();
+
+    const pages = [
+        {
+            slug: '',
+            template: 'docs-home.ejs',
+            active: 'overview',
+            pageTitle: 'ContHunt Docs',
+            description: 'Connect ContHunt to your coding agent and install the ContHunt skill.',
+            canonical: DOMAIN + '/docs'
+        },
+        {
+            slug: 'integrations/skill',
+            template: 'docs-skill.ejs',
+            active: 'skill',
+            pageTitle: 'ContHunt skill',
+            description: 'Install the ContHunt skill so your coding agent already knows how to use ContHunt.',
+            canonical: DOMAIN + '/docs/integrations/skill'
+        },
+        {
+            slug: 'integrations/mcp',
+            template: 'docs-mcp.ejs',
+            active: 'mcp',
+            pageTitle: 'ContHunt MCP',
+            description: 'Connect ContHunt to Codex, Claude, Cursor, and other agents.',
+            canonical: DOMAIN + '/docs/integrations/mcp'
+        }
+    ];
+
+    for (const page of pages) {
+        const body = renderEjsFile(page.template, { active: page.active });
+        const html = renderEjsFile('docs-layout.ejs', {
+            body,
+            active: page.active,
+            pageTitle: page.pageTitle,
+            description: page.description,
+            canonical: page.canonical
+        });
+        const outputDir = page.slug
+            ? path.join(PUBLIC_DIR, 'docs', page.slug)
+            : path.join(PUBLIC_DIR, 'docs');
+        fs.mkdirSync(outputDir, { recursive: true });
+        fs.writeFileSync(path.join(outputDir, 'index.html'), html);
+        addToSitemap(page.slug ? '/docs/' + page.slug : '/docs');
+        console.log('Generated: docs/' + (page.slug ? page.slug + '/' : '') + 'index.html');
+    }
+}
+
 function buildTailwindCss() {
     console.log('Generating Tailwind CSS...');
     const executable = path.join(__dirname, '../node_modules/.bin/tailwindcss');
@@ -999,6 +1122,7 @@ function buildTailwindCss() {
         'assets/js/**/*.js',
         'public/*.js',
         'blog/**/*.html',
+        'docs/**/*.html',
         '{about,alex,authors,editorial,elena,lamrin,maya,privacy,terms,zach-sanders}/**/*.html'
     ].join(',');
     execFileSync(executable, [
@@ -1146,14 +1270,13 @@ async function build() {
         }
 
         // Render Post Page
-        const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
         const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.ejs'), 'utf8');
 
         // Allow overrides from frontmatter, otherwise default to standard format
         const canonicalUrl = normalizeCanonicalUrl(postData.canonical, `${DOMAIN}/blog/${postData.slug}`);
 
         const renderedPost = ejs.render(postTemplate, postData);
-        const finalHtml = ejs.render(layout, {
+        const finalHtml = renderEjsFile('layout.ejs', {
             body: renderedPost,
             pageTitle: postData.title,
             seoTitle: postData.seoTitle,
@@ -1180,7 +1303,6 @@ async function build() {
     }
 
     // 6. Generate Index Page
-    const layout = fs.readFileSync(path.join(TEMPLATES_DIR, 'layout.ejs'), 'utf8');
     const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.ejs'), 'utf8');
 
     const blogIndexTitle = 'ContHunt Blog: Short-Form Video Research Guides';
@@ -1189,7 +1311,7 @@ async function build() {
         blogIndexTitle
     );
     const renderedIndex = ejs.render(indexTemplate, { posts, pageTitle: blogIndexTitle });
-    const finalIndexHtml = ejs.render(layout, {
+    const finalIndexHtml = renderEjsFile('layout.ejs', {
         body: renderedIndex,
         pageTitle: blogIndexTitle,
         seoTitle: fitSeoTitle(blogIndexTitle),
@@ -1215,6 +1337,9 @@ async function build() {
 
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);
     console.log('Generated: blog/index.html');
+
+    buildDocs();
+    syncHomepageNav();
 
     // 7. Generate Sitemap
     generateSitemap();

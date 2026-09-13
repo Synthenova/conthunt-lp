@@ -96,6 +96,7 @@ const sectionsToTrack = [
     '#manual-research-section', // Pain point
     '#features', // Bento grid
     '#workflow', // How it works
+    '#mcp', // Agent MCP
     '#pricing' // Pricing
 ];
 
@@ -132,4 +133,3 @@ document.addEventListener('DOMContentLoaded', () => {
         workflowStepObserver.observe(step);
     });
 });
-

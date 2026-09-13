@@ -878,10 +878,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Step 3 Video Playback Control Script
 document.addEventListener('DOMContentLoaded', () => {
-    const copyPromptButton = document.getElementById('hero-copy-btn');
-    const copyPromptStatus = document.getElementById('hero-copy-status');
-    const copyPromptIcon = document.getElementById('hero-copy-icon');
-    const copyPromptLabel = document.getElementById('hero-copy-label');
+    const copyPromptButton = document.getElementById('mcp-copy-btn');
+    const copyPromptStatus = document.getElementById('mcp-copy-status');
+    const copyPromptIcon = document.getElementById('mcp-copy-icon');
+    const copyPromptLabel = document.getElementById('mcp-copy-label');
 
     const resetCopyState = () => {
         copyPromptStatus.textContent = '';

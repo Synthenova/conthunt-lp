@@ -173,7 +173,6 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
   <link rel="canonical" href="https://conthunt.app/" />
-  <link rel="preload" href="public/main-lottie-poster.webp" as="image" fetchpriority="high" />
   <link rel="stylesheet" href="assets/css/tailwind.css?v=20260906-perf1" />
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -185,6 +184,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -192,42 +192,47 @@
   <div class="dark-zone"></div>
   <div id="grid-torch"></div>
 
-  <!-- Navigation -->
-  <!-- Modified Navigation: replaced icon bowl with contHunt logo image -->
-  <nav
-    class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px]">
+  <!-- SITE_NAV_START -->
+  <nav class="fixed top-6 left-0 right-0 z-50 glass-nav h-[65px] flex items-center justify-center transition-all duration-300 mx-auto max-w-[95%] md:max-w-[1000px] site-nav">
     <div class="w-full max-w-6xl px-6 flex items-center justify-between relative">
-      <!-- Logo (left) -->
-      <div class="flex items-center">
-        <img src="public/logo-title-white.png" alt="ContHunt Logo" class="h-6 w-auto" />
-      </div>
-
-      <!-- Middle nav items (absolutely centered) -->
-      <div class="hidden md:flex items-center gap-8 font-nav absolute left-1/2 -translate-x-1/2">
-        <a href="/blog" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Resources
-        </a>
-        <a href="#workflow" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Workflow
-        </a>
-        <a href="#pricing" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Pricing
-        </a>
-      </div>
-
-      <!-- Right side nav items -->
-      <div class="flex items-center gap-4 font-nav">
-        <!-- <a href="#" class="hidden md:block text-xs font-bold text-neutral-400 hover:text-white transition-colors">
-          Log in
-        </a> -->
-        <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold"
-          style="margin-right: -15px;">
-          <span>LOGIN</span>
-          <iconify-icon icon="lucide:arrow-right" class="ml-1" width="12"></iconify-icon>
-        </a>
-      </div>
+        <div class="flex items-center">
+            <a href="/" aria-label="ContHunt home">
+                <img src="/public/logo-title-white.webp" alt="ContHunt Logo" width="462" height="78" class="h-6 w-auto" />
+            </a>
+        </div>
+        <div class="hidden md:flex items-center gap-6 lg:gap-8 font-nav absolute left-1/2 -translate-x-1/2">
+            <a href="/blog" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Blogs</a>
+            <a href="#mcp" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">MCP</a>
+            <a href="#pricing" class="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Pricing</a>
+        </div>
+        <div class="flex items-center gap-2 font-nav">
+            <details class="site-nav-menu md:hidden">
+                <summary>Menu</summary>
+                <div class="site-nav-dropdown">
+                    <a href="/blog">Blogs</a>
+                    <a href="#mcp">MCP</a>
+                    <a href="#pricing">Pricing</a>
+                </div>
+            </details>
+            <a href="https://agent.conthunt.app" class="glass-button px-5 py-4 text-xs font-bold" style="margin-right: -15px;">
+                <span>LOGIN</span>
+                <span class="ml-1" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
     </div>
-  </nav>
+</nav>
+<script>
+(function () {
+  document.querySelectorAll(".site-nav-menu").forEach(function (menu) {
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menu.removeAttribute("open");
+      });
+    });
+  });
+})();
+</script>
+  <!-- SITE_NAV_END -->
 
   <main class="relative z-10 pt-44 pb-0">
     <!-- HERO SECTION -->
@@ -250,7 +255,7 @@
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-3xl">
+      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
@@ -260,21 +265,6 @@
           GET STARTED
           <iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>
         </a>
-        <div class="w-full">
-          <p class="font-nav text-[0.65rem] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-3">
-            Using a coding agent?
-          </p>
-          <button id="hero-copy-btn" type="button" aria-label="Copy prompt" data-copy-target="hero-agent-prompt"
-            aria-describedby="hero-copy-status"
-            class="group flex items-center gap-4 w-full rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 md:px-6 md:py-5 text-left transition-all hover:border-cyan-400/40 hover:bg-white/[0.055] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70">
-            <span id="hero-agent-prompt" class="min-w-0 flex-1 truncate font-mono text-sm md:text-base text-neutral-200">Run npx skills add Synthenova/conthunt-cli --skill conthunt -g to install the ContHunt skill, then use it to find viral content in my niche.</span>
-            <span class="shrink-0 flex items-center gap-2 text-xs font-bold text-neutral-500 transition-colors group-hover:text-cyan-300">
-              <iconify-icon id="hero-copy-icon" icon="lucide:copy" width="19" aria-hidden="true"></iconify-icon>
-              <span id="hero-copy-label" class="hidden sm:inline">Copy</span>
-            </span>
-          </button>
-          <p id="hero-copy-status" aria-live="polite" class="sr-only"></p>
-        </div>
       </div>
 
       <!-- SIMULATED APP INTERFACE - NOW FULLY FUNCTIONAL -->
@@ -330,9 +320,8 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <img src="public/main-lottie-poster.webp" alt="ContHunt research dashboard preview"
-                width="1280" height="720" loading="eager" fetchpriority="high" decoding="async"
-                style="width: 100%; height: 100%; object-fit: cover;" />
+              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
+                style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
           </div>
         </div>
@@ -777,6 +766,43 @@
           GET STARTED
           <iconify-icon icon="lucide:sparkles" width="18"></iconify-icon>
         </a>
+      </div>
+    </section>
+
+    <!-- MCP -->
+    <section id="mcp" class="max-w-6xl mx-auto px-6 mb-[13rem] scroll-mt-32">
+      <div class="flex flex-col md:flex-row md:items-center gap-12 md:gap-20">
+        <div class="md:w-1/2">
+          <p class="font-nav text-[0.9rem] font-bold text-indigo-400 mb-8 uppercase">
+            MCP
+          </p>
+          <h2 class="text-3xl md:text-5xl font-medium text-white mb-6 tracking-tight">
+            Use ContHunt in your agent.
+          </h2>
+          <p class="text-neutral-400 text-xl leading-relaxed max-w-md mb-10">
+            Paste this into Codex, Claude, Cursor, Grok, or any agent that can add a server.
+          </p>
+          <button id="mcp-copy-btn" type="button" aria-label="Copy prompt" data-copy-target="mcp-agent-prompt"
+            aria-describedby="mcp-copy-status"
+            class="group flex items-start gap-4 w-full rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 md:px-6 md:py-5 text-left transition-all hover:border-white/20 hover:bg-white/[0.055] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/50">
+            <span id="mcp-agent-prompt" class="min-w-0 flex-1 font-mono text-sm md:text-[0.95rem] leading-relaxed text-neutral-200">Add a custom MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked.</span>
+            <span class="shrink-0 flex items-center gap-2 text-xs font-bold font-nav text-neutral-500 transition-colors group-hover:text-white pt-0.5">
+              <iconify-icon id="mcp-copy-icon" icon="lucide:copy" width="16" aria-hidden="true"></iconify-icon>
+              <span id="mcp-copy-label" class="hidden sm:inline">Copy</span>
+            </span>
+          </button>
+          <p id="mcp-copy-status" aria-live="polite" class="sr-only"></p>
+          <a href="/docs" class="inline-flex items-center gap-2 mt-8 font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.16em] uppercase">
+            Docs
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <div class="md:w-1/2 w-full">
+          <div
+            class="aspect-[3/2] w-full bg-[#080808] border border-white/5 rounded-2xl relative overflow-hidden"
+            aria-hidden="true">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1339,10 +1365,10 @@
         <h4 class="text-white font-medium mb-4">Product</h4>
         <ul class="space-y-2 text-neutral-500">
           <li>
-            <a href="/blog" class="hover:text-white transition-colors">Resources</a>
+            <a href="/blog" class="hover:text-white transition-colors">Blogs</a>
           </li>
           <li>
-            <a href="#workflow" class="hover:text-white transition-colors">Workflow</a>
+            <a href="#mcp" class="hover:text-white transition-colors">MCP</a>
           </li>
           <li>
             <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
