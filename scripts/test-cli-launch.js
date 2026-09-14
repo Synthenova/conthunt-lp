@@ -8,7 +8,7 @@ const script = fs.readFileSync(path.join(root, 'assets/js/script.js'), 'utf8');
 const nginx = fs.readFileSync(path.join(root, 'nginx.conf'), 'utf8');
 const skillDocs = fs.readFileSync(path.join(root, 'docs/integrations/skill/index.html'), 'utf8');
 
-const prompt = 'Add a custom MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked.';
+const prompt = 'Add an MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked.';
 const unixInstall = 'curl -fsSL https://conthunt.app/install.sh | sh';
 const windowsInstall = 'irm https://conthunt.app/install.ps1 | iex';
 

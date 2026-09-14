@@ -2,7 +2,7 @@
 
 Hosted MCP: https://mcp.conthunt.app
 
-If it is not connected, tell the user to add a custom MCP server named ContHunt at that URL and sign in when asked.
+If it is not connected, tell the user to add an MCP server named ContHunt at that URL and sign in when asked.
 
 ## What you can do
 
