@@ -1,7 +1,7 @@
 ---
 title: "Alex | ContHunt Creator Profile"
 description: "Alex covers viral formats, hooks, and creator workflows for ContHunt. Read the profile, research method, and featured short-form articles."
-updated: "2026-08-25"
+updated: "2026-09-14"
 ---
 
 **Role:** Content Creator  
@@ -32,8 +32,8 @@ Start with the question you need to answer, not with a view count. If you are lo
 
 - [Best Time to Post YouTube Shorts in 2026](/blog/best-time-to-post-youtube-shorts-2026)
 - [YouTube Shorts Analytics](/blog/youtube-shorts-analytics)
-- [What Is a Reel?](/blog/what-is-a-reel)
-- [Competitive Content Analysis](/blog/competitive-content-analysis)
+- [Instagram Reels Content Ideas](/blog/instagram-reels-content-ideas)
+- [Competitor Analysis Tools](/blog/competitor-analysis-tools)
 
 ## Related pages
 

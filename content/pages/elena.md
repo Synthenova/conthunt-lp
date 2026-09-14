@@ -1,7 +1,7 @@
 ---
 title: "Elena | ContHunt Marketing Profile"
 description: "Elena leads marketing at ContHunt. She writes about content strategy, positioning, and policy-aware pages for creators and B2B teams."
-updated: "2026-08-25"
+updated: "2026-09-14"
 ---
 
 **Role:** Head of Marketing  
@@ -28,9 +28,9 @@ Read the positioning and policy pages as constraints, not as growth hacks. If a 
 ## Featured articles
 
 - [Can You Use Copyrighted Music on YouTube Shorts?](/blog/can-you-use-copyrighted-music-on-youtube-shorts)
-- [Instagram Reels Strategy for Fitness Creators](/blog/instagram-reels-strategy-fitness)
 - [Instagram Reels Content Ideas](/blog/instagram-reels-content-ideas)
 - [Instagram Reels Analytics](/blog/instagram-reels-analytics)
+- [TikTok Shop Marketing Strategy](/blog/tiktok-shop-marketing-strategy)
 
 ## Related pages
 

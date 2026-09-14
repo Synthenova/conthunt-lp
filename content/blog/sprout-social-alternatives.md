@@ -127,6 +127,6 @@ Evaluate your needs against these three pillars:
 3.  **Creative research:** ContHunt fits when you need public short-form examples and briefing context, not when you need account governance.
 
 ### Related Reading
-*   [Competitive Content Analysis Breakdown](/blog/competitive-content-analysis)
+*   [Competitor Analysis Tools](/blog/competitor-analysis-tools)
 *   [How to Identify Market Trends in 2026](/blog/how-to-identify-market-trends)
 *   [Competitor Analysis Tools](/blog/competitor-analysis-tools)

@@ -84,10 +84,44 @@ for (const [hub, slugs] of Object.entries(clonesTo)) {
 const keep = [
     'how-to-monetize-youtube-shorts',
     'can-you-use-copyrighted-music-on-youtube-shorts',
-    'vidiq-review',
+    'vidiq-alternatives',
     'youtube-shorts-content-ideas',
 ];
 for (const slug of keep) exists(path.join(ROOT, 'content/blog', `${slug}.md`), `keep ${slug}`);
+
+const retiredToHub = {
+    'how-to-find-competitor-websites': 'competitor-analysis-tools',
+    'youtube-search-trends': 'youtube-trending-searches',
+    'ai-search-competitor-analysis': 'competitor-analysis-tools',
+    'instagram-reels-strategy-fitness': 'instagram-reels-content-ideas',
+    'viral-tiktok-ideas-fashion': 'find-winning-short-form-content',
+    'vidiq-review': 'vidiq-alternatives',
+    'tiktok-hashtags-go-viral': 'trending-hashtags',
+    'creative-green-screen-ideas-youtube-shorts-2026': 'youtube-shorts-content-ideas',
+    'how-to-check-tiktok-analytics': 'tiktok-analytics',
+    'how-to-make-a-reel-on-instagram': 'instagram-reels-content-ideas',
+    'what-is-a-reel': 'instagram-reels-content-ideas',
+    'tiktok-competitor-analysis': 'competitor-analysis-tools',
+    'youtube-vs-tiktok-analytics-creators': 'tiktok-vs-youtube-shorts-analytics',
+    'what-makes-a-video-viral': 'find-winning-short-form-content',
+    'tiktok-content-strategy-business': 'tiktok-shop-marketing-strategy',
+    'social-media-marketing-ideas': 'content-ideas',
+    'competitive-content-analysis': 'competitor-analysis-tools',
+    'social-media-analysis-guide': 'social-media-analytics-tools',
+    'how-to-make-a-video-go-viral': 'find-winning-short-form-content',
+    'social-media-post-ideas': 'content-ideas',
+};
+for (const [slug, hub] of Object.entries(retiredToHub)) {
+    notExists(path.join(ROOT, 'content/blog', `${slug}.md`), `retired md ${slug}`);
+    for (const loc of [`/blog/${slug}`, `/blog/${slug}/`]) {
+        const block = `location = ${loc} {\n            return 301 https://$host/blog/${hub};`;
+        if (nginx.includes(`location = ${loc}`) && nginx.includes(`/blog/${hub}`)) {
+            ok.push(`301 ${loc} -> ${hub}`);
+        } else {
+            fail.push(`missing 301 ${loc} -> ${hub}`);
+        }
+    }
+}
 
 const news = [
     ['instagram-reels-hashtags', 'instagram reels hashtags', '/blog/instagram-reels-content-ideas'],

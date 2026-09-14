@@ -205,7 +205,7 @@ Process and pricing explainers usually beat "guru" advice because the viewer can
 
 <a name="lifestyle"></a>
 ## 👗 Lifestyle, Fitness & Travel
-For fitness-specific Reels packaging, also see [Instagram Reels Strategy for Fitness](/blog/instagram-reels-strategy-fitness). For channel-level Shorts habits, see [How to Grow a YouTube Shorts Channel](/blog/how-to-grow-youtube-shorts-channel).
+For Reels packaging, also see [Instagram Reels Content Ideas](/blog/instagram-reels-content-ideas). For channel-level Shorts habits, see [How to Grow a YouTube Shorts Channel](/blog/how-to-grow-youtube-shorts-channel).
 1.  **Mini-Vlogs:** A day in the life of a 2026 creator.
 2.  **Fitness Quick-Guides:** Form checks and motivation.
 3.  **Home Organization:** Quick decluttering solutions.

@@ -78,6 +78,6 @@ hashtag generator only matters if it leads to a clearer page, better match, or s
 *ContHunt Tip:* Keep a short list of the terms that actually convert, not just the terms that attract traffic.
 ### Related Pages
 
-- [Tiktok Hashtags Go Viral](/blog/tiktok-hashtags-go-viral)
-- [Social Media Post Ideas](/blog/social-media-post-ideas)
+- [YouTube Shorts Hashtags](/blog/youtube-shorts-hashtags-guide)
 - [Content Ideas](/blog/content-ideas)
+- [Trending Hashtags](/blog/trending-hashtags)

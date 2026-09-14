@@ -161,4 +161,4 @@ In 2026, YouTube Studio is the better **retention and swipe** lab. Instagram Ins
 *   [Instagram Reels Analytics](/blog/instagram-reels-analytics)
 *   [YouTube Shorts Best Practices 2026](/blog/youtube-shorts-best-practices)
 *   [Instagram Reels Content Ideas](/blog/instagram-reels-content-ideas)
-*   [How to Check TikTok Analytics](/blog/how-to-check-tiktok-analytics)
+*   [How to Check TikTok Analytics](/blog/tiktok-analytics)

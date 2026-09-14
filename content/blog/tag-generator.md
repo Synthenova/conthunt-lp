@@ -79,5 +79,5 @@ tag generator only matters if it leads to a clearer page, better match, or stron
 ### Related Pages
 
 - [Content Ideas](/blog/content-ideas)
-- [Social Media Post Ideas](/blog/social-media-post-ideas)
 - [Youtube Tag Generator](/blog/youtube-tag-generator)
+- [Trending Hashtags](/blog/trending-hashtags)

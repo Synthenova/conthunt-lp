@@ -48,7 +48,7 @@ Start with content themes, publishing cadence, and the formats that get repeated
 
 Then compare search visibility, backlink strength, and the specific landing pages that win for commercial queries.
 
-If you do not have a clean competitor list yet, start with [How to Find Competitor Websites in 2026](/blog/how-to-find-competitor-websites), then come back to this framework.
+If you do not have a clean competitor list yet, start with [competitor analysis tools](/blog/competitor-analysis-tools), then come back to this framework.
 
 ## 2. Look for Repeatable Signals
 
@@ -81,6 +81,5 @@ competitor analysis only matters if it leads to a clearer page, better match, or
 ### Related Pages
 
 - [Competitor Analysis Tools](/blog/competitor-analysis-tools)
-- [How to Find Competitor Websites](/blog/how-to-find-competitor-websites)
-- [Competitive Content Analysis](/blog/competitive-content-analysis)
-- [Ai Search Competitor Analysis](/blog/ai-search-competitor-analysis)
+- [Instagram Competitor Analysis Tools](/blog/instagram-competitor-analysis-tools)
+- [How to Track YouTube Shorts Competitors](/blog/how-to-track-youtube-shorts-competitors)

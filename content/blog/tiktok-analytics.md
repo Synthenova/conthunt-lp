@@ -79,5 +79,5 @@ tiktok analytics only matters if it leads to a clearer page, better match, or st
 ### Related Pages
 
 - [Tiktok Vs Instagram Reels Creators](/blog/tiktok-vs-instagram-reels-creators)
-- [Tiktok Content Strategy Business](/blog/tiktok-content-strategy-business)
-- [Tiktok Hashtags Go Viral](/blog/tiktok-hashtags-go-viral)
+- [Tiktok Content Strategy Business](/blog/tiktok-shop-marketing-strategy)
+- [Tiktok Hashtags Go Viral](/blog/trending-hashtags)

@@ -153,7 +153,7 @@ The best competitor analysis stack usually combines more than one evidence sourc
 
 ### Related guides
 
-- [How to Find Competitor Websites in 2026](/blog/how-to-find-competitor-websites)
+- [Competitor Analysis](/blog/competitor-analysis)
 - [Instagram Competitor Analysis Tools](/blog/instagram-competitor-analysis-tools)
 - [How to Track YouTube Shorts Competitors](/blog/how-to-track-youtube-shorts-competitors)
 - [What Is Content Intelligence?](/blog/what-is-content-intelligence)

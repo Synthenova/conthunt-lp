@@ -122,7 +122,7 @@ Use captions in three places:
 
 The first line of the post caption should work like a second hook. If the video is about short-form video hooks, say that plainly. Do not bury the searchable phrase under jokes, emojis, or generic motivational copy.
 
-For analysis workflows, [Social Media Analysis Guide](/blog/social-media-analysis-guide) explains how to compare packaging and performance after publishing.
+For analysis workflows, [social media analytics tools](/blog/social-media-analytics-tools) explain how to compare packaging and performance after publishing.
 
 ## 5. Treat Hashtags as Context, Not Magic
 
