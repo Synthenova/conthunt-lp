@@ -2,7 +2,7 @@
 title: "100+ YouTube Shorts Ideas for Every Niche (2026 Master List)"
 description: "100+ YouTube Shorts content ideas for 2026, organized by niche, plus how to pick a format without chasing a generic trend."
 date: "2026-02-18"
-updated: "2026-09-11"
+updated: "2026-09-15"
 category: "Content Ideas"
 author: "ContHunt Editorial Team"
 image: "/public/banner.png"
@@ -32,8 +32,8 @@ stat_items:
     value: "100+"
     context: "Starter formats you can adapt, not a ranked list of guaranteed viral topics."
   - label: "Refresh Date"
-    value: "2026-08-27"
-    context: "Links, examples, and 2026 packaging notes updated in this pass."
+    value: "2026-09-15"
+    context: "Added travel recap ideas and a reusable shot-list worksheet."
 ---
 
 # 100+ YouTube Shorts Ideas for Every Niche (2026 Master List)
@@ -52,6 +52,7 @@ This hub is the live ideas list. Older niche URLs for gaming, cooking, tech, tra
 *   [Education: The Insight Bomb](#education)
 *   [Business: Structural Transparency](#business)
 *   [Lifestyle: Mini-Vlogs & Hacks](#lifestyle)
+    *   [Travel Recaps: Ideas & Shot-List Worksheet](#travel-recap-ideas-and-shot-list-worksheet)
 *   [Faceless: Creative Automation](#faceless)
 
 For hooks, covers, and retention, use [YouTube Shorts Best Practices 2026](/blog/youtube-shorts-best-practices). For tags after the idea is locked, use [Best Hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide).
@@ -216,6 +217,34 @@ For Reels packaging, also see [Instagram Reels Content Ideas](/blog/instagram-re
 8.  **Pet Training Tricks:** Demonstrating specific commands.
 9.  **Sustainable Living:** Small changes for the 2026 home.
 10. **Morning Routines (2026 Version):** Habits for high performance.
+
+### Travel Recap Ideas and Shot-List Worksheet
+
+A useful travel Short answers one question about one place: what you saw, how you got there, or what you would do differently. Start with footage you recorded, choose one payoff, and build the recap around the shots that support it. These are filming prompts, not tested performance benchmarks or a promise of reach.
+
+1. **One stop, three details:** Show the place, one close-up, and the detail you almost missed.
+2. **Station to viewpoint:** Film the route's key turns and the arrival. Date the trip and check current access information before publishing directions.
+3. **The actual cost of one outing:** Show your own receipts with personal details covered. State the date, currency, and what the total excludes.
+4. **Expectation and arrival:** Compare your plan with your own footage of what happened, without presenting another creator's clip as yours.
+5. **One packing decision:** Show an item in use and explain whether you would bring it again for this kind of trip.
+6. **A rainy-day alternative:** Tell the story of a changed plan using the forecast you saw, the replacement activity, and the result.
+7. **The same scene at two times:** Label when each shot was taken so changing light or crowds are observations from your visit, not universal claims.
+8. **One mistake and the next-trip fix:** Show the missed turn, unsuitable bag, or rushed stop, then give one specific change you would make.
+
+Copy this worksheet into your filming notes. The prompts below describe an illustrative route recap; replace them with your own location, footage, and verified details.
+
+| Brief field | What to record |
+| --- | --- |
+| Viewer question | Can I understand the route from the station to the viewpoint? |
+| Opening shot | Your arrival view, with the location named on screen |
+| Supporting shots | Station exit, relevant turn or landmark, then the destination |
+| Evidence | Filming date, your actual journey notes, and an official access-information URL if you give directions |
+| Payoff | The arrival and one practical thing you would do differently |
+| Caption | Location and visit date; qualify prices, journey times, and conditions as observations from that visit |
+| Reuse check | Keep your original footage and a clean edit; check music and footage permissions for each destination platform |
+| Next test | Try a different opening on a later, comparable recap; record what changed and review your own analytics |
+
+If you publish the recap as both a Reel and a Short, keep the viewer question consistent while adapting the caption and on-screen text to each upload. Use the [short-form video best practices checklist](/blog/short-form-video-best-practices) for packaging and the [Shorts analytics guide](/blog/youtube-shorts-analytics) for reviewing the result. Public view counts alone cannot tell you whether a travel format will work for your audience.
 
 ---
 
