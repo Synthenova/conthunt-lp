@@ -1,0 +1,33 @@
+{
+  "collected_at": "2026-09-15T06:16:33Z",
+  "source": "Public YouTube search result pages with the Shorts type filter selected.",
+  "source_pages": [
+    {
+      "query": "youtube shorts content ideas",
+      "file": "youtube-shorts-content-ideas.html",
+      "searchUrl": "https://www.youtube.com/results?search_query=youtube+shorts+content+ideas&sp=EgIQCQ%253D%253D"
+    },
+    {
+      "query": "youtube shorts editing tips",
+      "file": "youtube-shorts-editing-tips.html",
+      "searchUrl": "https://www.youtube.com/results?search_query=youtube+shorts+editing+tips&sp=EgIQCQ%253D%253D"
+    },
+    {
+      "query": "youtube shorts analytics",
+      "file": "youtube-shorts-analytics.html",
+      "searchUrl": "https://www.youtube.com/results?search_query=youtube+shorts+analytics&sp=EgIQCQ%253D%253D"
+    }
+  ],
+  "raw_observations": 79,
+  "unique_shorts": 74,
+  "duplicate_video_ids": 5,
+  "rows_with_view_text": 79,
+  "rows_with_1080x1920_thumbnail": 51,
+  "title_signal_counts_unique": {
+    "how_or_tutorial": 19,
+    "number_or_list": 23,
+    "ai_mentioned": 2,
+    "money_or_growth_claim": 21,
+    "editing_or_tooling": 19
+  }
+}

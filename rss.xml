@@ -6,7 +6,15 @@
     <description>Latest insights, tutorials, and updates from ContHunt.</description>
     <language>en-us</language>
     <atom:link href="https://conthunt.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 15 Sep 2026 06:16:04 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 06:20:33 GMT</lastBuildDate>
+    <item>
+      <title><![CDATA[YouTube Shorts Public Search Benchmark 2026]]></title>
+      <link>https://conthunt.app/blog/youtube-shorts-public-search-benchmark-2026</link>
+      <description><![CDATA[A reproducible public sample of 74 YouTube Shorts search observations, with source URLs, fields, exclusions, and caveats.]]></description>
+      <category>YouTube</category>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://conthunt.app/blog/youtube-shorts-public-search-benchmark-2026</guid>
+    </item>
     <item>
       <title><![CDATA[YouTube Tags vs Hashtags: What to Use on Shorts]]></title>
       <link>https://conthunt.app/blog/youtube-tags-vs-hashtags</link>
