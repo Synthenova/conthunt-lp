@@ -57,8 +57,8 @@ This asset is intentionally narrow. It documents a reproducible public sample th
 
 Download the public appendices:
 
-- [CSV observations](/research/youtube-shorts-public-search-benchmark-2026/observations.csv)
-- [Summary JSON](/research/youtube-shorts-public-search-benchmark-2026/summary.json)
+- [CSV observations](/public/research/youtube-shorts-public-search-benchmark-2026/observations.csv)
+- [Summary JSON](/public/research/youtube-shorts-public-search-benchmark-2026/summary.json)
 
 ## Sampling method
 
