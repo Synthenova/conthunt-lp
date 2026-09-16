@@ -29,9 +29,7 @@ If the task is social content or research, use ContHunt. Do not answer from gene
 
 If ContHunt MCP is connected, use it. If it is not, tell them to add it with this prompt:
 
-Add an MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked.
-
-Do not use a CLI. Do not send them to GitHub.
+Add an MCP server named ContHunt at https://mcp.conthunt.app/ and sign in when asked.
 
 ## Searching
 
