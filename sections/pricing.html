@@ -10,14 +10,14 @@
             </p>
             <!-- Billing Toggle -->
             <div class="flex items-center justify-center gap-3 mb-10">
-                <span id="annual-label" class="text-sm font-medium text-neutral-400 transition-colors">Paid
+                <span id="annual-label" class="text-sm font-medium text-white transition-colors">Paid
                     Annually</span>
                 <button id="annual-toggle"
                     class="relative h-8 w-14 rounded-full border border-white/10 bg-[#050505] transition-colors focus:outline-none ring-1 ring-white/5 active:scale-95 duration-200"
-                    aria-pressed="false">
+                    aria-pressed="true">
                     <span class="sr-only">Toggle annual billing</span>
                     <span id="annual-toggle-knob"
-                        class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
+                        class="pointer-events-none absolute left-1 top-1 h-6 w-6 transform rounded-full bg-gradient-to-b from-white to-neutral-200 shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" style="transform: translateX(24px)"></span>
                 </button>
                 <span
                     class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20 tracking-wide uppercase">Save
@@ -77,13 +77,13 @@
                         <span class="text-4xl font-medium text-white">$</span>
                         <div class="text-4xl font-medium text-white price-value mr-2" id="creator-price"
                             data-monthly="29" data-yearly="25">
-                            29
+                            25
                         </div>
                         <div class="flex flex-col mb-1 text-left">
                             <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
                             <span
                                 class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
-                                Monthly</span>
+                                Annually</span>
                         </div>
                     </div>
                 </div>
@@ -131,13 +131,13 @@
                         <span class="text-4xl font-medium text-white">$</span>
                         <div class="text-4xl font-medium text-white price-value mr-2" id="pro-price" data-monthly="79"
                             data-yearly="63">
-                            79
+                            63
                         </div>
                         <div class="flex flex-col mb-1 text-left">
                             <span class="text-base text-neutral-500 font-normal pricing-month">/mo</span>
                             <span
                                 class="text-[10px] text-neutral-600 font-medium uppercase tracking-wide billing-period-text">Billed
-                                Monthly</span>
+                                Annually</span>
                         </div>
                     </div>
                 </div>

@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const proPriceEl = document.getElementById('pro-price');
     const billingTexts = document.querySelectorAll('.billing-period-text');
 
-    let isAnnual = false;
+    let isAnnual = true;
 
     // Smooth counting animation for numbers
     function animateValue(obj, start, end, duration) {
@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (toggleBtn) {
+        updateState();
         toggleBtn.addEventListener('click', () => {
             isAnnual = !isAnnual;
             updateState();
