@@ -4,11 +4,15 @@
     --font-nav: 'DM Sans', sans-serif;
 }
 
+html,
+body {
+    overflow-x: clip;
+}
+
 body {
     font-family: var(--font-main);
     background-color: #030303;
     color: #a3a3a3;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -238,6 +242,7 @@ header {
 }
 
 .marquee-container {
+    overflow: clip;
     mask-image: linear-gradient(to right,
             transparent,
             black 10%,
