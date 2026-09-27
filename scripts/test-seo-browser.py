@@ -48,12 +48,12 @@ try:
         for selector in ['h1', '#hero-waitlist-btn']:
             assert static_page.locator(selector).evaluate('el => { for (; el; el = el.parentElement) { if (getComputedStyle(el).opacity === "0") return false; } return true; }'), selector
         static_page.close()
-        page = browser.new_page(viewport={'width': 375, 'height': 600})
+        page = browser.new_page(viewport={'width': 375, 'height': 812})
         requests = []
         page.on('request', lambda r: requests.append(r.url) if 'main_lottie.json' in r.url else None)
         page.goto(base, wait_until='networkidle')
         assert len(requests) == 0, requests
-        page.locator('#main-lottie').scroll_into_view_if_needed()
+        page.locator('#main-lottie-start-btn').click()
         page.wait_for_function("document.querySelector('#main-lottie')?.getLottie?.()?.currentFrame > 0")
         assert len(requests) == 1, requests
         for route in ['/', '/docs', '/docs/integrations/skill', '/docs/integrations/mcp', '/blog/youtube-shorts-hashtags-guide', '/blog/youtube-shorts-content-ideas']:
@@ -64,4 +64,4 @@ try:
         browser.close()
 finally:
     server.shutdown()
-print('PASS: authored content has no build padding; sitemap dates match; hero is visible without JavaScript; Lottie downloads once and plays; homepage, docs and sample blogs fit four viewports.')
+print('PASS: authored content has no build padding; sitemap dates match; hero is visible without JavaScript; Lottie waits for a click, downloads once and plays; homepage, docs and sample blogs fit four viewports.')

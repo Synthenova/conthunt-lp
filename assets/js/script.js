@@ -143,56 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Changing Word Animation
-document.addEventListener('DOMContentLoaded', () => {
-    const target = document.getElementById('changing-word');
-    if (!target) return;
-
-    target.innerText = 'marketing';
-
-    const words = [
-        'marketing',
-        'ecommerce',
-        'content idea',
-        'brand growth'
-    ];
-    let wordIndex = 0;
-    const chars =
-        'abcdefghijklmnopqrstuvwxyz';
-
-    function scramble(newText) {
-        let iteration = 0;
-        clearInterval(target.interval);
-
-        target.interval = setInterval(() => {
-            target.innerText = newText
-                .split('')
-                .map((letter, index) => {
-                    if (index < iteration) {
-                        return newText[index];
-                    }
-                    return chars[Math.floor(Math.random() * chars.length)];
-                })
-                .join('');
-
-            if (iteration >= newText.length) {
-                clearInterval(target.interval);
-                setTimeout(() => {
-                    wordIndex = (wordIndex + 1) % words.length;
-                    scramble(words[wordIndex]);
-                }, 3000);
-            }
-
-            iteration += 1 / 2;
-        }, 30);
-    }
-
-    setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
-        scramble(words[wordIndex]);
-    }, 2000);
-});
-
 // Cinematic Scroll Animation
 document.addEventListener('scroll', () => {
     const section = document.getElementById('cinematic-section');
@@ -719,31 +669,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const replayBtn = document.getElementById('lottie-replay-btn');
 
     if (player) {
-        let hasPlayed = false;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasPlayed && player.load) {
-                    hasPlayed = true;
-                    fetch(player.dataset.src)
-                        .then(response => {
-                            if (!response.ok) throw new Error(`Demo request failed: ${response.status}`);
-                            return response.json();
-                        })
-                        .then(animation => {
-                            player.addEventListener('ready', () => player.play(), { once: true });
-                            player.load(animation);
-                            observer.unobserve(player);
-                        })
-                        .catch(error => {
-                            hasPlayed = false;
-                            console.error('Could not load the demo animation', error);
-                        });
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(player);
+        const startBtn = document.getElementById('main-lottie-start-btn');
+        startBtn.addEventListener('click', async () => {
+            startBtn.disabled = true;
+            try {
+                const response = await fetch(player.dataset.src);
+                if (!response.ok) throw new Error(`Demo request failed: ${response.status}`);
+                const animation = await response.json();
+                player.addEventListener('ready', () => player.play(), { once: true });
+                await player.load(animation);
+                startBtn.classList.add('hidden');
+            } catch (error) {
+                startBtn.disabled = false;
+                startBtn.textContent = 'Retry demo';
+                console.error('Could not load the demo animation', error);
+            }
+        });
 
         player.addEventListener('complete', () => {
             if (replayBtn) {

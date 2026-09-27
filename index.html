@@ -147,7 +147,7 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#030303" />
   <link rel="canonical" href="https://conthunt.app/" />
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=20260906-perf1" />
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=20260927-demo" />
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
@@ -294,6 +294,10 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
+              <button type="button" id="main-lottie-start-btn"
+                class="absolute z-10 rounded-full border border-white/20 bg-neutral-900 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-800 disabled:opacity-60">
+                Play product demo
+              </button>
               <lottie-player id="main-lottie" data-src="/public/main_lottie.json" background="transparent" speed="1"
                 style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
@@ -1369,7 +1373,7 @@
     </div>
   </footer>
   <script src="public/step2-animation.js" defer></script>
-  <script src="assets/js/script.js?v=20260927-seo" defer></script>
+  <script src="assets/js/script.js?v=20260927-demo" defer></script>
   <script src="public/analytics.js" defer></script>
   <script>
     window.addEventListener('load', () => {
