@@ -723,18 +723,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !hasPlayed) {
-                    if (player.play) {
-                        player.play();
-                        hasPlayed = true;
-                    } else {
-                        player.addEventListener('ready', () => {
-                            if (!hasPlayed) {
-                                player.play();
-                                hasPlayed = true;
-                            }
+                if (entry.isIntersecting && !hasPlayed && player.load) {
+                    hasPlayed = true;
+                    fetch(player.dataset.src)
+                        .then(response => {
+                            if (!response.ok) throw new Error(`Demo request failed: ${response.status}`);
+                            return response.json();
+                        })
+                        .then(animation => {
+                            player.addEventListener('ready', () => player.play(), { once: true });
+                            player.load(animation);
+                            observer.unobserve(player);
+                        })
+                        .catch(error => {
+                            hasPlayed = false;
+                            console.error('Could not load the demo animation', error);
                         });
-                    }
                 }
             });
         }, { threshold: 0.5 });

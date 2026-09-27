@@ -57,12 +57,15 @@
           "url": resolvedCanonical,
           "isPartOf": { "@type": "WebSite", "name": "ContHunt", "url": "https://conthunt.app/" },
           "description": description || '',
-          ...(typeof updated !== 'undefined' && updated ? { "dateModified": updated } : {})
+          ...(typeof updated !== 'undefined' && updated ? { "dateModified": new Date(updated).toISOString() } : {}),
+          ...(typeof personSchema !== 'undefined' && personSchema && personSchema.name
+            ? { "mainEntity": { "@id": `${resolvedCanonical}#person` } } : {})
         }
       ];
       if (typeof personSchema !== 'undefined' && personSchema && personSchema.name) {
         graph.push({
           "@type": "Person",
+          "@id": `${resolvedCanonical}#person`,
           "name": personSchema.name,
           ...(personSchema.url ? { "url": personSchema.url } : {}),
           ...(personSchema.image ? { "image": personSchema.image } : {}),

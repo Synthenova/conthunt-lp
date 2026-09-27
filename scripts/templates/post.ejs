@@ -1,7 +1,6 @@
 <%
-  const tocSkip = /how should you apply|what should you write down|which conthunt workflow/i;
   const visibleToc = Array.isArray(tocItems)
-    ? tocItems.filter(item => item.level === 2 && !tocSkip.test(item.title || '')).slice(0, 8)
+    ? tocItems.filter(item => item.level === 2).slice(0, 8)
     : [];
 %>
 <article class="blog-post">

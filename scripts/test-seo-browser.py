@@ -10,6 +10,19 @@ import xml.etree.ElementTree as ET
 from playwright.sync_api import sync_playwright
 
 root = Path(__file__).resolve().parents[1]
+for source in (root / 'content').glob('*/*.md'):
+    output = root / ('blog' if source.parent.name == 'blog' else '') / source.stem / 'index.html'
+    html = output.read_text()
+    assert 'How should you apply ' not in html, source
+    assert 'How this page is maintained' not in html, source
+assert 'What YouTube Officially Says About Hashtags' in (root / 'blog/youtube-shorts-hashtags-guide/index.html').read_text()
+for slug in ['alex', 'elena', 'lamrin', 'maya', 'zach-sanders']:
+    blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', (root / slug / 'index.html').read_text(), re.S)
+    graph = next(json.loads(block)['@graph'] for block in blocks if '"@graph"' in block)
+    profile = next(item for item in graph if 'ProfilePage' in item.get('@type', []))
+    person = next(item for item in graph if item.get('@type') == 'Person')
+    assert profile['mainEntity']['@id'] == person['@id'], slug
+    assert profile['dateModified'].endswith('Z'), slug
 animation = json.loads((root / 'public/main_lottie.json').read_text())
 assert animation['v'] and animation['fr'] > 0
 assert animation['op'] > animation['ip'] and animation['layers']
@@ -29,17 +42,21 @@ threading.Thread(target=server.serve_forever, daemon=True).start()
 try:
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(viewport={'width': 375, 'height': 812})
+        base = f'http://127.0.0.1:{server.server_port}'
+        static_page = browser.new_page(java_script_enabled=False, viewport={'width': 375, 'height': 812})
+        static_page.goto(base, wait_until='load')
+        for selector in ['h1', '#hero-waitlist-btn']:
+            assert static_page.locator(selector).evaluate('el => { for (; el; el = el.parentElement) { if (getComputedStyle(el).opacity === "0") return false; } return true; }'), selector
+        static_page.close()
+        page = browser.new_page(viewport={'width': 375, 'height': 600})
         requests = []
         page.on('request', lambda r: requests.append(r.url) if 'main_lottie.json' in r.url else None)
-        base = f'http://127.0.0.1:{server.server_port}'
         page.goto(base, wait_until='networkidle')
-        page.locator('#main-lottie-start-btn').scroll_into_view_if_needed()
         assert len(requests) == 0, requests
-        page.locator('#main-lottie-start-btn').click()
+        page.locator('#main-lottie').scroll_into_view_if_needed()
         page.wait_for_function("document.querySelector('#main-lottie')?.getLottie?.()?.currentFrame > 0")
         assert len(requests) == 1, requests
-        for route in ['/docs', '/docs/integrations/skill', '/docs/integrations/mcp']:
+        for route in ['/', '/docs', '/docs/integrations/skill', '/docs/integrations/mcp', '/blog/youtube-shorts-hashtags-guide', '/blog/youtube-shorts-content-ideas']:
             page.goto(base + route, wait_until='networkidle')
             for width in [320, 375, 768, 1280]:
                 page.set_viewport_size({'width': width, 'height': 812})
@@ -47,4 +64,4 @@ try:
         browser.close()
 finally:
     server.shutdown()
-print('PASS: Lottie validates, waits for user intent, downloads once and plays; all docs fit four viewports.')
+print('PASS: authored content has no build padding; sitemap dates match; hero is visible without JavaScript; Lottie downloads once and plays; homepage, docs and sample blogs fit four viewports.')

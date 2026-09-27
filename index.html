@@ -158,7 +158,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=20260920-overflow" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js" defer></script>
 </head>
 
 <body class="relative min-h-screen">
@@ -215,7 +215,7 @@
 
 
       <h1
-        class="reveal-element md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
+        class="md:text-[5.5rem] text-[10vw] font-semibold tracking-tight text-white mb-7 leading-[1.1] max-w-4xl">
         Third eye for your
         <br />
         <span id="changing-word"
@@ -224,12 +224,12 @@
       </h1>
 
       <p
-        class="reveal-element text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
+        class="text-[1.2rem] leading-[1.4] md:text-2xl text-neutral-400 font-light max-w-[18rem] md:max-w-2xl mb-12">
         Aggregates viral videos across all social media platforms, analyzes every frame and uncovers niche gold before
         it trends.
       </p>
 
-      <div class="reveal-element flex flex-col items-center gap-6 w-full max-w-md">
+      <div class="flex flex-col items-center gap-6 w-full max-w-md">
         <button id="view-demo-btn"
           class="hidden md:block font-nav text-xs font-bold text-neutral-500 hover:text-white transition-colors tracking-[0.2em] uppercase">
           View Demo
@@ -294,7 +294,7 @@
 
             <!-- Content Area -->
             <div class="flex-1 bg-[#050505] overflow-hidden relative flex items-center justify-center">
-              <lottie-player id="main-lottie" src="public/main_lottie.json" background="transparent" speed="1"
+              <lottie-player id="main-lottie" data-src="/public/main_lottie.json" background="transparent" speed="1"
                 style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid slice" mode="normal"></lottie-player>
             </div>
           </div>
@@ -1369,7 +1369,7 @@
     </div>
   </footer>
   <script src="public/step2-animation.js" defer></script>
-  <script src="assets/js/script.js?v=20260918-annual" defer></script>
+  <script src="assets/js/script.js?v=20260927-seo" defer></script>
   <script src="public/analytics.js" defer></script>
   <script>
     window.addEventListener('load', () => {
