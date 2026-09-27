@@ -6,7 +6,7 @@
 
 html,
 body {
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 body {
@@ -242,7 +242,10 @@ header {
 }
 
 .marquee-container {
-    overflow: clip;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    contain: paint;
     mask-image: linear-gradient(to right,
             transparent,
             black 10%,
@@ -261,6 +264,25 @@ header {
 
 .marquee-track-right {
     animation: marqueeScroll 40s linear infinite reverse;
+}
+
+@media (max-width: 767px) {
+    .light-torch {
+        display: none;
+    }
+
+    .marquee-track,
+    .marquee-track-right {
+        animation: none;
+        justify-content: center;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .marquee-track > :nth-child(n+2),
+    .marquee-track-right > :nth-child(n+2) {
+        display: none;
+    }
 }
 
 /* Grid Background */
