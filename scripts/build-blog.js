@@ -15,6 +15,12 @@ const AUTHORS_PATH = path.join(__dirname, 'data/authors.json');
 const AUTHOR_ASSIGNMENTS_PATH = path.join(__dirname, 'data/author-assignments.json');
 const DOMAIN = 'https://conthunt.app';
 
+function renderEjsFile(templateName, data) {
+    const filename = path.join(TEMPLATES_DIR, templateName);
+    const template = fs.readFileSync(filename, 'utf8');
+    return ejs.render(template, data, { filename });
+}
+
 // Load authors list
 function loadAuthors() {
     if (!fs.existsSync(AUTHORS_PATH)) {
@@ -811,6 +817,106 @@ function pingGoogleSitemap() {
         .catch(err => console.log('Google ping failed (non-critical):', err.message));
 }
 
+function listSkillFiles(dir, prefix = '') {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = [];
+    for (const entry of entries) {
+        if (entry.name.startsWith('.')) continue;
+        const rel = prefix ? prefix + '/' + entry.name : entry.name;
+        const abs = path.join(dir, entry.name);
+        if (entry.isDirectory()) files.push(...listSkillFiles(abs, rel));
+        else files.push(rel);
+    }
+    return files.sort();
+}
+
+function publishSkillsWellKnown() {
+    const skillSrc = path.join(PUBLIC_DIR, 'skills/conthunt');
+    const wellKnownRoot = path.join(PUBLIC_DIR, '.well-known/skills');
+    const skillDest = path.join(wellKnownRoot, 'conthunt');
+    fs.rmSync(wellKnownRoot, { recursive: true, force: true });
+    fs.mkdirSync(skillDest, { recursive: true });
+    fs.cpSync(skillSrc, skillDest, { recursive: true });
+
+    const raw = fs.readFileSync(path.join(skillSrc, 'SKILL.md'), 'utf8');
+    const parsed = matter(raw);
+    const description = (parsed.attributes && parsed.attributes.description) || 'ContHunt agent skill';
+    const files = listSkillFiles(skillSrc).filter((name) => name !== 'LICENSE');
+    const index = {
+        skills: [
+            {
+                name: 'conthunt',
+                description,
+                files
+            }
+        ]
+    };
+    fs.writeFileSync(path.join(wellKnownRoot, 'index.json'), JSON.stringify(index, null, 2) + '\n');
+    console.log('Generated: .well-known/skills/index.json');
+}
+
+function cleanGeneratedDocsOutput() {
+    const docsDir = path.join(PUBLIC_DIR, 'docs');
+    if (!fs.existsSync(docsDir)) {
+        fs.mkdirSync(docsDir, { recursive: true });
+        return;
+    }
+    for (const name of fs.readdirSync(docsDir)) {
+        fs.rmSync(path.join(docsDir, name), { recursive: true, force: true });
+    }
+}
+
+function buildDocs() {
+    console.log('Generating docs...');
+    cleanGeneratedDocsOutput();
+    publishSkillsWellKnown();
+
+    const pages = [
+        {
+            slug: '',
+            template: 'docs-home.ejs',
+            active: 'overview',
+            pageTitle: 'ContHunt Docs',
+            description: 'Connect ContHunt to your coding agent and install the ContHunt skill.',
+            canonical: DOMAIN + '/docs'
+        },
+        {
+            slug: 'integrations/skill',
+            template: 'docs-skill.ejs',
+            active: 'skill',
+            pageTitle: 'ContHunt skill',
+            description: 'Install the ContHunt skill so your coding agent already knows how to use ContHunt.',
+            canonical: DOMAIN + '/docs/integrations/skill'
+        },
+        {
+            slug: 'integrations/mcp',
+            template: 'docs-mcp.ejs',
+            active: 'mcp',
+            pageTitle: 'ContHunt MCP',
+            description: 'Connect ContHunt to Codex, Claude, Cursor, and other agents.',
+            canonical: DOMAIN + '/docs/integrations/mcp'
+        }
+    ];
+
+    for (const page of pages) {
+        const body = renderEjsFile(page.template, { active: page.active });
+        const html = renderEjsFile('docs-layout.ejs', {
+            body,
+            active: page.active,
+            pageTitle: page.pageTitle,
+            description: page.description,
+            canonical: page.canonical
+        });
+        const outputDir = page.slug
+            ? path.join(PUBLIC_DIR, 'docs', page.slug)
+            : path.join(PUBLIC_DIR, 'docs');
+        fs.mkdirSync(outputDir, { recursive: true });
+        fs.writeFileSync(path.join(outputDir, 'index.html'), html);
+        addToSitemap(page.slug ? '/docs/' + page.slug : '/docs');
+        console.log('Generated: docs/' + (page.slug ? page.slug + '/' : '') + 'index.html');
+    }
+}
+
 // Main Build Function
 async function build() {
     sitemapUrls = []; // Reset
@@ -973,6 +1079,8 @@ async function build() {
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), finalIndexHtml);
     console.log('Generated: blog/index.html');
 
+    buildDocs();
+
     // 7. Generate Sitemap
     generateSitemap();
 
@@ -988,4 +1096,7 @@ async function build() {
     console.log('Blog build complete!');
 }
 
-build().catch(err => console.error(err));
+build().catch(err => {
+    console.error(err);
+    process.exitCode = 1;
+});

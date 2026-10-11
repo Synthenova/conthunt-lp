@@ -876,6 +876,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// MCP setup and mobile navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const copyPromptButton = document.getElementById('mcp-copy-btn');
+    const copyPromptStatus = document.getElementById('mcp-copy-status');
+    const copyPromptIcon = document.getElementById('mcp-copy-icon');
+    const copyPromptLabel = document.getElementById('mcp-copy-label');
+
+    const resetCopyState = () => {
+        copyPromptStatus.textContent = '';
+        copyPromptIcon?.setAttribute('icon', 'lucide:copy');
+        if (copyPromptLabel) copyPromptLabel.textContent = 'Copy';
+    };
+
+    if (copyPromptButton && copyPromptStatus) {
+        let resetTimer;
+        copyPromptButton.addEventListener('click', async () => {
+            const promptElement = document.getElementById(copyPromptButton.dataset.copyTarget);
+            if (!promptElement) return;
+
+            const text = promptElement.textContent.trim();
+            let copied = false;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                copied = true;
+            } catch {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                copied = document.execCommand('copy');
+                textarea.remove();
+            }
+
+            copyPromptStatus.textContent = copied ? 'Copied to clipboard.' : 'Copy failed — select the prompt and copy it manually.';
+            if (!copied) return;
+            copyPromptIcon?.setAttribute('icon', 'lucide:check');
+            if (copyPromptLabel) copyPromptLabel.textContent = 'Copied';
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(resetCopyState, 2000);
+        });
+        document.addEventListener('pointerdown', (event) => {
+            if (!copyPromptButton.contains(event.target)) resetCopyState();
+        });
+    }
+
+    document.querySelectorAll('.site-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => link.closest('details').removeAttribute('open'));
+    });
+});
+
 // Step 3 Video Playback Control Script
 document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('step3-video');
