@@ -78,6 +78,5 @@ tiktok analytics only matters if it leads to a clearer page, better match, or st
 *ContHunt Tip:* Keep a short list of the terms that actually convert, not just the terms that attract traffic.
 ### Related Pages
 
-- [Tiktok Vs Instagram Reels Creators](/blog/tiktok-vs-instagram-reels-creators)
-- [Tiktok Content Strategy Business](/blog/tiktok-content-strategy-business)
-- [Tiktok Hashtags Go Viral](/blog/tiktok-hashtags-go-viral)
+- [Social Media Analytics Tools](/blog/social-media-analytics-tools)
+- [Instagram Reels vs. YouTube Shorts Analytics](/blog/instagram-reels-vs-youtube-shorts-analytics)

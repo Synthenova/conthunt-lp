@@ -121,6 +121,10 @@ function normalizeCanonicalUrl(value, fallback) {
     return stripTrailingSlash(fallback);
 }
 
+function stripLeadingMarkdownH1(body) {
+    return String(body || '').replace(/^\uFEFF?\s*#\s+[^\n]+\n+/, '');
+}
+
 function normalizeBlogHref(url) {
     if (!isNonEmptyString(url)) return url;
     const trimmed = url.trim();
@@ -763,7 +767,7 @@ ${posts.map(post => `    <item>
       <title><![CDATA[${post.title}]]></title>
       <link>https://conthunt.app/blog/${post.slug}</link>
       <description><![CDATA[${post.excerpt || post.description || ''}]]></description>
-      <category>${post.category || 'Content Strategy'}</category>
+      <category>${ejs.escapeXML(post.category || 'Content Strategy')}</category>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <guid isPermaLink="true">https://conthunt.app/blog/${post.slug}</guid>
     </item>`).join('\n')}
@@ -943,7 +947,8 @@ async function build() {
 
         const slug = path.basename(file, '.md');
 
-        const renderedContent = renderContentWithToc(body);
+        const bodyWithoutH1 = stripLeadingMarkdownH1(body);
+        const renderedContent = renderContentWithToc(bodyWithoutH1);
         let htmlContent = renderedContent.htmlContent;
 
         // Simple replace for common image paths
@@ -972,7 +977,7 @@ async function build() {
             ...attributes,
             slug,
             content: htmlContent,
-            readingTime: getReadingTime(body),
+            readingTime: getReadingTime(bodyWithoutH1),
             resolvedKeywords: getStringArrayOrNull(attributes.meta_keywords)
                 || getStringArrayOrNull(attributes.secondary_keywords),
             tags: getStringArrayOrNull(attributes.tags) || [],
@@ -1058,7 +1063,7 @@ async function build() {
         console.log(`Generated: blog/${postData.slug}/index.html`);
 
         // Add to sitemap
-        addToSitemap(`/blog/${postData.slug}`, postData.date ? new Date(postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
+        addToSitemap(`/blog/${postData.slug}`, (postData.updated || postData.date) ? new Date(postData.updated || postData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0], 'weekly', '0.8');
     }
 
     // 6. Generate Index Page
