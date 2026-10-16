@@ -58,7 +58,6 @@ export const metadata: Metadata = {
     "trend analysis",
   ],
   authors: [{ name: "ContHunt" }],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",

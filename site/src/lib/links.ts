@@ -31,6 +31,8 @@ export const GET_STARTED_URL = `${APP_URL}/app`; // verify: no dedicated deep-se
 
 /** Docs. */
 export const DOCS_URL = `${SITE_URL}/docs`;
+/** The legacy blog (45 posts), served by nginx, not by Next: an absolute URL so it renders as a plain <a>. */
+export const BLOG_URL = `${SITE_URL}/blog`;
 export const MCP_DOCS_URL = `${SITE_URL}/docs/integrations/mcp`;
 /** Hosted MCP server URL users paste into their client. */
 export const MCP_SERVER_URL = "https://mcp.conthunt.app";

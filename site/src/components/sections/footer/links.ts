@@ -17,6 +17,7 @@
  */
 import { data } from "@/content/site/footer";
 import {
+  BLOG_URL,
   CONTACT_URL,
   DOCS_URL,
   GET_STARTED_URL,
@@ -111,6 +112,7 @@ export const FOOTER_COLUMNS: ResolvedFooterColumn[] = [
     title: "Resources",
     links: [
       link("Articles", ROUTES.resources),
+      link("Blog", BLOG_URL),
       legacy("Docs"),
       link("MCP docs", MCP_DOCS_URL),
       legacy("Changelog"),
