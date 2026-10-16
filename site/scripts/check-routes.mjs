@@ -150,6 +150,12 @@ for (const [from, to] of [
   record(res.status === 301 && pathOf(res.headers.get("location") ?? "") === "/blog", "301 /blog/ -> /blog", `got ${res.status}`);
 }
 
+{
+  // The legacy blog is only reachable from the new site through a footer link; keep it crawlable.
+  const { body } = await text("/");
+  record(/href="[^"]*\/blog"/.test(body), "home page links to /blog");
+}
+
 /* ---------------------------------------------------------------- legacy pages */
 console.log("\n# legacy pages");
 await check("legacy", "/privacy", { type: "text/html" });
@@ -198,6 +204,8 @@ await check("share image", "/og-default.jpg", { type: "image/jpeg", minBytes: 1 
 await check("media", "/media/hero/0/1.webp", { type: "image/webp" });
 await check("blog plate", "/blog/plates/_index-800.webp", { type: "image/webp" });
 await check("brand", "/brand/wordmark-ink.png", { type: "image/png" });
+await check("legacy css", "/assets/css/style.css", { type: "text/css", minBytes: 1 });
+await check("legacy public file", "/public/banner.png", { type: "image/png" });
 {
   const { body } = await text("/");
   const asset = body.match(/\/_next\/static\/[^"'\s)\\]+\.(?:css|js)/)?.[0];
@@ -216,6 +224,7 @@ await check("unknown path", "/this-page-does-not-exist", { status: 404 });
 await check("unknown blog path", "/blog/this-post-does-not-exist", { status: 404 });
 await check("not exposed", "/about", { status: 404 });
 await check("not exposed", "/authors", { status: 404 });
+await check("backend API is not proxied beyond the public read routes", "/v1/chats", { status: 404 });
 
 /* ---------------------------------------------------------------- summary */
 console.log(`\n${passed} passed, ${failures.length} failed`);
