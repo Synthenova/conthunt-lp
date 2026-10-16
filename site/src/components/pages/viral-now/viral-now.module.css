@@ -1,0 +1,1236 @@
+/*
+ * Viral Now page styles. Anything that needs masks, backdrop filters, registered custom
+ * properties or hover timing lives here; layout and type use Tailwind token classes in the TSX.
+ * Tokens come from src/app/globals.css (var(--ink), var(--hairline), var(--ease-out), ...).
+ */
+
+@property --vn-fade-l {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --vn-fade-r {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* ------------------------------------------------------------------ shared vars */
+
+.explorer {
+  /* Letterbox gutter in vw (matches --letterbox: 20px / 10vw / 20vw). */
+  --vn-gutter: 20px;
+  --vn-card-w: clamp(148px, 13.9vw, 220px);
+  --vn-num: calc(var(--vn-card-w) * 0.92);
+  --vn-g1: calc(var(--vn-num) * 0.52);
+  /* Two-digit ranks (10 to 30) use a smaller numeral, so a Top 30 row stays compact. */
+  --vn-d2: 0.76;
+  --vn-g2: calc(var(--vn-num) * var(--vn-d2) * 0.98);
+  --vn-gap: 12px;
+  /* Least space kept left of the first numeral. */
+  --vn-min-pad: 12px;
+  --vn-pad-y: 24px;
+  --vn-stick: 64px;
+  --vn-stroke: rgba(15, 15, 15, 0.4);
+}
+
+@media (min-width: 768px) {
+  .explorer {
+    --vn-gutter: 10vw;
+    --vn-stick: 72px;
+    /* The side gutter is narrow here: a slimmer first-rank gutter lets the first card meet the letterbox edge. */
+    --vn-g1: calc(var(--vn-num) * 0.46);
+    --vn-min-pad: 8px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .explorer {
+    --vn-gutter: 20vw;
+    --vn-g1: calc(var(--vn-num) * 0.52);
+    --vn-min-pad: 12px;
+  }
+}
+
+/* ------------------------------------------------------------ horizontal scroller */
+
+.hs {
+  position: relative;
+  --hs-pad: calc((100% - var(--letterbox)) / 2);
+  --vn-fade-w: clamp(28px, calc(var(--vn-gutter) - 6px), 150px);
+}
+
+.scroller {
+  position: relative;
+  display: flex;
+  gap: var(--vn-gap);
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: var(--vn-pad-y);
+  padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-pad) - var(--vn-start-offset, 0px)));
+  padding-inline-end: var(--hs-pad);
+  scroll-padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-pad) - var(--vn-start-offset, 0px)));
+  scroll-padding-inline-end: var(--hs-pad);
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  --vn-fade-l: var(--vn-fade-w);
+  --vn-fade-r: var(--vn-fade-w);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--vn-fade-l),
+    #000 calc(100% - var(--vn-fade-r)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--vn-fade-l),
+    #000 calc(100% - var(--vn-fade-r)),
+    transparent 100%
+  );
+  transition:
+    --vn-fade-l 0.3s var(--ease-out),
+    --vn-fade-r 0.3s var(--ease-out);
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.hs[data-start="true"] .scroller {
+  --vn-fade-l: 0px;
+}
+
+.hs[data-end="true"] .scroller {
+  --vn-fade-r: 0px;
+}
+
+/* A hovered or focused card inside an edge fade stays readable: that side's fade and blur switch off. */
+.hs[data-clear-l="true"] .scroller {
+  --vn-fade-l: 0px;
+}
+
+.hs[data-clear-r="true"] .scroller {
+  --vn-fade-r: 0px;
+}
+
+.hs[data-clear-l="true"] .blur[data-side="l"],
+.hs[data-clear-r="true"] .blur[data-side="r"] {
+  opacity: 0;
+}
+
+.hs[data-dragging="true"] .scroller,
+.hs[data-moving="true"] .scroller {
+  scroll-snap-type: none;
+}
+
+.hs[data-dragging="true"] .scroller {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/* The thin blur strip under each fade: cards dissolve and defocus as they leave. */
+.blur {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: var(--vn-fade-w);
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.blur[data-side="l"] {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000, transparent);
+  mask-image: linear-gradient(to right, #000, transparent);
+}
+
+.blur[data-side="r"] {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000, transparent);
+  mask-image: linear-gradient(to left, #000, transparent);
+}
+
+.hs[data-visible="false"] .blur {
+  display: none;
+}
+
+.hs[data-start="true"] .blur[data-side="l"],
+.hs[data-end="true"] .blur[data-side="r"] {
+  opacity: 0;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border-radius: var(--r-btn);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out);
+}
+
+.arrow[data-side="l"] {
+  left: 16px;
+}
+
+.arrow[data-side="r"] {
+  right: 16px;
+}
+
+.hs:hover .arrow,
+.arrow:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.arrow:hover {
+  background: var(--surface);
+}
+
+.arrow:active {
+  transform: scale(0.96);
+}
+
+.arrow:focus-visible {
+  border-radius: var(--r-btn);
+}
+
+.hs[data-start="true"] .arrow[data-side="l"],
+.hs[data-end="true"] .arrow[data-side="r"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* A larger invisible hit area for the arrows. */
+.arrow::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+@media (hover: none), (max-width: 767px) {
+  .arrow {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------- selector */
+
+.selectorBar {
+  position: sticky;
+  top: var(--vn-stick);
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  backdrop-filter: blur(14px) saturate(1.15);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease-out);
+}
+
+.selectorBar[data-stuck="true"] {
+  border-bottom-color: var(--hairline);
+}
+
+/* The navbar slides away on scroll down; the bar then sticks to the top edge (the slide is animated in JS). */
+.selectorBar[data-nav-hidden="true"] {
+  top: 0;
+}
+
+.selectorHs {
+  --vn-pad-y: 11px;
+  --vn-gap: 8px;
+  --vn-start-offset: 0px;
+}
+
+/* The selector's arrows are always on while there is more to see: 21 pills never fit one screen. */
+.selectorHs .arrow {
+  left: auto;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  border-radius: 10px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.selectorHs .arrow[data-side="l"] {
+  left: 8px;
+}
+
+.selectorHs .arrow[data-side="r"] {
+  right: 8px;
+}
+
+.selectorHs .arrow:active {
+  transform: scale(0.94);
+}
+
+.track {
+  position: relative;
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+
+.pill {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px 0 8px;
+  border-radius: var(--r-chip);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out);
+}
+
+.pill:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.pill:active {
+  transform: scale(0.96);
+}
+
+.pill:focus-visible {
+  border-radius: var(--r-chip);
+}
+
+.pillAll {
+  padding-left: 12px;
+}
+
+/* Before hydration (and with reduced motion off) the active pill is painted directly. */
+.pill[data-active="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.track[data-ready="true"] .pill[data-active="true"] {
+  background: var(--surface);
+  color: var(--ink-2);
+}
+
+.track[data-ready="true"] .pill[data-active="true"]:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 8px;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0 round 8px);
+  visibility: hidden;
+}
+
+.track[data-ready="true"] .overlay {
+  visibility: visible;
+}
+
+.overlay .pill,
+.overlay .pill:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* A niche's active highlight takes its hue: soft fill, ink text and a hairline ring (not ink on paper). */
+.overlay .pill[data-tone],
+.overlay .pill[data-tone]:hover {
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tone) 40%, transparent);
+}
+
+.pillSwatch {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--tone-mark);
+}
+
+.pillThumb {
+  position: relative;
+  flex: none;
+  width: 20px;
+  height: 26px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--surface-2);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;
+}
+
+.pillCount {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+}
+
+/* ------------------------------------------------------------------- rows + items */
+
+.rowRule {
+  width: var(--letterbox);
+  height: 1px;
+  margin-inline: auto;
+  background: var(--hairline);
+}
+
+.rowBody {
+  min-height: calc(var(--vn-card-w) * 16 / 9 + var(--vn-pad-y) * 2);
+}
+
+.rowHs {
+  --vn-start-offset: var(--vn-g1);
+}
+
+.item {
+  position: relative;
+  z-index: 0;
+  flex: none;
+  padding-left: var(--vn-g, 0px);
+  scroll-snap-align: start;
+  transition: z-index 0s linear 0.32s;
+}
+
+.item[data-digits="1"] {
+  --vn-g: var(--vn-g1);
+}
+
+.item[data-digits="2"] {
+  --vn-g: var(--vn-g2);
+}
+
+.item[data-digits="2"] .numeral {
+  font-size: calc(var(--vn-num) * var(--vn-d2));
+}
+
+.item[data-plain="true"] {
+  --vn-g: 0px;
+}
+
+.item[data-active="true"] {
+  z-index: 6;
+  transition-delay: 0s;
+}
+
+.item[data-entrance] {
+  /* `backwards` only: the card is visible in its natural state, the animation just starts it lower and transparent. */
+  animation: cardIn 0.8s var(--ease-out) backwards;
+  animation-delay: calc(var(--vn-i, 0) * 55ms + 40ms);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+}
+
+.numeral {
+  position: absolute;
+  left: 0;
+  bottom: -0.04em;
+  z-index: 0;
+  font-family: var(--font-sans);
+  font-size: var(--vn-num);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  font-variant-numeric: tabular-nums;
+  color: transparent;
+  -webkit-text-fill-color: var(--bg);
+  -webkit-text-stroke: 2px var(--vn-stroke);
+  paint-order: stroke fill;
+  user-select: none;
+  pointer-events: none;
+  transition:
+    -webkit-text-stroke-color 0.3s var(--ease-out),
+    transform 0.4s var(--ease-out);
+}
+
+.numeral[data-lead="true"] {
+  -webkit-text-stroke-color: var(--ink);
+}
+
+.item[data-active="true"] .numeral {
+  -webkit-text-stroke-color: var(--ink);
+  transform: translateX(-6px);
+}
+
+/* On card hover or focus the numeral takes the niche's hue (--tone-mark, set on the row or grid). */
+.item:hover .numeral,
+.item:focus-within .numeral {
+  -webkit-text-stroke-color: var(--tone-mark, var(--ink));
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--vn-card-w);
+  aspect-ratio: 9 / 16;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--r-btn);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0) scale(1);
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out);
+}
+
+.card[data-fill="true"] {
+  width: 100%;
+}
+
+.card::after {
+  /* Image outline: pure black at 10%, never a tinted neutral. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.card[data-active="true"] {
+  transform: translateZ(0) scale(1.08);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.card[data-grid="true"][data-active="true"] {
+  transform: translateZ(0) scale(1.05);
+}
+
+.card:active {
+  transition-duration: 0.12s;
+}
+
+.card:focus-visible {
+  border-radius: var(--r-btn);
+  outline-offset: 3px;
+}
+
+.poster {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.card[data-active="true"] .poster {
+  transform: scale(1.04);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.video[data-playing="true"] {
+  opacity: 1;
+}
+
+.platformMark,
+.viewsChip,
+.rankBadge {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.platformMark {
+  top: 8px;
+  right: 8px;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+}
+
+.viewsChip {
+  left: 8px;
+  bottom: 8px;
+  gap: 5px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 7px;
+  background: rgba(15, 15, 15, 0.66);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.rankBadge {
+  top: 8px;
+  left: 8px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.rankBadge[data-lead="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.card[data-active="true"] .viewsChip,
+.card[data-active="true"] .platformMark {
+  opacity: 0;
+}
+
+.info {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 3;
+  display: grid;
+  gap: 6px;
+  padding: 11px 12px 12px;
+  background: var(--paper);
+  box-shadow: 0 -10px 22px -10px rgba(0, 0, 0, 0.22);
+  transform: translateY(102%);
+  transition: transform 0.38s var(--ease-out);
+}
+
+.card[data-active="true"] .info {
+  transform: translateY(0);
+}
+
+.infoTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.infoWho {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.infoWho > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.infoTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 12.5px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ink-2);
+}
+
+.infoStats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 10px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: rgba(15, 15, 15, 0.64);
+}
+
+.infoStats b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.scoreChip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+/* ------------------------------------------------------------------- skeletons */
+
+.skel {
+  position: relative;
+  display: block;
+  flex: none;
+  width: var(--vn-card-w);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: var(--r-btn);
+  background: var(--surface);
+}
+
+.skel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.65) 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: shimmer 1.6s var(--ease-in-out) infinite;
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* The row skeleton (a bare run of .skel in the scroller) leaves room for the rank numeral, like a real item. */
+.scroller > .skel {
+  margin-left: var(--vn-g1);
+}
+
+/* A skeleton that fills its grid cell instead of the fixed row card width. */
+.skelFill {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------- end cap */
+
+.endcap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  width: var(--vn-card-w);
+  aspect-ratio: 9 / 16;
+  padding: 16px;
+  border-radius: var(--r-btn);
+  background: var(--surface);
+  scroll-snap-align: start;
+}
+
+/* ------------------------------------------------------------------ niche grid */
+
+/* The niche grid is the letterbox width up to 1279px, then breaks out to 1320px so six columns stay card-sized. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: var(--letterbox);
+  margin-inline: auto;
+  padding: 6px 0 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    width: min(calc(100% - 40px), 1320px);
+  }
+}
+
+.gridItem {
+  position: relative;
+  z-index: 0;
+  transition: z-index 0s linear 0.32s;
+}
+
+.gridItem[data-active="true"] {
+  z-index: 6;
+  transition-delay: 0s;
+}
+
+.splitBar {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  width: 96px;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+.splitBar > span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+.splitBar > span:nth-child(2) {
+  background: var(--ink-2);
+  opacity: 0.6;
+}
+
+.splitBar > span:nth-child(3) {
+  background: var(--ink-2);
+  opacity: 0.3;
+}
+
+/* --------------------------------------------------------------------- explainer */
+
+.weightBar {
+  display: flex;
+  gap: 3px;
+  height: 54px;
+}
+
+.weightSeg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 8px 8px 7px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+  cursor: default;
+  transition:
+    background-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out);
+}
+
+.weightSeg > span:first-child {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.weightSeg > span:last-child {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.weightSeg[data-on="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.weightSeg:focus-visible {
+  border-radius: 6px;
+}
+
+/* ---------------------------------------------------------------------- dialog */
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--ink-2);
+}
+
+.dialog:not([open]) {
+  display: none;
+}
+
+.dialog::backdrop {
+  background: rgba(15, 15, 15, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  animation: backdropIn 0.3s var(--ease-out) both;
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.frame {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 760px) {
+  .frame {
+    align-items: center;
+  }
+}
+
+.sheet:focus-visible,
+.detailScroll:focus-visible,
+.dialog:focus-visible {
+  outline: none;
+}
+
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  max-height: 94dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  background: var(--paper);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 760px) {
+  .sheet {
+    grid-template-columns: auto minmax(0, 1fr);
+    width: min(1000px, calc(100vw - 48px));
+    height: min(760px, calc(100dvh - 48px));
+    max-height: none;
+    overflow: hidden;
+    border-radius: var(--r-card);
+  }
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: min(46dvh, 420px);
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+@media (min-width: 760px) {
+  .stage {
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    width: auto;
+  }
+}
+
+.stageMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+
+@media (min-width: 760px) {
+  .stageMedia {
+    object-fit: cover;
+  }
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.detailScroll {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 0;
+  padding: 22px 22px 8px;
+}
+
+@media (min-width: 760px) {
+  .detailScroll {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 24px 28px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 15, 15, 0.22) transparent;
+  }
+}
+
+.detailFooter {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  padding: 14px 22px calc(14px + env(safe-area-inset-bottom));
+  background: var(--paper);
+  border-top: 1px solid var(--hairline);
+}
+
+@media (min-width: 760px) {
+  .detailFooter {
+    padding: 16px 28px;
+  }
+}
+
+.iconBtn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  transition:
+    background-color 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out),
+    opacity 0.2s var(--ease-out);
+}
+
+.iconBtn:hover {
+  background: var(--surface-2);
+}
+
+.iconBtn:active {
+  transform: scale(0.96);
+}
+
+.iconBtn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.iconBtn:focus-visible {
+  border-radius: 12px;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+}
+
+.metricGrid > div {
+  padding: 12px 14px 13px;
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ingredientBar {
+  position: relative;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.ingredientBar > span {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: var(--ink);
+  transform-origin: left center;
+}
+
+.ring {
+  --ring: var(--ink);
+}
+
+/* ------------------------------------------------------------- misc micro-detail */
+
+.statusDot {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.statusDot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--red);
+  animation: statusPulse 2.2s var(--ease-out) infinite;
+}
+
+/* A snapshot is not live: a still, quiet dot instead of the pulsing green one. */
+.statusDot[data-kind="seed"] {
+  background: color-mix(in srgb, var(--red) 55%, transparent);
+}
+
+.statusDot[data-kind="seed"]::after {
+  display: none;
+}
+
+@keyframes statusPulse {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+
+/* "Skip niche rows": a tab stop between the niche bar and the first row, visible only while it has keyboard focus.
+   Fixed, so showing it never moves the rows; above the navbar (z 50). */
+.skip {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding-inline: 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skip:focus-visible {
+  clip-path: none;
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card[data-active="true"],
+  .card[data-grid="true"][data-active="true"] {
+    transform: translateZ(0) scale(1);
+  }
+
+  .card[data-active="true"] .poster {
+    transform: none;
+  }
+
+  .skel::after {
+    animation: none;
+    display: none;
+  }
+}

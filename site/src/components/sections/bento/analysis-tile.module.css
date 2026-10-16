@@ -1,0 +1,274 @@
+/*
+ * Geometry for the "Every signal" tile (q41dd sketch): one DOM, three layouts, chosen by the
+ * tile's own width (container query), not the viewport. All nine panels exist in every layout.
+ *
+ * Desktop (container >= 48rem): a fixed-height tile with three flex columns. Tall panels left
+ *   and right, the video slot in the centre with a panel above and below. 640px tall at
+ *   48–53rem, 620px at 53–64rem, and 660px with a larger video from 64rem (1920 viewports).
+ * Compact (< 48rem): a grid that grows downward. Video slot top-left, metrics + hook beside it,
+ *   the other seven panels below in full-width rows or 50/50 pairs (30–48rem pairs more of them).
+ *   Column wrappers become `display: contents` so their children join the grid directly.
+ *
+ * Compact rest vs open: at rest the tile is only as tall as caption + video + hint
+ * (`--rest-h`), so the closed state is not a tall empty box. Opening snaps the layout height
+ * to the mosaic's natural height (once, in the GSAP timeline) and reveals the extra height
+ * with `clip-path`, driven by `--reveal` (0 → 1). `(100% - --rest-h)` is zero whenever the tile
+ * is at its rest height, so the clip can never hide the rest state.
+ *
+ * The video itself is NOT in the grid: it sits at its rest size, and GSAP moves and scales it
+ * onto `.slot` when the tile opens (transform only).
+ *
+ * Radii are concentric: tile 32px (rounded-tray) = 16px pad + 16px panels (rounded-2xl).
+ * `--vc` is the rest video's vertical centre. The video, the rest chips and the hint all hang
+ * off it, so the hint always sits 12px under the video at every width.
+ */
+
+.frame {
+  container-type: inline-size;
+  container-name: bento-one;
+}
+
+.tile {
+  --pad: 16px;
+  --gap: 10px;
+  --vcol: 164px;
+  --compact: 1;
+  --hint-h: 32px;
+  --hint-gap: 12px;
+  --rest-w: min(240px, 60cqw);
+  --rest-top: 100px;
+  --vc: calc(var(--rest-top) + var(--rest-w) * 8 / 9);
+  --rest-h: calc(var(--rest-w) * 16 / 9 + var(--rest-top) + var(--hint-gap) + var(--hint-h) + 20px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: var(--rest-h);
+  clip-path: inset(0 0 calc((100% - var(--rest-h)) * (1 - var(--reveal, 1))) 0 round 32px);
+}
+
+/* Rest position, no transform (GSAP owns transforms). Compact: below the caption. */
+.video {
+  position: absolute;
+  z-index: 3;
+  width: var(--rest-w);
+  left: calc(50% - var(--rest-w) / 2);
+  top: calc(var(--vc) - var(--rest-w) * 8 / 9);
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.hint {
+  top: calc(var(--vc) + var(--rest-w) * 8 / 9 + var(--hint-gap));
+  min-height: var(--hint-h);
+}
+
+/*
+ * Rest chips (real values around the video). Positions are CSS; GSAP only transforms the
+ * outer `.chip` box (open pull, one idle breath). The tilt and the vertical centring sit on
+ * the inner `.chipCard`, so a timeline rebuild (clearProps) can never strip them.
+ *
+ * Compact: two small chips (hook, re-rank) overlap the video's left and right edges by
+ * 28px, like stickers, so their values stay whole in a narrow gutter; views and score wait
+ * for the open mosaic.
+ */
+.chip {
+  position: absolute;
+  z-index: 4;
+  width: max-content;
+  top: calc(var(--vc) + var(--dy, 0px));
+  height: 0;
+}
+
+.chipCard {
+  transform: translateY(-50%) rotate(var(--tilt, 0deg));
+}
+
+.chipL {
+  right: calc(50% + var(--rest-w) / 2 - 28px);
+  --tilt: -4deg;
+}
+
+.chipR {
+  left: calc(50% + var(--rest-w) / 2 - 28px);
+  --tilt: 3deg;
+}
+
+.chipSub {
+  display: none;
+}
+
+.chip_hook { --dy: calc(var(--rest-w) * -0.36); }
+.chip_rerank { --dy: calc(var(--rest-w) * 0.42); }
+.chip_views,
+.chip_score {
+  display: none;
+}
+
+.mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--gap);
+  padding: var(--pad);
+  /* Three tracks so the slot rows split 40/60 (video | panels) while lower rows split 50/50:
+     col1 + gap + col2 === col3. */
+  grid-template-columns: min(calc(40% - 7px), 200px) minmax(0, 1fr) calc(50% - 5px);
+  /* Scores rows are 24px touch targets here (WCAG 2.5.8), so that row sizes to content. */
+  grid-template-rows: auto auto auto 150px auto auto auto;
+  grid-template-areas:
+    "slot metrics metrics"
+    "slot hook hook"
+    "scores scores scores"
+    "rerank rerank trend"
+    "qual qual qual"
+    "audio audio audio"
+    "virality virality quant";
+}
+
+.col,
+.pair {
+  display: contents;
+}
+
+.slot {
+  grid-area: slot;
+  align-self: center;
+  aspect-ratio: 9 / 16;
+  width: 100%;
+}
+
+.hook { grid-area: hook; }
+.metrics { grid-area: metrics; }
+.scores { grid-area: scores; }
+.rerank { grid-area: rerank; }
+.trend { grid-area: trend; }
+.qual { grid-area: qual; }
+.audio { grid-area: audio; }
+.virality { grid-area: virality; }
+.quant { grid-area: quant; }
+
+/* Tablet-ish compact (e.g. iPad portrait): pair scores with the Q&A. */
+@container bento-one (min-width: 30rem) {
+  .mosaic {
+    grid-template-rows: auto auto auto 150px auto auto;
+    grid-template-areas:
+      "slot metrics metrics"
+      "slot hook hook"
+      "scores scores qual"
+      "rerank rerank trend"
+      "audio audio audio"
+      "virality virality quant";
+  }
+}
+
+@container bento-one (min-width: 48rem) {
+  .tile {
+    --compact: 0;
+    --rest-w: 232px;
+    /* Centre the video + hint group vertically: shift the video up by half the hint stack. */
+    --vc: calc(50% - (var(--hint-gap) + var(--hint-h)) / 2);
+    height: 640px;
+    clip-path: none;
+  }
+
+  /* Desktop chips stand free in the gutters beside the video, staggered like dealt cards. */
+  .chip {
+    z-index: 1;
+    width: 172px;
+  }
+
+  .chipL {
+    right: calc(50% + var(--rest-w) / 2 + 32px);
+    --tilt: -1.5deg;
+  }
+
+  .chipR {
+    left: calc(50% + var(--rest-w) / 2 + 32px);
+    --tilt: 1.5deg;
+  }
+
+  .chipSub {
+    display: block;
+  }
+
+  .chip_views,
+  .chip_score {
+    display: block;
+  }
+
+  .chip_hook { --dy: -96px; }
+  .chip_views { --dy: 112px; }
+  .chip_rerank { --dy: -36px; }
+  .chip_score { --dy: 164px; }
+
+  /* The rest caption must end before the video starts: 28px inset + 20px clearance. */
+  .caption {
+    max-width: calc(50cqw - var(--rest-w) / 2 - 48px);
+  }
+
+  .mosaic {
+    height: 100%;
+    grid-template-columns: minmax(0, 1fr) var(--vcol) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: none;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    min-height: 0;
+  }
+
+  .pair {
+    display: grid;
+    /* Measures keeps >= 140px so "Views/day d  135,414" never truncates. */
+    grid-template-columns: minmax(0, 1fr) minmax(8.75rem, 1fr);
+    gap: var(--gap);
+    min-height: 0;
+  }
+
+  .slot,
+  .hook,
+  .metrics,
+  .scores,
+  .rerank,
+  .trend,
+  .qual,
+  .audio,
+  .virality,
+  .quant {
+    grid-area: auto;
+  }
+
+  /* Column heights at the 620px tile (inner 588 = 568 + two gaps). On the 640px tile
+     (48–53rem, where columns are narrower and text wraps more) and the 660px wide tile they
+     grow in proportion. */
+  .hook { flex: 1 1 156px; }
+  .qual { flex: 1 1 258px; }
+  .audio { flex: 1 1 154px; }
+  .metrics { flex: 1 1 126px; }
+  .scores { flex: 1 1 226px; }
+  .pair { flex: 1 1 216px; }
+  .rerank,
+  .trend { flex: 1 1 0; }
+  .slot { flex: none; }
+}
+
+@container bento-one (min-width: 53rem) {
+  .tile {
+    --vcol: 176px;
+    --rest-w: 260px;
+    height: 620px;
+  }
+}
+
+/* Wide letterbox (e.g. 1920 viewport, 1152px tile): the rest video and its slot scale up so
+   the tile is not a large empty slab, and the tile gains 40px of height for the panels. */
+@container bento-one (min-width: 64rem) {
+  .tile {
+    --vcol: 200px;
+    --rest-w: 288px;
+    height: 660px;
+  }
+}

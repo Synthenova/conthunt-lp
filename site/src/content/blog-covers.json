@@ -1,0 +1,278 @@
+{
+  "how-deep-search-works": {
+    "plate1600": "/blog/plates/how-deep-search-works-1600.webp",
+    "plate800": "/blog/plates/how-deep-search-works-800.webp",
+    "mood": "sea",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Read prompt and brief",
+          "status": "done"
+        },
+        {
+          "label": "Draft 5 questions, 4 scoring parameters",
+          "status": "done"
+        },
+        {
+          "label": "Search TikTok, Reels, Shorts: 10 keyword angles",
+          "status": "done"
+        },
+        {
+          "label": "Analyze videos: 500 of 500",
+          "status": "done"
+        },
+        {
+          "label": "Rank and write answer with citations",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#DEE6E1",
+    "text_tone": "ink"
+  },
+  "the-3-second-rule-a-hook-taxonomy": {
+    "plate1600": "/blog/plates/the-3-second-rule-a-hook-taxonomy-1600.webp",
+    "plate800": "/blog/plates/the-3-second-rule-a-hook-taxonomy-800.webp",
+    "mood": "dawn",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "0:00 - 0:03",
+      "hook_family": "Result-first",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Cracked heel, close-up"
+        },
+        {
+          "t": "0.8s",
+          "label": "Text: 'Day 1 vs day 14'"
+        },
+        {
+          "t": "1.6s",
+          "label": "Spoken: 'I did one thing at night'"
+        },
+        {
+          "t": "3.0s",
+          "label": "Proof: product applied"
+        }
+      ],
+      "score": 91
+    },
+    "dominant": "#E8DBD4",
+    "text_tone": "ink"
+  },
+  "research-tiktok-hooks-before-you-brief-a-creator": {
+    "plate1600": "/blog/plates/research-tiktok-hooks-before-you-brief-a-creator-1600.webp",
+    "plate800": "/blog/plates/research-tiktok-hooks-before-you-brief-a-creator-800.webp",
+    "mood": "sky",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "sensitive skin serum hooks, last 30 days",
+      "platforms": [
+        "TikTok",
+        "Instagram Reels",
+        "YouTube Shorts"
+      ],
+      "scope": "500 videos",
+      "status": "Hook tags ready"
+    },
+    "dominant": "#EBEBE9",
+    "text_tone": "ink"
+  },
+  "ugc-ad-formats-that-sell-a-field-guide": {
+    "plate1600": "/blog/plates/ugc-ad-formats-that-sell-a-field-guide-1600.webp",
+    "plate800": "/blog/plates/ugc-ad-formats-that-sell-a-field-guide-800.webp",
+    "mood": "clay",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "UGC formats: kitchen gadgets",
+      "items": [
+        {
+          "label": "Problem-solution demo",
+          "score": 94
+        },
+        {
+          "label": "Honest review",
+          "score": 91
+        },
+        {
+          "label": "Comparison: I tried 3",
+          "score": 88
+        },
+        {
+          "label": "Comment reply",
+          "score": 85
+        },
+        {
+          "label": "Routine integration",
+          "score": 82
+        },
+        {
+          "label": "Unboxing",
+          "score": 79
+        }
+      ]
+    },
+    "dominant": "#E5CEB9",
+    "text_tone": "ink"
+  },
+  "finding-winning-products-from-short-form-signals": {
+    "plate1600": "/blog/plates/finding-winning-products-from-short-form-signals-1600.webp",
+    "plate800": "/blog/plates/finding-winning-products-from-short-form-signals-800.webp",
+    "mood": "sand",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Magnetic cable organizer (illustrative)",
+      "score": 9,
+      "out_of": 14,
+      "verdict": "Watch",
+      "metrics": [
+        {
+          "label": "Creator spread",
+          "value": "2 / 2"
+        },
+        {
+          "label": "Demo clarity",
+          "value": "2 / 2"
+        },
+        {
+          "label": "Velocity",
+          "value": "2 / 2"
+        },
+        {
+          "label": "Saturation",
+          "value": "0 / 2"
+        }
+      ]
+    },
+    "dominant": "#F1E7D8",
+    "text_tone": "ink"
+  },
+  "reading-virality-beyond-views": {
+    "plate1600": "/blog/plates/reading-virality-beyond-views-1600.webp",
+    "plate800": "/blog/plates/reading-virality-beyond-views-800.webp",
+    "mood": "mist",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Views per hour, first 48h",
+      "series": [
+        {
+          "label": "Video B",
+          "points": [
+            120,
+            480,
+            910,
+            1300,
+            1100,
+            760,
+            420
+          ]
+        },
+        {
+          "label": "Creator median",
+          "points": [
+            60,
+            90,
+            110,
+            100,
+            80,
+            55,
+            30
+          ]
+        }
+      ],
+      "badge": "15x creator median"
+    },
+    "dominant": "#E5E8EA",
+    "text_tone": "ink"
+  },
+  "build-a-weekly-trend-radar-for-your-niche": {
+    "plate1600": "/blog/plates/build-a-weekly-trend-radar-for-your-niche-1600.webp",
+    "plate800": "/blog/plates/build-a-weekly-trend-radar-for-your-niche-800.webp",
+    "mood": "sage",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Barrier repair",
+          "state": "Rising"
+        },
+        {
+          "label": "Night routine in 3 steps",
+          "state": "Emerging"
+        },
+        {
+          "label": "Skin-fasting challenge",
+          "state": "Peaking"
+        },
+        {
+          "label": "Glass-skin routine",
+          "state": "Fading"
+        }
+      ],
+      "active": "Barrier repair",
+      "window": "Week 39"
+    },
+    "dominant": "#DBDBCA",
+    "text_tone": "ink"
+  },
+  "competitor-content-tracking-what-to-measure-daily": {
+    "plate1600": "/blog/plates/competitor-content-tracking-what-to-measure-daily-1600.webp",
+    "plate800": "/blog/plates/competitor-content-tracking-what-to-measure-daily-800.webp",
+    "mood": "dusk",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@brandx.skin",
+      "metric": "Cumulative views, one video",
+      "points": [
+        12000,
+        31000,
+        40000,
+        44000,
+        45500,
+        70500,
+        74000
+      ],
+      "labels": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7"
+      ],
+      "delta": "+25,000 on D6",
+      "badge": "Experimental"
+    },
+    "dominant": "#E0D6D5",
+    "text_tone": "ink"
+  },
+  "using-conthunt-with-ai-agents-through-mcp": {
+    "plate1600": "/blog/plates/using-conthunt-with-ai-agents-through-mcp-1600.webp",
+    "plate800": "/blog/plates/using-conthunt-with-ai-agents-through-mcp-800.webp",
+    "mood": "ink",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ claude mcp add --transport http conthunt https://mcp.conthunt.app",
+        "> /mcp  connected: conthunt (13 tools)",
+        "> deep_search  'sensitive-skin serum hooks, last 30 days'",
+        "  plan approved  searches queued  videos analyzing 412/500",
+        "> files read /outputs/report.md"
+      ]
+    },
+    "dominant": "#CBD0D5",
+    "text_tone": "ink"
+  },
+  "_index": {
+    "plate1600": "/blog/plates/_index-1600.webp",
+    "plate800": "/blog/plates/_index-800.webp",
+    "mood": "mist",
+    "fragment": null,
+    "fragment_data": null,
+    "dominant": "#DFE1E2",
+    "text_tone": "ink"
+  }
+}

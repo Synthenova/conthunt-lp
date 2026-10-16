@@ -1,0 +1,310 @@
+{
+  "_note": "Normalised from the ContHunt analysis of the featured video. Every block carries `source`: analysis (value present in the ContHunt analysis), metrics (value present in the ContHunt content metrics) or derived (computed or mapped by us, with `derivation` explaining how).",
+  "video": {
+    "src": "/media/bento/featured.mp4",
+    "poster": "/media/bento/featured.webp",
+    "width": 540,
+    "height": 960,
+    "loop_seconds": 7.0,
+    "platform": "tiktok",
+    "creator": "@glenxda",
+    "creator_name": "Glenda",
+    "url": "https://www.tiktok.com/@glenxda/video/7688020943658142990",
+    "caption": "Amazon kitchen gadget: The fastest way to defrost your meat! It comes with a 10-40 minute timer that you can set depending on the thickness of the meat.",
+    "product": "Kayuso Defrosting Box",
+    "duration_seconds": 11,
+    "aspect_ratio": "9:16",
+    "analysis_id": "video_analysis_t5zSCnpiL6Z0",
+    "analysis_model": "google-vertex/gemini-3.1-flash-lite",
+    "analysis_view": "full"
+  },
+  "hook": {
+    "source": "analysis",
+    "text": "THE FASTEST WAY TO DEFROST YOUR MEAT",
+    "timestamp": "00:00",
+    "seconds": 0,
+    "type": "Problem/Solution",
+    "visual_hook": "Frozen meat being placed on the device base.",
+    "payoff": "The meat is shown in a thawed, pliable state.",
+    "confidence": "high",
+    "summary": "Showing two frozen pieces of meat being placed on a device, promising the \"fastest way to defrost.\""
+  },
+  "metrics": {
+    "source": "metrics",
+    "views": 3114525,
+    "likes": 64035,
+    "comments": 123,
+    "shares": 7187,
+    "saves": null,
+    "saves_note": "TikTok does not expose saves for this item in ContHunt data.",
+    "engagement_rate": 0.0229,
+    "engagement_rate_pct": 2.29,
+    "engagement_rate_derivation": "(likes + comments + shares) / views",
+    "engagement_rate_source": "derived",
+    "posted_at": "2026-09-21T16:08:26Z",
+    "age_days_on_2026_10_14": 23,
+    "views_per_day": 135414,
+    "views_per_day_source": "derived"
+  },
+  "qualitative": [
+    {
+      "q": "What is the hook?",
+      "a": "On-screen text at 0:00, THE FASTEST WAY TO DEFROST YOUR MEAT, over frozen meat being placed on the device. A problem/solution hook with the payoff shown in the same clip.",
+      "source": "analysis",
+      "derived": false
+    },
+    {
+      "q": "What problem does it solve?",
+      "a": "The need for a fast way to defrost meat. The setup introduces the Kayuso box and the problem of frozen meat, and the payoff is a thawed, pliable steak and ground beef tested with tongs.",
+      "source": "analysis",
+      "derived": false
+    },
+    {
+      "q": "Who is it for?",
+      "a": "Home cooks and kitchen gadget enthusiasts. Themes are convenience, kitchen efficiency and technology in the home.",
+      "source": "analysis",
+      "derived": false
+    },
+    {
+      "q": "Why do viewers keep watching?",
+      "a": "Fast jump cuts remove downtime, and a satisfying before-and-after shows the frozen state followed by the thawed state at 0:04 to 0:05.",
+      "source": "analysis",
+      "derived": false
+    },
+    {
+      "q": "Is there a call to action?",
+      "a": "No. The analysis lists none and flags a missing CTA (link in bio, website) as the main area for improvement.",
+      "source": "analysis",
+      "derived": false
+    },
+    {
+      "q": "What can another brand copy?",
+      "a": "The Visual Proof Demonstration pattern, low difficulty: pick a pain point, show the product in use, jump cut to the result, then use a physical tool to prove the change of state.",
+      "source": "analysis",
+      "derived": false
+    }
+  ],
+  "quantitative": [
+    {
+      "label": "Views",
+      "value": 3114525,
+      "unit": "views",
+      "source": "metrics"
+    },
+    {
+      "label": "Likes",
+      "value": 64035,
+      "unit": "likes",
+      "source": "metrics"
+    },
+    {
+      "label": "Comments",
+      "value": 123,
+      "unit": "comments",
+      "source": "metrics"
+    },
+    {
+      "label": "Shares",
+      "value": 7187,
+      "unit": "shares",
+      "source": "metrics"
+    },
+    {
+      "label": "Engagement rate",
+      "value": 2.29,
+      "unit": "%",
+      "source": "derived",
+      "derivation": "(likes + comments + shares) / views"
+    },
+    {
+      "label": "Share rate",
+      "value": 0.23,
+      "unit": "%",
+      "source": "derived",
+      "derivation": "shares / views"
+    },
+    {
+      "label": "Views per day",
+      "value": 135414,
+      "unit": "views/day",
+      "source": "derived",
+      "derivation": "views / 23 days since posting"
+    },
+    {
+      "label": "Runtime",
+      "value": 11,
+      "unit": "seconds",
+      "source": "analysis"
+    },
+    {
+      "label": "Scenes",
+      "value": 6,
+      "unit": "scenes",
+      "source": "analysis",
+      "derivation": "count of entries in the analysis Scenes list"
+    },
+    {
+      "label": "Time to hook",
+      "value": 0,
+      "unit": "seconds",
+      "source": "analysis"
+    }
+  ],
+  "trend": {
+    "source": "analysis",
+    "name": "Problem/solution product demo with visual proof",
+    "format": "Kitchen gadget review, before and after, jump cuts",
+    "genre": "Product review/demonstration",
+    "pattern": "Visual Proof Demonstration",
+    "caption_tags": [
+      "#amazonfinds",
+      "#asmr",
+      "#food",
+      "#gadgets",
+      "#fyp"
+    ],
+    "trend_class": "growth",
+    "series": [
+      0.112,
+      0.231,
+      0.302,
+      0.375,
+      0.487,
+      0.555,
+      0.647,
+      0.676,
+      0.781,
+      0.825,
+      0.869,
+      0.9,
+      0.963,
+      1.0
+    ],
+    "series_meta": {
+      "derived": true,
+      "points": 14,
+      "derivation": "ContHunt holds no daily snapshots for this video (content_metric_observations has no values for it), so the 14 points are a modeled, normalized view-velocity curve (0 to 1) shaped like the growth class and scaled to the observed 23-day age. It illustrates the shape, it is not measured data."
+    }
+  },
+  "audio": {
+    "source": "analysis",
+    "sound_name": null,
+    "sound_name_note": "The analysis does not name the sound.",
+    "origin": "unknown",
+    "origin_note": "Original or trending cannot be told from the analysis. It describes an upbeat, rhythmic electronic/lo-fi track.",
+    "music": "Upbeat, rhythmic, electronic/lo-fi track.",
+    "sound_effects": "Natural sounds (clinking, tapping, whirring of the device) are emphasized.",
+    "bpm": null,
+    "bpm_note": "Not provided by the analysis.",
+    "voiceover": false,
+    "voiceover_note": "Analysis: Has Speech = No, Spoken Dialogue = None.",
+    "mix": "Clear, balanced, with music and sound effects working well together."
+  },
+  "virality": {
+    "source": "analysis",
+    "summary": "A concise product demo that proves one claim fast: frozen meat becomes thawed meat in the same clip, so the viewer needs no sound or explanation to understand it.",
+    "reasons": [
+      {
+        "title": "Clear before and after",
+        "detail": "The analysis calls out the explicit frozen-to-thawed proof as a strength.",
+        "source": "analysis"
+      },
+      {
+        "title": "Benefit in the first frame",
+        "detail": "THE FASTEST WAY TO DEFROST YOUR MEAT appears at 0:00 over the demo.",
+        "source": "analysis"
+      },
+      {
+        "title": "No dead time",
+        "detail": "Fast-paced jump cuts between placing, activating and testing keep the 11 seconds tight.",
+        "source": "analysis"
+      },
+      {
+        "title": "Satisfying sensory layer",
+        "detail": "Clinking, tapping and the whirring device are emphasized in the mix (tagged #asmr).",
+        "source": "analysis"
+      },
+      {
+        "title": "Shareable utility",
+        "detail": "7,187 shares on 3.1M views. It is a gadget people send to someone else.",
+        "source": "metrics"
+      }
+    ]
+  },
+  "scores": {
+    "source": "derived",
+    "scale": "0-100",
+    "mapping_note": "The analysis has no numeric scores. Each score below is derived from a value in the analysis or metrics, with the basis stated.",
+    "items": [
+      {
+        "name": "Hook",
+        "value": 92,
+        "basis": "Problem/Solution hook, on-screen text at 0:00, confidence high"
+      },
+      {
+        "name": "Retention",
+        "value": 90,
+        "basis": "Two retention devices (jump cuts, before and after), both confidence high"
+      },
+      {
+        "name": "Demo clarity",
+        "value": 95,
+        "basis": "Strength: clear demonstration of the before and after"
+      },
+      {
+        "name": "Production",
+        "value": 88,
+        "basis": "Technical quality: professional, clean, bright high-key lighting"
+      },
+      {
+        "name": "Memorability",
+        "value": 85,
+        "basis": "Analysis memorability = High (mapped High to 85)"
+      },
+      {
+        "name": "Reach",
+        "value": 90,
+        "basis": "Ranks 5th by views of 41 TikTok results for the sample query (percentile)"
+      },
+      {
+        "name": "Share rate",
+        "value": 29,
+        "basis": "Ranks 29th of 41 on shares/views (0.23%), percentile"
+      },
+      {
+        "name": "Call to action",
+        "value": 10,
+        "basis": "Analysis: Call to Action = None"
+      }
+    ]
+  },
+  "rerank": {
+    "source": "derived",
+    "sample_query": "viral kitchen gadget must have",
+    "platform": "tiktok",
+    "result_count": 41,
+    "rank_before": 10,
+    "rank_before_note": "Position in the platform search order (min_rank) when the search ran.",
+    "rank_after": 5,
+    "rank_after_note": "Position when the same 41 results are ranked by views.",
+    "alternatives": [
+      {
+        "lens": "views",
+        "rank": 5
+      },
+      {
+        "lens": "views per day",
+        "rank": 7
+      },
+      {
+        "lens": "engagement rate",
+        "rank": 33
+      },
+      {
+        "lens": "share rate",
+        "rank": 29
+      }
+    ],
+    "derivation": "Ranks computed in SQL over chat_search_pool_v for the chat; views per day uses the posted date to 2026-10-14."
+  }
+}

@@ -1,0 +1,53 @@
+# ContHunt
+
+> ContHunt is a short-form video research tool for marketers, creators and ecommerce teams. Its Deep Search takes one question, searches TikTok, Instagram Reels and YouTube Shorts, watches 500 to 1,000 videos in under five minutes and returns a ranked answer backed by the video data.
+
+Last updated: 2026-10-15
+
+ContHunt supports three platforms today: TikTok, Instagram Reels and YouTube Shorts. For each analyzed video it reports the hook, the content, the audience, a possible virality concept and the metrics, plus how relevant the video is to the question that was asked. Scores are ContHunt's analysis of the content and its fit to the question. They are not measured viewer retention. After a Deep Search finishes you can keep talking to the agent to dig further into the results.
+
+## Product facts
+
+- What it is: a research product for finding and analyzing short-form video, so teams can see what hooks, formats and trends work in a niche before they brief a creator or plan an ad.
+- Platforms: TikTok, Instagram Reels, YouTube Shorts. No other platform is supported today.
+- Deep Search: breaks a question into sub-questions to answer and parameters to score, builds keyword searches, analyzes 500 to 1,000 videos in under five minutes, then ranks them and answers with citations to the video data.
+- Viral Now: a public page of top-performing short-form videos across 20 niches, with up to 30 ranked videos per niche.
+- Tracking (experimental): follow public accounts and selected videos, and keep daily cumulative snapshots to review competitor growth.
+- AI boards: save and organize videos from your research.
+- MCP server: AI agents can use ContHunt through the hosted MCP server at https://mcp.conthunt.app. Sign-in is with a ContHunt account.
+- App: https://agent.conthunt.app
+
+## Pricing
+
+Prices are in US dollars and are as listed on https://conthunt.app/pricing, which is the source of truth. Every plan starts with a 1-week free trial. Yearly billing is shown by default and costs less per month than monthly billing.
+
+- Creator: $25 per month billed yearly ($300 a year) or $29 billed monthly. 300 searches, 5,000 AI credits and 1,500 tracking credits per month. All platforms, the latest AI models, all AI features including Deep Search, and 5 AI boards.
+- Pro: $63 per month billed yearly ($756 a year) or $79 billed monthly. 900 searches, 15,000 AI credits and 5,000 tracking credits per month. All platforms plus upcoming platforms, the latest AI models, all AI features including Deep Search, and 25 AI boards.
+- Research: $119 per month billed yearly ($1,428 a year) or $149 billed monthly. 1,900 searches, 32,000 AI credits and 12,000 tracking credits per month. Everything in Pro, plus 60 AI boards.
+
+## Pages
+
+- [Home](https://conthunt.app): what ContHunt does, how Deep Search works, the main features, plans and common questions.
+- [Pricing](https://conthunt.app/pricing): the three plans, yearly or monthly billing, and a calculator that estimates the research hours you get back.
+- [Viral Now](https://conthunt.app/viral-now): the top viral short-form videos across 20 niches.
+- [Resources](https://conthunt.app/resources): playbooks, guides and research on short-form video, hooks, formats and virality.
+
+## Resources (articles)
+
+- [Using ContHunt with AI agents through MCP](https://conthunt.app/resources/using-conthunt-with-ai-agents-through-mcp): Connect ContHunt to Claude, Codex or Cursor, then run hook research, board curation and competitor teardowns from your agent. Setup and prompts included.
+- [Competitor content tracking: what to measure daily and why](https://conthunt.app/resources/competitor-content-tracking-what-to-measure-daily): Daily snapshots of a rival's public videos show growth curves, not just totals. The metrics, formulas and weekly review questions that matter.
+- [Build a weekly trend radar for your niche](https://conthunt.app/resources/build-a-weekly-trend-radar-for-your-niche): A 45-minute weekly routine that sorts formats, sounds, topics and products into emerging, rising, peaking and fading, with a one-page template.
+- [Reading virality: the metrics that matter beyond views](https://conthunt.app/resources/reading-virality-beyond-views): Views are the loudest number and the least comparable. Five ratios, with formulas and a worked example, to find the videos actually worth studying.
+- [How Deep Search works: from one question to 500 analyzed videos](https://conthunt.app/resources/how-deep-search-works): What happens between your prompt and a cited answer: questions and parameters, a keyword plan, 500 to 1,000 videos watched, and a ranked result you can question.
+- [Finding winning products from short-form signals](https://conthunt.app/resources/finding-winning-products-from-short-form-signals): A seven-signal scorecard for judging whether a 'made me buy it' product has real demand or just one lucky video, with a worked example and a kill list.
+- [UGC ad formats that sell: a field guide with brief templates](https://conthunt.app/resources/ugc-ad-formats-that-sell-a-field-guide): Seven UGC formats, when each one fits, how the beats run, and a brief line for each. Plus the rights, disclosure and testing checklist buyers need.
+- [The 3-second rule: a hook taxonomy for short-form video](https://conthunt.app/resources/the-3-second-rule-a-hook-taxonomy): Nine hook patterns, what each puts on screen in the first 3 seconds, when it fits, and how to tag your niche's videos to see which ones win.
+- [How to research TikTok hooks before you brief a creator](https://conthunt.app/resources/research-tiktok-hooks-before-you-brief-a-creator): A six-step process that turns 200+ videos in your niche into a hook brief a creator can shoot from, with a template you can copy.
+
+## Docs and policies
+
+- [Documentation](https://conthunt.app/docs): product documentation.
+- [MCP setup guide](https://conthunt.app/docs/integrations/mcp): connect an AI agent to the ContHunt MCP server.
+- [Privacy policy](https://conthunt.app/privacy)
+- [Terms of service](https://conthunt.app/terms)
+- [Sitemap](https://conthunt.app/sitemap.xml)

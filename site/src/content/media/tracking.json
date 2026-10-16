@@ -1,0 +1,88 @@
+{
+  "_note": "Two public TikTok accounts and four of their videos from ContHunt creator profile and creator-videos reads on 2026-10-14. Follower counts are live profile values on that date. Avatars come from unavatar.io (public TikTok profile pictures), because ContHunt does not return avatar URLs for TikTok. Account card covers are crops of each account's own tracked video posters (cover-glossier.webp from glossier-1, cover-rhode.webp from rhode-1).",
+  "observed_on": "2026-10-14",
+  "accounts": [
+    {
+      "handle": "glossier",
+      "name": "Glossier",
+      "role": "dtc-brand",
+      "role_label": "DTC brand",
+      "platform": "tiktok",
+      "verified": true,
+      "url": "https://www.tiktok.com/@glossier",
+      "link": "glossier.com/pages/holiday-2026-coming-soon",
+      "bio": "Skin first. Makeup second.",
+      "followers": 1100000,
+      "following": 686,
+      "total_likes": 17400000,
+      "videos_count": 906,
+      "avatar": "/media/tracking/avatar-glossier.webp",
+      "cover": "/media/tracking/cover-glossier.webp",
+      "videos": [
+        {
+          "poster": "/media/tracking/glossier-1.webp",
+          "url": "https://www.tiktok.com/@glossier/video/7502838645104086314",
+          "title": "Twist, swipe, and indulge in new Lip Glaze, a creamy, cooling lip oil with a sheer glaze finish",
+          "views": 3745824,
+          "likes": 598179,
+          "comments": 3291,
+          "shares": 16878,
+          "saves": 54010,
+          "posted_at": "2025-05-10"
+        },
+        {
+          "poster": "/media/tracking/glossier-2.webp",
+          "url": "https://www.tiktok.com/@glossier/video/7192712088773578027",
+          "title": "Do you need another hint? Drop your guesses in comments",
+          "views": 4681285,
+          "likes": 401915,
+          "comments": 3369,
+          "shares": 2126,
+          "saves": 6570,
+          "posted_at": "2023-01-25"
+        }
+      ]
+    },
+    {
+      "handle": "rhode",
+      "name": "rhode skin",
+      "role": "competitor",
+      "role_label": "Competitor",
+      "platform": "tiktok",
+      "verified": true,
+      "url": "https://www.tiktok.com/@rhode",
+      "link": "rhodeskin.com",
+      "bio": "one of everything really good. a new philosophy on skincare by Hailey Bieber.",
+      "followers": 2500000,
+      "following": 309,
+      "total_likes": 75600000,
+      "videos_count": 3538,
+      "avatar": "/media/tracking/avatar-rhode.webp",
+      "cover": "/media/tracking/cover-rhode.webp",
+      "videos": [
+        {
+          "poster": "/media/tracking/rhode-1.webp",
+          "url": "https://www.tiktok.com/@rhode/video/7326243057140075819",
+          "title": "the rhode bath bomb",
+          "views": 24944472,
+          "likes": 2151880,
+          "comments": 4614,
+          "shares": 6227,
+          "saves": 58987,
+          "posted_at": "2024-01-20"
+        },
+        {
+          "poster": "/media/tracking/rhode-2.webp",
+          "url": "https://www.tiktok.com/@rhode/video/7383774567933775146",
+          "title": "pocket blush inspired mani",
+          "views": 11641401,
+          "likes": 1093183,
+          "comments": 1401,
+          "shares": 35636,
+          "saves": 186047,
+          "posted_at": "2024-06-23"
+        }
+      ]
+    }
+  ]
+}
