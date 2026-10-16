@@ -40,3 +40,8 @@ blog/**/*.html
 docs/index.html
 docs/**/*.html
 .well-known/
+
+# Local scratch (nginx test runs, legacy build copies, downloaded binaries) - never commit
+.scratch/
+
+# Next app in site/ (see site/.gitignore for its own build output)

@@ -1,10 +1,26 @@
+# Build the combined image (legacy static site + Next.js site behind nginx), push it and deploy conthunt-lp.
+# Run by hand: gcloud builds submit --config cloudbuild.yaml .   (there is no deploy-on-push)
+# The _NEXT_PUBLIC_* values are public (they ship in the browser bundle).
+substitutions:
+  _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
+  _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website', '.']
-  # Push the container image to Artifact Registry
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL}'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_APP_URL=${_NEXT_PUBLIC_APP_URL}'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
+      - '.'
+  # Push the container image to Artifact Registry (latest and the build id)
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website']
+    args: ['push', '--all-tags', 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -13,7 +29,7 @@ steps:
       - 'deploy'
       - 'conthunt-lp'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -21,5 +37,6 @@ steps:
       - '--allow-unauthenticated'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
 options:
   logging: CLOUD_LOGGING_ONLY

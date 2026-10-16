@@ -5,3 +5,9 @@ Dockerfile
 .git
 .gitignore
 .DS_Store
+.scratch
+site/node_modules
+site/.next
+site/.env
+site/.env.*
+!site/.env.example
