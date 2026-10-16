@@ -1,0 +1,50 @@
+# Same build as cloudbuild.yaml, deployed as a no-traffic revision behind the "preview" tag, so the real
+# container can be tested before any traffic moves:
+#   gcloud builds submit --config cloudbuild.preview.yaml .
+# Cloud Run serves that revision at a tagged URL of the form https://preview---conthunt-lp-<hash>-uc.a.run.app
+# (the deploy step prints the exact URL). Production traffic and the :latest image tag are untouched.
+# Check it with: node site/scripts/check-routes.mjs <that url>
+# Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
+# Going live: see site/docs/revamp/MERGE_DEPLOY.md ("Promote"); the service must end up following LATEST again.
+substitutions:
+  _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
+  _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
+# The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
+timeout: 1800s
+steps:
+  # Build the container image (tagged with the build id only)
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL}'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_APP_URL=${_NEXT_PUBLIC_APP_URL}'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
+      - '.'
+  # Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID']
+  # Deploy as a revision that takes no traffic, reachable only through the "preview" tag
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'conthunt-lp'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      # nginx and the Next server share one container; 512Mi (the old static-only setting) is too tight.
+      - '--memory=1Gi'
+      - '--no-traffic'
+      - '--tag=preview'
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
+options:
+  logging: CLOUD_LOGGING_ONLY

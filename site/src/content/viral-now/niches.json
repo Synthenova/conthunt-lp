@@ -1,0 +1,249 @@
+[
+  {
+    "slug": "comedy-skits",
+    "name": "Comedy & Skits",
+    "label": "Comedy",
+    "description": "Short sketches, relatable POV jokes and parody skits that hold attention in the first second.",
+    "search_query": "relatable skit comedy POV",
+    "rationale": "Comedy and entertainment content shows the highest Shorts engagement rate in the 2025 Statista figures cited by ShortsIntel (search-snippet level). Virlo tracks 'Micro-documentary format' (+115%) as a rising format, and Teleprompter names short storytelling with a clear payoff as a top niche (June 2026).",
+    "sources": [
+      "https://www.shortsintel.com/statistics/youtube-shorts",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://virlo.ai/blog/tiktok-trends-june-2026"
+    ]
+  },
+  {
+    "slug": "gaming",
+    "name": "Gaming",
+    "label": "Gaming",
+    "description": "Highlights, clutch plays, reviews and game-update breakdowns from the biggest gaming communities.",
+    "search_query": "gaming highlights clutch moment",
+    "rationale": "Tubular Labs ranks gaming as the second most-viewed YouTube category by US creators in 2025 (about 361 billion views), and gaming Shorts views rose 17% per video in Apr-May 2025. The Teleprompter June 2026 guide names gaming highlights tied to big releases as a top niche.",
+    "sources": [
+      "https://www.netinfluencer.com/report-short-form-content-dominates-as-cross-category-collaborations-drive-engagement/",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts"
+    ]
+  },
+  {
+    "slug": "food-recipes",
+    "name": "Food & Recipes",
+    "label": "Food",
+    "description": "Quick recipes, satisfying cooking builds, street food and meal prep under 60 seconds.",
+    "search_query": "easy recipe cooking at home",
+    "rationale": "Tubular Labs reports Food and Drink has the highest engagement rate of all TikTok categories it measured. Metricool's category taxonomy lists Alimentation and boissons, and Teleprompter names simple, satisfying food builds as a top niche (June 2026).",
+    "sources": [
+      "https://www.netinfluencer.com/report-short-form-content-dominates-as-cross-category-collaborations-drive-engagement/",
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts"
+    ]
+  },
+  {
+    "slug": "fitness-gym",
+    "name": "Fitness & Gym",
+    "label": "Fitness",
+    "description": "Gym workouts, form fixes, strength training and home routines with visible progress.",
+    "search_query": "gym workout form tips",
+    "rationale": "Teleprompter (June 2026) names fitness form fixes and mobility mini-coaching as top-performing formats. ContHunt trending shows 'Strength Training for Women' rising (up1) on 2026-10-14. Metricool groups Santé with Fitness as a category.",
+    "sources": [
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://metricool.com/fr/niche-tiktok/",
+      "ContHunt MCP trending niches (2026-10-14)"
+    ]
+  },
+  {
+    "slug": "beauty-skincare",
+    "name": "Beauty & Skincare",
+    "label": "Beauty",
+    "description": "Skincare routines, makeup tutorials and ingredient-led product reviews.",
+    "search_query": "skincare routine glowing skin",
+    "rationale": "Beauty is a core TikTok Creative Center category (Beauté and soins in the Metricool taxonomy). Tubular Labs reports beauty brands (Cetaphil, Nivea, Sephora) partner with creators on TikTok at up to 3.2x their standard engagement. ContHunt trending shows 'Hypochlorous Acid Spray' rising fast (up2) and 'Beauty-Meets-Wellness' rising (up1).",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://www.netinfluencer.com/report-short-form-content-dominates-as-cross-category-collaborations-drive-engagement/",
+      "ContHunt MCP trending niches (2026-10-14)"
+    ]
+  },
+  {
+    "slug": "tech-gadgets",
+    "name": "Tech & Gadgets",
+    "label": "Tech",
+    "description": "AI tool walkthroughs, gadget reviews and practical software tutorials.",
+    "search_query": "AI tools tutorial gadget review",
+    "rationale": "Virlo's June 2026 tracker ranks 'AI tool walkthroughs' first at +340% over 30 days across TikTok, Shorts and Reels (pooled). ContHunt trending shows 'AI Video Generators' (up2) and 'AI Guardrails' (up2). Metricool lists Tech and electronics as a category.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://metricool.com/fr/niche-tiktok/",
+      "ContHunt MCP trending niches (2026-10-14)"
+    ]
+  },
+  {
+    "slug": "personal-finance",
+    "name": "Personal Finance",
+    "label": "Finance",
+    "description": "Budgeting, investing basics, savings and money mistakes explained in plain language.",
+    "search_query": "personal finance money tips budget",
+    "rationale": "Finance and business niches carry the highest RPMs on YouTube Shorts (Gyre and Clipspeed, search-snippet level). Teleprompter names personal finance basics as a top niche (June 2026). Virlo tracks 'Financial independence reboot' at +155%. ContHunt trending shows 'AI-Driven Personal Finance' rising (up1).",
+    "sources": [
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://gyre.pro/blog/the-most-profitable-youtube-shorts-niches-for-beginners",
+      "ContHunt MCP trending niches (2026-10-14)"
+    ]
+  },
+  {
+    "slug": "dance-music",
+    "name": "Dance & Music",
+    "label": "Dance",
+    "description": "Choreography trends, remix edits and sound-led videos built around one audio hook.",
+    "search_query": "dance trend choreography remix",
+    "rationale": "Virlo's June 2026 tracker lists 'Sound-reactive content' at +70% over 30 days (pooled across platforms). Metricool's taxonomy has no dedicated dance category, so this niche combines dance and music. Evidence is thin, so treat its ranking as provisional.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "lifestyle-vlogs",
+    "name": "Lifestyle & Vlogs",
+    "label": "Lifestyle",
+    "description": "Day-in-my-life vlogs, routines, apartment tours and everyday aesthetics.",
+    "search_query": "day in my life vlog routine",
+    "rationale": "Lifestyle was named in the owner brief as a core niche. Virlo's June 2026 tracker lists 'Workplace reality content' (+130%) and 'Founder-mode content' (+210%) as rising. Metricool's category list has no lifestyle entry, so this niche is partly editorial.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "tiktok-shop-finds",
+    "name": "TikTok Shop & Product Finds",
+    "label": "Product Finds",
+    "description": "Viral product demos, must-have gadgets and TikTok Shop micro-reviews.",
+    "search_query": "tiktok shop must have products",
+    "rationale": "Virlo's June 2026 tracker lists 'TikTok Shop micro-reviews' at +175% over 30 days. Teleprompter names quick product picks and shopping decisions as a top niche (June 2026). ContHunt search history shows 'tiktok shop best sellers viral products' was already run this week.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts"
+    ]
+  },
+  {
+    "slug": "fashion-style",
+    "name": "Fashion & Style",
+    "label": "Fashion",
+    "description": "Outfit formulas, styling hacks, thrift hauls and streetwear lookbooks.",
+    "search_query": "outfit ideas style lookbook",
+    "rationale": "Metricool's TikTok category taxonomy lists Mode and accessoires (fashion hauls, streetwear, vintage). Fashion has no separate 2026 growth figure in the sources checked, so this ranking is provisional.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://www.netinfluencer.com/report-short-form-content-dominates-as-cross-category-collaborations-drive-engagement/"
+    ]
+  },
+  {
+    "slug": "pets-animals",
+    "name": "Pets & Animals",
+    "label": "Pets",
+    "description": "Dog training, funny pet moments, pet care tips and animal rescue clips.",
+    "search_query": "dog training funny pet video",
+    "rationale": "Metricool's TikTok category taxonomy lists Animaux (training, care, pet fashion, animal humor). No 2026 growth figure was found in the sources checked, so this ranking is provisional.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "travel",
+    "name": "Travel",
+    "label": "Travel",
+    "description": "Hidden-gem destinations, budget trip tips, road trips and travel vlogs.",
+    "search_query": "travel hidden gems trip vlog",
+    "rationale": "Metricool's TikTok category taxonomy lists Voyage (vlogs, budget tips, road trips, photography). No 2026 growth figure was found in the sources checked, so this ranking is provisional.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "home-diy",
+    "name": "Home & DIY",
+    "label": "Home",
+    "description": "Renovation transformations, cleaning hacks, organization and simple DIY builds.",
+    "search_query": "diy home decor transformation",
+    "rationale": "Metricool's TikTok category taxonomy lists Bricolage and Maison (DIY, decor, cleaning, organization, upcycling). Sustainability swaps are rising at +95% in Virlo's June 2026 tracker, which overlaps with upcycling and reuse content.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://virlo.ai/blog/tiktok-trends-june-2026"
+    ]
+  },
+  {
+    "slug": "parenting-family",
+    "name": "Parenting & Family",
+    "label": "Parenting",
+    "description": "Parenting tips, toddler routines, family moments and pregnancy advice.",
+    "search_query": "parenting tips toddler family",
+    "rationale": "Metricool's TikTok category taxonomy lists Bebe, enfants et grossesse (baby, pregnancy, kids activities, parenting tips). Teleprompter notes family-friendly puzzles and fun facts drive comments and rewatches (June 2026).",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts"
+    ]
+  },
+  {
+    "slug": "sports",
+    "name": "Sports",
+    "label": "Sports",
+    "description": "Match highlights, training drills, sports science and athlete moments.",
+    "search_query": "sports highlights training drill",
+    "rationale": "Metricool's TikTok category taxonomy lists Sport and outdoor (home workouts, yoga, nutrition, recovery). No 2026 growth figure was found in the sources checked, so this ranking is provisional.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/",
+      "https://www.netinfluencer.com/report-short-form-content-dominates-as-cross-category-collaborations-drive-engagement/"
+    ]
+  },
+  {
+    "slug": "cars-motors",
+    "name": "Cars & Motors",
+    "label": "Cars",
+    "description": "Car reviews, driving tips, mods, maintenance and EV test drives.",
+    "search_query": "car review driving tips",
+    "rationale": "Metricool's TikTok category taxonomy lists Vehicules et transport (auto and moto tests, maintenance, road safety). No 2026 growth figure was found in the sources checked, so this ranking is provisional.",
+    "sources": [
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "education-science",
+    "name": "Education & Science",
+    "label": "Learn",
+    "description": "One-minute lessons, science experiments, history facts and study hacks.",
+    "search_query": "learn science facts explained",
+    "rationale": "Teleprompter (June 2026) names micro-learning and one-minute lessons as a top-performing niche. Metricool's taxonomy lists Education (learning hacks, online courses, science experiments).",
+    "sources": [
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "wellness-mindset",
+    "name": "Wellness & Mindset",
+    "label": "Wellness",
+    "description": "Longevity, brain health, stress management, sleep and daily mindset habits.",
+    "search_query": "wellness mindset habits longevity",
+    "rationale": "Virlo's June 2026 tracker lists 'Biological age optimization' at +280% over 30 days. ContHunt trending shows 'Longevity Diagnostics' (up2), 'Functional Nutrition' (up1) and 'Neuro-wellness' (up1) rising on 2026-10-14.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "ContHunt MCP trending niches (2026-10-14)",
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  },
+  {
+    "slug": "business-creator",
+    "name": "Business & Creator Economy",
+    "label": "Business",
+    "description": "Founder lessons, creator monetization tips, side hustles and marketing tactics.",
+    "search_query": "creator business side hustle marketing tips",
+    "rationale": "Adjusted in place of 'Art & Crafts', which has no supporting evidence in the sources checked. Virlo's June 2026 tracker lists 'Founder-mode content' at +210%. Teleprompter names creator business and monetization bites as a top niche (June 2026). Metricool lists Services business.",
+    "sources": [
+      "https://virlo.ai/blog/tiktok-trends-june-2026",
+      "https://www.teleprompter.com/blog/best-niches-for-youtube-shorts",
+      "https://metricool.com/fr/niche-tiktok/"
+    ]
+  }
+]

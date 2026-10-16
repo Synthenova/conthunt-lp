@@ -1,0 +1,210 @@
+/*
+ * how-it-works: the few styles that need selectors Tailwind classes cannot express
+ * (state attributes set imperatively by GSAP, offscreen pausing, sort/phase layouts).
+ * Tokens only. Decorative loops pause when the visual is offscreen (data-live="false",
+ * set by playback.ts) and collapse under prefers-reduced-motion (globals.css).
+ */
+
+/* ---------------------------------------------------------------- shared */
+
+.caret {
+  animation: blink 1.05s steps(1, end) infinite;
+}
+
+[data-typing="true"] .caret {
+  animation: none;
+  opacity: 1;
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+.pulseDot {
+  animation: pulse 2.4s var(--ease-in-out) infinite;
+}
+
+[data-live="false"] .caret,
+[data-live="false"] .spin,
+[data-live="false"] .pulseDot {
+  animation-play-state: paused;
+}
+
+@keyframes blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* ------------------------------------------------------------ progress rail */
+
+/* One gradient for the whole rail (first step to outro). The fill is revealed with clip-path, so the
+   hues are fixed to rail positions. The sheen is a soft white band that repeats and drifts down. */
+.railFill {
+  background: linear-gradient(
+    180deg,
+    var(--pink) 0%,
+    var(--orange) 25%,
+    var(--purple) 50%,
+    var(--blue) 75%,
+    var(--green) 100%
+  );
+}
+
+.railFill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, transparent 0, rgb(255 255 255 / 0.6) 50%, transparent 100%);
+  background-size: 100% 360px;
+  background-repeat: repeat-y;
+  animation: railFlow 6s linear infinite;
+}
+
+[data-near="false"] .railFill::after {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .railFill::after {
+    animation: none;
+    background-image: none;
+  }
+}
+
+@keyframes railFlow {
+  to {
+    background-position-y: 360px;
+  }
+}
+
+/* --------------------------------------------------------- step 01 send */
+
+.send {
+  background: var(--surface-2);
+  color: rgba(15, 15, 15, 0.35);
+  transition:
+    background-color 260ms var(--ease-out),
+    color 260ms var(--ease-out);
+}
+
+.send[data-ready="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* --------------------------------------------------------- step 02 plan */
+
+.link {
+  fill: none;
+  stroke: rgba(15, 15, 15, 0.16);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke 200ms var(--ease-out),
+    stroke-width 200ms var(--ease-out);
+}
+
+.linkStrong {
+  stroke: rgba(15, 15, 15, 0.32);
+}
+
+.link:global(.is-hl) {
+  stroke: var(--purple);
+  stroke-width: 1.5;
+}
+
+.hlChip {
+  transition:
+    border-color 200ms var(--ease-out),
+    color 200ms var(--ease-out),
+    background-color 200ms var(--ease-out);
+}
+
+.hlChip:global(.is-hl) {
+  border-color: color-mix(in oklab, var(--purple) 45%, transparent);
+  background: color-mix(in oklab, var(--purple) 6%, var(--paper));
+  color: var(--purple-ink);
+}
+
+.hlRow {
+  transition: color 200ms var(--ease-out);
+}
+
+.hlRow:global(.is-hl) {
+  color: var(--ink);
+}
+
+.hlRow:global(.is-hl) [data-tag][data-kind="q"] {
+  background: var(--purple-ink);
+  color: #fff;
+}
+
+.hlRow:global(.is-hl) [data-tag][data-kind="p"] {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.grayTile {
+  filter: grayscale(1);
+  opacity: 0.38;
+}
+
+/* ---------------------------------------------------------- step 03 rank */
+
+/* Ranked rows: order and visibility follow the active sort (data-sort on the list). */
+.rows[data-sort="score"] .row {
+  order: var(--o-score);
+}
+
+.rows[data-sort="views"] .row {
+  order: var(--o-views);
+}
+
+.rows[data-sort="score"] .row[data-in-score="false"],
+.rows[data-sort="views"] .row[data-in-views="false"] {
+  display: none;
+}
+
+.rows[data-sort="score"] .byViews,
+.rows[data-sort="views"] .byScore {
+  display: none;
+}
+
+/* The value being sorted by reads at full ink. */
+.rows[data-sort="views"] .viewsVal {
+  color: var(--ink);
+}
+
+.veil {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--paper) 55%, transparent),
+    color-mix(in oklab, var(--paper) 82%, transparent) 40%
+  );
+}
+
+.scan {
+  box-shadow: 0 0 0 0.5px var(--accent), 0 0 18px 2px color-mix(in oklab, var(--accent) 35%, transparent);
+}

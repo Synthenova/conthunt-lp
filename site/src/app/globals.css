@@ -1,0 +1,685 @@
+/*
+ * ContHunt marketing site — global tokens and base styles.
+ * Source of truth: docs/revamp/PLAN.md §2. Usage guide: docs/revamp/FOUNDATION.md.
+ *
+ * Plain CSS variables (`--ink`, `--hairline`, ...) are the tokens. Tailwind v4
+ * utilities are mapped onto them in `@theme inline` (bg-ink, text-muted,
+ * border-hairline, rounded-card, shadow-float, ease-out, font-mono, ...).
+ * The default Tailwind colour palette is intentionally removed: use tokens only.
+ */
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ------------------------------------------------------------------- fonts */
+/*
+ * Switzer and Boska italic, served by the Fontshare CDN (CDN use, not self-hosting).
+ * These rules are copied from the Fontshare stylesheet
+ * (api.fontshare.com/v2/css?f[]=switzer@400,401,500,600,700,800&f[]=boska@401,501&display=swap),
+ * woff2 only, so the page no longer waits for a render-blocking third-party stylesheet
+ * (≈ 950ms on slow 4G). The hashed URLs are versioned by Fontshare. Browsers fetch a face
+ * only when a page renders it; layout.tsx preloads Switzer 400 and 700. To add a weight,
+ * copy its @font-face from that stylesheet URL (with the weight added) into this block.
+ */
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/BLNB4FAQFNK56DWWNF7PMGTCOTZHOEII/ST3WKSSDMBK2MIQQO3MAVYWLF4FTOLFV/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/XVUY2PHYBA6KMN4RMEMJPHQSTKCQ267G/UICOQA6KCSHFOSCPYDVVDNNCDKYFXHJB/O34WRFYO7JNWEBBA2LRV2XYRUSYXYDKH.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/OYB4CXKJQXKTNSLJMTDQOIVUL2V5EL7S/WYO2P7DQVV5RNXGMCUO2HL4RJP4VFUAS/6XPIMU23OJVRY676OG5YVJMWEHWICATX.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/5SZVFDB7V52TI6ULVC6J3WQZQCIZVDV5/ODYPSTCUDMKSTYIPTV4CLQ7URIK7XYBJ/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/HBNTRIISA5MEXGL5WPYI7CV2HIWTDV3Q/YDPDINVT673XLXNSTMLG4JNCZZMVVNPN/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("https://cdn.fontshare.com/wf/ZME55SZ3XN6FJ6WZ26BVFLFSAZ5I2VWW/YETVURK7HXO34ARWAMVG6MSPWALMBOUD/SMQAIKPHV4D6DU77XSDVYN543XEEYX6R.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Boska";
+  src: url("https://cdn.fontshare.com/wf/MBMZ7FPNE3BLIO7BA7WSXS622ESHMSPS/A24ASHB6YYDC2RKM53ROP5SQJCGM5LMQ/2YQT6WFIC4YLG23Y6A7HCRXGM5EQU4GP.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Boska";
+  src: url("https://cdn.fontshare.com/wf/BQ7H6NLD2VQ7DH6MKXG4EKNOHS4ARVBW/WJSA3LVU7OIK54ZLW7BVBDUCWMC7XIEL/7CAW3NYJZQZXMCDUJFS4DWGYL4PJNT5C.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ tokens */
+
+:root {
+  /* Colour */
+  --bg: #fafafa;
+  --surface: #f2f2f2;
+  --surface-2: #eaeaea;
+  --paper: #ffffff;
+  --ink: #0f0f0f;
+  --ink-2: #373737;
+  /* Secondary text and the dim half of two-tone headings. .62 holds WCAG AA for small
+     text on every surface: 5.3:1 on --bg, 5.2:1 on --surface, 5.05:1 on --surface-2. */
+  --muted: rgba(15, 15, 15, 0.62);
+  /* Decorative, non-text or disabled UI only (rail "+" marks, separators, line numbers).
+     1.9:1, so never use it for information. */
+  --faint: rgba(15, 15, 15, 0.28);
+  --hairline: #e4e4e4;
+
+  /*
+   * Palette: seven hues x four steps (docs/revamp/COLOR_SYSTEM.md; supersedes OWNER_DECISIONS D4).
+   *   base   fills, dots, icons, strokes, large numerals. Pink, purple, blue, green and red hold
+   *          3:1 on --bg (non-text and display text). Yellow and orange are FILL-ONLY: never a
+   *          stroke or text on a light surface; put ink text on them instead (12.4:1 / 7.4:1).
+   *   -soft  opaque tint (11-26% on white, tuned to the same perceived lightness, OKLCH L ~.95)
+   *          for chip, badge, avatar and tile backgrounds.
+   *   -ink   text-safe twin: >= 4.5:1 on --bg, --paper, --surface and its own -soft. White text
+   *          on an -ink fill also holds 4.5:1, so -ink doubles as a solid fill behind white text.
+   *   -glow  light partner for gradients, glows and text on --night surfaces (>= 8:1 on --night).
+   * Contrast table: COLOR_SYSTEM.md section 2.
+   */
+  --pink: #f0448c;
+  --pink-soft: #fde9f1;
+  --pink-ink: #bd2a69;
+  --pink-glow: #ff8fc3;
+  --purple: #8a55f7;
+  --purple-soft: #f1ebfe;
+  --purple-ink: #7444de;
+  --purple-glow: #c3a6ff;
+  --blue: #2f54eb;
+  --blue-soft: #e8ecfd;
+  --blue-ink: #2a4bd8;
+  --blue-glow: #8fa9ff;
+  --green: #16a05a;
+  --green-soft: #e1f3ea;
+  --green-ink: #0a7340;
+  --green-glow: #5fe39a;
+  --yellow: #ffc83d;
+  --yellow-soft: #fff1cd;
+  --yellow-ink: #7d5700;
+  --yellow-glow: #ffe28f;
+  --yellow-deep: #e0a100; /* the breakout stroke: deeper gold for lines on video and charts */
+  --orange: #ff7a2e;
+  --orange-soft: #ffece2;
+  --orange-ink: #a8490e;
+  --orange-glow: #ffb27a;
+  --red: #e5484d;
+  --red-soft: #fce9ea;
+  --red-ink: #b9262c;
+  --red-glow: #ff9497;
+  /* The one designed dark surface (the featured Pro plan card). White text: 18.2:1 on --night,
+     14.2:1 on --night-2; white/72 holds 8:1 on both. */
+  --night: #170f33;
+  --night-2: #2c1b6b;
+  /* Gradients. Spectrum = the site signature (pink -> purple -> blue): thin lines, borders and
+     the featured card ring only, never a large fill and never text. -ink spectrum carries white
+     text. Aurora = the --night card surface with blue and pink light. */
+  --grad-spectrum: linear-gradient(90deg, var(--pink), var(--purple) 50%, var(--blue));
+  --grad-spectrum-ink: linear-gradient(90deg, var(--pink-ink), var(--purple-ink) 50%, var(--blue-ink));
+  --grad-aurora:
+    radial-gradient(120% 70% at 0% 0%, color-mix(in oklab, var(--blue) 50%, transparent), transparent 62%),
+    radial-gradient(90% 60% at 100% 100%, color-mix(in oklab, var(--pink) 42%, transparent), transparent 66%),
+    linear-gradient(160deg, var(--night-2), var(--night));
+
+  /* The UI accent and the data colours are now palette aliases (same values as before). */
+  --accent: var(--blue);
+  /* Data colours (charts, trend lines, scores): breakout = yellow, growth = green, decline =
+     red wherever trend data appears. A hue used as data never means anything else in that view. */
+  --breakout: var(--yellow-deep);
+  --breakout-glow: var(--yellow);
+  --growth: var(--green);
+  --decline: var(--red);
+  /* Text-safe twins of the three data colours (= the hue -ink steps). */
+  --breakout-ink: var(--yellow-ink);
+  --growth-ink: var(--green-ink);
+  --decline-ink: var(--red-ink);
+
+  /* Radii */
+  --r-chip: 8px; /* pills, chips, inputs */
+  --r-btn: 14px; /* buttons, video tiles */
+  --r-card: 24px; /* cards */
+  --r-tray: 32px; /* trays, big panels */
+
+  /* Elevation (floating fragments only) */
+  --shadow-float: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  /* Coloured glow under hovered tiles and the featured card. Tint it with a shadow colour
+     utility, e.g. `shadow-glow shadow-purple/40` (Tailwind swaps the colour in). */
+  --shadow-glow: 0 18px 44px -14px rgba(15, 15, 15, 0.25);
+
+  /* Layout */
+  --letterbox: calc(100% - 40px); /* < 768px */
+  --section-pad-y: clamp(4.5rem, 3.004rem + 6.385vw, 8.75rem); /* 72 -> 140px */
+  --nav-h: 88px; /* expanded navbar height (sections can offset by this) */
+  /*
+   * The full-size Deep Search simulator (OWNER_DECISIONS D5), shared by the landed inline frame
+   * (statement-simulator/scene.module.css) and the Full Control dialog (simulator/sim.module.css)
+   * so the two never drift: 24px gutters, room for the 44px row + 12px gap + 26px air above and
+   * below, 16:10, capped at 1440px (or the letterbox on very wide windows, so it is never smaller
+   * than the letterbox). `100%` resolves where the variable is used (the containing block's width).
+   */
+  --sim-full-w: min(100% - 48px, (100svh - 108px) * 1.6, max(1440px, var(--letterbox)));
+}
+
+@media (min-width: 768px) {
+  :root {
+    --letterbox: 80vw;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --letterbox: 60vw;
+  }
+}
+
+/* `static` keeps every variable in the output even if no utility uses it,
+   so components can rely on var(--font-*) / var(--ease-*) in raw CSS. */
+@theme static {
+  /* Fonts. Switzer + Boska: the @font-face block at the top of this file (Fontshare CDN);
+     --font-jetbrains-mono is set by next/font on <html>. */
+  --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif-italic: "Boska", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Eases (PLAN §2 Motion). GSAP equivalents: "ch.out", "ch.inOut", "ch.outFast". */
+  --ease-out: cubic-bezier(0.2, 0.715, 0.205, 0.99);
+  --ease-in-out: cubic-bezier(0.835, 0.12, 0.225, 0.77);
+  --ease-out-fast: cubic-bezier(0, 0, 0, 1);
+}
+
+@theme inline {
+  /* Remove Tailwind's default palette so only tokens exist. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-breakout: var(--breakout);
+  --color-breakout-glow: var(--breakout-glow);
+  --color-growth: var(--growth);
+  --color-decline: var(--decline);
+  --color-breakout-ink: var(--breakout-ink);
+  --color-growth-ink: var(--growth-ink);
+  --color-decline-ink: var(--decline-ink);
+
+  /* Palette (bg-pink-soft, text-purple-ink, border-blue/30, from-green-glow, shadow-pink/40 ...). */
+  --color-pink: var(--pink);
+  --color-pink-soft: var(--pink-soft);
+  --color-pink-ink: var(--pink-ink);
+  --color-pink-glow: var(--pink-glow);
+  --color-purple: var(--purple);
+  --color-purple-soft: var(--purple-soft);
+  --color-purple-ink: var(--purple-ink);
+  --color-purple-glow: var(--purple-glow);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-ink: var(--blue-ink);
+  --color-blue-glow: var(--blue-glow);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-green-ink: var(--green-ink);
+  --color-green-glow: var(--green-glow);
+  --color-yellow: var(--yellow);
+  --color-yellow-soft: var(--yellow-soft);
+  --color-yellow-ink: var(--yellow-ink);
+  --color-yellow-glow: var(--yellow-glow);
+  --color-yellow-deep: var(--yellow-deep);
+  --color-orange: var(--orange);
+  --color-orange-soft: var(--orange-soft);
+  --color-orange-ink: var(--orange-ink);
+  --color-orange-glow: var(--orange-glow);
+  --color-red: var(--red);
+  --color-red-soft: var(--red-soft);
+  --color-red-ink: var(--red-ink);
+  --color-red-glow: var(--red-glow);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+
+  --radius-chip: var(--r-chip);
+  --radius-btn: var(--r-btn);
+  --radius-card: var(--r-card);
+  --radius-tray: var(--r-tray);
+
+  --shadow-float: var(--shadow-float);
+  /* Literal (not var()) so shadow colour utilities can recolour it: `shadow-glow shadow-pink/40`. */
+  --shadow-glow: 0 18px 44px -14px rgba(15, 15, 15, 0.25);
+}
+
+/* Gradient fills (COLOR_SYSTEM.md section 3). Per-hue: glow -> base at 135deg, for small solid
+   marks (avatar discs, icon tiles, step dots, the bento glow blobs). Never behind body text. */
+@utility bg-grad-pink {
+  background-image: linear-gradient(135deg, var(--pink-glow), var(--pink));
+}
+@utility bg-grad-purple {
+  background-image: linear-gradient(135deg, var(--purple-glow), var(--purple));
+}
+@utility bg-grad-blue {
+  background-image: linear-gradient(135deg, var(--blue-glow), var(--blue));
+}
+@utility bg-grad-green {
+  background-image: linear-gradient(135deg, var(--green-glow), var(--green));
+}
+@utility bg-grad-yellow {
+  background-image: linear-gradient(135deg, var(--yellow-glow), var(--yellow));
+}
+@utility bg-grad-orange {
+  background-image: linear-gradient(135deg, var(--orange-glow), var(--orange));
+}
+@utility bg-grad-red {
+  background-image: linear-gradient(135deg, var(--red-glow), var(--red));
+}
+/* Signature spectrum (pink -> purple -> blue): rails, rings, hairline borders. */
+@utility bg-grad-spectrum {
+  background-image: var(--grad-spectrum);
+}
+/* Same spectrum at -ink strength: white text on it holds 4.5:1 at every stop (tags, pills). */
+@utility bg-grad-spectrum-ink {
+  background-image: var(--grad-spectrum-ink);
+}
+/* The featured (Pro) card surface: --night with blue and pink light. White text only. */
+@utility bg-aurora {
+  background-color: var(--night);
+  background-image: var(--grad-aurora);
+}
+
+/* -------------------------------------------------------------------- base */
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--hairline);
+  }
+
+  html {
+    background: var(--bg);
+    color: var(--ink-2);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    /* Never let a wide element create a horizontal scrollbar. */
+    overflow-x: clip;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--bg);
+    font-size: 1rem;
+    line-height: 1.55;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  video {
+    background: var(--surface);
+  }
+}
+
+/* --------------------------------------------------------- type utilities */
+/* Fluid clamp 375 -> 1440px viewport. */
+
+@utility display-xl {
+  /* 44 -> 104px */
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 1.4296rem + 5.6338vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+@utility display-l {
+  /* 34 -> 64px */
+  font-family: var(--font-sans);
+  font-size: clamp(2.125rem, 1.4648rem + 2.8169vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+@utility display-m {
+  /* 24 -> 40px */
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 1.1479rem + 1.5023vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+@utility statement {
+  /* 26 -> 44px, regular weight (Butter G1o2H pattern) */
+  font-family: var(--font-sans);
+  font-size: clamp(1.625rem, 1.2289rem + 1.6901vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+@utility body-l {
+  /* 18 -> 20px */
+  font-size: clamp(1.125rem, 1.081rem + 0.1878vw, 1.25rem);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
+@utility eyebrow {
+  /* 11 -> 12px mono, uppercase */
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 0.6655rem + 0.0939vw, 0.75rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+/* Boska italic keyword: optical match for Switzer display weights. */
+@utility emphasis {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.07em;
+  letter-spacing: -0.01em;
+  line-height: 0;
+}
+
+/* ---------------------------------------------------------------- layout */
+
+/* Content column: 60vw >= 1280px, 80vw 768-1279px, 100% - 40px below. */
+@utility letterbox {
+  width: var(--letterbox);
+  margin-inline: auto;
+}
+
+/* Hairline rails at the letterbox edges (see components/layout/rails). */
+@utility rails {
+  position: relative;
+  isolation: isolate;
+}
+
+@layer components {
+  .rails-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .rails-lines::before,
+  .rails-lines::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--hairline);
+  }
+
+  .rails-lines::before {
+    left: calc((100% - var(--letterbox)) / 2);
+  }
+
+  .rails-lines::after {
+    right: calc((100% - var(--letterbox)) / 2);
+  }
+
+  /* Zero-height seam with "+" marks where two sections meet. */
+  .rails-seam {
+    position: relative;
+    height: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .rails-seam > span {
+    position: absolute;
+    top: 0;
+    width: 11px;
+    height: 11px;
+    translate: -50% -50%;
+    color: var(--faint);
+  }
+
+  .rails-seam > span::before,
+  .rails-seam > span::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+  }
+
+  .rails-seam > span::before {
+    left: 5px;
+    top: 0;
+    width: 1px;
+    height: 11px;
+  }
+
+  .rails-seam > span::after {
+    top: 5px;
+    left: 0;
+    height: 1px;
+    width: 11px;
+  }
+
+  .rails-seam > span:first-child {
+    left: calc((100% - var(--letterbox)) / 2);
+  }
+
+  .rails-seam > span:last-child {
+    left: calc(100% - (100% - var(--letterbox)) / 2);
+  }
+
+  /* Rails switch: SHOW_RAILS = false (components/layout/rails.tsx) sets data-rails="hidden" on <html>.
+     visibility keeps layout, spacing and section rhythm identical; set SHOW_RAILS = true to restore. */
+  [data-rails="hidden"] .rails-lines,
+  [data-rails="hidden"] .rails-seam {
+    visibility: hidden;
+  }
+
+  /* Sections sit above the rail lines (also inside a display: contents <LazySection>). */
+  .rails > [data-section],
+  .rails > [data-island] > [data-section] {
+    position: relative;
+    z-index: 1;
+  }
+
+  /*
+   * Below-the-fold Home sections (<Rails className="rails-cv">) skip style, layout and
+   * paint until they near the viewport, and their CSS animations idle there. The pinned
+   * statement-simulator scene gets this only while its <LazySection> is still pending
+   * (server HTML, no pin yet): once live, its pin needs real geometry. `--cis` is each
+   * section's server-HTML content height (padding excluded) at 390 / 820 / 1440px
+   * windows, used only until the section first renders; `auto` then keeps its real
+   * height. <OffscreenSections> (components/layout/offscreen-sections.tsx) refreshes
+   * ScrollTrigger when a real height lands and renders each section once in idle time
+   * after the first scroll. Paint containment clips at the section box, so keep
+   * decorations inside it. Re-measure `--cis` when a section's layout changes a lot.
+   */
+  .rails-cv > [data-section]:not([data-section="statement-simulator"]),
+  .rails-cv > [data-island] > [data-section]:not([data-section="statement-simulator"]),
+  .rails-cv > [data-island="pending"] > [data-section="statement-simulator"] {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto var(--cis, 1200px);
+  }
+  .rails-cv [data-section="statement-simulator"] { --cis: 1070px; }
+  .rails-cv [data-section="how-it-works"] { --cis: 3912px; }
+  .rails-cv [data-section="bento"] { --cis: 2480px; }
+  .rails-cv [data-section="pricing"] { --cis: 2438px; }
+  .rails-cv [data-section="testimonials"] { --cis: 400px; }
+  .rails-cv [data-section="tracking"] { --cis: 2230px; }
+  .rails-cv [data-section="mcp"] { --cis: 2240px; }
+  .rails-cv [data-section="blog"] { --cis: 620px; }
+  .rails-cv [data-section="faq"] { --cis: 1010px; }
+  @media (min-width: 768px) {
+    .rails-cv [data-section="statement-simulator"] { --cis: 100svh; }
+    .rails-cv [data-section="how-it-works"] { --cis: 3365px; }
+    .rails-cv [data-section="bento"] { --cis: 1840px; }
+    .rails-cv [data-section="pricing"] { --cis: 1509px; }
+    .rails-cv [data-section="testimonials"] { --cis: 350px; }
+    .rails-cv [data-section="tracking"] { --cis: 1530px; }
+    .rails-cv [data-section="mcp"] { --cis: 1700px; }
+    .rails-cv [data-section="blog"] { --cis: 600px; }
+    .rails-cv [data-section="faq"] { --cis: 940px; }
+  }
+  @media (min-width: 1280px) {
+    .rails-cv [data-section="how-it-works"] { --cis: 2323px; }
+    .rails-cv [data-section="bento"] { --cis: 1640px; }
+    .rails-cv [data-section="pricing"] { --cis: 1089px; }
+    .rails-cv [data-section="testimonials"] { --cis: 300px; }
+    .rails-cv [data-section="tracking"] { --cis: 1290px; }
+    .rails-cv [data-section="mcp"] { --cis: 1230px; }
+    .rails-cv [data-section="blog"] { --cis: 650px; }
+    .rails-cv [data-section="faq"] { --cis: 800px; }
+  }
+
+  /* The footer (every page) gets the same treatment: its fonts, wordmark mask and layout wait
+     until it nears the viewport. Content heights at 390 / 820 / 1440px. */
+  [data-island] > footer[data-section="footer"] {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 1540px;
+  }
+  @media (min-width: 768px) {
+    [data-island] > footer[data-section="footer"] { contain-intrinsic-block-size: auto 1240px; }
+  }
+  @media (min-width: 1280px) {
+    [data-island] > footer[data-section="footer"] { contain-intrinsic-block-size: auto 1235px; }
+  }
+
+  /* Marquee (components/ui/marquee.tsx). */
+  .ch-marquee-track {
+    animation: ch-marquee var(--marquee-duration, 30s) linear infinite;
+    animation-direction: var(--marquee-direction, normal);
+    animation-play-state: var(--marquee-state, running);
+  }
+
+  .ch-marquee:hover .ch-marquee-track[data-pause-on-hover] {
+    animation-play-state: paused;
+  }
+
+  /* Reveal (components/ui/reveal.tsx): give masked lines room for descenders
+     and italic overhang while they animate. */
+  .ch-line-mask,
+  .ch-word-mask {
+    padding-block: 0.12em;
+    margin-block: -0.12em;
+  }
+
+  /* A native modal (the simulator's Full Control, the Viral Now dialog, any showModal()
+     dialog) owns the screen; the fixed navbar would otherwise ghost through its
+     translucent backdrop. The dialog's owner sets `data-modal-open` on <html> right
+     after showModal() and removes it on the dialog's `close` event and in cleanup
+     (FOUNDATION.md §8). Never anchor `:has()` on :root, body, main or a section:
+     every DOM mutation then re-matches the whole page (a 22s main-thread stall on
+     Home in dev, 5s in prod). */
+  :root[data-modal-open] [data-site-nav] {
+    visibility: hidden;
+  }
+
+  /* Immersive: while the landed Deep Search simulator owns the screen (the pinned scene, full size,
+     OWNER_DECISIONS D5) the navbar slides away, like its own auto-hide, so it never covers the row
+     above the frame. The scene sets `data-immersive` on <html> while it is pinned and landed and
+     removes it as soon as it unpins in either direction. Keyboard focus in the navbar brings it
+     back. */
+  :root[data-immersive] [data-site-nav]:not(:focus-within) {
+    translate: 0 calc(-100% - 40px);
+  }
+
+  /* Edge fade for horizontal scrollers (Viral Now rows, marquees). */
+  .edge-fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+}
+
+@keyframes ch-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ---------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

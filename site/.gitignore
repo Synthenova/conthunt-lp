@@ -1,0 +1,20 @@
+# env (hard-linked from ../conthunt/frontend; never commit)
+.env
+.env.*
+!.env.example
+
+# next / node
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# local-only reference material and scratch
+docs/reference/
+.scratch/
+.vercel
+.DS_Store
+
+# generated at Docker build time: the legacy blog's sitemap, merged into /sitemap.xml
+legacy-sitemap.xml

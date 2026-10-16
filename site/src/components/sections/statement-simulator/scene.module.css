@@ -1,0 +1,384 @@
+/*
+ * Statement + simulator scene.
+ *
+ * Default (phones, reduced motion, no JS): a normal stacked flow, statement then simulator.
+ * Desktop with motion: one 100svh stage that ScrollTrigger pins; statement and simulator overlap
+ * and the timeline moves between them. The pre-hydration states for that mode live here so the
+ * first paint never flashes the simulator over the statement.
+ *
+ * From 768px (with or without motion) the landed simulator is full size (OWNER_DECISIONS D5): the
+ * Full Control dialog's geometry, `--sim-full-w` (globals.css), under a 44px row. It leaves the
+ * letterbox. Phones keep the letterbox-wide frame at the 0.8 minimum scale.
+ */
+
+.stage {
+  position: relative;
+}
+
+.statementWrap {
+  --stmt-size: clamp(1.875rem, 1.215rem + 2.817vw, 3.75rem); /* 30 -> 60px */
+  padding-block: var(--section-pad-y) calc(var(--section-pad-y) * 0.6);
+}
+
+.statement {
+  width: var(--letterbox);
+  margin-inline: auto;
+  font-family: var(--font-sans);
+  font-size: var(--stmt-size);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.024em;
+  color: var(--ink);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.word {
+  display: inline-block;
+}
+
+/* Phones: lines flow inline and wrap naturally. */
+.line {
+  display: inline;
+}
+
+/* Desktop: fixed lines, sized so the longest (line 2, 15.08em) fits the letterbox with >= 2.5%
+   slack: letterbox / font = 80vw / 5.1vw = 15.69em from 768px (+4.0%), 60vw / 3.85vw = 15.58em
+   from 1280px (+3.3%); the clamp takes over above, so it only gets looser. Raising either vw
+   value, or lengthening line 2 in statement-copy.ts, eats that slack. */
+@media (min-width: 768px) {
+  .statementWrap {
+    --stmt-desk: min(var(--stmt-size), 5.1vw);
+  }
+
+  .statement {
+    font-size: var(--stmt-desk);
+  }
+
+  .line {
+    position: relative;
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    white-space: nowrap;
+  }
+
+}
+
+@media (min-width: 1280px) {
+  .statementWrap {
+    --stmt-desk: min(var(--stmt-size), 3.85vw);
+  }
+}
+
+.italic {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.07em;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* Inline media squircle: ~1.07em (64px at 1440), radius 22%. */
+.chip {
+  position: relative;
+  display: inline-block;
+  width: 1.07em;
+  height: 1.07em;
+  margin-inline: 0.04em;
+  vertical-align: -0.22em;
+}
+
+.chipInner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 22%;
+  background: var(--surface);
+  transform-origin: 50% 60%;
+}
+
+.chipInner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  pointer-events: none;
+}
+
+.chipInner video,
+.chipInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+}
+
+/* Credit line: names the hovered clip's source without covering any words or clips. */
+.credit {
+  display: none;
+  justify-content: center;
+  height: 18px;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .credit {
+    display: flex;
+  }
+}
+
+.creditInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: credit-in 260ms var(--ease-out) both;
+}
+
+.creditHint {
+  color: color-mix(in srgb, var(--ink-2) 75%, transparent);
+  text-transform: uppercase;
+  animation: credit-in 260ms var(--ease-out) both;
+}
+
+@keyframes credit-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.chipLift {
+  position: absolute;
+  inset: 0;
+  transition: translate 260ms var(--ease-out), scale 260ms var(--ease-out);
+}
+
+.chip:hover .chipLift {
+  translate: 0 -3px;
+  scale: 1.06;
+}
+
+.simWrap {
+  padding-bottom: var(--section-pad-y);
+}
+
+/* "Skip to the live demo": the section's only tab stop before the frame lands. Visually hidden
+   until it receives keyboard focus. */
+.skip {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  z-index: 5;
+  translate: -50% 0;
+  height: 44px;
+  padding-inline: 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  opacity: 0;
+}
+
+.skip:focus-visible {
+  clip-path: none;
+  opacity: 1;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.simInner {
+  width: var(--letterbox);
+  margin-inline: auto;
+}
+
+/* The row above the frame. Phones: eyebrow, then the caption (no actions, as before). */
+.head {
+  margin-bottom: 20px;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.headActions {
+  display: none;
+}
+
+/*
+ * Full size from 768px (OWNER_DECISIONS D5): `--sim-full-w` (globals.css, shared with the Full
+ * Control dialog so the two never drift) is `min(100% - 48px, (100svh - 108px) * 1.6, max(1440px,
+ * --letterbox))`: 24px gutters, room for the 44px row, its 12px gap and 26px of air above and below,
+ * 16:10. The 1280 x 800 canvas renders at about 0.77x at 1280 x 720, 0.99x at 1440 x 900 and
+ * 1.125x at 1680 x 1050 and 1920 x 1080. `100%` resolves where the variable is used: the stage
+ * width for .simInner, the section's containing block for the seam padding below (padding
+ * percentages resolve against width), the same length.
+ */
+@media (min-width: 768px) {
+  .simInner {
+    width: var(--sim-full-w);
+  }
+
+  /* One slim 44px row aligned to the frame's edges, 12px above it. The row and its gap are
+     opaque, so the letterbox rails stop at the full-size app instead of striking through the
+     caption (the rails still show in the air above the row and below the frame). */
+  .head {
+    display: flex;
+    box-sizing: content-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 44px;
+    margin-bottom: 0;
+    padding-bottom: 12px;
+    background: var(--bg);
+    container-type: inline-size;
+  }
+
+  /* Eyebrow over the caption on narrow frames (tablets), one line once both fit. */
+  .headText {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .caption {
+    margin-top: 0;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @container (min-width: 860px) {
+    .headText {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  .headActions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+/* Words start dim and chips small whenever motion is allowed (scrubbed reveal). */
+@media (prefers-reduced-motion: no-preference) {
+  .statement[data-anim] .word {
+    opacity: 0.15;
+  }
+
+  .statement[data-anim] .chipInner {
+    opacity: 0.3;
+    transform: scale(0.6) rotate(-8deg);
+  }
+}
+
+/* ------------------------------------------------------------ pinned stage */
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .stage {
+    height: 100svh;
+    overflow: clip;
+  }
+
+  .statementWrap {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+
+  /* Five lines at line-height 1.12 = 5.6em: sit just under the centred statement. */
+  .credit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + var(--stmt-desk) * 2.8 + 32px);
+    margin: 0;
+  }
+
+  /* Layout B: the smaller left-aligned headline the statement morphs into (J7ZHKO). */
+  /* Stays a grid item (vertically centred by the wrapper): no CSS `translate`, which GSAP's
+     matrix maths would not see when Flip measures the words. */
+  .statement[data-layout="b"] {
+    justify-self: start;
+    width: max-content;
+    margin-left: calc((100% - var(--letterbox)) / 2);
+    margin-right: 0;
+    /* 0.8x keeps the J7ZHKO weight: about 46px and 47% of the viewport at 1440. */
+    font-size: calc(var(--stmt-desk) * 0.8);
+    text-align: left;
+  }
+
+  .statement[data-layout="b"] .line {
+    margin-inline: 0 auto;
+  }
+
+  /* The simulator layer overlaps the statement; it only takes pointer input once it has landed,
+     so the statement chips stay hoverable during the scroll-jack. The landed group (row + frame)
+     is centred in the 100svh stage, which leaves the same air above the row and below the frame
+     (26px at 1440 x 900); the navbar steps aside while it is landed (data-immersive). */
+  .simWrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .simInner[data-live] {
+    pointer-events: auto;
+  }
+
+  .frame {
+    opacity: 0;
+    transform: translateX(100vw);
+  }
+
+  /*
+   * Seam rhythm (on the <section>, after the pin spacer): the pinned 100svh stage centres the
+   * landed group (44px row + 12px gap + 16:10 frame), which leaves `--stage-air` below the frame
+   * (26px at 1440 x 900 and 1280 x 720, 50px at 1024 x 768, 47px at 1680 x 1050, 62px at
+   * 1920 x 1080). Top that up to one section padding, so the "+" seam under the scene sits as far
+   * from the frame as every other seam sits from its section's content.
+   */
+  .section {
+    --stage-air: calc((100svh - 56px - var(--sim-full-w) / 1.6) / 2);
+    padding-bottom: max(0px, calc(var(--section-pad-y) - var(--stage-air)));
+  }
+
+  .head {
+    opacity: 0;
+  }
+}

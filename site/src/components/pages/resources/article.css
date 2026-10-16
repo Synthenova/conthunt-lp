@@ -1,0 +1,287 @@
+/*
+ * Article typography (.ch-prose).
+ * Switzer 18px / 1.65, prose capped at 68ch and left-aligned one inset inside the rail
+ * (the inset is padding on `.ch-prose`, see `RAIL_INSET`).
+ * Tables and code blocks break out to the full width between the two insets.
+ * Everything sits in the components layer so utilities can still override it.
+ */
+
+@layer components {
+  .ch-prose {
+    font-size: 18px;
+    line-height: 1.65;
+    letter-spacing: -0.003em;
+    color: var(--ink-2);
+    font-feature-settings: "kern", "liga";
+  }
+
+  /* The measure is fixed in rem (68ch of the 18px body is about 44rem), so headings, whose own
+     `ch` is wider at their larger size, and their hairlines stop where the paragraphs stop. */
+  .ch-prose {
+    --ch-measure: 44rem;
+  }
+
+  .ch-prose > * {
+    max-width: var(--ch-measure);
+  }
+
+  .ch-prose > .ch-wide {
+    max-width: none;
+  }
+
+  .ch-prose > :first-child {
+    margin-top: 0;
+  }
+
+  .ch-prose p {
+    margin: 1.2em 0;
+    text-wrap: pretty;
+  }
+
+  /* the opening paragraph reads a touch larger */
+  .ch-prose > p:first-child {
+    max-width: calc(var(--ch-measure) / 1.08);
+    font-size: 1.08em;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .ch-prose strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .ch-prose em {
+    font-style: italic;
+  }
+
+  .ch-prose a {
+    color: var(--ink);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(15, 15, 15, 0.28);
+    text-underline-offset: 0.2em;
+    transition:
+      color 0.2s var(--ease-out),
+      text-decoration-color 0.2s var(--ease-out);
+  }
+
+  .ch-prose a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* ----------------------------------------------------------- headings */
+
+  .ch-prose h2,
+  .ch-prose h3 {
+    position: relative;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    scroll-margin-top: 112px;
+  }
+
+  .ch-prose h2 {
+    margin: 2.3em 0 0.65em;
+    padding-top: 1em;
+    border-top: 1px solid var(--hairline);
+    font-size: clamp(1.5rem, 1.25rem + 0.9vw, 1.95rem);
+    line-height: 1.14;
+  }
+
+  .ch-prose h3 {
+    margin: 2.1em 0 0.55em;
+    font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.35rem);
+    line-height: 1.25;
+  }
+
+  .ch-prose h2 + h3 {
+    margin-top: 1.4em;
+  }
+
+  /* hover anchor (#), sits in the gutter on wide screens */
+  .ch-prose .ch-anchor {
+    position: absolute;
+    top: 50%;
+    left: -1.2em;
+    translate: 0 -50%;
+    padding: 0.2em 0.3em;
+    font-family: var(--font-mono);
+    font-size: 0.6em;
+    font-weight: 500;
+    color: var(--faint);
+    text-decoration: none;
+    opacity: 0;
+    transition:
+      opacity 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
+  }
+
+  .ch-prose h2 .ch-anchor {
+    top: calc(50% + 0.55em);
+  }
+
+  .ch-prose h2:hover .ch-anchor,
+  .ch-prose h3:hover .ch-anchor,
+  .ch-prose .ch-anchor:focus-visible {
+    opacity: 1;
+  }
+
+  .ch-prose .ch-anchor:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 1279px) {
+    .ch-prose .ch-anchor {
+      display: none;
+    }
+  }
+
+  /* -------------------------------------------------------------- lists */
+
+  .ch-prose ul,
+  .ch-prose ol {
+    margin: 1.2em 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ch-prose li {
+    position: relative;
+    padding-left: 1.5em;
+  }
+
+  .ch-prose li + li {
+    margin-top: 0.5em;
+  }
+
+  .ch-prose li > p {
+    margin: 0.4em 0;
+  }
+
+  .ch-prose ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.25em;
+    top: 0.72em;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--ink);
+    opacity: 0.55;
+  }
+
+  .ch-prose ol {
+    counter-reset: ch-ol;
+  }
+
+  .ch-prose ol > li {
+    counter-increment: ch-ol;
+    padding-left: 2.5em;
+  }
+
+  .ch-prose ol > li::before {
+    content: counter(ch-ol, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.42em;
+    font-family: var(--font-mono);
+    font-size: 0.7em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(55, 55, 55, 0.75);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ch-prose li > ul,
+  .ch-prose li > ol {
+    margin: 0.5em 0 0.2em;
+  }
+
+  /* --------------------------------------------------------------- misc */
+
+  .ch-prose hr {
+    margin: 3em 0;
+    border: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .ch-prose :not(pre) > code {
+    padding: 0.14em 0.42em;
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.84em;
+    font-weight: 500;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+
+  /* -------------------------------------------------------------- tables */
+
+  .ch-table {
+    margin: 1.8em 0;
+    overflow-x: auto;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    background: var(--paper);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* A tab stop (it scrolls sideways on a phone): the ring sits on the card's own rounded edge. */
+  .ch-table:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 16px;
+  }
+
+  .ch-table table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .ch-table th {
+    padding: 0.85em 1.1em;
+    background: var(--surface);
+    color: rgba(55, 55, 55, 0.8);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ch-table td {
+    padding: 0.95em 1.1em;
+    vertical-align: top;
+    border-top: 1px solid var(--hairline);
+    color: var(--ink-2);
+  }
+
+  .ch-table td:first-child {
+    color: var(--ink);
+    font-weight: 600;
+    min-width: 9rem;
+  }
+
+  .ch-table tbody tr {
+    transition: background-color 0.2s var(--ease-out);
+  }
+
+  .ch-table tbody tr:hover {
+    background: var(--bg);
+  }
+
+  .ch-table [style*="text-align: right"],
+  .ch-table [style*="text-align:right"] {
+    font-variant-numeric: tabular-nums;
+  }
+}

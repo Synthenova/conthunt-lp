@@ -1,0 +1,516 @@
+/* Pricing section: odometer digits, the plan card (surfaces, ring, light, layout) and its micro-interactions.
+   Plain CSS on the site tokens. Only transform, opacity and stroke-dashoffset animate.
+   Colour (pricing Rev 5, "neutral premium"): paper cards and one ink card; hue only in the glyph tile and Pro's
+   edge beam, green for the trial and saving. */
+
+/* ------------------------------------------------------------- odometer */
+
+.digitWindow {
+  display: inline-block;
+  height: 1.06em;
+  overflow: hidden;
+  line-height: 1.06;
+  vertical-align: baseline;
+}
+
+.digitColumn {
+  display: flex;
+  flex-direction: column;
+  transition-property: transform;
+  transition-timing-function: var(--ease-out);
+}
+
+.digit {
+  display: block;
+  height: 1.06em;
+  line-height: 1.06;
+}
+
+/* ----------------------------------------------------------- plan card */
+
+/* --pad is the card padding (20px, 24px once the card is 320px wide); the featured lift is 16px.
+   --check is the check glyph (ink at 50%: 3.6:1 on paper, a graphic, so 3:1 is the bar). */
+.card {
+  --pad: 20px;
+  --lift: 16px;
+  --rule: rgb(15 15 15 / 0.08);
+  --check: rgb(15 15 15 / 0.5);
+  position: relative;
+  transform-style: preserve-3d;
+  background: var(--paper);
+  /* A hairline ring and a short, tight drop. No border, so the ring and shadow stay one surface. */
+  box-shadow:
+    0 0 0 1px rgb(15 15 15 / 0.07),
+    0 1px 2px rgb(15 15 15 / 0.05),
+    0 6px 12px -6px rgb(15 15 15 / 0.08);
+  transition: box-shadow 0.45s var(--ease-out);
+}
+
+@container (min-width: 20rem) {
+  .card {
+    --pad: 24px;
+  }
+}
+
+/* The featured card on ink: a near-black, neutral surface (the page's own ink, not indigo). */
+.card[data-dark="true"] {
+  --rule: rgb(255 255 255 / 0.1);
+  --check: rgb(255 255 255 / 0.72);
+  background: #0e0e10;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 30px 60px -28px rgb(0 0 0 / 0.5),
+    0 12px 24px -12px rgb(0 0 0 / 0.3);
+}
+
+/* ------------------------------------------------------------- layout */
+
+.body {
+  padding: var(--pad);
+}
+
+.lead {
+  min-width: 0;
+}
+
+/* "What you get": under the start block, after a hairline. */
+.details {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+/* Side by side (lg), the featured card stands 16px taller at both ends; its extra padding keeps every row
+   level with its neighbours. */
+@media (min-width: 1024px) {
+  .card:not([data-featured="true"]) {
+    margin-block: var(--lift);
+  }
+
+  .card[data-featured="true"] .body {
+    padding-block: calc(var(--pad) + var(--lift));
+  }
+}
+
+/* A wide card (stacked cards on a tablet): start block on the left, what you get on the right. */
+@container (min-width: 36rem) {
+  .body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+
+  .details {
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 40px;
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+}
+
+/* One spec row: label and value on a line, hairlines between rows, an optional note under it. */
+.specRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 12px;
+  padding-block: 8px;
+  border-top: 1px solid var(--rule);
+}
+
+.specRow:first-child {
+  border-top: 0;
+}
+
+.specRow > dd:not(:first-of-type) {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+}
+
+/* ------------------------------------------------------------ surfaces */
+
+/* Everything that is not content sits in a clipped, flat layer behind it. */
+.surface {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Ink: a soft top light over near-black, so the card has a top and a depth without any hue. */
+.ink {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 55% at 50% 0%, rgb(255 255 255 / 0.075), transparent 62%),
+    linear-gradient(180deg, #19191c, #0e0e10 46%, #0b0b0c);
+}
+
+/* Pointer light on the ink card: a big, soft radial that moves by transform only (use-card-tilt.ts). */
+.sheen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.13), rgb(255 255 255 / 0.04) 55%, transparent);
+}
+
+/* A narrow diagonal glare that slides with the pointer, like light across glass. */
+.glare {
+  position: absolute;
+  left: 0;
+  top: -30%;
+  width: 34%;
+  height: 160%;
+  opacity: 0;
+  will-change: transform, opacity;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.08) 46%, rgb(255 255 255 / 0.025) 54%, transparent);
+}
+
+/* A static highlight where the pointer cannot drive the light (touch, reduced motion). */
+.rest {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 40% at 20% 0%, rgb(255 255 255 / 0.06), transparent 70%);
+}
+
+/* ---------------------------------------------------------------- ring */
+
+/* The ink card's 1px ring: a white hairline seen through a mask. The spectrum beam travels round it, the rim light
+   follows the pointer, and the shimmer crosses it every few seconds (transform and opacity only, paused off
+   screen). The beam is the card's one hue: the site's spectrum signature as a thin line. */
+.ring {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: inherit;
+  padding: 1px;
+  background: rgb(255 255 255 / 0.12);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+/* A short arc of the spectrum that circles the edge (a rotating conic layer seen through the 1px ring). */
+.beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 340%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0turn,
+    transparent 0turn 0.62turn,
+    color-mix(in oklab, var(--pink) 85%, transparent) 0.72turn,
+    var(--purple) 0.8turn,
+    var(--blue) 0.87turn,
+    transparent 0.95turn
+  );
+  animation: beam-spin 11s linear infinite paused;
+}
+
+.card[data-live="true"] .beam {
+  animation-play-state: running;
+}
+
+@keyframes beam-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.rim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0.35) 45%, transparent);
+}
+
+/* The shimmer: one diagonal band, drawn by the gradient (not by rotating the layer, so it crosses the whole
+   height of a tall card evenly). Each layer is three cards wide and centred on the card; moving it 40% of its
+   width takes the band fully off the card on either side. */
+.ringLight,
+.pass {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 300%;
+  opacity: 0;
+  transform: translate3d(-40%, 0, 0);
+}
+
+.ringLight {
+  background: linear-gradient(
+    106deg,
+    transparent 46.5%,
+    rgb(255 255 255 / 0.55) 48.6%,
+    rgb(255 255 255 / 0.95) 50%,
+    rgb(255 255 255 / 0.55) 51.4%,
+    transparent 53.5%
+  );
+}
+
+/* Across the surface: softer and wider, a slow glint rather than a sparkle. */
+.pass {
+  background: linear-gradient(
+    106deg,
+    transparent 44%,
+    rgb(255 255 255 / 0.03) 46.5%,
+    rgb(255 255 255 / 0.1) 49.4%,
+    rgb(255 255 255 / 0.05) 51%,
+    rgb(255 255 255 / 0.02) 53%,
+    transparent 55.5%
+  );
+}
+
+.card[data-live="true"] .ringLight,
+.card[data-live="true"] .pass {
+  animation: shimmer 8s cubic-bezier(0.45, 0, 0.25, 1) 1.6s infinite;
+}
+
+/* 1.8s of travel, then a long rest: the eye catches it, it never nags. */
+@keyframes shimmer {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40%, 0, 0);
+  }
+  2%,
+  20% {
+    opacity: 1;
+  }
+  22.5%,
+  100% {
+    opacity: 0;
+    transform: translate3d(40%, 0, 0);
+  }
+}
+
+/* ----------------------------------------------------------------- glyph */
+
+/* The plan's identity colour. The glyph carries its own hue (data-hue), so it works outside a card too. */
+.glyph {
+  --c: var(--pink);
+  --c-ink: var(--pink-ink);
+  --c-glow: var(--pink-glow);
+  background: linear-gradient(140deg, var(--c-glow), var(--c) 48%, var(--c-ink));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 4px 8px -4px color-mix(in oklab, var(--c) 70%, transparent);
+}
+
+.glyph[data-hue="blue"] {
+  --c: var(--blue);
+  --c-ink: var(--blue-ink);
+  --c-glow: var(--blue-glow);
+}
+
+.glyph[data-featured="true"] {
+  background: var(--grad-spectrum);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 4px 10px -4px color-mix(in oklab, var(--purple) 60%, transparent);
+}
+
+/* A narrow card (about 245px at 1280): glyph, name and tag must share 203px, so the header tightens a little. */
+@container (max-width: 15.99rem) {
+  .head {
+    column-gap: 8px;
+  }
+
+  .glyph {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+  }
+
+  .tag {
+    padding-inline: 6px;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* ------------------------------------------------------------------ tags */
+
+/* "Most popular": a white hairline pill on the ink card (white on ~#121214: 18:1). "Best value": a quiet ink outline. */
+.tag[data-tone="featured"] {
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+}
+
+.tag[data-tone="value"] {
+  color: var(--ink-2);
+  box-shadow: inset 0 0 0 1px rgb(15 15 15 / 0.16);
+}
+
+/* ------------------------------------------------------------------- CTA */
+
+/* One filled action per row: the white button on the ink card. The others are outline buttons. */
+.card .cta {
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow:
+    inset 0 0 0 1px rgb(15 15 15 / 0.16),
+    0 1px 2px rgb(15 15 15 / 0.05);
+}
+
+.card .cta:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.card[data-dark="true"] .cta {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow:
+    inset 0 -1px 0 rgb(15 15 15 / 0.08),
+    0 6px 14px -6px rgb(0 0 0 / 0.6);
+}
+
+.card[data-dark="true"] .cta:hover {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow:
+    inset 0 -1px 0 rgb(15 15 15 / 0.08),
+    0 10px 26px -8px rgb(255 255 255 / 0.22);
+}
+
+/* Keyboard focus: a clear ring on the CTA (white on the ink card). The tilt hook keeps a focused card flat. */
+.card .cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.card[data-dark="true"] .cta:focus-visible {
+  outline-color: #fff;
+}
+
+/* A soft sweep across the white CTA on the ink card, on hover and focus. */
+.ctaSweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgb(15 15 15 / 0.07) 50%, transparent 65%);
+  transform: translate3d(-120%, 0, 0);
+}
+
+.card .cta:hover .ctaSweep,
+.card .cta:focus-visible .ctaSweep {
+  transform: translate3d(120%, 0, 0);
+  transition: transform 0.9s var(--ease-out);
+}
+
+/* --------------------------------------------------------------- states */
+
+@media (hover: hover) and (pointer: fine) {
+  .card:not([data-dark="true"]):hover {
+    box-shadow:
+      0 0 0 1px rgb(15 15 15 / 0.1),
+      0 1px 2px rgb(15 15 15 / 0.05),
+      0 28px 48px -26px rgb(15 15 15 / 0.24);
+  }
+
+  .card[data-dark="true"]:hover {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.1),
+      0 40px 72px -28px rgb(0 0 0 / 0.6),
+      0 16px 30px -12px rgb(0 0 0 / 0.35);
+  }
+
+  /* The pointer drives the light, so the static highlight steps aside. */
+  .rest {
+    opacity: 0;
+  }
+}
+
+/* A mouse with reduced motion: no moving light, so the static highlight shows on hover instead. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .card:hover .rest {
+    opacity: 1;
+  }
+}
+
+/* Touch: no tilt. A gentle press scale instead. */
+@media (hover: none), (pointer: coarse) {
+  .card:active {
+    transform: scale(0.985);
+    transition: transform 0.2s var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card .ringLight,
+  .card .pass {
+    animation: none;
+    opacity: 0;
+  }
+
+  .card .beam {
+    animation: none;
+    transform: rotate(0.1turn);
+  }
+
+  .ctaSweep {
+    display: none;
+  }
+}
+
+/* Check glyph: draws itself, row by row, when the card is hovered or focused within. */
+.checkPath {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+@media (hover: hover) {
+  .card:hover .checkPath,
+  .card:focus-within .checkPath {
+    animation: check-draw 0.5s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 55ms);
+  }
+}
+
+@keyframes check-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Text that swaps when billing flips: rises in, so the change reads as a change. */
+.swap {
+  animation: swap-in 0.45s var(--ease-out) both;
+}
+
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

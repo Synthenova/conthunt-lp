@@ -1,0 +1,372 @@
+/*
+ * Deep Search simulator: design-canvas scaling, shimmer and a few states Tailwind cannot express.
+ *
+ * The canvas is built at 1280 x 800 (docs/revamp/specs/simulator-spec.md §1.1) and scaled with
+ * --sim-scale. `tan(atan2(100cqw, 1280px))` turns "host width / 1280px" into a unitless number in
+ * pure CSS, so the first server paint is already the right size (no JS measuring, no jump).
+ *
+ * Legibility floor: the scale never drops below 0.6 (0.8 on phones). When the frame is narrower
+ * than that, the scaled canvas overflows the host and the host pans horizontally instead of
+ * shrinking the type to a 5px miniature.
+ */
+
+/* Layered under Tailwind utilities so utility classes on the same element always win. */
+@layer components {
+  .host {
+    --sim-shell: color-mix(in oklab, var(--surface) 55%, var(--paper));
+    position: relative;
+    width: 100%;
+    container-type: inline-size;
+    border-radius: var(--r-card);
+    /* Pans only when the canvas is wider than the frame (scale clamped); otherwise nothing overflows. */
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    background: var(--sim-shell);
+    /* Hairline ring + a shadow that sits under the frame (negative spread), not a halo. */
+    box-shadow:
+      0 0 0 1px rgb(15 15 15 / 0.07),
+      0 1px 2px rgb(15 15 15 / 0.04),
+      0 28px 56px -32px rgb(15 15 15 / 0.24);
+    -webkit-tap-highlight-color: transparent;
+    /* The frame is a closed world: menus, tooltips and the drawer live inside the canvas, the
+       phone sheet and the Full Control dialog are portaled outside it. Containment keeps its layout and
+       paint work from invalidating the pinned scene around it. The host already clips (overflow),
+       and its own ring and shadow are not clipped by paint containment. */
+    contain: layout style paint;
+  }
+
+  .host::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scaler {
+    --sim-h: 800px;
+    --sim-scale: tan(atan2(100cqw, 1280px));
+    position: relative;
+    width: 100%;
+    height: calc(var(--sim-h) * var(--sim-scale));
+    overflow: clip;
+  }
+
+  .canvas {
+    /* Real labels stay >= 4.5:1 on white inside the product shot; --faint is for skeleton marks. */
+    --muted: rgb(15 15 15 / 0.62);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: var(--sim-h);
+    transform: scale(var(--sim-scale));
+    transform-origin: 0 0;
+    overflow: hidden;
+    background: var(--sim-shell);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    contain: layout paint;
+  }
+
+  /* JS fallback for browsers without CSS trig (sets --sim-scale-js on the host). */
+  .host[data-scale-fallback] .scaler {
+    --sim-scale: var(--sim-scale-js, 0.675);
+  }
+
+  /* Narrow frames (tablet letterbox): hold the 0.6 floor and pan. */
+  @container (max-width: 767.98px) {
+    .scaler,
+    .host[data-scale-fallback] .scaler {
+      --sim-scale: 0.6;
+      width: calc(1280px * 0.6);
+    }
+  }
+
+  /* Phones: a 0.8 scale for legible type, a shorter canvas, and a chat panel exactly one frame
+     wide so the "Agent" stop shows the whole panel flush with the frame (no board fragments). */
+  @media (max-width: 767px) {
+    .host {
+      border-radius: 18px;
+    }
+
+    .scaler,
+    .host[data-scale-fallback] .scaler {
+      --sim-h: 680px;
+      --sim-scale: 0.8;
+      --sim-chat-w: clamp(352px, calc(100cqw / 0.8 - 8px), 600px);
+      width: calc(1280px * 0.8);
+    }
+  }
+
+  /*
+   * Phones: the header band (prompt title + board filters, ./index.tsx) ends at the right edge of
+   * the board's pan stop, so the filters are on screen without panning; the title truncates hard.
+   * The pan stop is one frame wide, which is the chat panel width + 8px (--sim-chat-w above);
+   * --sim-main-left is the main column's left edge (the sidebar rail or the open sidebar).
+   * The sort and date triggers drop their text there (icon, chevron and an aria-label remain).
+   */
+  @media (max-width: 767px) {
+    .headerBand {
+      max-width: calc(var(--sim-chat-w, 9999px) - var(--sim-main-left, 64px) - 20px);
+    }
+
+    .filterLabel {
+      display: none;
+    }
+  }
+
+  .snapStart {
+    scroll-snap-align: start;
+  }
+
+  .snapEnd {
+    scroll-snap-align: end;
+  }
+
+  /* Phones draw the canvas at 0.8, so the composer's 28px controls land at 22px on screen,
+     under the 24px WCAG 2.5.8 minimum. 30px x 0.8 = 24px. Desktop keeps the 28px design. */
+  @media (max-width: 767px) {
+    .composerBar > button,
+    .composerBar > a {
+      min-width: 30px;
+      min-height: 30px;
+    }
+  }
+
+  /* ------------------------------------------------------------ full control */
+  /* A native modal <dialog> (top layer, so the pinned stage's transforms never clip it). The body
+     uses the same `--sim-full-w` as the landed inline frame (globals.css): the dialog has no side
+     padding, so `100%` is the viewport width in both places. */
+
+  .fullControl {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 20px 0 24px;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .fullControl[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .fullControl::backdrop {
+    background: rgb(250 250 250);
+  }
+
+  .fullControlBody {
+    width: var(--sim-full-w);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fullControl[open] .fullControlBody {
+      animation: sim-full-in 420ms cubic-bezier(0.2, 0.715, 0.205, 0.99) both;
+    }
+
+    .fullControl[open]::backdrop {
+      animation: sim-fade 260ms ease-out both;
+    }
+  }
+
+  /* ------------------------------------------------------------ edge fades */
+
+  .fadeX {
+    mask-image: linear-gradient(to right, transparent, #000 10px, #000 calc(100% - 24px), transparent);
+  }
+
+  /* ------------------------------------------------------------------ shimmer */
+  /*
+   * Skeleton blocks (.shimmer) are static fills. The light sweep is ONE overlay per group that is
+   * skeleton throughout (a rail of skeleton tiles, the loading board, a skeleton report), never one
+   * per block: a handful of compositor layers instead of ~75. White over the white canvas is
+   * invisible, so the band only reads where it crosses a grey block. The sweep exists only while
+   * the frame is on screen (host[data-sim-play="running"], set by an IntersectionObserver in
+   * ./index.tsx) and never under reduced motion; otherwise there is no pseudo-element and no
+   * animation property at all, so an offscreen frame holds no animations and no layers. Groups
+   * stop rendering their overlay once their content is real (see Rail `shimmer`, ./board.tsx).
+   */
+
+  .shimmer {
+    display: block;
+  }
+
+  .sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .host[data-sim-play="running"] .sweep::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 36%, rgb(255 255 255 / 0.62) 50%, transparent 64%);
+      transform: translateX(-100%);
+      animation: sim-sweep 2s linear infinite;
+    }
+
+    .host[data-sim-play="running"] .spin {
+      animation: sim-spin 0.9s linear infinite;
+    }
+  }
+
+
+  /* Static bars inside a shimmering block. */
+  .bar {
+    display: block;
+    border-radius: 4px;
+    background: var(--surface-2);
+  }
+
+  .barDark {
+    display: block;
+    border-radius: 4px;
+    background: color-mix(in oklab, var(--surface-2) 70%, var(--ink) 6%);
+  }
+
+  /* ------------------------------------------------------------- scrollbars */
+
+  .noScrollbar {
+    scrollbar-width: none;
+  }
+
+  .noScrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .thinScrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(15 15 15 / 0.16) transparent;
+  }
+
+  /* Neutral selection for the agent composer, like the hero prompt box: no blue. */
+  .composerInput::selection {
+    background: color-mix(in oklab, var(--ink) 13%, transparent);
+    color: var(--ink);
+  }
+
+  /* Title truncation with a right fade (Recents rows, AppSidebar.tsx:262-376). */
+  .fadeRight {
+    mask-image: linear-gradient(to right, #000 78%, transparent);
+  }
+
+  /* Soft fade at the bottom of scroll areas. */
+  .fadeBottom {
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+  }
+
+  /* The board: a longer, gentler fade, so the rail cut by the frame edge reads as "more below"
+     (the board's own 32px bottom padding keeps the last rail clear of it at the scroll end). */
+  .fadeBoard {
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 56px), rgb(0 0 0 / 0.08));
+  }
+
+  /* Disclosure reveal: clip from the top, no height animation. */
+  .reveal {
+    animation: sim-reveal 260ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+
+
+  /* Tab panel / transcript swap. */
+  .enter {
+    animation: sim-enter 280ms cubic-bezier(0.2, 0.715, 0.205, 0.99) both;
+  }
+
+
+  /* Menu / tooltip pop. */
+  .pop {
+    animation: sim-pop 160ms cubic-bezier(0, 0, 0, 1) both;
+    transform-origin: var(--origin, top left);
+  }
+
+
+  /* Spinner for the "Preparing research selections…" line: it turns only with the sweep (above). */
+  .spin {
+    display: block;
+  }
+}
+
+@keyframes sim-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  72%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sim-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sim-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sim-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sim-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sim-full-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
