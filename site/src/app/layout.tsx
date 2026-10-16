@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import { preconnect, preload } from "react-dom";
+import { PostHogLoader } from "@/components/analytics/posthog";
 import { FONT_FILES, SITE_FONT_PRELOADS } from "@/lib/fonts";
 import { SHOW_RAILS } from "@/components/layout/rails";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         <SoundBindings />
+        <PostHogLoader />
       </body>
     </html>
   );

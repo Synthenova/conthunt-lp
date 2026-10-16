@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 
 /**
@@ -7,7 +8,7 @@ import type { NextConfig } from "next";
  *   to this origin (no CORS, no backend URL in client code). Public read routes:
  *   `/v1/trending/*`, `/v1/public-boards/*`.
  * - Turbopack's root is pinned to this folder so it never climbs into the
- *   parent `Conthunt/` directory (which also holds the app monorepo).
+ *   parent directory (the legacy blog build lives at the repo root).
  * - Public media, brand and blog assets are cached for a week and revalidated in
  *   the background for a day after that. Not `immutable`: these filenames are not
  *   content-hashed, so give a replaced file a new name when it must update at once.
@@ -25,7 +26,13 @@ const SHARE_IMAGE_CACHE = [{ key: "Cache-Control", value: "public, max-age=86400
 const LLMS_TXT_CACHE = [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }];
 
 const nextConfig: NextConfig = {
-  // `pnpm dev` / `pnpm build` always run with cwd = this folder.
+  // Self-contained server (`.next/standalone/server.js`) for the production container, where it runs
+  // on 127.0.0.1:3000 behind nginx (see the repo-root Dockerfile and nginx.conf).
+  output: "standalone",
+  // `pnpm dev` / `pnpm build` always run with cwd = this folder (`site/`). Pinning the tracing root here
+  // keeps the standalone output flat (`server.js` at the top) and stops Next from climbing to the repo
+  // root, which has its own package-lock.json for the legacy blog build.
+  outputFileTracingRoot: process.cwd().split(path.sep).join("/"),
   turbopack: {
     root: process.cwd(),
   },
