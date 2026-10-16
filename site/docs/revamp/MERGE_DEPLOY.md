@@ -113,3 +113,35 @@ Production repo clone: `C:/Users/win10/Documents/GitHub/Conthunt/conthunt-lp`, b
 - **Don't push, deploy or run gcloud.** The orchestrator does that.
 - Leave the `Landing Page` folder and its dev server on :3001 alone (that's the owner's preview). Use port 3010+.
   Close every server and browser you start.
+
+## Cutover notes (orchestrator)
+
+### Before submitting a build
+- The build source is the working tree of the directory you submit from, filtered by the root `.gcloudignore`
+  (without it gcloud would upload `site/.next`, which has paths longer than MAX_PATH on Windows). Check it first:
+  `gcloud meta list-files-for-upload .` must list no `site/.next`, `site/node_modules`, `SEO/` or `.scratch/` path.
+  Prefer submitting from a clean export of the reviewed commit (`git archive <commit> | tar -x -C <empty dir>`).
+- Read the live service settings and make sure they fit two processes (nginx + Next, Next heap capped at 320 MB):
+  memory 512Mi at least (1Gi recommended), container port 8080, ingress "all". Add `--memory=1Gi` to the deploy
+  args in both cloudbuild files if the service is lower.
+- Do not run `cloudbuild.yaml` before the preview has been tested: its last step moves 100% of traffic.
+
+### Traffic pinning
+- Today the service probably follows LATEST. The first `cloudbuild.preview.yaml` deploy (`--no-traffic`) pins the
+  traffic that LATEST carried to the revision that was latest at that moment (the old static site).
+- Promote the tested revision with `gcloud run services update-traffic conthunt-lp --region us-central1 --to-revisions=<rev>=100`,
+  then, once it is confirmed to be the latest created revision
+  (`gcloud run services describe conthunt-lp --region us-central1 --format='value(status.latestCreatedRevisionName)'`),
+  run `gcloud run services update-traffic conthunt-lp --region us-central1 --to-latest`. Or skip the pin and run
+  `--to-latest` straight away. Otherwise every later `cloudbuild.yaml` deploy would serve 0%.
+- `cloudbuild.yaml` now ends with `update-traffic --to-latest`, so a regular deploy always goes live.
+- Rollback: `gcloud run services update-traffic conthunt-lp --region us-central1 --to-revisions=<old rev>=100`
+  (this pins again; run `--to-latest` after the fix is deployed).
+
+### After moving traffic
+- Cloudflare caches the old static responses. Purge `/robots.txt`, `/sitemap.xml`, `/og-default.jpg`, `/llms.txt`
+  and the `/media/*`, `/brand/*` and `/blog/plates/*` prefixes (or purge everything), then run
+  `node site/scripts/check-routes.mjs https://conthunt.app`.
+- Some URLs that answered 200 or 301 on the old site now answer 404: `/sections/*.html`, the directory paths
+  `/docs/integrations` and the like, and `/index.html?x` loses its query on the redirect. These were never linked
+  from the sitemap.

@@ -1,9 +1,17 @@
-# Build the combined image (legacy static site + Next.js site behind nginx), push it and deploy conthunt-lp.
+# Build the combined image (legacy static site + Next.js site behind nginx), push it, deploy conthunt-lp and
+# send ALL traffic to the new revision (the last step). This is the "go live" build: to test first, use
+# cloudbuild.preview.yaml, which deploys a no-traffic revision behind the "preview" tag.
 # Run by hand: gcloud builds submit --config cloudbuild.yaml .   (there is no deploy-on-push)
+# Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
+# Traffic: once a revision has been pinned (a --no-traffic preview deploy, or update-traffic --to-revisions),
+# `gcloud run deploy` alone leaves new revisions at 0%. The last step runs `update-traffic --to-latest`, so
+# a regular deploy always goes live and the service keeps following LATEST.
 # The _NEXT_PUBLIC_* values are public (they ship in the browser bundle).
 substitutions:
   _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
+# The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
+timeout: 1800s
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
@@ -35,6 +43,19 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+  # Route 100% of traffic to the revision just deployed and keep following the latest revision
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'services'
+      - 'update-traffic'
+      - 'conthunt-lp'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--to-latest'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website'
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'

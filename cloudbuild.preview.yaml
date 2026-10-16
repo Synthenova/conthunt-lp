@@ -4,9 +4,13 @@
 # Cloud Run serves that revision at a tagged URL of the form https://preview---conthunt-lp-<hash>-uc.a.run.app
 # (the deploy step prints the exact URL). Production traffic and the :latest image tag are untouched.
 # Check it with: node site/scripts/check-routes.mjs <that url>
+# Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
+# Going live: see site/docs/revamp/MERGE_DEPLOY.md ("Promote"); the service must end up following LATEST again.
 substitutions:
   _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
+# The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
+timeout: 1800s
 steps:
   # Build the container image (tagged with the build id only)
   - name: 'gcr.io/cloud-builders/docker'
