@@ -23,7 +23,7 @@ import {
   type ReactNode,
 } from "react";
 import { preload } from "react-dom";
-import { ArrowRight, ArrowUp, CornerDownLeft, Pause, Play, ScanSearch, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, CornerDownLeft, Pause, Play, ScanSearch, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { cn } from "@/lib/cn";
@@ -592,13 +592,33 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
           </form>
 
           <div className={s.textBottom}>
-            {/* The subtitle (hero-rev10): one paragraph. The neutral count sentence, then what Deep Search
-                does and the offer (it was its own line above the prompt box until rev 10; "your first
-                Deep Search" is 50 videos across 5 searches), then "Try it" with an up arrow, because the
-                prompt box is above. "Try it" is a real button for that box: focusing the textarea
-                runs the box's own focus behaviour (rotation pauses, the example is inserted and
-                selected). preventScroll: the box is right there. Ink like the text, no icon but the
-                arrow. */}
+            {/* The offer (hero-rev11): the first thing under the prompt box, the box's width and centred on
+                it, in the board hint's face at twice its size (hero.module.css .offer). It is the
+                textarea's description (#hero-offer, aria-describedby). "Try it now." is a real
+                button for that box: focusing the textarea runs the box's own focus behaviour
+                (rotation pauses, the example is inserted and selected). preventScroll: the box is
+                right above. Text in the same face, no pill. */}
+            <div className={cn(s.riseT, s.offer)} style={{ "--d": "0.34s" } as React.CSSProperties}>
+              <p id="hero-offer" className={s.offerText}>
+                <span className={s.offerA}>
+                  Your first search is <span className="whitespace-nowrap">on us,</span>
+                </span>{" "}
+                <span className={s.offerB}>for free.</span>{" "}
+                <span className={s.offerBreak}>
+                  <button
+                    type="button"
+                    aria-label="Try it now: focus the prompt"
+                    onClick={() => taRef.current?.focus({ preventScroll: true })}
+                    className={s.offerCta}
+                  >
+                    Try it now.
+                  </button>
+                </span>
+              </p>
+            </div>
+
+            {/* The subtitle (hero-rev11): the neutral count sentence alone, 40px under the offer line
+                (the Deep Search sentences and "Try it" left it in rev 11). */}
             <p
               className={cn("text-ink-2 [text-wrap:pretty]", s.riseT, s.sub)}
               style={{ "--d": "0.4s" } as React.CSSProperties}
@@ -615,20 +635,7 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
               <span className="whitespace-nowrap">
                 over <CountChip {...HERO_STATS.videos} delay={0.2} />
               </span>{" "}
-              updated daily.{" "}
-              <span id="hero-offer">
-                Deep Search analyzes videos frame by frame and provides the info that most of us miss. Your first Deep
-                Search is on us.
-              </span>{" "}
-              <button
-                type="button"
-                aria-label="Try it: focus the prompt"
-                onClick={() => taRef.current?.focus({ preventScroll: true })}
-                className={s.subCta}
-              >
-                Try it
-                <ArrowUp aria-hidden="true" className={s.subArrow} strokeWidth={2.2} />
-              </button>
+              updated daily.
             </p>
 
             <div

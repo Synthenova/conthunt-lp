@@ -20,15 +20,16 @@
   /* Space between the prompt box and the board: the connector beam's run. */
   --conn-gap: 56px;
   --text-w: clamp(400px, 38vw, 470px);
-  /* Vertical rhythm of the text column (hero-rev10), tuned so the INK gaps match the owner's
-     1630x915 reference (measured on pixels): H1 to prompt box about 60px, box to subtitle about 35px,
-     subtitle to CTA row about 58px, and the H1's first line starting about 135px from the top.
-     Box-to-box values below are smaller than those because the H1's line masks and the
-     paragraphs' half-leading add 5 to 8px of their own. Every one scales with --gap-y, so short
-     windows tighten together instead of colliding. */
+  /* Vertical rhythm of the text column (hero-rev11). H1 to prompt box about 60px (ink gap, measured on
+     the owner's 1630x915 reference), the offer line right under the box, the subtitle 40px below
+     the offer line, the CTA row 80px below the subtitle, and the H1's first line about 135px from
+     the top. The 40px and 80px are the owner's values at that window (--gap-y 32px). Box-to-box
+     values: the H1's line masks and the paragraphs' half-leading add a few px of their own. Every
+     one scales with --gap-y, so short windows tighten together instead of colliding. */
   --h1-gap: calc(var(--gap-y) * 1.8);
-  --sub-gap: calc(var(--gap-y) * 0.9);
-  --cta-gap: calc(var(--gap-y) * 1.7);
+  --offer-gap: calc(var(--gap-y) * 0.55);
+  --sub-gap: calc(var(--gap-y) * 1.25);
+  --cta-gap: calc(var(--gap-y) * 2.5);
   --h1-air: calc(var(--gap-y) * 1.15);
   /* Soft ink for small labels: ≈ 5.3:1 on --bg (the site-wide text-ink/62). */
   --ink-soft: color-mix(in oklab, var(--ink) 62%, transparent);
@@ -48,7 +49,7 @@
 
 .h1 {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 500;
   /*
    * Stacked layout (< 1024px): as wide as the column allows. The widest line, "social videos",
    * is about 5.66em, so a sixth of the column (the 6.2 divisor) keeps all three lines inside it
@@ -64,7 +65,7 @@
 /*
  * Desktop (hero-rev4). The prompt box is centred on the hero's centre line (hero-rev3 A), so the
  * H1 takes the top half, between the navbar and the box (the offer line that used to share it
- * moved into the subtitle in rev 10). Two limits, and the H1 takes the smaller:
+ * moved under the prompt box in rev 11). Two limits, and the H1 takes the smaller:
  *   --h1-room  the height left in that half after the navbar, the air under it and the gap to the
  *              box, shared by the three lines (lh 0.92 each, so 2.76em, plus a hair for the line
  *              masks). Short laptops are bound by this one.
@@ -72,9 +73,11 @@
  *              and across the connector's run, up to a clearance short of the lead card's left
  *              edge. The lead card never sits left of the stage's left edge, and nothing else
  *              sits in that band (column 1 holds the lead card, and its hint), so the
- *              heading cannot touch the board. The widest line is about 5.66em, hence / 5.75.
- * Taller and wider screens are bound by --h1-w (1920x1080: 81 → 109px, 2560x1440: 96 → 134px);
- * a 1440x900 window is bound by --h1-room (76 → 86px): its top half is only 450px.
+ *              heading cannot touch the board. The widest line is about 5.66em; the divisor is
+ *              6.36 (5.75 until rev 11, when the owner took the H1 to 100px at 1630x915: the whole
+ *              formula scaled by 100/110.62, the cap included, 9.5rem → 8.6rem).
+ * Taller and wider screens are bound by --h1-w (1630x915: 100px, 1920x1080: 73 → 99px, 2560x1440:
+ * 87 → 121px, rev 11); --h1-room, left as it was, only binds on short windows now.
  * The box half-height is an estimate (two prompt lines and the mode row, about 124px); the
  * centring itself is structural (.textInner), so a wrong estimate costs air, never alignment.
  */
@@ -92,25 +95,87 @@
   .h1 {
     width: var(--h1-w);
     white-space: nowrap;
-    font-size: max(2rem, min(var(--h1-room), calc(var(--h1-w) / 5.75), 9.5rem));
+    font-size: max(2rem, min(var(--h1-room), calc(var(--h1-w) / 6.36), 8.6rem));
   }
 }
 
-/* "Try it" and an up arrow, the subtitle's last words (hero-rev10; the offer line it used to end moved
-   into the subtitle, and the prompt box is now above it). Same colour, size and weight as the text it
-   sits in, inline with it, never split from its arrow. Hover only underlines; the arrow nudges up on a
-   slow loop (static under reduced motion, held while the visitor pauses the rotation). Its padding is
-   cancelled by negative margins, so the paragraph's line height is unchanged. */
-.subCta {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.2em;
-  margin: -0.15em -0.4em -0.15em -0.2em;
-  padding: 0.15em 0.4em 0.15em 0.2em;
-  border-radius: 8px;
+/* The offer line (hero-rev11): the first block under the prompt box, the box's own width and centred on
+   it (the box is the grid's middle row, .textInner, so this stays below it and the box stays on the
+   centre line). The board hint's face (.hint: mono, uppercase, tracking, --ink-soft, 5.3:1) at twice
+   its size: the hint's own clamp doubled from 1024px, 21px below. .offer is the size container, so
+   the break can be asked in the line's own em. Where the sentence fits the box (23.4em at 0.03em
+   tracking, 23.8em at 0.04em, 37 mono characters) "Try it now." drops to its own line: the break
+   falls at the sentence. Where it does not, the whole text wraps balanced, "Try it now." never split. */
+.offer {
+  margin-top: var(--offer-gap);
+  container-type: inline-size;
+  font-family: var(--font-mono);
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 1024px) {
+  .offer {
+    font-size: calc(2 * clamp(9px, calc(0.5vw + 3.5px), 10.5px));
+    letter-spacing: 0.03em;
+  }
+}
+
+.offerText {
+  margin: 0;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+/* The sentence's halves stay whole ("for free." and "on us," always; "Your first search is on us,"
+   where the box is wider than it, 17.6em), so a wrapped line breaks at the comma, not mid-clause.
+   Below 17.6em (phones) "Try it now." always takes its own line, so a narrow phone has three lines: "YOUR FIRST SEARCH IS" / "ON US, FOR FREE." / "TRY IT NOW.". */
+.offerB {
+  white-space: nowrap;
+}
+
+.offerBreak {
+  display: block;
+}
+
+@container (min-width: 17.6em) {
+  .offerA {
+    white-space: nowrap;
+  }
+  .offerBreak {
+    display: inline;
+  }
+}
+
+@container (min-width: 23.8em) {
+  .offerBreak {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  @container (min-width: 23.4em) {
+    .offerBreak {
+      display: block;
+    }
+  }
+}
+
+/* "Try it now." is text in the offer's own face and colour (no pill), never split. Hover only
+   underlines; the focus ring is the site's ink outline. */
+.offerCta {
+  display: inline-block;
+  padding: 0.1em 0.25em;
+  margin: -0.1em -0.25em;
+  border-radius: 6px;
   color: inherit;
   font: inherit;
   letter-spacing: inherit;
+  text-transform: inherit;
   white-space: nowrap;
   cursor: pointer;
   text-decoration: underline transparent;
@@ -119,38 +184,13 @@
   transition: text-decoration-color 0.2s var(--ease-out);
 }
 
-.subCta:hover {
+.offerCta:hover {
   text-decoration-color: currentColor;
 }
 
-.subCta:focus-visible {
+.offerCta:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
-}
-
-.subArrow {
-  align-self: center;
-  width: 1em;
-  height: 1em;
-  animation: ch-hero-nudge 2.4s ease-in-out infinite;
-  animation-play-state: var(--hero-loop, running);
-}
-
-@keyframes ch-hero-nudge {
-  0%,
-  55%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  75% {
-    transform: translate3d(0, -3px, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .subArrow {
-    animation: none;
-  }
 }
 
 /*
@@ -259,10 +299,9 @@
   }
 }
 
-/* The subtitle (hero-rev10): one paragraph, the neutral count sentence, then the Deep Search sentences
-   and "Try it". Roomy leading (the chips are 1.27em tall, so wrapped lines keep clear air between
-   them); the measure is the column's, widened on desktop to the H1's, which still stops short of
-   the lead card (--h1-w). */
+/* The subtitle (hero-rev11): the neutral count sentence alone, 40px under the offer line. Roomy leading
+   (the chips are 1.27em tall, so wrapped lines keep clear air between them); the measure is the
+   column's, widened on desktop to the H1's, which still stops short of the lead card (--h1-w). */
 .sub {
   margin-top: var(--sub-gap);
   max-width: 36rem;
@@ -273,7 +312,7 @@
 }
 
 /* Desktop: as wide as the H1 (the column is narrower), and sized by the window's height as well, so
-   the five-line paragraph keeps its air above the platforms strip on laptops (16px at 800px tall,
+   the paragraph keeps its air above the platforms strip on laptops (16px at 800px tall,
    18px at 900px, 20px from 1000px). */
 @media (min-width: 1024px) {
   .sub {
@@ -284,12 +323,26 @@
 }
 
 /*
- * Short desktop screens (1280×720, 1366×768): tighten the vertical rhythm so
- * the CTA row and the platforms strip both sit above the fold.
+ * Short desktop screens: tighten the vertical rhythm so the CTA row and the platforms strip both
+ * sit above the fold (hero-rev11: the offer line added about 65px under the box, so the CTA gap
+ * eases from 2.5 to 2.2 gap-y below 880px, and everything below the box eases again below 820px
+ * (1280×720, 1366×768); from 880px up the owner's 1.25 and 2.5 stand).
  */
+@media (min-width: 1024px) and (max-height: 880px) {
+  .root {
+    --cta-gap: calc(var(--gap-y) * 2.2);
+  }
+}
+
 @media (min-width: 1024px) and (max-height: 820px) {
   .root {
     --gap-y: clamp(0.875rem, 2.6svh, 1.25rem);
+    --offer-gap: calc(var(--gap-y) * 0.45);
+    --sub-gap: calc(var(--gap-y) * 1.05);
+    --cta-gap: calc(var(--gap-y) * 1.9);
+  }
+  .offer {
+    line-height: 1.3;
   }
   .sub {
     line-height: 1.6;
@@ -387,7 +440,7 @@
   .textBottom {
     align-self: start;
     /* The strip, plus a little air so the CTA row never sits on its edge. */
-    padding-bottom: calc(var(--strip-h) + var(--gap-y) * 0.8);
+    padding-bottom: calc(var(--strip-h) + var(--gap-y) * 0.5);
   }
 }
 

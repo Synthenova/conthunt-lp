@@ -59,15 +59,14 @@ Data: `src/content/media/hero-prompts.json` (5 prompts × 12 real cards with sco
      - When the user focuses or types, rotation pauses and their text is kept. Submit, or Enter,
        goes to `GET_STARTED_URL` with `?q=<encoded prompt>`. Read `src/lib/links.ts`; if it has no
        query support, append `q` anyway and note it.
-  3. The **subtitle**, one calm paragraph (rev 10; it absorbed the offer line that stood above the box): "Search through
-     `7 platforms` across `104,862 niches` and over `10,384,719 videos` updated daily. Deep Search analyzes videos frame by
-     frame and provides the info that most of us miss. Your first Deep Search is on us. Try it ↑" (owner figures
+  3. The **subtitle**, one sentence (rev 11; rev 10 had also folded the offer line and "Try it" into it): "Search through
+     `7 platforms` across `104,862 niches` and over `10,384,719 videos` updated daily." (owner figures
      2026-10-16, OWNER_DECISIONS C1). The chips are pill-highlights (surface fill, mono numerals, `tabular-nums`, 1.27em tall so wrapped
      lines keep air) that count up once on load; each stays with the word that introduces it (nowrap), so a wrap never starts on a lone chip.
-     "Your first Deep Search" is 50 videos across 5 searches (owner). "Try it ↑" is a real button in the text's own colour, with
-     an up arrow (the box is above) nudging up on a slow loop (static under reduced motion): it focuses the prompt with
-     `preventScroll`, which runs the box's focus behaviour. The textarea's `aria-describedby` includes the Deep Search
-     sentences (`#hero-offer`). Desktop measure: as wide as the H1 (`--h1-w`), font 16 to 20px by window height; stacked: 36rem max at 18 to 20px.
+     Desktop measure: as wide as the H1 (`--h1-w`), font 16 to 20px by window height; stacked: 36rem max at 18 to 20px.
+     Rev 11 offer line (`#hero-offer`, directly under the prompt box, the box's width, centred): "Your first search is on us, for free. Try it now."
+     in the board hint's face (mono, uppercase, `--ink-soft`) at twice its size; "Try it now." is a real button that focuses the prompt with
+     `preventScroll`. See `hero-rev3.md`, rev 11.
      - The owner wrote these numbers. Check the platforms count against
        `src/content/site/platforms.ts`. If the legacy list has fewer platforms, keep the owner's
        number but add the mismatch to your report.
