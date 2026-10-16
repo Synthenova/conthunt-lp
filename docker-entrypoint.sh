@@ -12,10 +12,15 @@ START_TIMEOUT="${START_TIMEOUT:-30}"
 NEXT_PID=$!
 NGINX_PID=""
 
+# Graceful stop: QUIT lets nginx finish in-flight requests (TERM would drop them); once it is gone, Next stops.
+# Cloud Run kills the container 10 s after SIGTERM, so a connection that never drains cannot hold it open.
 stop_all() {
-  kill -TERM "$NEXT_PID" $NGINX_PID 2>/dev/null || true
+  if [ -n "$NGINX_PID" ]; then
+    kill -QUIT "$NGINX_PID" 2>/dev/null || true
+    wait "$NGINX_PID" 2>/dev/null || true
+  fi
+  kill -TERM "$NEXT_PID" 2>/dev/null || true
   wait "$NEXT_PID" 2>/dev/null || true
-  if [ -n "$NGINX_PID" ]; then wait "$NGINX_PID" 2>/dev/null || true; fi
 }
 trap 'stop_all; exit 0' TERM INT
 
