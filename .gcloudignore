@@ -13,7 +13,9 @@
 # Local-only folders and tooling
 .scratch/
 .cursor/
-SEO/
+# Anchored: an unanchored SEO/ also matches site/src/components/seo and site/src/lib/seo (gcloud matches
+# case-insensitively on Windows), which broke the build.
+/SEO/
 
 # Next app (site/): build output, installs, local env files and generated files
 site/.next/
