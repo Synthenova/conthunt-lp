@@ -40,6 +40,8 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      # nginx and the Next server share one container; 512Mi (the old static-only setting) is too tight.
+      - '--memory=1Gi'
       - '--no-traffic'
       - '--tag=preview'
 images:
