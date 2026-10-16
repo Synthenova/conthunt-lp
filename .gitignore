@@ -44,4 +44,5 @@ docs/**/*.html
 # Local scratch (nginx test runs, legacy build copies, downloaded binaries) - never commit
 .scratch/
 
-# Next app in site/ (see site/.gitignore for its own build output)
+# Next app in site/: its own build output is ignored by site/.gitignore.
+# gcloud does NOT read nested .gitignore files; .gcloudignore lists site/ build output for uploads.

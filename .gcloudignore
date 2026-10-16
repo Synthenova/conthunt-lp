@@ -1,0 +1,31 @@
+# What `gcloud builds submit .` uploads to Cloud Build as the build source.
+# Without this file gcloud reads only the ROOT .gitignore (never site/.gitignore), so it would also upload
+# site/.next (hundreds of MB, with paths longer than MAX_PATH on Windows), SEO/ and local scratch.
+# The Docker build runs from this upload, so anything the Dockerfile COPYs must NOT be listed here.
+# .dockerignore is deliberately uploaded: Cloud Build's docker step reads it from the build context.
+# Check the result with: gcloud meta list-files-for-upload .
+.gcloudignore
+.git
+.gitignore
+.gitattributes
+#!include:.gitignore
+
+# Local-only folders and tooling
+.scratch/
+.cursor/
+SEO/
+
+# Next app (site/): build output, installs, local env files and generated files
+site/.next/
+site/node_modules/
+site/out/
+site/.env
+site/.env.*
+!site/.env.example
+site/*.tsbuildinfo
+site/next-env.d.ts
+site/legacy-sitemap.xml
+site/.scratch/
+
+# Documentation only (the Dockerfile never copies it)
+site/docs/
