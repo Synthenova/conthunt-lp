@@ -12,10 +12,16 @@ import { SITE_URL } from "@/lib/links";
  *
  * `/v1/*` (the backend proxy) is deliberately NOT blocked: the Viral Now boards load from it, and
  * a crawler that renders the page needs those requests.
+ *
+ * The AI crawlers the legacy robots.txt welcomed by name are named again, in the same group as `*`
+ * (one group, several User-agent lines). A crawler that matches a group of its own ignores the `*`
+ * group, so separate `Allow: /` groups for them would drop the Disallow line for those crawlers.
  */
+const AI_CRAWLERS = ["PerplexityBot", "GPTBot", "ChatGPT-User", "ClaudeBot", "anthropic-ai"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: "*", disallow: ["/preview/"] }],
+    rules: [{ userAgent: ["*", ...AI_CRAWLERS], disallow: ["/preview/"] }],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
