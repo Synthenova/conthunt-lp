@@ -225,6 +225,80 @@ JSON evidence/coverage/probabilities require jsonReferencePaths for their return
 columns. Use {<column>:{}} only for ordinary UUID-free JSON; preserve typed IDs.
 For contrasts run the same scoped read with status='absent'; for meaningful missing
 source observations use status='unknown'. Read chosen answer text in all cases.
+
+### Repeated secured joins
+
+For ranked answers joined to a matching criterion or a matching-criterion
+self-join, first filter each view to the selected operations, question/criteria
+and needed columns in MATERIALIZED CTEs. Reuse those scoped rows for ranking
+and aggregation; materializing unfiltered history defeats this read shape.
+The reader still enforces source access, read-only execution and its 15-second
+timeout. These supported recipes preserve operation/video join multiplicity;
+overlapping attempts are not distinct videos. They do not optimize arbitrary SQL.
+
+Bind $1–$3 to retrieved operations (repeat one binding for a smaller set), $4 to
+question_no, $5 to the required criterion_no, and $6–$8 to TikTok, Instagram and
+YouTube row quotas. Each operation uses one flat typed reference parameter:
+
+```sql
+WITH answers AS MATERIALIZED (
+ SELECT operation_id,content_item_id,media_asset_id,platform,creator_handle,
+        views,published_at,label,answer
+ FROM conthunt.research_answers_v
+ WHERE operation_id IN ($1::uuid,$2::uuid,$3::uuid)
+   AND question_no=$4 AND answer IS NOT NULL
+), matches AS MATERIALIZED (
+ SELECT operation_id,content_item_id
+ FROM conthunt.research_matches_v
+ WHERE operation_id IN ($1::uuid,$2::uuid,$3::uuid)
+   AND criterion_no=$5 AND status='present'
+), ranked AS (
+ SELECT a.operation_id,a.content_item_id,a.media_asset_id,a.platform,
+        a.creator_handle,a.views,a.published_at,a.label,a.answer,row_number() OVER (
+   PARTITION BY a.platform ORDER BY a.views DESC NULLS LAST,a.content_item_id
+ ) AS rn
+ FROM answers a JOIN matches m
+   ON m.operation_id=a.operation_id AND m.content_item_id=a.content_item_id
+)
+SELECT content_item_id,media_asset_id,operation_id,platform,creator_handle,
+       views,published_at,label,answer
+FROM ranked
+WHERE (platform='tiktok' AND rn<=$6) OR (platform='instagram' AND rn<=$7)
+   OR (platform='youtube' AND rn<=$8)
+ORDER BY platform,rn LIMIT 500;
+```
+
+Keep all three returned identities for a source-pinned report link:
+Declare referenceColumns as {content_item_id:"video",media_asset_id:"media_asset",
+operation_id:"research_operation"} if the CTE output loses physical-column lineage.
+`[title](<app-origin>/app/chats/<owning_chat_ref>?item=<video_ref>&analysis_run_id=<research_operation_ref>&asset=<media_asset_ref>)`.
+Use content_item_id for video_REF, operation_id for analysis_REF and media_asset_id
+for asset_REF; copy their returned descriptive references and include both pins.
+
+For the criterion breakdown, $1–$3 are operations, $4 is the selection criterion
+and $5–$10 are the six displayed criteria. Adapt the displayed placeholders to
+the actual requested set. Counts include operation/video pairs; report the actual
+population separately rather than supplying an invented denominator. NULL status
+remains unassessed, distinct from unknown and absent:
+
+```sql
+WITH matches AS MATERIALIZED (
+ SELECT operation_id,content_item_id,criterion_no,criterion_name,status
+ FROM conthunt.research_matches_v
+ WHERE operation_id IN ($1::uuid,$2::uuid,$3::uuid)
+   AND criterion_no IN ($4,$5,$6,$7,$8,$9,$10)
+), selected AS (
+ SELECT operation_id,content_item_id FROM matches
+ WHERE criterion_no=$4 AND status='present'
+)
+SELECT m.criterion_no,m.criterion_name,m.status,COUNT(*) AS n
+FROM matches m JOIN selected s
+  ON s.operation_id=m.operation_id AND s.content_item_id=m.content_item_id
+WHERE m.criterion_no IN ($5,$6,$7,$8,$9,$10)
+GROUP BY m.criterion_no,m.criterion_name,m.status
+ORDER BY m.criterion_no,m.status LIMIT 500;
+```
+
 A shortlist cannot establish prevalence. Bind the actual owning chat for reach:
 
 ```sql
@@ -266,7 +340,7 @@ long linked bullet lists alone are insufficient. Use readable ContHunt links in 
 the answer they support, with readable labels, units and population. A chart must
 help compare something, not merely duplicate a count. If outliers obscure differences,
 use an additional honest comparison or exact table; retain the outliers and explain
-any different measure or scale. Top videos and distinct report gallery/examples: for 100 analyzed videos use 20+; for 200 use 30–40; for 500 use about 60. Each other category section needs 20–30 videos. Repeated citations do not increase coverage. Select by views, observable criteria and answers; diversify meaningful groups. State actual relevant-source shortfalls. Do not impose a preset niche taxonomy. Use direct, attributed findings in chat, reports and section/card reasons. Express evidence scope positively; omit unsolicited sales, causation or virality disclaimers. State relevant blockers. Open with takeaways; product/category headings put cited galleries beside findings. Keep analysis, comparisons, evidence/visuals and recommendations; retain synthesis, trimming duplicate narration. For central performance/comparison questions, answer with saved evidence and charts/tables, not galleries alone. Keep SQL, tool names,
+any different measure or scale. Publish the main category first, with any descriptive title for the best representative videos, then a few other agent-chosen categories with descriptive phrase titles, not questions or one- or two-word labels. Do not require a literal title or a fixed number of categories. Questions stay internal; rubrics follow. The main category and distinct report examples by approved target: for 100 use 20+; for 200 use 30–40; for 400 use 50–60; for 500 use about 60. Each other category section needs 20–30 videos. Repeated citations do not increase coverage. Select by views, observable criteria and answers; diversify meaningful groups. State actual relevant-source shortfalls. Do not impose a preset niche taxonomy. Use direct, attributed findings in chat, reports and section/card reasons. Express evidence scope positively; omit unsolicited sales, causation or virality disclaimers. State relevant blockers. Open with takeaways; product/category headings put cited galleries beside findings. Keep analysis, comparisons, evidence/visuals and recommendations; retain synthesis, trimming duplicate narration. For central performance/comparison questions, answer with saved evidence and charts/tables, not galleries alone. Keep SQL, tool names,
 backend buffers and admission/assessment bookkeeping internal; keep the report focused on findings rather than a generic closing process section.
 
 For numerical findings, aggregate the intended deduplicated population before
@@ -282,14 +356,11 @@ the working context so review can reproduce it. Report-only revisions preserve
 those definitions unless the user requests a changed comparison; then recompute
 and explain the change beside the affected result. Do not change values to fit prose.
 
-Before delivery, read the actual saved file, check every report obligation and
-inspect content claims against exact saved answers or analyses, including subjects
-and attribution. Parent review must requery saved aggregates and compare actual table/chart values and labels before delivery; compare the file’s chart arrays, series labels, units and denominators with the returned rows; reading the file alone is not numerical verification.
+Before delivery, read the actual saved file. The same existing deepSearchAgent writes and revises its own report, same conversation/file. The parent never edits or writes that report, including after the worker completes, and never creates another writer. The parent only reviews and sends one consolidated correction back to that same deepSearchAgent. Check material numeric and source correctness, requested coverage, working citations, and that section publication succeeded. Do not polish wording or requery facts already verified. Do not pass a wrong number. Compare changed chart and table values, series labels, units and denominators with the saved aggregates already retrieved; reading the file alone is not numerical verification. The worker applies that correction to the current saved file, preserves verified unchanged facts, and must not overwrite the file from a stale draft. After that revision, recheck only the changed portions. If a material issue remains, name it and disclose it. Reuse saved evidence; do not start a search or analysis to repair presentation.
 Answer extracts are not exhaustive: inspect the full saved analysis before contradicting a criterion or using a detail, preserving which product, person or comparator the claim refers to. Source availability and matching quotations do not prove a paraphrase or numerical comparison is correct. Check watchable examples and readable comparisons in the
-authored content. A failed check requires a specific correction to the same Deep Search thread
-and file, then verify the revised saved file before delivery; do not merely accept its summary.
+authored content.
 Return a short useful summary and readable link to the actual file. No rendering
-tool is required. Pending or short approved work stays provisional in status.
+tool is required. While required analysis is pending, do independent useful work or end the turn for registered continuation; do not write or publish a report unless the user explicitly requests a draft. Explain an evidenced terminal shortfall directly.
 
 Read existing evidence before scheduling a follow-up. A same-evidence explanation,
 comparison or rewrite needs no provider calls. New answering questions or predicates on saved sources need no new plan; explicitly submit only missing definitions within the existing approval and same Deep Search thread. Changed report wording does not invalidate analysis; a changed predicate
@@ -299,7 +370,7 @@ the user's authorized expansion. Missing evidence may be completed within remain
 approved scope; never repeat successful work or acquire paid evidence solely to
 repair presentation.
 
-Published sections use publish_research_sections({sections:[{title,why,videos:[{video,score}]}]}), with Top videos required alongside the saved report. Selection scores are editorial task fit, distinct from JEV and viral likelihood. Parent review verifies saved-file gallery/table structure, distinct counts, source support, meaningful diversity, requested objective and Top ordering against the publication targets before correcting through the same Deep Search thread using saved evidence.
+Published sections use publish_research_sections({sections:[{title,why,videos:[{video,score}]}]}). The first section is the main category and may use any descriptive title for the best representative videos; a few other agent-chosen categories follow. There is no required literal title and no fixed category count. Questions stay internal; rubrics follow the sections. Selection scores are editorial task fit, distinct from JEV and viral likelihood.
 
 
 
