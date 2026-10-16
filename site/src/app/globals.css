@@ -577,7 +577,7 @@
     contain-intrinsic-block-size: auto var(--cis, 1200px);
   }
   .rails-cv [data-section="statement-simulator"] { --cis: 1070px; }
-  .rails-cv [data-section="how-it-works"] { --cis: 3768px; }
+  .rails-cv [data-section="how-it-works"] { --cis: 3912px; }
   .rails-cv [data-section="bento"] { --cis: 2480px; }
   .rails-cv [data-section="pricing"] { --cis: 2438px; }
   .rails-cv [data-section="testimonials"] { --cis: 400px; }
@@ -587,7 +587,7 @@
   .rails-cv [data-section="faq"] { --cis: 1010px; }
   @media (min-width: 768px) {
     .rails-cv [data-section="statement-simulator"] { --cis: 100svh; }
-    .rails-cv [data-section="how-it-works"] { --cis: 3297px; }
+    .rails-cv [data-section="how-it-works"] { --cis: 3365px; }
     .rails-cv [data-section="bento"] { --cis: 1840px; }
     .rails-cv [data-section="pricing"] { --cis: 1509px; }
     .rails-cv [data-section="testimonials"] { --cis: 350px; }
@@ -597,7 +597,7 @@
     .rails-cv [data-section="faq"] { --cis: 940px; }
   }
   @media (min-width: 1280px) {
-    .rails-cv [data-section="how-it-works"] { --cis: 2241px; }
+    .rails-cv [data-section="how-it-works"] { --cis: 2323px; }
     .rails-cv [data-section="bento"] { --cis: 1640px; }
     .rails-cv [data-section="pricing"] { --cis: 1089px; }
     .rails-cv [data-section="testimonials"] { --cis: 300px; }

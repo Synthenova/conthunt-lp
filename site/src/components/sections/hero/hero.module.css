@@ -20,13 +20,16 @@
   /* Space between the prompt box and the board: the connector beam's run. */
   --conn-gap: 56px;
   --text-w: clamp(400px, 38vw, 470px);
-  /* The offer line under the H1 (hero-rev3 B) and its gaps: the H1 above, the prompt box below. */
-  --offer-fs: clamp(1.125rem, 0.9rem + 0.55vw, 1.5rem);
-  /* Rev 6: more air between the H1 and the offer (+21px at 1440x900) and between the subtext and
-     the CTA row (+24px); the offer sits a little closer to its prompt box. */
-  --offer-gap-top: calc(var(--gap-y) * 1.2 + 4px);
-  --offer-gap-bottom: calc(var(--gap-y) * 0.5);
-  --cta-gap: calc(var(--gap-y) * 1.95);
+  /* Vertical rhythm of the text column (hero-rev10), tuned so the INK gaps match the owner's
+     1630x915 reference (measured on pixels): H1 to prompt box about 60px, box to subtitle about 35px,
+     subtitle to CTA row about 58px, and the H1's first line starting about 135px from the top.
+     Box-to-box values below are smaller than those because the H1's line masks and the
+     paragraphs' half-leading add 5 to 8px of their own. Every one scales with --gap-y, so short
+     windows tighten together instead of colliding. */
+  --h1-gap: calc(var(--gap-y) * 1.8);
+  --sub-gap: calc(var(--gap-y) * 0.9);
+  --cta-gap: calc(var(--gap-y) * 1.7);
+  --h1-air: calc(var(--gap-y) * 1.15);
   /* Soft ink for small labels: ≈ 5.3:1 on --bg (the site-wide text-ink/62). */
   --ink-soft: color-mix(in oklab, var(--ink) 62%, transparent);
   --r: 14px;
@@ -55,14 +58,16 @@
   line-height: 0.92;
   letter-spacing: -0.035em;
   text-wrap: balance;
+  margin-bottom: var(--h1-gap);
 }
 
 /*
  * Desktop (hero-rev4). The prompt box is centred on the hero's centre line (hero-rev3 A), so the
- * H1 and the offer line share the top half, between the navbar and the box. Two limits, and the
- * H1 takes the smaller:
- *   --h1-room  the height left in that half, shared by the three lines (lh 0.92 each, so 2.76em,
- *              plus a hair for the line masks). Short laptops are bound by this one.
+ * H1 takes the top half, between the navbar and the box (the offer line that used to share it
+ * moved into the subtitle in rev 10). Two limits, and the H1 takes the smaller:
+ *   --h1-room  the height left in that half after the navbar, the air under it and the gap to the
+ *              box, shared by the three lines (lh 0.92 each, so 2.76em, plus a hair for the line
+ *              masks). Short laptops are bound by this one.
  *   --h1-w     the measure. The H1 may run wider than the prompt box: past the box's right edge
  *              and across the connector's run, up to a clearance short of the lead card's left
  *              edge. The lead card never sits left of the stage's left edge, and nothing else
@@ -81,7 +86,7 @@
     --h1-clear: 1.75rem;
     --h1-w: calc(var(--text-w) + var(--conn-gap) - var(--h1-clear));
     --h1-room: calc(
-      (var(--line-y) - var(--nav-h) - var(--box-half) - var(--offer-gap-top) - var(--offer-gap-bottom) - var(--offer-fs) * 1.3 - 2px) / 2.8
+      (var(--line-y) - var(--nav-h) - var(--h1-air) - var(--box-half) - var(--h1-gap) - 2px) / 2.8
     );
   }
   .h1 {
@@ -91,47 +96,17 @@
   }
 }
 
-/* The offer: a lead-in to the prompt box. Medium weight in ink, between body copy and the H1. */
-.offer {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin-top: var(--offer-gap-top);
-  margin-bottom: var(--offer-gap-bottom);
-  font-size: var(--offer-fs);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.012em;
-}
-
-/* Desktop: one line, never wrapped. It may run wider than the prompt box (like the H1, up to
-   --h1-w), so "Try it" fits at every width; the centre line is structural and unaffected. */
-@media (min-width: 1024px) {
-  .offer {
-    width: var(--h1-w);
-    white-space: nowrap;
-  }
-}
-
-/* Stacked layout: the line may wrap, "Try it" dropping under the claim. */
-@media (max-width: 1023.98px) {
-  .offer {
-    flex-wrap: wrap;
-    row-gap: 0.2em;
-  }
-}
-
-/* "Try it" and a down arrow, the offer's call to action (hero-rev8, ink in the colour pass): the
-   offer's own colour, size and weight, one line with the claim. Hover only underlines; the arrow
-   nudges down on a slow loop (static under reduced motion, held while the visitor pauses the
-   rotation). */
-.offerCta {
-  flex: none;
+/* "Try it" and an up arrow, the subtitle's last words (hero-rev10; the offer line it used to end moved
+   into the subtitle, and the prompt box is now above it). Same colour, size and weight as the text it
+   sits in, inline with it, never split from its arrow. Hover only underlines; the arrow nudges up on a
+   slow loop (static under reduced motion, held while the visitor pauses the rotation). Its padding is
+   cancelled by negative margins, so the paragraph's line height is unchanged. */
+.subCta {
   display: inline-flex;
-  align-items: center;
-  gap: 0.25em;
-  margin: -0.15em -0.4em -0.15em 0.1em;
-  padding: 0.15em 0.4em;
+  align-items: baseline;
+  gap: 0.2em;
+  margin: -0.15em -0.4em -0.15em -0.2em;
+  padding: 0.15em 0.4em 0.15em 0.2em;
   border-radius: 8px;
   color: inherit;
   font: inherit;
@@ -144,16 +119,17 @@
   transition: text-decoration-color 0.2s var(--ease-out);
 }
 
-.offerCta:hover {
+.subCta:hover {
   text-decoration-color: currentColor;
 }
 
-.offerCta:focus-visible {
+.subCta:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
-.offerArrow {
+.subArrow {
+  align-self: center;
   width: 1em;
   height: 1em;
   animation: ch-hero-nudge 2.4s ease-in-out infinite;
@@ -167,25 +143,14 @@
     transform: translate3d(0, 0, 0);
   }
   75% {
-    transform: translate3d(0, 3px, 0);
+    transform: translate3d(0, -3px, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .offerArrow {
+  .subArrow {
     animation: none;
   }
-}
-
-/* "on us." in Boska italic: the payoff word of the offer (no heading on the page uses it). */
-.offerOnUs {
-  font-family: var(--font-serif-italic);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.12em;
-  letter-spacing: -0.005em;
-  line-height: 0;
-  white-space: nowrap;
 }
 
 /*
@@ -294,8 +259,28 @@
   }
 }
 
+/* The subtitle (hero-rev10): one paragraph, the neutral count sentence, then the Deep Search sentences
+   and "Try it". Roomy leading (the chips are 1.27em tall, so wrapped lines keep clear air between
+   them); the measure is the column's, widened on desktop to the H1's, which still stops short of
+   the lead card (--h1-w). */
 .sub {
-  line-height: 1.75;
+  margin-top: var(--sub-gap);
+  max-width: 36rem;
+  /* The site's body-l size (18 to 20px). */
+  font-size: clamp(1.125rem, 1.081rem + 0.1878vw, 1.25rem);
+  letter-spacing: -0.005em;
+  line-height: 1.62;
+}
+
+/* Desktop: as wide as the H1 (the column is narrower), and sized by the window's height as well, so
+   the five-line paragraph keeps its air above the platforms strip on laptops (16px at 800px tall,
+   18px at 900px, 20px from 1000px). */
+@media (min-width: 1024px) {
+  .sub {
+    width: var(--h1-w);
+    max-width: none;
+    font-size: min(1.25rem, max(1rem, 2svh));
+  }
 }
 
 /*
@@ -304,10 +289,10 @@
  */
 @media (min-width: 1024px) and (max-height: 820px) {
   .root {
-    --gap-y: clamp(0.875rem, 2.2svh, 1.25rem);
+    --gap-y: clamp(0.875rem, 2.6svh, 1.25rem);
   }
   .sub {
-    line-height: 1.55;
+    line-height: 1.6;
   }
 }
 
@@ -374,7 +359,7 @@
 /*
  * One centre line (hero-rev3 A). From 1024px the text is a three-row grid, 1fr · auto · 1fr,
  * over the hero's full height: the prompt box is the middle row, so its centre is the hero's
- * centre (50svh on the first screen), whatever the text heights. The H1 and the offer hang
+ * centre (50svh on the first screen), whatever the text heights. The H1 hangs
  * above it (end-aligned, clear of the navbar), the subtext and CTA row below it (start-aligned,
  * clear of the platforms strip); the space above the H1 and below the CTAs is what is left.
  * If a group ever outgrows its half, its row grows and the box moves off the line; the
@@ -401,7 +386,8 @@
   }
   .textBottom {
     align-self: start;
-    padding-bottom: var(--strip-h);
+    /* The strip, plus a little air so the CTA row never sits on its edge. */
+    padding-bottom: calc(var(--strip-h) + var(--gap-y) * 0.8);
   }
 }
 
@@ -503,7 +489,7 @@
  * --board-dy before the board is parsed, and the engine writes the same number
  * after hydration, so nothing moves. No opacity entrance here on purpose: an
  * element first painted at opacity 0 never counts for LCP, which made the first
- * flap wave (~9s) the page's LCP. The intro shuffle and the connector draw-in are
+ * flap wave (it painted at ~9s under Lighthouse's throttling, and is twice as long now) the page's LCP. The intro shuffle and the connector draw-in are
  * the board's entrance. Without scripts the board shows at dy 0.
  * Below 1024px there is no offset and the board sits below the fold: .riseSlow runs.
  */

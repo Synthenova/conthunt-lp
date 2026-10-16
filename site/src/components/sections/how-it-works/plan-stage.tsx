@@ -461,7 +461,7 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
 
       {/* Window bar (phones get a second row for the status and clock) */}
       <div className="border-b border-hairline">
-        <div className="flex h-11 items-center gap-2.5 pl-4 pr-2">
+        <div className="flex h-12 items-center gap-2.5 pl-4 pr-2">
           <span aria-hidden="true" className="relative grid size-4 place-items-center">
             <span className={cn("size-1.5 rounded-full bg-purple", styles.pulseDot)} />
           </span>
@@ -556,10 +556,10 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
         )}
 
         {/* Panel A: intent */}
-        <div data-plan-left className="relative border-b border-hairline p-4 md:border-b-0 md:border-r md:px-5">
+        <div data-plan-left className="relative border-b border-hairline py-5 px-4 md:border-b-0 md:border-r md:px-5">
           <PanelLabel letter="A" text="Intent" />
-          <div data-dyn className="mt-3">
-            <div data-plan-prompt className="origin-left rounded-[10px] bg-surface px-3 py-1.5" title={scenario.prompt}>
+          <div data-dyn className="mt-4">
+            <div data-plan-prompt className="origin-left rounded-[10px] bg-surface px-3 py-2" title={scenario.prompt}>
               <p className="line-clamp-2 text-[12.5px] leading-[1.35] text-ink-2">
                 <span className="text-ink/62">Your brief </span>
                 {scenario.prompt}
@@ -567,8 +567,8 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
             </div>
           </div>
 
-          <p className="mt-2 flex h-4 items-center pl-7 text-[12px] text-ink/62">Questions to answer</p>
-          <ul data-dyn className="mt-1.5">
+          <p className="mt-3 flex h-4 items-center pl-7 text-[12px] text-ink/62">Questions to answer</p>
+          <ul data-dyn className="mt-2">
             {scenario.questions.map((text, i) => {
               const id = `q${i + 1}`;
               return (
@@ -577,7 +577,7 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
                   data-row={id}
                   data-hl={rowHl(id)}
                   {...hoverProps(id)}
-                  className={cn("flex min-h-6 items-center gap-2.5 py-0.5 pl-7 text-[13px] leading-[1.3] text-ink-2 focus-visible:rounded-[8px] focus-visible:outline-offset-0", styles.hlRow)}
+                  className={cn("flex min-h-7 items-center gap-2.5 py-1 pl-7 text-[13px] leading-[1.3] text-ink-2 focus-visible:rounded-[8px] focus-visible:outline-offset-0", styles.hlRow)}
                 >
                   <Tag>{`Q${i + 1}`}</Tag>
                   <span className="min-w-0 text-pretty">{text}</span>
@@ -586,8 +586,8 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
             })}
           </ul>
 
-          <p className="mt-2 flex h-4 items-center pl-7 text-[12px] text-ink/62">Parameters to score</p>
-          <ul data-dyn className="mt-1.5">
+          <p className="mt-4 flex h-4 items-center pl-7 text-[12px] text-ink/62">Parameters to score</p>
+          <ul data-dyn className="mt-2">
             {scenario.parameters.map(([name, weight], i) => {
               const id = `p${i + 1}`;
               const value = weight / maxWeight;
@@ -597,16 +597,16 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
                   data-row={id}
                   data-hl={rowHl(id)}
                   {...hoverProps(id)}
-                  className={cn("flex min-h-6 items-center gap-2.5 py-0.5 pl-7 text-[13px] leading-[1.3] text-ink-2 focus-visible:rounded-[8px] focus-visible:outline-offset-0", styles.hlRow)}
+                  className={cn("flex min-h-7 items-center gap-2.5 py-1 pl-7 text-[13px] leading-[1.3] text-ink-2 focus-visible:rounded-[8px] focus-visible:outline-offset-0", styles.hlRow)}
                 >
                   <Tag>{`P${i + 1}`}</Tag>
                   {/* Name and weight on one line; the weight bar underlines the row. */}
-                  <span className="relative min-w-0 flex-1 pb-[6px]">
+                  <span className="relative min-w-0 flex-1 pb-[8px]">
                     <span className="flex items-baseline justify-between gap-3">
                       <span className="min-w-0 text-pretty">{name}</span>
                       <span className="shrink-0 font-mono text-[11px] tabular-nums text-ink/62">{weight}%</span>
                     </span>
-                    <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] overflow-hidden rounded-full bg-surface-2">
+                    <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[3px] overflow-hidden rounded-full bg-surface-2">
                       <span
                         data-p-bar
                         data-value={value}
@@ -622,7 +622,7 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
         </div>
 
         {/* Panel B: searches and relevance gate (a size container) */}
-        <div data-plan-right className="@container relative p-4 md:px-5">
+        <div data-plan-right className="@container relative py-5 px-4 md:px-5">
           <div className="flex items-center justify-between gap-3">
             <PanelLabel letter="B" text="Keyword searches" />
             <span className="whitespace-nowrap font-mono text-[11px] tabular-nums text-ink/62">
@@ -630,15 +630,15 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
             </span>
           </div>
 
-          <div className="mt-3 flex flex-col gap-7 @min-[400px]:flex-row @min-[400px]:items-center @min-[400px]:justify-between @min-[400px]:gap-9">
+          <div className="mt-4 flex flex-col gap-7 @min-[400px]:flex-row @min-[400px]:items-center @min-[400px]:justify-between @min-[400px]:gap-9">
             <div className="relative mr-7 md:ml-9 @min-[400px]:mr-0 @min-[400px]:min-w-0 @min-[400px]:max-w-[260px] @min-[400px]:flex-1">
               {/* Landing slots: the panel reads as "waiting" until the searches arrive. */}
-              <ul aria-hidden="true" className="absolute inset-0 flex flex-col gap-1.5">
+              <ul aria-hidden="true" className="absolute inset-0 flex flex-col gap-2">
                 {scenario.keywords.map((k) => (
-                  <li key={k.text} className="h-6 rounded-chip border border-dashed border-ink/15" />
+                  <li key={k.text} className="h-7 rounded-chip border border-dashed border-ink/15" />
                 ))}
               </ul>
-              <ul data-dyn className="relative flex flex-col gap-1.5">
+              <ul data-dyn className="relative flex flex-col gap-2">
                 {scenario.keywords.map((k, i) => (
                   <li
                     key={k.text}
@@ -646,7 +646,7 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
                     data-hl={`k${i + 1} ${questionIds(k.from).join(" ")}`}
                     {...hoverProps(`k${i + 1}`)}
                     className={cn(
-                      "flex h-6 items-center gap-2 rounded-chip border border-hairline bg-paper px-2 text-[12px] text-ink-2 focus-visible:rounded-chip",
+                      "flex h-7 items-center gap-2 rounded-chip border border-hairline bg-paper px-2 text-[12px] text-ink-2 focus-visible:rounded-chip",
                       styles.hlChip,
                     )}
                   >
@@ -660,10 +660,10 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
 
             <div
               data-dyn
-              className="grid grid-cols-3 gap-3 @min-[400px]:flex @min-[400px]:w-[clamp(96px,30%,150px)] @min-[400px]:shrink-0 @min-[400px]:flex-col @min-[400px]:gap-2.5"
+              className="grid grid-cols-3 gap-3 @min-[400px]:flex @min-[400px]:w-[clamp(96px,30%,150px)] @min-[400px]:shrink-0 @min-[400px]:flex-col @min-[400px]:gap-3.5"
             >
               {LANE_ORDER.map((p) => (
-                <div key={p} data-lane className="min-w-0 @min-[400px]:h-10">
+                <div key={p} data-lane className="min-w-0 @min-[400px]:h-11">
                   <div className="flex items-center justify-between gap-1 text-[12px]">
                     <span className="flex min-w-0 items-center gap-1.5 font-medium text-ink">
                       <PlatformGlyph platform={p} />
@@ -685,7 +685,7 @@ export function PlanStage({ className, hint, hintTouch }: PlanStageProps) {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center justify-between gap-3">
+          <div className="mt-7 flex items-center justify-between gap-3">
             <PanelLabel letter="C" text="Relevance gate" />
             <span data-dyn className="font-mono text-[11px] tabular-nums text-ink/62">
               <span data-gate-block className="inline-block">
@@ -744,9 +744,9 @@ function GateGrid({ scenario }: { scenario: Scenario }) {
   const tiles = scenario.gate;
   // Narrow panels show 12 tiles in 6 columns; wide panels all 20 in 10 columns.
   const tileClass = (i: number) => cn("relative overflow-hidden rounded-[7px] bg-surface-2", i >= 12 && "@max-[339px]:hidden");
-  const gridClass = "grid grid-cols-6 gap-1.5 @min-[340px]:grid-cols-10";
+  const gridClass = "grid grid-cols-6 gap-x-1.5 gap-y-2.5 @min-[340px]:grid-cols-10";
   return (
-    <div data-dyn aria-hidden="true" className="relative mt-3">
+    <div data-dyn aria-hidden="true" className="relative mt-4">
       {/* Before the searches return: a quiet note instead of a gray 0/0 grid. */}
       <div
         data-gate-wait

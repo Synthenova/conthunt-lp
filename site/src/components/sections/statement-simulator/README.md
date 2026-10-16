@@ -9,7 +9,7 @@ page's one pinned scroll-jack into a live Deep Search simulator. Preview: `/prev
 |---|---|
 | `index.tsx` | Server entry. `<StatementSimulatorSection simulator? index? total? />` |
 | `scene.tsx`, `scene.module.css` | Statement, chips, credit line and the pinned GSAP timeline |
-| `statement-copy.ts` | The statement as five lines (legacy first sentence + tightened claim) |
+| `statement-copy.ts` | The statement as five lines: the owner's sentence (2026-10-16), "500" read from the data |
 | `simulator/index.tsx` | `<DeepSearchSimulator {...DeepSearchSimulatorProps} live? label? scrollMode? onActiveSearchChange? className? />` |
 | `simulator/full-view.tsx` | `<FullControlButton simulator activeSearchId? />`: "Full Control", the same simulator full screen in a modal `<dialog>` (page locked, free scrolling) |
 | `simulator/scroll.ts` | Wheel ownership for the board, transcript and drawer (engage on click, hand back at the edges) |
@@ -54,6 +54,15 @@ import { realSimulatorProps } from "@/content/simulator/real"; // your file
    Each tab swaps the board, the transcript, the header title and the highlighted Recents row.
 6. **Copy outside the frame** reads `searches[0].approved_budget.videos` and the first worker's
    `elapsed`, so "500 videos … in 8m" follows the data.
+
+Statement copy is the owner's sentence, "Stop scrolling to find ideas. ContHunt watches up to 500
+videos from your niche in under five minutes, checks every frame and hands you what works." (brand
+spelled ContHunt, `{videos}` for 500, 26 words, five chips, *works.* in Boska italic). Edit it in
+`statement-copy.ts`; keep each of the five desktop lines at 5-6 words, because the scroll-jack's Flip
+moves whole lines. Line 2 ("ContHunt watches up to 500 videos") is the widest line (15.08em) and so
+carries no chip; chip 3 sits on line 1. `--stmt-desk` (scene.module.css, 5.1vw below 1280px and
+3.85vw from there, under the clamp) keeps the letterbox at 15.58em or more, at least 3% slack. The
+screen-reader text is the same words without chips.
 
 Statement clips come from `src/content/media/statement-chips.json` (`[n]` markers in
 `statement-copy.ts` pick which chip goes where). Hovering a chip names its creator and views in

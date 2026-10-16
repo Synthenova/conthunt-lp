@@ -50,7 +50,7 @@ export function CountChip({ value, suffix = "", label, delay = 0 }: CountChipPro
   }, [value, suffix]);
 
   return (
-    <span className="mx-[0.12em] inline-flex h-[1.5em] translate-y-[-0.06em] items-center gap-[0.35em] whitespace-nowrap rounded-chip bg-surface px-[0.45em] align-middle text-[0.94em] leading-none text-ink shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]">
+    <span className="mx-[0.12em] inline-flex h-[1.35em] translate-y-[-0.05em] items-center gap-[0.35em] whitespace-nowrap rounded-chip bg-surface px-[0.45em] align-middle text-[0.94em] leading-none text-ink shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]">
       <span className="grid font-mono text-[0.9em] font-medium tabular-nums tracking-[-0.01em]">
         <span aria-hidden="true" className="invisible col-start-1 row-start-1">
           {final}

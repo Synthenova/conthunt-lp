@@ -2,8 +2,8 @@
 
 /**
  * HeroBoard — the interactive hero: text column (H1, prompt box with
- * mode chips and the pause control, whose ring shows the cycle clock; subtext
- * chips, CTAs, sound toggle), the triangular split-flap board (plus one or two
+ * mode chips and the pause control, whose ring shows the cycle clock; the subtitle
+ * with its count chips and "Try it", CTAs, sound toggle), the triangular split-flap board (plus one or two
  * static columns on wide windows) and the connector beam. Structure renders once;
  * the HeroEngine animates it.
  *
@@ -23,7 +23,7 @@ import {
   type ReactNode,
 } from "react";
 import { preload } from "react-dom";
-import { ArrowDown, ArrowRight, CornerDownLeft, Pause, Play, ScanSearch, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, ArrowUp, CornerDownLeft, Pause, Play, ScanSearch, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { cn } from "@/lib/cn";
@@ -65,9 +65,11 @@ const useServerHtml = () => useSyncExternalStore(noopSubscribe, () => false, () 
 /**
  * The prompt box's mode. Deep Search is the only mode the site offers (we want visitors to try
  * it), so it is shown as a toggle already switched on and does nothing: a styled span, not a
- * control (hero-rev4). Submit always goes to GET_STARTED_URL?q=<prompt>.
+ * control (hero-rev4). Submit always goes to GET_STARTED_URL?q=<prompt>. The hint beside the submit
+ * button (shown while typing) states what the free first Deep Search is: 50 videos across 5 searches
+ * (owner, 2026-10-16, hero-rev3 Rev 10).
  */
-const DEEP_HINT = "500 videos · < 5 min";
+const DEEP_HINT = "50 videos · 5 searches";
 
 interface SlotHandlers {
   turn: (i: number, on: boolean) => void;
@@ -420,7 +422,7 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
       {/* ------------------------------------------------ text column */}
       {/* From 1024px the column is a three-row grid (1fr · auto · 1fr, hero.module.css .textInner):
           the prompt box is the middle row, so its centre sits on the hero's centre line whatever
-          the heights of the groups above and below it (hero-rev3 A). The board's lead card is
+          the heights of the groups above (the H1) and below it (subtitle, CTAs) (hero-rev3 A). The board's lead card is
           placed on the same line (engine.ts layout). */}
       <div className={cn("flex flex-1 items-center pt-[88px] lg:items-stretch lg:pt-0", s.textCol)}>
         <div className={cn("w-full max-w-[640px] py-6 lg:max-w-none lg:py-0", s.textInner)}>
@@ -448,30 +450,6 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
                 </span>
               </span>
             </h1>
-
-            {/* The offer (hero-rev3 B, OWNER_DECISIONS C18): the prompt box's lead-in, the hook that
-                gets a visitor to type their niche. Above body copy, below the H1; never a badge. */}
-            <p
-              id="hero-offer"
-              className={cn("text-ink", s.offer, s.riseT)}
-              style={{ "--d": "0.24s" } as React.CSSProperties}
-            >
-              <span>
-                Your first Deep Search is <span className={s.offerOnUs}>on us.</span>
-              </span>
-              {/* "Try it" (hero-rev8): a real affordance for the prompt box below it. Focusing the
-                  textarea runs the box's own focus behaviour (rotation pauses, the example is
-                  inserted and selected). preventScroll: the box is right there. */}
-              <button
-                type="button"
-                aria-label="Try it: focus the prompt"
-                onClick={() => taRef.current?.focus({ preventScroll: true })}
-                className={s.offerCta}
-              >
-                Try it
-                <ArrowDown aria-hidden="true" className={s.offerArrow} strokeWidth={2.2} />
-              </button>
-            </p>
           </div>
 
           {/* Prompt box */}
@@ -539,11 +517,12 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
             <div className="mt-3 flex min-w-0 items-center gap-2">
               {/* Deep Search: a toggle shown switched ON that does nothing (hero-rev4). A span, not a
                   button: no role, no tab stop, no hover change, no tap cue from the delegated sound
-                  bindings. Same look as the Deep Research chip in the How it works composer. Screen
-                  readers get the mode once, through the textarea's description (#hero-mode). */}
+                  bindings. Solid ink with white text and icon since rev 10 (19.2:1; the blue tint
+                  of the How it works composer's chip is no longer the model). Screen readers get
+                  the mode once, through the textarea's description (#hero-mode). */}
               <span
                 aria-hidden="true"
-                className="inline-flex h-8 min-w-0 cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[10px] bg-accent/10 px-2.5 text-[12.5px] font-semibold tracking-[-0.005em] text-accent"
+                className="inline-flex h-8 min-w-0 cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[10px] bg-ink px-2.5 text-[12.5px] font-semibold tracking-[-0.005em] text-paper"
               >
                 <ScanSearch className="size-3.5 max-[359px]:hidden lg:max-[1279px]:hidden" strokeWidth={2.2} />
                 Deep Search
@@ -613,13 +592,43 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
           </form>
 
           <div className={s.textBottom}>
+            {/* The subtitle (hero-rev10): one paragraph. The neutral count sentence, then what Deep Search
+                does and the offer (it was its own line above the prompt box until rev 10; "your first
+                Deep Search" is 50 videos across 5 searches), then "Try it" with an up arrow, because the
+                prompt box is above. "Try it" is a real button for that box: focusing the textarea
+                runs the box's own focus behaviour (rotation pauses, the example is inserted and
+                selected). preventScroll: the box is right there. Ink like the text, no icon but the
+                arrow. */}
             <p
-              className={cn("body-l mt-[var(--gap-y)] max-w-[34rem] text-ink-2 [text-wrap:pretty]", s.riseT, s.sub)}
+              className={cn("text-ink-2 [text-wrap:pretty]", s.riseT, s.sub)}
               style={{ "--d": "0.4s" } as React.CSSProperties}
             >
-              Search through <CountChip {...HERO_STATS.platforms} /> across{" "}
-              <CountChip {...HERO_STATS.niches} delay={0.1} /> and over <CountChip {...HERO_STATS.videos} delay={0.2} />{" "}
-              updated daily.
+              {/* Each chip stays with the word that introduces it, so a wrapped line never starts on a
+                  lone chip or ends on its lead-in word. */}
+              <span className="whitespace-nowrap">
+                Search through <CountChip {...HERO_STATS.platforms} />
+              </span>{" "}
+              <span className="whitespace-nowrap">
+                across <CountChip {...HERO_STATS.niches} delay={0.1} />
+              </span>{" "}
+              and{" "}
+              <span className="whitespace-nowrap">
+                over <CountChip {...HERO_STATS.videos} delay={0.2} />
+              </span>{" "}
+              updated daily.{" "}
+              <span id="hero-offer">
+                Deep Search analyzes videos frame by frame and provides the info that most of us miss. Your first Deep
+                Search is on us.
+              </span>{" "}
+              <button
+                type="button"
+                aria-label="Try it: focus the prompt"
+                onClick={() => taRef.current?.focus({ preventScroll: true })}
+                className={s.subCta}
+              >
+                Try it
+                <ArrowUp aria-hidden="true" className={s.subArrow} strokeWidth={2.2} />
+              </button>
             </p>
 
             <div

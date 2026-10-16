@@ -141,7 +141,17 @@ export interface EngineOptions {
 
 /* --------------------------------------------------------------- helpers */
 
-const STAGGER = 0.065; // seconds between cards in the wave (spec: 55–80 ms)
+/*
+ * Seconds between cards in the wave. 0.13 since hero-rev10 (owner: the flip timing between columns
+ * +100%; it was 0.065). visibleSlots() orders the cards column by column ([0], [1,2], [3,4,5],
+ * [6,7,8,9] top to bottom), so doubling the per-card step doubles every gap, between columns too:
+ * columns now start 0, 0.13, 0.39 and 0.78s after the first card (they were 0, 0.065, 0.195, 0.39).
+ * Budget: the beam (0.28 + 0.7) + 9 steps (1.17) + the longest card (3 flaps and the settle, 0.44)
+ * + the chart and score draw-in (about 1.1) is about 3.7s, inside the 6s cycle (CYCLE_SECONDS), so the
+ * next wave can never start before this one ends. flap-sound.ts drops plays closer than 45ms, far
+ * under the new 130ms step, so every landing still sounds.
+ */
+const STAGGER = 0.13;
 const FLAP_FAST = 0.07; // intermediate flap
 const FLAP_FINAL = 0.16; // landing flap
 const BEAM_SECONDS = 0.7; // the pulse's run from the prompt box's border to the lead card's edge

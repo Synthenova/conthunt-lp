@@ -190,3 +190,56 @@ The offer line now reads [3D gift] Your first Deep Search is *on us.* Try it (do
 
 Each board card is now a plain `div[data-slot]` (hover and tap target) holding a visually hidden native `<button data-hit>` whose own text is `describeCard()` (no aria-label, so the name is its content and axe's label-content-name-mismatch cannot fire); the visual subtree stays `aria-hidden`. Focus, Enter and Space turn the card, Escape turns it back, the arrow keys rove (one tab stop), and `:has([data-hit]:focus-visible)` draws the ring. The engine updates the button's text and `aria-pressed` per wave and flip. axe (wcag2a, 2aa, 21a, 21aa, 22aa, best-practice) at 1440x900: 0 violations. At 390x844: color-contrast in the statement section and scrollable-region-focusable in another section, none in the hero (`.scratch/qa/hero-a11y/`).
 
+
+## Rev 10 (owner follow-up, 2026-10-16) — status: shipped
+
+### Owner's words (verbatim, with their screenshot of the intended spacing, 1630x915)
+
+> "Small adjustment, this sort of spacing is what I expect from the hero section, currently the space looks too cramped.
+> For the first free deep search we offer 50 videos only across 5 searches
+> Deepsearch buton inside the promptbox should be in black with white text and icon
+> As you see in the image the "first deepsearch" lines is removed in that image, instead add it to the subtitle of the hero section. "Deep Search analyzes videos frame by frame and provides the info that most of us miss. Your first Deep Search is on us. Try it <up arrow>"
+> the flip animation timing between columns must be increased by 100% the current timing difference."
+
+### Fact: "your first Deep Search" = 50 videos across 5 searches
+The free first Deep Search is 50 videos spread over 5 searches, not a 500-video run. Applied: the typing hint beside the submit button
+(`DEEP_HINT`) said "500 videos · < 5 min" and now says "50 videos · 5 searches". The subtitle makes no size claim (it says "Your first Deep Search is on us."),
+and its Deep Search sentences stay the owner's words. Copy elsewhere in the repo that describes the paid Deep Search as 500 to 1,000 videos is a
+separate product statement and is not changed here (the list of places is in the Rev 10 report; OWNER_DECISIONS C18 still says "covers 500 videos").
+
+### What changed
+- **Offer line removed; its words moved into the subtitle.** The paragraph under the prompt box is now: "Search through [7 platforms] across [104,862 niches] and over
+  [10,384,719 videos] updated daily. Deep Search analyzes videos frame by frame and provides the info that most of us miss. Your first Deep Search is on us. Try it ↑".
+  "Try it" is the old rev 8/9 button (focuses `#hero-q` with `preventScroll`, which runs the box's focus behaviour), now inline, in the paragraph's own colour,
+  with an `ArrowUp` (`.subCta`, `.subArrow`; the nudge goes up, still held by the pause control and off under reduced motion). The Deep Search sentences carry
+  `#hero-offer`, so the textarea's `aria-describedby` still includes them. `.offer*` CSS and the `ArrowDown` import are gone.
+- **One calm paragraph.** Each chip is wrapped with its lead-in word (`Search through [chip]`, `across [chip]`, `over [chip]`) in a nowrap span, so a wrapped line never
+  starts on a lone chip. Chips are 1.35em tall (was 1.5em) inside leading 1.62, so stacked lines keep clear air. Desktop width is `--h1-w` (as wide as the H1, 28px short of the lead card; was the 440px
+  box width, which made it 5 lines), font `min(1.25rem, max(1rem, 2svh))` (16px at 800 tall, 18px at 900, 20px from 1000); stacked layouts keep body-l (18 to 20px) at 36rem.
+  4 lines on every desktop size checked at 1280 to 1920 wide, 6 to 7 at 390x844.
+- **Spacing.** Measured on pixels (ink to ink) against the owner's screenshot at 1630x915:
+
+  | gap | owner | before | after |
+  |---|---|---|---|
+  | top of window to H1's first line | 137 | 102 | 137 |
+  | H1 to prompt box | 61 | 94 (the offer line stood between) | 62 |
+  | prompt box to subtitle | 35 | 40 | 35 |
+  | subtitle to Get started | 58 | 65 | 57 |
+  | lead card centre vs box centre | same | same | same (457.5) |
+
+  Box-to-box values, before to after (H1 to box, box to subtitle, subtitle to CTA): 1630x915 80.9 (H1 to box, with the offer line between) / 30.2 / 58.9 to 49.7 / 27.2 / 51.3; the H1 grows from
+  78.5 to 77.3px (it was bound by the room above the box, which the offer line used to share; it is now bound by the nav and `--h1-air`). The three gaps are fluid, from `--gap-y`:
+  `--h1-gap` 1.8x, `--sub-gap` 0.9x, `--cta-gap` 1.7x, `--h1-air` (navbar to H1) 1.15x; they are smaller than the ink gaps because the H1's line masks and the
+  paragraphs' half-leading add 5 to 8px. `--h1-room` now subtracts `--h1-air` and `--h1-gap` instead of the offer line and its two gaps. `.textBottom` keeps `--strip-h` plus
+  0.8 x `--gap-y` of air above the platforms strip. Short windows (max-height 820) use `--gap-y: clamp(0.875rem, 2.6svh, 1.25rem)` (was 2.2svh) so the gaps stay open there.
+  Centre line (box centre = lead centre = 50svh): 0.0px at 1024x768, 1280x720, 1440x900, 1630x915, 1920x1080 and 2560x1440. The beam still runs from the box's border to the lead card.
+  Clearances at the bottom (Get started to the strip top): 27px at 1280x720, 48 at 1024x768, 74 at 1440x900, 78 at 1630x915, 146 at 1920x1080, 358 at 2560x1440; nothing touches the navbar (the H1 starts at least 26px below it).
+- **Deep Search chip:** `bg-ink text-paper`, icon inherits white: #0f0f0f on #ffffff is 19.17:1 (text and icon). Still a `span`, `aria-hidden`, no `tabindex`, no hover or press styles (verified: not in the Tab order).
+- **Wave:** `STAGGER` 0.065 to 0.13 in `engine.ts`. `visibleSlots()` is `COLUMNS.flat()`, i.e. column by column ([0], [1,2], [3,4,5], [6,7,8,9]), so doubling the per-card step doubles every column-to-column
+  gap. Measured (a real `goTo`, hooks on `arrive` and `land`, 1630x915, 1920x1080 and 1280x720 agree within 5ms): column starts 0, 66, 193, 387ms before, 0, 126, 387, 781ms after; first card to last card start
+  0.585s to 1.17s; first card to last landing 0.95 to 1.0s to 1.61s (the flaps themselves are unchanged: 70ms, 70ms, 160ms and the settle); the cycle timeline (beam, contact, wave) 1.57s to 2.15s. The chart
+  draw-ins end about 1.1s after each landing, so the last card is done about 2.7s after the first lands, about 3.7s after the cycle starts, inside the 6s `CYCLE_SECONDS`: the next wave cannot start before this one ends.
+  `flap-sound.ts` is unchanged (it drops plays closer than 45ms; the step is now 130ms, so no landing is dropped), the trend labels and score tick are painted in `land()` on the same timeline, a flipped card still pops instead of flapping,
+  reduced motion has no wave (its 0.5s crossfade is untouched). The "~9s" note in `hero.module.css` is the LCP time the first wave once had under throttling, not its length; the comment now says so.
+- QA: `.scratch/qa/hero-rev10/` (`measure.cjs`, `wave.cjs`, `checks.cjs`, `bands.py`, before and after screenshots at the eight sizes, `compare-1630x915.png`). axe (wcag2a, 2aa, 21a, 21aa, 22aa, best-practice, scoped to the hero section) at
+  1630x915 and 390x844: 0 violations (the color-contrast rule is "incomplete" on both: the board's video posters; the text and chip contrast were computed by hand).

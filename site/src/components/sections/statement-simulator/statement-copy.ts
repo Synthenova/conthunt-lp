@@ -1,18 +1,23 @@
 /**
  * The giant statement (section 1.5, ref G1o2H).
  *
- * It opens with the retained legacy line, verbatim from `src/content/site/statement.ts`
- * ("Stop scrolling to find ideas."), then tightens the old manual-research copy into one claim
- * built from the product facts: the video budget comes from the simulator data (500), and
- * "under five minutes" is the owner's brief (the designed run took 4m 12s). 24 words, 5 chips.
+ * The owner's sentence (2026-10-16, "Giant Text Section modification"), word for word:
+ * "Stop scrolling to find ideas. Conthunt watches up to 500 videos from your niche in under five
+ * minutes, checks every frame and hands you what works." Two adjustments only: the brand is spelled
+ * "ContHunt" as everywhere else on the site, and "500" is `{videos}`, the video budget read from the
+ * simulator data (the designed run took 4m 12s, which backs "under five minutes"). The first
+ * sentence is still the retained legacy line from `src/content/site/statement.ts`.
+ * 26 words, 5 chips, one Boska italic (*works.*).
  *
- * The copy is authored as five ragged-centre lines (4-6 words each, as in G1o2H). On desktop the
+ * The copy is authored as five ragged-centre lines (5-6 words each, as in G1o2H). On desktop the
  * lines are fixed, so the scroll-jack can Flip whole lines from the centred statement into the
  * left-aligned headline without words crossing; on phones they wrap naturally.
  *
- * Template syntax: words separated by spaces, `[n]` = statement chip n
- * (src/content/media/statement-chips.json), `*word*` = the one Boska italic keyword,
- * `{videos}` = approved video budget, `|` = line break.
+ * Fit budget (desktop, `.line` is nowrap and centred in the letterbox, measured in em of the
+ * statement font): line 2 is the widest at 15.08em. `--stmt-desk` in scene.module.css keeps the
+ * letterbox at 15.58em or more (5.1vw / 3.85vw), so line 2 has at least 3% slack. A chip adds about
+ * 1.5em, so line 2 carries none; chip 3 sits on line 1 instead (13.86em). Adding a word or chip to
+ * line 2 would overflow; re-measure (every other line is under 13.9em) before lengthening it.
  */
 import { data as legacy } from "@/content/site/statement";
 
@@ -23,10 +28,10 @@ export type StatementToken =
 const [stop, scrolling, to, find, ideas] = legacy.words;
 
 const TEMPLATE = [
-  `${stop} ${scrolling} [4] ${to} ${find} ${ideas}`,
-  "ContHunt watches [3] {videos} videos",
+  `${stop} ${scrolling} [4] ${to} ${find} [3] ${ideas}`,
+  "ContHunt watches up to {videos} videos",
   "from your niche [2] in under five",
-  "minutes, scores every hook [6]",
+  "minutes, checks every frame [6]",
   "and hands you [1] what *works.*",
 ].join(" | ");
 

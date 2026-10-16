@@ -1,6 +1,8 @@
 # Section brief: `hero` (owner: Opus animation engineer)
 
-> Updated after hero revision 4 (`hero-rev3.md`, section "Rev 4", 2026-10-16: bigger accent-colored H1, a clean pulse that
+> Updated after hero revision 10 (`hero-rev3.md`, section "Rev 10", 2026-10-16: the offer line moved into the subtitle, the
+> text column retuned to the owner's 1630x915 reference rhythm, a solid-ink Deep Search chip, a wave twice as slow between
+> columns) and hero revision 4 (`hero-rev3.md`, section "Rev 4", 2026-10-16: bigger accent-colored H1, a clean pulse that
 > starts on the prompt box's border and stops at the lead card's edge with no outline, a static Deep Search chip) and
 > hero revision 3 (`hero-rev3.md`, 2026-10-16) and revision 2 (`hero-rev2.md`,
 > 2026-10-15). Where this brief and a revision differ, the newer revision wins; the sections below
@@ -27,9 +29,11 @@ Data: `src/content/media/hero-prompts.json` (5 prompts × 12 real cards with sco
   the columns are centred on each other) sit on one line: 50svh on the first screen, or the stage
   centre (between the navbar and the platforms strip) when the window is shorter than the 680px
   minimum. The text column is a three-row grid `1fr auto 1fr` over the hero's full height
-  (`hero.module.css` `.textInner`): the prompt box is the middle row; the H1 and the offer line
-  hang above it (end-aligned, clear of `--nav-h`) and the subtext and CTA row below it
-  (start-aligned, clear of `--strip-h`). The space above the H1 and below the CTA row is whatever
+  (`hero.module.css` `.textInner`): the prompt box is the middle row; the H1 hangs above it
+  (end-aligned, clear of `--nav-h`) and the subtitle and CTA row below it (start-aligned, clear of
+  `--strip-h` plus a little air). Rev 10 vertical rhythm, from the owner's 1630x915 reference (ink to ink,
+  scaled by `--gap-y` on other heights): H1 starts about 135px from the top, about 60px from the H1 to the box,
+  about 35px from the box to the subtitle, about 58px from the subtitle to Get started and Sound. The space above the H1 and below the CTA row is whatever
   is left. The H1 size is capped by the room in the top half (`--h1-room`), so short laptops
   scale the H1 instead of moving the box. The H1 also has its own wider measure (`--h1-w`, rev 4), so tall and
   wide screens grow it up to a clearance short of the lead card. The engine places the board on the box (`--board-dy`,
@@ -43,19 +47,11 @@ Data: `src/content/media/hero-prompts.json` (5 prompts × 12 real cards with sco
      Boska italic on "viral", as a slowly drifting five-hue gradient (`.viral`: pink, orange, gold, purple, blue; 9s loop; static under reduced motion; rev 9). Three lines, at 57 to 134px on desktop
      (rev 4: wider measure, line height 0.92), 56px at 390 wide. (The mono badge that sat above it was removed on
      2026-10-16: "remove this".)
-  2. The **offer line** (hero-rev3 B, OWNER_DECISIONS C18): "Your first Deep Search is *on us.*",
-     the prompt box's lead-in and the page's hook. Switzer 500 in ink at `--offer-fs` (18→24px),
-     (no icon: the 3D gift of rev 6 was removed in rev 9) and Boska 500 italic on "on us." (no other heading uses
-     that word). More prominent than body copy, subordinate to the H1; never a badge or pill. The
-     textarea's `aria-describedby` includes it (`#hero-offer`) and the submit button's name is
-     "Try your niche". Transform-only rise (`.riseT`), so it is painted on the first frame.
-     Rev 8: the line ends with a "Try it ↓" button (accent, same size and weight, the arrow nudging down on a slow
-     loop; static under reduced motion) that focuses the prompt textarea with `preventScroll` and so runs the box's
-     focus behaviour. One line on desktop (the line may run as wide as the H1, `--h1-w`); on stacked layouts it wraps.
-  3. A **modern chat input box** (white paper card, 14–16px radius, soft shadow, hairline border).
+  2. A **modern chat input box** (white paper card, 14–16px radius, soft shadow, hairline border).
      The text area shows the current prompt. Under it is a row with one static `Deep Search` chip (rev 4: a
-     non-interactive span styled as a toggle switched on, `bg-accent/10`, accent, semibold; no `Search` mode, no
-     `mode` param) and a round ink submit button with an arrow.
+     non-interactive span styled as a toggle switched on; rev 10: solid `bg-ink` with white text and a white icon, 19.2:1; no hover or
+     pressed state, no tab stop; no `Search` mode, no `mode` param). While typing, a hint beside the submit button reads
+     "50 videos · 5 searches" (the free first Deep Search). The row ends with a round ink submit button with an arrow.
      - Prompts rotate every 6s. The text change is itself a split-flap or vertical-roll animation
        in the same family as the board. It must be tasteful, not a typewriter gimmick.
      - Focus is **neutral**, never blue (hero-rev2 E): a firmer 1px ink ring and a deeper, softer
@@ -63,13 +59,19 @@ Data: `src/content/media/hero-prompts.json` (5 prompts × 12 real cards with sco
      - When the user focuses or types, rotation pauses and their text is kept. Submit, or Enter,
        goes to `GET_STARTED_URL` with `?q=<encoded prompt>`. Read `src/lib/links.ts`; if it has no
        query support, append `q` anyway and note it.
-  4. Subtext with **inlaid chips** (owner sketch): "Search through `7 platforms` across
-     `104,862 niches` and over `10,384,719 videos` updated daily (owner figures, 2026-10-16, OWNER_DECISIONS C1)." The chips are pill-highlights
-     (surface fill, mono numerals, `tabular-nums`) that count up once on load.
+  3. The **subtitle**, one calm paragraph (rev 10; it absorbed the offer line that stood above the box): "Search through
+     `7 platforms` across `104,862 niches` and over `10,384,719 videos` updated daily. Deep Search analyzes videos frame by
+     frame and provides the info that most of us miss. Your first Deep Search is on us. Try it ↑" (owner figures
+     2026-10-16, OWNER_DECISIONS C1). The chips are pill-highlights (surface fill, mono numerals, `tabular-nums`, 1.27em tall so wrapped
+     lines keep air) that count up once on load; each stays with the word that introduces it (nowrap), so a wrap never starts on a lone chip.
+     "Your first Deep Search" is 50 videos across 5 searches (owner). "Try it ↑" is a real button in the text's own colour, with
+     an up arrow (the box is above) nudging up on a slow loop (static under reduced motion): it focuses the prompt with
+     `preventScroll`, which runs the box's focus behaviour. The textarea's `aria-describedby` includes the Deep Search
+     sentences (`#hero-offer`). Desktop measure: as wide as the H1 (`--h1-w`), font 16 to 20px by window height; stacked: 36rem max at 18 to 20px.
      - The owner wrote these numbers. Check the platforms count against
        `src/content/site/platforms.ts`. If the legacy list has fewer platforms, keep the owner's
        number but add the mismatch to your report.
-  5. A row with a primary `Get started` button (ink) and the sound toggle (see Sound), right after it.
+  4. A row with a primary `Get started` button (ink) and the sound toggle (see Sound), right after it.
      (Rev 5: the `See how it works ↓` link was removed on the owner's word; `#how-it-works` stays as an
      anchor target.)
 - **Right side, the triangular staggered grid:**
@@ -138,8 +140,10 @@ prompt box's border to the lead card's edge and stops there (a 0.14s fade, no fl
      real board cycles through characters. Use about 70ms per intermediate flap and about 160ms
      for the final, with a tiny settle bounce.
 - **Stagger:** a wave from the first card outward, column by column (top to bottom within a
-  column), at about 55–80ms per card, so it reads as synchronised but cascading.
-  Total wave ≤ about 1.4s.
+  column), at 130ms per card (rev 10: doubled from 65ms at the owner's request, so the gap between columns doubles too:
+  the four columns start 0, 0.13, 0.39 and 0.78s after the first card, were 0, 0.065, 0.195, 0.39). First card to last landing is about
+  1.6s (was about 1.0s), and the chart draw-ins finish about 1.1s later, well inside the 6s cycle, so the next wave never overlaps this one.
+  The landing sound and the trend labels ride the same timeline.
 - The score chip ticks to the new value as the flap lands. The chart redraws its line
   (DrawSVG) and the fill fades in.
 - Pause the loop when the hero is offscreen or the tab is hidden.
@@ -190,7 +194,7 @@ hand-draw logos). The strip is a slow marquee if it overflows; it is static unde
 
 ## Responsive and accessibility
 
-- Below 1024px: text first (H1, offer line, prompt box, subtext, CTAs), then the grid scaled down
+- Below 1024px: text first (H1, prompt box, subtitle, CTAs), then the grid scaled down
   (show columns 1–3; the 4th is hidden). No centre-line rule.
   Below 640px: a compact 1+2+3 triangle at about 70% scale, still animated.
 - The grid is `aria-hidden` decorative with an `sr-only` summary. The rotating prompt region is
@@ -203,10 +207,9 @@ hand-draw logos). The strip is a slow marquee if it overflows; it is static unde
 
 ## Load performance (w6)
 
-- The offer line, the prompt box and the subtext use a transform-only rise (`.riseT`), so they are painted on the
+- The prompt box and the subtitle use a transform-only rise (`.riseT`), so they are painted on the
   first frame: a fade from opacity 0 made the subtext a late LCP behind hydration. The CTA row
-  keeps the fade. The offer line adds no font face: Switzer 500 and Boska 500 italic are already
-  preloaded on Home. Entrance animations use `fill-mode: backwards` (same look, and finished
+  keeps the fade. The subtitle adds no font face. Entrance animations use `fill-mode: backwards` (same look, and finished
   animations release their compositor layers).
 - The engine is built in an idle task right after hydration (`hero-board.tsx`), not inside the
   hydration commit. The pre-paint script has already placed the board and the intro waits 0.35s.

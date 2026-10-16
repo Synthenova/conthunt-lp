@@ -42,10 +42,13 @@
   display: inline;
 }
 
-/* Desktop: fixed lines, sized so the longest (about 14.3em) always fits the letterbox. */
+/* Desktop: fixed lines, sized so the longest (line 2, 15.08em) fits the letterbox with >= 2.5%
+   slack: letterbox / font = 80vw / 5.1vw = 15.69em from 768px (+4.0%), 60vw / 3.85vw = 15.58em
+   from 1280px (+3.3%); the clamp takes over above, so it only gets looser. Raising either vw
+   value, or lengthening line 2 in statement-copy.ts, eats that slack. */
 @media (min-width: 768px) {
   .statementWrap {
-    --stmt-desk: min(var(--stmt-size), 5.3vw);
+    --stmt-desk: min(var(--stmt-size), 5.1vw);
   }
 
   .statement {
@@ -64,7 +67,7 @@
 
 @media (min-width: 1280px) {
   .statementWrap {
-    --stmt-desk: min(var(--stmt-size), 3.95vw);
+    --stmt-desk: min(var(--stmt-size), 3.85vw);
   }
 }
 
