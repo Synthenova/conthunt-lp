@@ -4,10 +4,12 @@
  * Full Control: the same simulator, full screen, in a native modal <dialog> (the visitor takes over
  * the app; docs/revamp/sections/simulator-fullsize.md B).
  *
- * The frame has the landed inline frame's size (`--sim-full-w`, globals.css, about 0.99x at
- * 1440 x 900), so opening it changes how the app behaves, not how big it is: the page is locked
- * (Lenis stopped), the board and transcript scroll freely (`scrollMode="free"`, no click-to-engage)
- * and the navbar steps aside. It starts on the tab the visitor was looking at. It is a top-layer
+ * The dialog's body (the 44px row and the simulator) is 90% of the viewport each way (SIM-SIZE.md,
+ * sim.module.css `.fullControlBody`), larger than the landed inline frame. The simulator fills it
+ * (`fill`): its canvas grows past 1280 x 800 to the frame's size and aspect at a scale capped at
+ * 1:1, so the board gains columns of cards and the transcript gains room; nothing zooms. The page
+ * is locked (Lenis stopped), the board and transcript scroll freely (`scrollMode="free"`, no
+ * click-to-engage) and the navbar steps aside. It starts on the tab the visitor was looking at. It is a top-layer
  * dialog, so the pinned stage's transforms never clip it, and `data-lenis-prevent` lets the board
  * and transcript scroll natively inside. Close, Esc or a click on the backdrop return to the page
  * and put focus back on the button.
@@ -127,7 +129,7 @@ function FullControlDialog({
       }}
     >
       <div className={styles.fullControlBody}>
-        <div className="mb-3 flex h-11 items-center justify-between gap-4">
+        <div className="mb-3 flex h-11 shrink-0 items-center justify-between gap-4">
           <p className="truncate text-[15px] font-medium tracking-[-0.01em] text-ink">
             Full control. <span className="text-muted">Scroll, filter and open any video.</span>
           </p>
@@ -150,6 +152,8 @@ function FullControlDialog({
           {...simulator}
           activeSearchId={activeSearchId}
           scrollMode="free"
+          fill
+          className="min-h-0 flex-1"
           label="Product demo: a completed Deep Search, full control"
         />
       </div>

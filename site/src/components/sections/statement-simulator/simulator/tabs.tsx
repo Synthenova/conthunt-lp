@@ -19,11 +19,14 @@ export const TabStrip = memo(function TabStrip({
   searches,
   activeId,
   onChange,
+  onIntent,
   idPrefix,
 }: {
   searches: SimDeepSearch[];
   activeId: string;
   onChange: (id: string) => void;
+  /** Hover or focus on a tab (its run starts loading, ./runs.ts). */
+  onIntent?: (id: string) => void;
   idPrefix: string;
 }) {
   const listRef = useRef<HTMLDivElement>(null);
@@ -84,6 +87,8 @@ export const TabStrip = memo(function TabStrip({
             aria-controls={`${idPrefix}-panel`}
             tabIndex={active ? 0 : -1}
             onClick={() => onChange(s.id)}
+            onPointerEnter={() => onIntent?.(s.id)}
+            onFocus={() => onIntent?.(s.id)}
             className={cn(
               TAB,
               "rounded-[8px] text-muted outline-none transition-colors duration-150 hover:bg-ink/[0.03] hover:text-ink-2",

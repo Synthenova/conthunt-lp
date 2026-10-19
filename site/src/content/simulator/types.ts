@@ -7,7 +7,8 @@
  *
  * Rules:
  *  - Do not add fields the app does not have. Fields marked "(sim)" are the only exceptions and
- *    exist because the simulator ships a small slice of a 500-video board.
+ *    exist because the simulator ships a small slice of a 500-video board, or plays back
+ *    pre-written replies instead of running an agent.
  *  - `skeleton: true` means "render shimmer for the dynamic content of this node". The structural
  *    label (for example "Deep Search worker", "Searched") still renders as real text.
  */
@@ -111,6 +112,20 @@ export interface SimVideoCard {
   /** Muted hover preview (H.264 mp4). Optional. */
   playback_url?: string | null;
   canonical_url?: string | null;
+  /** (sim) The run's analysis of this video, shown in the video drawer. */
+  analysis?: SimVideoAnalysis;
+}
+
+/**
+ * (sim) A slice of the app's per-video analysis (ContentDrawer: the HOOK and SUMMARY sections, and
+ * "Research findings", one row per research question of the run with its closed label).
+ */
+export interface SimVideoAnalysis {
+  /** At most about 280 characters. */
+  summary: string;
+  hook?: string;
+  /** This video's result for each of the run's research questions, in rubric order. */
+  checks: Array<{ parameter: string; status: "present" | "absent"; probability: number | null }>;
 }
 
 /**
@@ -290,11 +305,32 @@ export interface SimAssistantMessage {
   source_count?: number;
 }
 
+/**
+ * (sim) A pre-written agent reply to one next-step prompt. The simulator runs no agent: sending a
+ * step that has one plays it back (the sent bubble, a working line, then the reply streamed in as
+ * markdown) and offers the same next steps again. Steps without one open the real product.
+ */
+export interface SimPrecookedResponse {
+  /** Markdown: paragraphs split on blank lines, `**bold**`, `*italic*`, `- ` and `1. ` lists. */
+  markdown: string;
+  /** The working line shown before the reply (ThinkingBlock status). Default "Reading this research". */
+  status_label?: string;
+  /** "Sources {n}" under the reply, like the report. */
+  source_count?: number;
+}
+
+/** One suggested next step. `response` is the simulator's pre-written reply (sim). */
+export interface SimNextPrompt {
+  label: string;
+  prompt: string;
+  response?: SimPrecookedResponse;
+}
+
 /** NextPromptSuggestions.tsx: ApprovalCard titled "Next step", options = `label`, edit pencil sends `prompt` to the composer. */
 export interface SimNextPrompts {
   kind: "next_prompts";
   id: string;
-  prompts: Array<{ label: string; prompt: string }>;
+  prompts: SimNextPrompt[];
 }
 
 export type SimChatItem =
@@ -378,6 +414,29 @@ export interface SimDeepSearch {
   rubrics: SimRubricRow[];
   /** Whole tab is a loading skeleton ("Preparing research selections…" + card skeleton rail). */
   skeleton?: boolean;
+}
+
+/**
+ * (sim) One run file, `src/content/simulator/runs/<slug>.json`, written by
+ * `.scratch/deepsearch/tools/build_sim_data.py` from a real Deep Search. It is a `SimDeepSearch` slice
+ * (the static copy, tab label, title, prompt, platforms and date filter, stays in `data.ts`) with two
+ * savings that `expandRun` (./expand.ts) undoes: each card is stored once in `cards` and tiles carry
+ * its `content_item_id`, and `analysis.checks` is one `[status, probability]` pair (or null) per
+ * entry of `rubrics`, in order.
+ */
+export interface SimRunData {
+  id: string;
+  approved_budget: { searches: number; videos: number };
+  /** The transcript after the user's prompt (expandRun adds the prompt bubble). */
+  messages: SimChatItem[];
+  sections: Array<Omit<SimResearchSection, "videos"> & { videos: Array<Omit<SimSectionVideo, "card"> & { card: string }> }>;
+  rubrics: Array<Omit<SimRubricRow, "videos"> & { videos: Array<Omit<SimRubricVideo, "card"> & { card: string }> }>;
+  cards: Record<
+    string,
+    Omit<SimVideoCard, "analysis"> & {
+      analysis?: Omit<SimVideoAnalysis, "checks"> & { checks: Array<["present" | "absent", number | null] | null> };
+    }
+  >;
 }
 
 export interface SimFilterState {

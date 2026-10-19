@@ -6,8 +6,8 @@
  * and the timeline moves between them. The pre-hydration states for that mode live here so the
  * first paint never flashes the simulator over the statement.
  *
- * From 768px (with or without motion) the landed simulator is full size (OWNER_DECISIONS D5): the
- * Full Control dialog's geometry, `--sim-full-w` (globals.css), under a 44px row. It leaves the
+ * From 768px (with or without motion) the landed simulator is full size (OWNER_DECISIONS D5):
+ * `--sim-full-w` (globals.css), under a 44px row (Full Control is larger: 90% of the viewport). It leaves the
  * letterbox. Phones keep the letterbox-wide frame at the 0.8 minimum scale.
  */
 
@@ -225,8 +225,8 @@
 }
 
 /*
- * Full size from 768px (OWNER_DECISIONS D5): `--sim-full-w` (globals.css, shared with the Full
- * Control dialog so the two never drift) is `min(100% - 48px, (100svh - 108px) * 1.6, max(1440px,
+ * Full size from 768px (OWNER_DECISIONS D5): `--sim-full-w` (globals.css; the Full Control
+ * dialog is 90% of the viewport instead, SIM-SIZE.md) is `min(100% - 48px, (100svh - 108px) * 1.6, max(1440px,
  * --letterbox))`: 24px gutters, room for the 44px row, its 12px gap and 26px of air above and below,
  * 16:10. The 1280 x 800 canvas renders at about 0.77x at 1280 x 720, 0.99x at 1440 x 900 and
  * 1.125x at 1680 x 1050 and 1920 x 1080. `100%` resolves where the variable is used: the stage

@@ -9,8 +9,11 @@
  * title (owner, docs/revamp/sections/simulator-fullsize.md F).
  * Built on a 1280 x 800 design canvas and scaled to its container with --sim-scale (pure CSS).
  * The scale never drops below 0.6 (0.8 on phones): narrower frames pan horizontally instead.
+ * `fill` (Full Control) fills a sized box instead: the scale is capped (--sim-fill-max) and the
+ * canvas grows past 1280 x 800 to the box's size and aspect, so the board gains columns of cards
+ * and the transcript gains room instead of the whole UI zooming (sim.module.css `.fill`).
  *
- *   <DeepSearchSimulator {...placeholderSimulatorProps} />
+ *   <DeepSearchSimulator {...simulatorProps} />   // src/content/simulator/data.ts
  *   <DeepSearchSimulator {...realData} activeSearchId="ds-q4-gifting" className="max-w-[960px]" />
  *
  * Props: `DeepSearchSimulatorProps` from src/content/simulator/types.ts (+ the extras below).
@@ -29,8 +32,14 @@
  * the visitor hovers, clicks or tabs into the frame (always before the board can scroll), so the
  * frame looks the same at rest and Home ships a fraction of the skeleton tiles (./board.tsx).
  *
- * Stub tabs (a placeholder search that is still `skeleton` with nothing to show) are filled with a
- * finished sample run on the client (./sample-runs.ts), so every tab reads as a completed search.
+ * Tabs other than the active one arrive as copy only and load their run on intent (./runs.ts: tab
+ * hover or focus, a Recents row, the first hover inside the frame); a click on a tab still loading
+ * switches when it lands, so no tab ever shows a skeleton.
+ *
+ * Media warming (./preload.ts): as the frame nears the viewport the rest of the first two rails'
+ * posters load (the tiles visible on landing are already eager); the first hover warms the other
+ * tabs' first two rails; once the frame is live, in view and the main thread idle, the first three
+ * hover clips of the first rail prefetch at low priority.
  */
 import {
   useCallback,
@@ -47,16 +56,17 @@ import {
 } from "react";
 import { createPortal, flushSync } from "react-dom";
 import { Pencil, Search } from "lucide-react";
-import type { DeepSearchSimulatorProps, SimFilterState } from "@/content/simulator/types";
+import type { DeepSearchSimulatorProps, SimDeepSearch, SimFilterState } from "@/content/simulator/types";
 import { EASE, gsap } from "@/lib/gsap";
-import { observeInView } from "@/lib/media";
+import { observeInView, onceInView } from "@/lib/media";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
-import { Board, BoardFilters, type BoardSelection } from "./board";
+import { Board, BoardFilters, EAGER_SECTIONS, LANDING_TILES, type BoardSelection } from "./board";
 import { ChatHeader, ChatPanel } from "./chat";
 import { VideoDrawer, type DrawerTile } from "./drawer";
-import { CANVAS_W, LayerProvider, useTooltip } from "./layer";
-import { finishSampleRuns } from "./sample-runs";
+import { CANVAS_H, CANVAS_W, LayerProvider, useTooltip } from "./layer";
+import { clipWarmAllowed, onIdle, warmClips, warmPosters } from "./preload";
+import { loadRun, runPending, useRuns } from "./runs";
 import { SCROLL_AREA_ATTR, scrollAreaOverflow, scrollAreaProps } from "./scroll";
 import styles from "./sim.module.css";
 import { Sidebar } from "./sidebar";
@@ -82,6 +92,17 @@ function titleRoom(title: HTMLElement): number {
   return (band?.clientWidth ?? 0) - (filters ? filters.offsetWidth + 16 : 0);
 }
 const DEFAULT_FILTERS: SimFilterState = { sort: "default", date_filter: "all", platforms: [] };
+/** The rest of the first two rails' posters load once the frame is this close to the viewport. */
+const NEAR_MARGIN = "1500px 0px";
+/** Hover clips of the first rail warmed once the frame is live. */
+const WARM_CLIPS = 3;
+
+/** Poster URLs of a search's first two rails, from tile `from` on. */
+function firstRailPosters(search: SimDeepSearch | undefined, from = 0): Array<string | null | undefined> {
+  return (search?.sections ?? [])
+    .slice(0, EAGER_SECTIONS)
+    .flatMap((s) => s.videos.slice(from).map((v) => (v.skeleton ? null : v.card?.thumbnail_url)));
+}
 const MOBILE_QUERY = "(max-width: 767px)";
 /** Touch engagement ends after this long without a touch or scroll inside the frame. */
 const TOUCH_IDLE_MS = 2500;
@@ -107,6 +128,12 @@ export interface DeepSearchSimulatorExtraProps {
   scrollMode?: "engage" | "free";
   /** Called when the visitor switches deep-search tabs. */
   onActiveSearchChange?: (id: string) => void;
+  /**
+   * Fill the parent's height as well as its width (Full Control): the canvas takes the box's size
+   * and aspect at a capped scale instead of a 1280 x 800 canvas scaled to the width. The parent
+   * must give it a definite height. Default false (the inline 16:10 frame).
+   */
+  fill?: boolean;
 }
 
 export function DeepSearchSimulator({
@@ -121,9 +148,10 @@ export function DeepSearchSimulator({
   label = "Product demo: a completed Deep Search",
   scrollMode = "engage",
   onActiveSearchChange,
+  fill = false,
 }: DeepSearchSimulatorProps & DeepSearchSimulatorExtraProps) {
   const idPrefix = useId().replace(/:/g, "");
-  const searches = useMemo(() => finishSampleRuns(searchesProp), [searchesProp]);
+  const searches = useRuns(searchesProp);
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const mainBgRef = useRef<HTMLDivElement>(null);
@@ -172,9 +200,8 @@ export function DeepSearchSimulator({
 
   // ------------------------------------------------------------------------- tab switching
 
-  const pickSearch = useCallback(
+  const commitSearch = useCallback(
     (id: string) => {
-      if (id === activeId) return;
       setActiveId(id);
       setRubricNo(null);
       setDrawer(null);
@@ -182,7 +209,32 @@ export function DeepSearchSimulator({
       boardRef.current?.scrollTo({ top: 0 });
       onActiveSearchChange?.(id);
     },
-    [activeId, onActiveSearchChange],
+    [onActiveSearchChange],
+  );
+  // The tab the visitor asked for last: a click on a tab whose run is still loading switches when
+  // it lands, unless another pick came in meanwhile (or the load failed: the tab stays put).
+  const wantedTab = useRef<string | null>(null);
+  const pickSearch = useCallback(
+    (id: string) => {
+      wantedTab.current = id;
+      if (id === activeId) return;
+      if (runPending(searches.find((s) => s.id === id))) {
+        void loadRun(id).then((ok) => {
+          if (ok && wantedTab.current === id) commitSearch(id);
+        });
+        return;
+      }
+      commitSearch(id);
+    },
+    [activeId, searches, commitSearch],
+  );
+  /** Tab hover or focus: start loading its run (only a stub still waiting for one; the tab that
+   * shipped expanded with the page has nothing to fetch). */
+  const intendSearch = useCallback(
+    (id: string) => {
+      if (runPending(searches.find((s) => s.id === id))) void loadRun(id);
+    },
+    [searches],
   );
 
   // ---------------------------------------------------------------------------- selection
@@ -353,17 +405,71 @@ export function DeepSearchSimulator({
     });
   }, []);
 
-  // Fallback for browsers without CSS trig functions: measure the scale in JS (same 0.6 floor).
+  // Posters: the rest of the active tab's first two rails as the frame nears the viewport.
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !search) return;
+    return onceInView(host, () => warmPosters(firstRailPosters(search, LANDING_TILES)), { rootMargin: NEAR_MARGIN });
+  }, [search]);
+
+  // The first hover also loads the other tabs' runs and warms their first two rails, so a tab switch
+  // lands on posters. A run that lands after that hover warms its rails as it arrives.
+  const hovered = useRef(false);
+  const warmTabs = useCallback(() => {
+    hovered.current = true;
+    for (const s of searches) {
+      if (s.id === activeId) continue;
+      if (runPending(s)) void loadRun(s.id);
+      else warmPosters(firstRailPosters(s));
+    }
+  }, [searches, activeId]);
+  useEffect(() => {
+    if (hovered.current) warmTabs();
+  }, [warmTabs]);
+
+  // Clips: once the frame is live (no longer inert inside the scroll-jack), in view and the main
+  // thread idle, prefetch the first rail's first three hover clips (not on touch-only devices).
+  useEffect(() => {
+    const host = hostRef.current;
+    const clips = (search?.sections[0]?.videos ?? [])
+      .slice(0, WARM_CLIPS)
+      .map((v) => (v.skeleton ? null : v.card?.playback_url))
+      .filter(Boolean);
+    if (!host || !clips.length) return;
+    let cancelIdle = () => {};
+    let retry: number | undefined;
+    const tryWarm = () => {
+      if (host.closest("[inert]")) {
+        retry = window.setTimeout(tryWarm, 500);
+        return;
+      }
+      cancelIdle = onIdle(() => {
+        if (clipWarmAllowed()) warmClips(clips);
+      });
+    };
+    const stop = onceInView(host, tryWarm, { threshold: 0.5 });
+    return () => {
+      stop();
+      cancelIdle();
+      window.clearTimeout(retry);
+    };
+  }, [search]);
+
+  // Fallback for browsers without CSS trig functions: measure the scale in JS (same 0.6 floor;
+  // a filled frame uses the same capped rule as sim.module.css `.fill`).
   useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host || CSS.supports("width", "calc(1px * tan(atan2(1px, 2px)))")) return;
     host.setAttribute("data-scale-fallback", "");
-    const ro = new ResizeObserver(() =>
-      host.style.setProperty("--sim-scale-js", String(Math.max(0.6, host.clientWidth / CANVAS_W))),
-    );
+    const ro = new ResizeObserver(() => {
+      const w = host.clientWidth / CANVAS_W;
+      const max = parseFloat(getComputedStyle(host).getPropertyValue("--sim-fill-max")) || 1;
+      const scale = fill ? Math.min(max, w, host.clientHeight / CANVAS_H) : Math.max(0.6, w);
+      host.style.setProperty("--sim-scale-js", String(scale));
+    });
     ro.observe(host);
     return () => ro.disconnect();
-  }, []);
+  }, [fill]);
 
   if (!search) return null;
 
@@ -373,14 +479,17 @@ export function DeepSearchSimulator({
 
   return (
     <div className={cn("relative", className)}>
-      <div className="relative">
+      <div className={cn("relative", fill && "h-full")}>
         <div
           ref={hostRef}
           role="region"
           aria-label={label}
           tabIndex={-1}
-          className={cn(styles.host, "outline-none", live ? "" : "pointer-events-none")}
-          onPointerEnter={() => setExpanded(true)}
+          className={cn(styles.host, fill && styles.fill, "outline-none", live ? "" : "pointer-events-none")}
+          onPointerEnter={() => {
+            setExpanded(true);
+            warmTabs();
+          }}
           onPointerDown={(e) => {
             if (e.pointerType === "mouse") return;
             touchEngaged.current = true;
@@ -423,15 +532,17 @@ export function DeepSearchSimulator({
                   recents={recents}
                   activeId={search.id}
                   onPickChat={pickSearch}
+                  onIntent={intendSearch}
                   collapsed={labelsCollapsed}
                   onToggle={toggleSidebar}
                 />
 
-                {/* Main surface: slides over the sidebar (transform only). */}
+                {/* Main surface: slides over the sidebar (transform only). It runs 44px under the chat
+                    panel (900px on the 1280 canvas), so it stays covered at either sidebar width. */}
                 <div
                   ref={mainBgRef}
                   aria-hidden
-                  className="absolute bottom-2 top-2 w-[900px] rounded-l-[14px] bg-paper shadow-[inset_1px_0_0_var(--hairline),inset_0_1px_0_var(--hairline),inset_0_-1px_0_var(--hairline),-1px_0_3px_-1px_rgb(15_15_15/0.05)]"
+                  className="absolute bottom-2 top-2 w-[calc(100%-380px)] rounded-l-[14px] bg-paper shadow-[inset_1px_0_0_var(--hairline),inset_0_1px_0_var(--hairline),inset_0_-1px_0_var(--hairline),-1px_0_3px_-1px_rgb(15_15_15/0.05)]"
                   style={{ left: SIDEBAR_RAIL, transform: `translateX(${collapsed ? 0 : PUSH}px)` }}
                 />
 
@@ -454,7 +565,13 @@ export function DeepSearchSimulator({
                       </div>
                       {/* Row B: tab strip + the one "N videos" count (hidden while a tab is still loading). */}
                       <div className="flex h-[48px] shrink-0 items-center border-b pl-3 pr-4">
-                        <TabStrip searches={searches} activeId={search.id} onChange={pickSearch} idPrefix={idPrefix} />
+                        <TabStrip
+                          searches={searches}
+                          activeId={search.id}
+                          onChange={pickSearch}
+                          onIntent={intendSearch}
+                          idPrefix={idPrefix}
+                        />
                         <span
                           data-anchor="right"
                           aria-hidden={search.skeleton || undefined}

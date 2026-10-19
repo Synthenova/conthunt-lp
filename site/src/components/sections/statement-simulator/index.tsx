@@ -5,14 +5,14 @@
  * pinned scroll-jack (J7ZHKO -> H4IoP) that brings in a live Deep Search simulator.
  * Preview: /preview/statement-simulator. Brief: docs/revamp/sections/statement-simulator.md.
  *
- *   <StatementSimulatorSection />                         // placeholder data
- *   <StatementSimulatorSection simulator={realProps} />   // owner data, see ./README.md
+ *   <StatementSimulatorSection />                         // the three real runs (src/content/simulator/data.ts)
+ *   <StatementSimulatorSection simulator={otherProps} />  // any DeepSearchSimulatorProps, see ./README.md
  *
  * Server component. The pin is applied to an inner stage inside the scene, never to this
  * <section data-section>, so the Rails keep their direct children (FOUNDATION §6).
  */
 import chipsJson from "@/content/media/statement-chips.json";
-import { placeholderSimulatorProps } from "@/content/simulator/placeholder";
+import { simulatorProps } from "@/content/simulator/data";
 import type { DeepSearchSimulatorProps } from "@/content/simulator/types";
 import { Section } from "@/components/layout/section";
 import { StatementSimulatorScene } from "./island";
@@ -23,7 +23,7 @@ import "./simulator/tile.module.css";
 import styles from "./scene.module.css";
 
 export interface StatementSimulatorSectionProps {
-  /** Simulator data. Defaults to the placeholder (one designed deep search; tabs 2 and 3 render as finished sample runs, see ./simulator/sample-runs.ts). */
+  /** Simulator data. Defaults to the real runs (src/content/simulator/data.ts: the active tab's run ships with the page, the others load on intent). */
   simulator?: DeepSearchSimulatorProps;
   /** Eyebrow numbering, `[ 01 / 08 ] · DEEP SEARCH`. */
   index?: number;
@@ -42,7 +42,7 @@ const CHIPS: StatementChip[] = chipsJson.map((c) => ({
 }));
 
 export default function StatementSimulatorSection({
-  simulator = placeholderSimulatorProps,
+  simulator = simulatorProps,
   index = 1,
   total = 8,
 }: StatementSimulatorSectionProps) {

@@ -17,7 +17,7 @@
  *               rises in; the frame becomes interactive at LIVE_T and the pin holds it until
  *               TIMELINE_T.
  * Landed geometry (OWNER_DECISIONS D5, docs/revamp/sections/simulator-fullsize.md): the frame is
- * the Full Control dialog's size (`--sim-full-w`, shared through globals.css), centred under a 44px
+ * `--sim-full-w` wide (globals.css; Full Control opens larger, at 90% of the viewport), centred under a 44px
  * row. It is the one element below the hero that leaves the 60vw letterbox. Layout always holds the landed
  * geometry; every earlier state is a transform of it (x, y, scale, rotateY).
  * While the landed frame owns the screen, `data-immersive` on <html> slides the navbar away
@@ -43,7 +43,7 @@ import { formatCount, PLATFORM_LABEL, workerElapsed } from "./simulator/format";
 import { PlatformIcon } from "./simulator/platform-icon";
 import { DeepSearchSimulator } from "./simulator";
 import { FullControlButton } from "./simulator/full-view";
-import { finishSampleRuns } from "./simulator/sample-runs";
+import { useRuns } from "./simulator/runs";
 import { buildStatement, statementText } from "./statement-copy";
 import styles from "./scene.module.css";
 
@@ -137,8 +137,9 @@ function ChipCredit({ chip, ref }: { chip: StatementChip | null; ref: RefObject<
 }
 
 /**
- * "In action. Real Deep Search results added. 500 videos watched and ranked in 8m." for the tab on screen: the
- * count and time follow the active search, so the caption never contradicts the transcript.
+ * "In action. Real Deep Search results added. 300 videos watched and ranked in 17m 38s." for the tab on screen:
+ * the count (the run's approved budget) and time (its worker's elapsed) follow the active search, so the caption
+ * never contradicts the transcript.
  * Subscribes to tab changes itself, so a tab switch re-renders only this line.
  */
 function RunCaption({
@@ -168,11 +169,9 @@ function RunCaption({
 }
 
 export function StatementSimulatorScene({ simulator, chips, index = 1, total = 8 }: StatementSimulatorSceneProps) {
-  const first = simulator.searches[0];
-  const videos = first?.approved_budget.videos ?? 500;
-  // Stub tabs become finished sample runs (the simulator does the same internally).
-  const runs = useMemo(() => finishSampleRuns(simulator.searches), [simulator.searches]);
-  const lines = buildStatement(videos);
+  // Tabs loaded on demand, as the simulator sees them (the caption follows them).
+  const runs = useRuns(simulator.searches);
+  const lines = buildStatement();
   const chipByN = new Map(chips.map((c) => [c.n, c]));
 
   const stageRef = useRef<HTMLDivElement>(null);
