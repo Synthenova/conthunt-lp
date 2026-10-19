@@ -12,6 +12,7 @@ import { Rails } from "@/components/layout/rails";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
+import { MetalButton } from "@/components/ui/metal-button";
 import { SectionHeader } from "@/components/ui/section-header";
 import { GET_STARTED_URL, ROUTES } from "@/lib/links";
 import { NoMatchCard } from "./no-match-card";
@@ -47,10 +48,10 @@ export function NotFoundView() {
 
           <div className="flex flex-col gap-6">
             <div>
-              <Button href={GET_STARTED_URL} size="lg">
+              <MetalButton href={GET_STARTED_URL} size="lg">
                 Get started
                 <ArrowRight className="size-4" aria-hidden="true" />
-              </Button>
+              </MetalButton>
             </div>
             <nav aria-label="Pages" className="flex flex-wrap items-center gap-x-2 gap-y-2">
               <span className="eyebrow mb-1 basis-full sm:mb-0 sm:mr-2 sm:basis-auto">Or go to</span>
