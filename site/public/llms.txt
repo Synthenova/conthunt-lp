@@ -2,7 +2,7 @@
 
 > ContHunt is a short-form video research tool for marketers, creators and ecommerce teams. Its Deep Search takes one question, searches TikTok, Instagram Reels and YouTube Shorts, watches 500 to 1,000 videos in under five minutes and returns a ranked answer backed by the video data.
 
-Last updated: 2026-10-15
+Last updated: 2026-10-18
 
 ContHunt supports three platforms today: TikTok, Instagram Reels and YouTube Shorts. For each analyzed video it reports the hook, the content, the audience, a possible virality concept and the metrics, plus how relevant the video is to the question that was asked. Scores are ContHunt's analysis of the content and its fit to the question. They are not measured viewer retention. After a Deep Search finishes you can keep talking to the agent to dig further into the results.
 
@@ -19,11 +19,11 @@ ContHunt supports three platforms today: TikTok, Instagram Reels and YouTube Sho
 
 ## Pricing
 
-Prices are in US dollars and are as listed on https://conthunt.app/pricing, which is the source of truth. Every plan starts with a 1-week free trial. Yearly billing is shown by default and costs less per month than monthly billing.
+Prices are in US dollars and are as listed on https://conthunt.app/pricing, which is the source of truth. Every plan starts with a 1-week free trial. Yearly billing is shown by default and costs less per month than monthly billing. Hunt credits are one pool that searches and tracking both spend: a keyword search costs one hunt credit per platform it queries, so 3 across TikTok, Instagram Reels and YouTube Shorts. AI credits pay for video analysis, Deep Search, chat and insights.
 
-- Creator: $25 per month billed yearly ($300 a year) or $29 billed monthly. 300 searches, 5,000 AI credits and 1,500 tracking credits per month. All platforms, the latest AI models, all AI features including Deep Search, and 5 AI boards.
-- Pro: $63 per month billed yearly ($756 a year) or $79 billed monthly. 900 searches, 15,000 AI credits and 5,000 tracking credits per month. All platforms plus upcoming platforms, the latest AI models, all AI features including Deep Search, and 25 AI boards.
-- Research: $119 per month billed yearly ($1,428 a year) or $149 billed monthly. 1,900 searches, 32,000 AI credits and 12,000 tracking credits per month. Everything in Pro, plus 60 AI boards.
+- Pro: $25 per month billed yearly ($300 a year) or $29 billed monthly. 600 hunt credits and 3,000 AI credits per month. 2 daily agents, Deep Search (x200), MCP access, mid-tier AI models and competitor tracking.
+- Creator: $63 per month billed yearly ($756 a year) or $79 billed monthly. 3,000 hunt credits and 15,000 AI credits per month. Everything in Pro, plus 5 daily agents, frontier AI models, Deep Search (x500) and upcoming platforms as they launch.
+- Research: $151 per month billed yearly ($1,812 a year) or $189 billed monthly. 12,000 hunt credits and 60,000 AI credits per month. Everything in Creator, plus 25 daily agents, Deep Search (x500), Deep Search (x1,000) coming soon, and access to experimental features.
 
 ## Pages
 

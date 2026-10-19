@@ -5,17 +5,18 @@
  *
  * The shared FAQ section does not expose an `items` prop, so this is a small
  * page-local list. Every answer is built from `plans.ts` or from copy the app itself
- * ships (trial wording), so nothing here is invented. Only the three paid plans are mentioned.
+ * ships (trial wording), so nothing here is invented. Only the three paid plans are mentioned,
+ * always in `PLANS` order (cheapest first), so a rename or a swap of the names needs no edit here.
  */
 import { Plus } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Section } from "@/components/layout/section";
 import {
-  CREATOR,
   CREDITS_PER_VIDEO,
+  PLANS,
+  PLATFORM_UNITS_PER_KEYWORD_SEARCH,
+  TRIAL_DAYS,
   type Plan,
-  PRO,
-  RESEARCH,
   approx,
   formatInt,
   videosForCredits,
@@ -39,13 +40,23 @@ interface Item {
 const creditsPerDollar = (plan: Plan): number =>
   Math.round(plan.allowance.aiCredits / plan.price.monthly);
 
+/** "A, B and C", one entry per plan in `PLANS` order. */
+const forEachPlan = (describe: (plan: Plan) => string): string => {
+  const parts = PLANS.map(describe);
+  return parts.length < 2 ? parts.join("") : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+};
+
+/** The entry plan: the base of the "5x" and "20x" steps. */
+const ENTRY = PLANS[0];
+const huntMultiple = (plan: Plan): number => Math.round(plan.allowance.huntCredits / ENTRY.allowance.huntCredits);
+
 const ITEMS: Item[] = [
   {
     q: "What happens after the 1-week trial?",
     a: (
       <>
-        {CREATOR.name}, {PRO.name} and {RESEARCH.name} all start with a 7-day free trial. When the 7 days end, the plan
-        you picked begins, billed yearly or monthly as you chose.
+        {forEachPlan((p) => p.name)} all start with a {TRIAL_DAYS}-day free trial. When the {TRIAL_DAYS} days end, the
+        plan you picked begins, billed yearly or monthly as you chose.
       </>
     ),
   },
@@ -53,22 +64,23 @@ const ITEMS: Item[] = [
     q: "Is the trial the full allowance?",
     a: (
       <>
-        No, it runs on a smaller one. {CREATOR.name} gets {CREATOR.trial.searches} searches and{" "}
-        {formatInt(CREATOR.trial.aiCredits)} AI credits. {PRO.name} gets {PRO.trial.searches} searches and{" "}
-        {formatInt(PRO.trial.aiCredits)} AI credits. {RESEARCH.name} gets {RESEARCH.trial.searches} searches and{" "}
-        {formatInt(RESEARCH.trial.aiCredits)} AI credits. Tracking credits begin with your plan.
+        No, it runs on a smaller one.{" "}
+        {PLANS.map((p) => `${p.name} gets ${formatInt(p.trial.huntCredits)} hunt credits and ${formatInt(p.trial.aiCredits)} AI credits.`).join(" ")}{" "}
+        The full monthly allowance begins with your plan.
       </>
     ),
   },
   {
-    q: "What counts as a search, and what is an AI credit?",
+    q: "What are hunt credits and AI credits?",
     a: (
       <>
-        A search is one platform queried, so a keyword across TikTok, Instagram Reels and YouTube Shorts counts as 3. AI
-        credits pay for everything model-backed: video analysis, Deep Search, chat and insights. As a planning estimate,
-        one video costs about {CREDITS_PER_VIDEO.toFixed(1)} credits, so {formatInt(CREATOR.allowance.aiCredits)} credits
-        cover about {formatInt(approx(videosForCredits(CREATOR.allowance.aiCredits)))} videos. Real use varies with video
-        length and follow-up questions.
+        Hunt credits pay for finding videos: searching and tracking spend one pool. A search costs one hunt credit per
+        platform it queries, so a keyword across TikTok, Instagram Reels and YouTube Shorts costs{" "}
+        {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking costs one per tracked item per refresh. AI credits pay for everything
+        model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one video costs about{" "}
+        {CREDITS_PER_VIDEO.toFixed(1)} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
+        {formatInt(approx(videosForCredits(ENTRY.allowance.aiCredits)))} videos. Real use varies with video length and
+        follow-up questions.
       </>
     ),
   },
@@ -76,9 +88,12 @@ const ITEMS: Item[] = [
     q: "Do bigger plans give me more for the money?",
     a: (
       <>
-        Yes. At monthly prices, each dollar buys about {creditsPerDollar(CREATOR)} AI credits on {CREATOR.name},{" "}
-        {creditsPerDollar(PRO)} on {PRO.name} and {creditsPerDollar(RESEARCH)} on {RESEARCH.name}. Searches and tracking
-        credits grow the same way.
+        Yes. At monthly prices, each dollar buys about{" "}
+        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt credits scale the same way:{" "}
+        {PLANS.slice(1)
+          .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the hunt credits of ${ENTRY.name}` : ""}`)
+          .join(" and ")}
+        .
       </>
     ),
   },
@@ -86,11 +101,9 @@ const ITEMS: Item[] = [
     q: "How is yearly billing charged?",
     a: (
       <>
-        Once a year: ${formatInt(yearlyTotal(CREATOR))} for {CREATOR.name} (${CREATOR.price.yearly} a month),{" "}
-        ${formatInt(yearlyTotal(PRO))} for {PRO.name} (${PRO.price.yearly} a month) and ${formatInt(yearlyTotal(RESEARCH))}{" "}
-        for {RESEARCH.name} (${RESEARCH.price.yearly} a month). Monthly plans are ${CREATOR.price.monthly},{" "}
-        ${PRO.price.monthly} and ${RESEARCH.price.monthly}. Yearly saves ${yearlySavingUsd(CREATOR)}, ${yearlySavingUsd(PRO)} and{" "}
-        ${yearlySavingUsd(RESEARCH)} a year.
+        Once a year:{" "}
+        {forEachPlan((p) => `$${formatInt(yearlyTotal(p))} for ${p.name} ($${p.price.yearly} a month)`)}. Monthly plans are{" "}
+        {forEachPlan((p) => `$${p.price.monthly}`)}. Yearly saves {forEachPlan((p) => `$${yearlySavingUsd(p)}`)} a year.
       </>
     ),
   },

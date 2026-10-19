@@ -67,7 +67,7 @@ const additions = {
     id: "free-trial",
     question: "Is there a free trial?",
     answer:
-      "Yes. Every plan starts with a 1-week free trial, and plans are currently on discounted prices.",
+      "Yes. Every plan starts with a 1-week free trial.",
     emphasis: ["1-week free trial"],
     link: { label: "See pricing", href: ROUTES.pricing },
   },

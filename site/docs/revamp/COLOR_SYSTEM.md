@@ -356,4 +356,4 @@ These win over the placement map above:
 - **Bento analysis tile:** a neutral gray linear-gradient backdrop, with no pink, blue or yellow mesh blobs.
 - **Testimonials:** face photos in place of colored initials.
 - **Compact navbar:** shadow at about half its previous intensity.
-- **Pricing cards:** follow `docs/revamp/sections/pricing-rev2.md` Rev 5 (neutral-premium: paper cards, an ink Pro card with a spectrum edge light, green offers), which supersedes the pricing placement above.
+- **Pricing cards:** follow `docs/revamp/sections/pricing-rev2.md` Rev 6 (pricing rev 3: the owner's picture head in each plan's hue, purple, red and blue; Creator a near-black card 7% larger, Pro and Research light grey and 7% smaller; a wide row; green offers), which supersedes Rev 5's paper cards and the pricing placement above.

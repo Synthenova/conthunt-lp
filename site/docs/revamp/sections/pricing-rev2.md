@@ -205,3 +205,55 @@ Calculator: the recommendation card is a neutral paper card; the plan's glyph ti
 (the hue border and hue name pill are gone). Contrast, measured on the rendered backgrounds
 (`.scratch/qa/pricing-rev5/contrast.mjs`): every text pair passes AA, the lowest being ink-2/75 on paper at 5.49:1
 and green-glow on the Save chip over the ink top at 6.76:1.
+
+## Rev 6: picture-head cards in a wide row (pricing rev 3, owner feedback, 2026-10-18/19)
+
+Pricing rev 3 (2026-10-18; data and history in `src/components/sections/pricing/plans.ts`) renamed the plans by
+position (Pro $29, Creator $79, Research $189), merged searches and tracking into hunt credits, and replaced Rev 5's
+paper cards: all three cards are near-black, each led by the owner's card head (397:225, 14px radius), an image in
+the plan's hue (Pro purple, Creator red, Research blue; `public/media/pricing/<id>-head.webp`) with the plan name in
+Panchang 800 (for Akira Expanded), the price bottom left, the tag pill top right and, when yearly, a green "Save N%" pill.
+
+Owner on the first build, verbatim (2026-10-19): *"The whole character of the card or the pricing card is basically the
+beautiful header. We need to decrease the height of the card and give more space for the header to occupy. I feel like
+putting three cards within the letterbox is the issue. Remove the letterbox, give them 80% width of the current
+viewport, and adjust the cards to have lesser height, more width. Ensure that the header portion is bigger and has very
+small padding, just like the way it is shown in the reference image before."* New blurbs in the same round: "For
+starters to taste content intelligence.", "For professionals who want full access to content intelligence.", "For
+agencies and brands researching multiple niches every day." Later the same day: "Account tracking" became
+"Competitor tracking" and Pro's "TikTok, Reels and Shorts" line was removed.
+
+What changed:
+- **Wide row.** PlanCards sit outside the Letterbox at `--wide` (globals.css): the letterbox below 1024px, the window
+  less 20px a side at 1024-1279px, then 80% of the window up to 1600px (a 2000px window), held at 1600px until the
+  letterbox plus 96px a side overtakes it (about a 2347px window), then the letterbox plus 96px a side. The
+  /pricing calculator tray takes the same width, so the page has one wide column. Headings stay on the rail; the intro
+  row (sub line and billing toggle) spans `--wide` with its left side padded back to the rail, so the toggle ends on
+  the cards' right edge.
+- **Head.** 10px in from the card's edge (the card's 24px radius less the head's 14px, so the corners nest), pulled
+  out of the body padding with negative margins. The body padding is 10px + max(10px, (card width - 20px) x 12/397), so
+  body text lines up with the price in the head.
+- **Shorter body.** The start row follows reference 1: the white CTA on the left, the trial in two short lines flush
+  right (green "7 days free," with a clock, then "then $X/yr" or "$X/mo"; owner: "align it to the right side"); on a
+  card too narrow for both (a 320px phone, row under 296px) it stacks under the CTA, left-aligned. Every month shows
+  hunt credits and AI credits side by side, figure over label, 16px either side of a hairline (the DOM keeps dt then
+  dd; CSS `order` shows the figure first; /pricing adds a balanced note under each). Tighter gaps (20px between
+  blocks, 8px between list items, 22px above the blurb). Blurbs balance their two lines; feature lines avoid a
+  one-word last line.
+- **Research head.** Its picture runs a bright cyan spoke through the name, so its scrim adds a tight band of shade
+  behind the title row (RESEARCH from a median 3:1 to about 6:1 against white; PRO and CREATOR were already 6-10:1).
+- **Footnote row.** Below 1024px it is as wide as the stacked cards (480px, centred), note above link; from 1024px it
+  spans the card row, link on the right.
+- **Two tones and scale (owner, 2026-10-19):** *"let's convert the pro and research pricing cards into light gray, and
+  keep the creator card, dark gray adjust the text color accordinly. Also enlarge the creator card by 7% while making
+  the pro and reasearch card scale down by 7%, to make the middle plan being more desirable to select."* The featured
+  card (`data-tone="dark"`) keeps the near-black surface and white CTA; Pro and Research (`data-tone="light"`) are light
+  grey (#efeff0 to #e9e9ea) with ink type, green-ink for the trial and a white CTA with a hairline. CSS variables on
+  `.card` (`--fg`, `--fg-2`, `--fg-3`, `--fg-muted`, `--fg-faint`, `--trial`, `--rule`, `--dots`) carry every text colour, so
+  the markup has no tone-specific classes. From 1024px the featured card is `scale: 1.07` and the others `0.93`, shrinking
+  toward their outer edges so the row's edges stay on the toggle and the footnote; stacked cards are not scaled.
+- **Grid.** From 1024px the three cards share a 5-row subgrid (head, start, every month, list, blurb), each card one
+  `minmax(0, 1fr)` column; below 1024px they stack, up to 480px wide and centred.
+
+Measured at a 1560px window (the owner's): card 299x722 to 403x691, head 251x142 to 383x217 (20% to 31% of the
+card). Heights fell at every width checked (390 to 1920); the head share is 26% to 37%.
