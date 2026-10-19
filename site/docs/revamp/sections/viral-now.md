@@ -45,8 +45,10 @@ for the selected niche in a grid."
   - **Alpha edge blur** on both ends of each scroller: a mask-image linear gradient to
     transparent, PLUS a thin `backdrop-filter: blur(6px)` strip under the fade so cards
     "dissolve" at the edges.
-  - The rows bleed full-width: each row's first card aligns with the letterbox left edge, and the
-    row overflows to the viewport edges.
+  - The rows bleed full-width and overflow to the viewport edges. Since 2026-10-19 (owner) they start
+    inside the gutter: from 768px a row's first card sits at 56% of the side gutter, its numeral hanging
+    left of it (kept 20px off the edge below 1280px), and the niche chips start at 40% (`--vn-lead-row`,
+    `--vn-lead-chips` in viral-now.module.css). Phones keep the letterbox edge.
   - Virtualise or lazy-mount rows: render posters only for rows near the viewport.
 - **Card hover** (desktop): a 180ms delay, then the card scales to 1.08 and raises its z-index.
   - If a loop exists (seed ranks 1–3, or a live signed URL), play it muted.
