@@ -1,11 +1,11 @@
 "use client";
 
 /**
- * HeroBoard — the interactive hero: text column (H1, prompt box with
- * mode chips and the pause control, whose ring shows the cycle clock; the subtitle
- * with its count chips and "Try it", CTAs, sound toggle), the triangular split-flap board (plus one or two
- * static columns on wide windows) and the connector beam. Structure renders once;
- * the HeroEngine animates it.
+ * HeroBoard — the interactive hero: text column (H1 with the shader-painted "viral", prompt box
+ * with the Deep Search chip and the pause control, whose ring shows the cycle clock; the offer line,
+ * the subtitle with its count chips, "Get started"), the triangular split-flap board (up to five
+ * whole columns; how many show is the hero row's column count, hero.module.css "the hero row model",
+ * hero-rev14) and the connector beam. Structure renders once; the HeroEngine animates it.
  *
  * Props: `glyphs` (platform → 24×24 SVG path, from icons.ts on the server) and
  * `strip` (the platforms strip, rendered by the server component).
@@ -14,6 +14,7 @@ import {
   memo,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useSyncExternalStore,
@@ -23,9 +24,9 @@ import {
   type ReactNode,
 } from "react";
 import { preload } from "react-dom";
-import { ArrowRight, CornerDownLeft, Pause, Play, ScanSearch, Volume2, VolumeX } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Emphasis } from "@/components/ui/emphasis";
+import { ArrowRight, Brain, CornerDownLeft, Pause, Play } from "lucide-react";
+import { DEEP_SEARCH_CHIP, LiquidRampFill, LiquidRampText, VIRAL } from "@/components/ui/liquid-ramp";
+import { MetalButton } from "@/components/ui/metal-button";
 import { cn } from "@/lib/cn";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GET_STARTED_URL } from "@/lib/links";
@@ -35,11 +36,11 @@ import { CountChip } from "./count-chip";
 import {
   BOARD_CARDS,
   COLUMNS,
-  COMPACT_SLOT_COUNT,
+  COLUMN_HIDDEN_MEDIA,
   HERO_POSTER_SIZES,
   HERO_STATS,
   PROMPT_SETS,
-  STATIC_COLUMNS,
+  columnOf,
   describeCard,
   heroPosterSrcSet,
   type GlyphMap,
@@ -64,10 +65,10 @@ const useServerHtml = () => useSyncExternalStore(noopSubscribe, () => false, () 
 
 /**
  * The prompt box's mode. Deep Search is the only mode the site offers (we want visitors to try
- * it), so it is shown as a toggle already switched on and does nothing: a styled span, not a
- * control (hero-rev4). Submit always goes to GET_STARTED_URL?q=<prompt>. The hint beside the submit
- * button (shown while typing) states what the free first Deep Search is: 50 videos across 5 searches
- * (owner, 2026-10-16, hero-rev3 Rev 10).
+ * it), so it is shown as an indicator that is always on and does nothing: a chip, not a control
+ * (hero-rev4; icon only since rev 14). Submit always goes to GET_STARTED_URL?q=<prompt>. This text,
+ * what the free first Deep Search is (50 videos across 5 searches; owner, 2026-10-16, hero-rev3
+ * Rev 10), is the chip's tooltip and shows beside the submit button while typing.
  */
 const DEEP_HINT = "50 videos · 5 searches";
 
@@ -134,12 +135,16 @@ const Slot = memo(function Slot({
         <div data-flipper="" className={s.flipper}>
           <div data-front="" className={s.front}>
             <div data-layer="rest" className="absolute inset-0">
+              {/* Columns 3–5 can be hidden (the row's column count; the stacked layout hides 4 and 5): their
+                  posters are lazy, and a lazy image in a display:none column is never fetched, whatever
+                  the engine assigns to it. Exact at any scrollbar width or window height; the <picture>
+                  media query (COLUMN_HIDDEN_MEDIA) stays as a second guard for the first parse. */}
               <Face
                 card={card}
                 glyphs={glyphs}
-                eager
+                eager={columnOf(i) < 2}
                 responsive
-                wideOnly={i >= COMPACT_SLOT_COUNT}
+                hiddenMedia={COLUMN_HIDDEN_MEDIA[columnOf(i)]}
                 media={
                   i < 3 ? (
                     <video
@@ -185,6 +190,42 @@ const Slot = memo(function Slot({
   );
 });
 
+/* -------------------------------------------------------------------- cta */
+
+/**
+ * "Get started" (hero-rev14): MetalButton at the frame's 201×66 (hero.module.css .cta), its 3px ring
+ * and 14px radius in the text column's unit like everything else. The ring takes those in CSS px,
+ * so they are read from --tu before the first paint (a return to Home mounts the ring at once, from
+ * its cache) and re-read when the row resizes (u follows the window). No halo: the frame shows none.
+ */
+function HeroCta() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tu, setTu] = useState(16);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const read = () => {
+      const v = parseFloat(getComputedStyle(el).getPropertyValue("--tu"));
+      if (v > 0) setTu(v);
+    };
+    read();
+    const ro = new ResizeObserver(read);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={cn(s.ctaRow, s.rise)} style={{ "--d": "0.5s" } as React.CSSProperties}>
+      {/* The liquid-metal ring (metal-button.tsx), worn here, on the 404 and on the closing band. */}
+      <MetalButton href={GET_STARTED_URL} className={s.cta} metal={{ ringPx: tu * 0.1875, radius: tu * 0.875, glow: false }}>
+        Get started
+        <ArrowRight aria-hidden="true" className={s.ctaIcon} />
+      </MetalButton>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ board */
 
 export interface HeroBoardProps {
@@ -216,7 +257,7 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
   const indexRef = useRef(0);
 
   const [synth] = useState(() => new FlapSynth());
-  const sound = useFlapSound(synth);
+  useFlapSound(synth);
   const [index, setIndex] = useState(0);
   const [value, setValue] = useState("");
   const [editing, setEditing] = useState(false);
@@ -416,32 +457,34 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
   );
 
   return (
-    <div ref={rootRef} className={cn("relative flex flex-col lg:min-h-[max(100svh,680px)]", s.root)}>
+    <div ref={rootRef} className={cn("relative flex flex-col lg:min-h-svh", s.root)}>
       <ChartDefs />
 
       {/* ------------------------------------------------ text column */}
       {/* From 1024px the column is a three-row grid (1fr · auto · 1fr, hero.module.css .textInner):
           the prompt box is the middle row, so its centre sits on the hero's centre line whatever
-          the heights of the groups above (the H1) and below it (subtitle, CTAs) (hero-rev3 A). The board's lead card is
-          placed on the same line (engine.ts layout). */}
+          the heights of the groups above (the H1) and below it (offer, subtitle, CTA) (hero-rev3 A).
+          The board's lead card is placed on the same line (engine.ts layout). Every size is the
+          owner's 1080p frame in the column's unit, --tu (hero-rev14). */}
       <div className={cn("flex flex-1 items-center pt-[88px] lg:items-stretch lg:pt-0", s.textCol)}>
         <div className={cn("w-full max-w-[640px] py-6 lg:max-w-none lg:py-0", s.textInner)}>
           <div className={s.textTop}>
-            {/* The {" "} text nodes between the line masks give the heading real word breaks
-                ("Search & analyze viral social videos" for search engines and screen readers). They
-                sit between block boxes, so they render nothing. */}
+            {/* Three fixed lines. The {" "} text nodes between the line masks give the heading real
+                word breaks ("Search & analyze viral social videos" for search engines and screen
+                readers); they sit between block boxes, so they render nothing. "viral" keeps a real
+                DOM word under its shader canvas (liquid-ramp.tsx), held by the pause control. */}
             <h1 className={cn("text-ink", s.h1)}>
               <span className={s.lineMask}>
                 <span className={s.lineInner} style={{ "--d": "0.05s" } as React.CSSProperties}>
                   Search &amp;
                 </span>
               </span>{" "}
-              <span className={s.lineMask}>
+              <span className={cn(s.lineMask, s.lineMaskViral)}>
                 <span className={s.lineInner} style={{ "--d": "0.13s" } as React.CSSProperties}>
                   analyze{" "}
-                  <Emphasis scale={1.1} weight={500} className={s.viral}>
+                  <LiquidRampText params={VIRAL} paused={paused} className={s.viral}>
                     viral
-                  </Emphasis>
+                  </LiquidRampText>
                 </span>
               </span>{" "}
               <span className={s.lineMask}>
@@ -452,94 +495,81 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
             </h1>
           </div>
 
-          {/* Prompt box */}
+          {/* Prompt box (sizes, shadow and focus states: hero.module.css .promptBox) */}
           <form
             ref={boxRef}
             action={GET_STARTED_URL}
             method="get"
             onSubmit={submit}
-            className={cn(
-              "group/box relative rounded-[16px] bg-paper px-4 pb-3 pt-3.5 transition-shadow duration-300 ease-out",
-              "shadow-[0_0_0_1px_rgba(0,0,0,0.07),0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06)]",
-              // Neutral active state (no blue): a firmer 1px ink ring and a deeper, softer lift. A click
-              // keeps it quiet; keyboard arrival (data-focus="key", set in onFocus) adds a clear ink ring
-              // (about 5:1 on the white box) so the field stays findable without a coloured outline.
-              "focus-within:shadow-[0_0_0_1px_rgba(15,15,15,0.18),0_2px_4px_rgba(0,0,0,0.05),0_16px_40px_-4px_rgba(0,0,0,0.11)]",
-              "data-[focus=key]:focus-within:shadow-[0_0_0_1px_rgba(15,15,15,0.7),0_0_0_4px_rgba(15,15,15,0.09),0_2px_4px_rgba(0,0,0,0.05),0_16px_40px_-4px_rgba(0,0,0,0.11)]",
-              s.promptBox,
-              s.riseT,
-            )}
+            className={cn("group/box relative", s.promptBox, s.riseT)}
             style={{ "--d": "0.28s" } as React.CSSProperties}
           >
             <label htmlFor="hero-q" className="sr-only">
               Describe the videos you want to find
             </label>
-            <div className="relative text-[16px] leading-[1.45] tracking-[-0.01em] text-ink md:text-[17px]">
-              <div
-                ref={stackRef}
-                aria-hidden="true"
-                className={cn(s.promptStack, "transition-opacity duration-150", (editing || value) && "opacity-0")}
-                dangerouslySetInnerHTML={INITIAL_LAYER}
-              />
-              <textarea
-                ref={taRef}
-                id="hero-q"
-                name="q"
-                rows={2}
-                value={value}
-                spellCheck={false}
-                autoComplete="off"
-                maxLength={500}
-                aria-describedby="hero-offer hero-mode hero-q-example"
-                data-typed={value ? "" : undefined}
-                data-example={pristine ? "" : undefined}
-                className={s.textarea}
-                onChange={(e) => {
-                  setValue(e.target.value);
-                  setPristine(false);
-                }}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-                    e.preventDefault();
-                    e.currentTarget.form?.requestSubmit();
-                  }
-                }}
-              />
+            <div className={s.promptArea}>
+              <div className="relative">
+                <div
+                  ref={stackRef}
+                  aria-hidden="true"
+                  className={cn(s.promptStack, "transition-opacity duration-150", (editing || value) && "opacity-0")}
+                  dangerouslySetInnerHTML={INITIAL_LAYER}
+                />
+                <textarea
+                  ref={taRef}
+                  id="hero-q"
+                  name="q"
+                  rows={2}
+                  value={value}
+                  spellCheck={false}
+                  autoComplete="off"
+                  maxLength={500}
+                  aria-describedby="hero-offer hero-mode hero-q-example"
+                  data-typed={value ? "" : undefined}
+                  data-example={pristine ? "" : undefined}
+                  className={s.textarea}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                    setPristine(false);
+                  }}
+                  onFocus={onFocus}
+                  onBlur={onBlur}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+                      e.preventDefault();
+                      e.currentTarget.form?.requestSubmit();
+                    }
+                  }}
+                />
+              </div>
             </div>
             <p id="hero-q-example" className="sr-only" aria-live="off">
               Example prompt: {currentPrompt}
             </p>
 
-            {/* The row must fit the narrowest prompt box (≈ 248px inside at 320px, 368px at 1024px):
-                the chip's icon steps aside where the text column is tightest. */}
-            <div className="mt-3 flex min-w-0 items-center gap-2">
-              {/* Deep Search: a toggle shown switched ON that does nothing (hero-rev4). A span, not a
-                  button: no role, no tab stop, no hover change, no tap cue from the delegated sound
-                  bindings. Solid ink with white text and icon since rev 10 (19.2:1; the blue tint
-                  of the How it works composer's chip is no longer the model). Screen readers get
-                  the mode once, through the textarea's description (#hero-mode). */}
-              <span
-                aria-hidden="true"
-                className="inline-flex h-8 min-w-0 cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[10px] bg-ink px-2.5 text-[12.5px] font-semibold tracking-[-0.005em] text-paper"
-              >
-                <ScanSearch className="size-3.5 max-[359px]:hidden lg:max-[1279px]:hidden" strokeWidth={2.2} />
-                Deep Search
+            <div className={s.controls}>
+              {/* Deep Search (hero-rev14): an icon-only chip on the liquid-ramp fill, always on and not a
+                  control (hero-rev4: no role of a button, no tab stop, no hover change, no tap cue
+                  from the delegated sound bindings). An image named "Deep Search", with what the
+                  free search holds as its tooltip and description; the textarea's description
+                  (#hero-mode) names the mode for screen readers. */}
+              <span role="img" aria-label="Deep Search" title={DEEP_HINT} className={s.deepChip}>
+                <LiquidRampFill params={DEEP_SEARCH_CHIP} paused={paused} />
+                <Brain aria-hidden="true" className={cn("relative", s.ctlIcon)} strokeWidth={2} />
               </span>
               <span id="hero-mode" className="sr-only">
                 Deep Search mode
               </span>
 
-              <div className="relative ml-auto flex h-9 shrink-0 items-center gap-2">
+              <div className={s.ctlGroup}>
                 <div
                   className={cn(
                     "flex items-center transition-opacity duration-200",
                     editing && "pointer-events-none opacity-0",
                   )}
                 >
-                  {/* Stop / resume the 6 s rotation (prompts, board and loops). WCAG 2.2.2. The ring
-                      fills with the real cycle clock and freezes with it (engine.ts renderRing). */}
+                  {/* Stop / resume the 6 s rotation (prompts, board, loops and the shaders). WCAG 2.2.2.
+                      The ring fills with the real cycle clock and freezes with it (engine.ts renderRing). */}
                   <button
                     type="button"
                     tabIndex={editing ? -1 : 0}
@@ -548,7 +578,10 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
                     title={paused ? "Resume" : "Pause"}
                     onClick={togglePaused}
                     onKeyDown={onExampleKey}
-                    className="relative grid size-9 place-items-center rounded-full text-ink/62 outline-offset-[3px] focus-visible:outline-2 focus-visible:outline-ink transition-[background-color,color,scale] duration-200 ease-out before:absolute before:-inset-1 before:content-[''] hover:bg-surface hover:text-ink active:scale-[0.96] sm:size-8"
+                    className={cn(
+                      "relative grid place-items-center rounded-full text-ink/62 outline-offset-[3px] focus-visible:outline-2 focus-visible:outline-ink transition-[background-color,color,scale] duration-200 ease-out before:absolute before:-inset-1 before:content-[''] hover:bg-surface hover:text-ink active:scale-[0.96]",
+                      s.pauseBtn,
+                    )}
                   >
                     <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32" className={s.cycleRing}>
                       <circle cx={16} cy={16} r={15} className={s.cycleTrack} />
@@ -556,12 +589,12 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
                     </svg>
                     <Pause
                       aria-hidden="true"
-                      className={cn("absolute size-3.5 transition-[opacity,scale,filter] duration-300 ease-out", paused ? "scale-25 opacity-0 blur-[4px]" : "opacity-100")}
+                      className={cn("absolute transition-[opacity,scale,filter] duration-300 ease-out", s.ctlIcon, paused ? "scale-25 opacity-0 blur-[4px]" : "opacity-100")}
                       strokeWidth={2.4}
                     />
                     <Play
                       aria-hidden="true"
-                      className={cn("absolute size-3.5 translate-x-px transition-[opacity,scale,filter] duration-300 ease-out", paused ? "opacity-100" : "scale-25 opacity-0 blur-[4px]")}
+                      className={cn("absolute transition-[opacity,scale,filter] duration-300 ease-out", s.ctlIcon, s.playIcon, paused ? "opacity-100" : "scale-25 opacity-0 blur-[4px]")}
                       strokeWidth={2.4}
                     />
                   </button>
@@ -572,103 +605,73 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
                 <span
                   aria-hidden={!editing}
                   className={cn(
-                    "pointer-events-none absolute right-11 flex items-center gap-1.5 whitespace-nowrap font-mono text-[10.5px] uppercase tracking-[0.04em] text-muted transition-opacity duration-200",
+                    "pointer-events-none absolute flex items-center whitespace-nowrap font-mono uppercase tracking-[0.04em] text-muted transition-opacity duration-200",
+                    s.typeHint,
                     editing ? "opacity-100" : "opacity-0",
                   )}
                 >
-                  <CornerDownLeft className="size-3" strokeWidth={2.2} />
+                  <CornerDownLeft strokeWidth={2.2} />
                   {DEEP_HINT}
                 </span>
                 <button
                   type="submit"
                   aria-label="Try your niche"
                   title="Try your niche"
-                  className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-paper transition-[background-color,scale] duration-200 ease-out hover:bg-ink-2 active:scale-[0.96]"
+                  className={cn(
+                    "grid shrink-0 place-items-center rounded-full bg-ink text-paper transition-[background-color,scale] duration-200 ease-out hover:bg-ink-2 active:scale-[0.96]",
+                    s.submitBtn,
+                  )}
                 >
-                  <ArrowRight className="size-4" strokeWidth={2.2} />
+                  <ArrowRight className={s.submitIcon} strokeWidth={2} />
                 </button>
               </div>
             </div>
           </form>
 
           <div className={s.textBottom}>
-            {/* The offer (hero-rev11): the first thing under the prompt box, the box's width and centred on
-                it, in the board hint's face at twice its size (hero.module.css .offer). It is the
-                textarea's description (#hero-offer, aria-describedby). "Try it now." is a real
-                button for that box: focusing the textarea runs the box's own focus behaviour
-                (rotation pauses, the example is inserted and selected). preventScroll: the box is
-                right above. Text in the same face, no pill. */}
-            <div className={cn(s.riseT, s.offer)} style={{ "--d": "0.34s" } as React.CSSProperties}>
-              <p id="hero-offer" className={s.offerText}>
-                <span className={s.offerA}>
-                  Your first search is <span className="whitespace-nowrap">on us,</span>
-                </span>{" "}
-                <span className={s.offerB}>for free.</span>{" "}
-                <span className={s.offerBreak}>
-                  <button
-                    type="button"
-                    aria-label="Try it now: focus the prompt"
-                    onClick={() => taRef.current?.focus({ preventScroll: true })}
-                    className={s.offerCta}
-                  >
-                    Try it now.
-                  </button>
-                </span>
-              </p>
-            </div>
-
-            {/* The subtitle (hero-rev11): the neutral count sentence alone, 40px under the offer line
-                (the Deep Search sentences and "Try it" left it in rev 11). */}
-            <p
-              className={cn("text-ink-2 [text-wrap:pretty]", s.riseT, s.sub)}
-              style={{ "--d": "0.4s" } as React.CSSProperties}
-            >
-              {/* Each chip stays with the word that introduces it, so a wrapped line never starts on a
-                  lone chip or ends on its lead-in word. */}
-              <span className="whitespace-nowrap">
-                Search through <CountChip {...HERO_STATS.platforms} />
-              </span>{" "}
-              <span className="whitespace-nowrap">
-                across <CountChip {...HERO_STATS.niches} delay={0.1} />
-              </span>{" "}
-              and{" "}
-              <span className="whitespace-nowrap">
-                over <CountChip {...HERO_STATS.videos} delay={0.2} />
-              </span>{" "}
-              updated daily.
-            </p>
-
-            <div
-              className={cn("mt-[var(--cta-gap)] flex flex-wrap items-center gap-x-4 gap-y-3", s.rise)}
-              style={{ "--d": "0.5s" } as React.CSSProperties}
-            >
-              <Button href={GET_STARTED_URL} size="lg" className="pr-6">
-                Get started
-                <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover/button:translate-x-0.5" />
-              </Button>
-              {/* The site-wide sound setting (the navbar toggle shows the same state). The name is the
-                  visible word "Sound"; aria-pressed and the icon carry on/off (WCAG 2.5.3). */}
+            {/* The offer (hero-rev14): one line under the prompt box, from its corner's end (hero.module.css
+                .offer). It is the textarea's description (#hero-offer, aria-describedby). "try it now" is a
+                real button for that box: focusing the textarea runs the box's own focus behaviour
+                (rotation pauses, the example is inserted and selected). preventScroll: the box is right
+                above. Text in the same face, no pill. */}
+            <p id="hero-offer" className={cn(s.riseT, s.offer)} style={{ "--d": "0.34s" } as React.CSSProperties}>
+              First search is free,{" "}
               <button
                 type="button"
-                aria-pressed={sound.on}
-                title={sound.on ? "Sound on" : "Sound off"}
-                onClick={sound.toggle}
-                className="group inline-flex h-10 min-w-10 items-center justify-center gap-2 rounded-full px-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.05em] text-ink/62 transition-[background-color,color] duration-200 ease-out hover:bg-surface hover:text-ink"
+                aria-label="Try it now: focus the prompt"
+                onClick={() => taRef.current?.focus({ preventScroll: true })}
+                className={s.offerCta}
               >
-                <span className="relative grid size-4 place-items-center">
-                  <VolumeX
-                    aria-hidden="true"
-                    className={cn("absolute size-4 transition-[opacity,scale,filter] duration-300", sound.on ? "scale-25 opacity-0 blur-[4px]" : "opacity-100")}
-                  />
-                  <Volume2
-                    aria-hidden="true"
-                    className={cn("absolute size-4 text-ink transition-[opacity,scale,filter] duration-300", sound.on ? "opacity-100" : "scale-25 opacity-0 blur-[4px]")}
-                  />
-                </span>
-                {/* Visually hidden (not removed) where the CTA row is tight, so the name never goes empty. */}
-                <span className="lg:max-[1279px]:sr-only">Sound</span>
+                try it now
               </button>
-            </div>
+              .
+            </p>
+
+            {/* The subtitle (hero-rev14): the owner's three lines (hero.module.css .sub). Two no-wrap
+                segments and a last line of its own keep exactly three lines from 1024px; below it the
+                words wrap naturally, each chip staying with the word that introduces it. */}
+            <p className={cn(s.riseT, s.sub)} style={{ "--d": "0.4s" } as React.CSSProperties}>
+              <span className={s.subSeg}>
+                Claim your superpower. Search{" "}
+                <span className="whitespace-nowrap">
+                  through <CountChip {...HERO_STATS.platforms} />
+                </span>
+              </span>{" "}
+              <span className={s.subSeg}>
+                <span className="whitespace-nowrap">
+                  over <CountChip {...HERO_STATS.niches} delay={0.1} />
+                </span>{" "}
+                <span className="whitespace-nowrap">
+                  and <CountChip {...HERO_STATS.videos} delay={0.2} />
+                </span>{" "}
+                updated daily.
+              </span>{" "}
+              <span className={s.subLine}>
+                Save around <CountChip {...HERO_STATS.hours} delay={0.3} /> every week.
+              </span>
+            </p>
+
+            <HeroCta />
           </div>
         </div>
       </div>
@@ -680,13 +683,13 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
             <stop offset="0%" style={{ stopColor: "var(--accent)", stopOpacity: 0.5 }} />
             <stop offset="100%" style={{ stopColor: "var(--accent)", stopOpacity: 0 }} />
           </radialGradient>
-          {/* The pulse's glow is clipped to the run between the box's border and the card's edge
+          {/* The pulse's glow is clipped to the run between the box's right edge and the card's edge
               (the engine sizes this rect), so it never paints over either. */}
           <clipPath id="ch-hero-run">
             <rect data-c="clip" />
           </clipPath>
         </defs>
-        {/* No port dots: the line begins on the prompt box's outer border and ends on the lead
+        {/* No port dots: the line begins on the prompt box's right edge and ends on the lead
             card's left edge (engine.ts layout), a clean butt joint at both ends. */}
         <path data-c="base" className="fill-none stroke-ink/25" strokeWidth={1} />
         <path data-c="beam" className="fill-none stroke-accent" strokeWidth={1.5} opacity={0} />
@@ -714,27 +717,18 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
       >
         <div data-columns="" className={s.columns}>
           {COLUMNS.map((col, ci) => (
-            <div key={ci} className={cn(s.col, ci === 3 && s.colWide)}>
+            <div key={ci} className={s.col}>
               {ci === 0 && (
                 <p className={s.hint} aria-hidden="true">
-                  <span className={s.hintHover}>Hover a card</span>
-                  <span className={s.hintTouch}>Tap a card</span> to see why it scored
+                  <span className={s.hintHover}>Hover me</span>
+                  <span className={s.hintTouch}>Tap me</span>
+                  <svg className={s.hintArrow} viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 2v10M3.5 8.5 8 13l4.5-4.5" />
+                  </svg>
                 </p>
               )}
               {col.map((i) => (
                 <Slot key={i} i={i} glyphs={glyphs} tabbable={activeSlot === i} handlers={handlers} />
-              ))}
-            </div>
-          ))}
-          {/* Wide windows only (hero.module.css .colStatic): the lowest tier, posters only, one column
-              from 21:20 stages and a second from 7:5. These cards sit outside the engine, so they
-              never flap, tick or turn. */}
-          {STATIC_COLUMNS.map((cards, ci) => (
-            <div key={ci} className={cn(s.col, ci === 0 ? s.colStatic : s.colStatic2)} aria-hidden="true">
-              {cards.map((card) => (
-                <div key={card.rank} className={cn(s.slot, s.slotStatic)}>
-                  <Face card={card} glyphs={glyphs} />
-                </div>
               ))}
             </div>
           ))}

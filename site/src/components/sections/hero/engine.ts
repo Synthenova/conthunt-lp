@@ -4,7 +4,7 @@
  * React renders the static structure once (first prompt set, SSR-complete). The
  * engine owns everything that moves, so a 6-second cycle never re-renders React:
  *
- *   prompt rolls → a pulse leaves the prompt box's outer border, runs the whole connector
+ *   prompt rolls → a pulse leaves the prompt box's right edge, runs the whole connector
  *   and stops at the lead card's left edge → split-flap wave, column by column. (No
  *   outline, ring or flash on the lead card, and no submit-button press: hero-rev4.)
  *
@@ -116,7 +116,7 @@ interface ConnectorRefs {
   beam: SVGPathElement;
   orbPos: SVGGElement;
   orb: SVGGElement;
-  /** Clips the pulse's glow to the run between the box's border and the card's edge. */
+  /** Clips the pulse's glow to the run between the box's right edge and the card's edge. */
   clip: SVGRectElement;
 }
 
@@ -144,9 +144,11 @@ export interface EngineOptions {
 /*
  * Seconds between cards in the wave. 0.13 since hero-rev10 (owner: the flip timing between columns
  * +100%; it was 0.065). visibleSlots() orders the cards column by column ([0], [1,2], [3,4,5],
- * [6,7,8,9] top to bottom), so doubling the per-card step doubles every gap, between columns too:
+ * [6,7,8,9], and [10..14] where the fifth column shows, top to bottom; hidden columns are skipped), so doubling the per-card step doubles every gap, between columns too:
  * columns now start 0, 0.13, 0.39 and 0.78s after the first card (they were 0, 0.065, 0.195, 0.39).
- * Budget: the beam (0.28 + 0.7) + 9 steps (1.17) + the longest card (3 flaps and the settle, 0.44)
+ * (Where N = 5, hero-rev14, the fifth column [10..14] makes 14 steps = 1.82s between the first and last
+ * card; the whole wave is about 4.4s, still inside the cycle.)
+ * Budget with the first four columns: the beam (0.28 + 0.7) + 9 steps (1.17) + the longest card (3 flaps and the settle, 0.44)
  * + the chart and score draw-in (about 1.1) is about 3.7s, inside the 6s cycle (CYCLE_SECONDS), so the
  * next wave can never start before this one ends. flap-sound.ts drops plays closer than 45ms, far
  * under the new 130ms step, so every landing still sounds.
@@ -154,7 +156,7 @@ export interface EngineOptions {
 const STAGGER = 0.13;
 const FLAP_FAST = 0.07; // intermediate flap
 const FLAP_FINAL = 0.16; // landing flap
-const BEAM_SECONDS = 0.7; // the pulse's run from the prompt box's border to the lead card's edge
+const BEAM_SECONDS = 0.7; // the pulse's run from the prompt box's right edge to the lead card's edge
 const ORB_R = 3.4; // radius of the pulse's lit core (hero.module.css / hero-board.tsx keep it in step)
 const TRAIL_PX = 64; // length of the lit trail behind the pulse's head
 
@@ -250,7 +252,10 @@ export function promptLayerHtml(text: string, cls: { layer: string; w: string; w
 /** How far the board may move to meet the prompt box, so the triangle stays inside the stage. */
 const BOARD_DY_LIMIT = 72;
 
-/** Vertical board offset that centres the lead card (at `natural`) on the prompt box centre. */
+/**
+ * Vertical board offset that centres the columns (at `natural`, the stage centre) on the prompt box
+ * centre. The lead card sits 0.84u above that line by CSS (hero.module.css, hero-rev14).
+ */
 function placementOffset(boxCentre: number, natural: number): number {
   return Math.max(-BOARD_DY_LIMIT, Math.min(BOARD_DY_LIMIT, Math.round(boxCentre - natural)));
 }
@@ -281,7 +286,7 @@ function offsetTopIn(el: HTMLElement, root: HTMLElement): number {
  * posters never counted for LCP and the first flap wave became a late LCP.
  * Lead card centre before the offset = stage centre = --nav-h + (root height −
  * --nav-h − --strip-h) / 2 (the stage spans the root between the navbar and the
- * platforms strip, and column 1 is centred in it).
+ * platforms strip, and the columns are centred in it; the lead card is lifted 0.84u by CSS).
  */
 export function prePaintPlacementScript(columnsClass: string): string {
   return `(function(){try{var s=document.currentScript,r=s&&s.parentElement;if(!r||!matchMedia("(min-width: 1024px)").matches)return;var f=r.querySelector("form");if(!f)return;var c=getComputedStyle(r),n=parseFloat(c.getPropertyValue("--nav-h"))||88,p=parseFloat(c.getPropertyValue("--strip-h"))||64,y=0,e=f;while(e&&e!==r){y+=e.offsetTop;e=e.offsetParent}if(e!==r)return;var m=n+(r.offsetHeight-n-p)/2,L=${BOARD_DY_LIMIT},d=Math.max(-L,Math.min(L,Math.round(y+f.offsetHeight/2-m))),t=document.createElement("style");t.setAttribute("data-hero-placement","");t.textContent="."+CSS.escape(${JSON.stringify(columnsClass)})+"{--board-dy:"+d+"px}";document.head.appendChild(t)}catch(_){}})();`;
@@ -307,6 +312,8 @@ export class HeroEngine {
   private progress = { p: 0 };
   private pauses = new Set<string>();
   private loaded = new Set<number>();
+  /** Posters already warmed by preload() (by URL). */
+  private warmed = new Set<string>();
   private preloadBin: HTMLImageElement[] = [];
   private cleanups: (() => void)[] = [];
   private layerClasses: { layer: string; w: string; wi: string };
@@ -437,9 +444,20 @@ export class HeroEngine {
     this.cleanups.push(() => {
       for (const type of INPUT_EVENTS) window.removeEventListener(type, onInput, opts);
     });
-    // Connector geometry follows layout.
+    // Connector geometry follows layout. The observer can fire on an in-between frame: under reduced
+    // motion the global 0.01ms transition still tweens the hero's padding and widths for one frame,
+    // so the box may have its new size but not yet its new place, and nothing resizes after it
+    // moves. A second pass two frames later settles on the final geometry.
     if (this.o.connector) {
-      const ro = new ResizeObserver(() => this.layout());
+      let settle = 0;
+      const ro = new ResizeObserver(() => {
+        this.layout();
+        cancelAnimationFrame(settle);
+        settle = requestAnimationFrame(() => {
+          settle = requestAnimationFrame(() => !this.destroyed && this.layout());
+        });
+      });
+      this.cleanups.push(() => cancelAnimationFrame(settle));
       ro.observe(root);
       ro.observe(promptBox);
       this.cleanups.push(() => ro.disconnect());
@@ -468,7 +486,7 @@ export class HeroEngine {
       this.startClock();
       return;
     }
-    // Intro: the connector draws in from the box's border, the pulse runs it, the board shuffles
+    // Intro: the connector draws in from the box's right edge, the pulse runs it, the board shuffles
     // into the first result set ("the search just ran"), then the clock starts.
     const intro = gsap.timeline({ delay: 0.35 });
     const c = this.o.connector;
@@ -568,9 +586,9 @@ export class HeroEngine {
 
   /**
    * A turned card keeps exactly its own box (hero-rev7: no scale, so the back is flush with the grid).
-   * The one exception is a card the viewport or the stage's fade clips (column 4 bleeds off the right
-   * edge and overruns the top and bottom): it slides just far enough to be read (20 to 24px margins).
-   * A card that is fully visible never moves.
+   * The one exception is a card the viewport or the stage's fade clips (the tall columns overrun the
+   * stage's top and bottom): it slides just far enough to be read (20 to 24px margins). A card that
+   * is fully visible never moves.
    */
   private edgeShift(s: Slot): { x: number; y: number } {
     const r = s.el.getBoundingClientRect(); // the static home box
@@ -686,7 +704,8 @@ export class HeroEngine {
   /* ------------------------------------------------------- the cycle */
 
   private visibleSlots(): Slot[] {
-    // One layout read per wave. Hidden columns (mobile) are display:none, and cards wholly
+    // One layout read per wave. Hidden columns (the row's column count N, and the stacked layout's
+    // columns 4 and 5) are display:none, and cards wholly
     // outside the viewport (the board sits below the fold on phones) land without the flap:
     // nobody sees the wave there, and skipping it keeps the phone's main thread free.
     const vh = window.innerHeight;
@@ -770,10 +789,16 @@ export class HeroEngine {
     return tl;
   }
 
+  /**
+   * The faces the flap may show between the old and the new card: only cards the board shows in a
+   * visible column for the outgoing or incoming set. Those posters are on screen or warmed by
+   * preload(), so a flap never fetches a cold poster, nor one only a hidden column would hold.
+   */
   private sparePool(from: number, to: number): HeroCard[] {
     const ids = new Set([from, to].filter((i) => this.loaded.has(i)));
     if (!ids.size) ids.add(from);
-    return [...ids].flatMap((i) => PROMPT_SETS[i].cards);
+    const shown = this.slots.filter((s) => s.el.offsetParent !== null);
+    return [...ids].flatMap((i) => shown.map((s) => BOARD_CARDS[i][s.i]));
   }
 
   /** The wave reaches one card. */
@@ -1069,16 +1094,23 @@ export class HeroEngine {
     }
   }
 
+  /**
+   * Warms the posters of set `i` that the board will show: only the slots in visible columns, and
+   * only posters not warmed before. Tracked per poster, not per set, so after the window widens
+   * (N 3 → 4 → 5) the next preload of an earlier set still warms the newly shown column.
+   */
   private preload(i: number) {
-    if (this.loaded.has(i)) return;
     this.loaded.add(i);
-    for (const c of PROMPT_SETS[i].cards) {
+    const shown = new Set(this.slots.filter((s) => s.el.offsetParent !== null).map((s) => BOARD_CARDS[i][s.i].poster));
+    for (const poster of shown) {
+      if (this.warmed.has(poster)) continue;
+      this.warmed.add(poster);
       const img = new Image();
       img.decoding = "async";
       // The same candidate the slots pick (one size for every slot, data.ts).
       img.sizes = HERO_POSTER_SIZES;
-      img.srcset = heroPosterSrcSet(c.poster);
-      img.src = c.poster;
+      img.srcset = heroPosterSrcSet(poster);
+      img.src = poster;
       img.decode?.().catch(() => {});
       this.preloadBin.push(img);
     }
@@ -1094,12 +1126,12 @@ export class HeroEngine {
     const root = this.o.root;
     const r = root.getBoundingClientRect();
     const box = this.o.promptBox.getBoundingClientRect();
-    // Line the lead card's centre up with the prompt box (owner sketch), within
-    // limits so the triangle stays inside the stage. The lead card sits at the
-    // stage's vertical centre before the offset (column 1 is centred in the
-    // columns, which span the stage), so nothing depends on the current
-    // transform. The pre-paint script in hero-board.tsx uses the same maths, so
-    // the first paint is already placed and hydration changes nothing.
+    // Line the board's centre line up with the prompt box (owner sketch), within
+    // limits so the triangle stays inside the stage. The columns are centred on the
+    // stage's vertical centre before the offset (they span the stage; hero-rev14: the
+    // lead card sits 0.84u above that line, a CSS margin), so nothing depends on the
+    // current transform. The pre-paint script in hero-board.tsx uses the same maths,
+    // so the first paint is already placed and hydration changes nothing.
     // Vertical geometry comes from layout offsets relative to the root (see offsetTopIn).
     const cols = lead.el.closest<HTMLElement>("[data-columns]");
     const lr = lead.el.getBoundingClientRect();
@@ -1113,15 +1145,18 @@ export class HeroEngine {
     const dy = Number.isFinite(applied) && Math.abs(applied - ideal) <= 2 ? applied : ideal;
     if (cols && cols.style.getPropertyValue("--board-dy") !== `${dy}px`) cols.style.setProperty("--board-dy", `${dy}px`);
     if (!board.hasAttribute("data-placed")) board.setAttribute("data-placed", "");
-    // hero-rev3 A: the prompt box and the lead card share the hero's centre line, so the connector
-    // is one level run along it. hero-rev4: it starts on the box's OUTER border (the box's 1px
-    // hairline ring sits just outside its layout edge, so the line begins one pixel past it) and
-    // ends exactly on the lead card's left edge: no dots, no overlap into either, no seam. If the
-    // offset is clamped (a degenerate window), it bends into a gentle S instead.
-    const x1 = Math.round(box.right - r.left) + 1;
+    // hero-rev3 A: the connector is one level run along the prompt box's centre line, from the box's
+    // right edge (hero-rev14: the box has no outline ring any more) to exactly the lead card's left
+    // edge: no dots, no overlap into either, no seam. hero-rev14: the lead card sits 0.84u above
+    // the line, so the run meets its edge a little below the card's centre. Only where the line
+    // would miss the card's straight edge (a clamped offset, a degenerate window) does it bend
+    // into a gentle S to the nearest point that edge has.
+    const x1 = Math.round(box.right - r.left);
     const bx = Math.round(lr.left - r.left);
-    const by = natural + dy;
     const y1 = boxCentre;
+    const leadTop = offsetTopIn(lead.el, root) + dy;
+    const edge = parseFloat(getComputedStyle(lead.el).borderTopLeftRadius) || 0;
+    const by = Math.min(Math.max(y1, leadTop + edge), leadTop + lead.el.offsetHeight - edge);
     const dx = Math.max(24, bx - x1);
     const level = Math.abs(by - y1) < 1;
     // A level run sits on a pixel row (the half pixel), so the 1px hairline stays crisp.
@@ -1139,7 +1174,7 @@ export class HeroEngine {
 
   /**
    * One pulse: a lit head (the orb) with a short trail along the connector, from the prompt
-   * box's border to the lead card's edge, where it simply stops (a very quick fade). The
+   * box's right edge to the lead card's edge, where it simply stops (a very quick fade). The
    * split-flap wave starts as it arrives (runCycle: BEAM_SECONDS).
    */
   private beam(): gsap.core.Timeline {
@@ -1149,7 +1184,7 @@ export class HeroEngine {
     const L = path.getTotalLength();
     const tl = gsap.timeline();
     if (L < 2) return tl;
-    // The head's centre travels from one core radius in (so the dot touches the box's border) to
+    // The head's centre travels from one core radius in (so the dot touches the box's right edge) to
     // one radius short (so it touches the card's edge): the whole run, edge to edge.
     const head0 = ORB_R;
     const head1 = L - ORB_R;
