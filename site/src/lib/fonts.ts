@@ -12,6 +12,10 @@
  *   Home "boska500i" (the H1 keyword) + "switzer600" + "boska400i"; /pricing "switzer600" +
  *   "boska400i"; /viral-now "switzer600" + "switzer800" + "boska400i"; /resources and the 404
  *   "boska400i"; articles none.
+ * - /pricing also preloads "panchang800" (the plan names on the card heads, in its first viewport
+ *   at all three sizes). The full PlanCards variant renders that <FontPreloads> itself
+ *   (sections/pricing/plan-cards.tsx), so the preload follows the cards. Home's compact cards sit
+ *   far below the fold and preload nothing.
  * - Home's "switzer600" and "boska400i" are the statement scene's, just below the hero. Its
  *   section is close enough to the viewport that `content-visibility: auto` still lays it out
  *   at load, so the browser fetches both faces before the first paint on phones and desktops
@@ -35,6 +39,7 @@ export const FONT_FILES = {
   switzer800: `${FONTSHARE}ZME55SZ3XN6FJ6WZ26BVFLFSAZ5I2VWW/YETVURK7HXO34ARWAMVG6MSPWALMBOUD/SMQAIKPHV4D6DU77XSDVYN543XEEYX6R.woff2`,
   boska400i: `${FONTSHARE}MBMZ7FPNE3BLIO7BA7WSXS622ESHMSPS/A24ASHB6YYDC2RKM53ROP5SQJCGM5LMQ/2YQT6WFIC4YLG23Y6A7HCRXGM5EQU4GP.woff2`,
   boska500i: `${FONTSHARE}BQ7H6NLD2VQ7DH6MKXG4EKNOHS4ARVBW/WJSA3LVU7OIK54ZLW7BVBDUCWMC7XIEL/7CAW3NYJZQZXMCDUJFS4DWGYL4PJNT5C.woff2`,
+  panchang800: `${FONTSHARE}BBOB5VAX4DF6FK5U27HLFW2VBLISCNKC/MIAKLBXTHJJTUKTXLTZZ76B3RNR3JBSO/BYZ4XKAY33UX3C5BSZV4BEIU2HQF4PD7.woff2`,
 } as const;
 
 export type FontKey = keyof typeof FONT_FILES;

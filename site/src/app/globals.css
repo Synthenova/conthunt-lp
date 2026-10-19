@@ -12,7 +12,7 @@
 
 /* ------------------------------------------------------------------- fonts */
 /*
- * Switzer and Boska italic, served by the Fontshare CDN (CDN use, not self-hosting).
+ * Switzer, Boska italic and Panchang 800, served by the Fontshare CDN (CDN use, not self-hosting).
  * These rules are copied from the Fontshare stylesheet
  * (api.fontshare.com/v2/css?f[]=switzer@400,401,500,600,700,800&f[]=boska@401,501&display=swap),
  * woff2 only, so the page no longer waits for a render-blocking third-party stylesheet
@@ -58,6 +58,15 @@
 @font-face {
   font-family: "Switzer";
   src: url("https://cdn.fontshare.com/wf/ZME55SZ3XN6FJ6WZ26BVFLFSAZ5I2VWW/YETVURK7HXO34ARWAMVG6MSPWALMBOUD/SMQAIKPHV4D6DU77XSDVYN543XEEYX6R.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* Panchang 800 (Fontshare, free for commercial use): the plan names on the pricing card heads, through
+   --font-plan. It stands in for the owner's Akira Expanded, which has no web licence. */
+@font-face {
+  font-family: "Panchang";
+  src: url("https://cdn.fontshare.com/wf/BBOB5VAX4DF6FK5U27HLFW2VBLISCNKC/MIAKLBXTHJJTUKTXLTZZ76B3RNR3JBSO/BYZ4XKAY33UX3C5BSZV4BEIU2HQF4PD7.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -177,14 +186,22 @@
 
   /* Layout */
   --letterbox: calc(100% - 40px); /* < 768px */
+  /* Wide content that breaks out of the letterbox (the plan cards, the pricing calculator; owner, 2026-10-19):
+     the letterbox below 1024px, the window less 20px a side at 1024-1279px, then 80% of the window until it
+     reaches 1600px (a 2000px window). It holds at 1600px, the breakout narrowing from 200px to 96px a side,
+     until the letterbox plus 96px a side overtakes it (about a 2347px window), and then grows with the
+     letterbox, 96px wider a side, so it always reads as a breakout. `100%` resolves where it is used, so give
+     it to a child of a full-width section (outside the Letterbox). */
+  --wide: var(--letterbox);
   --section-pad-y: clamp(4.5rem, 3.004rem + 6.385vw, 8.75rem); /* 72 -> 140px */
   --nav-h: 88px; /* expanded navbar height (sections can offset by this) */
   /*
-   * The full-size Deep Search simulator (OWNER_DECISIONS D5), shared by the landed inline frame
-   * (statement-simulator/scene.module.css) and the Full Control dialog (simulator/sim.module.css)
-   * so the two never drift: 24px gutters, room for the 44px row + 12px gap + 26px air above and
-   * below, 16:10, capped at 1440px (or the letterbox on very wide windows, so it is never smaller
-   * than the letterbox). `100%` resolves where the variable is used (the containing block's width).
+   * The full-size Deep Search simulator (OWNER_DECISIONS D5): the landed inline frame's width
+   * (statement-simulator/scene.module.css, its seam padding too): 24px gutters, room for the 44px
+   * row + 12px gap + 26px air above and below, 16:10, capped at 1440px (or the letterbox on very
+   * wide windows, so it is never smaller than the letterbox). `100%` resolves where the variable is
+   * used (the containing block's width). Full Control no longer reads it: its dialog is 90% of the
+   * viewport each way (SIM-SIZE.md, simulator/sim.module.css `.fullControlBody`).
    */
   --sim-full-w: min(100% - 48px, (100svh - 108px) * 1.6, max(1440px, var(--letterbox)));
 }
@@ -192,12 +209,20 @@
 @media (min-width: 768px) {
   :root {
     --letterbox: 80vw;
+    --wide: 80vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --wide: calc(100% - 40px);
   }
 }
 
 @media (min-width: 1280px) {
   :root {
     --letterbox: 60vw;
+    --wide: min(80%, max(1600px, 60vw + 192px));
   }
 }
 
@@ -205,10 +230,15 @@
    so components can rely on var(--font-*) / var(--ease-*) in raw CSS. */
 @theme static {
   /* Fonts. Switzer + Boska: the @font-face block at the top of this file (Fontshare CDN);
-     --font-jetbrains-mono is set by next/font on <html>. */
+     --font-jetbrains-mono and --font-bilbo-swash-caps are set by next/font on <html>. */
   --font-sans: "Switzer", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif-italic: "Boska", ui-serif, Georgia, "Times New Roman", serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Script face for the hero's "viral" (rev 14); --font-bilbo-swash-caps is set by next/font on <html>. */
+  --font-swash: var(--font-bilbo-swash-caps), "Brush Script MT", cursive;
+  /* Display face for the plan names on the pricing card heads (Panchang 800, Fontshare block above).
+     To use a licensed Akira Expanded, add its @font-face and put "Akira Expanded" first here. */
+  --font-plan: "Panchang", "Switzer", ui-sans-serif, system-ui, sans-serif;
 
   /* Eases (PLAN §2 Motion). GSAP equivalents: "ch.out", "ch.inOut", "ch.outFast". */
   --ease-out: cubic-bezier(0.2, 0.715, 0.205, 0.99);
@@ -564,7 +594,8 @@
    * statement-simulator scene gets this only while its <LazySection> is still pending
    * (server HTML, no pin yet): once live, its pin needs real geometry. `--cis` is each
    * section's server-HTML content height (padding excluded) at 390 / 820 / 1440px
-   * windows, used only until the section first renders; `auto` then keeps its real
+   * windows (pricing also at 1100px: its cards go from stacked to a row at 1024px),
+   * used only until the section first renders; `auto` then keeps its real
    * height. <OffscreenSections> (components/layout/offscreen-sections.tsx) refreshes
    * ScrollTrigger when a real height lands and renders each section once in idle time
    * after the first scroll. Paint containment clips at the section box, so keep
@@ -579,7 +610,7 @@
   .rails-cv [data-section="statement-simulator"] { --cis: 1070px; }
   .rails-cv [data-section="how-it-works"] { --cis: 3912px; }
   .rails-cv [data-section="bento"] { --cis: 2480px; }
-  .rails-cv [data-section="pricing"] { --cis: 2438px; }
+  .rails-cv [data-section="pricing"] { --cis: 2294px; }
   .rails-cv [data-section="testimonials"] { --cis: 400px; }
   .rails-cv [data-section="tracking"] { --cis: 2230px; }
   .rails-cv [data-section="mcp"] { --cis: 2240px; }
@@ -589,17 +620,20 @@
     .rails-cv [data-section="statement-simulator"] { --cis: 100svh; }
     .rails-cv [data-section="how-it-works"] { --cis: 3365px; }
     .rails-cv [data-section="bento"] { --cis: 1840px; }
-    .rails-cv [data-section="pricing"] { --cis: 1509px; }
+    .rails-cv [data-section="pricing"] { --cis: 2475px; }
     .rails-cv [data-section="testimonials"] { --cis: 350px; }
     .rails-cv [data-section="tracking"] { --cis: 1530px; }
     .rails-cv [data-section="mcp"] { --cis: 1700px; }
     .rails-cv [data-section="blog"] { --cis: 600px; }
     .rails-cv [data-section="faq"] { --cis: 940px; }
   }
+  @media (min-width: 1024px) {
+    .rails-cv [data-section="pricing"] { --cis: 1000px; }
+  }
   @media (min-width: 1280px) {
     .rails-cv [data-section="how-it-works"] { --cis: 2323px; }
     .rails-cv [data-section="bento"] { --cis: 1640px; }
-    .rails-cv [data-section="pricing"] { --cis: 1089px; }
+    .rails-cv [data-section="pricing"] { --cis: 1038px; }
     .rails-cv [data-section="testimonials"] { --cis: 300px; }
     .rails-cv [data-section="tracking"] { --cis: 1290px; }
     .rails-cv [data-section="mcp"] { --cis: 1230px; }
