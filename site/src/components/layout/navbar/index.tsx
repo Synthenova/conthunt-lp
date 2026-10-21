@@ -15,6 +15,8 @@
  * page hides it; scrolling UP 14px brings it back. It always shows near the
  * top, while the mobile menu is open, while it holds keyboard focus, and when
  * the pointer touches the top 64px of the window.
+ * On /viral-now neither happens. The niche row is its own sticky bar, so the
+ * site bar stays the large fixed one and does not condense or slide away.
  * Below 768px it is a compact bar with a menu button that opens a sheet.
  *
  * Rendered by src/app/(site)/layout.tsx. It is `position: fixed`, so the first
@@ -48,11 +50,21 @@ const SHOW_AFTER = 14;
 /** Pointer within this many px of the top edge reveals the bar. */
 const PEEK_ZONE = 64;
 
-function useNavScroll(pinnedOpen: boolean, headerRef: React.RefObject<HTMLElement | null>) {
+function useNavScroll(
+  pinnedOpen: boolean,
+  headerRef: React.RefObject<HTMLElement | null>,
+  /** Viral Now keeps the large bar fixed; the sticky niche row sits under it. */
+  lockExpanded: boolean,
+) {
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    if (lockExpanded) {
+      setCompact(false);
+      setHidden(false);
+      return;
+    }
     let frame = 0;
     let lastY = window.scrollY;
     let run = 0; // distance traveled in the current direction (+down, -up)
@@ -108,9 +120,12 @@ function useNavScroll(pinnedOpen: boolean, headerRef: React.RefObject<HTMLElemen
       header?.removeEventListener("focusin", onFocus);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [pinnedOpen, headerRef]);
+  }, [pinnedOpen, headerRef, lockExpanded]);
 
-  return { compact, hidden: hidden && !pinnedOpen };
+  return {
+    compact: lockExpanded ? false : compact,
+    hidden: lockExpanded ? false : hidden && !pinnedOpen,
+  };
 }
 
 /**
@@ -139,8 +154,10 @@ export function Navbar() {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { compact, hidden } = useNavScroll(menuOpen, headerRef);
-  const solid = compact || menuOpen;
+  // The niche row is the sticky bar on this page. Leave the site bar large and fixed.
+  const lockExpanded = isActivePath(pathname, ROUTES.viralNow);
+  const { compact, hidden } = useNavScroll(menuOpen, headerRef, lockExpanded);
+  const solid = menuOpen || (!lockExpanded && compact);
 
   return (
     <header
@@ -161,6 +178,8 @@ export function Navbar() {
           "transition-[max-width,width,height,margin,padding,border-radius,background-color,border-color,box-shadow,backdrop-filter] duration-[600ms] ease-out motion-reduce:transition-none",
           // Large (top of page)
           "h-16 px-5 md:h-[var(--nav-h)] md:px-8 lg:px-10",
+          // Viral Now: stay the full-width bar. A solid fill keeps the links off the rows scrolling underneath.
+          lockExpanded && "bg-paper",
           // Compact floating pill
           "group-data-[compact=true]/nav:mt-2 group-data-[compact=true]/nav:h-14 group-data-[compact=true]/nav:w-[calc(100%-16px)] group-data-[compact=true]/nav:rounded-[20px] group-data-[compact=true]/nav:pl-4 group-data-[compact=true]/nav:pr-2",
           "md:group-data-[compact=true]/nav:mt-3 md:group-data-[compact=true]/nav:h-[60px] md:group-data-[compact=true]/nav:w-[calc(100%-32px)] md:group-data-[compact=true]/nav:max-w-[780px] md:group-data-[compact=true]/nav:rounded-[22px] md:group-data-[compact=true]/nav:pl-5",

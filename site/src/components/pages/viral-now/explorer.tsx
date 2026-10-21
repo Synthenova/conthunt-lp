@@ -74,17 +74,12 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
       const stage = stageRef.current;
       if (!stage) return;
       const bar = document.querySelector<HTMLElement>(`.${styles.selectorBar}`);
-      const header = document.querySelector<HTMLElement>("header[data-hidden]");
-      const stick = bar ? parseFloat(getComputedStyle(bar.parentElement ?? bar).getPropertyValue("--vn-stick")) || 72 : 72;
+      const stick = bar ? parseFloat(getComputedStyle(bar.parentElement ?? bar).getPropertyValue("--vn-stick")) || 88 : 88;
       const barHeight = bar ? bar.getBoundingClientRect().height : 60;
       const stageTop = stage.getBoundingClientRect().top + window.scrollY;
-      // The navbar slides away on a long scroll down (from 240px of page depth) and stays away on a
-      // scroll up, and the bar then sticks to the top edge. Aim for the bar's position after the scroll,
-      // with a small gap beneath it.
+      // The site navbar stays fixed at full height here, and the niche bar sticks beneath it.
       const gap = 8;
-      const whenHidden = Math.max(stageTop - (barHeight + gap), 0);
-      const hides = whenHidden >= 244 && (header?.dataset.hidden === "true" || whenHidden - window.scrollY > 48);
-      const y = hides ? whenHidden : Math.max(whenHidden - stick, 0);
+      const y = Math.max(stageTop - (stick + barHeight + gap), 0);
       if (Math.abs(window.scrollY - y) < 4) return;
       if (smooth && lenis) lenis.scrollTo(y, { duration: 0.9 });
       else window.scrollTo({ top: y, behavior: smooth ? "smooth" : "auto" });

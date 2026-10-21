@@ -41,7 +41,8 @@
 @media (min-width: 768px) {
   .explorer {
     --vn-gutter: 10vw;
-    --vn-stick: 72px;
+    /* The site navbar stays the full 88px bar on this page, so the niche row sticks beneath it. */
+    --vn-stick: var(--nav-h);
     /* The side gutter is narrow here: a slimmer first-rank gutter, and the first numeral kept 20px off the edge. */
     --vn-g1: calc(var(--vn-num) * 0.46);
     --vn-min-pad: 20px;
@@ -263,7 +264,7 @@
   border-bottom-color: var(--hairline);
 }
 
-/* The navbar slides away on scroll down; the bar then sticks to the top edge (the slide is animated in JS). */
+/* Kept for a navbar that slides away. On this page the site bar stays fixed, so this does not apply. */
 .selectorBar[data-nav-hidden="true"] {
   top: 0;
 }
