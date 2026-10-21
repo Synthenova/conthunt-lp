@@ -16,7 +16,7 @@
  * headline numbers in view. The dock has no height of its own and only shows once the sliders have
  * scrolled into view, so a hidden dock leaves no band at the foot of the tray.
  *
- * Honesty rules: every limit is the plan's real allowance (`plans.ts`), credits per
+ * Honesty rules: every limit is the plan's real allowance (`plans.ts`: hunt credits and AI credits), credits per
  * video follow the app's own planning estimate, and time saved uses assumptions the
  * user can edit. See `calculator-model.ts` for where each number comes from.
  *
@@ -67,7 +67,6 @@ import {
   watchLine,
   type Assumptions,
   type CalcInputs,
-  type FitKey,
   type Recommendation,
   type TimeSaved,
   type Usage,
@@ -278,7 +277,7 @@ export function PricingCalculator() {
                     videos analyzed
                   </p>
                   <p className="font-mono text-[11px] text-ink-2/75">
-                    {formatInt(usage.aiCredits)} AI credits · {formatInt(usage.searchUnits)} searches
+                    {formatInt(usage.aiCredits)} AI credits · {formatInt(usage.searchUnits)} hunt credits
                   </p>
                 </div>
               </div>
@@ -555,11 +554,9 @@ function PlanResultCard({
         </div>
       </div>
 
-      {/* Same price treatment as the plan cards (pricing Rev 4): the list price struck quietly beside "/mo", one
-          billing line, and the green saving chip when yearly is on. No percentage against the list price. */}
+      {/* The price alone with "/mo" beside it, one billing line, and the green saving chip when yearly is on. */}
       <p className="sr-only">
         ${price} a month, billed {yearly ? `yearly, $${formatInt(yearlyTotal(plan))} a year (saves ${yearlySavingPct(plan)}%, $${yearlySavingUsd(plan)})` : "monthly"}.
-        {plan.listPrice ? ` List price $${plan.listPrice} a month.` : ""}
       </p>
       <div aria-hidden="true" className={cn("flex items-baseline-last gap-2.5", compact ? "mt-3" : "mt-4")}>
         <RollingNumber
@@ -569,10 +566,7 @@ function PlanResultCard({
           duration={600}
           stagger={50}
         />
-        <span className="flex flex-col text-[13px] leading-[1.25]">
-          {plan.listPrice ? <s className="tabular-nums text-ink-2/75 decoration-ink-2/60">${plan.listPrice}</s> : null}
-          <span className="text-ink-2/75">/mo</span>
-        </span>
+        <span className="text-[13px] leading-[1.25] text-ink-2/75">/mo</span>
       </div>
       <div aria-hidden="true" key={billing} className={cn(styles.rise, "mt-2 flex h-5 items-center gap-2 text-[13px] text-ink-2/75")}>
         <span>{yearly ? `$${formatInt(yearlyTotal(plan))} billed yearly` : "Billed monthly"}</span>
@@ -604,18 +598,25 @@ function PlanResultCard({
       >
         <MonoLabel id="calc-usage-label">Expected monthly usage</MonoLabel>
         <UsageBar label="AI credits" used={usage.aiCredits} cap={allowance.aiCredits} primary />
-        <UsageBar label="Searches" used={usage.searchUnits} cap={allowance.searches} />
-        {inputs.tracking && (
-          <UsageBar label="Tracking credits" used={usage.trackingCredits} cap={allowance.trackingCredits} />
-        )}
+        <UsageBar
+          label="Hunt credits"
+          used={usage.huntCredits}
+          cap={allowance.huntCredits}
+          note={
+            inputs.tracking
+              ? `${formatInt(usage.searchUnits)} searches + ${formatInt(usage.trackingCredits)} tracking`
+              : undefined
+          }
+        />
       </div>
 
       {rec.overMax && (
         <p className="mt-3 flex items-start gap-2 rounded-chip bg-decline/10 px-3 py-2 text-[12px] leading-snug text-ink">
           <span aria-hidden="true" className="mt-[5px] size-1.5 shrink-0 rounded-full bg-decline" />
           <span>
-            {plan.name} covers about {Math.floor(rec.coverage * 100)}% of this: your {FIT_LABEL[rec.fit.binding]} run out
-            around day {Math.max(1, Math.floor(30 * rec.coverage))}.{" "}
+            {rec.coverage < 1
+              ? `${plan.name} covers about ${Math.floor(rec.coverage * 100)}% of this: your ${FIT_LABEL[rec.fit.binding]} run out around day ${Math.max(1, Math.floor(30 * rec.coverage))}.`
+              : `${plan.name} holds this, but it uses ${Math.round(rec.fit.max * 100)}% of your ${FIT_LABEL[rec.fit.binding]} and leaves little room for follow-ups.`}{" "}
             <a href={CONTACT_URL} className="font-medium underline underline-offset-2">
               Talk to us about volume
             </a>
@@ -627,9 +628,6 @@ function PlanResultCard({
   );
 }
 
-const usedFor = (key: FitKey, usage: Usage): number =>
-  key === "aiCredits" ? usage.aiCredits : key === "searches" ? usage.searchUnits : usage.trackingCredits;
-
 function WhyText({ rec, usage }: { rec: Recommendation; usage: Usage }) {
   const pct = (n: number) => `${Math.round(n * 100)}%`;
   const { plan, fit, below, above, headroom } = rec;
@@ -640,7 +638,10 @@ function WhyText({ rec, usage }: { rec: Recommendation; usage: Usage }) {
     return (
       <>
         Your usage needs {pct(fit.max)} of {plan.name}&apos;s {first}, the first limit you would reach. {plan.name} is our
-        largest plan, so it covers about {Math.floor(rec.coverage * 100)}% of this each month.
+        largest plan,{" "}
+        {rec.coverage < 1
+          ? `so it covers about ${Math.floor(rec.coverage * 100)}% of this each month.`
+          : `so it holds this, with less than ${room} left for follow-up chat and re-runs.`}
       </>
     );
   }
@@ -648,8 +649,8 @@ function WhyText({ rec, usage }: { rec: Recommendation; usage: Usage }) {
     return (
       <>
         {plan.name} covers this with room to spare. The first limit you would reach is {first}, at {pct(fit.max)} of the
-        allowance ({formatInt(usedFor(fit.binding, usage))} of {formatInt(plan.allowance[fit.binding])}). We keep at least{" "}
-        {room} free for follow-up chat, boards and re-runs.
+        allowance ({formatInt(usage[fit.binding])} of {formatInt(plan.allowance[fit.binding])}). We keep at least{" "}
+        {room} free for follow-up chat and re-runs.
         {above && above.fit.max < 0.5 && ` ${above.plan.name} would sit at ${pct(above.fit.max)}, more than you need.`}
       </>
     );
@@ -658,7 +659,7 @@ function WhyText({ rec, usage }: { rec: Recommendation; usage: Usage }) {
   return (
     <>
       {rec.belowTight
-        ? `${below.plan.name} would run at ${pct(below.fit.max)} of its ${belowFirst}. We keep at least ${room} free for follow-up chat, boards and re-runs, so we step up to ${plan.name}, where this is ${pct(fit.max)}.`
+        ? `${below.plan.name} would run at ${pct(below.fit.max)} of its ${belowFirst}. We keep at least ${room} free for follow-up chat and re-runs, so we step up to ${plan.name}, where this is ${pct(fit.max)}.`
         : `${below.plan.name} cannot hold this: it would need ${pct(below.fit.max)} of its ${belowFirst}. ${plan.name} holds it at ${pct(fit.max)}.`}
       {headroom > 0.15 && " With agents selected we keep extra room, because agents ask follow-ups on their own."}
     </>
@@ -682,8 +683,8 @@ function TrialNote({ plan, videosPerSearch }: { plan: Plan; videosPerSearch: num
   }
   return (
     <>
-      The trial runs on a smaller allowance: {formatInt(credits)} AI credits, about {formatInt(trialVideos)} videos.{" "}
-      {advice}
+      The trial runs on a smaller allowance: {formatInt(plan.trial.huntCredits)} hunt credits and {formatInt(credits)} AI
+      credits, about {formatInt(trialVideos)} videos. {advice}
     </>
   );
 }

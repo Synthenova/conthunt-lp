@@ -8,8 +8,7 @@
  */
 import { Bot, Briefcase, ChevronDown, Crosshair, Eye, Radar, RotateCcw, ShoppingBag, TrendingUp, Users } from "lucide-react";
 import { memo, type ReactNode, type RefObject } from "react";
-import { CREDITS_PER_VIDEO, RESEARCH, formatInt } from "@/components/sections/pricing/plans";
-import { Badge } from "@/components/ui/badge";
+import { CREDITS_PER_VIDEO, PLANS, formatInt } from "@/components/sections/pricing/plans";
 import { cn } from "@/lib/cn";
 import { Choice, DialSlider, NumberField, Step } from "./calc-controls";
 import {
@@ -31,6 +30,9 @@ const USE_CASE_ICONS: Record<UseCaseId, ReactNode> = {
   radar: <Radar className="size-[18px]" aria-hidden="true" />,
   agency: <Briefcase className="size-[18px]" aria-hidden="true" />,
 };
+
+/** The largest plan, for the "largest plan" line. */
+const LARGEST = PLANS[PLANS.length - 1];
 
 const TRACKED_END_LABELS: readonly [number, string][] = [
   [TRACKED_MIN, String(TRACKED_MIN)],
@@ -133,15 +135,7 @@ export const ExtrasStep = memo(function ExtrasStep({
             checked={tracking}
             onChange={onTracking}
             icon={<TrendingUp className="size-[18px]" aria-hidden="true" />}
-            label={
-              // flex-wrap: in a narrow card the badge drops under the word instead of leaving the card.
-              <span className="inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1">
-                Tracking{" "}
-                <Badge tone="accent" className="text-[11px]">
-                  Experimental
-                </Badge>
-              </span>
-            }
+            label="Tracking"
             hint="Daily numbers on public accounts"
           />
         </div>
@@ -152,7 +146,7 @@ export const ExtrasStep = memo(function ExtrasStep({
           <div className="mt-3 rounded-btn border border-hairline p-5 md:p-6">
             <DialSlider
               label="Accounts and videos tracked"
-              readout={`${trackedItems} items · ${formatInt(trackingCredits)} credits`}
+              readout={`${trackedItems} items · ${formatInt(trackingCredits)} hunt credits`}
               min={TRACKED_MIN}
               max={TRACKED_MAX}
               step={TRACKED_STEP}
@@ -163,8 +157,8 @@ export const ExtrasStep = memo(function ExtrasStep({
               valueText={trackedValueText}
             />
             <p className="mt-3 text-[12px] leading-snug text-ink-2/75">
-              {TRACKING_CREDITS_PER_ITEM} tracking credits per item for a 30-day window: one for the first refresh and
-              one for each day after.
+              {TRACKING_CREDITS_PER_ITEM} hunt credits per item for a 30-day window: one for the first refresh and one
+              for each day after.
             </p>
           </div>
         </div>
@@ -216,7 +210,8 @@ function AssumptionsPanel({
 }) {
   return (
     <div className="mt-4 rounded-btn border border-hairline bg-surface/60 p-5" inert={!tabbable}>
-      <div className="grid gap-4 sm:grid-cols-3">
+      {/* Three rows shared by the fields (label, input, hint), so the inputs line up whatever the labels wrap to. */}
+      <div className="grid gap-4 sm:grid-cols-3 sm:grid-rows-[auto_auto_auto] sm:gap-y-1.5">
         <NumberField
           label="Minutes per video"
           unit="min"
@@ -244,19 +239,21 @@ function AssumptionsPanel({
           step={10}
           value={assumptions.videosPerKeywordSearch}
           onChange={(videosPerKeywordSearch) => onChange({ videosPerKeywordSearch })}
-          hint="Sets how many searches a run needs."
+          hint="Sets how many hunt credits a run needs."
         />
       </div>
       <ul className="mt-4 flex flex-col gap-1.5 text-[12px] leading-snug text-ink-2/75">
         <li>
           AI credits use ContHunt&apos;s own planning estimate: {CREDITS_PER_VIDEO.toFixed(1)} credits per video, with a
-          10% buffer included. Real use varies with video length, follow-up chat and boards.
+          10% buffer included. Real use varies with video length, follow-up chat and re-runs.
         </li>
         <li>
-          One keyword search runs on three platforms and counts as 3 searches. Your hourly rate is set in the result.
+          One keyword search runs on three platforms and costs 3 hunt credits, one per platform. Your hourly rate is
+          set in the result.
         </li>
         <li>
-          {RESEARCH.name} is the largest plan, at {formatInt(RESEARCH.allowance.aiCredits)} AI credits a month.
+          {LARGEST.name} is the largest plan, at {formatInt(LARGEST.allowance.huntCredits)} hunt credits and{" "}
+          {formatInt(LARGEST.allowance.aiCredits)} AI credits a month.
         </li>
       </ul>
       <button

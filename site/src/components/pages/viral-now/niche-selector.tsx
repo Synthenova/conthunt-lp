@@ -86,9 +86,8 @@ export function NicheSelector({ niches, active, onSelect }: NicheSelectorProps) 
     if (pill) scrollerRef.current?.revealChild(pill);
   }, [active]);
 
-  // The bar sticks under the navbar, and to the top edge while the navbar is slid away (it hides on
-  // scroll down). It follows the navbar's `data-hidden` and, because moving the sticky offset jumps
-  // the bar, a short transform tween (FLIP) carries it between the two positions.
+  // The bar sticks under the fixed navbar. If the navbar ever hides, it follows `data-hidden` and,
+  // because moving the sticky offset jumps the bar, a short transform tween (FLIP) carries it.
   useEffect(() => {
     const bar = barRef.current;
     const sentinel = sentinelRef.current;

@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { MetalButton } from "@/components/ui/metal-button";
 import type { CoverSpec } from "@/lib/blog";
 import { GET_STARTED_URL } from "@/lib/links";
 
@@ -43,10 +44,10 @@ export function CtaBand({ cover, eyebrow, title, body, secondary }: CtaBandProps
           <h2 className="display-m mt-4">{title}</h2>
           <p className="mt-4 max-w-[44ch] text-[16px] leading-[1.55] text-ink-2/80">{body}</p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Button href={GET_STARTED_URL} size="lg" className="group/cta">
+            <MetalButton href={GET_STARTED_URL} size="lg" className="group/cta">
               Get started
               <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover/cta:translate-x-0.5" />
-            </Button>
+            </MetalButton>
             {secondary && (
               <Button href={secondary.href} variant="ghost" size="lg">
                 {secondary.label}

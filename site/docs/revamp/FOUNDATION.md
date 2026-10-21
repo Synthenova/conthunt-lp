@@ -74,7 +74,7 @@ nothing, and Tailwind gives no warning. Use the tokens:
 | Shadow (floating fragments only) | `shadow-float` | `--shadow-float` |
 | Eases | `ease-out`, `ease-in-out`, `ease-out-fast` (CSS) | `--ease-out`, `--ease-in-out`, `--ease-out-fast` |
 | Fonts | `font-sans` (Switzer), `font-serif-italic` (Boska), `font-mono` (JetBrains Mono) | `--font-sans`, `--font-serif-italic`, `--font-mono` |
-| Layout | `letterbox` utility; `py-[var(--section-pad-y)]` | `--letterbox`, `--section-pad-y`, `--nav-h` (88px) |
+| Layout | `letterbox` utility; `py-[var(--section-pad-y)]`; `w-(--wide)` | `--letterbox`, `--wide`, `--section-pad-y`, `--nav-h` (88px) |
 
 Opacity modifiers work on tokens, for example `bg-ink/15` or `bg-paper/80`.
 
@@ -169,6 +169,10 @@ export default function PricingSection() {
 - **Button** `{ variant?: "primary"|"secondary"|"ghost", size?: "sm"|"md"|"lg", href?, newTab?, ...button|anchor props }`.
   With `href`, internal paths render through `next/link` and absolute URLs render as `<a>`.
   `buttonVariants({variant,size,className})` returns the same classes for other elements.
+- **MetalButton** (`ui/metal-button.tsx`, client) takes the same props as **Button** and wears the liquid-metal ring of `ui/metal-ring.tsx` (our own WebGL1 shader, 2026-10-18; it replaced `metal-fx`, whose shared 15 fps loop made the ring stutter).
+  Used only on the three "Get started" + `ArrowRight` CTAs: the hero row (`hero-board.tsx`), the 404 page and the Resources / article closing band (`resources/cta-band.tsx`). Every other "Get started" (navbar, mobile menu, bento, tracking, MCP, pricing FAQ, viral-now band and empty state, statement-simulator row) stays a plain **Button**, so the ring marks the one primary invitation per page instead of becoming a texture. Do not add it elsewhere without the owner.
+  It server-renders as the plain button and swaps to the ringed one when the page is idle (`ui/metal-button-fx.tsx` and the ring load as a separate chunk, never in the first-load set), same box, so no layout shift. No WebGL: the plain button stays. `prefers-reduced-motion: reduce` paints one still frame. The ring animates only on screen with the tab visible, at up to ~60fps, DPR capped at 2.
+  Look: metal-fx's dark `chromatic` look rebuilt in `ui/metal-ring-glsl.ts` (chrome stripes, a cool `#88ccff` burn, red/blue fringes), ring 2px, 14px radius, halo on by default (`metal={{ ringPx, radius, glow }}` overrides; the hero asks for a 0.1875u ring and no halo). The canvas sits inside the button, so the button keeps its own fill, hover, 0.98 active scale and 2px accent focus ring.
 - **Chip** `{ variant?: "outline"|"surface"|"ink", tone?: "neutral"|"accent"|"breakout"|"growth"|"decline", size?: "sm"|"md", dot?, icon?, mono? }`.
 - **Badge** `{ tone?: "neutral"|"ink"|"accent"|"outline"|"breakout"|"growth"|"decline" }` renders a tiny uppercase mono label.
 - **Eyebrow** `{ index?, total? = 8, label }` renders `[ 0N / 08 ] · LABEL`: the index in `--muted`, the label in `--ink-2`, only the `·` in `--faint`.
@@ -339,9 +343,15 @@ export function Thing() {
 - Rails sit at the letterbox edges. Content that should "touch the rails" uses the
   letterbox width exactly. **Every home section header (eyebrow, h2, sub) sits flush on
   the left rail**, one left edge down the page, and every home section h2 is Display L.
-  The one element below the hero that leaves the letterbox is the landed Deep Search simulator:
-  it is full size (`--sim-full-w` in globals.css, shared with its Full Control dialog;
-  OWNER_DECISIONS D5), with its slim eyebrow row on the frame's edges.
+  Below the hero, two things leave the letterbox. The landed Deep Search simulator is full size
+  (`--sim-full-w` in globals.css, shared with its Full Control dialog; OWNER_DECISIONS D5), with
+  its slim eyebrow row on the frame's edges. The pricing plan cards (Home and /pricing) and the
+  /pricing calculator tray take `--wide` (owner, 2026-10-19): the letterbox below 1024px, the
+  window less 20px a side at 1024-1279px, then 80% of the window up to 1600px (a 2000px window),
+  held at 1600px until the letterbox plus 96px a side overtakes it (about a 2347px window), then
+  the letterbox plus 96px a side. Their section headings stay on the rail; the pricing intro row spans
+  `--wide` with its left side padded back to the rail, so the billing toggle ends on the cards' edge.
+  `--wide` resolves `100%` where it is used: put it on a child of `Section letterbox={false}`.
   Documented exceptions: the statement (Statement type, pinned scene), testimonials (a slim
   strip with no number), the MCP spec-sheet frame (ruled cells keep a cell padding; the h2 is
   fitted to its 7fr cell) and the FAQ (Display L capped at 48px in its 240px sticky column).
@@ -405,6 +415,7 @@ export function Thing() {
 - A section with an opaque background hides the rails behind it (sections are `z-index: 1`).
   The page allows at most one dark surface (PLAN §2).
 - Breakpoints are the Tailwind defaults: `md` = 768 and `xl` = 1280. These match the letterbox steps.
+  `lg` = 1024 is the extra `--wide` step, where the plan cards go from stacked to a row of three.
 
 ## 9. Verification (PLAN §8)
 

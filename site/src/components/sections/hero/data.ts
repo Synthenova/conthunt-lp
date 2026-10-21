@@ -10,11 +10,16 @@ import rawPrompts from "@/content/media/hero-prompts.json";
 /* Change these freely; the count-up animation reads them.                   */
 /* ------------------------------------------------------------------------ */
 
-/** Subtext chips: "Search through [7 platforms] across [104,862 niches] and over [10,384,719 videos] updated daily." (owner-set figures, 2026-10-16) */
+/**
+ * Subtitle chips (hero-rev14, the owner's Pencil frame dFkvz): "Claim your superpower. Search through
+ * [7 platforms] over [10,862 niches] and [10,384,719 videos] updated daily. Save around [33 hours]
+ * every week." (niches was 104,862 until rev 14)
+ */
 export const HERO_STATS = {
   platforms: { value: 7, suffix: "", label: "platforms" },
-  niches: { value: 104_862, suffix: "", label: "niches" },
+  niches: { value: 10_862, suffix: "", label: "niches" },
   videos: { value: 10_384_719, suffix: "", label: "videos" },
+  hours: { value: 33, suffix: "", label: "hours" },
 } as const;
 
 /** Seconds between prompt changes (owner brief: "every six seconds"). */
@@ -75,13 +80,77 @@ export const TREND_LABEL: Record<Trend, string> = {
 };
 
 /**
- * Triangle layout: columns hold 1, 2, 3, 4 cards, left to right. Each entry is a
- * slot index into BOARD_CARDS[set].
+ * Triangle layout: columns hold 1, 2, 3, 4 and 5 cards, left to right (hero-rev13: the old static
+ * columns are gone; every column is an engine column). Each entry is a slot index into
+ * BOARD_CARDS[set]. How many show is the hero row's column count N (hero-rev14, below).
  */
-export const COLUMNS: number[][] = [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9]];
-export const SLOT_COUNT = 10;
-/** Slots visible below 1024px (columns 1–3). */
-export const COMPACT_SLOT_COUNT = 6;
+export const COLUMNS: number[][] = [[0], [1, 2], [3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13, 14]];
+export const SLOT_COUNT = 15;
+/** Slots of columns 1–4. Slots from here on are the fifth column, shown only where N = 5. */
+export const CORE_SLOT_COUNT = 10;
+
+/*
+ * Column visibility (hero-rev14; hero.module.css "the hero row model" is the source, keep both in
+ * step). The board shows N whole columns: N ≥ 3 when the hero is at least ROW_N3 units wide, N ≥ 4
+ * from ROW_N4, N = 5 from ROW_N5 (u = the hero unit). The stacked layout below 1024px shows
+ * columns 1–3. CSS decides with container queries in u; a <picture> source needs a media query, so
+ * these restate the same rule in viewport terms, for the posters of hidden columns (never fetched).
+ *
+ * u = max(0.6rem, min(clamp(0.75rem, W / 120, 1.15rem), fit(H))), fit = the height guard
+ * (hero.module.css --u-fit: the text block, max(46.5u, 42.39375u + 3.0722rem), fits between the 88px
+ * navbar and the 65px strip with 2.5rem of air). Column N shows where u ≤ W / ROW_N. Without the
+ * guard that is the width alone: columns 3 and 4 from ROW_N × the 0.75rem floor, column 5 from
+ * ROW_N5 × the 1.15rem cap. On short windows the guard holds u down (to 0.6rem), so a column can show
+ * on a narrower window: from ROW_N × 0.6rem, where H ≤ 153px + 2.5rem + block(W / ROW_N). A media
+ * query cannot mix W and H, so each such band is cut into width steps, each hidden only above the
+ * height line at its widest end: a slightly smaller hidden region than the real one, so a visible
+ * column never shows an empty image (at worst a window a few px off the line would fetch posters it
+ * does not show). Viewport widths also count a classic scrollbar, which the hero's 100cqw does not.
+ * Both slips are closed by the posters of columns 3–5 being lazy (hero-board.tsx Slot): a lazy image
+ * in a display:none column is never fetched, so these queries only decide the first parse's candidate.
+ */
+export const ROW_N3 = 92.69375;
+export const ROW_N4 = 106.86875;
+export const ROW_N5 = 134.175;
+/** The width floor, the height guard's floor and the cap of u, in rem. */
+const U_MIN_REM = 0.75;
+const U_FIT_MIN_REM = 0.6;
+const U_MAX_REM = 1.15;
+const rem = (n: number) => `${Math.round(n * 10000) / 10000}rem`;
+/** The text block's height at u (both in rem), as the height guard models it. */
+const blockRem = (u: number) => Math.max(46.5 * u, 42.39375 * u + 3.0722);
+
+/** Widths from..to (rem) in steps, each hidden above the height line at its widest end. */
+function hiddenAboveFit(row: number, from: number, to: number, steps: number, prefix = ""): string[] {
+  const parts: string[] = [];
+  for (let k = 0; k < steps; k++) {
+    const a = from + ((to - from) * k) / steps;
+    const b = from + ((to - from) * (k + 1)) / steps;
+    parts.push(`${prefix}(${rem(a)} <= width < ${rem(b)}) and (height > calc(153px + ${rem(2.5 + blockRem(b / row))}))`);
+  }
+  return parts;
+}
+
+/** Per column (COLUMNS order): the media query under which it is hidden, or undefined (always shown). */
+export const COLUMN_HIDDEN_MEDIA: (string | undefined)[] = [
+  undefined,
+  undefined,
+  // Shown in the stacked layout; from 1024px it needs ROW_N3 units (the guard's floor is under 1024px).
+  hiddenAboveFit(ROW_N3, 64, ROW_N3 * U_MIN_REM, 2, "(1024px <= width) and ").join(", "),
+  [
+    "(width < 1024px)",
+    `(width < ${rem(ROW_N4 * U_FIT_MIN_REM)})`,
+    ...hiddenAboveFit(ROW_N4, ROW_N4 * U_FIT_MIN_REM, ROW_N4 * U_MIN_REM, 3),
+  ].join(", "),
+  [
+    "(width < 1024px)",
+    `(width < ${rem(ROW_N5 * U_FIT_MIN_REM)})`,
+    ...hiddenAboveFit(ROW_N5, ROW_N5 * U_FIT_MIN_REM, ROW_N5 * U_MAX_REM, 16),
+  ].join(", "),
+];
+
+/** The column a slot belongs to. */
+export const columnOf = (slot: number) => COLUMNS.findIndex((col) => col.includes(slot));
 
 /*
  * Poster sizes. Every hero poster exists at 360×640 (`<n>.webp`) and 240×427 (`<n>-sm.webp`,
@@ -89,9 +158,9 @@ export const COMPACT_SLOT_COUNT = 6;
  * picks the 240 file and a 3x phone, a tablet or a desktop the 360 one. Every slot (and
  * the engine's preloads) uses the lead card's size, so a poster is one cached file wherever
  * it lands. Lead card width: 1.12 × (100vw − 2 × 20px gutter − 2 × 12px gap) / 3.12, capped
- * at 1.12 × 190px from 657px (hero.module.css .columns).
+ * at 1.12 × 156px from 552px (hero.module.css .columns; hero-rev13 made the cards 3:5).
  */
-export const HERO_POSTER_SIZES = "(max-width: 656px) calc((100vw - 64px) / 2.78), (max-width: 1023.98px) 213px, 360px";
+export const HERO_POSTER_SIZES = "(max-width: 551px) calc((100vw - 64px) / 2.78), (max-width: 1023.98px) 175px, 360px";
 
 /** `srcset` for a hero poster URL (`/media/hero/<set>/<n>.webp`). */
 export const heroPosterSrcSet = (poster: string) => `${poster.replace(/\.webp$/, "-sm.webp")} 240w, ${poster} 360w`;
@@ -106,20 +175,42 @@ const MIDDLE_ROWS = [1, 2];
  * middle rows, the ones a visitor can actually see, and the best remaining
  * ranks fill the top and bottom. That keeps the owner's "mix and match them and
  * place them clearly" true for every set. Each card keeps its real rank and score.
+ *
+ * Column 5 (slots 10–14, 2K windows only; hero-rev13) takes what the set has left (its two
+ * spare ranks) and fills the rest from a donor set's lowest ranks, so a set of twelve still
+ * gives fifteen distinct videos and no poster appears twice on screen. The donor's cards keep
+ * their own score, trend and chart; only the rank is renumbered (13–15) so the card backs never
+ * show one rank twice. Highest score first, so the column reads like the others.
  */
-function boardCards(set: PromptSet): HeroCard[] {
+function boardCards(set: PromptSet, donor: PromptSet): HeroCard[] {
   const head = set.cards.slice(0, 6);
   const tail = set.cards.slice(6);
-  if (tail.length < 4) return set.cards.slice(0, SLOT_COUNT);
-  const declines = tail.filter((c) => c.trend === "decline").slice(0, MIDDLE_ROWS.length);
-  const rest = tail.filter((c) => !declines.includes(c));
-  const col: (HeroCard | undefined)[] = [undefined, undefined, undefined, undefined];
-  declines.forEach((c, k) => (col[MIDDLE_ROWS[k]] = c));
-  for (let r = 0; r < col.length; r++) col[r] ??= rest.shift();
-  return [...head, ...(col as HeroCard[])];
+  let core: HeroCard[];
+  if (tail.length < 4) {
+    core = set.cards.slice(0, CORE_SLOT_COUNT);
+  } else {
+    const declines = tail.filter((c) => c.trend === "decline").slice(0, MIDDLE_ROWS.length);
+    const rest = tail.filter((c) => !declines.includes(c));
+    const col: (HeroCard | undefined)[] = [undefined, undefined, undefined, undefined];
+    declines.forEach((c, k) => (col[MIDDLE_ROWS[k]] = c));
+    for (let r = 0; r < col.length; r++) col[r] ??= rest.shift();
+    core = [...head, ...(col as HeroCard[])];
+  }
+  const wanted = SLOT_COUNT - CORE_SLOT_COUNT;
+  const taken = new Set(core.map((c) => c.poster));
+  const spares = set.cards.filter((c) => !core.includes(c)).slice(0, wanted);
+  spares.forEach((c) => taken.add(c.poster));
+  const fill = [...donor.cards]
+    .reverse()
+    .filter((c) => !taken.has(c.poster))
+    .slice(0, wanted - spares.length)
+    .map((c, k): HeroCard => ({ ...c, rank: 13 + k, video: undefined }));
+  const fifth = [...spares, ...fill].sort((a, b) => b.score - a.score);
+  return [...core, ...fifth];
 }
 
-export const BOARD_CARDS: HeroCard[][] = PROMPT_SETS.map(boardCards);
+/** Each set borrows from the set two along: the next set is the one that follows it on screen, so its cards never meet its own mid-wave. */
+export const BOARD_CARDS: HeroCard[][] = PROMPT_SETS.map((set, k) => boardCards(set, PROMPT_SETS[(k + 2) % PROMPT_SETS.length]));
 
 /* ------------------------------------------------------------------------ */
 /* Formatting and chart geometry                                             */
@@ -137,9 +228,10 @@ export const PLATFORM_NAME: Record<string, string> = {
 };
 
 /**
- * Chart box = bottom 40% of a 4:5 card → aspect 2:1, so viewBox 100×50 maps
- * uniformly. The actual line stops at x = CHART_END with its end dot; from there
- * a dotted projection runs to the card's right edge (owner, hero-rev2 C).
+ * Chart box = bottom 34% of a 3:5 card (hero-rev13; it was 40% of a 4:5 card) → aspect 1.76:1, close to
+ * the viewBox's 2:1, so the 100×50 chart maps with only a slight vertical stretch. The actual line
+ * stops at x = CHART_END with its end dot; from there a dotted projection runs to the card's right
+ * edge (owner, hero-rev2 C).
  */
 export const CHART_W = 100;
 export const CHART_H = 50;
@@ -214,56 +306,6 @@ export function chartGeometry(card: HeroCard): ChartGeometry {
   geometryCache.set(card, g);
   return g;
 }
-
-/* ------------------------------------------------------------------------ */
-/* Static columns (wide screens)                                              */
-/* ------------------------------------------------------------------------ */
-
-/**
- * The lowest tier, shown as extra columns on wide windows (hero-rev2 A): one static column
- * from the 21:20 stage aspect (five cards), a second one from 7:5 (browser windows on 1920 to
- * 2560px screens are short and wide, so four or five columns would leave a long empty run
- * between the prompt box and the lead card). The second column holds four cards, so the
- * silhouette tapers (1, 2, 3, 4, 5, 4) instead of plateauing. These cards never flap and never tick: posters only
- * (no loop), low scores and declining or flat charts. Each poster is a spare from one prompt
- * set (a rank 7–12 card that set does not put on the board), so a static card never repeats
- * a card the board is showing for that set, and no poster appears twice among the nine.
- */
-const STATIC_TIERS: { score: number; trend: Trend; series: number[] }[][] = [
-  [
-    { score: 16, trend: "decline", series: [0.21, 0.46, 0.64, 0.8, 1, 0.9, 0.79, 0.68, 0.6, 0.52, 0.45, 0.38, 0.31, 0.25] },
-    { score: 14, trend: "growth", series: [0.3, 0.36, 0.33, 0.38, 0.35, 0.37, 0.34, 0.38, 0.36, 0.34, 0.37, 0.35, 0.36, 0.36] },
-    { score: 18, trend: "decline", series: [0.19, 0.4, 0.58, 0.74, 0.9, 1, 0.88, 0.77, 0.66, 0.57, 0.5, 0.42, 0.36, 0.31] },
-    { score: 12, trend: "decline", series: [0.26, 0.5, 0.73, 1, 0.92, 0.8, 0.7, 0.6, 0.51, 0.43, 0.36, 0.29, 0.24, 0.2] },
-    { score: 15, trend: "growth", series: [0.42, 0.38, 0.41, 0.37, 0.4, 0.36, 0.39, 0.38, 0.35, 0.38, 0.36, 0.37, 0.35, 0.36] },
-  ],
-  [
-    { score: 15, trend: "decline", series: [0.34, 0.55, 0.78, 0.97, 1, 0.86, 0.74, 0.63, 0.55, 0.47, 0.4, 0.33, 0.28, 0.23] },
-    { score: 13, trend: "growth", series: [0.38, 0.35, 0.39, 0.36, 0.34, 0.38, 0.37, 0.35, 0.39, 0.36, 0.37, 0.35, 0.38, 0.37] },
-    { score: 17, trend: "decline", series: [0.18, 0.37, 0.55, 0.7, 0.86, 1, 0.9, 0.78, 0.69, 0.58, 0.5, 0.44, 0.37, 0.3] },
-    { score: 11, trend: "decline", series: [0.29, 0.52, 0.8, 1, 0.85, 0.73, 0.62, 0.54, 0.46, 0.38, 0.32, 0.27, 0.22, 0.18] },
-  ],
-];
-
-/** The two spare cards (ranks 7–12) that prompt set `k` leaves off its board, lowest rank last. */
-function spareCards(k: number): HeroCard[] {
-  const at = k % PROMPT_SETS.length;
-  const onBoard = new Set(BOARD_CARDS[at]);
-  return [...PROMPT_SETS[at].cards].reverse().filter((c) => !onBoard.has(c));
-}
-
-/**
- * The static columns, nearest the board first. Column one takes each set's lowest spare;
- * column two takes the other spare, from a set two steps along, so neighbouring rows never
- * show posters from the same set.
- */
-export const STATIC_COLUMNS: HeroCard[][] = STATIC_TIERS.map((tiers, col) =>
-  tiers.map((tier, k) => {
-    const spares = spareCards(col === 0 ? k : k + 2);
-    const spare = spares[col] ?? spares[0] ?? PROMPT_SETS[0].cards[PROMPT_SETS[0].cards.length - 1];
-    return { ...spare, rank: 13 + col * tiers.length + k, video: undefined, ...tier };
-  }),
-);
 
 /* ------------------------------------------------------------------------ */
 /* Radar geometry (card back)                                                */

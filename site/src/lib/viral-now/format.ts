@@ -22,6 +22,7 @@ export function formatPercent(value: number | null | undefined, digits = 1): str
 }
 
 const SHORT_DATE = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+const MONTH_YEAR = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
 const LONG_DATE = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 function toDate(input: string | null | undefined): Date | null {
@@ -34,6 +35,15 @@ function toDate(input: string | null | undefined): Date | null {
 export function formatShortDate(input: string | null | undefined): string | null {
   const date = toDate(input);
   return date ? SHORT_DATE.format(date) : null;
+}
+
+/**
+ * A ranking week's Monday ("2026-10-12") becomes "Week 2 of Oct 2026": the week is counted by the Mondays of
+ * its month, so the week of Oct 5 is week 1 and the week of Oct 12 week 2.
+ */
+export function formatWeekOfMonth(input: string | null | undefined): string | null {
+  const date = toDate(input);
+  return date ? `Week ${Math.ceil(date.getUTCDate() / 7)} of ${MONTH_YEAR.format(date)}` : null;
 }
 
 /** ISO string becomes "Oct 12, 2026". */

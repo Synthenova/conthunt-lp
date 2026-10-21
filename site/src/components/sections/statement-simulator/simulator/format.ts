@@ -3,8 +3,8 @@
  *
  * They mirror the app so real data behaves the same once it replaces the skeletons:
  * - `formatCount` follows MediaCard.tsx:740-746 (1.2k, 2.6M, 1.4B).
- * - `engagementRate` follows MediaCard.tsx:654-688: (likes + comments + shares) / views, "—" when
- *   any input is missing.
+ * - `formatTileCount` is the board tiles' harsher round-off (owner, 2026-10-17): at most two digits and
+ *   one letter (19M, 83K, 4.5M, 0.3M, 2.9K), so the tile's metric row always fits.
  * - `applyRubricFilters` implements BoardFilterBar's sort, date and platform options. They act on the
  *   rubric rail only (QuestionResearchCanvas.tsx:310-314); section rails are never filtered.
  */
@@ -28,10 +28,27 @@ export function formatCount(value: number | null | undefined): string {
   return String(Math.round(value));
 }
 
-export function engagementRate(metrics: SimVideoMetrics): string {
-  const { views, likes, comments, shares } = metrics;
-  if (views == null || likes == null || comments == null || shares == null || views <= 0) return "—";
-  return `${(((likes + comments + shares) / views) * 100).toFixed(1)}%`;
+const TILE_UNITS = [
+  [1e3, "K"],
+  [1e6, "M"],
+  [1e9, "B"],
+] as const;
+
+/**
+ * Tile metrics: at most two digits and a letter (owner, 2026-10-17). Under 100 as is (87); then one decimal
+ * below 10 of a unit (0.5K, 4.5K, 0.3M, 4.5M) and whole up to 99 (25K, 19M). A value that would need three
+ * digits in its own unit moves up one: 461 → 0.5K, 254K → 0.3M, 999K → 1M.
+ */
+export function formatTileCount(value: number | null | undefined): string {
+  if (value == null || !Number.isFinite(value)) return "—";
+  if (Math.abs(value) < 99.5) return String(Math.round(value));
+  for (const [size, letter] of TILE_UNITS) {
+    const scaled = value / size;
+    // 9.96K would round to "10.0K": switch to whole numbers there, and to the next unit at 99.5.
+    if (Math.abs(scaled) < 9.95) return `${Math.round(scaled * 10) / 10}${letter}`;
+    if (Math.abs(scaled) < 99.5) return `${Math.round(scaled)}${letter}`;
+  }
+  return `${Math.round(value / 1e9)}B`;
 }
 
 /** Section badge: `${Math.round(score)}%` (QuestionResearchCanvas.tsx:239). */

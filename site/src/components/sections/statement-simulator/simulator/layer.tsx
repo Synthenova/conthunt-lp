@@ -4,9 +4,9 @@
  * Canvas-level overlay for menus and tooltips.
  *
  * The board and transcript are scroll containers, so a dropdown positioned inside them would be
- * clipped. Menus and tooltips render through a portal into one overlay that covers the 1280 x 800
- * canvas. Positions are converted from screen pixels to design pixels with the live scale
- * (canvas rect width / 1280), so they stay aligned at any --sim-scale.
+ * clipped. Menus and tooltips render through a portal into one overlay that covers the canvas
+ * (1280 x 800, larger in Full Control). Positions are converted from screen pixels to design pixels
+ * with the live scale (canvas rect width / layout width), so they stay aligned at any --sim-scale.
  */
 import {
   createContext,
@@ -129,7 +129,8 @@ export function SimMenu({ id, title, items, mode = "radio", onSelect, align = "s
     // Layout height (phones use a shorter canvas than the 800 design height).
     const flip = below + h > (canvas.offsetHeight || CANVAS_H) - 10;
     const top = flip ? Math.max(10, r.top - 6 - h) : below;
-    const left = align === "end" ? Math.max(10, r.right - width) : Math.min(r.left, CANVAS_W - width - 10);
+    // Layout width too: Full Control's canvas is wider than 1280 (./index.tsx `fill`).
+    const left = align === "end" ? Math.max(10, r.right - width) : Math.min(r.left, (canvas.offsetWidth || CANVAS_W) - width - 10);
     menu.style.top = `${top}px`;
     menu.style.left = `${left}px`;
     menu.style.setProperty("--origin", `${flip ? "bottom" : "top"} ${align === "end" ? "right" : "left"}`);

@@ -1,6 +1,7 @@
 # Section brief: `hero` (owner: Opus animation engineer)
 
-> Updated after hero revision 10 (`hero-rev3.md`, section "Rev 10", 2026-10-16: the offer line moved into the subtitle, the
+> Updated after hero revision 12 (`hero-rev3.md`, section "Rev 12", 2026-10-16: the 14px offer line, the subtitle's lead
+> sentence) and hero revision 10 (`hero-rev3.md`, section "Rev 10", 2026-10-16: the offer line moved into the subtitle, the
 > text column retuned to the owner's 1630x915 reference rhythm, a solid-ink Deep Search chip, a wave twice as slow between
 > columns) and hero revision 4 (`hero-rev3.md`, section "Rev 4", 2026-10-16: bigger accent-colored H1, a clean pulse that
 > starts on the prompt box's border and stops at the lead card's edge with no outline, a static Deep Search chip) and
@@ -59,14 +60,19 @@ Data: `src/content/media/hero-prompts.json` (5 prompts × 12 real cards with sco
      - When the user focuses or types, rotation pauses and their text is kept. Submit, or Enter,
        goes to `GET_STARTED_URL` with `?q=<encoded prompt>`. Read `src/lib/links.ts`; if it has no
        query support, append `q` anyway and note it.
-  3. The **subtitle**, one sentence (rev 11; rev 10 had also folded the offer line and "Try it" into it): "Search through
+  3. The **subtitle**, two sentences (rev 12; rev 11 had the count sentence alone, rev 10 had also folded the offer line and "Try it" into it): "Gain your advantage on Social Media. Search through
      `7 platforms` across `104,862 niches` and over `10,384,719 videos` updated daily." (owner figures
      2026-10-16, OWNER_DECISIONS C1). The chips are pill-highlights (surface fill, mono numerals, `tabular-nums`, 1.27em tall so wrapped
      lines keep air) that count up once on load; each stays with the word that introduces it (nowrap), so a wrap never starts on a lone chip.
+     "Social Media." is a nowrap pair (no lone "Media." on phones); the lead sentence otherwise wraps naturally.
      Desktop measure: as wide as the H1 (`--h1-w`), font 16 to 20px by window height; stacked: 36rem max at 18 to 20px.
-     Rev 11 offer line (`#hero-offer`, directly under the prompt box, the box's width, centred): "Your first search is on us, for free. Try it now."
-     in the board hint's face (mono, uppercase, `--ink-soft`) at twice its size; "Try it now." is a real button that focuses the prompt with
-     `preventScroll`. See `hero-rev3.md`, rev 11.
+     Rev 12 offer line (`#hero-offer`, directly under the prompt box, centred on it): "Research videos for your niche. First search is on us, try it now."
+     in the board hint's face (mono, uppercase, `--ink-soft`) at 14px; "try it now" is a real button that focuses the prompt with
+     `preventScroll`. One line, centred on the box and hanging past it equally either side (12px from the viewport edge at most), from 1024px
+     whenever the box is 420px or wider (size 14px from about 1770px wide, easing down to about 12px at 1280): `min(1em, (100cqw + 58px) / 41.6)`;
+     one line at 14px in the stacked layout from about 650px wide; otherwise (1024x768, phones) one sentence per line. Steps below 14px on
+     phones only under 353px wide (12.4px at 320).
+     See `hero-rev3.md`, rev 12.
      - The owner wrote these numbers. Check the platforms count against
        `src/content/site/platforms.ts`. If the legacy list has fewer platforms, keep the owner's
        number but add the mismatch to your report.

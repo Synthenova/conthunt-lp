@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Bilbo_Swash_Caps, JetBrains_Mono } from "next/font/google";
 import { preconnect, preload } from "react-dom";
 import { PostHogLoader } from "@/components/analytics/posthog";
 import { FONT_FILES, SITE_FONT_PRELOADS } from "@/lib/fonts";
@@ -29,6 +29,10 @@ import "./globals.css";
  *   src/lib/fonts.ts). font-display is swap. Add a weight to globals.css before using
  *   it, or the browser synthesises it.
  * - JetBrains Mono via next/font → --font-jetbrains-mono → --font-mono.
+ * - Bilbo Swash Caps (400 only) via next/font → --font-bilbo-swash-caps → --font-swash
+ *   (`font-swash`): the hero's shader-painted "viral" (hero rev 14). Not preloaded: this
+ *   layout wraps every route and only the home hero uses it. The hero fetches it on first use
+ *   (liquid-ramp.tsx waits on document.fonts.load), behind next/font's metric-matched fallback.
  *
  * Icons are file-based (src/app/icon.png 48px, src/app/apple-icon.png 180px), so
  * metadata sets no `icons`. The share image is DEFAULT_OG_IMAGE (src/lib/seo/site.ts).
@@ -38,6 +42,14 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+});
+
+const swash = Bilbo_Swash_Caps({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bilbo-swash-caps",
+  display: "swap",
+  preload: false,
 });
 
 const TITLE = "ContHunt | Analyze Viral Videos";
@@ -84,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   preconnect("https://cdn.fontshare.com", { crossOrigin: "anonymous" });
   for (const face of SITE_FONT_PRELOADS) preload(FONT_FILES[face], { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
-    <html lang="en" className={mono.variable} data-rails={SHOW_RAILS ? undefined : "hidden"} suppressHydrationWarning>
+    <html lang="en" className={`${mono.variable} ${swash.variable}`} data-rails={SHOW_RAILS ? undefined : "hidden"} suppressHydrationWarning>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         <SoundBindings />

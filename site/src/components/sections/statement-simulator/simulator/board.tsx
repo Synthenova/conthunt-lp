@@ -13,6 +13,13 @@
  * title and reason over an empty rail of the same height, and the rubric block waits. The board
  * cannot scroll before that engagement, so nothing visible ever changes when the rails mount.
  *
+ * Posters (SIM-UI.md §3): the first two rails never show a skeleton. Their posters load eagerly
+ * (the tiles visible on landing at high priority; ./index.tsx warms the rest as the frame nears the
+ * viewport). Every later rail, the rubric rail included, shows skeleton tiles until EVERY poster in
+ * it has loaded or failed, then reveals whole with one short crossfade, never tile by tile
+ * (./preload.ts `useRailReveal`, 4s cap). A rubric or filter change that swaps the rubric rail's
+ * videos follows the same rule; posters already loaded reveal at once.
+ *
  * Elements marked `data-anchor="right"` stay put while the sidebar push animation translates the
  * rest of the board (see the collapse logic in ./index.tsx).
  */
@@ -48,15 +55,22 @@ import { cn } from "@/lib/cn";
 import { applyRubricFilters, PLATFORM_LABEL, rubricBadge, sectionBadge } from "./format";
 import { SimMenu, type MenuTriggerProps } from "./layer";
 import { PlatformIcon } from "./platform-icon";
+import { useRailReveal } from "./preload";
 import styles from "./sim.module.css";
 import { SimTile, TILE_H, TILE_W, type SimTileOpen } from "./tile";
 
 const ALL_PLATFORMS: SimPlatform[] = ["tiktok", "instagram", "youtube"];
 const GAP = 12;
-/** Sections whose rails mount on the server: the ones visible at rest. */
-const EAGER_SECTIONS = 2;
+/** Sections whose rails mount on the server: the ones visible at rest. Their posters load eagerly. */
+export const EAGER_SECTIONS = 2;
+/** Tiles of an eager rail visible on landing (4.5 fit the inline board): high fetch priority. */
+export const LANDING_TILES = 5;
+/** The tile zoom (./sim.module.css): 1, or 140/176 on phones, which keep the 140 x 249 card. */
+const TILE_ZOOM = "var(--sim-tile-zoom, 1)";
+/** A tile's height on the canvas, after the phone zoom. */
+const TILE_H_CSS = `calc(${TILE_H}px * ${TILE_ZOOM})`;
 /** A rail's height: 4px top and bottom padding around one row of tiles. */
-const RAIL_H = TILE_H + 8;
+const RAIL_H = `calc(${TILE_H}px * ${TILE_ZOOM} + 8px)`;
 
 /** Same rule as SimTile's skeleton state (./tile.tsx). An "unavailable" tile is resolved content. */
 function isSkeletonTile(skeleton: boolean | undefined, status: string | undefined, card: unknown): boolean {
@@ -75,6 +89,8 @@ interface RailProps {
   describedBy?: string;
   /** Every tile is still a skeleton: draw the rail's one shimmer sweep (sim.module.css). */
   shimmer?: boolean;
+  /** The rail is waiting for its posters (./preload.ts). */
+  busy?: boolean;
 }
 
 const ROVE = "[data-rove]";
@@ -84,7 +100,7 @@ const ROVE = "[data-rove]";
  * Keyboard: the rail is ONE tab stop (roving tabindex over its tiles); Left/Right/Home/End move
  * between tiles and keep the focused tile in view. The arrow buttons are pointer-only.
  */
-function Rail({ label, children, contentKey, describedBy, shimmer }: RailProps) {
+function Rail({ label, children, contentKey, describedBy, shimmer, busy }: RailProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
   const drag = useRef<{ x: number; left: number; moved: boolean; scale: number } | null>(null);
@@ -144,7 +160,11 @@ function Rail({ label, children, contentKey, describedBy, shimmer }: RailProps) 
   const page = (dir: 1 | -1) => {
     const el = ref.current;
     if (!el) return;
-    el.scrollBy({ left: dir * (TILE_W + GAP) * 3, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    // One page = the whole cards in view minus one (3 inline, more on Full Control's wider board).
+    const zoom = Number.parseFloat(getComputedStyle(el).getPropertyValue("--sim-tile-zoom")) || 1;
+    const pitch = TILE_W * zoom + GAP;
+    const step = Math.max(1, Math.floor((el.clientWidth - 20) / pitch) - 1);
+    el.scrollBy({ left: dir * pitch * step, behavior: prefersReducedMotion() ? "auto" : "smooth" });
   };
 
   return (
@@ -154,6 +174,7 @@ function Rail({ label, children, contentKey, describedBy, shimmer }: RailProps) 
         role="list"
         aria-label={label}
         aria-describedby={describedBy}
+        aria-busy={busy || undefined}
         onKeyDown={onKeyDown}
         onFocus={(e) => {
           const t = e.target as HTMLElement;
@@ -462,13 +483,14 @@ export const Board = memo(function Board(props: BoardProps) {
             section={section}
             hintId={hintId}
             lazy={!!props.deferred && i >= EAGER_SECTIONS}
+            eager={i < EAGER_SECTIONS}
             {...props}
           />
         ))
       )}
       {search.rubrics.length === 0 ? null : props.deferred ? (
         // Same top rule and height as the rubric block; its controls mount with the later rails.
-        <div aria-hidden className="mt-1 border-t" style={{ height: RAIL_H + 132 }} />
+        <div aria-hidden className="mt-1 border-t" style={{ height: `calc(${RAIL_H} + 132px)` }} />
       ) : (
         <RubricBlock hintId={hintId} {...props} />
       )}
@@ -483,9 +505,15 @@ function SectionBlock({
   onOpenTile,
   hintId,
   lazy,
-}: BoardProps & { section: SimResearchSection; railKey: string; hintId: string; lazy: boolean }) {
+  eager,
+}: BoardProps & { section: SimResearchSection; railKey: string; hintId: string; lazy: boolean; eager: boolean }) {
   const ids = section.videos.map((v) => v.video);
   const allSelected = ids.length > 0 && selection.count(railKey, ids) === ids.length;
+  // Later rails hold their skeleton until every poster is in (the first two never do).
+  const { ready, revealing } = useRailReveal(
+    section.videos.map((v) => (isSkeletonTile(v.skeleton, v.status, v.card) ? null : v.card?.thumbnail_url)),
+    !eager && !lazy,
+  );
   return (
     <section className="mb-7" aria-label={section.title}>
       <RailHeader
@@ -502,7 +530,8 @@ function SectionBlock({
         <Rail
           label={`${section.title} videos`}
           describedBy={hintId}
-          shimmer={section.videos.length > 0 && section.videos.every((v) => isSkeletonTile(v.skeleton, v.status, v.card))}
+          busy={!ready}
+          shimmer={!ready || (section.videos.length > 0 && section.videos.every((v) => isSkeletonTile(v.skeleton, v.status, v.card)))}
         >
           {section.videos.map((v, i) => (
             <div key={v.video} role="listitem" className="snap-start">
@@ -512,11 +541,16 @@ function SectionBlock({
                 index={i}
                 card={v.card}
                 badge={sectionBadge(v.score)}
-                skeleton={v.skeleton}
+                skeleton={v.skeleton || !ready}
                 status={v.status}
                 selected={selection.isSelected(railKey, v.video)}
                 onToggleSelect={selection.toggle}
                 onOpen={onOpenTile}
+                // Eager rails: the tiles visible on landing load at once and first; ./index.tsx warms
+                // the rest as the frame nears. Later rails mount already loaded (useRailReveal).
+                posterLoading={!eager || i < LANDING_TILES ? "eager" : undefined}
+                posterPriority={eager && i < LANDING_TILES ? "high" : undefined}
+                revealing={revealing}
               />
             </div>
           ))}
@@ -539,6 +573,12 @@ function RubricBlock({ search, filters, flipCaptureRef, rubricNo, onRubric, sele
   const filtered = filters.platforms.length > 0 || filters.date_filter !== "all";
   const ids = visible.map((v) => v.content_item_id);
   const allSelected = ids.length > 0 && selection.count(railKey, ids) === ids.length;
+  // Same rule as the later section rails, per visible set: a rubric or filter change that brings in
+  // new videos waits for all of their posters; a set already loaded reveals at once.
+  const { ready, revealing } = useRailReveal(
+    visible.map((v) => (isSkeletonTile(v.skeleton, v.status, v.card) ? null : v.card?.thumbnail_url)),
+    true,
+  );
 
   // Flip the rubric rail when filters or the rubric change.
   const railRef = useRef<HTMLDivElement>(null);
@@ -554,7 +594,7 @@ function RubricBlock({ search, filters, flipCaptureRef, rubricNo, onRubric, sele
       if (flipCaptureRef.current === capture) flipCaptureRef.current = null;
     };
   }, [flipCaptureRef, capture]);
-  const visibleKey = `${rubric.rubric_no}|${ids.join(",")}`;
+  const visibleKey = `${rubric.rubric_no}|${ids.join(",")}|${ready}`;
   useLayoutEffect(() => {
     const state = flipState.current;
     flipState.current = null;
@@ -624,7 +664,11 @@ function RubricBlock({ search, filters, flipCaptureRef, rubricNo, onRubric, sele
           label={`${rubric.parameter} videos`}
           contentKey={visibleKey}
           describedBy={hintId}
-          shimmer={source.length === 0 || (visible.length > 0 && visible.every((v) => isSkeletonTile(v.skeleton, v.status, v.card)))}
+          busy={!ready}
+          shimmer={
+            source.length === 0 ||
+            (visible.length > 0 && (!ready || visible.every((v) => isSkeletonTile(v.skeleton, v.status, v.card))))
+          }
         >
           {source.length === 0
             ? Array.from({ length: 6 }, (_, i) => (
@@ -637,24 +681,34 @@ function RubricBlock({ search, filters, flipCaptureRef, rubricNo, onRubric, sele
                   <p
                     key="empty"
                     className="grid shrink-0 place-items-center rounded-[14px] border border-dashed text-[13.5px] text-muted"
-                    style={{ width: TILE_W * 2 + GAP, height: TILE_H }}
+                    style={{ width: `calc(${TILE_W * 2}px * ${TILE_ZOOM} + ${GAP}px)`, height: TILE_H_CSS }}
                   >
                     No videos match these filters.
                   </p>,
                 ]
               : visible.map((v, i) => (
-                  <div key={v.content_item_id} role="listitem" data-flip data-flip-id={v.content_item_id} className="snap-start">
+                  // While a new set loads its tiles are skeletons outside the Flip, so nothing moves
+                  // until the whole rail crossfades in.
+                  <div
+                    key={v.content_item_id}
+                    role="listitem"
+                    data-flip={ready || undefined}
+                    data-flip-id={ready ? v.content_item_id : undefined}
+                    className="snap-start"
+                  >
                     <SimTile
                       railKey={railKey}
                       id={v.content_item_id}
                       index={i}
                       card={v.card}
                       badge={rubricBadge(v)}
-                      skeleton={v.skeleton}
+                      skeleton={v.skeleton || !ready}
                       status={v.status}
                       selected={selection.isSelected(railKey, v.content_item_id)}
                       onToggleSelect={selection.toggle}
                       onOpen={onOpenTile}
+                      posterLoading="eager"
+                      revealing={revealing}
                     />
                   </div>
                 ))}

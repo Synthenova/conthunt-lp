@@ -4,12 +4,12 @@
  * The page renders one of three sources: the bundled seed snapshot (a single ranking taken on
  * one day, scored on engagement), live public boards (refreshed daily by the pipeline and
  * scored on analysis plus reach), or the trending feed. Time words are only used for the
- * sources they are true for: "refreshed daily" and "updated 23:50 UTC" are live-only, and the
- * snapshot always says which week it covers and when it was taken.
+ * sources they are true for: "refreshed daily" is live-only. The status line names the ranking week
+ * only ("Week 2 of Oct 2026"; owner, 2026-10-19: the boards are run weekly, keep it clean).
  *
  * Pure functions, UTC dates only, so the server render and the client hydration agree.
  */
-import { formatShortDate, formatUtcStamp } from "./format";
+import { formatShortDate, formatUtcStamp, formatWeekOfMonth } from "./format";
 import { BOARD_SIZE } from "./ranking";
 import type { ViralNowSource } from "./types";
 
@@ -35,23 +35,13 @@ export function boardKind(sources: ViralNowSource[]): BoardKind {
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 
-/** The mono line above the headline. */
+/** The mono line above the headline: the ranking week, "Week 2 of Oct 2026" (the trending feed has none). */
 export function statusText(board: BoardState): string {
-  const week = formatShortDate(board.weekOf);
-  const weekPart = week ? `Week of ${week}` : null;
   switch (board.kind) {
-    case "seed": {
-      const taken = formatShortDate(board.at);
-      return [weekPart, taken ? `snapshot from ${taken}` : "snapshot"].filter(Boolean).join(" · ");
-    }
-    case "live": {
-      const stamp = formatUtcStamp(board.at);
-      return [weekPart, stamp ? `updated ${stamp}` : null].filter(Boolean).join(" · ");
-    }
+    case "seed":
+    case "live":
     case "mixed":
-      return [weekPart, `${board.liveNiches} of ${plural(board.niches, "niche", "niches")} live, the rest from a snapshot`]
-        .filter(Boolean)
-        .join(" · ");
+      return formatWeekOfMonth(board.weekOf) ?? "";
     case "trending": {
       const stamp = formatUtcStamp(board.at);
       return ["Trending feed", stamp ? `updated ${stamp}` : null].filter(Boolean).join(" · ");

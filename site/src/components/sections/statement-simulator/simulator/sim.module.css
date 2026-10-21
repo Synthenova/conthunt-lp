@@ -8,6 +8,11 @@
  * Legibility floor: the scale never drops below 0.6 (0.8 on phones). When the frame is narrower
  * than that, the scaled canvas overflows the host and the host pans horizontally instead of
  * shrinking the type to a 5px miniature.
+ *
+ * Full Control (`.fill`, ./full-view.tsx) fills a sized box instead: the scale is
+ * min(--sim-fill-max, width / 1280, height / 800) and the canvas is the box divided by it, so it
+ * is at least 1280 x 800 and has the box's aspect. The layout (absolute sidebar, flex board, chat
+ * panel) flows into the extra design space: more card columns, a wider and taller transcript.
  */
 
 /* Layered under Tailwind utilities so utility classes on the same element always win. */
@@ -57,7 +62,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1280px;
+    width: var(--sim-w, 1280px);
     height: var(--sim-h);
     transform: scale(var(--sim-scale));
     transform-origin: 0 0;
@@ -75,6 +80,27 @@
     --sim-scale: var(--sim-scale-js, 0.675);
   }
 
+  /*
+   * Full Control: the host fills its parent's height too (a size container, so 100cqh is its
+   * height). --sim-fill-max caps the scale at the design's own size (1:1): on a large screen Full
+   * Control gets more design space, not a zoom, so the sidebar, chat and text never balloon and the
+   * cards (a fixed TILE_W x TILE_H) never grow past their inline size; the board shows more of
+   * them. The chat panel takes a quarter of the canvas width past 1440, from 352 up to 520px.
+   */
+  .fill {
+    --sim-fill-max: 1;
+    height: 100%;
+    container-type: size;
+    overflow: hidden;
+  }
+
+  .fill .scaler {
+    --sim-scale: min(var(--sim-fill-max), tan(atan2(100cqw, 1280px)), tan(atan2(100cqh, 800px)));
+    --sim-w: calc(100cqw / var(--sim-scale));
+    --sim-h: calc(100cqh / var(--sim-scale));
+    --sim-chat-w: clamp(352px, calc(352px + (var(--sim-w) - 1440px) * 0.25), 520px);
+  }
+
   /* Narrow frames (tablet letterbox): hold the 0.6 floor and pan. */
   @container (max-width: 767.98px) {
     .scaler,
@@ -85,7 +111,10 @@
   }
 
   /* Phones: a 0.8 scale for legible type, a shorter canvas, and a chat panel exactly one frame
-     wide so the "Agent" stop shows the whole panel flush with the frame (no board fragments). */
+     wide so the "Agent" stop shows the whole panel flush with the frame (no board fragments).
+     Cards keep their 140 x 249 phone size (about 2.4 per Board stop, a second rail peeking in):
+     --sim-tile-zoom (140/176, a plain number so ./board.tsx can read it) zooms each 176 x 313
+     tile, and the rail placeholders follow it. */
   @media (max-width: 767px) {
     .host {
       border-radius: 18px;
@@ -96,6 +125,7 @@
       --sim-h: 680px;
       --sim-scale: 0.8;
       --sim-chat-w: clamp(352px, calc(100cqw / 0.8 - 8px), 600px);
+      --sim-tile-zoom: 0.7954545;
       width: calc(1280px * 0.8);
     }
   }
@@ -137,8 +167,9 @@
 
   /* ------------------------------------------------------------ full control */
   /* A native modal <dialog> (top layer, so the pinned stage's transforms never clip it). The body
-     uses the same `--sim-full-w` as the landed inline frame (globals.css): the dialog has no side
-     padding, so `100%` is the viewport width in both places. */
+     (the 44px row, its 12px gap and the simulator) is 90% of the viewport each way, centred, on
+     every desktop size; the simulator fills the rest of it (`fill`, see `.fill` above). The landed
+     inline frame keeps `--sim-full-w` (globals.css). */
 
   .fullControl {
     position: fixed;
@@ -148,7 +179,7 @@
     height: 100%;
     max-height: none;
     margin: 0;
-    padding: 20px 0 24px;
+    padding: 0;
     border: 0;
     background: transparent;
     color: var(--ink);
@@ -165,7 +196,10 @@
   }
 
   .fullControlBody {
-    width: var(--sim-full-w);
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 90vh;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -297,6 +331,52 @@
   /* Spinner for the "Preparing research selections…" line: it turns only with the sweep (above). */
   .spin {
     display: block;
+  }
+
+  /* A sent step's bubble (./chat.tsx exchanges): a short slide and fade from the composer side. */
+  @media (prefers-reduced-motion: no-preference) {
+    .sendIn {
+      animation: sim-send-in 240ms cubic-bezier(0.2, 0.715, 0.205, 0.99) both;
+      transform-origin: right bottom;
+    }
+  }
+
+  /* The agent's working line: the app's working shimmer on the label text (ToolChips `Shimmer`),
+     never a skeleton block. Static muted text off screen and under reduced motion. */
+  .working {
+    display: inline-block;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .host[data-sim-play="running"] .working {
+      background-image: linear-gradient(90deg, var(--muted) 35%, var(--ink) 50%, var(--muted) 65%);
+      background-size: 200% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: sim-text-shimmer 1.8s linear infinite;
+    }
+  }
+}
+
+@keyframes sim-send-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sim-text-shimmer {
+  from {
+    background-position: 150% center;
+  }
+  to {
+    background-position: -50% center;
   }
 }
 

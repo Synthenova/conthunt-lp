@@ -2,7 +2,7 @@
 import { OG_CONTENT_TYPE, OG_SIZE } from "@/lib/seo/og-assets";
 import { renderOgCard } from "@/lib/seo/og-card";
 
-export const alt = "ContHunt Pricing: Creator, Pro and Research plans, each with a 1-week free trial";
+export const alt = "ContHunt Pricing: Pro, Creator and Research plans, each with a 1-week free trial";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

@@ -104,11 +104,13 @@ function DialSliderImpl({
 
   return (
     <div>
-      <div className="flex items-baseline justify-between gap-4">
+      {/* flex-wrap: a long readout ("25 items · 750 hunt credits") drops under the label on a phone instead of
+          squeezing the label into a column of one word per line. */}
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
         <label htmlFor={id} className="text-[14px] font-medium text-ink">
           {label}
         </label>
-        <output htmlFor={id} className="shrink-0 whitespace-nowrap font-mono text-[13px] tabular-nums text-ink">
+        <output htmlFor={id} className="ml-auto shrink-0 whitespace-nowrap font-mono text-[13px] tabular-nums text-ink">
           {readout}
         </output>
       </div>
@@ -259,7 +261,11 @@ export interface NumberFieldProps {
   hint?: string;
 }
 
-/** Number input that lets the field be cleared while typing, and clamps on blur. */
+/**
+ * Number input that lets the field be cleared while typing, and clamps on blur. From `sm` it is a subgrid of
+ * three rows (label, input, hint), for a parent grid that gives it `grid-rows-[auto_auto_auto]` (the
+ * assumptions panel), so side-by-side fields keep their inputs level; a one-line label sits on its input.
+ */
 export function NumberField({ label, unit, value, onChange, min, max, step = 1, hint }: NumberFieldProps) {
   const id = useId();
   const [text, setText] = useState<string | null>(null);
@@ -271,8 +277,8 @@ export function NumberField({ label, unit, value, onChange, min, max, step = 1, 
   };
 
   return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-[13px] font-medium text-ink">
+    <div className="flex flex-col gap-1.5 sm:row-span-3 sm:grid sm:grid-rows-subgrid">
+      <label htmlFor={id} className="text-[13px] font-medium text-ink sm:self-end">
         {label}
       </label>
       <div className="flex h-11 items-center rounded-btn border border-hairline bg-paper px-3 transition-colors duration-200 focus-within:border-ink hover:border-ink/40">

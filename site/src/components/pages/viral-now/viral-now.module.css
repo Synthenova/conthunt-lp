@@ -31,17 +31,25 @@
   /* Least space kept left of the first numeral. */
   --vn-min-pad: 12px;
   --vn-pad-y: 24px;
-  --vn-stick: 64px;
+  /* The site header scrolls away, so the niche row sticks to the top edge. */
+  --vn-stick: 0px;
   --vn-stroke: rgba(15, 15, 15, 0.4);
+  /* Where the side-scrollers start, as a share of the side gutter (1 = the letterbox edge). Phones keep 1. */
+  --vn-lead-row: 1;
+  --vn-lead-chips: 1;
 }
 
 @media (min-width: 768px) {
   .explorer {
     --vn-gutter: 10vw;
-    --vn-stick: 72px;
-    /* The side gutter is narrow here: a slimmer first-rank gutter lets the first card meet the letterbox edge. */
+    /* The side gutter is narrow here: a slimmer first-rank gutter, and the first numeral kept 20px off the edge. */
     --vn-g1: calc(var(--vn-num) * 0.46);
-    --vn-min-pad: 8px;
+    --vn-min-pad: 20px;
+    /* The rows and the niche chips start inside the gutter, left of the text column (owner, 2026-10-19): a row's
+       first card at 56% of the gutter, its numeral hanging left of it; the chips at 40%. At a 1539px window that
+       is the first card at about 172px and the All chip at about 123px, where the owner placed them. */
+    --vn-lead-row: 0.56;
+    --vn-lead-chips: 0.4;
   }
 }
 
@@ -58,6 +66,8 @@
 .hs {
   position: relative;
   --hs-pad: calc((100% - var(--letterbox)) / 2);
+  /* The track's start and end padding: the gutter times the scroller's lead (rows and chips set --vn-lead). */
+  --hs-lead: calc(var(--hs-pad) * var(--vn-lead, 1));
   --vn-fade-w: clamp(28px, calc(var(--vn-gutter) - 6px), 150px);
 }
 
@@ -70,10 +80,10 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-block: var(--vn-pad-y);
-  padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-pad) - var(--vn-start-offset, 0px)));
-  padding-inline-end: var(--hs-pad);
-  scroll-padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-pad) - var(--vn-start-offset, 0px)));
-  scroll-padding-inline-end: var(--hs-pad);
+  padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-lead) - var(--vn-start-offset, 0px)));
+  padding-inline-end: var(--hs-lead);
+  scroll-padding-inline-start: max(var(--vn-min-pad), calc(var(--hs-lead) - var(--vn-start-offset, 0px)));
+  scroll-padding-inline-end: var(--hs-lead);
   scroll-snap-type: x proximity;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
@@ -253,7 +263,7 @@
   border-bottom-color: var(--hairline);
 }
 
-/* The navbar slides away on scroll down; the bar then sticks to the top edge (the slide is animated in JS). */
+/* Kept for a navbar that slides away. On this page the site bar stays fixed, so this does not apply. */
 .selectorBar[data-nav-hidden="true"] {
   top: 0;
 }
@@ -262,6 +272,7 @@
   --vn-pad-y: 11px;
   --vn-gap: 8px;
   --vn-start-offset: 0px;
+  --vn-lead: var(--vn-lead-chips);
 }
 
 /* The selector's arrows are always on while there is more to see: 21 pills never fit one screen. */
@@ -423,6 +434,7 @@
 
 .rowHs {
   --vn-start-offset: var(--vn-g1);
+  --vn-lead: var(--vn-lead-row);
 }
 
 .item {
@@ -791,7 +803,13 @@
 
 /* ------------------------------------------------------------------ niche grid */
 
-/* The niche grid is the letterbox width up to 1279px, then breaks out to 1320px so six columns stay card-sized. */
+/* The niche grid is the letterbox width up to 1279px, then breaks out to 1320px so six columns stay card-sized.
+   The metrics and filter line uses the same width. */
+.toolbar {
+  width: var(--letterbox);
+  margin-inline: auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -821,6 +839,7 @@
 }
 
 @media (min-width: 1280px) {
+  .toolbar,
   .grid {
     width: min(calc(100% - 40px), 1320px);
   }
@@ -835,34 +854,6 @@
 .gridItem[data-active="true"] {
   z-index: 6;
   transition-delay: 0s;
-}
-
-.splitBar {
-  display: flex;
-  flex: none;
-  gap: 2px;
-  width: 96px;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 3px;
-  background: var(--surface);
-}
-
-.splitBar > span {
-  display: block;
-  height: 100%;
-  background: var(--ink);
-  transform-origin: left center;
-}
-
-.splitBar > span:nth-child(2) {
-  background: var(--ink-2);
-  opacity: 0.6;
-}
-
-.splitBar > span:nth-child(3) {
-  background: var(--ink-2);
-  opacity: 0.3;
 }
 
 /* --------------------------------------------------------------------- explainer */

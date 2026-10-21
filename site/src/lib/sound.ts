@@ -11,7 +11,7 @@
  *                                                               via hero/flap-sound.ts)
  *
  * Cues are synthesized live by cuelume (Web Audio, no files). The preference is
- * shared by the hero toggle and the navbar toggle and saved in localStorage.
+ * set by the navbar toggle (the hero board follows it) and saved in localStorage.
  * Browsers keep audio locked until the first click or key press, so nothing
  * plays on a cold page load.
  */

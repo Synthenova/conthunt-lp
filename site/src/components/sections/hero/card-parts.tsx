@@ -56,6 +56,30 @@ export function ChartDefs() {
   );
 }
 
+/**
+ * The trend tag's icon (hero-rev14, Phosphor): star-fill for breakout, caret-double-up-bold for
+ * growth, caret-double-down-bold for decline. All three paths ship and the face's data-trend shows
+ * one (hero.module.css .trendIcon), so the engine's repaint needs no markup change.
+ */
+function TrendIcon() {
+  return (
+    <svg className={s.trendIcon} viewBox="0 0 256 256" aria-hidden="true" focusable="false">
+      <path
+        className={s.iconBreakout}
+        d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"
+      />
+      <path
+        className={s.iconGrowth}
+        d="M216.49,191.51a12,12,0,0,1-17,17L128,137,56.49,208.49a12,12,0,0,1-17-17l80-80a12,12,0,0,1,17,0Zm-160-63L128,57l71.51,71.52a12,12,0,0,0,17-17l-80-80a12,12,0,0,0-17,0l-80,80a12,12,0,0,0,17,17Z"
+      />
+      <path
+        className={s.iconDecline}
+        d="M216.49,127.51a12,12,0,0,1,0,17l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,1,1,17-17L128,199l71.51-71.52A12,12,0,0,1,216.49,127.51Zm-97,17a12,12,0,0,0,17,0l80-80a12,12,0,0,0-17-17L128,119,56.49,47.51a12,12,0,0,0-17,17Z"
+      />
+    </svg>
+  );
+}
+
 export interface FaceProps {
   card: HeroCard;
   glyphs: GlyphMap;
@@ -64,16 +88,18 @@ export interface FaceProps {
   /** Responsive poster (srcset/sizes, data.ts HERO_POSTER_SIZES). Board slots; not the static columns. */
   responsive?: boolean;
   /**
-   * The poster is never fetched below 1024px, where its column is hidden (`display: none` does
-   * not stop an eager image): a <picture> source swaps in an empty image there.
+   * The media query under which the card's column is hidden (data.ts COLUMN_HIDDEN_MEDIA): a
+   * <picture> source swaps in an empty image there (`display: none` does not stop an eager image).
+   * A viewport query only approximates the hero's column count (scrollbar width, the column-5
+   * height band), so the board also makes those posters lazy (`eager` false), which is exact.
    */
-  wideOnly?: boolean;
+  hiddenMedia?: string;
   /** Rendered above the poster (the loop video on ranks 1–3). */
   media?: ReactNode;
   className?: string;
 }
 
-export function Face({ card, glyphs, chart = true, eager = false, responsive = false, wideOnly = false, media, className }: FaceProps) {
+export function Face({ card, glyphs, chart = true, eager = false, responsive = false, hiddenMedia, media, className }: FaceProps) {
   const g = chartGeometry(card);
   // Plain <img>: the engine swaps `src` (and `srcset`) every wave (pre-decoded WebP, 360×640 ≤ 30 KB).
   const img = (
@@ -92,9 +118,9 @@ export function Face({ card, glyphs, chart = true, eager = false, responsive = f
   );
   return (
     <div className={cn(s.face, className)} data-face="" data-trend={card.trend} data-chart={chart ? "on" : "off"}>
-      {wideOnly ? (
+      {hiddenMedia ? (
         <picture className="contents">
-          <source media="(max-width: 1023.98px)" srcSet={BLANK_IMAGE} />
+          <source media={hiddenMedia} srcSet={BLANK_IMAGE} />
           {img}
         </picture>
       ) : (
@@ -112,13 +138,6 @@ export function Face({ card, glyphs, chart = true, eager = false, responsive = f
       <span className={s.score}>
         <span data-f="score">{card.score}</span>%
       </span>
-      {/* The card's growth label (hero-rev5): a quiet chip in the bottom corner, in the trend's ink.
-          It lives in the face, so a split-flap landing carries it with the poster and the chart; the
-          engine repaints the text and data-trend repaints the colours (paintFace). */}
-      <span className={s.trendTag}>
-        <span className={s.trendDot} />
-        <span data-f="trendText">{TREND_LABEL[card.trend]}</span>
-      </span>
       <div className={s.chartBox}>
         <svg viewBox={`0 0 ${CHART_W} ${CHART_H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <path data-f="area" d={g.area} fill={`url(#${gradId(card.trend)})`} />
@@ -131,6 +150,14 @@ export function Face({ card, glyphs, chart = true, eager = false, responsive = f
         </svg>
         <span data-f="dot" className={s.dot} style={{ left: `${g.endX}%`, top: `${g.endY}%` }} />
       </div>
+      {/* The card's growth label (hero-rev5; hero-rev14: a tinted chip with a trend icon, drawn above
+          the chart, so it comes after it). It lives in the face, so a split-flap landing carries it
+          with the poster and the chart; the engine repaints the text, and data-trend picks the icon
+          and the colours (paintFace). */}
+      <span className={s.trendTag}>
+        <TrendIcon />
+        <span data-f="trendText">{TREND_LABEL[card.trend]}</span>
+      </span>
     </div>
   );
 }

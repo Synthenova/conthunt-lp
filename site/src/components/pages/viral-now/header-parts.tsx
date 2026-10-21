@@ -12,7 +12,7 @@ import { PlatformGlyph } from "./parts";
 import { useViralNow } from "./provider";
 import styles from "./viral-now.module.css";
 
-/** "Week of Oct 12 · snapshot from Oct 14" for the bundled snapshot, "... · updated Oct 14, 23:50 UTC" for live boards. */
+/** The ranking week, "Week 2 of Oct 2026" (rendered in caps); the trending feed says when it was updated. */
 export function StatusLine() {
   const { board } = useViralNow();
   const text = statusText(board);

@@ -18,8 +18,8 @@
  * Muting (any gate closing) cancels every pending landing timer.
  */
 import { play, unlock as unlockCuelume } from "cuelume";
-import { useCallback, useEffect, useState } from "react";
-import { setSoundOn, useSound } from "@/lib/sound";
+import { useEffect } from "react";
+import { useSound } from "@/lib/sound";
 
 /** Per-play volume, relative (cuelume's global UI volume applies on top). */
 const LANDING_VOLUME = 0.5;
@@ -110,21 +110,18 @@ export class FlapSynth {
 /* ------------------------------------------------------------- preference */
 
 /**
- * The board's sound: the site-wide preference + an "is the hero active" gate.
+ * The board's sound: the site-wide preference + an "is the hero active" gate. The navbar owns the
+ * toggle (the hero's own Sound button went in hero-rev14); this only follows the preference.
  * `on` is false during SSR and the first client render, then the saved value.
  */
-export function useFlapSound(synth: FlapSynth) {
+export function useFlapSound(synth: FlapSynth): void {
   const { on } = useSound();
-  const [, force] = useState(0);
 
   useEffect(() => {
     synth.setEnabled(on);
     if (!on) return;
     // Audio can only start after a user gesture.
-    const unlock = () => {
-      synth.unlock();
-      force((n) => n + 1);
-    };
+    const unlock = () => synth.unlock();
     window.addEventListener("pointerdown", unlock, { once: true, capture: true });
     window.addEventListener("keydown", unlock, { once: true, capture: true });
     return () => {
@@ -156,20 +153,4 @@ export function useFlapSound(synth: FlapSynth) {
       synth.setActive(false);
     };
   }, [synth]);
-
-  const toggle = useCallback(() => {
-    const next = !on;
-    if (next) {
-      synth.unlock();
-      synth.setEnabled(true);
-    } else {
-      synth.setEnabled(false);
-    }
-    // setSoundOn enables cuelume first, so the confirmation below can sound.
-    setSoundOn(next);
-    // Audible confirmation: one landing, from the same gesture.
-    if (next) void synth.whenReady().then(() => synth.clack(1));
-  }, [on, synth]);
-
-  return { on, toggle };
 }

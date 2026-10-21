@@ -15,6 +15,8 @@
  * page hides it; scrolling UP 14px brings it back. It always shows near the
  * top, while the mobile menu is open, while it holds keyboard focus, and when
  * the pointer touches the top 64px of the window.
+ * On /viral-now neither happens. The header sits in the page and scrolls away
+ * with it. The niche row is the sticky bar, so it takes the top edge.
  * Below 768px it is a compact bar with a menu button that opens a sheet.
  *
  * Rendered by src/app/(site)/layout.tsx. It is `position: fixed`, so the first
@@ -48,11 +50,21 @@ const SHOW_AFTER = 14;
 /** Pointer within this many px of the top edge reveals the bar. */
 const PEEK_ZONE = 64;
 
-function useNavScroll(pinnedOpen: boolean, headerRef: React.RefObject<HTMLElement | null>) {
+function useNavScroll(
+  pinnedOpen: boolean,
+  headerRef: React.RefObject<HTMLElement | null>,
+  /** Viral Now keeps the large bar fixed; the sticky niche row sits under it. */
+  lockExpanded: boolean,
+) {
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    if (lockExpanded) {
+      setCompact(false);
+      setHidden(false);
+      return;
+    }
     let frame = 0;
     let lastY = window.scrollY;
     let run = 0; // distance traveled in the current direction (+down, -up)
@@ -108,9 +120,12 @@ function useNavScroll(pinnedOpen: boolean, headerRef: React.RefObject<HTMLElemen
       header?.removeEventListener("focusin", onFocus);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [pinnedOpen, headerRef]);
+  }, [pinnedOpen, headerRef, lockExpanded]);
 
-  return { compact, hidden: hidden && !pinnedOpen };
+  return {
+    compact: lockExpanded ? false : compact,
+    hidden: lockExpanded ? false : hidden && !pinnedOpen,
+  };
 }
 
 /**
@@ -139,8 +154,12 @@ export function Navbar() {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { compact, hidden } = useNavScroll(menuOpen, headerRef);
-  const solid = compact || menuOpen;
+  // The niche row is the sticky bar on this page. The site header stays in the
+  // document and scrolls off; the mobile sheet still needs it pinned while open.
+  const lockExpanded = isActivePath(pathname, ROUTES.viralNow);
+  const inlineHeader = lockExpanded && !menuOpen;
+  const { compact, hidden } = useNavScroll(menuOpen, headerRef, lockExpanded);
+  const solid = menuOpen || (!lockExpanded && compact);
 
   return (
     <header
@@ -149,7 +168,8 @@ export function Navbar() {
       data-compact={solid ? "true" : "false"}
       data-hidden={hidden ? "true" : "false"}
       className={cn(
-        "group/nav pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center",
+        "group/nav pointer-events-none z-50 flex justify-center",
+        inlineHeader ? "relative" : "fixed inset-x-0 top-0",
         "transition-transform duration-[450ms] ease-out will-change-transform motion-reduce:transition-none",
         // Clear the pill's drop shadow too (it reaches ~24px below the pill), so no gray strip lingers at the top edge.
         "data-[hidden=true]:-translate-y-[calc(100%+40px)]",

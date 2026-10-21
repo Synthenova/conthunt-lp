@@ -8,8 +8,8 @@
  *   lands on a snap point) and use the hover arrows.
  * - Alpha edge blur: a mask-image fade on both ends plus a thin `backdrop-filter: blur(6px)`
  *   strip under each fade. The fades switch off at the start and end of the track.
- * - The first item lines up with the letterbox left edge (`--hs-pad`), and the track
- *   bleeds to the viewport edges.
+ * - The first item starts at the side gutter times the scroller's lead (`--hs-lead`: the rows at 56%, the
+ *   niche chips at 40%, from 768px; the letterbox edge on phones), and the track bleeds to the viewport edges.
  *
  * Children are the scroller's items. Mark each snap target with `data-snap`.
  *

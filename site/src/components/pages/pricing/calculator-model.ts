@@ -3,16 +3,18 @@
  * checked in isolation (type-stripped under node: plans.ts and this file have no browser imports).
  *
  * Where each number comes from:
- * - Plan allowances: `sections/pricing/plans.ts` (app `plan_wallets.py`; Research is extrapolated, see C4).
- * - Recommendation: the smallest of the three plans (Creator, Pro, Research) whose limits hold the usage
- *   with headroom left. Over Research, it stays on Research and reports the share it covers.
+ * - Plan allowances: `sections/pricing/plans.ts` (pricing rev 3: hunt credits and AI credits per plan).
+ * - Recommendation: the smallest plan, in `PLANS` order (cheapest first), whose limits hold the usage
+ *   with headroom left. When none does, it stays on the largest plan and reports the share it covers.
  * - AI credits per run: the app's own planning estimate, 4 x (videos + ceil(videos / 10)),
  *   from `frontend/src/lib/researchBudget.ts`. It already includes a 10% video buffer.
- * - Search units: every keyword search runs on three platforms and the app meters each platform
- *   as one unit (`searchCreditEstimate: searches * 3`).
+ * - Hunt credits: one pool that searches and tracking both spend. Every keyword search runs on three
+ *   platforms and costs one hunt credit per platform (`searchCreditEstimate: searches * 3`); tracking
+ *   costs the credits below. `Usage` keeps both parts (`searchUnits`, `trackingCredits`) as the
+ *   breakdown and adds them up as `huntCredits`.
  * - Keyword searches per Deep Search: modeled as one per `videosPerKeywordSearch` videos
  *   (default 50, so a 500-video Deep Search is 10 searches). An editable assumption, not an app rule.
- * - Tracking credits: the app's tracking estimator charges one credit for the first refresh and one
+ * - Tracking: the app's tracking estimator charges one credit for the first refresh and one
  *   per day for the 30-day window, per tracked account or video (`tracking/schedule.py`).
  * - Time saved: videos x minutes per video / 60 - runs x run minutes / 60. Minutes per video,
  *   run minutes and hourly rate are editable assumptions with the defaults from the brief.
@@ -36,7 +38,7 @@ export const TRACKED_STEP = 5;
 export const TRACKING_CREDITS_PER_ITEM = 30;
 /** Hours of watching in one working day, for the calendar picture. */
 export const WORKDAY_HOURS = 8;
-/** Share of a plan's AI credits we keep free for follow-up chat, boards and re-runs. */
+/** Share of a plan's credits we keep free for follow-up chat and re-runs. */
 export const HEADROOM = 0.15;
 /** Agents ask follow-ups on their own, so we keep more room when MCP / agents is selected. */
 export const HEADROOM_AGENTS = 0.3;
@@ -132,24 +134,31 @@ export function blendUseCases(selected: readonly UseCaseId[], fallback: CalcInpu
 export interface Usage {
   videos: number;
   keywordSearches: number;
+  /** Hunt credits the searches spend: one per platform per keyword search. */
   searchUnits: number;
-  aiCredits: number;
+  /** Hunt credits tracking spends (0 when tracking is off). */
   trackingCredits: number;
+  /** The hunt-credit pool both draw on: `searchUnits + trackingCredits`. */
+  huntCredits: number;
+  aiCredits: number;
 }
 
 export function computeUsage(inputs: CalcInputs, assumptions: Assumptions): Usage {
   const perRunSearches = Math.ceil(inputs.videosPerSearch / Math.max(1, assumptions.videosPerKeywordSearch));
   const keywordSearches = inputs.deepSearches * perRunSearches;
+  const searchUnits = keywordSearches * PLATFORM_UNITS_PER_KEYWORD_SEARCH;
+  const trackingCredits = inputs.tracking ? inputs.trackedItems * TRACKING_CREDITS_PER_ITEM : 0;
   return {
     videos: inputs.deepSearches * inputs.videosPerSearch,
     keywordSearches,
-    searchUnits: keywordSearches * PLATFORM_UNITS_PER_KEYWORD_SEARCH,
+    searchUnits,
+    trackingCredits,
+    huntCredits: searchUnits + trackingCredits,
     aiCredits: inputs.deepSearches * estimateAiCredits(inputs.videosPerSearch),
-    trackingCredits: inputs.tracking ? inputs.trackedItems * TRACKING_CREDITS_PER_ITEM : 0,
   };
 }
 
-export type FitKey = "searches" | "aiCredits" | "trackingCredits";
+export type FitKey = "huntCredits" | "aiCredits";
 
 export interface Fit {
   ratios: Record<FitKey, number>;
@@ -161,9 +170,8 @@ export interface Fit {
 export function computeFit(plan: Plan, usage: Usage): Fit {
   const a = plan.allowance;
   const ratios: Record<FitKey, number> = {
-    searches: usage.searchUnits / a.searches,
+    huntCredits: usage.huntCredits / a.huntCredits,
     aiCredits: usage.aiCredits / a.aiCredits,
-    trackingCredits: usage.trackingCredits === 0 ? 0 : usage.trackingCredits / a.trackingCredits,
   };
   const entries = Object.entries(ratios) as [FitKey, number][];
   const [binding, max] = entries.reduce((best, cur) => (cur[1] > best[1] ? cur : best));
@@ -171,9 +179,8 @@ export function computeFit(plan: Plan, usage: Usage): Fit {
 }
 
 export const FIT_LABEL: Record<FitKey, string> = {
-  searches: "searches",
+  huntCredits: "hunt credits",
   aiCredits: "AI credits",
-  trackingCredits: "tracking credits",
 };
 
 // ------------------------------------------------------------- recommendation
@@ -186,14 +193,17 @@ export interface PlanFit {
 export interface Recommendation {
   plan: Plan;
   fit: Fit;
-  /** The next smaller plan (null when Creator is recommended), for the "why" line. */
+  /** The next cheaper plan in `PLANS` order (null when the entry plan is recommended), for the "why" line. */
   below: PlanFit | null;
-  /** The next larger plan (null when Research is recommended), for the "why" line. */
+  /** The next dearer plan in `PLANS` order (null when the largest plan is recommended), for the "why" line. */
   above: PlanFit | null;
   headroom: number;
-  /** The smaller plan was skipped only because it leaves less than the headroom. */
+  /** The cheaper plan was skipped only because it leaves less than the headroom. */
   belowTight: boolean;
-  /** Even the largest plan (Research) cannot hold the usage. */
+  /**
+   * Even the largest plan cannot hold the usage with headroom left. `coverage` tells the two cases apart:
+   * below 1 the usage exceeds the plan; at 1 it fits, with less than the headroom to spare.
+   */
   overMax: boolean;
   /** Share of the usage the recommended plan can cover (1 when it fits). */
   coverage: number;

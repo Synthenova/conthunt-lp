@@ -48,12 +48,14 @@ export interface SidebarProps {
   recents: SimRecentChat[];
   activeId: string;
   onPickChat: (id: string) => void;
+  /** Hover or focus on a Recents row (its run starts loading, ./runs.ts). */
+  onIntent?: (id: string) => void;
   /** Visual collapsed state (labels hidden, rail tooltips on). */
   collapsed: boolean;
   onToggle: () => void;
 }
 
-export function Sidebar({ sidebar, recents, activeId, onPickChat, collapsed, onToggle }: SidebarProps) {
+export function Sidebar({ sidebar, recents, activeId, onPickChat, onIntent, collapsed, onToggle }: SidebarProps) {
   const [hoverNav, setHoverNav] = useState<number | null>(null);
   const [recentsTab, setRecentsTab] = useState(sidebar.recents_tab);
   const navTip = useTooltip("right", collapsed);
@@ -250,6 +252,8 @@ export function Sidebar({ sidebar, recents, activeId, onPickChat, collapsed, onT
                               type="button"
                               aria-current={active ? "true" : undefined}
                               onClick={() => onPickChat(chat.id)}
+                              onPointerEnter={() => onIntent?.(chat.id)}
+                              onFocus={() => onIntent?.(chat.id)}
                               className={cn(
                                 "flex h-8 w-full items-center gap-2 rounded-[8px] pl-2 pr-12 text-left text-[14px] outline-none transition-colors duration-150",
                                 "focus-visible:shadow-[inset_0_0_0_2px_var(--accent)]",

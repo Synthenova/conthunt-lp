@@ -3,27 +3,42 @@
  * long utility strings, and a skeleton tile is CSS only: no icon components, no bar elements.
  *
  * Skeleton anatomy (the app's MediaCard, drawn on the tile itself): the tile is a fixed
- * 140 x 249 box (TILE_W x TILE_H), so every part has a fixed position inside a 10px inset.
- *   - ::before   the light bars (two caption lines and four metric values), one SVG mask
- *   - ::after    the darker creator bar
- *   - .skIcons   the four metric glyphs and the platform glyph in --faint, as mask layers
- * Glyphs are lucide's play / heart / share-2 / trending-up / check (stroke 2.25, check 3) and the
+ * 176 x 313 box (TILE_W x TILE_H), so every part has a set position inside a 12px inset, measured
+ * from the real card (./tile.tsx) so the rail's reveal crossfade lands each bar on its text:
+ * creator line centred at y 218, caption lines at 244 and 264.7, metric row (14px glyphs) at 292.
+ * The caption always takes two lines (min-height 2lh), so one-line captions match too.
+ * Phones zoom the whole tile by --sim-tile-zoom (140/176, ./sim.module.css) to keep the 140 x 249
+ * card, so the skeleton and the card scale together and stay matched.
+ *   - .skLayer::before   the light bars (two caption lines and three metric values), pill mask layers
+ *   - .skLayer::after    the darker creator bar
+ *   - .skIcons           the three metric glyphs and the platform glyph in --faint, as mask layers
+ * Glyphs are lucide's play / heart / share-2 / check (stroke 2.25, check 3) and the
  * simulator's platform marks (./platform-icon.tsx), embedded once here as mask images.
+ *
+ * Type size (owner, 2026-10-19: the overlay text read too large): the text block, the skeleton layer and the
+ * score badge are drawn at the anatomy above and zoomed together by --t-s, anchored bottom left. The text
+ * block and the skeleton layer both span the tile, so the row is wider in design px when --t-s is below 1;
+ * the skeleton's metric groups follow it from the centre and the right edge, so it still lands on the text. --t-s is 0.7 on desktop frames (creator about 13px, caption 12px,
+ * metrics 10px at the usual 1.125 frame scale, near the app's own card), eases up on smaller frames so the
+ * metrics never render below about 8.5px, and is 1 on tablets and phones, whose frames already render small.
  */
 
 @layer components {
   .tile {
+    /* Overlay zoom: 0.7, or more where the frame renders the tile small (k = frame scale x tile zoom; 13px
+       metrics x 0.654 / k is 8.5px rendered), never above 1. */
+    --t-s: clamp(0.7, 0.654 / (var(--sim-scale, 1) * var(--sim-tile-zoom, 1)), 1);
     position: relative;
     flex-shrink: 0;
-    width: 140px;
-    height: 249px;
-    border-radius: 14px;
+    width: 176px;
+    height: 313px;
+    border-radius: 18px;
+    zoom: var(--sim-tile-zoom, 1);
     transition: translate 200ms var(--ease-out);
     /* Glyph masks, shared by the skeleton layer and the real-card metric row. */
     --g-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z'/%3E%3C/svg%3E");
     --g-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/svg%3E");
     --g-share: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cpath d='M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98'/%3E%3C/svg%3E");
-    --g-trend: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7h6v6'/%3E%3Cpath d='m22 7-8.5 8.5-5-5L2 17'/%3E%3C/svg%3E");
     --g-tiktok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.6 2.2c.4 2.4 1.9 4.1 4.4 4.3v3.3c-1.6.1-3-.4-4.4-1.2v6.2c0 4-3.3 6.9-7.1 6.4-2.8-.4-5-2.7-5.2-5.6-.3-3.8 3-6.9 6.8-6.4v3.5c-.4-.1-.8-.2-1.2-.1-1.6.1-2.7 1.5-2.5 3.1.2 1.3 1.3 2.3 2.6 2.3 1.5 0 2.7-1.2 2.7-2.7V2.2h3.9Z'/%3E%3C/svg%3E");
     --g-instagram: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2'%3E%3Crect x='3' y='3' width='18' height='18' rx='5.2'/%3E%3Ccircle cx='12' cy='12' r='4.1'/%3E%3Ccircle cx='17.4' cy='6.6' r='1.15' fill='%23000' stroke='none'/%3E%3C/svg%3E");
     --g-youtube: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M22.6 7.2a2.8 2.8 0 0 0-2-2C18.9 4.7 12 4.7 12 4.7s-6.9 0-8.6.5a2.8 2.8 0 0 0-2 2C1 8.9 1 12 1 12s0 3.1.4 4.8a2.8 2.8 0 0 0 2 2c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.8 2.8 0 0 0 2-2c.4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8ZM9.8 15.2V8.8l5.6 3.2-5.6 3.2Z'/%3E%3C/svg%3E");
@@ -31,12 +46,12 @@
 
   @media (hover: hover) {
     .tile:hover {
-      translate: 0 -3px;
+      translate: 0 -4px;
     }
   }
 
   .tile:has(:focus-visible) {
-    translate: 0 -3px;
+    translate: 0 -4px;
   }
 
   /* The open button: the whole tile face. */
@@ -44,7 +59,7 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 18px;
     text-align: left;
     outline: none;
     background-color: var(--surface-2);
@@ -71,31 +86,57 @@
     background-image: linear-gradient(to bottom, transparent 45%, rgb(15 15 15 / 0.045));
   }
 
-  .sk::before,
-  .sk::after {
+  /* The real card's text block (./tile.tsx), zoomed by --t-s from the bottom left. */
+  .info {
+    zoom: var(--t-s);
+  }
+
+  /* The skeleton's own box, zoomed by --t-s from the bottom left like the text block and, like it, as wide as
+     the tile (176 / --t-s design px inside the zoom), so every bar keeps its place on the text. Heights and the
+     left-anchored parts use the 176 x 313 anatomy; the metric groups sit left, centre and right, as the real
+     row's justify-between puts them, and the caption bars are shares of the row. At --t-s 1 every position
+     resolves to the anatomy's own (glyphs at x 12 / 62 / 112, values at 29 / 79 / 129). */
+  .skLayer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 313px;
+    zoom: var(--t-s);
+    pointer-events: none;
+    /* A pill of any size (no viewBox, so its 4.5px radius never stretches; a 6px bar clamps it to 3). */
+    --g-pill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' rx='4.5'/%3E%3C/svg%3E");
+  }
+
+  .skLayer::before,
+  .skLayer::after {
     content: "";
     position: absolute;
     pointer-events: none;
   }
 
-  .sk::before {
+  .skLayer::before {
     inset: 0;
     background: var(--surface-2);
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='249'%3E%3Crect x='10' y='198' width='110.4' height='7' rx='3.5'/%3E%3Crect x='10' y='212' width='79.2' height='7' rx='3.5'/%3E%3Crect x='24' y='231' width='13' height='5' rx='2.5'/%3E%3Crect x='55' y='231' width='13' height='5' rx='2.5'/%3E%3Crect x='86' y='231' width='13' height='5' rx='2.5'/%3E%3Crect x='117' y='231' width='13' height='5' rx='2.5'/%3E%3C/svg%3E") 0 0 / 140px 249px no-repeat;
+    /* Caption bars (92% and 66% of the content row, 9px on the 15px lines) and three metric values (26px)
+       3px after each glyph: left, centre and right. */
+    mask:
+      var(--g-pill) 12px 239.5px / calc((100% - 24px) * 0.92) 9px no-repeat,
+      var(--g-pill) 12px 260.2px / calc((100% - 24px) * 0.66) 9px no-repeat,
+      var(--g-pill) 29px 289px / 26px 6px no-repeat,
+      var(--g-pill) calc(50% + 4px) 289px / 26px 6px no-repeat,
+      var(--g-pill) right 21px top 289px / 26px 6px no-repeat;
   }
 
-  /* Creator bar: 54% of the 120px content row, centred on the 11px platform glyph when there is one. */
-  .sk::after {
-    left: 10px;
-    top: 182px;
-    width: 64.8px;
-    height: 9px;
-    border-radius: 4px;
+  /* Creator bar: 54% of the 152px content row, on the creator line's centre (y 218; the 14px
+     platform glyph shares that centre, so the bar does not move when there is one). */
+  .skLayer::after {
+    left: 12px;
+    top: 212.6px;
+    width: 82px;
+    height: 11px;
+    border-radius: 5px;
     background: color-mix(in oklab, var(--surface-2) 70%, var(--ink) 6%);
-  }
-
-  .sk[data-p]::after {
-    top: 181px;
   }
 
   .skIcons {
@@ -103,27 +144,28 @@
     inset: 0;
     pointer-events: none;
     background: var(--faint);
-    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-trend);
-    mask-position: 10px 228px, 41px 228px, 72px 228px, 103px 228px;
-    mask-size: 11px 11px;
+    mask-image: var(--g-play), var(--g-heart), var(--g-share);
+    /* The real row spreads three metrics across the content row (justify-between): left, centre, right. */
+    mask-position: 12px 285px, calc(50% - 19px) 285px, right 50px top 285px;
+    mask-size: 14px 14px;
     mask-repeat: no-repeat;
   }
 
-  /* Platform glyph: 6px right of the creator bar (10 + 64.8 + 6). */
+  /* Platform glyph: 7px right of the creator bar (12 + 82 + 7). */
   .sk[data-p] .skIcons {
-    mask-position: 10px 228px, 41px 228px, 72px 228px, 103px 228px, 80.8px 180px;
+    mask-position: 12px 285px, calc(50% - 19px) 285px, right 50px top 285px, 101px 211px;
   }
 
   .sk[data-p="tiktok"] .skIcons {
-    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-trend), var(--g-tiktok);
+    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-tiktok);
   }
 
   .sk[data-p="instagram"] .skIcons {
-    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-trend), var(--g-instagram);
+    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-instagram);
   }
 
   .sk[data-p="youtube"] .skIcons {
-    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-trend), var(--g-youtube);
+    mask-image: var(--g-play), var(--g-heart), var(--g-share), var(--g-youtube);
   }
 
   /* ------------------------------------------------- real-card metric glyphs */
@@ -131,10 +173,10 @@
   .glyph {
     display: block;
     flex-shrink: 0;
-    width: 11px;
-    height: 11px;
+    width: 14px;
+    height: 14px;
     background: currentColor;
-    mask: var(--glyph) center / 11px 11px no-repeat;
+    mask: var(--glyph) center / 14px 14px no-repeat;
   }
 
   .glyph[data-i="views"] {
@@ -149,26 +191,24 @@
     --glyph: var(--g-share);
   }
 
-  .glyph[data-i="er"] {
-    --glyph: var(--g-trend);
-  }
-
   /* ------------------------------------------------------- badge and select */
 
   .badge {
     position: absolute;
-    right: 8px;
-    top: 8px;
+    /* The zoom scales the inset too; divided back out, the badge keeps the checkbox's 10px corner inset. */
+    right: calc(10px / var(--t-s));
+    top: calc(10px / var(--t-s));
     z-index: 2;
+    zoom: var(--t-s);
     display: grid;
     place-items: center;
-    height: 22px;
-    min-width: 38px;
-    padding: 0 6px;
-    border-radius: 6px;
+    height: 28px;
+    min-width: 48px;
+    padding: 0 8px;
+    border-radius: 8px;
     background: color-mix(in oklab, var(--ink) 72%, transparent);
     font-family: var(--font-mono);
-    font-size: 12.5px;
+    font-size: 15.5px;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
     line-height: 1;
@@ -178,14 +218,14 @@
 
   .check {
     position: absolute;
-    left: 8px;
-    top: 8px;
+    left: 10px;
+    top: 10px;
     z-index: 2;
     display: grid;
     place-items: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 6px;
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
     outline: none;
     color: transparent;
     background: color-mix(in oklab, var(--paper) 85%, transparent);
@@ -198,10 +238,10 @@
 
   .check::after {
     content: "";
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     background: currentColor;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 15px 15px no-repeat;
   }
 
   @media (hover: hover) {
@@ -230,8 +270,49 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    border-radius: 14px;
+    border-radius: 18px;
     box-shadow: inset 0 0 0 2px var(--accent);
     pointer-events: none;
+  }
+
+  /* ------------------------------------------------------ hover clip, reveal */
+
+  /* The hover clip sits over the poster and fades in once it fires `playing` (./tile.tsx). */
+  .clip {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+
+  .clip[data-clip="live"] {
+    opacity: 1;
+  }
+
+  /* A later rail completes: a skeleton face over each card fades out together, one crossfade for
+     the whole rail (./preload.ts useRailReveal). Under reduced motion the rail swaps at once. */
+  .skOut {
+    pointer-events: none;
+    box-shadow: none;
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .skOut {
+      display: block;
+      animation: tile-sk-out 250ms ease-out both;
+    }
+  }
+}
+
+@keyframes tile-sk-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

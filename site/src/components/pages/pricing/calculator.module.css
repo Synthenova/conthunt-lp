@@ -4,32 +4,15 @@
 
 /* ------------------------------------------------------------------ tray */
 
-/* The tray tracks the rails, so its edges never land a few pixels off them:
+/* The tray is as wide as the plan card row above it (`--wide` in globals.css), so the page has one wide column:
      < 1024px     exactly the letterbox (the rails)
-     1024-1279px  the viewport less 20px a side (the rails sit close to the edge here, so it reads as full width)
-     1280-2047px  the letterbox plus a steady 160px overhang on each side
-     2048px up    exactly the letterbox again (it is already 1229px or wider) */
+     1024-1279px  the viewport less 20px a side
+     1280px up    80% of the viewport up to 1600px (a 2000px window), held at 1600px until the letterbox
+                  plus 96px a side overtakes it (about 2347px), then the letterbox plus 96px a side
+   Below 1024px the stacked plan cards stay at most 480px wide and centred inside that column. */
 .tray {
-  width: var(--letterbox);
+  width: var(--wide);
   margin-inline: auto;
-}
-
-@media (min-width: 1024px) {
-  .tray {
-    width: calc(100% - 40px);
-  }
-}
-
-@media (min-width: 1280px) {
-  .tray {
-    width: calc(var(--letterbox) + 320px);
-  }
-}
-
-@media (min-width: 2048px) {
-  .tray {
-    width: var(--letterbox);
-  }
 }
 
 /* ---------------------------------------------------------- result column */

@@ -1,248 +1,208 @@
 /*
  * Hero mechanics: triangular board geometry, split-flap layers, 3D hover flip,
- * prompt roll. Layout/type for the text column lives in Tailwind classes.
+ * prompt roll, and the text column's sizes (in --tu, from the owner's 1080p frame; hero-rev14).
  * Tokens come from globals.css (var(--ink), var(--breakout), ...).
  */
 
 /* ----------------------------------------------------------------- frame */
 
+/*
+ * The hero row model (hero-rev14, docs/revamp/sections/hero-rev3.md "Rev 14"). The owner's 1920×1080
+ * Pencil frame is the reference; every desktop dimension is a multiple of one unit, --u (16px there):
+ *
+ *   L | text column T | M | board B(N) | R          (L = R; L + T + M + B + R = the hero's width)
+ *
+ * T and the cards never stretch: only the three gaps do, together, by one factor k:
+ * L = R = k · 7.125u, M = k · 12.0125u (1080p: k = 1, L 114, T 541, M 192.2, B4 958.8, R 114).
+ * The board holds N whole columns (no cut column): 5 only where k(5) ≥ 1, else the most of 4, 3, 2
+ * that keep k ≥ 0.5. N is a container query on .root, whose font-size is --u so that `em` in the
+ * query is u (a query cannot read a custom property). Card sizes: lead 16u, column 2 14.2u, the
+ * rest 12.8u, 3:5; column gap 1.375u, card gap 1u. Below 1024px the stacked layout ignores all this.
+ *
+ * Registered (typed) so they compute where they are declared: an unregistered calc() holding cqw
+ * would resolve against whatever container is nearest to the element that USES it (a card slot,
+ * the offer line), not the hero.
+ */
+@property --u {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+@property --tu {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+@property --hero-l {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+@property --hero-m {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+/* The width source for --u: the hero's real content width (100vw would count the scrollbar). */
 .hero {
   background: var(--bg);
+  container: hero / inline-size;
 }
 
 .root {
+  /*
+   * --u: the hero unit (16px at 1920×1080). Width-bound: the hero is 120u wide, 0.75rem floor (a
+   * 1440px window), 1.15rem cap (2K). Height guard (short windows only), --u-fit: the text block,
+   * H1 top to CTA bottom, must fit between the navbar and the whole strip (--strip-full) with
+   * 1.5rem + 1rem of air. The block is 46.5u (the frame's 744px); below u ≈ 12.4px the prompt's
+   * 14px and the offer's 10.5px floors stop scaling, so there it is 42.39375u + 3.0722rem (Chromium
+   * draws the frame's block at 46.3u; the floors add 3.0722rem − 3.90625u). The guard may take u
+   * under the 0.75rem width floor, down to 0.6rem (1366×650 fits at 9.62px), only where the block
+   * does not fit at 0.75rem; everywhere else the result is the plain clamp(0.75rem, min(width,
+   * guard), 1.15rem). --u-fit holds no cqw, so it is safe to inherit unregistered.
+   */
+  --u-fit: min(
+    (100svh - var(--nav-h) - var(--strip-full) - 2.5rem) / 46.5,
+    (100svh - var(--nav-h) - var(--strip-full) - 2.5rem - 3.0722rem) / 42.39375
+  );
+  --u: max(0.6rem, min(clamp(0.75rem, 100cqw / 120, 1.15rem), var(--u-fit)));
+  /* T: the text column's width (= the prompt box), and g: the gap between board columns. */
+  --hero-t: calc(33.8125 * var(--u));
+  --hero-g: calc(1.375 * var(--u));
+  /* `em` in the column-count queries below is u. Children reset to the page size (1rem). */
+  font-size: var(--u);
+  container: hero-row / inline-size;
   --gap-y: clamp(1.25rem, 3.3svh, 2rem);
+  /* The strip's row (the strip itself, the stage's bottom edge, engine.ts), and the whole strip:
+     the row plus its 1px top hairline, which the fit maths count. */
   --strip-h: 64px;
-  /* Left edge of the hero's content from 1024px (set below). The hero is the one full-bleed
-     section, so its text starts at the navbar logo's left edge (navbar lg:px-10 + its 1px
-     border), not at the 20% letterbox. Below 1024px the text keeps the letterbox edge. */
-  --hero-gutter: 20px;
-  /* Space between the prompt box and the board: the connector beam's run. */
-  --conn-gap: 56px;
-  --text-w: clamp(400px, 38vw, 470px);
-  /* Vertical rhythm of the text column (hero-rev11). H1 to prompt box about 60px (ink gap, measured on
-     the owner's 1630x915 reference), the offer line right under the box, the subtitle 40px below
-     the offer line, the CTA row 80px below the subtitle, and the H1's first line about 135px from
-     the top. The 40px and 80px are the owner's values at that window (--gap-y 32px). Box-to-box
-     values: the H1's line masks and the paragraphs' half-leading add a few px of their own. Every
-     one scales with --gap-y, so short windows tighten together instead of colliding. */
+  --strip-full: calc(var(--strip-h) + 1px);
+  /* Vertical rhythm of the stacked text column (< 1024px, hero-rev11): H1 → prompt box, box → offer,
+     offer → subtitle, subtitle → CTA row, all scaled with --gap-y. From 1024px the column uses the
+     frame's box-to-box rhythm in u instead (hero-rev14, "type" below). */
   --h1-gap: calc(var(--gap-y) * 1.8);
   --offer-gap: calc(var(--gap-y) * 0.55);
   --sub-gap: calc(var(--gap-y) * 1.25);
   --cta-gap: calc(var(--gap-y) * 2.5);
-  --h1-air: calc(var(--gap-y) * 1.15);
   /* Soft ink for small labels: ≈ 5.3:1 on --bg (the site-wide text-ink/62). */
   --ink-soft: color-mix(in oklab, var(--ink) 62%, transparent);
+  /* The subtitle's grey (the frame's #737373): 4.54:1 on --bg #fafafa, just AA at 15–20px. Do not
+     lighten it. */
+  --sub-ink: #737373;
   --r: 14px;
 }
 
-@media (min-width: 1280px) {
-  .root {
-    /* A narrower text column buys the beam a real run (≈ 95px at 1440, 120px
-       at 1920) without shrinking the cards: the H1 scales with the column. */
-    --conn-gap: clamp(72px, 6.6vw, 120px);
-    --text-w: clamp(440px, 30.5vw, 680px);
+/*
+ * The row's elastic pieces, on .root's children (.root is the query container, so the N-dependent
+ * values cannot sit on .root itself; every descendant inherits them from here):
+ *   --hero-b  the board's width B(N): the N card widths and N − 1 gaps (N, 2 to 5, lives only in
+ *             the queries below)
+ *   --hero-l  L, the text column's left edge (= R, the board's right margin, which follows: the
+ *             board is placed from the left)
+ *   --hero-m  M, prompt box right edge → lead card left edge (the connector's run)
+ * k itself is not a CSS value (a length cannot be divided by a length yet): k = L / 7.125u.
+ * G0 = L0 + M0 + R0 = 26.2625u, so L = (W − T − B) · 7.125 / 26.2625 and M = … · 12.0125 / 26.2625.
+ */
+.root > * {
+  font-size: 1rem;
+  --hero-b: calc(31.575 * var(--u));
+  --hero-l: calc((100cqw - var(--hero-t) - var(--hero-b)) * 7.125 / 26.2625);
+  --hero-m: calc((100cqw - var(--hero-t) - var(--hero-b)) * 12.0125 / 26.2625);
+}
+
+/* N ≥ 3 when k(3) ≥ 0.5, N ≥ 4 when k(4) ≥ 0.5, N = 5 when k(5) ≥ 1. Thresholds in u (= em here):
+   C(N) + G0 · kmin, C(N) = T + B(N). Keep them in step with data.ts (ROW_N3/ROW_N4/ROW_N5). */
+@container hero-row (min-width: 92.69375em) {
+  .root > * {
+    --hero-b: calc(45.75 * var(--u));
+  }
+}
+@container hero-row (min-width: 106.86875em) {
+  .root > * {
+    --hero-b: calc(59.925 * var(--u));
+  }
+}
+@container hero-row (min-width: 134.175em) {
+  .root > * {
+    --hero-b: calc(74.1 * var(--u));
   }
 }
 
 /* --------------------------------------------------------------- type */
 
+/*
+ * The text column (hero-rev14, docs/revamp/sections/hero-rev3.md "Rev 14 — text column"): the owner's
+ * Pencil frame dFkvz at 1920×1080, every size in --tu (= --u from 1024px, 16px there; 1rem in the
+ * stacked layout). Column origin (114, 151) at 1080p. Left edges: H1 and prompt box 0, offer text
+ * 13px, subtitle 2px, CTA 0.
+ *
+ * H1: Switzer 500, 90px (5.625u), letter-spacing −3.67px, three fixed lines. Lines 1 and 2 are
+ * 96.47px boxes (1.0719em) with the text centred in them (half-leading, as the frame's rows centre
+ * a 0.92 text box); line 3 is the bare 0.92 text box, so the line tops are 0 / 96.5 / 193 and the
+ * heading is 276px tall. Stacked layout: the same lines at the old width-bound size (the widest line,
+ * "analyze viral", is 5.63em; a sixth of the column keeps it inside, capped at 88px on tablets).
+ */
 .h1 {
   font-family: var(--font-sans);
   font-weight: 500;
-  /*
-   * Stacked layout (< 1024px): as wide as the column allows. The widest line, "social videos",
-   * is about 5.66em, so a sixth of the column (the 6.2 divisor) keeps all three lines inside it
-   * with a little air; capped at 88px on tablets. 390px wide: 56px (was 44).
-   */
   font-size: min(calc(min(100vw - 40px, 640px) / 6.2), 5.5rem);
   line-height: 0.92;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
+  letter-spacing: -0.0408em;
   margin-bottom: var(--h1-gap);
 }
 
-/*
- * Desktop (hero-rev4). The prompt box is centred on the hero's centre line (hero-rev3 A), so the
- * H1 takes the top half, between the navbar and the box (the offer line that used to share it
- * moved under the prompt box in rev 11). Two limits, and the H1 takes the smaller:
- *   --h1-room  the height left in that half after the navbar, the air under it and the gap to the
- *              box, shared by the three lines (lh 0.92 each, so 2.76em, plus a hair for the line
- *              masks). Short laptops are bound by this one.
- *   --h1-w     the measure. The H1 may run wider than the prompt box: past the box's right edge
- *              and across the connector's run, up to a clearance short of the lead card's left
- *              edge. The lead card never sits left of the stage's left edge, and nothing else
- *              sits in that band (column 1 holds the lead card, and its hint), so the
- *              heading cannot touch the board. The widest line is about 5.66em; the divisor is
- *              6.36 (5.75 until rev 11, when the owner took the H1 to 100px at 1630x915: the whole
- *              formula scaled by 100/110.62, the cap included, 9.5rem → 8.6rem).
- * Taller and wider screens are bound by --h1-w (1630x915: 100px, 1920x1080: 73 → 99px, 2560x1440:
- * 87 → 121px, rev 11); --h1-room, left as it was, only binds on short windows now.
- * The box half-height is an estimate (two prompt lines and the mode row, about 124px); the
- * centring itself is structural (.textInner), so a wrong estimate costs air, never alignment.
- */
+.h1 > .lineMask:not(:last-child) {
+  line-height: 1.0719;
+}
+
 @media (min-width: 1024px) {
-  .root {
-    --box-half: 62px;
-    /* The centre line's height from the hero top (see .textInner). */
-    --line-y: 50svh;
-    --h1-clear: 1.75rem;
-    --h1-w: calc(var(--text-w) + var(--conn-gap) - var(--h1-clear));
-    --h1-room: calc(
-      (var(--line-y) - var(--nav-h) - var(--h1-air) - var(--box-half) - var(--h1-gap) - 2px) / 2.8
-    );
-  }
   .h1 {
-    width: var(--h1-w);
+    font-size: calc(5.625 * var(--tu));
     white-space: nowrap;
-    font-size: max(2rem, min(var(--h1-room), calc(var(--h1-w) / 6.36), 8.6rem));
+    /* H1 box bottom → prompt box top: 51.56px at 1080p (frame: H1 y −0.3, box y 327). */
+    margin-bottom: calc(3.2225 * var(--tu));
   }
-}
-
-/* The offer line (hero-rev11): the first block under the prompt box, the box's own width and centred on
-   it (the box is the grid's middle row, .textInner, so this stays below it and the box stays on the
-   centre line). The board hint's face (.hint: mono, uppercase, tracking, --ink-soft, 5.3:1) at twice
-   its size: the hint's own clamp doubled from 1024px, 21px below. .offer is the size container, so
-   the break can be asked in the line's own em. Where the sentence fits the box (23.4em at 0.03em
-   tracking, 23.8em at 0.04em, 37 mono characters) "Try it now." drops to its own line: the break
-   falls at the sentence. Where it does not, the whole text wraps balanced, "Try it now." never split. */
-.offer {
-  margin-top: var(--offer-gap);
-  container-type: inline-size;
-  font-family: var(--font-mono);
-  font-size: 21px;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--ink-soft);
-}
-
-@media (min-width: 1024px) {
-  .offer {
-    font-size: calc(2 * clamp(9px, calc(0.5vw + 3.5px), 10.5px));
-    letter-spacing: 0.03em;
-  }
-}
-
-.offerText {
-  margin: 0;
-  text-wrap: balance;
-  overflow-wrap: break-word;
-}
-
-/* The sentence's halves stay whole ("for free." and "on us," always; "Your first search is on us,"
-   where the box is wider than it, 17.6em), so a wrapped line breaks at the comma, not mid-clause.
-   Below 17.6em (phones) "Try it now." always takes its own line, so a narrow phone has three lines: "YOUR FIRST SEARCH IS" / "ON US, FOR FREE." / "TRY IT NOW.". */
-.offerB {
-  white-space: nowrap;
-}
-
-.offerBreak {
-  display: block;
-}
-
-@container (min-width: 17.6em) {
-  .offerA {
-    white-space: nowrap;
-  }
-  .offerBreak {
-    display: inline;
-  }
-}
-
-@container (min-width: 23.8em) {
-  .offerBreak {
-    display: block;
-  }
-}
-
-@media (min-width: 1024px) {
-  @container (min-width: 23.4em) {
-    .offerBreak {
-      display: block;
-    }
-  }
-}
-
-/* "Try it now." is text in the offer's own face and colour (no pill), never split. Hover only
-   underlines; the focus ring is the site's ink outline. */
-.offerCta {
-  display: inline-block;
-  padding: 0.1em 0.25em;
-  margin: -0.1em -0.25em;
-  border-radius: 6px;
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  white-space: nowrap;
-  cursor: pointer;
-  text-decoration: underline transparent;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-color 0.2s var(--ease-out);
-}
-
-.offerCta:hover {
-  text-decoration-color: currentColor;
-}
-
-.offerCta:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
 }
 
 /*
- * "viral" (owner, colour pass): a slowly drifting gradient through five hues of the system, pink,
- * orange, a deepened gold, purple and blue, looping back to pink. The tile is 7em wide (about three
- * times the word) and the position drifts by exactly one tile, so the loop is seamless. Stops stay
- * mid-to-dark for legibility. Padding with an equal negative margin keeps the italic's overhang
- * inside the painted box; static under reduced motion, held by the pause control.
+ * "viral" (hero-rev14): Bilbo Swash Caps 153px (1.7em of the H1), letter-spacing −1.15px, line-height
+ * 0.92, painted by the liquid-ramp shader (liquid-ramp.tsx, VIRAL). Its 141px box is centred on line
+ * 2's 96.47px box, as in the frame: `vertical-align: top` with equal negative block margins, so the
+ * margin box is exactly the line and the line box does not grow: (0.92 − 96.47 / 153) / 2 = 0.1447em.
+ * 16.8px after "analyze": the word space (14px: Switzer's is 0.196em, less the H1's tracking) plus
+ * margin-left, set from the frame's ink (4px; Pencil's text boxes run a little wider than Chromium's).
  */
 .viral {
-  --v-gold: color-mix(in oklab, var(--yellow-deep) 70%, var(--yellow-ink));
-  padding-inline: 0.12em;
-  margin-inline: -0.12em;
-  color: var(--pink);
-  background-image: linear-gradient(
-    90deg,
-    var(--pink) 0,
-    var(--orange) 20%,
-    var(--v-gold) 40%,
-    var(--purple) 60%,
-    var(--blue) 80%,
-    var(--pink) 100%
-  );
-  background-size: 7em 100%;
-  background-repeat: repeat-x;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  animation: ch-hero-viral 9s linear infinite;
-  animation-play-state: var(--hero-loop, running);
+  font-family: var(--font-swash);
+  font-weight: 400;
+  font-size: 1.7em;
+  line-height: 0.92;
+  letter-spacing: -0.00754em;
+  vertical-align: top;
+  margin-block: -0.1447em;
+  margin-left: 0.0261em;
 }
 
-@keyframes ch-hero-viral {
-  to {
-    background-position-x: 7em;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .viral {
-    animation: none;
-  }
-}
-
+/* Each line rises out of its own mask on load. */
 .lineMask {
   display: block;
   overflow: clip;
   overflow-clip-margin: 0.1em;
   padding-bottom: 0.06em;
   margin-bottom: -0.06em;
+}
+
+/* Line 2: "viral" overhangs its line by 22px above and below (plus the swashes), so its mask clips
+   only the bottom edge, where the line rises from; the rise starts half an em lower so that the
+   word's overhang is hidden at the start too. */
+.lineMaskViral {
+  overflow: visible;
+  clip-path: polygon(-1em -1em, calc(100% + 1em) -1em, calc(100% + 1em) calc(100% + 0.1em), -1em calc(100% + 0.1em));
+}
+
+.lineMaskViral > .lineInner {
+  --rise: calc(104% + 0.5em);
 }
 
 .lineInner {
@@ -255,7 +215,7 @@
 
 @keyframes ch-hero-line {
   from {
-    transform: translate3d(0, 104%, 0);
+    transform: translate3d(0, var(--rise, 104%), 0);
   }
 }
 
@@ -299,9 +259,68 @@
   }
 }
 
-/* The subtitle (hero-rev11): the neutral count sentence alone, 40px under the offer line. Roomy leading
-   (the chips are 1.27em tall, so wrapped lines keep clear air between them); the measure is the
-   column's, widened on desktop to the H1's, which still stops short of the lead card (--h1-w). */
+/*
+ * The offer line (hero-rev14): "FIRST SEARCH IS FREE, TRY IT NOW." 9px under the prompt box, starting
+ * 13px in, where the box's rounded corner meets its straight bottom edge (owner). JetBrains Mono 13px
+ * (0.8125u, never under 10.5px), tracking 0.42px, --ink-soft (5.3:1). One line from 1024px (about
+ * 21em, 271px at 1080p, half the column); in the stacked layout's narrowest columns it may wrap,
+ * never inside "try it now".
+ */
+.offer {
+  margin-top: var(--offer-gap);
+  padding-left: calc(0.8125 * var(--tu));
+  font-family: var(--font-mono);
+  font-size: max(0.65625rem, 0.8125 * var(--tu));
+  line-height: 1.4;
+  letter-spacing: 0.0323em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 1024px) {
+  .offer {
+    margin-top: calc(0.5625 * var(--tu));
+    white-space: nowrap;
+  }
+}
+
+/* "try it now" is text in the offer's own face and colour (no pill), never split. Hover only
+   underlines; the focus ring is the site's ink outline. */
+.offerCta {
+  display: inline-block;
+  padding: 0.1em 0.25em;
+  margin: -0.1em -0.25em;
+  border-radius: 6px;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: underline transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s var(--ease-out);
+}
+
+.offerCta:hover {
+  text-decoration-color: currentColor;
+}
+
+.offerCta:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/*
+ * The subtitle (hero-rev14): Switzer 20px (1.25u), line-height 1.62 (32.4px lines), tracking −0.1px,
+ * --sub-ink (#737373, 4.54:1 on --bg), 2px in from the column edge, 56px under the offer. Exactly three lines
+ * from 1024px: two no-wrap segments, "Claim your superpower. Search through [7 platforms]" and
+ * "over [10,862 niches] and [10,384,719 videos] updated daily.", then "Save around [33 hours] every
+ * week." as its own line. Every size is in u, so the wrap is the same at every desktop width: "over"
+ * opens line 2, as in the frame (line 2 is about 544px, a few px past the 541px column, where nothing
+ * sits). Stacked layout: the old size and natural wrapping (each chip stays with its lead-in word).
+ */
 .sub {
   margin-top: var(--sub-gap);
   max-width: 36rem;
@@ -309,74 +328,142 @@
   font-size: clamp(1.125rem, 1.081rem + 0.1878vw, 1.25rem);
   letter-spacing: -0.005em;
   line-height: 1.62;
+  color: var(--sub-ink);
 }
 
-/* Desktop: as wide as the H1 (the column is narrower), and sized by the window's height as well, so
-   the paragraph keeps its air above the platforms strip on laptops (16px at 800px tall,
-   18px at 900px, 20px from 1000px). */
+.subLine {
+  display: block;
+}
+
 @media (min-width: 1024px) {
   .sub {
-    width: var(--h1-w);
+    margin-top: calc(3.4875 * var(--tu));
+    padding-left: calc(0.125 * var(--tu));
     max-width: none;
-    font-size: min(1.25rem, max(1rem, 2svh));
+    font-size: calc(1.25 * var(--tu));
+  }
+  .subSeg {
+    white-space: nowrap;
   }
 }
 
 /*
- * Short desktop screens: tighten the vertical rhythm so the CTA row and the platforms strip both
- * sit above the fold (hero-rev11: the offer line added about 65px under the box, so the CTA gap
- * eases from 2.5 to 2.2 gap-y below 880px, and everything below the box eases again below 820px
- * (1280×720, 1366×768); from 880px up the owner's 1.25 and 2.5 stand).
+ * The CTA row (hero-rev14): only "Get started", 44.3px under the subtitle. The button is the frame's
+ * 201×66 liquid-metal ring button: a 3px ring (MetalButton's WebGL ring, sized in u through its
+ * `metal` option, no halo) around a 195×60 ink face with an 11px radius (14 − 3). Label Switzer 500
+ * 16px, #F8F8F8, arrow 16px, gap 8px; the content sits 7px right of centre (face padding-left 14px).
+ * Until the ring's first frame (and without WebGL) the frame's static ring gradient stands in for the
+ * metal: the button's own background, with the face as ::before. Once the ring is on screen
+ * (data-metal-ring="on") the gradient goes; the ring canvas covers the band and the face keeps the hover.
  */
-@media (min-width: 1024px) and (max-height: 880px) {
-  .root {
-    --cta-gap: calc(var(--gap-y) * 2.2);
+.ctaRow {
+  display: flex;
+  margin-top: var(--cta-gap);
+}
+
+@media (min-width: 1024px) {
+  .ctaRow {
+    margin-top: calc(2.76875 * var(--tu));
   }
 }
 
-@media (min-width: 1024px) and (max-height: 820px) {
-  .root {
-    --gap-y: clamp(0.875rem, 2.6svh, 1.25rem);
-    --offer-gap: calc(var(--gap-y) * 0.45);
-    --sub-gap: calc(var(--gap-y) * 1.05);
-    --cta-gap: calc(var(--gap-y) * 1.9);
-  }
-  .offer {
-    line-height: 1.3;
-  }
-  .sub {
-    line-height: 1.6;
-  }
-}
-
-/* Board annotation above the lead card: "Hover a card to see why it scored". */
-.hint {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 18px);
-  width: max-content;
-  max-width: calc(var(--cw) * 1.12);
-  font-family: var(--font-mono);
-  font-size: 10.5px;
+.cta {
+  isolation: isolate;
+  width: calc(12.5625 * var(--tu));
+  height: calc(4.125 * var(--tu));
+  padding: 0 calc(0.1875 * var(--tu)) 0 calc(1.0625 * var(--tu));
+  gap: calc(0.5 * var(--tu));
+  border-radius: calc(0.875 * var(--tu));
+  font-size: var(--tu);
   line-height: 1.5;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
+  color: #f8f8f8;
+  background: linear-gradient(
+    135deg,
+    #b9c6dd 0%,
+    #3d6bff 12%,
+    #ff4fd8 20%,
+    #ffd23d 27%,
+    #dce6f6 40%,
+    #f2f6fc 60%,
+    #b8c7dd 80%,
+    #ffd23d 90%,
+    #ff3d8f 94%,
+    #3dd6ff 97%,
+    #c9d5e8 100%
+  );
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: calc(0.1875 * var(--tu));
+  z-index: -1;
+  border-radius: calc(0.6875 * var(--tu));
+  background: var(--ink);
+  transition: background-color 0.2s var(--ease-out);
+}
+
+.cta:hover::before {
+  background: var(--ink-2);
+}
+
+.cta[data-metal-ring="on"] {
+  background: transparent;
+}
+
+.ctaIcon {
+  width: var(--tu);
+  height: var(--tu);
+  transition: translate 0.3s var(--ease-out);
+}
+
+.cta:hover .ctaIcon {
+  translate: 0.125em 0;
+}
+
+/*
+ * Board annotation (hero-rev13): "Hover me" (touch: "Tap me") above the lead card, with a small arrow
+ * pointing down at the card. It replaces the longer "Hover a card to see why it scored" line (owner:
+ * "just put a 'hover me', that's it"). The board's aria-label still describes the interaction for
+ * screen readers; this is decoration (aria-hidden). hero-rev14: centred on the lead card (owner), at
+ * the same height above it; sized in u from 1024px (10.5px at 1080p, never under 10px).
+ */
+.hint {
+  --hint-u: 0.75rem;
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  bottom: calc(100% + var(--hint-u));
+  display: flex;
+  align-items: center;
+  gap: calc(var(--hint-u) / 2);
+  width: max-content;
+  font-family: var(--font-mono);
+  font-size: max(0.625rem, var(--hint-u) * 0.875);
+  line-height: 1;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--ink-soft);
   pointer-events: none;
 }
 
-/* Desktop (hero-rev5): one line at every width. It is wider than the lead card, so it hangs from the
-   card's right edge and runs back over the empty band above the connector (never toward column 2,
-   whose top card stands there). The size eases down on narrow laptops so it clears the H1. */
 @media (min-width: 1024px) {
   .hint {
-    left: auto;
-    right: 0;
-    max-width: none;
-    white-space: nowrap;
-    font-size: clamp(9px, calc(0.5vw + 3.5px), 10.5px);
-    letter-spacing: 0.03em;
+    --hint-u: calc(0.75 * var(--u));
   }
+}
+
+.hintArrow {
+  width: var(--hint-u);
+  height: var(--hint-u);
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .hintTouch {
@@ -392,14 +479,11 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .root {
-    --hero-gutter: calc(2.5rem + 1px);
-  }
-}
-
-/* Text column left edge: the letterbox edge below 1024px, the navbar logo's edge above. */
+/* Text column left edge: the letterbox edge below 1024px; from 1024px the row's L (hero-rev14).
+   --tu is the text column's unit: the hero's --u from 1024px, 1rem in the stacked layout (whose
+   sizes are not tied to the row). */
 .textCol {
+  --tu: 1rem;
   padding-inline: 20px;
 }
 
@@ -412,44 +496,57 @@
 /*
  * One centre line (hero-rev3 A). From 1024px the text is a three-row grid, 1fr · auto · 1fr,
  * over the hero's full height: the prompt box is the middle row, so its centre is the hero's
- * centre (50svh on the first screen), whatever the text heights. The H1 hangs
- * above it (end-aligned, clear of the navbar), the subtext and CTA row below it (start-aligned,
- * clear of the platforms strip); the space above the H1 and below the CTAs is what is left.
- * If a group ever outgrows its half, its row grows and the box moves off the line; the
- * engine keeps the board on the box either way.
+ * centre (50svh on the first screen; y 539.5 at 1920×1080, which puts the H1 top at y 151 as in
+ * the frame), whatever the text heights. The H1 hangs above it (end-aligned), the offer, subtitle
+ * and CTA below it (start-aligned). The outer rows keep 1.5rem of air under the navbar and 1rem
+ * above the platforms strip: if a group outgrows its half (short windows), its row grows and the
+ * box moves off the line by just that much; the engine keeps the board on the box either way, and
+ * the height guard on --u makes the whole block fit wherever u is above its 0.6rem floor (windows
+ * from about 650px tall).
+ *
+ * The grid has a definite height, or its two 1fr rows would both size to the taller group (the
+ * H1's) and the hero would outgrow the window (1001.6px at 1920×950). It is the hero's own height,
+ * 100svh, or the content's where that is taller (u at its 0.6rem floor, windows under about 650px):
+ * the navbar and whole-strip clearances plus the block (--u-fit's two lines, the larger). The rows
+ * then split the real free space. The bottom clearance counts the strip's hairline, so the CTA
+ * ends exactly 1rem above the strip where the guard binds.
  */
 @media (min-width: 1024px) {
   .textCol {
-    padding-left: var(--hero-gutter);
+    --tu: var(--u);
+    /* The row model (top of this file): the column starts at L and is T wide. */
+    padding-left: var(--hero-l);
     padding-right: 0;
   }
   .textInner {
     display: grid;
     grid-template-rows: 1fr auto 1fr;
-    /* A fixed column: the H1 may run wider than the prompt box (hero-rev4, --h1-w) without
-       widening it (grid items' min-width is auto, which nowrap lines would otherwise grow). */
+    /* A fixed column (grid items' min-width is auto, which the no-wrap lines would otherwise grow). */
     grid-template-columns: minmax(0, 1fr);
-    width: var(--text-w);
+    width: var(--hero-t);
+    height: max(
+      100svh,
+      calc(var(--nav-h) + var(--strip-full) + 2.5rem + max(46.5 * var(--u), 42.39375 * var(--u) + 3.0722rem))
+    );
     padding-top: var(--line-shift, 0px);
   }
   .textTop {
     align-self: end;
     /* Clear of the navbar, counted from the hero top (the grid's --line-shift is part of it). */
-    padding-top: calc(var(--nav-h) - var(--line-shift, 0px));
+    padding-top: calc(var(--nav-h) + 1.5rem - var(--line-shift, 0px));
   }
   .textBottom {
     align-self: start;
-    /* The strip, plus a little air so the CTA row never sits on its edge. */
-    padding-bottom: calc(var(--strip-h) + var(--gap-y) * 0.5);
+    padding-bottom: calc(var(--strip-full) + 1rem);
   }
 }
 
-/* A hero taller than the window (its 680px minimum): the line is the stage centre (between
-   the navbar and the strip), half the navbar/strip difference below the hero centre. */
+/* Short windows (under 680px; the text block fills the stage there, so the rows are content-bound
+   and this only matters where they are not): the line is the stage centre (between the navbar and
+   the strip), half the navbar/strip difference below the hero centre. */
 @media (min-width: 1024px) and (max-height: 679.98px) {
   .root {
     --line-shift: calc(var(--nav-h) - var(--strip-h));
-    --line-y: calc(340px + var(--line-shift) / 2);
   }
 }
 
@@ -471,13 +568,20 @@
 .columns {
   --rg: 10px;
   --cg: 12px;
+  /* Card shape, width / height (hero-rev13): 3:5, up from 4:5 (owner: "closer to 9:16", "a little bit
+     more elongated", the cards "a little bit too wide"). The posters are 9:16 (0.5625), so a 0.6 card
+     also crops less of each one. Every height below derives from --cw through this one number. */
+  --aspect: 0.6;
+  /* The lead card's size relative to the others. */
+  --lead: 1.12;
   /*
    * Stacked layout (< 1024px): 1 + 2 + 3 columns (lead is 1.12×) fill the
    * letterbox width exactly, so the triangle spans the same column as the
-   * text above it. Capped at 190px on wide tablets, where it centres.
+   * text above it. Capped at 156px on wide tablets (it was 190px at 4:5: the same card height
+   * about, since the cards are now narrower for their height), where it centres.
    */
-  --cw: min(calc((100cqw - 2 * var(--cg)) / 3.12), 190px);
-  --ch: calc(var(--cw) * 1.25);
+  --cw: min(calc((100cqw - 2 * var(--cg)) / (var(--lead) + 2)), 156px);
+  --ch: calc(var(--cw) / var(--aspect));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -485,54 +589,56 @@
 }
 
 @media (min-width: 1024px) {
+  /*
+   * hero-rev14: the stage spans the hero's full width, between the navbar and the platforms strip,
+   * and the board sits in it at x = L + T + M (the row model at the top of this file). It lies over
+   * the text column, so it passes clicks through (only the cards take pointer events, see .slot).
+   */
   .stage {
     position: absolute;
     top: var(--nav-h);
     bottom: var(--strip-h);
+    left: 0;
     right: 0;
-    /* The stage reaches --stage-bleed further left, as padding: its fade mask would otherwise cut
-       the hint, which is wider than the lead card and hangs back over the connector's band
-       (hero-rev5). The container's content box (cqw, cqh and its aspect) is unchanged. The
-       stage then lies over the prompt box's right side, so it passes clicks through to it
-       (only the cards take pointer events, see .slot). */
-    --stage-bleed: 260px;
-    left: calc(var(--hero-gutter) + var(--text-w) + var(--conn-gap) - var(--stage-bleed));
     margin: 0;
-    padding: 0 0 0 var(--stage-bleed);
+    padding: 0;
     pointer-events: none;
-    container: hero-stage / size;
-    /* A whisper of fade where the tall columns overflow top and bottom. The right edge has
-       no fade (hero-rev3 C): the last column is cut cleanly by the viewport edge. */
+    /* A whisper of fade where the tall columns overflow top and bottom. No side fade: every
+       column is whole (hero-rev14) and ends R short of the window's edge. */
     mask-image: linear-gradient(to bottom, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
   }
 
+  /*
+   * The board (hero-rev14, the owner's 1080p frame): whole columns of 3:5 cards in u. Card widths
+   * (lead 16u, column 2 14.2u, the rest 12.8u), the column gap (1.375u, 22px at 1080p) and the card
+   * gap (1u) never stretch: the row's three gaps take up the slack. Columns are centred on the
+   * stage's centre line, moved by --board-dy onto the prompt box's centre (engine.ts).
+   */
   .columns {
-    --rg: 12px;
-    --cg: 16px;
-    /* Share of the last column inside the viewport. Enough that its trend lines read. */
-    --peek: 0.7;
-    /* How far column 4 may overrun the stage height (its top and bottom rows are cut, as in the sketch). */
-    --overrun: 1.2;
-    /* Columns after the lead card, the last one counted at its peek: 2 + peek for 1·2·3·4. */
-    --span: calc(2 + var(--peek));
-    /*
-     * Card width: fill the stage width (lead 1.12 + the rest), unless column 4 would then
-     * overrun the stage height by more than --overrun. The board is right-anchored, so any
-     * width the height cap leaves over lengthens the connector's run.
-     */
-    --cw: min(
-      calc((100cqw - (var(--ncols) - 1) * var(--cg)) / (1.12 + var(--span))),
-      calc((100cqh - 3 * var(--rg)) / 4 * 0.8 * var(--overrun))
-    );
-    --ncols: 4;
+    --rg: var(--u);
+    --lead: 1;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: calc(var(--cw) * (var(--peek) - 1));
-    justify-content: flex-end;
-    /* Set by the engine: lines the lead card up with the prompt box. */
+    left: calc(var(--hero-l) + var(--hero-t) + var(--hero-m));
+    justify-content: flex-start;
+    gap: var(--hero-g);
+    /* Set by the engine: lines the board up with the prompt box. */
     transform: translate3d(0, var(--board-dy, 0px), 0);
     transition-property: none; /* globals' reduced-motion rule would otherwise tween it */
+  }
+  .col {
+    --cw: calc(12.8 * var(--u));
+    --ch: calc(var(--cw) / var(--aspect));
+  }
+  /* The lead card sits 0.84u (13.5px at 1080p) above the line the other columns centre on: a
+     margin, not a transform, so the engine's layout reads (offsetTop) include it. */
+  .col:nth-child(1) {
+    --cw: calc(16 * var(--u));
+    margin-bottom: calc(2 * 0.84 * var(--u));
+  }
+  .col:nth-child(2) {
+    --cw: calc(14.2 * var(--u));
   }
 }
 
@@ -552,94 +658,6 @@
   }
 }
 
-/*
- * Wide windows: a fifth column of five static cards (hero-rev2 A). Chosen by measurement:
- * with the text at the navbar gutter, four height-capped columns leave a 100–300px dead
- * band between the prompt box and the lead card whenever the stage is wider than it is
- * tall (every 16:10 and 16:9 window from 1280px). The fifth column fills that band; it
- * bleeds off the right edge (at --peek, hard-cut) and column 4 sits fully
- * inside. Tall stages (1280×1024, 1920×1440) keep four width-bound columns.
- */
-.col.colStatic,
-.col.colStatic2 {
-  display: none;
-}
-
-@media (min-width: 1280px) {
-  @container hero-stage (min-aspect-ratio: 21 / 20) {
-    .columns {
-      --ncols: 5;
-      --span: calc(3 + var(--peek));
-      /* Wide stages (1920×1080 and up) are height-bound: a little more overrun lets the
-         cards grow toward the text instead of stretching the connector. */
-      --overrun: 1.3;
-    }
-    .col.colStatic {
-      display: flex;
-    }
-  }
-
-  /*
-   * Short, wide stages (7:5 and wider: a 1920×950 or 2048×1000 browser window, a 1536×730
-   * laptop at 125%) are bound by height, so five columns left a 250–380px run between the
-   * prompt box and the lead card. A sixth column (four cards, so the silhouette tapers
-   * 1, 2, 3, 4, 5, 4) fills it; the cards give up at most about 10% of their size (the
-   * width then binds) so the run stays near the connector gap. Beyond about 2200px wide
-   * and under about 1250px tall the run grows again: that is past the supported range.
-   */
-  @container hero-stage (min-aspect-ratio: 7 / 5) {
-    .columns {
-      --ncols: 6;
-      --span: calc(4 + var(--peek));
-    }
-    .col.colStatic2 {
-      display: flex;
-    }
-  }
-}
-
-/*
- * The column the viewport edge cuts (hero-rev5) carries its labels in the bottom-LEFT corner, so a
- * label is never clipped. It is always the last visible column: the fourth with four columns, the
- * fifth with five (.colStatic), the sixth with six (.colStatic2), decided by the same container
- * queries that show those columns. The board's --peek keeps that column partly outside the window.
- */
-@media (min-width: 1024px) {
-  .col:nth-child(4) .trendTag {
-    right: auto;
-    left: var(--tag-inset);
-  }
-}
-
-@media (min-width: 1280px) {
-  @container hero-stage (min-aspect-ratio: 21 / 20) {
-    .col:nth-child(4) .trendTag {
-      right: var(--tag-inset);
-      left: auto;
-    }
-    .col:nth-child(5) .trendTag {
-      right: auto;
-      left: var(--tag-inset);
-    }
-  }
-  @container hero-stage (min-aspect-ratio: 7 / 5) {
-    .col:nth-child(5) .trendTag {
-      right: var(--tag-inset);
-      left: auto;
-    }
-    .col:nth-child(6) .trendTag {
-      right: auto;
-      left: var(--tag-inset);
-    }
-  }
-}
-
-/* Static cards: no flips, no hover turn, no focus stop. */
-.slotStatic {
-  pointer-events: none;
-}
-
-
 .col {
   position: relative;
   display: flex;
@@ -648,15 +666,78 @@
   gap: var(--rg);
 }
 
-@media (min-width: 1024px) {
-  .slot:not(.slotStatic) {
-    pointer-events: auto;
-  }
+/*
+ * Column visibility. Stacked (< 1024px): columns 1–3. From 1024px: N columns from the left (the
+ * row's column count, see the queries at the top of this file), so columns drop from the right.
+ * Hidden columns are display:none: their posters are swapped for an empty image (card-parts.tsx,
+ * data.ts COLUMN_HIDDEN_MEDIA, which must match these thresholds), they get no flap wave or video
+ * and their focus buttons are not focusable, so the arrow keys skip them.
+ */
+.col:nth-child(n + 4) {
+  display: none;
 }
 
-@media (max-width: 1023.98px) {
-  .colWide {
+@media (min-width: 1024px) {
+  .col:nth-child(3) {
     display: none;
+  }
+  @container hero-row (min-width: 92.69375em) {
+    .col:nth-child(3) {
+      display: flex;
+    }
+  }
+  @container hero-row (min-width: 106.86875em) {
+    .col:nth-child(4) {
+      display: flex;
+    }
+  }
+  @container hero-row (min-width: 134.175em) {
+    .col:nth-child(5) {
+      display: flex;
+    }
+  }
+
+  .slot {
+    pointer-events: auto;
+  }
+
+  /*
+   * The last visible column carries its labels in the bottom-LEFT corner (the owner's frame), the
+   * others bottom-right. One rule per column count N.
+   */
+  .col:nth-child(2) .trendTag {
+    right: auto;
+    left: var(--tag-inset);
+  }
+  @container hero-row (min-width: 92.69375em) {
+    .col:nth-child(2) .trendTag {
+      right: var(--tag-inset);
+      left: auto;
+    }
+    .col:nth-child(3) .trendTag {
+      right: auto;
+      left: var(--tag-inset);
+    }
+  }
+  @container hero-row (min-width: 106.86875em) {
+    .col:nth-child(3) .trendTag {
+      right: var(--tag-inset);
+      left: auto;
+    }
+    .col:nth-child(4) .trendTag {
+      right: auto;
+      left: var(--tag-inset);
+    }
+  }
+  @container hero-row (min-width: 134.175em) {
+    .col:nth-child(4) .trendTag {
+      right: var(--tag-inset);
+      left: auto;
+    }
+    .col:nth-child(5) .trendTag {
+      right: auto;
+      left: var(--tag-inset);
+    }
   }
 }
 
@@ -673,9 +754,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* The lead is --lead × a card in the stacked layout (1.12); from 1024px column 1 sets its own --cw (16u). */
 .slot[data-lead] {
-  width: calc(var(--cw) * 1.12);
-  height: calc(var(--ch) * 1.12);
+  width: calc(var(--cw) * var(--lead));
+  height: calc(var(--ch) * var(--lead));
 }
 
 /* The card back adapts to the card's own size. */
@@ -866,36 +948,55 @@
 }
 
 /*
- * Growth label (hero-rev5): the card's trend, named, in the bottom corner over the chart's floor. A
- * quiet paper chip, like the score chip, with a dot in the data colour and the text in the matching
- * ink token (breakout 6.0:1, growth 5.6:1, decline 6.0:1 on the chip). It sits in the face, so the
- * flap carries it. --tag-inset keeps it at the same distance from the card's bottom and its side;
- * the right-most column (cut by the viewport) moves it to the left corner (see .col below).
+ * Growth label (hero-rev5, restyled in hero-rev14 from the owner's frame): the card's trend, named,
+ * in the bottom corner over the chart's floor, drawn ABOVE the chart (it follows .chartBox in the
+ * face). A tinted chip per trend with an icon in place of the old dot: a star for breakout, a
+ * double chevron up for growth, a double chevron down for decline. Decline's tint and icon are
+ * derived from growth's (same OKLCH lightness and chroma, the decline red's hue 23). Label ink: the
+ * site tokens read 4.12:1 (growth #0a7340 on #c4dec3) and 4.17:1 (decline #b9262c on #f3cac7) on
+ * these tints, under AA for 10–11.5px type, so the tag darkens them in OKLCH lightness only (same hue,
+ * chroma kept, trimmed to stay in sRGB for green) to 4.61:1: growth #006b3a, decline #b11b25.
+ * Breakout keeps its token (#7d5700: 5.95:1 on its tint over white, 5.18:1 even over black). The
+ * tints and icons stay as designed. It sits in the face, so the flap carries it. --tag-inset keeps it at the same
+ * distance from the card's bottom and its side; the last visible column moves it to the left
+ * corner (see .col above).
  */
 .face {
-  --tag-ink: var(--growth-ink);
+  --tag-ink: #006b3a;
+  --tag-bg: #c4dec3;
+  --tag-icon-c: #26853b;
 }
 
 .face[data-trend="breakout"] {
   --tag-ink: var(--breakout-ink);
+  --tag-bg: rgb(255 243 222 / 0.94);
+  --tag-icon-c: #d6a529;
 }
 
 .face[data-trend="decline"] {
-  --tag-ink: var(--decline-ink);
+  --tag-ink: #b11b25;
+  --tag-bg: #f3cac7;
+  --tag-icon-c: #b34848;
 }
 
 .trendTag {
   --tag-inset: 8px;
+  /* The chevrons' box; the star is drawn at 0.8 of it (8 and 10px on the 1080p lead card). */
+  --tag-icon: 8px;
   position: absolute;
   right: var(--tag-inset);
   bottom: var(--tag-inset);
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  /* The owner's frame gives the tag a set width with its content centred (94 and 91px at 11.5px
+     type), so short labels keep air at both ends: 8.1em. "Declining" is wider and just grows. */
+  justify-content: center;
+  min-width: 8.1em;
+  gap: 4px;
   height: 20px;
   padding: 0 7px 0 6px;
   border-radius: 6px; /* concentric: 14 - 8 */
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--tag-bg);
   color: var(--tag-ink);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -908,49 +1009,66 @@
   pointer-events: none;
 }
 
-.trendDot {
-  width: 6px;
-  height: 6px;
+.trendIcon {
+  width: var(--tag-icon);
+  height: var(--tag-icon);
   flex: none;
-  border-radius: 999px;
-  background: var(--trend);
+  fill: var(--tag-icon-c);
+}
+
+.trendIcon path {
+  display: none;
+}
+
+.face[data-trend="breakout"] .trendIcon {
+  width: calc(var(--tag-icon) * 0.8);
+  height: calc(var(--tag-icon) * 0.8);
+}
+
+.face[data-trend="breakout"] .iconBreakout,
+.face[data-trend="growth"] .iconGrowth,
+.face[data-trend="decline"] .iconDecline {
+  display: inline;
 }
 
 @container slot (min-width: 160px) and (max-width: 199.98px) {
   .slot[data-lead] .trendTag {
+    --tag-icon: 9px;
     height: 22px;
     font-size: 11px;
   }
 }
 
+/* The owner's frame (the 1080p lead and column-2 cards): 26px tall, radius 8, 0 8 0 7, gap 5. */
 @container slot (min-width: 200px) {
   .trendTag {
     --tag-inset: 10px;
-    height: 24px;
+    --tag-icon: 10px;
+    gap: 5px;
+    height: 26px;
     padding: 0 8px 0 7px;
-    border-radius: 7px;
+    border-radius: 8px;
     font-size: 11.5px;
-  }
-  .trendDot {
-    width: 7px;
-    height: 7px;
   }
 }
 
-/* Up to 140px: the cut column shows only about 70% of its card, and its label must fit in that. */
-@container slot (max-width: 139.98px) {
-  .trendTag {
-    --tag-inset: 6px;
-    gap: 4px;
-    height: 18px;
-    padding: 0 5px 0 4px;
-    border-radius: 5px;
-    font-size: 8.5px;
-    letter-spacing: 0.02em;
-  }
-  .trendDot {
-    width: 5px;
-    height: 5px;
+/* Up to 140px in the stacked layout (phones, under 1024px): a smaller chip. Desktop cards can also be
+   this narrow on short windows (the unit drops to 0.6rem there: 12.8u is about 123px at 1366x650),
+   but they keep the 10px tag, which still fits ("Declining" is about 85px) and stays legible. */
+@media (max-width: 1023.98px) {
+  @container slot (max-width: 139.98px) {
+    .trendTag {
+      --tag-inset: 6px;
+      --tag-icon: 7px;
+      gap: 3px;
+      height: 18px;
+      padding: 0 5px 0 4px;
+      border-radius: 5px;
+      font-size: 8.5px;
+      letter-spacing: 0.02em;
+      /* Phone cards are too narrow for the set width: the tag fits its content. */
+      min-width: 0;
+    }
   }
 }
 
@@ -1014,7 +1132,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 40%;
+  /* 34% of a 3:5 card is a 1.76:1 box, next to the 2:1 viewBox (data.ts CHART_W/H); it was 40% of 4:5. */
+  height: 34%;
   pointer-events: none;
 }
 
@@ -1308,7 +1427,8 @@
 .radar {
   flex: 1 1 0;
   min-height: 0;
-  max-height: clamp(124px, 60cqw, 270px);
+  /* hero-rev13: 85cqw (was 60cqw): the 3:5 back is taller for its width, so the radar may fill it. */
+  max-height: clamp(124px, 85cqw, 340px);
   width: 100%;
   margin-block: auto;
   padding-block: 4px;
@@ -1425,6 +1545,140 @@
   }
 }
 
+/* ------------------------------------------------------------ prompt box */
+
+/*
+ * The prompt box (hero-rev14): 541×123 at 1080p (T wide), white, radius 16, no outline, one soft
+ * shadow (0 2px 4px, 5%), all in u. Padding 14 16 11.7 16: the frame fixes the box at 123px, 0.3px
+ * short of its rows. The prompt text's first line box sits at (24, 19): the area is inset 8px and
+ * 5px inside the padding and is 44.3px tall; its two lines (52.2px) run into the 12px gap above the
+ * 36px control row. Focus: a firmer 1px ink ring and a deeper lift; keyboard arrival
+ * (data-focus="key", hero-board.tsx onFocus) adds a clear ink ring, about 5:1 on the white box.
+ * The connector starts on the box's right edge (engine.ts), which no ring moves.
+ */
+.promptBox {
+  border-radius: var(--tu);
+  padding: calc(0.875 * var(--tu)) var(--tu) calc(0.73125 * var(--tu));
+  background: var(--paper);
+  box-shadow: 0 calc(0.125 * var(--tu)) calc(0.25 * var(--tu)) rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.3s var(--ease-out);
+}
+
+/* The lift's offsets and blurs are in u like the resting shadow; the rings stay 1px and 4px. */
+.promptBox:focus-within {
+  box-shadow:
+    0 0 0 1px rgb(15 15 15 / 0.18),
+    0 calc(0.125 * var(--tu)) calc(0.25 * var(--tu)) rgb(0 0 0 / 0.05),
+    0 var(--tu) calc(2.5 * var(--tu)) calc(-0.25 * var(--tu)) rgb(0 0 0 / 0.11);
+}
+
+.promptBox[data-focus="key"]:focus-within {
+  box-shadow:
+    0 0 0 1px rgb(15 15 15 / 0.7),
+    0 0 0 4px rgb(15 15 15 / 0.09),
+    0 calc(0.125 * var(--tu)) calc(0.25 * var(--tu)) rgb(0 0 0 / 0.05),
+    0 var(--tu) calc(2.5 * var(--tu)) calc(-0.25 * var(--tu)) rgb(0 0 0 / 0.11);
+}
+
+/* Prompt text: Switzer 18px (1.125u, never under 14px), line-height 1.45. Stacked layout: 16 / 17px.
+   From 1024px the area's height is in the text's em (44.3px at 1080p), so at the 14px floor it keeps
+   the frame's room for the second line above the control row. */
+.promptArea {
+  margin: calc(0.3125 * var(--tu)) calc(0.5 * var(--tu)) 0;
+  height: calc(2.76875 * var(--tu));
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .promptArea {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .promptArea {
+    font-size: max(0.875rem, 1.125 * var(--tu));
+    height: calc(2.76875em / 1.125);
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: calc(0.5 * var(--tu));
+  min-width: 0;
+  height: calc(2.25 * var(--tu));
+  margin-top: calc(0.75 * var(--tu));
+}
+
+/* Deep Search, icon only (hero-rev14): 34×32, radius 10, a white 14px Brain on the liquid-ramp fill
+   (DEEP_SEARCH_CHIP). Always on and not a control: no tab stop, no hover change. */
+.deepChip {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: calc(2.125 * var(--tu));
+  height: calc(2 * var(--tu));
+  border-radius: calc(0.625 * var(--tu));
+  overflow: hidden;
+  color: #fff;
+  cursor: default;
+  user-select: none;
+}
+
+.ctlIcon {
+  width: calc(0.875 * var(--tu));
+  height: calc(0.875 * var(--tu));
+}
+
+/* Right: the 32px pause ring, 8px, the 36px submit button. */
+.ctlGroup {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(0.5 * var(--tu));
+  height: calc(2.25 * var(--tu));
+  margin-left: auto;
+}
+
+.pauseBtn {
+  width: calc(2 * var(--tu));
+  height: calc(2 * var(--tu));
+}
+
+/* The play triangle sits 1px right of centre (its optical centre), as in the frame. */
+.playIcon {
+  translate: calc(0.0625 * var(--tu)) 0;
+}
+
+.submitBtn {
+  width: calc(2.25 * var(--tu));
+  height: calc(2.25 * var(--tu));
+}
+
+.submitIcon {
+  width: var(--tu);
+  height: var(--tu);
+}
+
+/* "50 videos · 5 searches", in the pause ring's place while typing. 10.5px at 1080p, never under
+   10px (the board hint's floor); the icon follows the text. */
+.typeHint {
+  right: calc(2.75 * var(--tu));
+  gap: 0.5714em;
+  font-size: max(0.625rem, 0.65625 * var(--tu));
+}
+
+.typeHint svg {
+  width: 1.1429em;
+  height: 1.1429em;
+}
+
 /* -------------------------------------------------------- prompt overlay */
 
 .promptStack {
@@ -1470,7 +1724,7 @@
   overflow: hidden;
 }
 
-/* The box signals focus with shadows (see hero-board.tsx), which Windows forced-colors mode
+/* The box signals focus with shadows (.promptBox above), which Windows forced-colors mode
    removes: there the system outline stands in, so focus never goes invisible. */
 @media (forced-colors: active) {
   .promptBox:focus-within {

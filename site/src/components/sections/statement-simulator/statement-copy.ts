@@ -3,10 +3,11 @@
  *
  * The owner's sentence (2026-10-16, "Giant Text Section modification"), word for word:
  * "Stop scrolling to find ideas. Conthunt watches up to 500 videos from your niche in under five
- * minutes, checks every frame and hands you what works." Two adjustments only: the brand is spelled
- * "ContHunt" as everywhere else on the site, and "500" is `{videos}`, the video budget read from the
- * simulator data (the designed run took 4m 12s, which backs "under five minutes"). The first
- * sentence is still the retained legacy line from `src/content/site/statement.ts`.
+ * minutes, checks every frame and hands you what works." One adjustment only: the brand is spelled
+ * "ContHunt" as everywhere else on the site. "Up to 500 videos" states the product's capability, so
+ * it is fixed copy (`STATEMENT_VIDEOS`), not read from the demo runs (those were given 300 videos;
+ * the caption above the frame reports their real budget and time). The first sentence is still the
+ * retained legacy line from `src/content/site/statement.ts`.
  * 26 words, 5 chips, one Boska italic (*works.*).
  *
  * The copy is authored as five ragged-centre lines (5-6 words each, as in G1o2H). On desktop the
@@ -43,8 +44,11 @@ function parse(part: string): StatementToken {
   return { kind: "word", text: part };
 }
 
+/** "ContHunt watches up to 500 videos": the capability, independent of the demo data. */
+export const STATEMENT_VIDEOS = 500;
+
 /** The statement as lines of tokens. */
-export function buildStatement(videos: number): StatementToken[][] {
+export function buildStatement(videos: number = STATEMENT_VIDEOS): StatementToken[][] {
   return TEMPLATE.replace("{videos}", String(videos))
     .split("|")
     .map((line) => line.trim().split(/\s+/).filter(Boolean).map(parse));
