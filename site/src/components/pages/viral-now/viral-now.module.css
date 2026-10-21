@@ -803,7 +803,13 @@
 
 /* ------------------------------------------------------------------ niche grid */
 
-/* The niche grid is the letterbox width up to 1279px, then breaks out to 1320px so six columns stay card-sized. */
+/* The niche grid is the letterbox width up to 1279px, then breaks out to 1320px so six columns stay card-sized.
+   The metrics and filter line uses the same width. */
+.toolbar {
+  width: var(--letterbox);
+  margin-inline: auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -833,6 +839,7 @@
 }
 
 @media (min-width: 1280px) {
+  .toolbar,
   .grid {
     width: min(calc(100% - 40px), 1320px);
   }
@@ -847,34 +854,6 @@
 .gridItem[data-active="true"] {
   z-index: 6;
   transition-delay: 0s;
-}
-
-.splitBar {
-  display: flex;
-  flex: none;
-  gap: 2px;
-  width: 96px;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 3px;
-  background: var(--surface);
-}
-
-.splitBar > span {
-  display: block;
-  height: 100%;
-  background: var(--ink);
-  transform-origin: left center;
-}
-
-.splitBar > span:nth-child(2) {
-  background: var(--ink-2);
-  opacity: 0.6;
-}
-
-.splitBar > span:nth-child(3) {
-  background: var(--ink-2);
-  opacity: 0.3;
 }
 
 /* --------------------------------------------------------------------- explainer */

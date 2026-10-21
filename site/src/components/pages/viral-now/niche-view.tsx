@@ -4,9 +4,9 @@
  * NicheView: one niche, every video, as a grid (6 columns at 1440, then 5 / 3 / 2).
  *
  * The header is kept short so the grid starts high on the page: the niche name beside its
- * description, then one line of what can be said honestly from the data on screen (total
- * views, median engagement, creator count, platform mix). The "All" pill in the sticky
- * selector is the way back. Sort (rank, views, newest, engagement) and platform filters
+ * description, then one line with the figures on the left (views, median engagement, creator
+ * count) and the sort and platform controls on the right. That line is the same width as the
+ * grid. The "All" pill in the sticky selector is the way back. Sort and platform filters
  * reorder the grid with a GSAP Flip, so cards glide to their new cells instead of jumping.
  * Rank badges always show the original rank.
  *
@@ -18,10 +18,9 @@ import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from "
 import { Button } from "@/components/ui/button";
 import { SegmentedToggle } from "@/components/ui/segmented-toggle";
 import { cn } from "@/lib/cn";
-import { EASE, gsap, useGSAP } from "@/lib/gsap";
+import { EASE, gsap } from "@/lib/gsap";
 import { Flip } from "@/lib/gsap-flip";
-import { MOTION_OK, prefersReducedMotion } from "@/lib/motion";
-import { countLabel } from "@/lib/viral-now/copy";
+import { prefersReducedMotion } from "@/lib/motion";
 import { formatCount, formatPercent } from "@/lib/viral-now/format";
 import { PLATFORM_ORDER, platformInfo, type KnownPlatform } from "@/lib/viral-now/glyphs";
 import { BOARD_SIZE } from "@/lib/viral-now/ranking";
@@ -73,7 +72,6 @@ export function NicheView({ niche, onOpen }: NicheViewProps) {
   const [sort, setSort] = useState<SortKey>("rank");
   const [platform, setPlatform] = useState<PlatformFilter>("all");
   const gridRef = useRef<HTMLUListElement>(null);
-  const splitRef = useRef<HTMLDivElement>(null);
   const flipState = useRef<Flip.FlipState | null>(null);
 
   const stats = useMemo(() => nicheStats(niche), [niche]);
@@ -116,32 +114,13 @@ export function NicheView({ niche, onOpen }: NicheViewProps) {
     });
   }, [sort, platform]);
 
-  // The platform mix bar draws in once per niche. useGSAP reverts on cleanup, so React strict mode's
-  // second effect run starts from the real widths instead of from an already collapsed bar.
-  useGSAP(
-    () => {
-      const bar = splitRef.current;
-      if (!bar) return;
-      const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => {
-        gsap.fromTo(
-          bar.children,
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.9, ease: EASE.out, stagger: 0.08, delay: 0.15, clearProps: "transform" },
-        );
-      });
-    },
-    { scope: splitRef, dependencies: [niche.slug, waiting] },
-  );
-
   const partial = count < BOARD_SIZE;
-  const filteredLabel = platform === "all" ? countLabel(niche, count, "grid") : `${visible.length} of ${count} videos`;
 
   return (
     <div className="relative pb-6" style={toneVars(nicheHue(niche.slug))}>
       {/* Soft hue band behind the header (COLOR_SYSTEM.md, single-niche grid). */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-[var(--tone-soft)] to-transparent" />
-      <div className="letterbox relative flex flex-col gap-5 pb-6 pt-6 md:pt-7">
+      <div className="letterbox relative flex flex-col gap-5 pb-4 pt-6 md:pt-7">
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-end lg:gap-12">
           <h2 className="display-m flex items-center gap-3">
             <span aria-hidden="true" className="size-3 shrink-0 rounded-[4px] bg-[var(--tone-mark)]" />
@@ -150,83 +129,65 @@ export function NicheView({ niche, onOpen }: NicheViewProps) {
           <p className="max-w-[58ch] text-[17px] leading-[1.5] text-ink-2/75 lg:pb-1">{niche.description}</p>
         </div>
 
-        <div className={cn("flex flex-col gap-5", waiting && (failed ? "hidden" : "invisible"))} aria-hidden={waiting || undefined} inert={waiting}>
-          <dl className="flex flex-wrap items-center gap-x-7 gap-y-2.5 border-t border-hairline pt-4 font-mono text-xs tabular-nums tracking-[0.02em] text-ink-2/75">
-            <Stat value={formatCount(stats.totalViews)} label={`views, top ${count}`} />
+      </div>
+
+      <div
+        className={cn(styles.toolbar, "flex flex-col gap-3 border-t border-hairline pt-4 pb-5", waiting && (failed ? "hidden" : "invisible"))}
+        aria-hidden={waiting || undefined}
+        inert={waiting}
+      >
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <dl className="flex flex-wrap items-center gap-x-7 gap-y-2.5 font-mono text-xs tabular-nums tracking-[0.02em] text-ink-2/75">
+            <Stat value={formatCount(stats.totalViews)} label="views" />
             <Stat value={formatPercent(stats.medianEngagement)} label="median engagement" />
             <Stat value={String(stats.creators)} label={stats.creators === 1 ? "creator" : "creators"} />
-            <div className="flex items-center gap-3">
-              <dt className="sr-only">Platforms</dt>
-              <dd className="flex items-center gap-3">
-                <div ref={splitRef} className={styles.splitBar} aria-hidden="true">
-                  {stats.platforms.map((share) => (
-                    <span key={share.platform} style={{ flexGrow: share.count, flexBasis: 0 }} />
-                  ))}
-                </div>
-                <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  {stats.platforms.map((share) => (
-                    <span key={share.platform} className="inline-flex items-center gap-1">
-                      <PlatformGlyph platform={share.platform} className="size-3" />
-                      <span className="sr-only">{platformInfo(share.platform)?.label}</span>
-                      {share.count}
-                    </span>
-                  ))}
-                </span>
-              </dd>
-            </div>
           </dl>
-
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div className="flex flex-wrap items-center gap-3">
-              <SegmentedToggle
-                ariaLabel="Sort videos"
-                size="sm"
-                value={sort}
-                options={SORTS}
-                onChange={(next) => {
-                  capture();
-                  setSort(next);
-                }}
-              />
-              {platformCounts.size > 1 && (
-                <div role="radiogroup" aria-label="Platform" className="flex flex-wrap items-center gap-1.5" onKeyDown={onRadioKeyDown}>
+          <div className="flex flex-wrap items-center gap-3 md:justify-end">
+            <SegmentedToggle
+              ariaLabel="Sort videos"
+              size="sm"
+              value={sort}
+              options={SORTS}
+              onChange={(next) => {
+                capture();
+                setSort(next);
+              }}
+            />
+            {platformCounts.size > 1 && (
+              <div role="radiogroup" aria-label="Platform" className="flex flex-wrap items-center gap-1.5" onKeyDown={onRadioKeyDown}>
+                <PlatformChip
+                  label="All"
+                  count={count}
+                  selected={platform === "all"}
+                  tabbable={platformTab === "all"}
+                  onSelect={() => {
+                    capture();
+                    setPlatform("all");
+                  }}
+                />
+                {PLATFORM_ORDER.filter((p) => platformCounts.has(p)).map((p) => (
                   <PlatformChip
-                    label="All"
-                    count={count}
-                    selected={platform === "all"}
-                    tabbable={platformTab === "all"}
+                    key={p}
+                    label={platformInfo(p)?.label ?? p}
+                    glyph={<PlatformGlyph platform={p} className="size-3" />}
+                    count={platformCounts.get(p) ?? 0}
+                    selected={platform === p}
+                    tabbable={platformTab === p}
                     onSelect={() => {
                       capture();
-                      setPlatform("all");
+                      setPlatform(p);
                     }}
                   />
-                  {PLATFORM_ORDER.filter((p) => platformCounts.has(p)).map((p) => (
-                    <PlatformChip
-                      key={p}
-                      label={platformInfo(p)?.label ?? p}
-                      glyph={<PlatformGlyph platform={p} className="size-3" />}
-                      count={platformCounts.get(p) ?? 0}
-                      selected={platform === p}
-                      tabbable={platformTab === p}
-                      onSelect={() => {
-                        capture();
-                        setPlatform(p);
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-            <p className="whitespace-nowrap font-mono text-xs tabular-nums tracking-[0.02em] text-ink-2/75" aria-live="polite">
-              {filteredLabel}
-            </p>
+                ))}
+              </div>
+            )}
           </div>
-          {partial && (
-            <p className="-mt-2 max-w-[60ch] text-sm text-ink-2/75">
-              This board holds {count} videos. Only videos that pass our filters are listed, so a niche can have fewer than {BOARD_SIZE}.
-            </p>
-          )}
         </div>
+        {partial && (
+          <p className="max-w-[60ch] text-sm text-ink-2/75">
+            This board holds {count} videos. Only videos that pass our filters are listed, so a niche can have fewer than {BOARD_SIZE}.
+          </p>
+        )}
       </div>
 
       {waiting ? (
