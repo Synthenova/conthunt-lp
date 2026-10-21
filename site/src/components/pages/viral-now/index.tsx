@@ -40,7 +40,7 @@ export default function ViralNowPage({ niche = null }: ViralNowPageProps) {
   return (
     <ViralNowProvider initial={initial}>
       <GlyphSprite />
-      <div className="letterbox pb-7 pt-[calc(var(--nav-h)+clamp(16px,3vw,44px))] md:pb-8">
+      <div className="letterbox pb-7 pt-[clamp(16px,3vw,44px)] md:pb-8">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 md:mb-6">
           <StatusLine />
           <Facts />

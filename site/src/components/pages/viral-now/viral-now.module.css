@@ -31,7 +31,8 @@
   /* Least space kept left of the first numeral. */
   --vn-min-pad: 12px;
   --vn-pad-y: 24px;
-  --vn-stick: 64px;
+  /* The site header scrolls away, so the niche row sticks to the top edge. */
+  --vn-stick: 0px;
   --vn-stroke: rgba(15, 15, 15, 0.4);
   /* Where the side-scrollers start, as a share of the side gutter (1 = the letterbox edge). Phones keep 1. */
   --vn-lead-row: 1;
@@ -41,8 +42,6 @@
 @media (min-width: 768px) {
   .explorer {
     --vn-gutter: 10vw;
-    /* The site navbar stays the full 88px bar on this page, so the niche row sticks beneath it. */
-    --vn-stick: var(--nav-h);
     /* The side gutter is narrow here: a slimmer first-rank gutter, and the first numeral kept 20px off the edge. */
     --vn-g1: calc(var(--vn-num) * 0.46);
     --vn-min-pad: 20px;

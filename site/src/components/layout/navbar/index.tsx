@@ -15,8 +15,8 @@
  * page hides it; scrolling UP 14px brings it back. It always shows near the
  * top, while the mobile menu is open, while it holds keyboard focus, and when
  * the pointer touches the top 64px of the window.
- * On /viral-now neither happens. The niche row is its own sticky bar, so the
- * site bar stays the large fixed one and does not condense or slide away.
+ * On /viral-now neither happens. The header sits in the page and scrolls away
+ * with it. The niche row is the sticky bar, so it takes the top edge.
  * Below 768px it is a compact bar with a menu button that opens a sheet.
  *
  * Rendered by src/app/(site)/layout.tsx. It is `position: fixed`, so the first
@@ -154,8 +154,10 @@ export function Navbar() {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  // The niche row is the sticky bar on this page. Leave the site bar large and fixed.
+  // The niche row is the sticky bar on this page. The site header stays in the
+  // document and scrolls off; the mobile sheet still needs it pinned while open.
   const lockExpanded = isActivePath(pathname, ROUTES.viralNow);
+  const inlineHeader = lockExpanded && !menuOpen;
   const { compact, hidden } = useNavScroll(menuOpen, headerRef, lockExpanded);
   const solid = menuOpen || (!lockExpanded && compact);
 
@@ -166,7 +168,8 @@ export function Navbar() {
       data-compact={solid ? "true" : "false"}
       data-hidden={hidden ? "true" : "false"}
       className={cn(
-        "group/nav pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center",
+        "group/nav pointer-events-none z-50 flex justify-center",
+        inlineHeader ? "relative" : "fixed inset-x-0 top-0",
         "transition-transform duration-[450ms] ease-out will-change-transform motion-reduce:transition-none",
         // Clear the pill's drop shadow too (it reaches ~24px below the pill), so no gray strip lingers at the top edge.
         "data-[hidden=true]:-translate-y-[calc(100%+40px)]",
@@ -178,8 +181,6 @@ export function Navbar() {
           "transition-[max-width,width,height,margin,padding,border-radius,background-color,border-color,box-shadow,backdrop-filter] duration-[600ms] ease-out motion-reduce:transition-none",
           // Large (top of page)
           "h-16 px-5 md:h-[var(--nav-h)] md:px-8 lg:px-10",
-          // Viral Now: stay the full-width bar. A solid fill keeps the links off the rows scrolling underneath.
-          lockExpanded && "bg-paper",
           // Compact floating pill
           "group-data-[compact=true]/nav:mt-2 group-data-[compact=true]/nav:h-14 group-data-[compact=true]/nav:w-[calc(100%-16px)] group-data-[compact=true]/nav:rounded-[20px] group-data-[compact=true]/nav:pl-4 group-data-[compact=true]/nav:pr-2",
           "md:group-data-[compact=true]/nav:mt-3 md:group-data-[compact=true]/nav:h-[60px] md:group-data-[compact=true]/nav:w-[calc(100%-32px)] md:group-data-[compact=true]/nav:max-w-[780px] md:group-data-[compact=true]/nav:rounded-[22px] md:group-data-[compact=true]/nav:pl-5",

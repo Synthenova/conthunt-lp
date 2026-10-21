@@ -74,10 +74,12 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
       const stage = stageRef.current;
       if (!stage) return;
       const bar = document.querySelector<HTMLElement>(`.${styles.selectorBar}`);
-      const stick = bar ? parseFloat(getComputedStyle(bar.parentElement ?? bar).getPropertyValue("--vn-stick")) || 88 : 88;
+      const raw = bar?.parentElement ? getComputedStyle(bar.parentElement).getPropertyValue("--vn-stick") : "";
+      const parsed = parseFloat(raw);
+      const stick = Number.isFinite(parsed) ? parsed : 0;
       const barHeight = bar ? bar.getBoundingClientRect().height : 60;
       const stageTop = stage.getBoundingClientRect().top + window.scrollY;
-      // The site navbar stays fixed at full height here, and the niche bar sticks beneath it.
+      // The site header scrolls off with the page. The niche bar then sticks at --vn-stick.
       const gap = 8;
       const y = Math.max(stageTop - (stick + barHeight + gap), 0);
       if (Math.abs(window.scrollY - y) < 4) return;
