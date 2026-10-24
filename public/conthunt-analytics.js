@@ -152,6 +152,7 @@
   }
 
   function maybeRead() {
+    if (readSent) return;
     var soFar = visibleMs + (visibleAt ? performance.now() - visibleAt : 0);
     if (soFar >= 30000 && scrollPercent() >= 50) {
       readSent = true;
