@@ -165,7 +165,7 @@ ORDER BY median_seconds DESC`,
       ),
       sql(
         "Section drop-off",
-        `SELECT section, viewers, viewers - neighbor(viewers, 1) AS drop_off
+        `SELECT section, viewers, viewers - lag(viewers) OVER (ORDER BY viewers DESC) AS drop_off
 FROM (
   SELECT properties.section AS section, count(DISTINCT person_id) AS viewers
   FROM events
