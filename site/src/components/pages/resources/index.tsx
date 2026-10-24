@@ -22,6 +22,7 @@ import { Section } from "@/components/layout/section";
 import { Emphasis } from "@/components/ui/emphasis";
 import { ROUTES } from "@/lib/links";
 import { ArticleFoot } from "./article-foot";
+import { ArticleRead } from "./article-read";
 
 export default function ResourcesPage() {
   const posts = getAllPosts();
@@ -43,6 +44,7 @@ export default function ResourcesPage() {
             </>
           }
           body="Every guide here starts from a prompt you can paste. Give one to ContHunt and Deep Search watches 500 to 1,000 videos on TikTok, Instagram Reels and YouTube Shorts in under five minutes, then answers with citations."
+          placement="resources_cta"
           secondary={{ href: ROUTES.article("how-deep-search-works"), label: "How it works" }}
         />
       </Section>
@@ -58,6 +60,7 @@ export function ResourceArticle({ slug }: { slug: string }) {
   return (
     <>
       {/* JSON-LD (BlogPosting + BreadcrumbList) is rendered by [slug]/page.tsx via <ArticleJsonLd>. */}
+      <ArticleRead slug={post.slug} category={post.category} />
       <Rails>
         <ArticleHeader post={post} />
         <Section

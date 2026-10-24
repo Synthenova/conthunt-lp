@@ -4,23 +4,10 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
     <script>
-        // Standard Initialization
-        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-            api_host: '/ingest',
-            ui_host: 'https://us.posthog.com',
-            person_profiles: 'always',
-            cross_subdomain_cookie: true,
-        });
-        // Dynamic EJS Telemetry for the Blog
-        posthog.capture('blog_article_viewed', {
-            article_title: 'Privacy Policy',
-            canonical_url: 'https://conthunt.app/privacy',
-            author_name: 'ContHunt Team'
-        });
+        window.CONTHUNT_ANALYTICS = { pageType: "legal" };
     </script>
+    <script src="/public/conthunt-analytics.js" defer></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -262,6 +249,7 @@ We may use cookies/local storage and similar technologies to:</p>
 <li>Improve reliability and prevent abuse</li>
 </ul>
 <p>You can control cookies through browser settings. Some features may not work properly if cookies are disabled.</p>
+<p>The marketing site at conthunt.app uses <strong>PostHog</strong> to record usage events: which pages are viewed, which links are clicked, how far a page is scrolled, and the text submitted in the homepage search box. That search text is the same text sent to the app to run the search. An account email is attached to these events only after signup or login inside the app. The marketing site does not record a session replay.</p>
 <h3>4.3 Information We Receive From Third Parties</h3>
 <p>We may receive limited information from:</p>
 <ul>

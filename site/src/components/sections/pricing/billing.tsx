@@ -13,6 +13,7 @@
  */
 import { createContext, memo, useContext, useMemo, useState, type ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
+import { capture } from "@/lib/analytics";
 import { SegmentedToggle } from "@/components/ui/segmented-toggle";
 import { cn } from "@/lib/cn";
 import { MAX_YEARLY_SAVING_PCT, type Billing } from "./plans";
@@ -47,6 +48,8 @@ export interface BillingToggleProps {
   size?: "sm" | "md";
   /** Accessible name of the radiogroup. Give each toggle on one page a distinct name. */
   ariaLabel?: string;
+  /** Where the toggle sits, so a billing change can be split on the pricing dashboard. */
+  surface: "home" | "pricing" | "calculator";
 }
 
 /**
@@ -58,6 +61,7 @@ export const BillingToggle = memo(function BillingToggle({
   className,
   size = "md",
   ariaLabel = "Billing period",
+  surface,
 }: BillingToggleProps) {
   const { billing, setBilling } = useBilling();
   return (
@@ -69,7 +73,10 @@ export const BillingToggle = memo(function BillingToggle({
         className,
       )}
       value={billing}
-      onChange={setBilling}
+      onChange={(next) => {
+        if (next !== billing) capture("billing_toggled", { billing: next, surface });
+        setBilling(next);
+      }}
       options={[
         { value: "yearly", label: "Yearly", badge: <Badge tone="neutral" className="bg-green-soft text-[11px] text-green-ink">Save up to {MAX_YEARLY_SAVING_PCT}%</Badge> },
         { value: "monthly", label: "Monthly" },

@@ -12,6 +12,7 @@ import { ArrowUpRight, CornerDownRight, Telescope } from "lucide-react";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { prefersReducedMotion } from "@/lib/motion";
 import { useHiw } from "./hiw-context";
@@ -131,6 +132,7 @@ export function FollowUp({ className }: { className?: string }) {
           <a
             ref={sendRef}
             href={GET_STARTED_URL}
+            {...phAttrs("how_it_works", "app")}
             className="relative ml-auto inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-[11px] bg-ink pl-3.5 pr-3 text-[13px] font-medium text-paper transition-[background-color,scale] duration-200 after:absolute after:inset-x-0 after:-inset-y-1 after:content-[''] hover:bg-ink-2 active:scale-[0.96]"
           >
             Continue in ContHunt

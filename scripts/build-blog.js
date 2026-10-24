@@ -1052,6 +1052,8 @@ async function build() {
             hero: postData.hero,
             canonical: canonicalUrl,
             isBlogPost: true,
+            slug: postData.slug,
+            category: postData.category || "",
             date: postData.date,
             updated: postData.updated,
             author: postData.author,

@@ -20,6 +20,7 @@
  */
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { area, curveMonotoneX, line } from "d3-shape";
+import { captureOnce } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 import type { Hue } from "@/lib/tones";
 import {
@@ -127,6 +128,7 @@ export function Panel({ name, hue, label, aside, className, children, onFocusIn,
   return (
     <div
       data-panel={name}
+      onClick={() => captureOnce(`bento:analysis:${name}`, "bento_interacted", { control: "analysis", value: name })}
       onFocus={onFocusIn}
       onBlur={(e) => {
         if (onFocusOut && !e.currentTarget.contains(e.relatedTarget as Node | null)) onFocusOut();

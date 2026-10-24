@@ -21,12 +21,13 @@
  *   <McpSection showEyebrow={false} id="agents" />
  */
 import { ArrowUpRight, ChevronRight } from "lucide-react";
-import type { ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/cn";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { AsciiBand, CopyButton, Cross, McpReveal, Rule, SetupPanel, ToolIndex } from "./island";
 import { DOCS_URL, MCP_DOCS_URL, MCP_SERVER_URL, MCP_TOOLS, SERVER_FACTS, SERVER_HOST } from "./data";
@@ -47,12 +48,17 @@ const ARTICLE =
   "flex min-w-0 flex-col gap-6 px-5 py-9 md:px-7 md:py-10 lg:row-span-3 lg:grid lg:grid-rows-subgrid lg:px-6";
 const H3 = "text-balance text-[19px] font-bold leading-[1.32] tracking-[-0.02em] text-ink md:text-[20px]";
 
-function TextLink({ href, children }: { href: string; children: ReactNode }) {
+function TextLink({
+  href,
+  children,
+  ...rest
+}: { href: string; children: ReactNode } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "children">) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
+      {...rest}
       className="group/link inline-flex w-fit items-center gap-1 text-[15px] font-medium tracking-[-0.01em] text-accent"
     >
       <span className="underline decoration-transparent underline-offset-4 transition-[text-decoration-color] duration-200 group-hover/link:decoration-current">
@@ -110,6 +116,7 @@ export default function McpSection({ index = 6, total = 8, showEyebrow = true, i
             <CopyButton
               text={MCP_SERVER_URL}
               label={`Copy MCP server URL ${MCP_SERVER_URL}`}
+              analytics={{ target: "mcp_url" }}
               className="h-8 gap-2 rounded-chip border border-hairline bg-paper px-2.5 text-[12px] normal-case tracking-normal text-ink-2"
             >
               <span>{SERVER_HOST}</span>
@@ -150,8 +157,8 @@ export default function McpSection({ index = 6, total = 8, showEyebrow = true, i
               search, Deep Search, video analysis, boards and more.
             </p>
             <div data-mcp-in="" className="mt-7 flex flex-wrap items-center gap-2">
-              <Button href={GET_STARTED_URL}>Get started</Button>
-              <Button href={MCP_DOCS_URL} newTab variant="ghost">
+              <Button href={GET_STARTED_URL} {...phAttrs("mcp", "app")}>Get started</Button>
+              <Button href={MCP_DOCS_URL} newTab variant="ghost" {...phAttrs("mcp", "mcp_docs")}>
                 MCP guide
                 <ArrowUpRight aria-hidden="true" className="size-4" />
               </Button>
@@ -179,7 +186,7 @@ export default function McpSection({ index = 6, total = 8, showEyebrow = true, i
               One URL. <span className="text-muted">Prompt, MCP config or CLI.</span>
             </h3>
             <SetupPanel />
-            <TextLink href={MCP_DOCS_URL}>Read the MCP guide</TextLink>
+            <TextLink href={MCP_DOCS_URL} {...phAttrs("mcp", "mcp_docs")}>Read the MCP guide</TextLink>
           </article>
 
           <article
@@ -193,7 +200,7 @@ export default function McpSection({ index = 6, total = 8, showEyebrow = true, i
               {MCP_TOOLS.length} tools. <span className="text-muted">The app&rsquo;s research, run by your agent.</span>
             </h3>
             <ToolIndex />
-            <TextLink href={DOCS_URL}>View the docs</TextLink>
+            <TextLink href={DOCS_URL} {...phAttrs("mcp", "docs")}>View the docs</TextLink>
           </article>
         </div>
       </McpReveal>

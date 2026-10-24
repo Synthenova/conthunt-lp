@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { SectionHeader } from "@/components/ui/section-header";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { FeatureList, GrowthCharts, TrackingBoard, TrackingHighlightProvider } from "./island";
 
@@ -46,7 +47,7 @@ export default function TrackingSection() {
             headingClassName="max-w-[24ch]"
             actions={
               <div className="flex flex-col items-start gap-2.5 md:items-end">
-                <Button href={GET_STARTED_URL} size="md">
+                <Button href={GET_STARTED_URL} size="md" {...phAttrs("tracking", "app")}>
                   Get started
                 </Button>
                 <p className="font-mono text-[11px] uppercase tracking-[0.02em] text-ink/60">Included on every plan</p>

@@ -12,6 +12,7 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 // The island's CSS ships with the page (its components load with the island).
 import "./analysis-tile.module.css";
@@ -50,7 +51,7 @@ export default function BentoSection({ showHeader = true, index = SECTION.index,
           muted={SECTION.muted}
           sub={SECTION.sub}
           actions={
-            <Button href={GET_STARTED_URL} size="md">
+            <Button href={GET_STARTED_URL} size="md" {...phAttrs("bento", "app")}>
               Get started
             </Button>
           }

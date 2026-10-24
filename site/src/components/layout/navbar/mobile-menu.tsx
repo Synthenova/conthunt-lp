@@ -34,6 +34,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { prefersReducedMotion, useIsomorphicLayoutEffect } from "@/lib/motion";
 import { useSound } from "@/lib/sound";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL, isActivePath, LOGIN_URL, NAV_LINKS, ROUTES } from "@/lib/links";
 import { navDotClass } from "./nav-dot";
 
@@ -328,10 +329,10 @@ export function MobileMenu({
           <SoundRow />
         </div>
         <div className="mt-2 grid grid-cols-2 gap-2">
-          <Button href={LOGIN_URL} variant="secondary" size="lg" onClick={close}>
+          <Button href={LOGIN_URL} variant="secondary" size="lg" onClick={close} {...phAttrs("nav_mobile", "login")}>
             Login
           </Button>
-          <Button href={GET_STARTED_URL} size="lg" onClick={close}>
+          <Button href={GET_STARTED_URL} size="lg" onClick={close} {...phAttrs("nav_mobile", "app")}>
             Get started
           </Button>
         </div>

@@ -1,3 +1,5 @@
+// Retired. The old homepage was the only page that loaded this file, and that page is no longer served.
+// Static pages load /public/conthunt-analytics.js. Do not add this script to a template.
 // Basic Tracker Helper
 const track = (eventName, properties = {}) => {
     if (window.posthog) {

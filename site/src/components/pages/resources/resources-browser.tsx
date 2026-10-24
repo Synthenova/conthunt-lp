@@ -30,6 +30,7 @@ import { CATEGORIES, type PostCategory, type PostSummary } from "@/lib/blog";
 import { cn } from "@/lib/cn";
 import { toneVars } from "@/lib/tones";
 import { categoryHue } from "@/components/sections/blog/category-hue";
+import { capture } from "@/lib/analytics";
 import { MOTION_OK, prefersReducedMotion } from "@/lib/motion";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { FeaturedPost } from "./featured-post";
@@ -430,13 +431,14 @@ export function ResourcesBrowser(props: ResourcesBrowserProps) {
     (next: CategoryFilter) => {
       pending.current = next;
       setCategory(next);
+      if (next !== category) capture("resources_filtered", { category: next });
       window.clearTimeout(clear.current);
       clear.current = window.setTimeout(() => {
         pending.current = null;
       }, 1500);
       router.replace(next === "All" ? pathname : `${pathname}?c=${encodeURIComponent(next)}`, { scroll: false });
     },
-    [router, pathname],
+    [router, pathname, category],
   );
 
   return <ResourcesBrowserView {...props} category={category} onCategory={choose} />;

@@ -36,6 +36,7 @@ import type {
   SimTraceRow,
   SimWorkerTask,
 } from "@/content/simulator/types";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
@@ -788,6 +789,7 @@ function Composer({
             <a
               ref={sendRef}
               href={GET_STARTED_URL}
+              {...phAttrs("simulator_chat", "app")}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Send: opens ContHunt in a new tab"

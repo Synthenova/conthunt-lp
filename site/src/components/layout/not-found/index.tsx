@@ -13,6 +13,8 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
+import { NotFoundBeacon } from "./beacon";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL, ROUTES } from "@/lib/links";
 import { NoMatchCard } from "./no-match-card";
 
@@ -25,6 +27,7 @@ const GO_TO = [
 export function NotFoundView() {
   return (
     <Rails>
+      <NotFoundBeacon />
       <Section
         sectionKey="not-found"
         padding="none"
@@ -47,7 +50,7 @@ export function NotFoundView() {
 
           <div className="flex flex-col gap-6">
             <div>
-              <Button href={GET_STARTED_URL} size="lg">
+              <Button href={GET_STARTED_URL} size="lg" {...phAttrs("not_found", "app")}>
                 Get started
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Button>

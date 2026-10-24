@@ -14,6 +14,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import type { CoverSpec } from "@/lib/blog";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 
 export interface CtaBandProps {
@@ -22,9 +23,10 @@ export interface CtaBandProps {
   title: ReactNode;
   body: string;
   secondary?: { href: string; label: string };
+  placement: "resources_cta" | "article_cta";
 }
 
-export function CtaBand({ cover, eyebrow, title, body, secondary }: CtaBandProps) {
+export function CtaBand({ cover, eyebrow, title, body, secondary, placement }: CtaBandProps) {
   return (
     <div className="relative isolate overflow-hidden rounded-tray" style={{ backgroundColor: cover.dominant }}>
       <Image
@@ -43,7 +45,7 @@ export function CtaBand({ cover, eyebrow, title, body, secondary }: CtaBandProps
           <h2 className="display-m mt-4">{title}</h2>
           <p className="mt-4 max-w-[44ch] text-[16px] leading-[1.55] text-ink-2/80">{body}</p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Button href={GET_STARTED_URL} size="lg" className="group/cta">
+            <Button href={GET_STARTED_URL} size="lg" className="group/cta" {...phAttrs(placement, "app")}>
               Get started
               <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover/cta:translate-x-0.5" />
             </Button>

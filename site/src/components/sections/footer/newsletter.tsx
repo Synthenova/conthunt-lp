@@ -21,6 +21,7 @@ import { ArrowRight, CircleAlert, LoaderCircle } from "lucide-react";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { data } from "@/content/site/newsletter";
 import { cn } from "@/lib/cn";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { prefersReducedMotion } from "@/lib/motion";
 import { EMAIL_PATTERN, NEWSLETTER_MODE, subscribeToNewsletter } from "./subscribe";
@@ -135,6 +136,7 @@ export function NewsletterForm({ className }: { className?: string }) {
             </p>
             <a
               href={GET_STARTED_URL}
+              {...phAttrs("footer_newsletter", "app")}
               className={cn(
                 "group/cta inline-flex h-12 items-center justify-center gap-2 rounded-[10px] bg-ink px-5 font-mono text-[12px] font-medium uppercase tracking-[0.04em] text-paper",
                 "transition-[background-color,transform] duration-200 ease-out hover:bg-ink-2 active:scale-[0.96]",
@@ -217,6 +219,7 @@ export function NewsletterForm({ className }: { className?: string }) {
               Newsletter sign-up opens soon.{" "}
               <a
                 href={GET_STARTED_URL}
+                {...phAttrs("footer_newsletter", "app")}
                 className="inline-flex items-center gap-1 font-medium text-ink underline decoration-ink/30 underline-offset-4 transition-[text-decoration-color] duration-200 ease-out hover:decoration-ink"
               >
                 Get started

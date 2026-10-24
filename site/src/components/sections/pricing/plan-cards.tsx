@@ -32,6 +32,7 @@
 import { ArrowRight, Clock, Sparkles, Telescope, Zap, type LucideIcon } from "lucide-react";
 import { useEffect, useRef, type ReactNode, type RefObject } from "react";
 import { Button } from "@/components/ui/button";
+import { phAttrs } from "@/lib/attribution";
 import { cn } from "@/lib/cn";
 import { EASE, gsap, useGSAP } from "@/lib/gsap";
 import { MOTION_OK, MOTION_REDUCED } from "@/lib/motion";
@@ -105,7 +106,7 @@ export function PlanCards({
       <div className="grid gap-4 md:gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-4 xl:gap-5">
         {plans.map((plan) => (
           <div key={plan.id} data-plan-wrap className="@container flex min-w-0 max-w-full">
-            <PlanCard plan={plan} billing={billing} full={full} Heading={headingLevel} />
+            <PlanCard plan={plan} billing={billing} full={full} Heading={headingLevel} placement={full ? "pricing_page" : "pricing_home"} />
           </div>
         ))}
       </div>
@@ -203,7 +204,19 @@ const Z = { head: 22, price: 34, cta: 16, body: 8 } as const;
 
 // ------------------------------------------------------------------ card
 
-function PlanCard({ plan, billing, full, Heading }: { plan: Plan; billing: Billing; full: boolean; Heading: HeadingTag }) {
+function PlanCard({
+  plan,
+  billing,
+  full,
+  Heading,
+  placement,
+}: {
+  plan: Plan;
+  billing: Billing;
+  full: boolean;
+  Heading: HeadingTag;
+  placement: "pricing_home" | "pricing_page";
+}) {
   const ref = useRef<HTMLElement>(null);
   useCardTilt(ref);
   // The featured plan is the ink card.
@@ -245,7 +258,7 @@ function PlanCard({ plan, billing, full, Heading }: { plan: Plan; billing: Billi
           </div>
 
           <div data-z={Z.cta} className="mt-5">
-            <PlanCta plan={plan} full={full} />
+            <PlanCta plan={plan} billing={billing} full={full} placement={placement} />
             <TrialLine plan={plan} billing={billing} dark={dark} />
           </div>
         </div>
@@ -403,13 +416,24 @@ function SaveChip({ dark, pct }: { dark: boolean; pct: number }) {
   );
 }
 
-function PlanCta({ plan, full }: { plan: Plan; full: boolean }) {
+function PlanCta({
+  plan,
+  billing,
+  full,
+  placement,
+}: {
+  plan: Plan;
+  billing: Billing;
+  full: boolean;
+  placement: "pricing_home" | "pricing_page";
+}) {
   return (
     <Button
       href={plan.cta.href}
       variant="secondary"
       size="md"
       className={cn(styles.cta, "w-full", full && "h-12 text-[15px]")}
+      {...phAttrs(placement, "app", { plan: plan.id, billing })}
     >
       {plan.featured && <span className={styles.ctaSweep} aria-hidden="true" />}
       {plan.cta.label}

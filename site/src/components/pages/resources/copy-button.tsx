@@ -10,6 +10,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Check, Copy, Link2 } from "lucide-react";
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
 export interface CopyButtonProps {
@@ -27,8 +28,10 @@ export function CopyButton({ text, label, copiedLabel = "Copied", icon = "copy",
 
   const onClick = async () => {
     const value = text ?? window.location.href.split("#")[0];
+    let ok = false;
     try {
       await navigator.clipboard.writeText(value);
+      ok = true;
     } catch {
       // Clipboard API unavailable (insecure context): fall back to a hidden textarea.
       const ta = document.createElement("textarea");
@@ -38,9 +41,11 @@ export function CopyButton({ text, label, copiedLabel = "Copied", icon = "copy",
       ta.style.opacity = "0";
       document.body.appendChild(ta);
       ta.select();
-      document.execCommand("copy");
+      ok = document.execCommand("copy");
       ta.remove();
     }
+    if (!ok) return;
+    if (icon === "link") capture("copy_succeeded", { target: "article_link" });
     setCopied(true);
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setCopied(false), 1600);

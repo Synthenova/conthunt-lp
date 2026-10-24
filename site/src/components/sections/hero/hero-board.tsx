@@ -28,6 +28,9 @@ import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { cn } from "@/lib/cn";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { capture, captureBeforeNavigate } from "@/lib/analytics";
+import { heroQuerySource } from "@/lib/analytics-model";
+import { appUrl, hadUtm, phAttrs, readLastTouch } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { MOTION_OK, MOTION_REDUCED } from "@/lib/motion";
 import { CardBack, ChartDefs, Face } from "./card-parts";
@@ -377,7 +380,12 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
     };
   }, []);
 
+  const focusedOnce = useRef(false);
   const onFocus = useCallback(() => {
+    if (!focusedOnce.current) {
+      focusedOnce.current = true;
+      capture("hero_prompt_focused", { had_example: !value });
+    }
     boxRef.current?.setAttribute("data-focus", lastInput.current);
     setEditing(true);
     engineRef.current?.setPaused("focus", true);
@@ -407,10 +415,30 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
   const submit = useCallback(
     (e?: FormEvent) => {
       e?.preventDefault();
-      const q = (value.trim() || PROMPT_SETS[indexRef.current].prompt).slice(0, 500);
-      const url = new URL(GET_STARTED_URL);
-      url.searchParams.set("q", q);
-      window.location.assign(url.toString());
+      const onScreen = PROMPT_SETS[indexRef.current].prompt;
+      const q = (value.trim() || onScreen).slice(0, 500);
+      const href = appUrl(GET_STARTED_URL, {
+        placement: "hero_submit",
+        query: q,
+        attribution: readLastTouch(),
+      });
+      void captureBeforeNavigate([
+        {
+          name: "hero_search_submitted",
+          properties: {
+            query: q,
+            query_source: heroQuerySource(q, onScreen, exampleAtFocus.current),
+            example_index: indexRef.current,
+          },
+        },
+        { name: "cta_clicked", properties: { placement: "hero_submit", destination: "app" } },
+        {
+          name: "outbound_app",
+          properties: { placement: "hero_submit", destination: "app", had_utm: hadUtm(href) },
+        },
+      ]).then(() => {
+        window.location.assign(href);
+      });
     },
     [value],
   );
@@ -642,7 +670,7 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
               className={cn("mt-[var(--cta-gap)] flex flex-wrap items-center gap-x-4 gap-y-3", s.rise)}
               style={{ "--d": "0.5s" } as React.CSSProperties}
             >
-              <Button href={GET_STARTED_URL} size="lg" className="pr-6">
+              <Button href={GET_STARTED_URL} size="lg" className="pr-6" {...phAttrs("hero_button", "app")}>
                 Get started
                 <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover/button:translate-x-0.5" />
               </Button>

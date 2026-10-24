@@ -51,6 +51,7 @@
       }
       try {
         await copyText(text.trim());
+        document.dispatchEvent(new CustomEvent("ch:docs-copy", { detail: { text: text.trim(), button: button } }));
         const original = button.textContent;
         button.textContent = 'Copied';
         button.classList.add('is-copied');

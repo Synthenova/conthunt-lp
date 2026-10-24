@@ -5,7 +5,8 @@
  * counter that restarts the step visuals when the visitor picks a brief, and the
  * step currently in view (drives the heading's verb pills).
  */
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { capture } from "@/lib/analytics";
 import { DEFAULT_SCENARIO, SCENARIOS, type Scenario, type ScenarioId } from "./content";
 
 export type StepNumber = 1 | 2 | 3;
@@ -32,6 +33,13 @@ export function HiwProvider({ initialScenario = DEFAULT_SCENARIO, children }: { 
     setScenarioId(id);
     setRunKey((k) => k + 1);
   }, []);
+
+  const seenSteps = useRef(new Set<StepNumber>());
+  useEffect(() => {
+    if (seenSteps.current.has(activeStep)) return;
+    seenSteps.current.add(activeStep);
+    capture("hiw_step_reached", { step: activeStep });
+  }, [activeStep]);
 
   const value = useMemo<HiwState>(
     () => ({

@@ -6,6 +6,7 @@
  */
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { destinationForHref, phAttrs } from "@/lib/attribution";
 import { cn } from "@/lib/cn";
 import type { ResolvedFooterLink } from "./links";
 
@@ -42,11 +43,14 @@ export function FooterLink({ link }: { link: ResolvedFooterLink }) {
     </>
   );
 
+  const destination = destinationForHref(link.href);
+  const attrs = destination ? phAttrs("footer", destination) : {};
   if (link.external) {
     return (
       <a
         href={link.href}
         className={cn(BASE)}
+        {...attrs}
         {...(link.newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {inner}
@@ -55,7 +59,7 @@ export function FooterLink({ link }: { link: ResolvedFooterLink }) {
     );
   }
   return (
-    <Link href={link.href} className={cn(BASE)}>
+    <Link href={link.href} className={cn(BASE)} {...attrs}>
       {inner}
     </Link>
   );

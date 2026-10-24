@@ -751,7 +751,9 @@ export async function renewAsset(
       asset: { asset_id: current.asset_id, url: body.url, expires_at: expiresAt, source: body.source },
     };
   } catch (error) {
-    if (error instanceof ViralNowApiError && (error.status === 403 || error.status === 404)) return { status: "revoked" };
+    if (error instanceof ViralNowApiError && (error.status === 403 || error.status === 404)) {
+      return { status: "revoked", code: error.status };
+    }
     return { status: "error", error: messageOf(error) };
   }
 }

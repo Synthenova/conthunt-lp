@@ -22,6 +22,7 @@ export function ArticleCta({ post }: { post: PostSummary }) {
           Ask your own <Emphasis>question</Emphasis>.
         </>
       }
+      placement="article_cta"
       body="Describe what you need to know. ContHunt searches TikTok, Instagram Reels and YouTube Shorts, watches 500 to 1,000 videos in under five minutes, and returns a cited answer."
       secondary={
         post.slug !== "how-deep-search-works"

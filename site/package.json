@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start -p 3001",
     "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test src/lib/analytics-model.test.mts src/lib/attribution.test.mts",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "mdast-util-to-string": "^4.0.0",
     "motion": "^14.2.0",
     "next": "16.4.0",
+    "posthog-js": "^1.438.21",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-markdown": "^10.1.0",

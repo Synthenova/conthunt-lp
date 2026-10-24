@@ -36,6 +36,8 @@ import { posterStyle, useManagedVideo } from "@/lib/media";
 import { useLenis } from "@/components/layout/smooth-scroll";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button } from "@/components/ui/button";
+import { captureOnce } from "@/lib/analytics";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { cn } from "@/lib/cn";
 import type { DeepSearchSimulatorProps, SimDeepSearch } from "@/content/simulator/types";
@@ -231,12 +233,15 @@ export function StatementSimulatorScene({ simulator, chips, index = 1, total = 8
 
   // After "Skip to the live demo", focus moves into the frame as soon as it is interactive.
   useEffect(() => {
-    if (!live || !pendingFocus.current) return;
+    if (!live) return;
+    captureOnce("simulator:cta", "simulator_milestone", { milestone: "cta_reached" });
+    if (!pendingFocus.current) return;
     pendingFocus.current = false;
     simInnerRef.current?.querySelector<HTMLElement>('[role="region"]')?.focus({ preventScroll: true });
   }, [live]);
 
   const skipToDemo = () => {
+    captureOnce("simulator:skip", "simulator_milestone", { milestone: "skip" });
     const st = triggerRef.current;
     if (!st) return;
     pendingFocus.current = true;
@@ -479,7 +484,13 @@ export function StatementSimulatorScene({ simulator, chips, index = 1, total = 8
 
       <div className={styles.simWrap}>
         {/* Inert until it lands: no invisible, off-screen tab stops during the scroll-jack. */}
-        <div ref={simInnerRef} className={styles.simInner} data-live={live || undefined} inert={!live}>
+        <div
+          ref={simInnerRef}
+          className={styles.simInner}
+          data-live={live || undefined}
+          inert={!live}
+          onPointerDown={() => captureOnce("simulator:first", "simulator_milestone", { milestone: "first_interaction" })}
+        >
           {/* The slim row above the frame: eyebrow + run caption left, Full Control + Get started
               right (phones: eyebrow over the caption, no actions). */}
           <div ref={headRef} className={styles.head}>
@@ -494,7 +505,7 @@ export function StatementSimulatorScene({ simulator, chips, index = 1, total = 8
             </div>
             <div className={styles.headActions}>
               <FullControlButton simulator={simulator} activeSearchId={readTab} className="max-lg:hidden" />
-              <Button href={GET_STARTED_URL} size="sm">
+              <Button href={GET_STARTED_URL} size="sm" {...phAttrs("simulator_scene", "app")}>
                 Get started
               </Button>
             </div>

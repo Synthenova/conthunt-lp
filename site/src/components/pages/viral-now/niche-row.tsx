@@ -19,6 +19,7 @@ import { RailSeam } from "@/components/layout/rails";
 import { EASE, gsap } from "@/lib/gsap";
 import { onceInView } from "@/lib/media";
 import { prefersReducedMotion } from "@/lib/motion";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { countLabel } from "@/lib/viral-now/copy";
 import { formatCount } from "@/lib/viral-now/format";
@@ -192,7 +193,7 @@ function EndCap({ niche, size, onSelect }: { niche: ViralNowNiche; size: number;
         <Button variant="secondary" size="sm" className="w-full bg-paper hover:bg-surface-2" onClick={() => onSelect(niche.slug)}>
           See all {size}
         </Button>
-        <Button size="sm" className="w-full" href={GET_STARTED_URL}>
+        <Button size="sm" className="w-full" href={GET_STARTED_URL} {...phAttrs("viral_row", "app")}>
           Run a deep search
         </Button>
         <p className="pt-1 text-[12px] leading-snug text-muted">Deep search watches 500 to 1,000 videos in your niche.</p>

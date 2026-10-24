@@ -17,6 +17,8 @@
  */
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { capture } from "@/lib/analytics";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { FaqAccordion } from "./accordion";
 import { ArrowLink } from "./arrow-link";
@@ -70,19 +72,24 @@ export interface FaqLayoutProps {
 
 export function FaqLayout({ header, items, defaultOpen, outro }: FaqLayoutProps) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
+  const onOpenChange = (next: number | null) => {
+    setOpen(next);
+    const id = next === null ? undefined : items[next]?.id;
+    if (id) capture("faq_opened", { faq_id: id });
+  };
 
   return (
     <div className="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
       <div className="lg:sticky lg:top-[calc(var(--nav-h)+32px)] lg:self-start">
         {header}
-        <Readout count={items.length} open={open} onSelect={setOpen} />
+        <Readout count={items.length} open={open} onSelect={onOpenChange} />
       </div>
       <div className="min-w-0">
-        <FaqAccordion items={items} open={open} onOpenChange={setOpen} />
+        <FaqAccordion items={items} open={open} onOpenChange={onOpenChange} />
         {outro && (
           <p className="mt-8 flex flex-wrap items-center gap-x-2 text-[15px] text-ink-2/75">
             <span>Still curious?</span>
-            <ArrowLink href={GET_STARTED_URL} external>
+            <ArrowLink href={GET_STARTED_URL} external {...phAttrs("faq", "app")}>
               Get started
             </ArrowLink>
           </p>

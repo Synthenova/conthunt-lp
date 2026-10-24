@@ -8,6 +8,7 @@
  *
  *   <BriefPicker className="mt-5" />
  */
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 import { SCENARIO_ORDER, SCENARIOS } from "./content";
 import { useHiw } from "./hiw-context";
@@ -24,7 +25,10 @@ export function BriefPicker({ className }: { className?: string }) {
             key={id}
             type="button"
             aria-pressed={active}
-            onClick={() => pickScenario(id)}
+            onClick={() => {
+              pickScenario(id);
+              capture("hiw_scenario_selected", { scenario: id });
+            }}
             className={cn(
               // 36px visual, 44px hit area (the ::after expander).
               "relative h-9 rounded-chip px-2.5 text-[13px] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:content-['']",

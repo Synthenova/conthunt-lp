@@ -48,6 +48,7 @@ import {
 import { createPortal, flushSync } from "react-dom";
 import { Pencil, Search } from "lucide-react";
 import type { DeepSearchSimulatorProps, SimFilterState } from "@/content/simulator/types";
+import { captureOnce } from "@/lib/analytics";
 import { EASE, gsap } from "@/lib/gsap";
 import { observeInView } from "@/lib/media";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -481,7 +482,10 @@ export function DeepSearchSimulator({
                           rubricNo={activeRubric}
                           onRubric={setRubricNo}
                           selection={selection}
-                          onOpenTile={setDrawer}
+                          onOpenTile={(tile) => {
+                            captureOnce("simulator:video", "simulator_milestone", { milestone: "video_opened" });
+                            setDrawer(tile);
+                          }}
                           deferred={!expanded}
                         />
                       </BoardArea>

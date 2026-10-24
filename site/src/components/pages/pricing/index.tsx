@@ -47,7 +47,7 @@ export default function PricingPage() {
             <p className="body-l max-w-[52ch] text-ink-2/75">
               Three plans, each with a 1-week free trial. And a calculator that turns Deep Searches into hours back.
             </p>
-            <BillingToggle className="self-start lg:self-auto" />
+            <BillingToggle surface="pricing" className="self-start lg:self-auto" />
           </div>
           <PlanCards className="mt-12 md:mt-14" headingLevel="h2" />
         </Section>

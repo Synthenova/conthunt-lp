@@ -46,6 +46,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
+import { capture } from "@/lib/analytics";
+import { phAttrs } from "@/lib/attribution";
 import { cn } from "@/lib/cn";
 import { CONTACT_URL, GET_STARTED_URL } from "@/lib/links";
 import { useInView } from "@/lib/media";
@@ -114,6 +116,24 @@ export function PricingCalculator() {
 
   const usage = useMemo(() => computeUsage(inputs, assumptions), [inputs, assumptions]);
   const rec = useMemo(() => recommend(inputs, usage), [inputs, usage]);
+  const recommendationReady = useRef(false);
+  useEffect(() => {
+    if (!recommendationReady.current) {
+      recommendationReady.current = true;
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      capture("calculator_recommendation", {
+        use_cases: selected,
+        deep_searches: inputs.deepSearches,
+        videos_per_search: inputs.videosPerSearch,
+        plan: rec.plan.id,
+        fit: rec.fit.binding,
+        billing,
+      });
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [selected, inputs.deepSearches, inputs.videosPerSearch, rec.plan.id, rec.fit.binding, billing]);
   const time = useMemo(() => computeTime(inputs, usage, rec.coverage, assumptions), [inputs, usage, rec.coverage, assumptions]);
 
   const patch = useCallback((next: Partial<CalcInputs>) => setInputs((prev) => ({ ...prev, ...next })), []);
@@ -586,13 +606,14 @@ function PlanResultCard({
       {/* The toggle and the CTA sit right under the price and above the usage bars. */}
       <div className={cn("flex flex-col gap-2.5", compact ? "mt-3" : "mt-4")}>
         <BillingToggle
+          surface="calculator"
           size="sm"
           ariaLabel="Billing period for this recommendation"
           // Under 360px the track is too narrow for "Yearly + Save up to N%" beside "Monthly", so the chip goes
           // (the card still says what yearly saves, one line below the price).
           className="w-full justify-between [&>button]:flex-1 [&>button]:justify-center max-[359px]:[&>button:first-child>span:last-child]:hidden"
         />
-        <Button href={GET_STARTED_URL} size="md" className="w-full">
+        <Button href={GET_STARTED_URL} size="md" className="w-full" {...phAttrs("calculator", "app", { plan: plan.id, billing })}>
           Start your 1-week free trial
         </Button>
       </div>

@@ -15,6 +15,8 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { Button } from "@/components/ui/button";
 import { useLenis } from "@/components/layout/smooth-scroll";
 import { EASE, gsap } from "@/lib/gsap";
+import { capture } from "@/lib/analytics";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { prefersReducedMotion } from "@/lib/motion";
 import { EMPTY_BOARDS } from "@/lib/viral-now/copy";
@@ -54,6 +56,7 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
 
   const select = useCallback((slug: string | null) => {
     if (slug === activeRef.current) return;
+    capture("viral_niche_selected", { niche: slug ?? "all" });
     const url = new URL(window.location.href);
     if (slug) url.searchParams.set("niche", slug);
     else url.searchParams.delete("niche");
@@ -62,7 +65,11 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
   }, []);
 
   useEffect(() => {
-    const onPop = () => setActive(slugFromSearch(window.location.search, niches));
+    const onPop = () => {
+      const slug = slugFromSearch(window.location.search, niches);
+      setActive(slug);
+      capture("viral_niche_selected", { niche: slug ?? "all" });
+    };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, [niches]);
@@ -211,7 +218,7 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
           <div className="letterbox flex flex-col items-start gap-5 py-24">
             <p className="display-m max-w-[22ch]">{EMPTY_BOARDS.title}</p>
             <p className="body-l max-w-[48ch] text-ink-2/75">{EMPTY_BOARDS.body}</p>
-            <Button href={GET_STARTED_URL}>Get started</Button>
+            <Button href={GET_STARTED_URL} {...phAttrs("viral_explorer", "app")}>Get started</Button>
           </div>
         ) : activeNiche ? (
           <NicheView key={activeNiche.slug} niche={activeNiche} onOpen={openFromGrid} />

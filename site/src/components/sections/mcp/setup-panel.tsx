@@ -361,6 +361,10 @@ export function SetupPanel({ defaultTab = "prompt", defaultClient = DEFAULT_CLIE
             <CopyButton
               text={snippet.copy}
               label={tab === "prompt" ? "Copy prompt" : tab === "mcp" ? `Copy ${activeClient.label} setup` : "Copy CLI commands"}
+              analytics={{
+                target: tab === "mcp" ? "mcp_config" : "mcp_command",
+                client: tab === "mcp" ? activeClient.key : tab,
+              }}
             />
           </div>
         </div>

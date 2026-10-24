@@ -8,6 +8,7 @@
  */
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowUp, Check, Plus, Search } from "lucide-react";
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 import { PLATFORMS, SEARCH_MODES, type PlatformKey } from "./data";
 import { FEATURE_TONE, GLOW_BASE } from "./feature-tone";
@@ -41,6 +42,7 @@ export function PlatformsFragment({ active }: { active: boolean }) {
 
   const toggle = (key: PlatformKey) => {
     touched.current = true;
+    capture("bento_interacted", { control: "platform", value: key });
     setOn((prev) => {
       const next = new Set(prev);
       if (next.has(key) && next.size > 1) next.delete(key);
@@ -60,6 +62,7 @@ export function PlatformsFragment({ active }: { active: boolean }) {
     if (next < 0) return;
     e.preventDefault();
     setMode(next);
+    capture("bento_interacted", { control: "platform_mode", value: SEARCH_MODES[next]?.key ?? String(next) });
     modeRefs.current[next]?.focus();
   };
 
@@ -83,7 +86,10 @@ export function PlatformsFragment({ active }: { active: boolean }) {
             role="radio"
             aria-checked={i === mode}
             tabIndex={i === mode ? 0 : -1}
-            onClick={() => setMode(i)}
+            onClick={() => {
+              setMode(i);
+              capture("bento_interacted", { control: "platform_mode", value: m.key });
+            }}
             onKeyDown={(e) => onModeKey(e, i)}
             className={cn(
               "relative z-[1] px-3 py-1.5 text-[12.5px] font-medium leading-none transition-colors duration-200 pointer-coarse:py-3",

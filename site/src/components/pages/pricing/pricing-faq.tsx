@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
 import { cn } from "@/lib/cn";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import styles from "./calculator.module.css";
 
@@ -117,7 +118,7 @@ export function PricingFaq() {
             headingClassName="max-w-[14ch]"
           />
           <div className="mt-8">
-            <Button href={GET_STARTED_URL}>Get started</Button>
+            <Button href={GET_STARTED_URL} {...phAttrs("faq", "app")}>Get started</Button>
           </div>
         </div>
 

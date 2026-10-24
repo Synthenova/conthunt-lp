@@ -171,7 +171,7 @@ export interface ViralNowDiagnostics {
 export type ViralNowRenewal =
   | { status: "renewed"; asset: ViralNowAsset }
   /** 403 or 404: the board rotated or unpublished. Drop the URL and refetch the niche. */
-  | { status: "revoked" }
+  | { status: "revoked"; code: 403 | 404 }
   /** Network or server failure. Keep the old URL until it expires; retry later. */
   | { status: "error"; error: string };
 

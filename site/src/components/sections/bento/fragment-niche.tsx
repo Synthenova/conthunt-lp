@@ -7,6 +7,7 @@
  * re-targets it. No metrics are shown or implied.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 import { EASE, gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -93,7 +94,10 @@ export function NicheFragment({ active }: { active: boolean }) {
             aria-pressed={n.slug === target}
             onPointerEnter={() => setPicked(n.slug)}
             onFocus={() => setPicked(n.slug)}
-            onClick={() => setPicked(n.slug)}
+            onClick={() => {
+              setPicked(n.slug);
+              capture("bento_interacted", { control: "niche", value: n.slug });
+            }}
             className={cn(
               "relative z-[1] h-7 rounded-[8px] border px-2.5 text-[12.5px] font-medium leading-none transition-[background-color,border-color,color] duration-200 ease-out pointer-coarse:h-9",
               n.slug === target ? "border-yellow-deep bg-yellow text-ink" : "border-hairline bg-paper text-ink-2",

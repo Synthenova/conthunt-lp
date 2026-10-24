@@ -19,6 +19,10 @@
     <meta name="twitter:image" content="https://conthunt.app/public/banner.png" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#030303" />
+    <script>
+        window.CONTHUNT_ANALYTICS = { pageType: "docs", slug: <%- JSON.stringify(canonical || "") %> };
+    </script>
+    <script src="/public/conthunt-analytics.js" defer></script>
     <link rel="icon" type="image/png" href="/public/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />

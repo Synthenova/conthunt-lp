@@ -4,23 +4,10 @@
 <head>
     <meta charset="UTF-8" />
 
-    <!-- PostHog Analytics -->
-    <script src="https://us-assets.i.posthog.com/static/array.js"></script>
     <script>
-        // Standard Initialization
-        posthog.init('phc_xYSuTFpO0h1u15WCJBqls5qzDc93YTmY0IXZST6t4J7', {
-            api_host: '/ingest',
-            ui_host: 'https://us.posthog.com',
-            person_profiles: 'always',
-            cross_subdomain_cookie: true,
-        });
-        // Dynamic EJS Telemetry for the Blog
-        posthog.capture('blog_article_viewed', {
-            article_title: 'Terms of Conditions',
-            canonical_url: 'https://conthunt.app/terms',
-            author_name: 'ContHunt Team'
-        });
+        window.CONTHUNT_ANALYTICS = { pageType: "legal" };
     </script>
+    <script src="/public/conthunt-analytics.js" defer></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

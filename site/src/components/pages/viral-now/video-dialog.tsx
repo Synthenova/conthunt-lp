@@ -18,6 +18,8 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState, type Keyboard
 import { useLenis } from "@/components/layout/smooth-scroll";
 import { Button } from "@/components/ui/button";
 import { EASE, gsap, useGSAP } from "@/lib/gsap";
+import { capture } from "@/lib/analytics";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL } from "@/lib/links";
 import { MOTION_OK, MOTION_REDUCED, prefersReducedMotion } from "@/lib/motion";
 import { fetchAnalysis, isPlayable } from "@/lib/viral-now/api";
@@ -72,6 +74,15 @@ export function VideoDialog({ state, asOf, onIndexChange, onClose }: VideoDialog
 
   const { niche, list, index, trigger } = state;
   const video = list[index];
+  const openedId = video?.id;
+  const openedPlatform = video?.platform;
+  const openedRank = video?.rank;
+  const nicheSlug = niche.slug;
+
+  useEffect(() => {
+    if (!openedId || !openedPlatform || openedRank == null) return;
+    capture("viral_video_opened", { niche: nicheSlug, platform: openedPlatform, rank: openedRank });
+  }, [openedId, openedPlatform, openedRank, nicheSlug]);
 
   /* ------------------------------------------------------------- open and close */
 
@@ -214,7 +225,12 @@ export function VideoDialog({ state, asOf, onIndexChange, onClose }: VideoDialog
       <div className={styles.frame} onClick={onFrameClick}>
         <div ref={sheetRef} className={styles.sheet} data-lenis-prevent="">
           <div className={styles.stage}>
-            <DialogMedia key={video.id} video={video} watchLabel={info ? `Watch on ${info.label}` : "Watch the original"} />
+            <DialogMedia
+              key={video.id}
+              video={video}
+              watchLabel={info ? `Watch on ${info.label}` : "Watch the original"}
+              onOutbound={() => capture("viral_outbound_clicked", { platform: video.platform, niche: niche.slug, rank: video.rank })}
+            />
           </div>
 
           <div ref={detailRef} className={styles.detail}>
@@ -312,7 +328,7 @@ export function VideoDialog({ state, asOf, onIndexChange, onClose }: VideoDialog
             </div>
 
             <div className={styles.detailFooter}>
-              <Button href={GET_STARTED_URL} size="md" className="min-w-0 flex-1 sm:flex-none">
+              <Button href={GET_STARTED_URL} size="md" className="min-w-0 flex-1 sm:flex-none" {...phAttrs("viral_dialog", "app")}>
                 Analyze videos like this
                 <ArrowRight className="size-4 transition-transform duration-200 ease-out group-hover/button:translate-x-0.5" strokeWidth={2} />
               </Button>
@@ -324,6 +340,9 @@ export function VideoDialog({ state, asOf, onIndexChange, onClose }: VideoDialog
                   size="md"
                   aria-label={info?.openLabel ?? "Open original"}
                   className="w-11 px-0 sm:w-auto sm:px-5"
+                  onClick={() =>
+                    capture("viral_outbound_clicked", { platform: video.platform, niche: niche.slug, rank: video.rank })
+                  }
                 >
                   <span className="hidden sm:inline">{info?.openLabel ?? "Open original"}</span>
                   <ExternalLink className="size-4" strokeWidth={2} />
@@ -465,7 +484,15 @@ function Block({ label, text }: { label: string; text: string }) {
 
 /* ------------------------------------------------------------------- media */
 
-function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: string }) {
+function DialogMedia({
+  video,
+  watchLabel,
+  onOutbound,
+}: {
+  video: ViralNowVideo;
+  watchLabel: string;
+  onOutbound: () => void;
+}) {
   const { url: poster, onError } = useAssetUrl(video, "poster");
   const [src, setSrc] = useState<string | null>(null);
   const canPlay = isPlayable(video.video);
@@ -534,6 +561,7 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
           rel="noopener noreferrer"
           aria-label={watchLabel}
           title={watchLabel}
+          onClick={onOutbound}
           className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-paper text-ink shadow-float transition-transform duration-200 ease-out hover:scale-105 active:scale-[0.96]"
         >
           <Play className="ml-0.5 size-6 fill-current" strokeWidth={2} />

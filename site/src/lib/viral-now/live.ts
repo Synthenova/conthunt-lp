@@ -6,7 +6,8 @@
  * nothing changes. A missing or failing live source is never shown to the visitor. In
  * development it is logged once to the console.
  */
-import { fetchLiveNiches, fetchNicheVideos, fetchTrending } from "./api";
+import { capture } from "@/lib/analytics";
+import { fetchLiveNiches, fetchNicheVideos, fetchTrending, ViralNowApiError } from "./api";
 import type { ViralNowNiche, ViralNowNicheMeta } from "./types";
 
 /** A live niche needs at least this many videos to replace the seed (same default as resolveViralNow). */
@@ -17,6 +18,15 @@ function logOnce(message: string): void {
   if (logged || process.env.NODE_ENV === "production") return;
   logged = true;
   console.info(`[viral-now] ${message}`);
+}
+
+function boardStatus(error: unknown): string {
+  if (error instanceof ViralNowApiError) return String(error.status);
+  return "network";
+}
+
+function reportBoard(status: string): void {
+  capture("viral_live_failed", { stage: "board", status });
 }
 
 export const metaOf = (niche: ViralNowNiche): ViralNowNicheMeta => ({
@@ -40,6 +50,7 @@ export async function loadLiveReplacements(
     const ready = new Map(live.filter((niche) => niche.videos.length >= MIN_LIVE_VIDEOS).map((niche) => [niche.slug, niche] as const));
     if (ready.size === 0) {
       logOnce("no live viral-now boards yet, showing the bundled snapshot");
+      reportBoard("empty");
       return null;
     }
     return ready;
@@ -48,6 +59,7 @@ export async function loadLiveReplacements(
       logOnce(
         `live boards unavailable (${error instanceof Error ? error.message : "unknown error"}), showing the bundled snapshot`,
       );
+      reportBoard(boardStatus(error));
     }
     return null;
   }
@@ -76,6 +88,7 @@ export async function loadLiveOverlay(current: ViralNowNiche[], signal?: AbortSi
     });
     if (replaced === 0) {
       logOnce("no live viral-now boards yet, showing the bundled snapshot");
+      reportBoard("empty");
       return null;
     }
     return merged;
@@ -84,6 +97,7 @@ export async function loadLiveOverlay(current: ViralNowNiche[], signal?: AbortSi
       logOnce(
         `live boards unavailable (${error instanceof Error ? error.message : "unknown error"}), showing the bundled snapshot`,
       );
+      reportBoard(boardStatus(error));
     }
     return null;
   }

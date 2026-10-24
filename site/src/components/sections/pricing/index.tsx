@@ -49,7 +49,7 @@ export default function PricingSection() {
           <p className="body-l max-w-[52ch] text-ink-2/75">
             Every plan has Deep Search and all AI features. Pick the one that matches how much you research.
           </p>
-          <BillingToggle className="self-start lg:self-auto" />
+          <BillingToggle surface="home" className="self-start lg:self-auto" />
         </div>
 
         <PlanCards

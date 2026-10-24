@@ -22,6 +22,7 @@ import { LazyMotionConfig } from "@/components/ui/lazy-motion";
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { Chip } from "@/components/ui/chip";
 import { cn } from "@/lib/cn";
+import { destinationForHref, phAttrs } from "@/lib/attribution";
 import { isExternal } from "@/lib/links";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import type { FaqEntry } from "./items";
@@ -197,7 +198,14 @@ export function FaqAccordion({ items, defaultOpen = 0, open: openProp, onOpenCha
                         </ul>
                       ) : null}
                       {item.link ? (
-                        <ArrowLink href={item.link.href} external={isExternal(item.link.href)} tabIndex={isOpen ? 0 : -1}>
+                        <ArrowLink
+                          href={item.link.href}
+                          external={isExternal(item.link.href)}
+                          tabIndex={isOpen ? 0 : -1}
+                          {...(destinationForHref(item.link.href)
+                            ? phAttrs("faq", destinationForHref(item.link.href)!)
+                            : {})}
+                        >
                           {item.link.label}
                         </ArrowLink>
                       ) : null}

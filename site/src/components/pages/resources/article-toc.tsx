@@ -21,6 +21,7 @@ import { MOTION_OK, MOTION_REDUCED, prefersReducedMotion } from "@/lib/motion";
 import { RAIL_INSET, TEXT_SOFT } from "@/components/sections/blog/inset";
 import { cn } from "@/lib/cn";
 import { categoryHue } from "@/components/sections/blog/category-hue";
+import { capture } from "@/lib/analytics";
 import { toneBaseBg } from "@/lib/tones";
 import type { TocItem } from "@/lib/blog";
 
@@ -43,7 +44,10 @@ function TocList({
           <li key={item.id} data-toc-id={item.id}>
             <a
               href={`#${item.id}`}
-              onClick={() => onPick(item.id)}
+              onClick={() => {
+                capture("toc_clicked", { heading_id: item.id });
+                onPick(item.id);
+              }}
               aria-current={active ? "location" : undefined}
               className={cn(
                 "block py-[7px] pr-1 text-[13px] leading-[1.35] tracking-[-0.005em] transition-colors duration-200 ease-out",

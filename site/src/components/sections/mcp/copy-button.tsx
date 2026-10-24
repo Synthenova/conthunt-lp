@@ -18,6 +18,7 @@
  */
 import { AnimatePresence, m } from "motion/react";
 import { LazyMotionConfig } from "@/components/ui/lazy-motion";
+import { capture } from "@/lib/analytics";
 import { Check, Copy, X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
@@ -66,11 +67,13 @@ export interface CopyButtonProps {
   className?: string;
   /** Called after a successful copy (analytics, flourish). */
   onCopied?: () => void;
+  /** Named copy for analytics. Omitted copies (tool examples) are not events. */
+  analytics?: { target: "mcp_url" | "mcp_command" | "mcp_config"; client?: string };
   /** Custom visible content instead of the "Copy / Copied" label (e.g. the URL itself). */
   children?: ReactNode;
 }
 
-export function CopyButton({ text, label, showLabel = true, className, onCopied, children }: CopyButtonProps) {
+export function CopyButton({ text, label, showLabel = true, className, onCopied, analytics, children }: CopyButtonProps) {
   const [state, setState] = useState<CopyState>("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -86,6 +89,12 @@ export function CopyButton({ text, label, showLabel = true, className, onCopied,
     setState(ok ? "copied" : "error");
     if (ok) {
       onCopied?.();
+      if (analytics) {
+        capture("copy_succeeded", {
+          target: analytics.target,
+          ...(analytics.client ? { client: analytics.client } : {}),
+        });
+      }
       window.dispatchEvent(new CustomEvent(MCP_COPY_EVENT));
     }
     if (timer.current) clearTimeout(timer.current);

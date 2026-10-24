@@ -6,6 +6,7 @@ import { RailSeam } from "@/components/layout/rails";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL, ROUTES } from "@/lib/links";
 import { CTA_ID } from "./ids";
 
@@ -31,7 +32,7 @@ export function CtaBand() {
           sub="Deep search watches 500 to 1,000 videos in your niche and analyzes them in under five minutes. You get the hooks, formats and patterns behind the winners, backed by real video data."
           actions={
             <>
-              <Button href={GET_STARTED_URL} size="lg">
+              <Button href={GET_STARTED_URL} size="lg" {...phAttrs("viral_band", "app")}>
                 Get started
               </Button>
               <Button href={`${ROUTES.home}#how-it-works`} variant="ghost" size="lg">

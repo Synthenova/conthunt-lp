@@ -7,6 +7,7 @@
  * component showing that asset updates through `useAssetUrl`.
  */
 import { useCallback, useSyncExternalStore } from "react";
+import { capture } from "@/lib/analytics";
 import { createMediaRenewer, isPlayable, needsRenewal } from "./api";
 import type { ViralNowAsset, ViralNowVideo } from "./types";
 
@@ -46,6 +47,11 @@ async function renewOnce(video: ViralNowVideo, kind: Kind, force: boolean): Prom
     attempted.add(stamp);
   }
   const result = await renewer.renew({ ...video, [kind]: current }, kind);
+  if (result.status === "error" && result.error !== "Asset is not renewable") {
+    capture("viral_live_failed", { stage: "media", status: "network" });
+  } else if (result.status === "revoked") {
+    capture("viral_live_failed", { stage: "media", status: String(result.code) });
+  }
   if (result.status === "renewed") {
     overrides.set(key, result.asset);
     emit();

@@ -33,6 +33,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 import { useSound } from "@/lib/sound";
+import { phAttrs } from "@/lib/attribution";
 import { GET_STARTED_URL, isActivePath, LOGIN_URL, NAV_LINKS, ROUTES } from "@/lib/links";
 import { MobileMenu } from "./mobile-menu";
 import { navDotClass } from "./nav-dot";
@@ -230,11 +231,12 @@ export function Navbar() {
           <SoundToggle />
           <a
             href={LOGIN_URL}
+            {...phAttrs("nav", "login")}
             className="hidden h-10 items-center rounded-[10px] px-3 text-[14px] font-medium text-ink-2 transition-colors duration-200 ease-out hover:text-ink group-data-[compact=true]/nav:text-ink md:flex"
           >
             Login
           </a>
-          <Button href={GET_STARTED_URL} size="md" className="hidden h-10 px-4 md:inline-flex">
+          <Button href={GET_STARTED_URL} size="md" className="hidden h-10 px-4 md:inline-flex" {...phAttrs("nav", "app")}>
             Get started
           </Button>
           <MobileMenu open={menuOpen} onOpenChange={setMenuOpen} pathname={pathname} />
