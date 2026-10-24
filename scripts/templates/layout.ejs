@@ -6,7 +6,7 @@
 
     <script>
         window.CONTHUNT_ANALYTICS = {
-            pageType: <%= (typeof isBlogPost !== "undefined" && isBlogPost) ? '"blog_post"' : '"blog_index"' %>,
+            pageType: <%- JSON.stringify(typeof pageType !== "undefined" ? pageType : ((typeof isBlogPost !== "undefined" && isBlogPost) ? "blog_post" : "blog_index")) %>,
             slug: <%- JSON.stringify(typeof slug !== "undefined" ? slug : "") %>,
             category: <%- JSON.stringify(typeof category !== "undefined" ? category : "") %>
         };

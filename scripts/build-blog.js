@@ -688,6 +688,7 @@ async function buildStaticPages() {
             description: attributes.description || attributes.title,
             hero: null,
             canonical: `${DOMAIN}/${slug}`, // No trailing slash
+            pageType: "legal",
             resolvedKeywords: null,
             authorProfile: null
         });
