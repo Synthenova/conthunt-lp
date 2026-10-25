@@ -65,15 +65,15 @@ const latest = (values: Array<string | null>): string | null =>
 export function ViralNowProvider({ initial, children }: { initial: ViralNowInitial; children: ReactNode }) {
   const [niches, setNiches] = useState<ViralNowNiche[]>(() => hydrateNiches(initial.niches, initial.wire));
   const nichesRef = useRef(niches);
+  // Written during render so a row effect in the same commit sees the niche that just
+  // replaced the snapshot. An effect would run after that row and the full-board fetch
+  // would still be looking at the snapshot.
+  nichesRef.current = niches;
   const requested = useRef(new Set<string>());
   const seedRef = useRef<SeedStatus>("idle");
   const [seedStatus, setSeedStatus] = useState<SeedStatus>(() => (niches.some(needsSeedVideos) ? "idle" : "ready"));
   const [now] = useState(() => new Date().toISOString());
   const reducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    nichesRef.current = niches;
-  }, [niches]);
 
   const loadSeed = useCallback(() => {
     if (seedRef.current === "loading" || seedRef.current === "ready") return;
