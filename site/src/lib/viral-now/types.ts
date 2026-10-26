@@ -90,6 +90,10 @@ export interface ViralNowVideo {
   rank: number;
   /** JEV composite, 0 to 100. Null for trending and for boards without a score. */
   score: number | null;
+  /** Against the previous published ranking. Absent until that board has two saves. */
+  movement?: "new" | "up" | "down" | "same" | null;
+  /** Places moved. Positive is a climb. Null for a new video and when there is no earlier ranking. */
+  delta?: number | null;
   title: string;
   creator: ViralNowCreator;
   platform: ViralNowPlatform;
@@ -225,6 +229,10 @@ export interface ApiPublicBoardItem {
   /** YYYY-MM-DD of the last refresh that touched this row. */
   snapshot_date: string | null;
   added_at: string;
+  /** Against the previous published ranking. Null until that board has two saves. */
+  mark?: "new" | "up" | "down" | "same" | null;
+  /** Places moved. Positive is a climb. */
+  delta?: number | null;
 }
 
 export interface ApiPublicBoard {

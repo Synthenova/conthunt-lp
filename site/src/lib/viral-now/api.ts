@@ -297,6 +297,8 @@ export function mapBoardItem(item: ApiPublicBoardItem, ctx: BoardItemContext): V
     niche: ctx.niche,
     rank: item.rank > 0 ? item.rank : ctx.fallbackRank,
     score: normalizeScore(item.score),
+    movement: item.mark ?? null,
+    delta: typeof item.delta === "number" ? item.delta : null,
     title: deriveTitle(content.title, content.primary_text),
     creator: creatorFrom(content, platform),
     platform,

@@ -95,8 +95,16 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
   // WCAG 2.5.3 (label in name): the accessible name must open with the text a sighted user reads on
   // the card. That is the rank badge ("#3") and then the views chip ("1.7M"), so the name starts
   // "#3, 1.7M views" and carries the creator, title and score after it.
+  const places = typeof video.delta === "number" ? Math.abs(video.delta) : null;
+  const move =
+    video.movement === "new"
+      ? "new"
+      : video.movement === "up" || video.movement === "down"
+        ? `${video.movement}${places ? ` ${places}` : ""}`
+        : null;
   const label = [
     `#${video.rank}`,
+    move,
     views !== null ? `${formatCount(views)} views` : null,
     who,
     video.title,
@@ -205,10 +213,40 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
       data-entrance={entrance !== undefined ? "" : undefined}
       style={entrance !== undefined ? ({ "--vn-i": entrance } as CSSProperties) : undefined}
     >
+      {video.movement && video.movement !== "same" && (
+        <ShiftMark movement={video.movement} delta={video.delta} />
+      )}
       <span className={styles.numeral} data-lead={lead ? "true" : undefined} aria-hidden="true">
         {video.rank}
       </span>
       {card}
     </li>
+  );
+}
+
+const UP = "#3ddc97";
+const DOWN = "#ff6b6b";
+
+function ShiftMark({ movement, delta }: { movement: "new" | "up" | "down"; delta?: number | null }) {
+  if (movement === "new") {
+    return (
+      <span className={styles.shift} aria-hidden="true">
+        <span className={styles.shiftWord}>NEW</span>
+      </span>
+    );
+  }
+  const up = movement === "up";
+  const places = typeof delta === "number" ? Math.abs(delta) : null;
+  return (
+    <span className={styles.shift} data-dir={up ? "up" : "down"} aria-hidden="true">
+      <svg className={styles.shiftWedge} viewBox="0 0 100 90" aria-hidden="true">
+        <path
+          fill={up ? UP : DOWN}
+          fillRule="evenodd"
+          d={up ? "M50,3 L96,87 L4,87 Z M50,16 L78,74 L22,74 Z" : "M50,87 L96,3 L4,3 Z M50,74 L78,16 L22,16 Z"}
+        />
+      </svg>
+      {places !== null && <span className={styles.shiftCount}>{places}</span>}
+    </span>
   );
 }

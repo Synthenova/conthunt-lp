@@ -506,6 +506,61 @@
   -webkit-text-stroke-color: var(--ink);
 }
 
+.shift {
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: var(--vn-g, 0px);
+  bottom: calc(var(--vn-num) * 0.76);
+  pointer-events: none;
+  --shift: var(--ink);
+}
+
+.item[data-digits="2"] .shift {
+  bottom: calc(var(--vn-num) * var(--vn-d2) * 0.76);
+}
+
+.shift[data-dir="up"] {
+  --shift: #3ddc97;
+}
+
+.shift[data-dir="down"] {
+  --shift: #ff6b6b;
+}
+
+.shiftWord,
+.shiftCount {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-fill-color: var(--bg);
+  paint-order: stroke fill;
+}
+
+.shiftWord {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.shiftCount {
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 1.4px var(--shift);
+}
+
+.shiftWedge {
+  width: 16px;
+  height: 14px;
+  flex: none;
+}
+
 .item[data-active="true"] .numeral {
   -webkit-text-stroke-color: var(--ink);
   transform: translateX(-6px);
