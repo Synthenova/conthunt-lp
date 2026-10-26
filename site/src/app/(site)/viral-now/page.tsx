@@ -7,8 +7,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-// The server always renders the bundled snapshot (live boards are overlaid in the browser), so the
-// metadata describes the snapshot: its week, never "daily" or "this week".
+// The page shows the live boards. Metadata still names the bundled snapshot's week.
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const { niche } = await searchParams;
   const { niches, weekOf } = loadViralNowData();

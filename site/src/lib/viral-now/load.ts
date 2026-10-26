@@ -9,22 +9,15 @@
  *   loadViralNowInitial(slug) what the first paint needs: niche shells plus a few compact videos
  *   loadSeedChunk()           every video in the compact wire format (served as static JSON)
  *
- * The live tier is deliberately not called here: the page must never wait on the network,
- * so the client overlays live boards after hydration (see ./live.ts).
+ * The first paint does not include snapshot videos. The client shows the loading skeletons,
+ * then replaces them with the live boards (see ./live.ts).
  */
 import nicheMetaJson from "@/content/viral-now/niches.json";
 import seedJson from "@/content/viral-now/seed.json";
 import { coerceSeed } from "./api";
 import type { ViralNowNiche, ViralNowNicheMeta, ViralNowSource } from "./types";
-import {
-  EAGER_ROWS,
-  encodeVideos,
-  nicheShell,
-  SSR_ROW_CARDS,
-  WIRE_VERSION,
-  type SeedChunk,
-  type WireNiches,
-} from "./wire";
+import { BOARD_SIZE } from "./ranking";
+import { encodeVideos, nicheShell, WIRE_VERSION, type SeedChunk, type WireNiches } from "./wire";
 
 export interface ViralNowData {
   niches: ViralNowNiche[];
@@ -86,23 +79,20 @@ function fullWire(): WireNiches {
 }
 
 /**
- * The page's first-paint data. The opened niche (`?niche=`) ships whole, because it is the
- * main content. On the rows view the first EAGER_ROWS rows ship their first SSR_ROW_CARDS
- * videos, which is what the server render and the first screens show; the rest of the
- * snapshot follows from the seed chunk.
+ * The page's first-paint data: niche names and counts, no snapshot videos. The rows render
+ * their loading skeletons until the live boards arrive.
  */
-export function loadViralNowInitial(activeSlug: string | null = null): ViralNowInitial {
+export function loadViralNowInitial(_activeSlug: string | null = null): ViralNowInitial {
   const data = loadViralNowData();
-  const all = fullWire();
-  const wire: WireNiches = {};
-  data.niches.forEach((niche, index) => {
-    if (niche.slug === activeSlug) wire[niche.slug] = all[niche.slug];
-    else if (!activeSlug && index < EAGER_ROWS) wire[niche.slug] = all[niche.slug].slice(0, SSR_ROW_CARDS);
-  });
   return {
     ...data,
-    niches: data.niches.map(nicheShell),
-    wire,
+    niches: data.niches.map((niche) => ({
+      ...nicheShell(niche),
+      summary: undefined,
+      week_of: null,
+      video_count: BOARD_SIZE,
+    })),
+    wire: {},
     seedVersion: `${WIRE_VERSION}-${data.generatedAt}`,
   };
 }
