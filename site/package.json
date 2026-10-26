@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start -p 3001",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test src/lib/analytics-model.test.mts src/lib/attribution.test.mts",
+    "test": "node --experimental-strip-types --test src/lib/analytics-model.test.mts src/lib/attribution.test.mts src/lib/viral-now/youtube.test.mts",
     "lint": "eslint ."
   },
   "dependencies": {

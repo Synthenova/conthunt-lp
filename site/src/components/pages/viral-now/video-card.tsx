@@ -20,7 +20,9 @@ import { isPlayable } from "@/lib/viral-now/api";
 import { creatorLabel, formatCount } from "@/lib/viral-now/format";
 import { freshVideoUrl, refreshVideoUrl } from "@/lib/viral-now/media-store";
 import type { ViralNowVideo } from "@/lib/viral-now/types";
+import { youtubeVideoId } from "@/lib/viral-now/youtube";
 import { EyeGlyph, PlatformGlyph, Poster, ScoreChip } from "./parts";
+import { YouTubeFrame } from "./youtube-frame";
 import { useViralNow } from "./provider";
 import styles from "./viral-now.module.css";
 
@@ -49,6 +51,7 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
   const timer = useRef<number | undefined>(undefined);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canPlay = isPlayable(video.video);
+  const youtubeId = video.platform === "youtube" ? youtubeVideoId(video.url) : null;
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
@@ -126,7 +129,8 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
       onClick={(event) => onOpen(video, event.currentTarget)}
     >
       <Poster video={video} sizes={sizes} priority={eager} early={early} />
-      {src && (
+      {youtubeId && active && !reduced && <YouTubeFrame videoId={youtubeId} className={styles.youtube} />}
+      {src && !youtubeId && (
         <video
           ref={videoRef}
           className={styles.video}

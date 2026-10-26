@@ -7,6 +7,7 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { PLATFORM_ORDER, PLATFORMS, platformInfo } from "@/lib/viral-now/glyphs";
 import { useAssetUrl } from "@/lib/viral-now/media-store";
+import { youtubePosterUrl, youtubeVideoId } from "@/lib/viral-now/youtube";
 import type { ViralNowPlatform, ViralNowVideo } from "@/lib/viral-now/types";
 import styles from "./viral-now.module.css";
 
@@ -78,7 +79,9 @@ export function Poster({
   className?: string;
 }) {
   const { url, onError } = useAssetUrl(video, "poster");
-  if (!url) {
+  const youtubeId = video.platform === "youtube" ? youtubeVideoId(video.url) : null;
+  const picture = url ?? (youtubeId ? youtubePosterUrl(youtubeId) : null);
+  if (!picture) {
     return (
       <span
         aria-hidden="true"
@@ -90,7 +93,7 @@ export function Poster({
   }
   return (
     <Image
-      src={url}
+      src={picture}
       alt=""
       fill
       sizes={sizes}
