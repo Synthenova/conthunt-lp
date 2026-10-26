@@ -14,7 +14,7 @@
  */
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Play, X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 import { useLenis } from "@/components/layout/smooth-scroll";
 import { Button } from "@/components/ui/button";
 import { EASE, gsap, useGSAP } from "@/lib/gsap";
@@ -43,7 +43,7 @@ import {
   viewsVsMedian,
   type IngredientStanding,
 } from "@/lib/viral-now/stats";
-import type { ViralNowAnalysis, ViralNowNiche, ViralNowVideo } from "@/lib/viral-now/types";
+import type { ViralNowAnalysis, ViralNowCreator, ViralNowNiche, ViralNowVideo } from "@/lib/viral-now/types";
 import { PlatformGlyph } from "./parts";
 import { YouTubeFrame } from "./youtube-frame";
 import styles from "./viral-now.module.css";
@@ -253,19 +253,19 @@ export function VideoDialog({ state, asOf, onIndexChange, onClose }: VideoDialog
                   {video.title}
                 </h2>
                 <div className="flex items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="grid size-10 shrink-0 place-items-center rounded-full bg-surface font-mono text-xs font-semibold tracking-[0.02em] text-ink-2"
-                  >
-                    {initialsOf(video.creator.name, video.creator.handle)}
-                  </span>
+                  <CreatorPhoto creator={video.creator} />
                   <div className="flex min-w-0 flex-col">
-                    <span className="truncate text-[15px] font-semibold tracking-[-0.01em] text-ink">
+                    <CreatorLink
+                      href={video.creator.url}
+                      className="truncate text-[15px] font-semibold tracking-[-0.01em] text-ink hover:underline"
+                    >
                       {video.creator.name ?? who}
-                    </span>
+                    </CreatorLink>
                     <span className="flex min-w-0 items-center gap-1.5 text-[13px] text-ink-2/70">
                       <PlatformGlyph platform={video.platform} className="size-3" />
-                      <span className="truncate">{who}</span>
+                      <CreatorLink href={video.creator.url} className="truncate hover:underline">
+                        {who}
+                      </CreatorLink>
                       {posted && (
                         <>
                           <span aria-hidden="true">·</span>
@@ -545,6 +545,32 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
         </a>
       )}
     </>
+  );
+}
+
+function CreatorPhoto({ creator }: { creator: ViralNowCreator }) {
+  const [failed, setFailed] = useState(false);
+  const photo = creator.avatar && !failed ? creator.avatar : null;
+  return (
+    <span
+      aria-hidden="true"
+      className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-surface font-mono text-xs font-semibold tracking-[0.02em] text-ink-2"
+    >
+      {photo ? (
+        <img src={photo} alt="" className="size-full object-cover" onError={() => setFailed(true)} />
+      ) : (
+        initialsOf(creator.name, creator.handle)
+      )}
+    </span>
+  );
+}
+
+function CreatorLink({ href, className, children }: { href: string | null; className: string; children: ReactNode }) {
+  if (!href) return <span className={className}>{children}</span>;
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
   );
 }
 
