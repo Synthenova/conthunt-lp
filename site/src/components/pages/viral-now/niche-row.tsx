@@ -64,10 +64,11 @@ export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
     );
   }, [mounted]);
 
-  // A row on screen needs all its videos now, not when the browser next idles.
+  // A row on screen needs all its videos now. `source` and `loaded` are in the dependency list
+  // because the first pass runs on an empty shell, before the live board has replaced it.
   useEffect(() => {
     if (mounted && !complete) ensureFull(niche.slug);
-  }, [mounted, complete, ensureFull, niche.slug]);
+  }, [mounted, complete, ensureFull, niche.slug, niche.source, loaded]);
 
   // Cards that mount while scrolling rise in; the first screen of a server-rendered row does not move.
   const hasCards = loaded > 0;

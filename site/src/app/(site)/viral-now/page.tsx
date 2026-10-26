@@ -7,11 +7,11 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-// The server always renders the bundled snapshot (live boards are overlaid in the browser), so the
-// metadata describes the snapshot: its week, never "daily" or "this week".
+// The page fills from the live boards. The description names the niches and leaves the week
+// off, so it does not claim the bundled snapshot's week.
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const { niche } = await searchParams;
-  const { niches, weekOf } = loadViralNowData();
+  const { niches } = loadViralNowData();
   const slug = parseNicheParam(niche, niches);
   const active = slug ? niches.find((n) => n.slug === slug) : undefined;
   // The route has its own opengraph-image file (`image: false`). The canonical stays /viral-now for every niche.
@@ -19,7 +19,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
     title: active ? `${active.name} · Viral Now` : "Viral Now",
     description: snapshotDescription({
       niches: niches.length,
-      weekOf,
+      weekOf: null,
       nicheName: active?.name,
       count: active?.videos.length,
     }),

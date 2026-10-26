@@ -21,6 +21,7 @@ import { EASE, gsap, useGSAP } from "@/lib/gsap";
 import { GET_STARTED_URL } from "@/lib/links";
 import { MOTION_OK, MOTION_REDUCED, prefersReducedMotion } from "@/lib/motion";
 import { fetchAnalysis, isPlayable } from "@/lib/viral-now/api";
+import { youtubePosterUrl, youtubeVideoId } from "@/lib/viral-now/youtube";
 import { countsCaption } from "@/lib/viral-now/copy";
 import {
   creatorLabel,
@@ -44,6 +45,7 @@ import {
 } from "@/lib/viral-now/stats";
 import type { ViralNowAnalysis, ViralNowNiche, ViralNowVideo } from "@/lib/viral-now/types";
 import { PlatformGlyph } from "./parts";
+import { YouTubeFrame } from "./youtube-frame";
 import styles from "./viral-now.module.css";
 
 export interface DialogState {
@@ -468,6 +470,8 @@ function Block({ label, text }: { label: string; text: string }) {
 function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: string }) {
   const { url: poster, onError } = useAssetUrl(video, "poster");
   const [src, setSrc] = useState<string | null>(null);
+  const youtubeId = video.platform === "youtube" ? youtubeVideoId(video.url) : null;
+  const picture = poster ?? (youtubeId ? youtubePosterUrl(youtubeId) : null);
   const canPlay = isPlayable(video.video);
   const withAudio = video.video.source !== "local";
   const reduced = prefersReducedMotion();
@@ -485,9 +489,9 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
 
   return (
     <>
-      {poster && (
+      {picture && (
         <Image
-          src={poster}
+          src={picture}
           alt=""
           fill
           sizes="(min-width: 760px) 430px, 100vw"
@@ -498,7 +502,8 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
           className={styles.stageMedia}
         />
       )}
-      {src && (
+      {youtubeId && !reduced && <YouTubeFrame videoId={youtubeId} className={styles.youtube} />}
+      {src && !youtubeId && (
         <video
           className={styles.stageMedia}
           src={src}
@@ -525,7 +530,7 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
           <span />
         )}
       </div>
-      {!src && video.url && (
+      {!youtubeId && !src && video.url && (
         // The poster's own play button. The text link to the original lives in the footer, so the same
         // destination is not offered twice in words.
         <a

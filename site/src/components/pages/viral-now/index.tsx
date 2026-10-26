@@ -2,9 +2,8 @@
  * /viral-now page body: "Viral now." header, the sticky niche selector, Netflix-style rows
  * (All) or the 30-video grid (one niche), and a closing call to action.
  *
- * Server component. It renders from the bundled seed snapshot, so the page is fast and
- * indexable, but ships only the first rows' first cards in the HTML. The client provider
- * streams in the rest of the snapshot and overlays live public boards after hydration.
+ * Server component. The first paint is niche shells. The client provider fills those rows
+ * from the live public boards after hydration.
  *
  *   <ViralNowPage niche="fitness-gym" />   // opens on one niche; omit for the rows
  *

@@ -6,25 +6,18 @@
  * 450 KB seed JSON into the server bundle; client components never import it.
  *
  *   loadViralNowData()        every niche with every video (metadata, validation, the route)
- *   loadViralNowInitial(slug) what the first paint needs: niche shells plus a few compact videos
+ *   loadViralNowInitial(slug) niche shells for the first paint, with no snapshot videos
  *   loadSeedChunk()           every video in the compact wire format (served as static JSON)
  *
- * The live tier is deliberately not called here: the page must never wait on the network,
- * so the client overlays live boards after hydration (see ./live.ts).
+ * The first paint does not include the October snapshot. The client fills the shells from
+ * the live boards after hydration (see ./live.ts).
  */
 import nicheMetaJson from "@/content/viral-now/niches.json";
 import seedJson from "@/content/viral-now/seed.json";
 import { coerceSeed } from "./api";
+import { BOARD_SIZE } from "./ranking";
 import type { ViralNowNiche, ViralNowNicheMeta, ViralNowSource } from "./types";
-import {
-  EAGER_ROWS,
-  encodeVideos,
-  nicheShell,
-  SSR_ROW_CARDS,
-  WIRE_VERSION,
-  type SeedChunk,
-  type WireNiches,
-} from "./wire";
+import { encodeVideos, nicheShell, WIRE_VERSION, type SeedChunk, type WireNiches } from "./wire";
 
 export interface ViralNowData {
   niches: ViralNowNiche[];
@@ -37,7 +30,7 @@ export interface ViralNowData {
   rankSource: ViralNowSource;
 }
 
-/** The first-paint payload: shells (no videos) plus the compact videos the server render shows. */
+/** The first-paint payload: niche shells and an empty wire. Live boards fill the rows. */
 export interface ViralNowInitial extends ViralNowData {
   wire: WireNiches;
   /** Part of the seed chunk URL, so a new snapshot or wire format is never served from a stale cache. */
@@ -86,23 +79,20 @@ function fullWire(): WireNiches {
 }
 
 /**
- * The page's first-paint data. The opened niche (`?niche=`) ships whole, because it is the
- * main content. On the rows view the first EAGER_ROWS rows ship their first SSR_ROW_CARDS
- * videos, which is what the server render and the first screens show; the rest of the
- * snapshot follows from the seed chunk.
+ * The page's first-paint data: niche names and a board size of 30, with no snapshot videos.
+ * Rows render their existing skeletons until the live boards arrive.
  */
-export function loadViralNowInitial(activeSlug: string | null = null): ViralNowInitial {
+export function loadViralNowInitial(_activeSlug: string | null = null): ViralNowInitial {
   const data = loadViralNowData();
-  const all = fullWire();
-  const wire: WireNiches = {};
-  data.niches.forEach((niche, index) => {
-    if (niche.slug === activeSlug) wire[niche.slug] = all[niche.slug];
-    else if (!activeSlug && index < EAGER_ROWS) wire[niche.slug] = all[niche.slug].slice(0, SSR_ROW_CARDS);
-  });
   return {
     ...data,
-    niches: data.niches.map(nicheShell),
-    wire,
+    niches: data.niches.map((niche) => ({
+      ...nicheShell(niche),
+      summary: undefined,
+      week_of: null,
+      video_count: BOARD_SIZE,
+    })),
+    wire: {},
     seedVersion: `${WIRE_VERSION}-${data.generatedAt}`,
   };
 }

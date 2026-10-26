@@ -45,12 +45,12 @@ export function viewsPerDay(video: ViralNowVideo, asOf: number): number | null {
 type BoardShape = Pick<ViralNowNiche, "videos" | "video_count" | "summary" | "source">;
 
 /**
- * Videos on a board as a visitor counts them. A snapshot niche counts its whole board (at most
- * BOARD_SIZE) while its videos are still streaming in. Live boards count what they hold: a live
- * row preview is meant to be partial until the full board is fetched.
+ * Videos on a board as a visitor counts them. A published board and the snapshot both count the
+ * whole board, at most BOARD_SIZE, while videos are still arriving. The list preview holds at
+ * most 24, so a row keeps its empty slots until `videos` reaches this count.
  */
-export function nicheSize(niche: Pick<ViralNowNiche, "videos" | "video_count" | "source">): number {
-  return niche.source === "seed" ? Math.max(niche.videos.length, Math.min(niche.video_count, BOARD_SIZE)) : niche.videos.length;
+export function nicheSize(niche: Pick<ViralNowNiche, "videos" | "video_count">): number {
+  return Math.max(niche.videos.length, Math.min(niche.video_count, BOARD_SIZE));
 }
 
 /** True once every video of the board is in `videos`. */

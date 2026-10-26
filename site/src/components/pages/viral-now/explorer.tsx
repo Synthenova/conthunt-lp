@@ -147,7 +147,7 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
 
   useEffect(() => {
     if (shown) ensureFull(shown);
-  }, [shown, ensureFull]);
+  }, [shown, ensureFull, activeNiche?.source, activeNiche?.videos.length]);
 
   /* --------------------------------------------------------------- dialog */
 
