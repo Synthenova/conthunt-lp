@@ -22,6 +22,7 @@ import { GET_STARTED_URL } from "@/lib/links";
 import { MOTION_OK, MOTION_REDUCED, prefersReducedMotion } from "@/lib/motion";
 import { fetchAnalysis, isPlayable } from "@/lib/viral-now/api";
 import { youtubePosterUrl, youtubeVideoId } from "@/lib/viral-now/youtube";
+import { youtubeChannelUrl } from "@/lib/viral-now/youtube-avatar";
 import { countsCaption } from "@/lib/viral-now/copy";
 import {
   creatorLabel,
@@ -548,16 +549,44 @@ function DialogMedia({ video, watchLabel }: { video: ViralNowVideo; watchLabel: 
   );
 }
 
+const youtubeAvatarCache = new Map<string, string | null>();
+
 function CreatorPhoto({ creator }: { creator: ViralNowCreator }) {
   const [failed, setFailed] = useState(false);
-  const photo = creator.avatar && !failed ? creator.avatar : null;
+  const [lookedUp, setLookedUp] = useState<string | null>(null);
+  const channel = creator.avatar ? null : youtubeChannelUrl(creator.url);
+
+  useEffect(() => {
+    if (!channel) return;
+    const cached = youtubeAvatarCache.get(channel);
+    if (cached !== undefined) {
+      setLookedUp(cached);
+      return;
+    }
+    let cancelled = false;
+    fetch(`/api/youtube-avatar?url=${encodeURIComponent(channel)}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { url?: unknown } | null) => {
+        const url = typeof body?.url === "string" ? body.url : null;
+        youtubeAvatarCache.set(channel, url);
+        if (!cancelled) setLookedUp(url);
+      })
+      .catch(() => {
+        if (!cancelled) setLookedUp(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [channel]);
+
+  const photo = !failed ? creator.avatar || lookedUp : null;
   return (
     <span
       aria-hidden="true"
       className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-surface font-mono text-xs font-semibold tracking-[0.02em] text-ink-2"
     >
       {photo ? (
-        <img src={photo} alt="" className="size-full object-cover" onError={() => setFailed(true)} />
+        <img src={photo} alt="" className="size-full object-cover" referrerPolicy="no-referrer" onError={() => setFailed(true)} />
       ) : (
         initialsOf(creator.name, creator.handle)
       )}
