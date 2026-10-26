@@ -90,7 +90,7 @@ export function YouTubeFrame({ videoId, className }: { videoId: string; classNam
           width: "100%",
           height: "100%",
           videoId,
-          playerVars: { ...PLAYER_VARS, origin: window.location.origin },
+          playerVars: { ...PLAYER_VARS, loop: 1, playlist: videoId, origin: window.location.origin },
           events: {
             onReady: (event: YouTubeEvent) => {
               if (cancelled) return;

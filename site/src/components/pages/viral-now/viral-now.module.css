@@ -614,11 +614,17 @@
   opacity: 1;
 }
 
+/* Shorts still draws its logo, title and buttons inside a 9:16 frame. Scale past
+   them and clip, so the card shows the picture the way a stored video does. */
 .youtube iframe {
-  width: 100%;
-  height: 100%;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 100% !important;
+  height: 100% !important;
   border: 0;
   pointer-events: none;
+  transform: translate(-50%, -50%) scale(1.45);
 }
 
 .platformMark,
