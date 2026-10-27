@@ -4,19 +4,21 @@
  * VideoCard: one 9:16 poster in a niche row (`variant="row"`, with the big outlined rank
  * numeral) or in the niche grid (`variant="grid"`, with a rank badge).
  *
- * Desktop hover (180ms delay): the card scales up and rises above its neighbors, a loop
- * plays muted when one exists (seed ranks 1 to 3, or a live signed URL), and a paper info
- * panel slides up with platform, creator, score, views and likes. Keyboard focus shows the
- * same state at once. Click opens the dialog through `onOpen`.
+ * A card on screen attaches the small grid file when one is stored, otherwise the original,
+ * so the browser can buffer it. Desktop hover (180ms delay) then plays that file, muted,
+ * from the start. YouTube stays on the iframe. The card scales up and a
+ * paper info panel slides up with platform, creator, score, views and likes. Keyboard focus
+ * shows the same state at once. Click opens the dialog through `onOpen`.
  *
  * Touch devices have no hover, so a tap goes straight to the dialog.
  *
  * In a row only one card is a tab stop (`tabStop`, moved by the row as focus moves), so a row
  * costs one Tab press and Arrow keys walk along it (see HScroller `roving`).
  */
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import { cn } from "@/lib/cn";
-import { isPlayable } from "@/lib/viral-now/api";
+import { useInView } from "@/lib/media";
+import { cardFile, isPlayable } from "@/lib/viral-now/api";
 import { creatorLabel, formatCount } from "@/lib/viral-now/format";
 import { freshVideoUrl, refreshVideoUrl } from "@/lib/viral-now/media-store";
 import type { ViralNowVideo } from "@/lib/viral-now/types";
@@ -50,33 +52,52 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
   const [failed, setFailed] = useState(false);
   const timer = useRef<number | undefined>(undefined);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const canPlay = isPlayable(video.video);
+  const cardRef = useRef<HTMLButtonElement>(null);
+  const onScreen = useInView(cardRef, { rootMargin: "200px" });
   const youtubeId = video.platform === "youtube" ? youtubeVideoId(video.url) : null;
+  const file = useMemo(() => (youtubeId ? video : cardFile(video)), [video, youtubeId]);
+  const canPlay = isPlayable(file.video);
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
-  // Resolve a playable URL the first time the card is hovered (renewed when close to expiry).
+  // Buffer the stored file while the card is on screen. Hover only starts playback.
   useEffect(() => {
-    if (!active || !canPlay || reduced || failed || src) return;
+    if (youtubeId || reduced || (!onScreen && !active)) {
+      setSrc(null);
+      return;
+    }
+    if (!canPlay || failed || src) return;
     let cancelled = false;
-    void freshVideoUrl(video).then((url) => {
+    void freshVideoUrl(file).then((url) => {
       if (!cancelled && url) setSrc(url);
     });
     return () => {
       cancelled = true;
     };
-  }, [active, canPlay, reduced, failed, src, video]);
+  }, [active, canPlay, failed, file, onScreen, reduced, src, youtubeId]);
 
-  // Play while active, pause otherwise. State follows the media events.
+  // Play while active, pause otherwise. Seek only after the file has metadata.
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
+    let start: (() => void) | null = null;
     if (active && src && !reduced) {
-      el.currentTime = 0;
-      void el.play().catch(() => undefined);
+      start = () => {
+        try {
+          if (el.readyState >= 1) el.currentTime = 0;
+        } catch {
+          // The element can report metadata and still refuse a seek. Play anyway.
+        }
+        void el.play().catch(() => undefined);
+      };
+      start();
+      el.addEventListener("loadedmetadata", start);
     } else {
       el.pause();
     }
+    return () => {
+      if (start) el.removeEventListener("loadedmetadata", start);
+    };
   }, [active, src, reduced]);
 
   const onPointerEnter = useCallback((event: ReactPointerEvent<HTMLElement>) => {
@@ -119,6 +140,7 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
   const card = (
     <button
       type="button"
+      ref={cardRef}
       className={styles.card}
       data-active={active ? "true" : "false"}
       data-grid={variant === "grid" ? "true" : undefined}
@@ -157,7 +179,7 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
           onError={() => {
             // A dead URL gets one renewal (live media); anything else stops trying.
             setSrc(null);
-            void refreshVideoUrl(video).then((url) => (url ? setSrc(url) : setFailed(true)));
+            void refreshVideoUrl(file).then((url) => (url ? setSrc(url) : setFailed(true)));
           }}
         />
       )}

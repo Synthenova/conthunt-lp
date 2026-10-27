@@ -263,6 +263,17 @@ function pickVideo(assets: ApiPublicBoardAsset[], analysisAssetId: string): Vira
   return assetFrom(hit);
 }
 
+function pickPreview(assets: ApiPublicBoardAsset[]): ViralNowAsset | null {
+  const hit = assets.find((asset) => asset.asset_type === "video_playback" && (asset.signed_url || asset.source_url));
+  return hit ? assetFrom(hit) : null;
+}
+
+/** The file a grid card plays. The dialog keeps the original on `video`. */
+export function cardFile(video: ViralNowVideo): ViralNowVideo {
+  if (video.preview?.url) return { ...video, video: video.preview };
+  return video;
+}
+
 function creatorFrom(item: ApiPublicBoardItem["content_item"], platform: ViralNowPlatform): ViralNowCreator {
   const handle = str(item.creator_handle)?.replace(/^@/, "") ?? null;
   const url = str(item.author_url) ?? (platform === "tiktok" && handle ? `https://www.tiktok.com/@${handle}` : null);
@@ -305,6 +316,7 @@ export function mapBoardItem(item: ApiPublicBoardItem, ctx: BoardItemContext): V
     url: content.canonical_url ?? "",
     poster: pickPoster(item.assets),
     video: pickVideo(item.assets, item.analysis_media_asset_id),
+    preview: pickPreview(item.assets),
     duration_seconds: null,
     metrics: metricsFrom(content.metrics),
     posted_at: content.published_at,
@@ -367,6 +379,15 @@ export function mapTrendingItem(item: ApiTrendingItem, rank: number, now: number
       source: "r2",
     },
     video: { asset_id: item.playback_asset_id, url: item.video_url, expires_at: item.playback_expires_at, source: "r2" },
+    preview:
+      item.preview_asset_id || item.preview_url
+        ? {
+            asset_id: item.preview_asset_id ?? null,
+            url: item.preview_url ?? null,
+            expires_at: item.preview_expires_at ?? null,
+            source: item.preview_url ? "r2" : null,
+          }
+        : null,
     duration_seconds: num(item.duration) && item.duration > 0 ? item.duration : null,
     metrics: {
       views: num(item.view_count),

@@ -101,6 +101,8 @@ export interface ViralNowVideo {
   url: string;
   poster: ViralNowAsset;
   video: ViralNowAsset;
+  /** Small grid file. Absent until a video_playback row exists. The dialog keeps `video`. */
+  preview?: ViralNowAsset | null;
   /** Null for live boards today (the API does not expose it yet). */
   duration_seconds: number | null;
   metrics: ViralNowMetrics;
@@ -204,7 +206,7 @@ export interface ApiContentItem {
 
 export interface ApiPublicBoardAsset {
   id: string;
-  /** video, thumbnail, cover, image. Only the analysis video is ever listed. */
+  /** video, video_playback, thumbnail, cover, image. The analysis video and the grid file are both listed. */
   asset_type: string;
   /** stored, downloaded, pending, failed, ... */
   status: string;
@@ -289,6 +291,9 @@ export interface ApiTrendingItem {
   thumbnail_asset_id: string;
   playback_expires_at: string | null;
   thumbnail_expires_at: string | null;
+  preview_asset_id?: string | null;
+  preview_url?: string | null;
+  preview_expires_at?: string | null;
   author: { id: string | null; uniqueId: string | null; nickname: string | null; avatar: string | null };
   creator_name: string | null;
   creator_image: string | null;
