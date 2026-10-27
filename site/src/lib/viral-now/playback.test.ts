@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { cardFile, mapBoardItem, mapTrendingItem } from "./api.ts";
-import type { ApiPublicBoardItem, ApiTrendingItem } from "./types.ts";
+import { cardFile, mapBoardItem, mapTrendingItem } from "./api";
+import type { ApiPublicBoardItem, ApiTrendingItem } from "./types";
 
 const boardItem: ApiPublicBoardItem = {
   public_board_id: "board",
