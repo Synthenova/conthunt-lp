@@ -229,24 +229,29 @@ source observations use status='unknown'. Read chosen answer text in all cases.
 
 ## Canonical answer examples
 
-For one operation/question, join cohort_v for title, platform, duration and views;
-research_answers_v alone is not the routine source for title or duration. Bind $1
-to the returned operation reference, $2 to question_no and $3 to the requested
-row limit. Keep the exact operation/question scope and narrow or page when the
-reader reports truncation:
+For one operation, copy this title sample. Bind $1 to the returned operation
+reference. LIMIT 25 is fixed. Run it once per operation. Keep the distinct videos
+across every saved-data call after analysis around 100. Do not raise the limit to the cohort size and do not page with a higher offset. Counts and label
+breakdowns stay aggregates with no video list. Titles and duration come from
+cohort_v. Do not join research_answers_v to cohort_v.
 
 ```sql
-SELECT a.content_item_id,a.media_asset_id,a.operation_id,
-       c.title,c.platform,c.duration_ms,c.views,
-       a.answer,a.evidence,a.requirement_coverage
-FROM conthunt.research_answers_v a
-JOIN conthunt.cohort_v c
-  ON c.operation_id=a.operation_id
- AND c.content_item_id=a.content_item_id
-WHERE a.operation_id=$1::uuid AND a.question_no=$2
-  AND a.answer IS NOT NULL
-ORDER BY c.views DESC NULLS LAST,a.content_item_id
-LIMIT $3;
+SELECT content_item_id,title,platform,duration_ms,views
+FROM conthunt.cohort_v
+WHERE operation_id=$1::uuid
+ORDER BY views DESC NULLS LAST
+LIMIT 25;
+```
+
+When a citation needs what the video said, bind $2 to question_no and run this
+once for that question. Do not join cohort_v.
+
+```sql
+SELECT content_item_id,label,answer
+FROM conthunt.research_answers_v
+WHERE operation_id=$1::uuid AND question_no=$2
+  AND answer IS NOT NULL
+LIMIT 8;
 ```
 
 ### Repeated secured joins
@@ -291,6 +296,7 @@ WHERE (platform='tiktok' AND rn<=$6) OR (platform='instagram' AND rn<=$7)
 ORDER BY platform,rn LIMIT 500;
 ```
 
+That LIMIT 500 is not an example-row budget. Example rows use the LIMIT 25 sample above.
 Keep all three returned identities for a source-pinned report link:
 Declare referenceColumns as {content_item_id:"video",media_asset_id:"media_asset",
 operation_id:"research_operation"} if the CTE output loses physical-column lineage.
@@ -521,7 +527,7 @@ Read saved data with query_saved_data. Start from these views; fall back to the 
 | Per-search pool, selected and completed-answer coverage across a base operation and follow-up | supported per-search coverage recipe with two operations and owning chat |
 | Answers with evidence and labels | research_answers_v by operation and question |
 | Criterion predicates, statuses and match probabilities | research_matches_v by operation and criterion |
-| Example selection | criterion-specific research_matches_v joined to answers and appropriate metadata; performance requests order relevant cases by views |
+| Example selection | LIMIT 25 sample of titles and views from cohort_v for one operation; answer text is a separate unjoined LIMIT 8 read of one question; about 100 distinct videos across every saved-data call; do not page the cohort |
 | Tracked account or video history | tracking_history_v |
 | Something else | the base tables listed in the reference |
 
