@@ -45,12 +45,16 @@ The seven formats are problem-solution demo, honest review, unboxing, routine in
 
 ### 1. Problem-solution demo
 
+A problem-solution demo is a 20 to 30 second UGC ad that films a visible problem, the product in use, and the result, for a viewer who already feels the pain.
+
 - **Use when** the product fixes something visible and the buyer already feels the pain.
 - **Beats** (20 to 30 seconds): problem on camera (0 to 3s), product enters and is used (3 to 15s), result shown (15 to 25s), one line of next step.
 - **Brief line:** "Open on the problem happening for real. Show the product in use before you explain it. End on the result, close up."
 - **Watch for** staged-looking problems. Messy is believable.
 
 ### 2. Honest review
+
+An honest review is a 30 to 45 second UGC ad that gives the verdict in the first sentence, includes one real downside, and says who should not buy.
 
 - **Use when** the buyer is product-aware and comparing, or the price needs justifying.
 - **Beats** (30 to 45s): verdict first (0 to 3s), what you expected, what happened, one downside, who it is for.
@@ -59,12 +63,16 @@ The seven formats are problem-solution demo, honest review, unboxing, routine in
 
 ### 3. Unboxing and first impressions
 
+An unboxing is a 20 to 40 second UGC ad that films the first open, one reaction, and three details of size, feel or smell, for products where the package is part of the appeal.
+
 - **Use when** the packaging, scale or contents are part of the appeal: gifting, bundles, subscription kits.
 - **Beats** (20 to 40s): package arrival, one reaction line, three details the creator notices, first use.
 - **Brief line:** "Film the first time you open it. Say what surprises you about size, feel or smell."
 - **Watch for** long openings. Start at the reveal, not at the courier.
 
 ### 4. Routine integration
+
+A routine integration is a 25 to 40 second UGC ad that places the product as one step in a habit the creator already has, such as a morning routine.
 
 - **Use when** the product lives inside a habit: skincare, supplements, cooking, pet care, cleaning.
 - **Beats** (25 to 40s): situation ("my 7am routine"), product appears naturally, one detail on how it fits, outcome after the habit.
@@ -73,6 +81,8 @@ The seven formats are problem-solution demo, honest review, unboxing, routine in
 
 ### 5. Comparison: "I tried three"
 
+A comparison is a 30 to 45 second UGC ad that tests crowded-category options under the same conditions and ranks them without naming a competitor negatively.
+
 - **Use when** the category is crowded and the buyer is solution-aware.
 - **Beats** (30 to 45s): the test setup (0 to 5s), each option under the same conditions, a ranking, why yours won.
 - **Brief line:** "Test all options the same way, on camera. Do not name a competitor negatively. Show the measurement."
@@ -80,12 +90,16 @@ The seven formats are problem-solution demo, honest review, unboxing, routine in
 
 ### 6. Comment reply
 
+A comment reply is a UGC ad that answers one real buyer comment on camera, for a viewer who already knows the product and needs a specific objection removed.
+
 - **Use when** you have an objection that keeps appearing in comments: "does it leave residue?", "is it loud?"
 - **Beats** (15 to 25s): the comment on screen (0 to 2s), direct answer, demonstration, short line to close.
 - **Brief line:** "Reply to this exact comment: [paste]. Answer in one sentence, then prove it."
 - **Watch for** invented comments. Reply to real ones.
 
 ### 7. Expert explainer
+
+An expert explainer is a UGC ad in which a person with relevant experience teaches one mechanism of the product, for a viewer who knows solutions exist but not why this one works.
 
 - **Use when** the product claims a mechanism the buyer does not understand: ingredients, materials, technique.
 - **Beats** (30 to 50s): credential and claim (0 to 5s), explanation with a simple visual, one limitation, recommendation.
