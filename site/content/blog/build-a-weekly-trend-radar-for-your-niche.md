@@ -25,7 +25,7 @@ A weekly trend radar is a 45-minute routine that sorts formats, sounds, topics a
 
 It is a routine, not a dashboard. The output is one page, reviewed once a week, with a decision beside every row.
 
-## Four lenses
+## What are the four lenses?
 
 Four lenses keep the radar readable: formats, sounds, topics and claims, and products, tracked separately because they do not move on the same clock. Mixing them on one undifferentiated list blurs which kind of pattern you would actually shoot.
 
@@ -38,7 +38,7 @@ Four lenses keep the radar readable: formats, sounds, topics and claims, and pro
 
 Formats and sounds tend to move fast. Topics and products often last longer. That is a working assumption to test on your own niche, since every category differs.
 
-## Four states
+## What are the four states?
 
 Four states label every item each week: emerging, rising, peaking and fading, judged from creator count, recent videos against each creator's norm, and how crowded the pattern has become. Adjust the thresholds to the size of your niche. These definitions are starting rules.
 
@@ -51,7 +51,7 @@ Four states label every item each week: emerging, rising, peaking and fading, ju
 
 A state is a judgment based on three things you can check: how many distinct creators use it, how its recent videos compare with their creators' norms, and how crowded it is. The comparison against each creator's norm matters because it separates a trend from a creator who always gets views.
 
-## The 45-minute weekly routine
+## What is the 45-minute weekly routine?
 
 The 45-minute weekly routine is four blocks: pull the last seven days, label lens and state, compare with last week, and decide one test, one watch and one retire. More than three decisions and nothing gets done.
 
@@ -63,7 +63,7 @@ The 45-minute weekly routine is four blocks: pull the last seven days, label len
 
 **Minutes 35 to 45: Decide.** Choose one item to test, one to watch and one to retire. Assign an owner and a date. More than three decisions and nothing gets done.
 
-## The one-page template
+## What is the one-page template?
 
 The one-page template is a single table where every row has evidence, a brand-fit score and an action, so the page is a ranking rather than a list of ideas. Copy this into a doc or a sheet.
 
@@ -73,7 +73,7 @@ The one-page template is a single table where every row has evidence, a brand-fi
 
 Three columns carry the weight. "Evidence" stops guesswork. "Brand fit" stops you from chasing trends you cannot do well. "Action" forces a decision.
 
-## A fit filter for every candidate
+## What does the fit filter decide?
 
 The fit filter decides whether a labeled row earns a production slot. Ask three questions before anything goes into production:
 
@@ -83,7 +83,7 @@ The fit filter decides whether a labeled row earns a production slot. Ask three 
 
 Two out of three is a maybe. One or none is a skip. A trend that does not fit your product turns into content that gets views and no sales.
 
-## Worked example (illustrative)
+## What does the worked example show?
 
 The worked example is an illustrative skincare radar for one late-September week, invented to show how rows move between states, not to report a real niche. The rows below are not measurements.
 
@@ -96,7 +96,7 @@ The worked example is an illustrative skincare radar for one late-September week
 
 The brand tests one new format, produces one topic video and drops one stale theme. That is a good week.
 
-## Prompt for the pull
+## What does the pull prompt ask for?
 
 The pull prompt asks Deep Search for formats, audio, topics and products from the last 7 days, with a creator count, a comparison to each creator's median and links for every item. A prompt for the first step:
 
@@ -104,7 +104,7 @@ The pull prompt asks Deep Search for formats, audio, topics and products from th
 
 ContHunt returns the analyzed set with links, so every row on your radar has evidence behind it. The public Viral Now boards are a good second source. They show top viral videos by niche, which helps you spot a trend from an adjacent niche before it arrives in yours (see [Viral Now](/viral-now)). Save each week's evidence to a board so you can compare it with the next one.
 
-## Common failures
+## What are the common failures?
 
 Common failures are the habits that turn the radar into a list of ideas, a late chase, or a week with no memory of the week before.
 
@@ -113,7 +113,7 @@ Common failures are the habits that turn the radar into a list of ideas, a late 
 - **Ignoring fading signals.** Retiring is a decision too, and it frees capacity.
 - **Skipping the comparison.** A single week's list tells you what is popular. Two weeks tell you what is moving.
 
-## Weekly review checklist and an illustrative week
+## What does the weekly review checklist close?
 
 The weekly review checklist closes the 45-minute routine: every row has one lens, one state, evidence and a decision, and the counts still add up. The week that follows is illustrative. The counts are invented to show the arithmetic. They are not a measured niche, and they are separate from the four-row skincare example above.
 
