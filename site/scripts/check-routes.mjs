@@ -10,7 +10,7 @@
  * Run it from anywhere; it finds `nginx.conf` at the repo root (two folders above this script).
  *
  * What it checks, in order:
- *  pages     `/` is the revamp (marker below), /pricing, /resources, one article, /blog and three posts
+ *  pages     `/` is the revamp (marker below), /pricing, /resources, one Resources article, three /blog articles
  *  redirects every 301 and 410 rule parsed from nginx.conf (status and Location), plus /mcp and /skill
  *  legacy    /privacy, /terms, /docs, both integration pages, /.well-known/skills/index.json and SKILL.md
  *            with their content types
@@ -102,11 +102,15 @@ console.log("\n# pages");
 await check("revamp home", "/", { type: "text/html", includes: REVAMP_MARKER, excludes: LEGACY_MARKER });
 await check("page", "/pricing", { type: "text/html" });
 await check("page", "/resources", { type: "text/html" });
-await check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html" });
-await check("legacy blog index", "/blog", { type: "text/html", includes: LEGACY_MARKER });
-const posts = sitemapPaths.filter((p) => /^\/blog\/[a-z0-9-]+$/.test(p)).slice(0, 3);
-if (posts.length < 3) record(false, "three legacy blog posts in the sitemap", `found ${posts.length}`);
-for (const post of posts) await check("legacy blog post", post, { type: "text/html", includes: LEGACY_MARKER });
+await check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
+const posts = sitemapPaths.filter((p) => /^\/blog\/[a-z0-9-]+$/.test(p));
+const resourcePosts = sitemapPaths.filter((p) => /^\/resources\/[a-z0-9-]+$/.test(p));
+record(posts.length === 45, "sitemap lists 45 /blog articles", `found ${posts.length}`);
+record(resourcePosts.length === 9, "sitemap lists 9 /resources articles", `found ${resourcePosts.length}`);
+record(!sitemapSet.has("/blog"), "sitemap omits the /blog index");
+for (const post of posts.slice(0, 3)) {
+  await check("blog article", post, { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
+}
 
 /* ---------------------------------------------------------------- redirects */
 console.log("\n# redirects (parsed from nginx.conf)");
@@ -144,10 +148,14 @@ for (const [from, to] of [
   record(res.status === 301 && !!location && pathOf(location) === to, `301 ${from} -> ${to}`, `got ${res.status}${location ? ` -> ${location}` : ""}`);
 }
 {
-  // A trailing slash is normalised, not served twice.
-  const res = await get("/blog/");
-  await res.arrayBuffer();
-  record(res.status === 301 && pathOf(res.headers.get("location") ?? "") === "/blog", "301 /blog/ -> /blog", `got ${res.status}`);
+  // A post trailing slash is one hop to the canonical path. /blog/ itself is an exact 301 to /resources.
+  const sample = posts[0];
+  if (!sample) record(false, "301 trailing slash on a blog post", "no post");
+  else {
+    const res = await get(`${sample}/`);
+    await res.arrayBuffer();
+    record(res.status === 301 && pathOf(res.headers.get("location") ?? "") === sample, `301 ${sample}/ -> ${sample}`, `got ${res.status}`);
+  }
 }
 
 {
@@ -174,7 +182,7 @@ await check("llms", "/llms.txt", { type: "text/plain", minBytes: 100 });
 await check("sitemap", "/sitemap.xml", { type: "xml", includes: "<urlset" });
 if (sitemapPaths.length === 0) record(false, "sitemap lists URLs");
 else {
-  const must = ["/", "/pricing", "/resources", "/blog", "/docs", "/privacy", "/terms"];
+  const must = ["/", "/pricing", "/resources", "/docs", "/privacy", "/terms"];
   for (const p of must) record(sitemapSet.has(p === "/" ? "/" : p), `sitemap lists ${p}`);
   console.log(`(checking ${sitemapPaths.length} sitemap URLs)`);
   let bad = 0;

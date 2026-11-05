@@ -4,7 +4,7 @@ slug: competitor-content-tracking-what-to-measure-daily
 excerpt: "Daily snapshots of a rival's public videos show growth curves, not just totals. The metrics, formulas and weekly review questions that matter."
 date: 2026-10-06
 category: Guides
-readingMinutes: 6
+readingMinutes: 11
 author: "ContHunt Team"
 featured: false
 cover:
@@ -20,13 +20,13 @@ cover:
     badge: "Experimental"
 ---
 
-A single look at a competitor's profile gives you totals: followers, views, likes. Totals do not tell you how those numbers arrived. Did the video peak on day two or build for a week? Did it get a second life on day six? Did the account's follower count move when the posting style changed?
+Competitor content tracking means storing a daily snapshot of a rival's public videos so growth shows up as a curve, not only as a follower total or a view total. A single look at a profile cannot tell you whether a video peaked on day two, built for a week, or picked up a second life on day six.
 
-Daily snapshots answer those questions. ContHunt's tracking, an experimental feature, lets you follow public accounts and selected videos and stores daily cumulative data, so you can come back later and read growth as a curve. This guide covers what to track, which metrics to derive and how to review them.
+Daily snapshots answer those questions. ContHunt's tracking, an experimental feature, lets you follow public accounts and selected videos and stores daily cumulative data, so you can come back later and read growth as a curve. The rest of this guide is what to track, which metrics to derive and how to review them once a week.
 
 ## What to track
 
-Choose a small, deliberate set.
+What to track is a small set: 3 to 5 direct competitors, 1 or 2 category leaders, 1 breakout small account, and selected videos rather than every post on those accounts. A deliberate set stays readable. A full archive does not.
 
 - **3 to 5 direct competitors.** Brands selling to your buyer.
 - **1 or 2 category leaders.** They show where the category is heading.
@@ -39,7 +39,7 @@ Public data only. Tracking shows what anyone can see on a public profile. It doe
 
 ## From cumulative numbers to daily change
 
-Snapshots store cumulative totals. The useful figure is the difference between two days.
+Daily change is the gap between two cumulative snapshots, and it is what reveals a first peak, a half-life and a second spike that the final total hides. Snapshots store cumulative totals. Subtract yesterday from today to get the figure you actually review.
 
 Illustrative snapshots for one competitor video:
 
@@ -61,6 +61,8 @@ Three things show up that the D7 total of 74,000 hides:
 
 ## The daily metrics
 
+The daily metrics turn those snapshots into questions about whether a video is still moving, how fast the account spreads, and whether people share or save it. Read a blank as unavailable, not as zero.
+
 | Metric | Formula | Question it answers | Watch-out |
 | --- | --- | --- | --- |
 | Daily gain | Views today − views yesterday | Is this video still being pushed? | Platforms revise counts, so small negatives happen |
@@ -77,7 +79,9 @@ The ratios help you compare across accounts of different size. [Reading virality
 
 ## Tag the content as well as the numbers
 
-Numbers tell you which videos worked. Tags tell you why you might care. For every tracked video you keep, record:
+Content tags explain a number that would otherwise only say a video "worked": hook pattern, format, product, voice and call to action, recorded on every tracked video you keep. Numbers tell you which videos worked. Tags tell you why you might care.
+
+For every tracked video you keep, record:
 
 - Hook pattern (use the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy))
 - Format (demo, review, comparison, comment reply)
@@ -89,6 +93,8 @@ After a month, you can answer questions like "What hook mix does Competitor A us
 
 ## Alerts worth setting
 
+The alerts worth setting are the three that force a decision: an outlier by day 3, a cadence change that lasts a week, and a new format that repeats within seven days. An alert that does not change a plan is noise.
+
 Alerts only help if they trigger a decision. Three are enough:
 
 1. **Outlier.** A tracked video passes 3x its account's median by day 3.
@@ -98,6 +104,8 @@ Alerts only help if they trigger a decision. Three are enough:
 When an alert fires, spend 15 minutes. Watch the video, read 50 comments, tag it and decide whether it changes your plan.
 
 ## The weekly review (20 minutes)
+
+The weekly review asks the same five questions in about 20 minutes and writes the answers down, so a quarter of notes becomes a record of how competitors moved. Memory and screenshots do not do that job.
 
 Ask the same five questions each week:
 
@@ -111,14 +119,30 @@ Write the answers down. Over a quarter, the notes become a record of how competi
 
 ## Limits to respect
 
+The limits on daily tracking are that a snapshot misses anything that spikes and fades inside one day, public counts can be inflated, one hit is one data point, and the response is a reshoot rather than a copy. Respect all four before a rival's curve changes your plan.
+
 - **Daily means daily.** A spike and a drop within one day are invisible.
 - **Public counts can include inflated numbers.** The FTC's [final rule on fake reviews and testimonials](https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials) covers buying or selling fake social media indicators such as bot-driven followers or views. A spike with no matching comments, shares or follower change is worth doubting.
 - **One hit is one data point.** If a rival's video worked, the cause may be the creator, the audience or timing. Test the pattern yourself with a [hook test](/resources/research-tiktok-hooks-before-you-brief-a-creator) before copying it.
 - **Do not copy.** Use the structure, the angle and the proof beat. Reshoot with your own product and voice.
 
+## Write the alert note before you change the plan
+
+The alert note is the short record written in the 15 minutes after an alert, and it is what the weekly review reads instead of re-watching the whole tracked set. Three alerts are enough to trigger that note: a video passes 3x its account's median by day 3, posting frequency doubles or halves for a week, or a format you have not seen appears three times in seven days. The note exists so a spike does not become a brief by reflex.
+
+Use the same fields every time.
+
+- **Which alert fired.** Name outlier, cadence or new format. One can be true while the others are quiet. An outlier with no cadence change is a lesson about a video. A cadence change with no outlier is a lesson about volume. A new format that appears three times in seven days is a lesson about a test the account is repeating, which is more informative than a format that appeared once.
+- **The curve, not only the latest total.** Copy the daily gains. On the illustrative video in this guide, the D7 cumulative total is 74,000 and the daily gains are 12,000, 19,000, 9,000, 4,000, 1,500, 25,000 and 3,500. Those seven gains sum to 74,000, which is the check that the daily column was subtracted from the cumulative column. D2 minus D1 is 31,000 − 12,000 = 19,000. D3 minus D2 is 40,000 − 31,000 = 9,000. D6 minus D5 is 70,500 − 45,500 = 25,000. D7 minus D6 is 74,000 − 70,500 = 3,500. The first peak is D2 at 19,000. Half of that peak is 9,500, and D3 gained 9,000, which is under 9,500, so the half-life is 3 days under the definition in this guide. The half-life metric also wants at least 5 days of data, and this curve has 7, so the label is allowed. D6 gained 25,000, which is larger than 19,000, so the note has to mention a second spike and list the hypothesis: a repost, a sound pickup or a paid push. The hypothesis is not a finding until the comments and the account's other posts that day have been checked.
+- **The tags.** Hook pattern, format, product or offer, voice and call to action. A monthly question such as what hook mix a competitor uses for launches cannot be answered from gains alone. Use the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy) for the hook field so the labels match the rest of your research.
+- **The comments.** Read 50 comments and note whether they match the spike. A large gain with generic praise and no questions, shares or follower movement is the doubt named in the limits section, in line with the FTC rule on fake social metrics. Doubt it before you copy the opening. [Reading virality](/resources/reading-virality-beyond-views) is the place to turn the same public counts into share rate and save rate when the platform exposes them.
+- **The decision.** Name one test to run, or an explicit ignore. The weekly review asks for one thing to test and one thing to ignore. "Interesting" is not one of those answers. If you test, send the pattern through a [hook test](/resources/research-tiktok-hooks-before-you-brief-a-creator) on your own product and voice rather than reposting the rival's video.
+
+File the note on the video. After seven days the curve is still in the snapshot history, and the note says what you believed when the alert fired. Question 4 of the weekly review asks whether a launch behaved like last month's launches on day-3 views and half-life. The note is where that comparison gets written. Similar curves support a repeated format. A curve that does not match is still a result. Either one is more useful than a new total with no day-by-day check.
+
 ## Starting in ContHunt
 
-A sensible first week:
+Starting in ContHunt means a Deep Search to find who dominates the niche, then a tracked set you actually reopen seven days later. A sensible first week:
 
 1. Run a Deep Search to find the accounts that dominate your niche's top videos. Use a prompt such as: "Which accounts account for the most top-performing videos in the last 30 days for sensitive-skin skincare? Group by brand versus creator."
 2. Choose three to five brand accounts and one breakout creator for tracking.

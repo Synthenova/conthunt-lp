@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ResourceArticle } from "@/components/pages/resources";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
-import { getPost, getPostSlugs } from "@/lib/blog/posts";
+import { getPost, getResourceSlugs } from "@/lib/blog/posts";
 import { postSeoTitle } from "@/lib/blog/seo";
-import { ROUTES } from "@/lib/links";
 import { DESCRIPTION_MAX, SITE_NAME, clamp } from "@/lib/seo/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
-/** Only the posts in content/blog exist; anything else is a 404. */
+/** Only the Resources posts exist here. Legacy posts live at `/blog/<slug>` and 404 on this route. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getPostSlugs().map((slug) => ({ slug }));
+  return getResourceSlugs().map((slug) => ({ slug }));
 }
 
 /**
@@ -24,8 +23,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) notFound();
-  const url = ROUTES.article(post.slug);
+  if (!post || post.section !== "resources") notFound();
+  const url = post.href;
   const title = postSeoTitle(post);
   const description = clamp(post.excerpt, DESCRIPTION_MAX);
   return {
@@ -52,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) notFound();
+  if (!post || post.section !== "resources") notFound();
   return (
     <>
       <ArticleJsonLd post={post} />

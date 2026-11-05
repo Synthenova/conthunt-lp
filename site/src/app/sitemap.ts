@@ -6,9 +6,11 @@ import { absoluteUrl } from "@/lib/seo/site";
 
 /**
  * /sitemap.xml: the one sitemap for conthunt.app. It holds the canonical, indexable URLs only: this
- * app's pages (Home, Pricing, Viral Now, Resources and every article) plus the legacy pages nginx
- * serves next to them (`/blog`, every `/blog/<slug>`, `/docs/**`, `/privacy`, `/terms`), read from
- * the legacy build's own sitemap (src/lib/seo/legacy-sitemap.ts). `/preview/*` is excluded on
+ * app's pages (Home, Pricing, Viral Now, Resources, every Resources article, and every legacy
+ * article at its original `/blog/<slug>` URL) plus the legacy pages nginx still serves
+ * (`/docs/**`, `/privacy`, `/terms`), read from the legacy build's own sitemap
+ * (src/lib/seo/legacy-sitemap.ts). `/blog` itself redirects to `/resources`, so it is not listed.
+ * `/preview/*` is excluded on
  * purpose, and so are the `/viral-now?niche=` views, which canonicalise to `/viral-now`.
  * The legacy RSS feed (/rss.xml) is unchanged.
  *
@@ -19,17 +21,20 @@ import { absoluteUrl } from "@/lib/seo/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts(); // newest first
   const newest = posts[0]?.date;
-  const legacy = readLegacyUrls().map((entry) => ({
-    url: absoluteUrl(entry.path),
-    ...(entry.lastModified ? { lastModified: entry.lastModified } : {}),
-  }));
+  const owned = new Set(posts.map((post) => post.href));
+  const legacy = readLegacyUrls()
+    .filter((entry) => entry.path !== "/blog" && !owned.has(entry.path) && !entry.path.startsWith("/blog/"))
+    .map((entry) => ({
+      url: absoluteUrl(entry.path),
+      ...(entry.lastModified ? { lastModified: entry.lastModified } : {}),
+    }));
 
   return [
     { url: absoluteUrl(ROUTES.home) },
     { url: absoluteUrl(ROUTES.pricing) },
     { url: absoluteUrl(ROUTES.viralNow) },
     { url: absoluteUrl(ROUTES.resources), ...(newest ? { lastModified: newest } : {}) },
-    ...posts.map((post) => ({ url: absoluteUrl(ROUTES.article(post.slug)), lastModified: post.date })),
+    ...posts.map((post) => ({ url: absoluteUrl(post.href), lastModified: post.date })),
     ...legacy,
   ];
 }

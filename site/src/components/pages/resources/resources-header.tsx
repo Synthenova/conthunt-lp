@@ -18,7 +18,6 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { formatDateShort, getCover, getIndexCover, type PostSummary } from "@/lib/blog";
 import { cn } from "@/lib/cn";
-import { ROUTES } from "@/lib/links";
 import { TEXT_SOFT } from "@/components/sections/blog/inset";
 import { BannerScroll } from "./banner-scroll";
 
@@ -82,7 +81,7 @@ export function ResourcesHeader({
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
-              href={ROUTES.article(latest.slug)}
+              href={latest.href}
               className="group/latest pointer-events-auto inline-flex max-w-full items-center gap-3 rounded-full bg-paper/75 py-1.5 pl-1.5 pr-4 text-[14px] text-ink shadow-[0_0_0_1px_rgba(15,15,15,0.06),0_8px_24px_rgba(26,34,44,0.1)] backdrop-blur-xl transition-[background-color,scale] duration-200 ease-out hover:bg-paper active:scale-[0.98]"
             >
               <span className="shrink-0 whitespace-nowrap rounded-full bg-ink px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.05em] text-paper">

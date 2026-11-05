@@ -15,7 +15,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { formatDate, formatReading, type PostSummary } from "@/lib/blog";
-import { ROUTES } from "@/lib/links";
 import { BlogCover } from "./cover/blog-cover";
 import { toneInkText, toneMarkBg } from "@/lib/tones";
 import { categoryHue } from "./category-hue";
@@ -69,7 +68,7 @@ export function BlogCard({ post, variant = "gallery", showDate = false, sizes, p
             variant === "grid" ? "text-[20px] leading-[1.22]" : "text-[18px] leading-[1.25] md:text-[19px]",
           )}
         >
-          <Link href={ROUTES.article(post.slug)} data-card-link className={CARD_LINK}>
+          <Link href={post.href} data-card-link className={CARD_LINK}>
             <span className="box-decoration-clone bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1.5px] bg-[position:0_100%] bg-no-repeat pb-[2px] transition-[background-size] duration-500 ease-out group-hover/card:bg-[length:100%_1.5px] group-focus-within/card:bg-[length:100%_1.5px]">
               {post.title}
             </span>

@@ -170,7 +170,7 @@ const wordCount = (text: string): number => (text.trim() ? text.trim().split(/\s
 type PostForSchema = PostSummary & { body?: string };
 
 export function blogPostingNode(post: PostForSchema): JsonLdNode {
-  const url = absoluteUrl(ROUTES.article(post.slug));
+  const url = absoluteUrl(post.href);
   return {
     "@type": "BlogPosting",
     "@id": `${url}#article`,
@@ -194,14 +194,14 @@ export function blogPostingNode(post: PostForSchema): JsonLdNode {
 
 /** BlogPosting + BreadcrumbList (Home > Resources > article). */
 export function articleGraph(post: PostForSchema): JsonLdNode {
-  const url = absoluteUrl(ROUTES.article(post.slug));
+  const url = absoluteUrl(post.href);
   return graph(
     blogPostingNode(post),
     breadcrumbNode(
       [
         { name: "Home", path: ROUTES.home },
         { name: "Resources", path: ROUTES.resources },
-        { name: post.title, path: url },
+        { name: post.title, path: post.href },
       ],
       `${url}#breadcrumb`,
     ),
@@ -229,7 +229,7 @@ export function resourcesGraph(posts: PostSummary[]): JsonLdNode {
         itemListElement: posts.map((p, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          url: absoluteUrl(ROUTES.article(p.slug)),
+          url: absoluteUrl(p.href),
           name: p.title,
         })),
       },

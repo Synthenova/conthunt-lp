@@ -274,5 +274,1250 @@
     "fragment_data": null,
     "dominant": "#DFE1E2",
     "text_tone": "ink"
+  },
+  "best-instagram-analytics-tools": {
+    "plate1600": "/blog/plates/best-instagram-analytics-tools-1600.webp",
+    "plate800": "/blog/plates/best-instagram-analytics-tools-800.webp",
+    "mood": "sky",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "Instagram data-access jobs",
+      "items": [
+        {
+          "label": "Owned-account Insights",
+          "score": 90
+        },
+        {
+          "label": "Public Reels patterns",
+          "score": 78
+        },
+        {
+          "label": "Team export reporting",
+          "score": 74
+        },
+        {
+          "label": "Mention listening",
+          "score": 61
+        }
+      ]
+    },
+    "dominant": "#D0DEED",
+    "text_tone": "ink"
+  },
+  "best-social-media-monitoring-tools": {
+    "plate1600": "/blog/plates/best-social-media-monitoring-tools-1600.webp",
+    "plate800": "/blog/plates/best-social-media-monitoring-tools-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Name the watch job",
+          "status": "done"
+        },
+        {
+          "label": "Split mentions from inboxes",
+          "status": "done"
+        },
+        {
+          "label": "Record the vendor's own coverage claim",
+          "status": "done"
+        },
+        {
+          "label": "Leave short-form research on its own row",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#EBDFD2",
+    "text_tone": "ink"
+  },
+  "best-time-to-post-youtube-shorts-2026": {
+    "plate1600": "/blog/plates/best-time-to-post-youtube-shorts-2026-1600.webp",
+    "plate800": "/blog/plates/best-time-to-post-youtube-shorts-2026-800.webp",
+    "mood": "clay",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@northline.shorts",
+      "metric": "Illustrative first-hour views",
+      "points": [
+        80,
+        42,
+        110,
+        76,
+        39,
+        64
+      ],
+      "labels": [
+        "Wk1 morning",
+        "Wk1 midday",
+        "Wk1 evening",
+        "Wk2 morning",
+        "Wk2 midday",
+        "Wk2 evening"
+      ],
+      "delta": "Evening leads, then check the repeat",
+      "badge": "Illustrative, not a measurement"
+    },
+    "dominant": "#E5D0C2",
+    "text_tone": "ink"
+  },
+  "buzzsumo-pricing-alternatives": {
+    "plate1600": "/blog/plates/buzzsumo-pricing-alternatives-1600.webp",
+    "plate800": "/blog/plates/buzzsumo-pricing-alternatives-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "question: which public short-form hooks repeat this week",
+        "sources: TikTok, Instagram Reels, YouTube Shorts",
+        "web_pr_database: out of scope for this question",
+        "server: https://mcp.conthunt.app",
+        "price_field: not quoted, reopen the vendor page"
+      ]
+    },
+    "dominant": "#EBDFCA",
+    "text_tone": "ink"
+  },
+  "can-you-use-copyrighted-music-on-youtube-shorts": {
+    "plate1600": "/blog/plates/can-you-use-copyrighted-music-on-youtube-shorts-1600.webp",
+    "plate800": "/blog/plates/can-you-use-copyrighted-music-on-youtube-shorts-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Audio you recorded",
+          "state": "lower-risk"
+        },
+        {
+          "label": "A license you can show",
+          "state": "lower-risk"
+        },
+        {
+          "label": "YouTube library audio",
+          "state": "read-the-terms"
+        },
+        {
+          "label": "Trend audio, no paper trail",
+          "state": "higher-risk"
+        }
+      ],
+      "active": "YouTube library audio",
+      "window": "Decide before upload"
+    },
+    "dominant": "#BDE1D9",
+    "text_tone": "ink"
+  },
+  "competitor-analysis-tools": {
+    "plate1600": "/blog/plates/competitor-analysis-tools-1600.webp",
+    "plate800": "/blog/plates/competitor-analysis-tools-800.webp",
+    "mood": "mist",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "short-form hooks rival accounts repeat",
+      "platforms": [
+        "TikTok",
+        "Instagram Reels",
+        "YouTube Shorts"
+      ],
+      "scope": "Public videos from three competitor sets",
+      "status": "Ready to compare patterns"
+    },
+    "dominant": "#CED6D6",
+    "text_tone": "ink"
+  },
+  "content-ideas": {
+    "plate1600": "/blog/plates/content-ideas-1600.webp",
+    "plate800": "/blog/plates/content-ideas-800.webp",
+    "mood": "sage",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Bedtime reset for new parents",
+      "score": 8,
+      "out_of": 10,
+      "verdict": "Specific enough to script",
+      "metrics": [
+        {
+          "label": "Audience named",
+          "value": "New parents"
+        },
+        {
+          "label": "Proof on hand",
+          "value": "One real evening"
+        },
+        {
+          "label": "Pattern check",
+          "value": "Seen more than once"
+        }
+      ]
+    },
+    "dominant": "#D2DECD",
+    "text_tone": "ink"
+  },
+  "conthunt-alternatives": {
+    "plate1600": "/blog/plates/conthunt-alternatives-1600.webp",
+    "plate800": "/blog/plates/conthunt-alternatives-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "Opening 3 seconds",
+      "hook_family": "Job to be done",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Name the weekly job"
+        },
+        {
+          "t": "1.1s",
+          "label": "Reject the wrong suite"
+        },
+        {
+          "t": "2.4s",
+          "label": "Keep the specialist"
+        }
+      ],
+      "score": 8
+    },
+    "dominant": "#E2D4E2",
+    "text_tone": "ink"
+  },
+  "find-winning-short-form-content": {
+    "plate1600": "/blog/plates/find-winning-short-form-content-1600.webp",
+    "plate800": "/blog/plates/find-winning-short-form-content-800.webp",
+    "mood": "ink",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Illustrative views, same niche",
+      "series": [
+        {
+          "label": "Small account, unusual post",
+          "points": [
+            3,
+            9,
+            18,
+            27,
+            33
+          ]
+        },
+        {
+          "label": "Large account, typical post",
+          "points": [
+            12,
+            15,
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "badge": "Example curve, not measured"
+    },
+    "dominant": "#CED0D4",
+    "text_tone": "ink"
+  },
+  "hootsuite-alternatives-startups": {
+    "plate1600": "/blog/plates/hootsuite-alternatives-startups-1600.webp",
+    "plate800": "/blog/plates/hootsuite-alternatives-startups-800.webp",
+    "mood": "sky",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "Jobs this month",
+      "items": [
+        {
+          "label": "Decide the next video",
+          "score": 9
+        },
+        {
+          "label": "Put posts on the calendar",
+          "score": 7
+        },
+        {
+          "label": "Read our own analytics",
+          "score": 8
+        },
+        {
+          "label": "Monitor every mention",
+          "score": 3
+        }
+      ]
+    },
+    "dominant": "#D3DBE5",
+    "text_tone": "ink"
+  },
+  "how-long-can-an-instagram-reel-be": {
+    "plate1600": "/blog/plates/how-long-can-an-instagram-reel-be-1600.webp",
+    "plate800": "/blog/plates/how-long-can-an-instagram-reel-be-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Read the Reel length question",
+          "status": "done"
+        },
+        {
+          "label": "Note the composer ceiling on this account",
+          "status": "done"
+        },
+        {
+          "label": "Compare public Reels in the 15 to 30 second band",
+          "status": "done"
+        },
+        {
+          "label": "Flag stories that need a longer cut",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#EADAD0",
+    "text_tone": "ink"
+  },
+  "how-long-can-youtube-shorts-be": {
+    "plate1600": "/blog/plates/how-long-can-youtube-shorts-be-1600.webp",
+    "plate800": "/blog/plates/how-long-can-youtube-shorts-be-800.webp",
+    "mood": "clay",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@sample.shorts.lab",
+      "metric": "Example view duration, seconds",
+      "points": [
+        14,
+        18,
+        22,
+        21,
+        27,
+        24,
+        19
+      ],
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "delta": "Example curve, not a measurement",
+      "badge": "Illustrative"
+    },
+    "dominant": "#E6CBB7",
+    "text_tone": "ink"
+  },
+  "how-to-edit-youtube-shorts": {
+    "plate1600": "/blog/plates/how-to-edit-youtube-shorts-1600.webp",
+    "plate800": "/blog/plates/how-to-edit-youtube-shorts-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "> ask: how do home-coffee Shorts change the frame in the first 5 seconds?",
+        "  searching TikTok, Reels, and YouTube Shorts",
+        "  watching public videos, then ranking the answer",
+        "  evidence attached: openings, cuts, on-screen text",
+        "  note: structure only, not a retention chart"
+      ]
+    },
+    "dominant": "#EBDFC8",
+    "text_tone": "ink"
+  },
+  "how-to-grow-youtube-shorts-channel": {
+    "plate1600": "/blog/plates/how-to-grow-youtube-shorts-channel-1600.webp",
+    "plate800": "/blog/plates/how-to-grow-youtube-shorts-channel-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Form corrections",
+          "state": "Core"
+        },
+        {
+          "label": "Patch-note explainers",
+          "state": "Testing"
+        },
+        {
+          "label": "Day-of-series tips",
+          "state": "Repeat"
+        },
+        {
+          "label": "Unrelated dance audio",
+          "state": "Skip"
+        }
+      ],
+      "active": "Form corrections",
+      "window": "This week"
+    },
+    "dominant": "#C0E0DB",
+    "text_tone": "ink"
+  },
+  "how-to-identify-market-trends": {
+    "plate1600": "/blog/plates/how-to-identify-market-trends-1600.webp",
+    "plate800": "/blog/plates/how-to-identify-market-trends-800.webp",
+    "mood": "mist",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "accelerating formats in compact coffee makers",
+      "platforms": [
+        "TikTok",
+        "Instagram Reels",
+        "YouTube Shorts"
+      ],
+      "scope": "Public videos, recent window",
+      "status": "Example search, not a live count"
+    },
+    "dominant": "#D0D1D7",
+    "text_tone": "ink"
+  },
+  "how-to-monetize-youtube-shorts": {
+    "plate1600": "/blog/plates/how-to-monetize-youtube-shorts-1600.webp",
+    "plate800": "/blog/plates/how-to-monetize-youtube-shorts-800.webp",
+    "mood": "sage",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Shorts monetization checklist",
+      "score": 4,
+      "out_of": 7,
+      "verdict": "Check Studio first",
+      "metrics": [
+        {
+          "label": "YPP path",
+          "value": "Shorts or long-form"
+        },
+        {
+          "label": "Allocated share",
+          "value": "45% kept"
+        },
+        {
+          "label": "Music",
+          "value": "Changes the pool"
+        }
+      ]
+    },
+    "dominant": "#CBD6C7",
+    "text_tone": "ink"
+  },
+  "how-to-track-youtube-shorts-competitors": {
+    "plate1600": "/blog/plates/how-to-track-youtube-shorts-competitors-1600.webp",
+    "plate800": "/blog/plates/how-to-track-youtube-shorts-competitors-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "0:00–0:03",
+      "hook_family": "Mistake then fix",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Burnt pan, no intro"
+        },
+        {
+          "t": "1.0s",
+          "label": "Text: the one miss"
+        },
+        {
+          "t": "2.2s",
+          "label": "Correct heat"
+        },
+        {
+          "t": "3.0s",
+          "label": "Same dish, fixed"
+        }
+      ],
+      "score": 7
+    },
+    "dominant": "#DFD3DF",
+    "text_tone": "ink"
+  },
+  "instagram-reels-algorithm": {
+    "plate1600": "/blog/plates/instagram-reels-algorithm-1600.webp",
+    "plate800": "/blog/plates/instagram-reels-algorithm-800.webp",
+    "mood": "ink",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Illustrative reach mix, not a report",
+      "series": [
+        {
+          "label": "From followers",
+          "points": [
+            20,
+            22,
+            18,
+            24,
+            21
+          ]
+        },
+        {
+          "label": "From non-followers",
+          "points": [
+            8,
+            30,
+            14,
+            46,
+            19
+          ]
+        }
+      ],
+      "badge": "Example only"
+    },
+    "dominant": "#CCD1D7",
+    "text_tone": "ink"
+  },
+  "instagram-reels-analytics": {
+    "plate1600": "/blog/plates/instagram-reels-analytics-1600.webp",
+    "plate800": "/blog/plates/instagram-reels-analytics-800.webp",
+    "mood": "sky",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "Reel review queue",
+      "items": [
+        {
+          "label": "Form check, day 2",
+          "score": 1
+        },
+        {
+          "label": "Myth bust, day 2",
+          "score": 2
+        },
+        {
+          "label": "Gear list, day 2",
+          "score": 3
+        },
+        {
+          "label": "Day-in-life, day 2",
+          "score": 4
+        }
+      ]
+    },
+    "dominant": "#D6E3E7",
+    "text_tone": "ink"
+  },
+  "instagram-reels-content-ideas": {
+    "plate1600": "/blog/plates/instagram-reels-content-ideas-1600.webp",
+    "plate800": "/blog/plates/instagram-reels-content-ideas-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Search public Reels on one topic",
+          "status": "done"
+        },
+        {
+          "label": "Note the opening and the payoff",
+          "status": "done"
+        },
+        {
+          "label": "Check speech, text, and caption",
+          "status": "done"
+        },
+        {
+          "label": "Choose one format to film next",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#EBDAD1",
+    "text_tone": "ink"
+  },
+  "instagram-reels-hashtags": {
+    "plate1600": "/blog/plates/instagram-reels-hashtags-1600.webp",
+    "plate800": "/blog/plates/instagram-reels-hashtags-800.webp",
+    "mood": "clay",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@home.barista.example",
+      "metric": "Saves on a four-tag Reel set",
+      "points": [
+        4,
+        6,
+        5,
+        9,
+        8,
+        11,
+        10
+      ],
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "delta": "+6 from Monday",
+      "badge": "Example only"
+    },
+    "dominant": "#E9CABB",
+    "text_tone": "ink"
+  },
+  "instagram-reels-vs-youtube-shorts-analytics": {
+    "plate1600": "/blog/plates/instagram-reels-vs-youtube-shorts-analytics-1600.webp",
+    "plate800": "/blog/plates/instagram-reels-vs-youtube-shorts-analytics-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ compare reel_insights shorts_studio --same-idea",
+        "reel.views count each start and each replay",
+        "shorts.engaged_views stay past the first seconds, loops excluded",
+        "rule: never subtract one view total from the other",
+        "next: bench each post against your own recent posts"
+      ]
+    },
+    "dominant": "#E9E6CE",
+    "text_tone": "ink"
+  },
+  "metricool-pricing-alternatives": {
+    "plate1600": "/blog/plates/metricool-pricing-alternatives-1600.webp",
+    "plate800": "/blog/plates/metricool-pricing-alternatives-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Scheduling calendar",
+          "state": "Primary"
+        },
+        {
+          "label": "Connected reports",
+          "state": "Check plan"
+        },
+        {
+          "label": "Public short-form research",
+          "state": "Other job"
+        },
+        {
+          "label": "Private watch time",
+          "state": "Native only"
+        }
+      ],
+      "active": "Scheduling calendar",
+      "window": "Live pricing page"
+    },
+    "dominant": "#C4DED8",
+    "text_tone": "ink"
+  },
+  "short-form-video-best-practices": {
+    "plate1600": "/blog/plates/short-form-video-best-practices-1600.webp",
+    "plate800": "/blog/plates/short-form-video-best-practices-800.webp",
+    "mood": "mist",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "first-frame promise for beginner strength form",
+      "platforms": [
+        "TikTok",
+        "Instagram Reels",
+        "YouTube Shorts"
+      ],
+      "scope": "Public videos in one niche",
+      "status": "Examples to review, not a scoreboard"
+    },
+    "dominant": "#D3D9DE",
+    "text_tone": "ink"
+  },
+  "social-media-analytics-tools": {
+    "plate1600": "/blog/plates/social-media-analytics-tools-1600.webp",
+    "plate800": "/blog/plates/social-media-analytics-tools-800.webp",
+    "mood": "sage",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Which tool for this question",
+      "score": 3,
+      "out_of": 3,
+      "verdict": "Native dashboard",
+      "metrics": [
+        {
+          "label": "Account you manage",
+          "value": "Yes"
+        },
+        {
+          "label": "Needs a login",
+          "value": "Yes"
+        },
+        {
+          "label": "Public videos only",
+          "value": "No"
+        }
+      ]
+    },
+    "dominant": "#D5DED2",
+    "text_tone": "ink"
+  },
+  "sprout-social-alternatives": {
+    "plate1600": "/blog/plates/sprout-social-alternatives-1600.webp",
+    "plate800": "/blog/plates/sprout-social-alternatives-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "0:00 - 0:03 of a public reply video",
+      "hook_family": "Complaint then fix",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Complaint on screen, no logo card"
+        },
+        {
+          "t": "1.1s",
+          "label": "Spoken line names the fix"
+        },
+        {
+          "t": "2.2s",
+          "label": "Cut to the resolved thread"
+        }
+      ],
+      "score": 8
+    },
+    "dominant": "#DED5DE",
+    "text_tone": "ink"
+  },
+  "tiktok-analytics": {
+    "plate1600": "/blog/plates/tiktok-analytics-1600.webp",
+    "plate800": "/blog/plates/tiktok-analytics-800.webp",
+    "mood": "ink",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Example week, not a live account",
+      "series": [
+        {
+          "label": "Full-watch share of views",
+          "points": [
+            28,
+            31,
+            22,
+            44,
+            47,
+            41,
+            49
+          ]
+        },
+        {
+          "label": "Sends per 100 views",
+          "points": [
+            1,
+            1,
+            1,
+            3,
+            4,
+            3,
+            4
+          ]
+        }
+      ],
+      "badge": "Illustrative curves"
+    },
+    "dominant": "#D3D7D8",
+    "text_tone": "ink"
+  },
+  "tubebuddy-free-alternatives": {
+    "plate1600": "/blog/plates/tubebuddy-free-alternatives-1600.webp",
+    "plate800": "/blog/plates/tubebuddy-free-alternatives-800.webp",
+    "mood": "sky",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "Example zero-budget stack",
+      "items": [
+        {
+          "label": "Studio Research tab",
+          "score": 8
+        },
+        {
+          "label": "Native thumbnail test",
+          "score": 7
+        },
+        {
+          "label": "vidIQ free extension",
+          "score": 6
+        },
+        {
+          "label": "Public Shorts research",
+          "score": 8
+        }
+      ]
+    },
+    "dominant": "#CEE2EC",
+    "text_tone": "ink"
+  },
+  "tubebuddy-review": {
+    "plate1600": "/blog/plates/tubebuddy-review-1600.webp",
+    "plate800": "/blog/plates/tubebuddy-review-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Count videos that need a rewrite",
+          "status": "done"
+        },
+        {
+          "label": "Time one bulk description pass",
+          "status": "done"
+        },
+        {
+          "label": "Separate Shorts from long-form",
+          "status": "done"
+        },
+        {
+          "label": "Keep, pair, or cancel",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#EFD8CE",
+    "text_tone": "ink"
+  },
+  "tubebuddy-vs-vidiq": {
+    "plate1600": "/blog/plates/tubebuddy-vs-vidiq-1600.webp",
+    "plate800": "/blog/plates/tubebuddy-vs-vidiq-800.webp",
+    "mood": "clay",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@sample-longform",
+      "metric": "Library tasks finished",
+      "points": [
+        2,
+        2,
+        5,
+        4,
+        6,
+        3
+      ],
+      "labels": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6"
+      ],
+      "delta": "Example tally, not a measured account",
+      "badge": "Illustrative"
+    },
+    "dominant": "#E9CABA",
+    "text_tone": "ink"
+  },
+  "vidiq-alternatives": {
+    "plate1600": "/blog/plates/vidiq-alternatives-1600.webp",
+    "plate800": "/blog/plates/vidiq-alternatives-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ conthunt deep_search 'public shorts research, not a keyword overlay'",
+        "platforms: YouTube Shorts, TikTok, Instagram Reels",
+        "split: Studio owns retention; TubeBuddy owns bulk edits",
+        "evidence: topics and openings, not a private retention curve",
+        "status: ranked answer ready"
+      ]
+    },
+    "dominant": "#EEDFD1",
+    "text_tone": "ink"
+  },
+  "what-is-content-intelligence": {
+    "plate1600": "/blog/plates/what-is-content-intelligence-1600.webp",
+    "plate800": "/blog/plates/what-is-content-intelligence-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Cable-failure demos",
+          "state": "Test next"
+        },
+        {
+          "label": "Reactive-skin patch tests",
+          "state": "Keep"
+        },
+        {
+          "label": "Generic morning routine",
+          "state": "Too broad"
+        },
+        {
+          "label": "Chasing a viral score",
+          "state": "Drop"
+        }
+      ],
+      "active": "Cable-failure demos",
+      "window": "Last 7 days"
+    },
+    "dominant": "#C0E0D7",
+    "text_tone": "ink"
+  },
+  "youtube-seo-tools": {
+    "plate1600": "/blog/plates/youtube-seo-tools-1600.webp",
+    "plate800": "/blog/plates/youtube-seo-tools-800.webp",
+    "mood": "mist",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "short demo titles that match the spoken promise",
+      "platforms": [
+        "YouTube Shorts",
+        "TikTok",
+        "Instagram Reels"
+      ],
+      "scope": "Public examples for packaging ideas, not Studio search volume",
+      "status": "Research feed ready, not an SEO score"
+    },
+    "dominant": "#D1D1DE",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-algorithm-2026": {
+    "plate1600": "/blog/plates/youtube-shorts-algorithm-2026-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-algorithm-2026-800.webp",
+    "mood": "sage",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Illustrative opening check, not a viewer metric",
+      "score": 4,
+      "out_of": 5,
+      "verdict": "Promise is visible",
+      "metrics": [
+        {
+          "label": "Niche promise in the title",
+          "value": "Clear"
+        },
+        {
+          "label": "First frame shows the payoff",
+          "value": "Yes"
+        },
+        {
+          "label": "Main words up front",
+          "value": "Two"
+        },
+        {
+          "label": "Tag stuffing",
+          "value": "Absent"
+        },
+        {
+          "label": "Related next watch",
+          "value": "Missing"
+        }
+      ]
+    },
+    "dominant": "#D0DAC8",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-analytics": {
+    "plate1600": "/blog/plates/youtube-shorts-analytics-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-analytics-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "Illustrative owned-Short review",
+      "hook_family": "Stay or swipe",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Shown in the Shorts feed"
+        },
+        {
+          "t": "0.5s",
+          "label": "Viewer stays or swipes"
+        },
+        {
+          "t": "4.0s",
+          "label": "Retention check on the demo"
+        },
+        {
+          "t": "End",
+          "label": "Comments and subscribers"
+        }
+      ],
+      "score": 6
+    },
+    "dominant": "#DAD2E3",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-best-practices": {
+    "plate1600": "/blog/plates/youtube-shorts-best-practices-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-best-practices-800.webp",
+    "mood": "ink",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Illustrative hold after a hook rewrite",
+      "series": [
+        {
+          "label": "Rewritten open",
+          "points": [
+            28,
+            34,
+            41,
+            46,
+            52,
+            55,
+            57
+          ]
+        },
+        {
+          "label": "Unchanged open",
+          "points": [
+            30,
+            29,
+            27,
+            26,
+            24,
+            23,
+            22
+          ]
+        }
+      ],
+      "badge": "Example curve, not a measurement"
+    },
+    "dominant": "#D5D2D7",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-content-ideas": {
+    "plate1600": "/blog/plates/youtube-shorts-content-ideas-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-content-ideas-800.webp",
+    "mood": "sky",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "One-niche Shorts board, example only",
+      "items": [
+        {
+          "label": "Myth, then the correction",
+          "score": 84
+        },
+        {
+          "label": "One tool, one verdict",
+          "score": 79
+        },
+        {
+          "label": "Station-to-view route",
+          "score": 73
+        },
+        {
+          "label": "Clutch with the outcome first",
+          "score": 68
+        },
+        {
+          "label": "Faceless explainer with proof",
+          "score": 62
+        }
+      ]
+    },
+    "dominant": "#D6E3EC",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-hashtags-guide": {
+    "plate1600": "/blog/plates/youtube-shorts-hashtags-guide-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-hashtags-guide-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "steps": [
+        {
+          "label": "Name the Short's actual subject",
+          "status": "done"
+        },
+        {
+          "label": "Drop tags that do not match the footage",
+          "status": "done"
+        },
+        {
+          "label": "Place a short set in the description",
+          "status": "done"
+        },
+        {
+          "label": "Confirm the total is not over 60",
+          "status": "running"
+        }
+      ]
+    },
+    "dominant": "#F2D7D1",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-hashtags-title-vs-description": {
+    "plate1600": "/blog/plates/youtube-shorts-hashtags-title-vs-description-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-hashtags-title-vs-description-800.webp",
+    "mood": "clay",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "Illustrative pair, not a channel",
+      "metric": "Title click-through, description tags vs one title tag",
+      "points": [
+        20,
+        19,
+        21,
+        14,
+        13,
+        15,
+        14
+      ],
+      "labels": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "delta": "Example gap only",
+      "badge": "Not a live test"
+    },
+    "dominant": "#EBCDC2",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-public-search-benchmark-2026": {
+    "plate1600": "/blog/plates/youtube-shorts-public-search-benchmark-2026-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-public-search-benchmark-2026-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ fetch three YouTube search URLs with the Shorts filter",
+        "> parse ytInitialData for shortsLockupViewModel only",
+        "> raw observations 79, unique video IDs 74",
+        "> kept title, public view text, thumbnail size, URL",
+        "> left out retention, revenue, audience, paid data"
+      ]
+    },
+    "dominant": "#EBDFD3",
+    "text_tone": "ink"
+  },
+  "youtube-shorts-thumbnail-best-practices-2026": {
+    "plate1600": "/blog/plates/youtube-shorts-thumbnail-best-practices-2026-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-thumbnail-best-practices-2026-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "chips": [
+        {
+          "label": "Custom upload",
+          "state": "YPP first"
+        },
+        {
+          "label": "Three desktop frames",
+          "state": "Suggested"
+        },
+        {
+          "label": "Any app frame",
+          "state": "Plan it"
+        },
+        {
+          "label": "Ask Studio image",
+          "state": "Long-form"
+        }
+      ],
+      "active": "Any app frame",
+      "window": "This upload"
+    },
+    "dominant": "#C5DFDB",
+    "text_tone": "ink"
+  },
+  "youtube-tags-vs-hashtags": {
+    "plate1600": "/blog/plates/youtube-tags-vs-hashtags-1600.webp",
+    "plate800": "/blog/plates/youtube-tags-vs-hashtags-800.webp",
+    "mood": "mist",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "shorts captions, misspellings versus labels",
+      "platforms": [
+        "YouTube Shorts"
+      ],
+      "scope": "Title, description, and tags field",
+      "status": "Hashtags kept out of the tags box"
+    },
+    "dominant": "#D3D8DE",
+    "text_tone": "ink"
+  },
+  "youtube-title-character-limit-2026": {
+    "plate1600": "/blog/plates/youtube-title-character-limit-2026-1600.webp",
+    "plate800": "/blog/plates/youtube-title-character-limit-2026-800.webp",
+    "mood": "sage",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Illustrative length check",
+      "score": 54,
+      "out_of": 100,
+      "verdict": "Fits 45 to 70",
+      "metrics": [
+        {
+          "label": "Opening promise",
+          "value": "In the first line"
+        },
+        {
+          "label": "Hard cap",
+          "value": "100 characters"
+        },
+        {
+          "label": "Cover match",
+          "value": "Same claim"
+        }
+      ]
+    },
+    "dominant": "#D5DECC",
+    "text_tone": "ink"
+  },
+  "youtube-tracker": {
+    "plate1600": "/blog/plates/youtube-tracker-1600.webp",
+    "plate800": "/blog/plates/youtube-tracker-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "One outlier Short",
+      "hook_family": "Public creative check",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Cover subject matches the title"
+        },
+        {
+          "t": "1.5s",
+          "label": "Spoken line names the task"
+        },
+        {
+          "t": "4.0s",
+          "label": "The example appears on screen"
+        },
+        {
+          "t": "8.0s",
+          "label": "Stop before guessing private retention"
+        }
+      ],
+      "score": 6
+    },
+    "dominant": "#E2DBE2",
+    "text_tone": "ink"
+  },
+  "youtube-trending-searches": {
+    "plate1600": "/blog/plates/youtube-trending-searches-1600.webp",
+    "plate800": "/blog/plates/youtube-trending-searches-800.webp",
+    "mood": "ink",
+    "fragment": "trend-chart",
+    "fragment_data": {
+      "title": "Illustrative relative interest",
+      "series": [
+        {
+          "label": "Cover-frame phrase",
+          "points": [
+            18,
+            24,
+            31,
+            29,
+            37,
+            44,
+            41
+          ]
+        },
+        {
+          "label": "Custom-thumbnail phrase",
+          "points": [
+            12,
+            14,
+            13,
+            17,
+            16,
+            15,
+            19
+          ]
+        }
+      ],
+      "badge": "Same chart, not volume"
+    },
+    "dominant": "#C9CFD6",
+    "text_tone": "ink"
   }
 }

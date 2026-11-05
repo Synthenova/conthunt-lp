@@ -4,7 +4,7 @@ slug: the-3-second-rule-a-hook-taxonomy
 excerpt: "Nine hook patterns, what each puts on screen in the first 3 seconds, when it fits, and how to tag your niche's videos to see which ones win."
 date: 2026-08-25
 category: Research
-readingMinutes: 7
+readingMinutes: 11
 author: "ContHunt Team"
 featured: true
 featuredOrder: 2
@@ -23,13 +23,15 @@ cover:
     score: 91
 ---
 
-The 3-second rule is shorthand, not a law. TikTok's [creative guidance for performance ads](https://ads.tiktok.com/resources/help/article/creative-best-practices) says to introduce your content proposition in the first 3 seconds and to prioritize your hook in the first 6. YouTube changed how Shorts views are counted on 31 March 2025: a view now registers each time a Short starts or replays, with no minimum watch time, and the older measure lives on as "engaged views" ([YouTube Help](https://support.google.com/youtube/answer/10059070)). Between them, those two facts describe the problem. Getting someone to start is cheap. A hook is whatever turns a start into a viewer who stays.
+The 3-second rule, in this taxonomy, is a set of nine hook patterns for what the first 3 seconds put on screen, used to tag a niche and see which openings show up more often among the videos that beat their creator's norm. Getting someone to start a video is cheap. A hook is whatever turns that start into a viewer who stays.
+
+TikTok's [creative guidance for performance ads](https://ads.tiktok.com/resources/help/article/creative-best-practices) says to introduce your content proposition in the first 3 seconds and to prioritize your hook in the first 6. YouTube changed how Shorts views are counted on 31 March 2025: a view now registers each time a Short starts or replays, with no minimum watch time, and the older measure lives on as "engaged views" ([YouTube Help](https://support.google.com/youtube/answer/10059070)). Between them, those two facts describe the problem.
 
 One limit up front. Retention curves belong to the account owner, so from the outside you cannot see who left at second 2. You can see what the opening contains and how the video performed relative to its creator's norm. Every pattern below is a hypothesis to test in your niche, and the testing section below shows how.
 
 ## Three channels carry every hook
 
-A hook is built from up to three channels, and the strongest hooks align at least two of them.
+Three channels carry every hook, and the strongest openings align at least two of them so a viewer on mute still gets the point. A hook is built from up to three channels.
 
 - **Visual.** The first frame and the motion in the first second.
 - **Verbal.** The first spoken line, or the first line of a voiceover.
@@ -38,6 +40,8 @@ A hook is built from up to three channels, and the strongest hooks align at leas
 When you review a video, write down what each channel says. If they say three different things, the opening is probably doing less than it looks like.
 
 ## The nine patterns
+
+The nine patterns name what the first 3 seconds contain, from a finished result on screen to a credential line, and a trending sound is only a wrapper around one of them. Use the same nine labels every time you tag.
 
 | Pattern | What the first 3 seconds contain | Fits | Common failure |
 | --- | --- | --- | --- |
@@ -65,7 +69,7 @@ Each one promises something different, so each needs a different proof beat in s
 
 ## How to find which patterns win in your niche
 
-You need a set of videos, a tagging pass and a comparison.
+Finding which patterns win means tagging 80 to 200 videos in one niche and one window, then comparing each pattern's share of the top quartile with its share of the whole set. You need a set of videos, a tagging pass and a comparison.
 
 1. **Pull 80 to 200 relevant videos** from one niche and one time window across TikTok, Reels and Shorts.
 2. **Tag each opening** with one primary pattern, plus the channel notes above. Resolve disagreements between taggers with a written rule, such as "the pattern is whatever the viewer experiences first."
@@ -88,7 +92,7 @@ Read this table with care. Pattern interrupt has the highest lift but only 4 vid
 
 ## Check the payoff before you copy a pattern
 
-Open every top-ranked video again and look at seconds 3 to 10. Does the claim from the first three seconds get proved? A result-first hook with no visible product use afterwards is a promise without evidence. A contrarian claim with no reason attached is an argument starter. Check whether the winners in your set pair the opening with a payoff inside the first ten seconds, and brief that pairing, not the opening alone.
+The payoff check asks whether seconds 3 to 10 prove whatever the first 3 seconds claimed, before that pattern is copied into a brief. Open every top-ranked video again and look at seconds 3 to 10. Does the claim from the first three seconds get proved? A result-first hook with no visible product use afterwards is a promise without evidence. A contrarian claim with no reason attached is an argument starter. Check whether the winners in your set pair the opening with a payoff inside the first ten seconds, and brief that pairing, not the opening alone.
 
 Two other checks are cheap:
 
@@ -96,6 +100,8 @@ Two other checks are cheap:
 - **Native feel.** TikTok's guidance recommends a DIY, not overly polished look featuring creators, employees or customers. If your reference videos look like ads and the winners look like posts, copy the winners.
 
 ## Matching a pattern to a product (starting hypotheses)
+
+Matching a pattern to a product is a starting hypothesis for the first test, and the tagged set from your own niche overrules the table. Use the row as a place to begin, then replace it when your counts disagree.
 
 | If your product... | Test first | Then |
 | --- | --- | --- |
@@ -106,9 +112,23 @@ Two other checks are cheap:
 
 These are places to start, not rules. Your own tagged set will overrule them.
 
+## Write the pattern rule before the second tagger starts
+
+The pattern rule is the written definition that makes two people, or a person and an agent, give the same opening the same label. Without it, lift compares tagging habits rather than hooks. Agree the rule before the second pass. The line already in the method is enough to start: the pattern is whatever the viewer experiences first.
+
+Keep one sentence beside each pattern so a tagger can apply it without debating taste. Result-first means the finished outcome is on screen before any explanation. Problem call-out means the first line names a pain the viewer already has. Pattern interrupt means the first object, motion or cut is there to break the scroll, before the offer is the point. Open loop means the opening withholds a payoff. Contrarian claim means the first statement disagrees with common advice. In-use demo means the product is working and talk is optional. POV scenario means the viewer is invited into a situation. Numbered promise means a count sets a finish line. Credential line means a role or experience is the reason to stay. Those sentences restate the table on purpose. A tagger in a hurry will reach for "funny" or "trending" unless the allowed list is sitting in the sheet.
+
+When two patterns show up inside the same 3 seconds, store one primary label and keep the other as a note. The illustrative heel-balm briefs show the choice. A smooth heel with the text "14 days" is result-first even if the voice also hints at a story, because the viewer sees the outcome first. A pumice stone dropped into a bin with "Stop filing your heels" is a contrarian claim even though the frame is surprising, because the disagreement is what the viewer experiences first. Do not average the two into a new name. The comparison table only works if every video has one cell.
+
+Channel notes explain a clash. They do not create a tenth pattern. If the visual says result, the voice says a problem and the text says a number, write all three down, then apply the rule. The primary pattern is the one the viewer gets first. The other two channels tell you whether the opening is aligned, which is the check in the channels section above. A trending sound stays a wrapper. It can sit on any of the nine, so it does not get its own row in the lift table.
+
+Use the same rule when you read the illustrative 80-video table. Result-first is 20 of 80 overall and 9 of 20 in the top quartile, which is a lift of 1.8. Pattern interrupt is 8 of 80 and 4 of 20, which is a lift of 2.0, but only 4 videos sit behind that lift, so the rule for the brief is the one already stated: a thin count is a lead to test, and the pattern with more videos behind it is the stronger bet. The other four patterns account for the remaining 10 of the 80, and none of those 10 are in the top quartile of 20. Check that remainder before you add a column: 20 + 24 + 8 + 12 + 6 = 70, and 80 − 70 = 10. If your own sheet does not add back to the set size, the tags are not ready to brief.
+
+The ContHunt prompt later in this guide locks the agent to the same nine answers. That is the same discipline as the written rule. Counts stay comparable only when the labels were fixed before anyone started tagging.
+
 ## Running the taxonomy in ContHunt
 
-Deep Search can tag every video it analyzes against a fixed label list. Give it the nine patterns as the allowed answers, so counts stay comparable:
+Running the taxonomy in ContHunt means giving Deep Search the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Deep Search can tag every video it analyzes against a fixed label list.
 
 > For each video, label the opening hook as one of: result-first, problem call-out, pattern interrupt, open loop, contrarian claim, in-use demo, POV scenario, numbered promise, credential line. Note the first frame and the spoken line. Then compare the pattern mix of the top-performing videos with the rest of the set.
 

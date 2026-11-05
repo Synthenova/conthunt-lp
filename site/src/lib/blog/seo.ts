@@ -23,8 +23,8 @@ const SEO_TITLES: Record<string, string> = {
 };
 
 /** The complete `<title>`: 60 characters or fewer, with the brand suffix when it fits. */
-export function postSeoTitle(post: { slug: string; title: string }): string {
-  const base = SEO_TITLES[post.slug] ?? post.title;
+export function postSeoTitle(post: { slug: string; title: string; seoTitle?: string | null }): string {
+  const base = post.seoTitle || SEO_TITLES[post.slug] || post.title;
   const full = fullTitle(base);
   return full.length <= TITLE_MAX ? full : clamp(base, TITLE_MAX);
 }

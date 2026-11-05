@@ -13,14 +13,14 @@
  * `generateStaticParams`) never pulls in the native binding or the Satori/resvg wasm.
  */
 import { formatReading } from "@/lib/blog";
-import { getPost, getPostSlugs } from "@/lib/blog/posts";
+import { getPost, getResourceSlugs } from "@/lib/blog/posts";
 import { OG_CONTENT_TYPE, OG_SIZE } from "@/lib/seo/og-assets";
 import { renderOgCard } from "@/lib/seo/og-card";
 
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return getPostSlugs().map((slug) => ({ slug }));
+  return getResourceSlugs().map((slug) => ({ slug }));
 }
 
 /** One image per post. The id is fixed; the alt text and size are what vary or matter. */

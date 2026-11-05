@@ -19,7 +19,11 @@ One Markdown file per post, named `<slug>.md`. This README is not a post, so a l
 
 Home gallery: sort the five `featured: true` posts by `featuredOrder` (1 to 5), then add the sixth
 "all articles" card. Resources index: sort by `date`, newest first. Each of the nine moods and nine
-fragments is used exactly once, so the covers stay distinct side by side.
+fragments is used exactly once among these nine posts, so the covers stay distinct side by side.
+
+The 45 older posts live in this same folder with `section: blog` and `featured: false`. Their canonical
+URL stays `/blog/<slug>`. They are listed on `/resources` and rendered by the same article screen.
+A fragment type may repeat across those 45. The plate file and the fragment words do not.
 
 Categories in use: Playbooks (3), Research (2), Guides (2), Product (2).
 
@@ -36,6 +40,8 @@ readingMinutes: 6             # integer, about words / 200
 author: "ContHunt Team"
 featured: true                # true for the 5 home-gallery posts, false otherwise
 featuredOrder: 1              # 1 to 5, present only when featured is true
+section: resources            # resources (default) or blog. blog keeps the canonical path /blog/<slug>
+seoTitle: "optional"          # search title without the brand suffix, only when the full title does not fit
 cover:
   mood: sea                   # sky | sand | sage | dusk | mist | sea | clay | ink | dawn
   plate_prompt: string        # image-model prompt for a text-free, softly blurred, light photographic plate

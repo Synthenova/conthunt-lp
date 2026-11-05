@@ -4,7 +4,7 @@ slug: research-tiktok-hooks-before-you-brief-a-creator
 excerpt: "A six-step process that turns 200+ videos in your niche into a hook brief a creator can shoot from, with a template you can copy."
 date: 2026-08-18
 category: Playbooks
-readingMinutes: 6
+readingMinutes: 10
 author: "ContHunt Team"
 featured: true
 featuredOrder: 3
@@ -19,19 +19,19 @@ cover:
     status: "Hook tags ready"
 ---
 
-Most creator briefs say the same thing: "Open with a strong hook, use a trending sound, keep it native." The creator then guesses, and you find out two weeks later whether the guess worked. A better brief shows three openings that already work in your niche, explains the mechanism behind each, and lets the creator adapt them to their own voice.
+Researching TikTok hooks before you brief a creator means turning a niche's recent openings into three options the creator can adapt: the first frame, the spoken line, the on-screen text, and the proof that follows. A brief that only says "open with a strong hook" leaves the creator guessing, and you find out later whether the guess worked.
 
-The research behind that brief takes an afternoon by hand. This guide covers the process, with a template at the end. TikTok's own [creative guidance for performance ads](https://ads.tiktok.com/resources/help/article/creative-best-practices) says to introduce your content proposition in the first 3 seconds and to prioritize the hook in the first 6, so those are the seconds your brief has to specify.
+Most creator briefs say the same thing: "Open with a strong hook, use a trending sound, keep it native." A better brief shows three openings that already work in your niche, explains the mechanism behind each, and lets the creator adapt them to their own voice. The research behind that brief takes an afternoon by hand. TikTok's own [creative guidance for performance ads](https://ads.tiktok.com/resources/help/article/creative-best-practices) says to introduce your content proposition in the first 3 seconds and to prioritize the hook in the first 6, so those are the seconds your brief has to specify.
 
 ## Step 1: Write the job as one sentence
 
-Before you search, write what the video must do for one specific viewer. Use this shape: "[Audience] should [believe or do something] because they see [proof]."
+The job sentence states who the video is for, what they should believe or do, and the proof they will see, and it is the filter for every video you keep. Write it before you search. Use this shape: "[Audience] should [believe or do something] because they see [proof]."
 
 Example: "Women 25 to 40 with reactive skin should believe this serum won't sting, because they see a patch test on camera." That sentence becomes your relevance filter. A viral video about a different audience or a different proof does not belong in your research set, however many views it has.
 
 ## Step 2: Build a search vocabulary in creator language
 
-Your product page uses brand words. Creators and buyers use other words. Collect them from platform autocomplete, video captions and comment sections, then group them:
+Search vocabulary is the wording creators and buyers already use, grouped so each query has one angle instead of repeating the product page. Your product page uses brand words. Collect the other words from platform autocomplete, video captions and comment sections, then group them:
 
 | Type | Examples for a skincare serum | What it finds |
 | --- | --- | --- |
@@ -45,14 +45,14 @@ Aim for 8 to 12 queries, each with one coherent angle. Ten queries that are syno
 
 ## Step 3: Pull a wide set, then filter it
 
-Search TikTok, Instagram Reels and YouTube Shorts for a fixed window, such as the last 30 days, so you see what is current. Then filter in two passes.
+The pull is a fixed recent window across TikTok, Instagram Reels and YouTube Shorts, kept only when a video matches the job and beats that creator's own norm. Search for a fixed window, such as the last 30 days, so you see what is current. Then filter in two passes.
 
 1. **Relevance.** Does the video match your one-sentence job? Remove anything for a different audience, a different product type or a paid-only brand campaign you cannot copy.
 2. **Outlier ratio.** Divide the video's views by the creator's median views on recent posts. A video at 3x its creator's norm tells you more than a big number from a creator who always gets that number. TikTok says in its [recommendation explainer](https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you/) that follower count and past performance are not direct inputs, so small accounts do break out, and those breakouts are the cleanest hook lessons.
 
 ## Step 4: Tag the opening of every kept video
 
-Open each video and log the first three seconds. Use the same fields every time:
+Tagging the opening means logging the first three seconds of every kept video with the same fields, so hook families can be counted instead of remembered. Open each video and log:
 
 - The spoken line, word for word
 - On-screen text, word for word
@@ -66,7 +66,7 @@ Tag 80 to 200 videos, the same range the [hook taxonomy](/resources/the-3-second
 
 ## Step 5: Capture the proof beat
 
-The hook gets the viewer to second 3. Seconds 3 to 10 have to prove what the hook claimed. For each strong video, write down what appears there: a patch test, a texture close-up, a before and after, a receipt screenshot, a side-by-side. Hooks tend to travel across niches. Proof beats are product-specific, so they are what a creator most needs from you.
+The proof beat is what seconds 3 to 10 put on screen to back the hook, and it is the product-specific note a creator cannot invent from a viral line alone. The hook gets the viewer to second 3. Seconds 3 to 10 have to prove what the hook claimed. For each strong video, write down what appears there: a patch test, a texture close-up, a before and after, a receipt screenshot, a side-by-side. Hooks tend to travel across niches. Proof beats are product-specific, so they are what a creator most needs from you.
 
 Illustrative findings for the serum example might read:
 
@@ -76,7 +76,7 @@ Illustrative findings for the serum example might read:
 
 ## Step 6: Write the brief
 
-Give the creator the mechanism and the reference, never a script to read back. Copy this template.
+The brief hands over the mechanism and a reference for three hook options on one body, not a script to read aloud. Copy this template.
 
 ```text
 JOB
@@ -106,7 +106,7 @@ Ask for three hook variants on one body. Hook is the cheapest variable to test, 
 
 ## Doing steps 2 to 5 in ContHunt
 
-Deep Search runs this research as one request. A prompt that fits the serum example:
+ContHunt Deep Search runs the vocabulary, the pull, the tags and the proof notes as one request across TikTok, Instagram Reels and YouTube Shorts. A prompt that fits the serum example:
 
 > Which opening hooks are working for sensitive-skin serums on TikTok, Reels and Shorts in the last 30 days? For each video, label the hook family, note the first frame and spoken line, say whether the product is visible by second 3, and describe the proof shown by second 10. Rank by how well the video fits "calm reactive skin without stinging". Compare top-performing videos against the rest.
 
@@ -114,9 +114,26 @@ ContHunt searches the three platforms, analyzes 500 to 1,000 videos, and returns
 
 ## Four mistakes that waste the research
 
+Four mistakes waste the research: briefing from a single viral video, copying the line instead of the mechanism, skipping the proof beat, and asking for only one hook. Each one throws away the tagging pass.
+
 1. **Briefing from one viral video.** One video proves one video. Look for the pattern across the full tagged set of 80 to 200.
 2. **Copying the line, not the mechanism.** "I tried it for 30 days" works because it opens a loop. The creator's version should open one too, in their words.
 3. **Skipping the proof beat.** A strong hook that the next seven seconds do not back up gives the viewer a reason to leave.
 4. **Briefing one hook.** Always ask for three, from different families.
+
+## Check the brief against the tagged set
+
+The pre-send check compares the finished brief with the tagged set, so a hook option that the log does not support gets rewritten before the creator shoots. Read the template from top to bottom. The check is shorter than a reshoot, and it uses the same fields you already logged.
+
+- **Job.** The one-sentence job still names the audience, the belief or action, and the proof. If the sentence drifted while you tagged videos, fix the sentence so it still describes the set you kept.
+- **Three families.** Options A, B and C come from different hook families. Step 6 asks for three because the hook is the cheapest variable to test. Two options that are the same family in different words count as one test. Replace one of them from a family the top quartile actually used.
+- **Mechanism, not a line to recite.** Each option still has a first frame, a line, on-screen text and a reason it works. The line is a reference. The "do not" block already forbids copying a reference line verbatim. If the reason line is missing, the creator has a script, not a mechanism.
+- **Proof beat.** Seconds 3 to 10 show the proof the hook claimed. In the illustrative serum notes, 7 of the top 10 apply the product before the creator speaks, and every top video has a visible proof moment by second 8. A proof line that would fit any product in the category is not specific enough to send.
+- **Claims and disclosure.** The brief lists claims you cannot back up, including lines a reference video said that you will not repeat. When you are paying for paid usage, the disclosure stays in the video itself, as the FTC guide linked above requires, not only in the description.
+- **Deliverables.** The ask is still three hook variants on one body, raw footage and usage rights confirmed. Format stays 9:16, in the 20 to 35 second range from the template, captions on and sound on.
+
+Then check the counts behind the families you kept. Tag 80 to 200 videos, compare each family's share of that set with its share of the top quartile by outlier ratio, and brief the families that rise in the top quartile. A family with a count under 5 is a lead to test, not a conclusion, so say that in the note beside the option. The same rule is in Step 4. The check only confirms you did not drop it when you wrote the template.
+
+If an option fails, go back to the tagged openings rather than starting a new search. Pick a different family that the outlier comparison favored, and rewrite that option only. The job sentence and the proof beat can stay when they still match the log. The creator should receive three mechanisms you can point at in the set, plus the proof to show by second 10.
 
 Research once, brief three hooks, and test them against each other. [Get started]({{GET_STARTED_URL}}) with one Deep Search on your own niche and bring the tagged results to your next creator brief.

@@ -11,7 +11,6 @@ import { CARD_LINK, CARD_RING, TEXT_SOFT } from "@/components/sections/blog/inse
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/cn";
 import { formatDate, type PostSummary } from "@/lib/blog";
-import { ROUTES } from "@/lib/links";
 
 export function FeaturedPost({ post }: { post: PostSummary }) {
   return (
@@ -35,7 +34,7 @@ export function FeaturedPost({ post }: { post: PostSummary }) {
           <PostMeta post={post} />
         </div>
         <h2 className="text-balance text-[clamp(1.5rem,1.1rem+1.1vw,2.1rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
-          <Link href={ROUTES.article(post.slug)} data-card-link className={CARD_LINK}>
+          <Link href={post.href} data-card-link className={CARD_LINK}>
             <span className="box-decoration-clone bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_2px] bg-[position:0_100%] bg-no-repeat pb-[3px] transition-[background-size] duration-500 ease-out group-hover/card:bg-[length:100%_2px] group-focus-within/card:bg-[length:100%_2px]">
               {post.title}
             </span>

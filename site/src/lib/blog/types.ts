@@ -6,6 +6,10 @@
 export const CATEGORIES = ["Playbooks", "Research", "Guides", "Product"] as const;
 export type PostCategory = (typeof CATEGORIES)[number];
 
+/** Where the canonical page lives. Resources posts stay on `/resources`. Legacy posts stay on `/blog`. */
+export const SECTIONS = ["resources", "blog"] as const;
+export type PostSection = (typeof SECTIONS)[number];
+
 /* ------------------------------------------------------------- fragments */
 /* Shapes follow content/blog/README.md ("fragment_data shapes"). The values are
    illustrative mock UI for the cover, never measured results. */
@@ -92,10 +96,16 @@ export interface CoverSpec {
 export interface PostSummary {
   slug: string;
   title: string;
+  /** Short search title without the brand suffix, when the full title would not fit. */
+  seoTitle: string | null;
   excerpt: string;
   /** ISO date, YYYY-MM-DD. */
   date: string;
   category: PostCategory;
+  /** `resources` → `/resources/<slug>`. `blog` → `/blog/<slug>`. */
+  section: PostSection;
+  /** Canonical path, including the leading slash. */
+  href: string;
   readingMinutes: number;
   author: string;
   featured: boolean;

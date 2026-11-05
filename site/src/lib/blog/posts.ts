@@ -7,7 +7,9 @@ import "server-only";
  *   getAllPosts()            newest first
  *   getFeaturedPosts()       the `featured` posts by `featuredOrder`
  *   getPost(slug)            full post (body + toc) or null
- *   getPostSlugs()           for generateStaticParams
+ *   getPostSlugs()           every slug
+ *   getResourceSlugs()       /resources/[slug]
+ *   getBlogSlugs()           /blog/[slug]
  *   getRelatedPosts(slug, n) same category first, then newest
  *   getCategoryCounts()      [{ category, count }] in CATEGORIES order
  *
@@ -26,7 +28,7 @@ import { unified } from "unified";
 import { GET_STARTED_URL } from "@/lib/links";
 import { getCover } from "./covers";
 import { remarkSmartQuotes, smarten } from "./smart-quotes";
-import { CATEGORIES, type Post, type PostCategory, type PostSummary, type TocItem } from "./types";
+import { CATEGORIES, SECTIONS, type Post, type PostCategory, type PostSection, type PostSummary, type TocItem } from "./types";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -70,18 +72,26 @@ function parsePost(file: string): Post {
   const category = requireString(data, "category", file) as PostCategory;
   if (!CATEGORIES.includes(category)) throw new Error(`[blog] ${file}: unknown category "${category}"`);
 
+  const section = (typeof data.section === "string" ? data.section : "resources") as PostSection;
+  if (!SECTIONS.includes(section)) throw new Error(`[blog] ${file}: unknown section "${section}"`);
+
   const body = content.replaceAll("{{GET_STARTED_URL}}", GET_STARTED_URL).trim();
+  const legacy = section === "blog";
 
   return {
     slug,
     title: smarten(requireString(data, "title", file)),
+    seoTitle: typeof data.seoTitle === "string" && data.seoTitle.trim() ? data.seoTitle.trim() : null,
     excerpt: smarten(requireString(data, "excerpt", file)),
     date: toIsoDate(data.date, file),
     category,
+    section,
+    href: legacy ? `/blog/${slug}` : `/resources/${slug}`,
     readingMinutes: Number(data.readingMinutes) || Math.max(1, Math.round(body.split(/\s+/).length / 200)),
     author: typeof data.author === "string" ? data.author : "ContHunt Team",
-    featured: data.featured === true,
-    featuredOrder: typeof data.featuredOrder === "number" ? data.featuredOrder : null,
+    // The home row is the five featured Resources posts. A legacy post cannot join it.
+    featured: legacy ? false : data.featured === true,
+    featuredOrder: legacy ? null : typeof data.featuredOrder === "number" ? data.featuredOrder : null,
     cover: getCover(slug),
     body,
     toc: extractToc(body),
@@ -105,9 +115,12 @@ function loadAll(): Post[] {
 const summary = (p: Post): PostSummary => ({
   slug: p.slug,
   title: p.title,
+  seoTitle: p.seoTitle,
   excerpt: p.excerpt,
   date: p.date,
   category: p.category,
+  section: p.section,
+  href: p.href,
   readingMinutes: p.readingMinutes,
   author: p.author,
   featured: p.featured,
@@ -134,6 +147,16 @@ export function getPost(slug: string): Post | null {
 
 export function getPostSlugs(): string[] {
   return loadAll().map((p) => p.slug);
+}
+
+/** Slugs whose canonical page is `/resources/<slug>`. */
+export function getResourceSlugs(): string[] {
+  return loadAll().filter((p) => p.section === "resources").map((p) => p.slug);
+}
+
+/** Slugs whose canonical page is `/blog/<slug>`. */
+export function getBlogSlugs(): string[] {
+  return loadAll().filter((p) => p.section === "blog").map((p) => p.slug);
 }
 
 /** Same-category posts first (newest first), then the rest by date. */
