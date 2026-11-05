@@ -26,11 +26,11 @@ cover:
 
 Finding a winning product from short-form signals means scoring creator spread, platform spread, velocity, demo clarity, comment intent, objections and saturation before you spend on samples. One viral video proves one video. A product worth sourcing shows many unrelated creators, buyers using the same words in the comments, a benefit you can see in five seconds, and recent uploads still outperforming.
 
-## What short-form can tell you, and what it cannot
+## What can short-form video tell you about a product, and what can it not?
 
 Short-form video can support a product decision on demand language, demonstration clarity, creator spread and timing, and it cannot tell you margin, supplier quality, return rate, conversion or seasonality. Treat the scorecard as a filter that decides what deserves a supplier quote, not as a sales forecast.
 
-## The seven-signal scorecard
+## What is the seven-signal scorecard?
 
 The seven-signal scorecard gives each signal 0, 1 or 2 points, and the total decides shortlist, watch list or skip. The thresholds below are starting points, so adjust them to the size of your category.
 
@@ -46,7 +46,7 @@ The seven-signal scorecard gives each signal 0, 1 or 2 points, and the total dec
 
 A total of 10 or more goes on the shortlist. 7 to 9 goes on a watch list for next week. Below 7 is a skip.
 
-## How to collect each signal
+## How do you collect each of the seven signals?
 
 Collecting each signal means counting distinct creators, comparing a video with its creator's median, muting the demo, sampling comments and checking public ad libraries for the same item. Search the buyer's words, not only the product name.
 
@@ -71,7 +71,7 @@ A product with 20% or more purchase intent and fit comments is easier to sell th
 
 **Saturation.** Check the public ad libraries for the same product. Meta runs an [Ad Library](https://www.facebook.com/ads/library/) and TikTok's [Creative Center](https://ads.tiktok.com/business/creativecenter/) lists top ads. Count active advertisers selling the exact item, and compare their creative. If twenty sellers run the same unboxing, you will need a better angle than the product.
 
-## Worked example (illustrative)
+## What does the worked example show?
 
 The worked example scores a made-up magnetic cable organizer so you can see how seven observations become one total. These numbers are invented to show the method.
 
@@ -88,7 +88,7 @@ The worked example scores a made-up magnetic cable organizer so you can see how 
 
 At 9, it goes on the watch list. The demand evidence is strong and the saturation score is the problem. The plan is to order a sample, test whether it holds a charging cable for a laptop, and look for an angle the 14 advertisers are not using, such as a travel kit or a cable-per-device bundle. If the angle fails, the product waits.
 
-## The kill list
+## What belongs on the kill list?
 
 The kill list names products to skip or investigate before sourcing, even when the seven-signal total looks strong. A high score does not override claim risk, someone else's IP or a restricted category.
 
@@ -101,7 +101,7 @@ Skip or investigate further before sourcing when any of these apply:
 - **Restricted categories.** Check the marketplace's restricted-products policy before you plan around it.
 - **Fake proof.** The FTC's [final rule on fake reviews and testimonials](https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials) bans fake and AI-generated reviews, and buying fake social metrics. Build proof from real customers.
 
-## Running the scorecard in ContHunt
+## How do you run the scorecard in ContHunt?
 
 Running the scorecard in ContHunt means one Deep Search across TikTok, Instagram Reels and YouTube Shorts that gathers creator spread, platforms, silent demo clarity and the buying questions in comments. A Deep Search can fill most of the scorecard in one request:
 
@@ -109,7 +109,7 @@ Running the scorecard in ContHunt means one Deep Search across TikTok, Instagram
 
 ContHunt returns the analyzed videos with links, so you can open the evidence behind every score. Save the shortlist to a board, then use account tracking (an experimental feature) on the two or three creators who started the trend, and check next week whether velocity held. A [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) turns this into a routine.
 
-## Rescore the watch list one week later
+## Why rescore the watch list one week later?
 
 A watch-list rescore repeats the same seven signals a week later, and it is how a 7 to 9 total either earns a sample or stays off the order. The bands do not move. A total of 10 or more is still the shortlist, 7 to 9 is still the watch list, and below 7 is still a skip. The illustrative cable organizer scored 9 of 14, held back by saturation at 0, so the next action was a sample, a search for an angle the existing advertisers were not using, and another look at whether velocity held.
 
@@ -124,7 +124,7 @@ Change a point only when the observation changed. Do not add an eighth signal be
 
 Put the new total beside last week's total. The gap is the decision. A product that stays inside 7 to 9 while velocity falls and saturation gets worse does not graduate because you already ordered a sample. A product that crosses 10 because creator spread and velocity rose, and that is still clear of the kill list, earns the sample test described in the next section. The scorecard still says nothing reliable about margin, supplier quality, return rate, conversion or seasonality. The rescore only tells you whether the short-form pattern is still the one you scored.
 
-## From shortlist to test
+## What happens after a product reaches the shortlist?
 
 Moving from the shortlist to a test means the scorecard has finished its job and your own numbers take over. Order samples before inventory. Shoot your own demo, and brief creators with the proof beats the comment analysis revealed. Judge the test by your own numbers: cost per purchase, return rate, refund reasons. The scorecard only earns the right to run that test.
 
