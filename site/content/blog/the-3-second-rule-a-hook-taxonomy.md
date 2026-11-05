@@ -29,7 +29,7 @@ TikTok's [creative guidance for performance ads](https://ads.tiktok.com/resource
 
 One limit up front. Retention curves belong to the account owner, so from the outside you cannot see who left at second 2. You can see what the opening contains and how the video performed relative to its creator's norm. Every pattern below is a hypothesis to test in your niche, and the testing section below shows how.
 
-## Three channels carry every hook
+## Which three channels carry every hook?
 
 Three channels carry every hook, and the strongest openings align at least two of them so a viewer on mute still gets the point. A hook is built from up to three channels.
 
@@ -39,7 +39,7 @@ Three channels carry every hook, and the strongest openings align at least two o
 
 When you review a video, write down what each channel says. If they say three different things, the opening is probably doing less than it looks like.
 
-## The nine patterns
+## What are the nine hook patterns?
 
 The nine patterns name what the first 3 seconds contain, from a finished result on screen to a credential line, and a trending sound is only a wrapper around one of them. Use the same nine labels every time you tag.
 
@@ -67,7 +67,7 @@ For a heel balm, written as briefs rather than as findings:
 
 Each one promises something different, so each needs a different proof beat in seconds 3 to 10.
 
-## How to find which patterns win in your niche
+## How do you find which patterns win in your niche?
 
 Finding which patterns win means tagging 80 to 200 videos in one niche and one window, then comparing each pattern's share of the top quartile with its share of the whole set. You need a set of videos, a tagging pass and a comparison.
 
@@ -90,7 +90,7 @@ The other four patterns make up the remaining 10 videos, none of them in the top
 
 Read this table with care. Pattern interrupt has the highest lift but only 4 videos behind it, so it is a lead to test. Result-first has 9 behind it, so it is a stronger bet. Problem call-out is the most common pattern and sits below average in the top quartile, which suggests it is the default people reach for, not the one that wins.
 
-## Check the payoff before you copy a pattern
+## What does the payoff check ask?
 
 The payoff check asks whether seconds 3 to 10 prove whatever the first 3 seconds claimed, before that pattern is copied into a brief. Open every top-ranked video again and look at seconds 3 to 10. Does the claim from the first three seconds get proved? A result-first hook with no visible product use afterwards is a promise without evidence. A contrarian claim with no reason attached is an argument starter. Check whether the winners in your set pair the opening with a payoff inside the first ten seconds, and brief that pairing, not the opening alone.
 
@@ -99,7 +99,7 @@ Two other checks are cheap:
 - **Sound off.** Mute the video. If the opening still communicates, the text and visual channels are working.
 - **Native feel.** TikTok's guidance recommends a DIY, not overly polished look featuring creators, employees or customers. If your reference videos look like ads and the winners look like posts, copy the winners.
 
-## Matching a pattern to a product (starting hypotheses)
+## How do you match a pattern to a product?
 
 Matching a pattern to a product is a starting hypothesis for the first test, and the tagged set from your own niche overrules the table. Use the row as a place to begin, then replace it when your counts disagree.
 
@@ -112,7 +112,7 @@ Matching a pattern to a product is a starting hypothesis for the first test, and
 
 These are places to start, not rules. Your own tagged set will overrule them.
 
-## Write the pattern rule before the second tagger starts
+## What is the pattern rule?
 
 The pattern rule is the written definition that makes two people, or a person and an agent, give the same opening the same label. Without it, lift compares tagging habits rather than hooks. Agree the rule before the second pass. The line already in the method is enough to start: the pattern is whatever the viewer experiences first.
 
@@ -126,7 +126,7 @@ Use the same rule when you read the illustrative 80-video table. Result-first is
 
 The ContHunt prompt later in this guide locks the agent to the same nine answers. That is the same discipline as the written rule. Counts stay comparable only when the labels were fixed before anyone started tagging.
 
-## Running the taxonomy in ContHunt
+## How do you run the taxonomy in ContHunt?
 
 Running the taxonomy in ContHunt means giving Deep Search the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Deep Search can tag every video it analyzes against a fixed label list.
 
