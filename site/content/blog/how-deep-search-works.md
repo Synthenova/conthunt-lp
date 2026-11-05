@@ -25,7 +25,7 @@ Deep Search turns one question into a research plan, searches TikTok, Instagram 
 
 The six stages below are what happens between the prompt and that cited answer, so you can write better prompts and judge the result.
 
-## Stage 1: You ask a question, not a keyword
+## What is stage 1 of Deep Search?
 
 Stage 1 is the prompt itself: an objective, an audience, a time window, the platforms and the output you want, written as a question rather than a bare keyword. A good prompt has four parts.
 
@@ -36,7 +36,7 @@ Stage 1 is the prompt itself: an objective, an audience, a time window, the plat
 
 The second version gives the agent something to decide with: a niche, a time window, a use for the answer.
 
-## Stage 2: The agent splits the prompt into Q and P
+## How does stage 2 split the prompt?
 
 Stage 2 splits the prompt into questions, what each video must be examined for, and parameters, what each video is scored on. Deep Search breaks your request into those two lists.
 
@@ -52,7 +52,7 @@ Stage 2 splits the prompt into questions, what each video must be examined for, 
 
 Where a question has a fixed set of answers, such as hook family, the labels are fixed up front. That keeps counts comparable across hundreds of videos. The plan shows the questions and selection rules before the run, so you can correct them early. A minute spent reading the plan is cheaper than correcting the answer later.
 
-## Stage 3: It writes a keyword plan in creator language
+## Why does stage 3 write the keyword plan in creator language?
 
 Stage 3 writes a keyword plan in creator language, because the words on a product page and the words in captions rarely match. The agent starts with broad probes to learn how people in the niche talk, then writes more specific searches from that vocabulary.
 
@@ -60,7 +60,7 @@ For the serum prompt, the angles might include "sensitive skin routine", "barrie
 
 Captions and titles tell you how creators describe things. They do not prove what a video shows. That is why the next stage matters.
 
-## Stage 4: It watches the videos
+## What does stage 4 watch for?
 
 Stage 4 watches the videos: each selected video is analyzed for the hook, the structure, audience cues, a possible reason it spread, the metrics and how well it fits the question. A person cannot do that step at the scale of the set.
 
@@ -68,7 +68,7 @@ Stage 4 watches the videos: each selected video is analyzed for the hook, the st
 
 One caution. These scores come from analyzing the video and judging its fit to your question. They are not measured viewer retention, which only the account owner can see. Treat a hook score as a structured judgment of the content, and keep the creator's own analytics as the final check on your own ads.
 
-## Stage 5: Ranking and a cited answer
+## What does stage 5 return?
 
 Stage 5 ranks the full set against the question and writes a cited answer: a ranked list, pattern counts, findings with links, and a note on gaps. Deep Search does that from what it found, not from the captions alone. A useful result has four parts:
 
@@ -79,7 +79,7 @@ Stage 5 ranks the full set against the question and writes a cited answer: a ran
 
 If only 70 videos in the window truly match your niche, the answer should say so rather than pad the count.
 
-## Stage 6: You keep talking to it
+## What does stage 6 keep?
 
 Stage 6 keeps the conversation on the same analyzed set, so a follow-up narrows the evidence instead of starting a new search. The first answer is a starting point. "Show only the videos where the product appears before the first spoken claim" does not start over. You can also:
 
@@ -87,7 +87,7 @@ Stage 6 keeps the conversation on the same analyzed set, so a follow-up narrows 
 - Track the accounts behind them with account tracking, an experimental feature.
 - Hand the work to an AI agent through MCP or the CLI (see the [MCP guide](/resources/using-conthunt-with-ai-agents-through-mcp)).
 
-## When to use Deep Search, and when not to
+## When do you use Deep Search, and when do you not?
 
 Deep Search is for a pattern across many videos that you will brief, test or show to someone else, and a regular search is for browsing a topic and watching the videos yourself.
 
@@ -103,7 +103,7 @@ Use a regular search when you want to browse a topic and watch videos yourself. 
 - You need private performance data such as retention, conversion or audience demographics. Public analysis cannot provide them.
 - You are asking "why" about one specific account's results. Deep Search finds patterns across videos. It does not prove causes.
 
-## Prompt checklist
+## What does the prompt checklist require?
 
 The prompt checklist is the list a Deep Search prompt should state before you run it: niche, audience, platforms, window, use of the answer, any fixed labels, and what to exclude. Before you run one, check that your prompt states:
 
@@ -116,7 +116,7 @@ The prompt checklist is the list a Deep Search prompt should state before you ru
 
 For ideas on what to ask, see the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy) and the [creator brief process](/resources/research-tiktok-hooks-before-you-brief-a-creator).
 
-## Walk the serum prompt through the six stages
+## What does the serum walk-through show?
 
 The serum walk-through shows how one prompt moves through the six stages, from a question a creator brief can use to a cited set you can narrow. The prompt is the stronger example from Stage 1: which opening hooks are working for sensitive-skin serums on TikTok, Reels and Shorts in the last 30 days, with patterns to brief and example videos.
 
