@@ -246,3 +246,80 @@ export function resourcesGraph(posts: PostSummary[]): JsonLdNode {
     ),
   );
 }
+
+/** /pricing. The heading, the intro line, and the plan offers from plans.ts. No rating. */
+export function pricingGraph(): JsonLdNode {
+  const url = absoluteUrl(ROUTES.pricing);
+  const description = "Three plans, each with a 1-week free trial. And a calculator that turns Deep Searches into hours back.";
+  return graph(
+    {
+      "@type": "WebPage",
+      "@id": `${url}#webpage`,
+      name: "Pay for the research, keep the hours.",
+      description,
+      url,
+      inLanguage: "en",
+      isPartOf: { "@id": IDS.website },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      mainEntity: { "@id": `${url}#offers` },
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": `${url}#offers`,
+      name: "ContHunt plans",
+      url,
+      itemListElement: planOffers(),
+    },
+    organizationNode(),
+    websiteNode(),
+    breadcrumbNode(
+      [
+        { name: "Home", path: ROUTES.home },
+        { name: "Pricing", path: ROUTES.pricing },
+      ],
+      `${url}#breadcrumb`,
+    ),
+  );
+}
+
+export interface ViralNowNicheForSchema {
+  name: string;
+  slug: string;
+}
+
+/** /viral-now. The heading and the niche names on the page. No view counts and no rating. */
+export function viralNowGraph(description: string, niches: ViralNowNicheForSchema[]): JsonLdNode {
+  const url = absoluteUrl(ROUTES.viralNow);
+  return graph(
+    {
+      "@type": "CollectionPage",
+      "@id": `${url}#webpage`,
+      name: "Viral now.",
+      description,
+      url,
+      inLanguage: "en",
+      isPartOf: { "@id": IDS.website },
+      publisher: { "@id": IDS.organization },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Viral Now niches",
+        numberOfItems: niches.length,
+        itemListElement: niches.map((niche, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: niche.name,
+        })),
+      },
+    },
+    organizationNode(),
+    websiteNode(),
+    breadcrumbNode(
+      [
+        { name: "Home", path: ROUTES.home },
+        { name: "Viral Now", path: ROUTES.viralNow },
+      ],
+      `${url}#breadcrumb`,
+    ),
+  );
+}

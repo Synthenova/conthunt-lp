@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ViralNowPage from "@/components/pages/viral-now";
 import { FontPreloads } from "@/components/layout/font-preloads";
+import { ViralNowJsonLd } from "@/components/seo/viral-now-json-ld";
 import { snapshotDescription } from "@/lib/viral-now/copy";
 import { loadViralNowData, parseNicheParam } from "@/lib/viral-now/load";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -16,7 +17,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
   const active = slug ? niches.find((n) => n.slug === slug) : undefined;
   // The route has its own opengraph-image file (`image: false`). The canonical stays /viral-now for every niche.
   return pageMetadata({
-    title: active ? `${active.name} · Viral Now` : "Viral Now",
+    title: active ? `${active.name} short-form videos` : "Short-form videos ranked by niche",
     description: snapshotDescription({
       niches: niches.length,
       weekOf: null,
@@ -35,6 +36,10 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     <>
       {/* First viewport beyond the site faces: niche labels, rank numbers, the heading keyword (lib/fonts.ts). */}
       <FontPreloads faces={["switzer600", "switzer800", "boska400i"]} />
+      <ViralNowJsonLd
+        description={snapshotDescription({ niches: niches.length, weekOf: null })}
+        niches={niches.map((item) => ({ name: item.name, slug: item.slug }))}
+      />
       <ViralNowPage niche={parseNicheParam(niche, niches)} />
     </>
   );
