@@ -27,7 +27,7 @@ UGC ad formats that sell are short videos commissioned to look like ordinary pos
 
 After the offer, the format is the biggest lever a UGC buyer controls. Pick the wrong one and a good product reads as a sales pitch. The seven formats below are the set to choose from, along with a way to decide between them and what to settle with a creator before they hit record.
 
-## Choose the format by what the viewer already knows
+## How do you choose a UGC format from what the viewer already knows?
 
 Choosing a UGC format starts from what the viewer already knows, because a person who only feels the problem and a person who already knows your product need different proof. Copywriter Eugene Schwartz described levels of buyer awareness in *Breakthrough Advertising* (1966). A short version works for UGC planning:
 
@@ -39,7 +39,7 @@ Choosing a UGC format starts from what the viewer already knows, because a perso
 
 Run one format per audience stage in your first test. Mixing formats and audiences in one ad set makes the result unreadable.
 
-## The seven formats
+## What are the seven UGC formats?
 
 The seven formats are problem-solution demo, honest review, unboxing, routine integration, comparison, comment reply and expert explainer, and each one has a use, a beat sheet, a brief line and a failure mode. Pick one before you write the script.
 
@@ -106,13 +106,13 @@ An expert explainer is a UGC ad in which a person with relevant experience teach
 - **Brief line:** "State your real experience in the first line. Explain the mechanism in one visual. Name one thing the product cannot do."
 - **Watch for** credentials that go beyond what the creator holds, and for claims that need substantiation.
 
-## Where to find the formats that work in your category
+## Where do you find the formats that work in your category?
 
 The formats that work in your category are the ones that dominate the strongest recent videos, counted against each creator's own median rather than copied from a mood board. Before briefing, run the same exercise as in the [hook research guide](/resources/research-tiktok-hooks-before-you-brief-a-creator), applied to format. Pull a recent set across TikTok, Reels and Shorts, normalize views against each creator's median, and count formats in the top quartile against the whole set. In ContHunt, a Deep Search prompt does this in one pass:
 
 > For kitchen gadgets in the last 30 days, label each video's format (problem-solution demo, honest review, unboxing, routine integration, comparison, comment reply, expert explainer, other). Show the format mix of the top quartile versus all videos, with example links.
 
-## What to settle before the creator records
+## What do you settle before the creator records?
 
 Five points get settled before the creator records: usage rights, disclosure, claims, real people and the files you expect back. Leave any one of them implied and the footage is hard to run.
 
@@ -126,7 +126,7 @@ Five points get settled before the creator records: usage rights, disclosure, cl
 
 **Deliverables.** Ask for 9:16 files, raw footage, and three alternative openings on one body.
 
-## Test in this order
+## In what order do you test a UGC ad?
 
 Tests run in a fixed order: hook first, then format, then offer, and each test changes one variable with a hypothesis written before launch. A test with no hypothesis teaches nothing when it loses.
 
@@ -136,7 +136,7 @@ Tests run in a fixed order: hook first, then format, then offer, and each test c
 
 Change one variable per test, and write the hypothesis before launch.
 
-## Brief template you can reuse for any format
+## What does the brief template record?
 
 The brief template records one of the seven formats, the audience stage, the job, the timed beats, three openings, the rights and the disclosure, so the creator is not guessing which video to shoot. Copy it and fill the brackets from the format you picked.
 
@@ -153,7 +153,7 @@ DISCLOSURE: in video, audio and text
 DELIVER: 9:16, raw footage, 3 openings
 ```
 
-## Match the format to proof you can film
+## When does a UGC format sell?
 
 A format sells only when its beats contain proof you can film with this product and this creator. Write the one moment the viewer must see, then keep the format whose beats include that moment. A format that needs a result you cannot show, a downside you will not allow, or a credential the creator does not hold will look like an ad even when the shooting style stays loose.
 
