@@ -23,13 +23,13 @@ Researching TikTok hooks before you brief a creator means turning a niche's rece
 
 Most creator briefs say the same thing: "Open with a strong hook, use a trending sound, keep it native." A better brief shows three openings that already work in your niche, explains the mechanism behind each, and lets the creator adapt them to their own voice. The research behind that brief takes an afternoon by hand. TikTok's own [creative guidance for performance ads](https://ads.tiktok.com/resources/help/article/creative-best-practices) says to introduce your content proposition in the first 3 seconds and to prioritize the hook in the first 6, so those are the seconds your brief has to specify.
 
-## Step 1: Write the job as one sentence
+## How do you write the job as one sentence?
 
 The job sentence states who the video is for, what they should believe or do, and the proof they will see, and it is the filter for every video you keep. Write it before you search. Use this shape: "[Audience] should [believe or do something] because they see [proof]."
 
 Example: "Women 25 to 40 with reactive skin should believe this serum won't sting, because they see a patch test on camera." That sentence becomes your relevance filter. A viral video about a different audience or a different proof does not belong in your research set, however many views it has.
 
-## Step 2: Build a search vocabulary in creator language
+## How do you build a search vocabulary in creator language?
 
 Search vocabulary is the wording creators and buyers already use, grouped so each query has one angle instead of repeating the product page. Your product page uses brand words. Collect the other words from platform autocomplete, video captions and comment sections, then group them:
 
@@ -43,14 +43,14 @@ Search vocabulary is the wording creators and buyers already use, grouped so eac
 
 Aim for 8 to 12 queries, each with one coherent angle. Ten queries that are synonyms of each other return the same videos ten times.
 
-## Step 3: Pull a wide set, then filter it
+## How do you pull a wide set and then filter it?
 
 The pull is a fixed recent window across TikTok, Instagram Reels and YouTube Shorts, kept only when a video matches the job and beats that creator's own norm. Search for a fixed window, such as the last 30 days, so you see what is current. Then filter in two passes.
 
 1. **Relevance.** Does the video match your one-sentence job? Remove anything for a different audience, a different product type or a paid-only brand campaign you cannot copy.
 2. **Outlier ratio.** Divide the video's views by the creator's median views on recent posts. A video at 3x its creator's norm tells you more than a big number from a creator who always gets that number. TikTok says in its [recommendation explainer](https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you/) that follower count and past performance are not direct inputs, so small accounts do break out, and those breakouts are the cleanest hook lessons.
 
-## Step 4: Tag the opening of every kept video
+## How do you tag the opening of every kept video?
 
 Tagging the opening means logging the first three seconds of every kept video with the same fields, so hook families can be counted instead of remembered. Open each video and log:
 
@@ -64,7 +64,7 @@ Tagging the opening means logging the first three seconds of every kept video wi
 
 Tag 80 to 200 videos, the same range the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy) guide uses. That is enough to see patterns. Count each hook family in your top quartile by outlier ratio, then compare with its share of the whole set. A family that makes up 25% of the set but 45% of the top quartile is worth briefing. Treat counts under 5 as leads to test, not conclusions.
 
-## Step 5: Capture the proof beat
+## What is the proof beat?
 
 The proof beat is what seconds 3 to 10 put on screen to back the hook, and it is the product-specific note a creator cannot invent from a viral line alone. The hook gets the viewer to second 3. Seconds 3 to 10 have to prove what the hook claimed. For each strong video, write down what appears there: a patch test, a texture close-up, a before and after, a receipt screenshot, a side-by-side. Hooks tend to travel across niches. Proof beats are product-specific, so they are what a creator most needs from you.
 
@@ -74,7 +74,7 @@ Illustrative findings for the serum example might read:
 - Problem call-outs dominate the bottom half. They set up the pain and never show proof in the first 10 seconds.
 - Every top video has a visible proof moment by second 8.
 
-## Step 6: Write the brief
+## How do you write the brief?
 
 The brief hands over the mechanism and a reference for three hook options on one body, not a script to read aloud. Copy this template.
 
@@ -104,7 +104,7 @@ DELIVER
 
 Ask for three hook variants on one body. Hook is the cheapest variable to test, and shooting three costs the creator minutes. If you are paying for paid usage, add the disclosure rule from the [FTC's guide for social media influencers](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers): the disclosure belongs in the video itself, not only in the description.
 
-## Doing steps 2 to 5 in ContHunt
+## How do you run this research in ContHunt?
 
 ContHunt Deep Search runs the vocabulary, the pull, the tags and the proof notes as one request across TikTok, Instagram Reels and YouTube Shorts. A prompt that fits the serum example:
 
@@ -112,7 +112,7 @@ ContHunt Deep Search runs the vocabulary, the pull, the tags and the proof notes
 
 ContHunt searches the three platforms, analyzes 500 to 1,000 videos, and returns a ranked list with an answer that cites the videos behind each finding. You can then ask follow-ups against the same set, such as "show only videos where a patch test appears before the first claim", and save the best references to a board. Captions and metadata only show how creators talk. The claims in your brief should rest on the analyzed video evidence.
 
-## Four mistakes that waste the research
+## Which four mistakes waste the research?
 
 Four mistakes waste the research: briefing from a single viral video, copying the line instead of the mechanism, skipping the proof beat, and asking for only one hook. Each one throws away the tagging pass.
 
@@ -121,7 +121,7 @@ Four mistakes waste the research: briefing from a single viral video, copying th
 3. **Skipping the proof beat.** A strong hook that the next seven seconds do not back up gives the viewer a reason to leave.
 4. **Briefing one hook.** Always ask for three, from different families.
 
-## Check the brief against the tagged set
+## How do you check the brief against the tagged set?
 
 The pre-send check compares the finished brief with the tagged set, so a hook option that the log does not support gets rewritten before the creator shoots. Read the template from top to bottom. The check is shorter than a reshoot, and it uses the same fields you already logged.
 
