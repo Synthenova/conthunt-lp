@@ -4,6 +4,7 @@ slug: "social-media-analytics-tools"
 excerpt: "Choose social analytics by the data source: native dashboards for your accounts, connected reports for workflows, and public research for other posts."
 seoTitle: "Choose Social Analytics by Data Source"
 date: "2026-04-16"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -93,7 +94,7 @@ Connected reporting still cannot see accounts you did not authorize. A competito
 
 Public content research is the right tool when you need to see videos you do not own. ContHunt is built for that job on short-form video. It searches TikTok, Instagram Reels, and YouTube Shorts.
 
-Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. The questions it can carry are about what is visible: the hook, the caption, the format, the claim, the product on screen. The rank is a judgment of how the video fits the question you asked. It is not measured viewer retention, and it is not a follower demographic. Those stay with the account owner.
+[How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. The questions it can carry are about what is visible: the hook, the caption, the format, the claim, the product on screen. The rank is a judgment of how the video fits the question you asked. It is not measured viewer retention, and it is not a follower demographic. Those stay with the account owner.
 
 Use ContHunt to build a set of public examples before a brief, a landing page, or a weekly content meeting. Do not use it as a second copy of YouTube Studio or Instagram Insights. It will not tell you your watch curve. Tracking in ContHunt is experimental. It stores a view of public accounts and posts over time so you can see a public curve instead of a single snapshot. Experimental means you treat it as a research aid, not as the system of record for a client's private performance. What to record on a public curve is covered in [competitor content tracking](/resources/competitor-content-tracking-what-to-measure-daily). How to read a view count that is not the whole story is covered in [reading virality beyond views](/resources/reading-virality-beyond-views).
 

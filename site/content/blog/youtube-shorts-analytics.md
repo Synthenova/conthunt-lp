@@ -4,7 +4,7 @@ slug: "youtube-shorts-analytics"
 excerpt: "Read YouTube Shorts in Studio against your baseline: views, shown in feed, chose to view, retention, and traffic. No universal swipe benchmark exists."
 seoTitle: "YouTube Shorts analytics: metrics and tools"
 date: "2026-02-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -143,7 +143,7 @@ You cannot observe their retention, their chose-to-view rate, their audience dem
 | vidIQ | Topic, channel, and publishing research | A mix of public data, product analysis, and features on connected accounts |
 | YouTube search and channel pages | A small manual sample | Public observations only. |
 
-ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to form a hypothesis about openings and topics. Use Studio to measure the Short you then publish. The rank is not measured retention. Tracking in ContHunt is experimental, so it is not a second analytics suite. vidIQ can help with YouTube topic and publishing research; it still cannot show you an unconnected channel's retention graph. Google Trends can suggest that a query is rising or fading. It cannot tell you that your last Short satisfied the people who searched it.
+ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to form a hypothesis about openings and topics. Use Studio to measure the Short you then publish. The rank is not measured retention. Tracking in ContHunt is experimental, so it is not a second analytics suite. vidIQ can help with YouTube topic and publishing research; it still cannot show you an unconnected channel's retention graph. Google Trends can suggest that a query is rising or fading. It cannot tell you that your last Short satisfied the people who searched it.
 
 Posting cadence is not one of the Shorts cards above. A vidIQ article on how often to post, [How Often to Post on YouTube?](https://vidiq.com/blog/post/How-Often-Post-on-Youtube/), is a publishing-frequency piece. Do not treat a cadence study as a definition of views, engaged views, or chose-to-view.
 

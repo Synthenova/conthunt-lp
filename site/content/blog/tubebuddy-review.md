@@ -4,6 +4,7 @@ slug: "tubebuddy-review"
 excerpt: "TubeBuddy is still relevant in 2026 for bulk library maintenance. It is a weak primary growth tool for Shorts, where retention research matters more than tags."
 seoTitle: "Is TubeBuddy still relevant in 2026?"
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -52,7 +53,7 @@ TubeBuddy struggles on discovery for a feed-led channel. Traditional search-volu
 
 The Shorts gap is specific. The extension still emphasizes tags and descriptions. Those fields are a small input next to the opening seconds and the watch. Basic metadata support for Shorts is not a Shorts strategy. If someone is selling TubeBuddy as the way a new Shorts channel grows, they are selling the management tool for a discovery problem. [How to grow a YouTube Shorts channel](/blog/how-to-grow-youtube-shorts-channel) is the decision list that should come before an extension invoice.
 
-Keyword-versus-interest is the same gap in different words. A keyword explorer suggests phrases. It does not show you the public pattern of hooks across TikTok, Instagram Reels, and YouTube Shorts. ContHunt is the research layer for that second question. It searches those three surfaces. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That does not edit your descriptions. TubeBuddy does not do that research. Keeping both is coherent. Expecting one to do the other's job is how teams call a tool "irrelevant" when it is merely scoped.
+Keyword-versus-interest is the same gap in different words. A keyword explorer suggests phrases. It does not show you the public pattern of hooks across TikTok, Instagram Reels, and YouTube Shorts. ContHunt is the research layer for that second question. It searches those three surfaces. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That does not edit your descriptions. TubeBuddy does not do that research. Keeping both is coherent. Expecting one to do the other's job is how teams call a tool "irrelevant" when it is merely scoped.
 
 AI title suggestions do not close the gap by themselves. TubeBuddy has added AI-optimized titles. This review finds them less oriented toward retention than suggestions that start from the hook. A title can be a fair search phrase and still sit on a video people leave. Judge any generated title by whether you would say it out loud in the first sentence, then by whether Studio's research supports the phrase. Do not judge it by the fact that a model wrote it inside an extension you already pay for.
 

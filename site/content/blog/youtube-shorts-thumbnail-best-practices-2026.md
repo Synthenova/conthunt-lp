@@ -3,6 +3,7 @@ title: "YouTube Shorts Thumbnail Best Practices 2026"
 slug: "youtube-shorts-thumbnail-best-practices-2026"
 excerpt: "Shorts need a readable cover on search and channel grids. Upload a custom thumbnail when the account has it; otherwise choose a clear frame from the video."
 date: "2026-08-10"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -147,7 +148,7 @@ Other public YouTube Shorts are evidence of what covers are being published, not
 
 Look for older Shorts in a niche that are still present on search, not only Shorts posted today. A cover that keeps company with current results is a cover someone can still choose after the first feed spike. Note the pattern in words you could hand to an editor: one object, the result in frame, two or three words, the title repeating the same noun. Ignore covers you cannot describe. "It looks professional" is not a pattern you can repeat.
 
-ContHunt searches public TikTok videos, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That is a way to gather cover patterns across a niche, including which stills keep showing up on videos that are no longer new. It is not a read of another creator's private analytics, and it does not rank your thumbnail file. ContHunt tracking is experimental, so an ongoing watch of accounts is not a substitute for the phone-grid check above or for your own YouTube Studio numbers.
+ContHunt searches public TikTok videos, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That is a way to gather cover patterns across a niche, including which stills keep showing up on videos that are no longer new. It is not a read of another creator's private analytics, and it does not rank your thumbnail file. ContHunt tracking is experimental, so an ongoing watch of accounts is not a substitute for the phone-grid check above or for your own YouTube Studio numbers.
 
 When you save examples, save the still and the promise, not a vibe. "Finished plate of food, two words, title names the minute mark" can be tried. "High energy" cannot. If the public examples disagree, that is useful. It means the niche has more than one cover habit, and your test should pick one habit rather than averaging them into a cluttered frame.
 

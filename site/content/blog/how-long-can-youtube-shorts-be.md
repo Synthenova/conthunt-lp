@@ -3,7 +3,7 @@ title: "How Long Can YouTube Shorts Be in 2026?"
 slug: "how-long-can-youtube-shorts-be"
 excerpt: "YouTube Shorts can run up to 3 minutes. Keep most ideas at 15 to 60 seconds, and use the longer range only when a tutorial or story needs it."
 date: "2026-08-10"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -110,7 +110,7 @@ You will talk yourself into "it's only two minutes." The viewer will not.
 
 Then compare the draft's length with the job. A fast tip that survived the five steps and still runs 70 seconds is probably still hiding a second intro. A breakdown that survived and runs 40 seconds may be finished, and stretching it to a minute would put the slow moment back. Stop when the promise is paid. The 3 minute ceiling is permission, not a quota.
 
-Public Shorts in the same topic are a useful argument, if you treat them as structure. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos attached as evidence. Ask which lengths the Shorts in this cluster actually use, and what they show before the first spoken claim. That answer is a judgment of the videos, not a read of anyone's private retention. If the Shorts worth studying are 25 second demonstrations, a 2 minute explanation of the same move is likely the wrong format. That stays true even though 2 minutes is legal. Confirm the choice with your own retention after you post. Analytics for that read are covered in [YouTube Shorts analytics](/blog/youtube-shorts-analytics).
+Public Shorts in the same topic are a useful argument, if you treat them as structure. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos attached as evidence. Ask which lengths the Shorts in this cluster actually use, and what they show before the first spoken claim. That answer is a judgment of the videos, not a read of anyone's private retention. If the Shorts worth studying are 25 second demonstrations, a 2 minute explanation of the same move is likely the wrong format. That stays true even though 2 minutes is legal. Confirm the choice with your own retention after you post. Analytics for that read are covered in [YouTube Shorts analytics](/blog/youtube-shorts-analytics).
 
 ## How do music, claims, and packaging limit a long Short?
 

@@ -4,7 +4,7 @@ slug: "youtube-trending-searches"
 excerpt: "YouTube has no public list of exact search volume. Start with Studio Trends, then autocomplete and Google Trends, and keep each source's evidence separate."
 seoTitle: "How to Find YouTube Trending Searches"
 date: "2026-02-18"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 15
 author: "ContHunt Team"
@@ -88,7 +88,7 @@ Watch the videos long enough to see the promise they make in the title and the o
 
 Public view counts on those results are observations at the time you looked. They are not the search volume of the query, and they are not the uploader's retention. [YouTube Shorts analytics](/blog/youtube-shorts-analytics) explains how to read the reports on videos you own after you publish. It is not a way to open those reports on the videos sitting in someone else's results.
 
-ContHunt can organize public short-form examples from TikTok, Instagram Reels, and YouTube Shorts and compare visible creative choices. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you want to see how a phrase shows up in public vertical video, including titles and openings. Do not use it as a substitute for the Trends tab, and do not describe public likes as a search volume. Another creator's private retention, audience demographics, and conversion data are not in a public video.
+ContHunt can organize public short-form examples from TikTok, Instagram Reels, and YouTube Shorts and compare visible creative choices. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you want to see how a phrase shows up in public vertical video, including titles and openings. Do not use it as a substitute for the Trends tab, and do not describe public likes as a search volume. Another creator's private retention, audience demographics, and conversion data are not in a public video.
 
 ## How do you turn the clues into a brief?
 

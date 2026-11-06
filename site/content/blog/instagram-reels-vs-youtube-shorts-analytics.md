@@ -4,6 +4,7 @@ slug: "instagram-reels-vs-youtube-shorts-analytics"
 excerpt: "YouTube Studio shows whether a Short held viewers. Instagram Insights shows reach, saves, and shares. Do not compare raw Reels views with raw Shorts views."
 seoTitle: "Reels vs YouTube Shorts Analytics"
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 11
 author: "ContHunt Team"
@@ -109,7 +110,7 @@ When the Short's stayed-to-watch is the weak line, the opening frame and the tit
 
 Native dashboards stay the record for accounts you manage. Another product cannot reconstruct chose-to-view, engaged views, or a follower split you did not export.
 
-ContHunt searches TikTok, Instagram Reels, and YouTube Shorts for public videos. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it when a Short earns impressions but stayed-to-watch is weak, and you want to see how public videos in the niche open and title a similar idea. The rank is a judgment of the content against your question. It is not measured retention, and it is not a second copy of Studio or Insights. Tracking is experimental. It follows public posts over time. It does not reveal a competitor's private watch curve.
+ContHunt searches TikTok, Instagram Reels, and YouTube Shorts for public videos. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it when a Short earns impressions but stayed-to-watch is weak, and you want to see how public videos in the niche open and title a similar idea. The rank is a judgment of the content against your question. It is not measured retention, and it is not a second copy of Studio or Insights. Tracking is experimental. It follows public posts over time. It does not reveal a competitor's private watch curve.
 
 If you need a wider map of which tool sees which data, [social media analytics tools](/blog/social-media-analytics-tools) separates native dashboards, connected reporting, and public research. [TikTok analytics](/blog/tiktok-analytics) is the third native dashboard, and it does not belong in the Reels-versus-Shorts view column either.
 

@@ -3,6 +3,7 @@ title: "Finding winning products from short-form signals"
 slug: finding-winning-products-from-short-form-signals
 excerpt: "A seven-signal scorecard for judging whether a 'made me buy it' product has real demand or just one lucky video, with a worked example and a kill list."
 date: 2026-09-08
+updated: 2026-11-07
 category: Playbooks
 readingMinutes: 10
 author: "ContHunt Team"
@@ -103,7 +104,7 @@ Skip or investigate further before sourcing when any of these apply:
 
 ## How do you run the scorecard in ContHunt?
 
-Running the scorecard in ContHunt means one Deep Search across TikTok, Instagram Reels and YouTube Shorts that gathers creator spread, platforms, silent demo clarity and the buying questions in comments. A Deep Search can fill most of the scorecard in one request:
+Running the scorecard in ContHunt means one Deep Search ([How Deep Search works](/resources/how-deep-search-works)) across TikTok, Instagram Reels and YouTube Shorts that gathers creator spread, platforms, silent demo clarity and the buying questions in comments. A Deep Search can fill most of the scorecard in one request:
 
 > Find products that appear in the "made me buy it" style on TikTok, Reels and Shorts in the last 14 days in the home-office niche. For each product, count distinct creators and platforms, say whether the benefit is visible without sound, and summarize the buying questions in the comments. Rank by creator spread and recent velocity.
 

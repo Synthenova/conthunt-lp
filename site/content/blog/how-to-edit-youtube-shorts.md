@@ -4,6 +4,7 @@ slug: "how-to-edit-youtube-shorts"
 excerpt: "Edit a YouTube Short by locking the opening first, changing the picture often enough to hold attention, and cutting anything that does not pay off the promise."
 seoTitle: "How to Edit YouTube Shorts (2026 Strategy)"
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 18
 author: "ContHunt Team"
@@ -137,7 +138,7 @@ The thing you are allowed to take is the structure: how soon the first cut arriv
 
 Before you sit down to cut, look at a few Shorts that are working in your topic in a recent window. This playbook uses the last 48 hours as that window, because a pace from last year may not be the pace the audience is sitting in now. You do not need a hundred videos to notice that the openings are landing a cut almost immediately. If the Shorts you respect are cutting about every 1.5 seconds through the open, aim the open there. You can still hold a 4 second demonstration later, when the hands must be readable. Fighting the current pace with a single locked-off shot is a choice, and it should be a choice you make because the shot is the point, not because you have not looked.
 
-ContHunt is built for that look across platforms. It searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask how the openings in this niche are built, and which patterns show up in the videos the answer ranks highly. Read the attached videos. A score in that answer is a judgment of the content and of its fit to your question. It is not measured viewer retention. Retention stays on your YouTube analytics after you publish. If you want an agent to run the same question, the MCP server is `https://mcp.conthunt.app`, and the setup is in [Using ContHunt with AI agents through MCP](/resources/using-conthunt-with-ai-agents-through-mcp). The agent can gather the evidence. You still decide the cut.
+ContHunt is built for that look across platforms. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask how the openings in this niche are built, and which patterns show up in the videos the answer ranks highly. Read the attached videos. A score in that answer is a judgment of the content and of its fit to your question. It is not measured viewer retention. Retention stays on your YouTube analytics after you publish. If you want an agent to run the same question, the MCP server is `https://mcp.conthunt.app`, and the setup is in [Using ContHunt with AI agents through MCP](/resources/using-conthunt-with-ai-agents-through-mcp). The agent can gather the evidence. You still decide the cut.
 
 A practical note from that evidence: copy the interval, not the clip. "They cut at 1.5 seconds" means your first shot should also be that short if your footage can stand it. It does not mean you import their first shot. The interval is the lesson. The pixels are theirs.
 

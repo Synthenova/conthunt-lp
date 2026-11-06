@@ -3,6 +3,7 @@ title: "Competitor content tracking: what to measure daily and why"
 slug: competitor-content-tracking-what-to-measure-daily
 excerpt: "Daily snapshots of a rival's public videos show growth curves, not just totals. The metrics, formulas and weekly review questions that matter."
 date: 2026-10-06
+updated: 2026-11-07
 category: Guides
 readingMinutes: 11
 author: "ContHunt Team"
@@ -142,7 +143,7 @@ File the note on the video. After seven days the curve is still in the snapshot 
 
 ## Starting in ContHunt
 
-Starting in ContHunt means a Deep Search to find who dominates the niche, then a tracked set you actually reopen seven days later. A sensible first week:
+Starting in ContHunt means a Deep Search ([How Deep Search works](/resources/how-deep-search-works)) to find who dominates the niche, then a tracked set you actually reopen seven days later. A sensible first week:
 
 1. Run a Deep Search to find the accounts that dominate your niche's top videos. Use a prompt such as: "Which accounts account for the most top-performing videos in the last 30 days for sensitive-skin skincare? Group by brand versus creator."
 2. Choose three to five brand accounts and one breakout creator for tracking.

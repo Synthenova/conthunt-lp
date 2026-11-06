@@ -3,7 +3,7 @@ title: "Reading virality: the metrics that matter beyond views"
 slug: reading-virality-beyond-views
 excerpt: "Views are the loudest number and the least comparable. Five ratios, with formulas and a worked example, to find the videos actually worth studying."
 date: 2026-09-22
-updated: "2026-11-06"
+updated: 2026-11-07
 category: Research
 readingMinutes: 10
 author: "ContHunt Team"
@@ -119,7 +119,7 @@ Two cautions stay in force. These cutoffs are not universal. Pull 100 videos in 
 
 ## Doing this in ContHunt.
 
-Doing this in ContHunt means asking Deep Search for outlier ratio, share rate and save rate. Also ask for a note wherever a platform does not expose the metric. ContHunt also surfaces velocity, meaning videos that are growing faster than their creator's average, and shows metrics alongside each analyzed video.
+Doing this in ContHunt means asking Deep Search ([How Deep Search works](/resources/how-deep-search-works)) for outlier ratio, share rate and save rate. Also ask for a note wherever a platform does not expose the metric. ContHunt also surfaces velocity, meaning videos that are growing faster than their creator's average, and shows metrics alongside each analyzed video.
 
 > For each video, compute views divided by the creator's recent median, share rate and save rate where available. Classify the top comments by intent. List the ten videos with the highest outlier ratio and comment intent that suggests purchase or sharing, with links.
 

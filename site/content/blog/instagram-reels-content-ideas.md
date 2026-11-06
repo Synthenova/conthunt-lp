@@ -3,7 +3,7 @@ title: "Instagram Reels Content Ideas That Get Watched"
 slug: instagram-reels-content-ideas
 excerpt: "A Reel gets watched when the opening states one topic and the spoken line, on-screen text, and caption match. Test one of 15 formats against your watch time."
 date: "2026-02-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Playbooks
 readingMinutes: 13
 author: "ContHunt Team"
@@ -127,7 +127,7 @@ A posting list that stays short:
 
 Other people's Reels are a pattern library, not a script library. Search one topic. Watch how the stronger public examples open, when the payoff arrives, and whether speech, text, and caption agree. Write the structure as an order of information: mistake, cue, corrected rep. Film that order with your own body, your own client, or your own product.
 
-ContHunt is built for that pass. It searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A useful prompt names the format and the topic, such as form corrections for a squat, and asks what the opening shows. The answer is evidence you can open. It is not a guarantee that the same opening will be distributed on your account. Do not copy footage, wording, or a watermarked edit. Tracking in ContHunt is experimental and remains public data.
+ContHunt is built for that pass. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A useful prompt names the format and the topic, such as form corrections for a squat, and asks what the opening shows. The answer is evidence you can open. It is not a guarantee that the same opening will be distributed on your account. Do not copy footage, wording, or a watermarked edit. Tracking in ContHunt is experimental and remains public data.
 
 After you post, the judgment moves to your insights. [Instagram Reels analytics](/blog/instagram-reels-analytics) is the sheet: similar length, same age, watch time next to saves and shares. A format that people finish and save is a format to repeat with a new example. A format that people skip is retired or reopened. Do not post it again only because the list called it an idea.
 

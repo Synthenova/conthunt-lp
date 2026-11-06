@@ -3,7 +3,7 @@ title: "Best YouTube Tracker Tools Compared"
 slug: "youtube-tracker"
 excerpt: "Use YouTube Studio for a channel you manage, a public stats page for subscribers, and research tools for videos. ContHunt is not a live subscriber counter."
 date: "2024-10-14"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -74,7 +74,7 @@ Use these pages to record public scale. Do not use them to claim you know a comp
 
 Viewstats and ContHunt both help you decide what to study, and neither one is your Studio login. [Viewstats](https://www.viewstats.com/) describes tools for finding outlier videos, researching channel and video performance, comparing thumbnails, following competitors, and creating alerts and research boards. That set of jobs matters when the question is what to make next, not merely how large a subscriber count is. Confirm on the vendor's current site which of those features your access includes. A vendor's statement that a method grows channels is not evidence that using the tool will make your next video travel. Outlier-finding is a way to choose examples. It is not a causal proof that the outlier's thumbnail, length, or title produced the outlier.
 
-ContHunt is a content intelligence product for finding and analyzing public short-form video on TikTok, Instagram Reels, and YouTube Shorts. Use it to inspect choices a viewer can see: the opening, the pacing, the on-screen words, the topic, and the payoff. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as the evidence. That ranking is an analysis of the public videos against the question you asked. It is not another creator's private watch time, and it is not a subscriber ledger. ContHunt tracking is experimental. It is not a finished live YouTube subscriber tracker, and it should not be described as one.
+ContHunt is a content intelligence product for finding and analyzing public short-form video on TikTok, Instagram Reels, and YouTube Shorts. Use it to inspect choices a viewer can see: the opening, the pacing, the on-screen words, the topic, and the payoff. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as the evidence. That ranking is an analysis of the public videos against the question you asked. It is not another creator's private watch time, and it is not a subscriber ledger. ContHunt tracking is experimental. It is not a finished live YouTube subscriber tracker, and it should not be described as one.
 
 A focused way to watch other Shorts without pretending you have their Studio is [how to track YouTube Shorts competitors](/blog/how-to-track-youtube-shorts-competitors). The limit stays the same there. Public videos, public counts, and creative patterns are in bounds. Retention curves and revenue are not.
 

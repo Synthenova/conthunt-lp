@@ -3,7 +3,7 @@ title: "How Long Can an Instagram Reel Be? (2026 Guide)"
 slug: "how-long-can-an-instagram-reel-be"
 excerpt: "Instagram Reel length limits can vary by account and rollout. Start at 15 to 30 seconds for discovery, and go longer only when the story needs the extra time."
 date: "2026-02-18"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -115,7 +115,7 @@ Those are the numbers that tell you whether a 20 second Reel is holding people b
 
 Do not mix topics and then blame the length. A 15 second joke and a 45 second setup tutorial are not a length test. They are two formats. Hold the promise steady. Change the runtime. Read completion and saves after both have had a fair chance in the same kind of week. A Reel posted into a dead period and a Reel posted when your audience is active will not teach you about duration.
 
-Public video is a different instrument. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A useful question is which lengths and openings are showing up among public Reels in your niche right now. Also ask what those videos do in the first seconds. The answer is a reading of the videos, not a measurement of your retention, and not a measurement of theirs. Only the account owner sees completion. Treat a pattern in public length as a hypothesis. If the Reels you respect in this niche are short demonstrations, a long explanation may be the wrong format. That can be true even when the composer allows it. Then confirm or drop that hypothesis with your own insights.
+Public video is a different instrument. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A useful question is which lengths and openings are showing up among public Reels in your niche right now. Also ask what those videos do in the first seconds. The answer is a reading of the videos, not a measurement of your retention, and not a measurement of theirs. Only the account owner sees completion. Treat a pattern in public length as a hypothesis. If the Reels you respect in this niche are short demonstrations, a long explanation may be the wrong format. That can be true even when the composer allows it. Then confirm or drop that hypothesis with your own insights.
 
 Account tracking in ContHunt is experimental. It is not a substitute for the completion chart on your own Reels. If you use it, use it to notice what nearby public accounts keep shipping, including how long those Reels run. Keep your retention judgment on Instagram.
 

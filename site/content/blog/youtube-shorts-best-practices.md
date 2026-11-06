@@ -4,6 +4,7 @@ slug: youtube-shorts-best-practices
 excerpt: "YouTube Shorts best practices in 2026 start with a clear first-second promise, tighter edits, and a weekly retention review before you add more uploads."
 seoTitle: "YouTube Shorts Best Practices for 2026"
 date: "2026-02-25"
+updated: "2026-11-07"
 category: Playbooks
 readingMinutes: 14
 author: "ContHunt Team"
@@ -122,7 +123,7 @@ Read those signals with YouTube's counting rules in mind. [How engagement metric
 
 [Understand your YouTube audience](https://support.google.com/youtubecreatorstudio/answer/9314416?co=GENIE.Platform%3DDesktop&hl=en-ca) is the Studio side of the same review: who watched, not just how many starts you collected. Use it to test audience fit. Do not invent a demographic story the report does not show.
 
-Compare patterns, not only single winners. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That is a way to see which public openings in your niche already match the promise you are testing. It is not a substitute for your own average percentage viewed. Public view counts and your retention graph answer different questions.
+Compare patterns, not only single winners. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That is a way to see which public openings in your niche already match the promise you are testing. It is not a substitute for your own average percentage viewed. Public view counts and your retention graph answer different questions.
 
 ## How do you keep the same playbook inside one niche?
 

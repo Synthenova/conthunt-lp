@@ -3,6 +3,7 @@ title: "Best vidIQ Alternatives (Free and Paid)"
 slug: "vidiq-alternatives"
 excerpt: "YouTube Studio is the best free vidIQ alternative for your own search and retention. TubeBuddy fits bulk edits. ContHunt fits public short-form research."
 date: "2026-02-25"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -79,7 +80,7 @@ For a closer look at that rivalry, see [TubeBuddy vs vidIQ](/blog/tubebuddy-vs-v
 
 ContHunt is the vidIQ alternative for retention psychology only in a narrow, honest sense: it helps you study public videos before you film, so the next hook is a hypothesis instead of a guess. It does not read a competitor's private retention graph, and it does not outrank YouTube at describing your own channel. vidIQ suggests keywords. ContHunt searches public TikTok, Instagram Reels, and YouTube Shorts.
 
-Deep Search is the feature that matches this job. You ask a question, and Deep Search watches 500 to 1,000 videos in under five minutes, then returns a ranked answer with those videos attached as evidence. The rank is a judgment of how the videos fit the question you asked. It is not a measured viewer-retention number. Only the account owner has that curve. Treat the evidence as something you can open and disagree with.
+Deep Search is the feature that matches this job. You ask a question, and [How Deep Search works](/resources/how-deep-search-works) watches 500 to 1,000 videos in under five minutes, then returns a ranked answer with those videos attached as evidence. The rank is a judgment of how the videos fit the question you asked. It is not a measured viewer-retention number. Only the account owner has that curve. Treat the evidence as something you can open and disagree with.
 
 An illustrative brief, not a measured result: a charger brand asks which openings public creators use when a cable fails on camera, across Shorts, Reels, and TikTok, in the last month. The useful output is a handful of repeated structures (the failure first, the fix first, a warning first) with example videos beside each one. The brand then films one of those structures and reads the outcome in YouTube Studio. ContHunt does not score the brand's tags, and it does not replace the Research tab.
 

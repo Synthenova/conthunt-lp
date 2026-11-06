@@ -3,6 +3,7 @@ title: "15 Best Competitor Analysis Tools Compared"
 slug: "competitor-analysis-tools"
 excerpt: "Pick a competitor analysis tool by the evidence you need: search, traffic estimates, social reporting, audience research, or public short-form video."
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -107,7 +108,7 @@ SparkToro looks at audience sources and affinities. It does not provide a compet
 
 ## Where ContHunt fits beside the other 14
 
-ContHunt is a public short-form research layer. The job is finding and reading videos anyone can already open on TikTok, Instagram Reels, and YouTube Shorts, including hooks, pacing, overlays, and other visible creative patterns. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That sample is the point. A single viral post is a weak basis for a claim about a niche.
+ContHunt is a public short-form research layer. The job is finding and reading videos anyone can already open on TikTok, Instagram Reels, and YouTube Shorts, including hooks, pacing, overlays, and other visible creative patterns. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That sample is the point. A single viral post is a weak basis for a claim about a niche.
 
 Use ContHunt when the question sounds like one of these:
 

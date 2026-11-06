@@ -3,6 +3,7 @@ title: "Best Instagram Analytics Tools Compared"
 slug: "best-instagram-analytics-tools"
 excerpt: "Pick Instagram analytics by data access: Insights for accounts you manage, a reporting suite for team exports, and public Reels research for creative patterns."
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -180,7 +181,7 @@ The safest Instagram analytics stack keeps three labels, and every number in a c
 | Public observation | What anyone can see on a public post | "The first line of on-screen text is a question." |
 | Modeled estimate | What a vendor computed from a stated method | "The benchmark uses the vendor's peer set for the dates on the chart." |
 
-ContHunt sits in the public-observation row. It searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That rank is an analysis of the content against the question you asked. It is not a private retention score, and it is not another account's Insights. Tracking in ContHunt is experimental, and it follows public videos. It does not open a competitor's dashboard.
+ContHunt sits in the public-observation row. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That rank is an analysis of the content against the question you asked. It is not a private retention score, and it is not another account's Insights. Tracking in ContHunt is experimental, and it follows public videos. It does not open a competitor's dashboard.
 
 Use ContHunt when the missing piece is the creative pattern: hooks, pacing, overlays, captions, and structures that repeat on public Reels. Do not use it when the missing piece is your own reach, a follower breakdown, or a conversion. Those stay in Insights or in the ad account that actually received the click.
 

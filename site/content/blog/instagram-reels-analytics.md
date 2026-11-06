@@ -2,9 +2,9 @@
 title: "Instagram Reels Analytics: Metrics and Review Workflow"
 slug: instagram-reels-analytics
 excerpt: "Review a Reel's watch time with reach, saves, and shares, and compare similar posts over the same window. Your account is the baseline, not a universal cutoff."
-seoTitle: "Instagram Reels Analytics: A Review Workflow"
+seoTitle: "Instagram Reels Analytics: Watch Time, Reach, Saves, and Shares"
 date: "2026-02-18"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Guides
 readingMinutes: 11
 author: "ContHunt Team"
@@ -112,7 +112,7 @@ Formats to test live in [Instagram Reels content ideas](/blog/instagram-reels-co
 
 Public research answers a different question: what are other Reels in this topic showing in the first seconds, and what are people replying in public? That is a briefing input. It is not a watch-time report. A public like count does not reveal average watch time, replays, or a retention shape. Anyone who offers those numbers for a competitor's Reel is estimating, and the estimate should be labeled as an estimate or thrown out.
 
-Use ContHunt to collect the public examples and keep the links. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask a question you can film, such as which public Reels about a form correction show the mistake before the cue. Then validate the idea on your next Reel's insights. Tracking in ContHunt is experimental and still limited to public data.
+Use ContHunt to collect the public examples and keep the links. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask a question you can film, such as which public Reels about a form correction show the mistake before the cue. Then validate the idea on your next Reel's insights. Tracking in ContHunt is experimental and still limited to public data.
 
 If the job is a client report rather than a creative decision, say so. Owned-account reporting, public competitor research, and a monthly client deck are different products. [Instagram analytics tools](/blog/best-instagram-analytics-tools) separates those jobs. A tool that cannot show your watch time cannot answer the question in the first section of this guide. A tool that only shows public counts should not be described as analytics for an account you do not own.
 

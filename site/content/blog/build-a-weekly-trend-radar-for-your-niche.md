@@ -3,6 +3,7 @@ title: "Build a weekly trend radar for your niche"
 slug: build-a-weekly-trend-radar-for-your-niche
 excerpt: "A 45-minute weekly routine that sorts formats, sounds, topics and products into emerging, rising, peaking and fading, with a one-page template."
 date: 2026-09-29
+updated: 2026-11-07
 category: Playbooks
 readingMinutes: 12
 author: "ContHunt Team"
@@ -98,7 +99,7 @@ The brand tests one new format, produces one topic video and drops one stale the
 
 ## What does the pull prompt ask for?
 
-The pull prompt asks Deep Search for formats, audio, topics and products from the last 7 days, with a creator count, a comparison to each creator's median and links for every item. A prompt for the first step:
+The pull prompt asks Deep Search ([How Deep Search works](/resources/how-deep-search-works)) for formats, audio, topics and products from the last 7 days, with a creator count, a comparison to each creator's median and links for every item. A prompt for the first step:
 
 > For the sensitive-skin skincare niche, find what changed in the last 7 days on TikTok, Reels and Shorts. List formats, audio, topics and products that appear in at least three unrelated creators' videos. For each, give the creator count, how recent videos compare with their creators' median views, and links. Flag anything new since last week.
 

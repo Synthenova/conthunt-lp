@@ -3,7 +3,7 @@ title: "TikTok Analytics in 2026: What to Track and Why"
 slug: "tiktok-analytics"
 excerpt: "TikTok analytics should change the next video through completion, rewatches, shares, and audience fit. A view count does not show that the hook held attention."
 date: "2026-04-16"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -27,7 +27,7 @@ TikTok analytics is the account-owner view of how your videos reach people and w
 
 TikTok analytics is the set of measurements TikTok shows to the person who manages the account. It describes reach, attention, and audience for videos that account posted. It is not the public view counter a stranger can see on a profile. It is not a cross-platform research file of other creators' videos.
 
-That distinction decides which tool you open. Owner analytics can speak to completion and rewatches because the platform recorded the watch. A public profile usually cannot. ContHunt searches public videos on TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 of those public videos in under five minutes and returns a ranked answer with the videos as evidence. ContHunt does not log into your TikTok account and read your private retention curve. Tracking in ContHunt is experimental, and even then it follows public signals, not the analytics screen inside TikTok.
+That distinction decides which tool you open. Owner analytics can speak to completion and rewatches because the platform recorded the watch. A public profile usually cannot. ContHunt searches public videos on TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 of those public videos in under five minutes and returns a ranked answer with the videos as evidence. ContHunt does not log into your TikTok account and read your private retention curve. Tracking in ContHunt is experimental, and even then it follows public signals, not the analytics screen inside TikTok.
 
 Use TikTok analytics to judge your own uploads. Use public research when the question is what other people posted, how those videos open, and which patterns repeat. Mixing the two produces false confidence. A public view count is not your completion rate, and your completion rate is not a map of the category.
 

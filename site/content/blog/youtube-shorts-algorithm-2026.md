@@ -1,9 +1,9 @@
 ---
-title: "YouTube Shorts Algorithm & Viral Hooks Guide 2026"
+title: "How the YouTube Shorts Algorithm Works"
 slug: "youtube-shorts-algorithm-2026"
 excerpt: "The 2026 Shorts system tests whether the right viewers keep watching. State one niche promise, show it first, then read swipe, retention, and search terms."
 date: "2026-02-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -129,7 +129,7 @@ Also check whether you changed more than one variable. A new topic, a new openin
 
 ## Research the opening before you film it
 
-Public videos are a way to see which promises and openings a niche is already using. They are not a way to see a competitor's private retention. A high public view count does not reveal the swipe rate or the moment of the drop. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts so the examples are not limited to the app you happened to scroll. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. The rank fits the question you asked. It is not a measurement of how long strangers watched. Tracking in ContHunt is experimental, so do not treat a tracked list as the algorithm.
+Public videos are a way to see which promises and openings a niche is already using. They are not a way to see a competitor's private retention. A high public view count does not reveal the swipe rate or the moment of the drop. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts so the examples are not limited to the app you happened to scroll. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. The rank fits the question you asked. It is not a measurement of how long strangers watched. Tracking in ContHunt is experimental, so do not treat a tracked list as the algorithm.
 
 An illustrative test log, not a result, keeps one topic. The topic stays the charger falls off the desk. Version A opens with the words here are three desk fixes. Version B opens on the cable pulling the charger, with the problem readable in the frame. You publish them as separate Shorts. You do not change the title's topic between them. You read viewed-versus-swiped-away, the retention graph, and the search terms for each. You keep the opening your own baseline supports. You do not average either Short with a long-form upload. You do not declare a winner from public likes on someone else's version of the same idea.
 

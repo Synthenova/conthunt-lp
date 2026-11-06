@@ -4,6 +4,7 @@ slug: "short-form-video-best-practices"
 excerpt: "A strong short-form video makes one promise, opens in the first second or two, uses a small hashtag set, and is judged on retention and saves."
 seoTitle: "Short-Form Hooks, Captions, Hashtags"
 date: "2026-08-10"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -48,7 +49,7 @@ Stronger promises name the person, the problem, and the shape of the answer:
 
 The stronger line works because it can be checked. Either the video delivers three hooks, or it does not. Either the caption mistake is shown, or it does not. A promise that cannot be finished inside the video should be split into a series. Do not widen the promise to fit extra footage you already shot.
 
-Before scripting, save a handful of public videos in the niche and write the promise each one makes in the first frame, in one sentence. If you cannot summarize it, the opening is doing too many jobs. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts, so that sample does not have to be whatever the feed happened to show you today. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask for the promises, then watch the cited videos. The rank judges fit to your question. It is not a private retention report.
+Before scripting, save a handful of public videos in the niche and write the promise each one makes in the first frame, in one sentence. If you cannot summarize it, the opening is doing too many jobs. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts, so that sample does not have to be whatever the feed happened to show you today. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask for the promises, then watch the cited videos. The rank judges fit to your question. It is not a private retention report.
 
 ## Build the hook for the first second or two
 

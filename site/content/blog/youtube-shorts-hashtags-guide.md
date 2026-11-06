@@ -3,7 +3,7 @@ title: "Best Hashtags for YouTube Shorts"
 slug: youtube-shorts-hashtags-guide
 excerpt: "Use a few YouTube Shorts hashtags that match the video. YouTube may show up to three from the description and ignores every hashtag once the count passes 60."
 date: "2026-02-18"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Research
 readingMinutes: 12
 author: "ContHunt Team"
@@ -67,7 +67,7 @@ A workable pass looks like this:
 4. Prefer the specific subject over the category. `#Gaming` plus a game you did not play is worse than no game tag.
 5. Re-read YouTube's unrelated-metadata line before you publish. A visible burst of posts under a tag is a timely observation. It is not a search-volume number and not a promise of distribution.
 
-ContHunt searches TikTok, Instagram Reels, and YouTube Shorts, which is useful when the same topic is named differently on each platform. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to see which topic words the stronger public videos actually use. Then choose hashtags that match your own footage. Comparing several winners is the point. Copying one post's entire block is how unrelated tags get in.
+ContHunt searches TikTok, Instagram Reels, and YouTube Shorts, which is useful when the same topic is named differently on each platform. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to see which topic words the stronger public videos actually use. Then choose hashtags that match your own footage. Comparing several winners is the point. Copying one post's entire block is how unrelated tags get in.
 
 Before you adopt a tag because it looks busy, open recent videos under it. If they are a different subject or a different audience, the tag will not classify your Short. It will misclassify it. YouTube's suggestion UI can propose tags from your past uploads. Past use is a memory, not a reason to repeat a mismatched tag.
 

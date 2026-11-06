@@ -3,7 +3,7 @@ title: "How to research TikTok hooks before you brief a creator"
 slug: research-tiktok-hooks-before-you-brief-a-creator
 excerpt: "A six-step process that turns 200+ videos in your niche into a hook brief a creator can shoot from, with a template you can copy."
 date: 2026-08-18
-updated: "2026-11-06"
+updated: 2026-11-07
 category: Playbooks
 readingMinutes: 10
 author: "ContHunt Team"
@@ -107,7 +107,7 @@ Ask for three hook variants on one body. Hook is the cheapest variable to test, 
 
 ## How do you run this research in ContHunt?
 
-ContHunt Deep Search runs the vocabulary, the pull, the tags and the proof notes as one request across TikTok, Instagram Reels and YouTube Shorts. A prompt that fits the serum example:
+ContHunt Deep Search ([How Deep Search works](/resources/how-deep-search-works)) runs the vocabulary, the pull, the tags and the proof notes as one request across TikTok, Instagram Reels and YouTube Shorts. A prompt that fits the serum example:
 
 > Which opening hooks are working for sensitive-skin serums on TikTok, Reels and Shorts in the last 30 days? For each video, label the hook family. Note the first frame and spoken line. Say whether the product is visible by second 3. Describe the proof shown by second 10. Rank by how well the video fits "calm reactive skin without stinging". Compare top-performing videos against the rest.
 

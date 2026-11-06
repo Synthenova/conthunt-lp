@@ -3,6 +3,7 @@ title: "YouTube SEO Tool Options Compared"
 slug: "youtube-seo-tools"
 excerpt: "YouTube SEO tools split by job: Studio for your own search and retention, one overlay for keywords or bulk edits, and ContHunt for public short-form examples."
 date: "2026-08-25"
+updated: "2026-11-07"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -75,7 +76,7 @@ Phrase-list tools, including keyword explorers that are really a search box with
 
 Some teams type "YouTube SEO tool" when they are stuck for subjects. A keyword list gives them more subjects of the same kind they are already bored of. Example research gives them videos. ContHunt's job on this stack is the second one: find public short-form videos on TikTok, Instagram Reels, and YouTube Shorts that already attempt the topic, and keep those videos as the evidence for a pattern.
 
-Deep Search is how you do that at a volume you will not watch by hand. It covers 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos attached. Ask a publishing question, not a tag question. "Which openings are public creators using for a charger that will not stay in the port?" is a publishing question. "Best tags for tech channel" is a tag question, and it belongs in Studio or an overlay, where it will still not film the video.
+[How Deep Search works](/resources/how-deep-search-works) is how you do that at a volume you will not watch by hand. It covers 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos attached. Ask a publishing question, not a tag question. "Which openings are public creators using for a charger that will not stay in the port?" is a publishing question. "Best tags for tech channel" is a tag question, and it belongs in Studio or an overlay, where it will still not film the video.
 
 Use the examples to write one test, then go back to Studio to see whether your version was found and watched. Public likes on someone else's Short are not your future click-through rate. If the sales page you are comparing only shows a viral score, skip it. A score without the videos is a mood.
 

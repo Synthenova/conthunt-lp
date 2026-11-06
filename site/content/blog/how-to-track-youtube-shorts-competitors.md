@@ -4,7 +4,7 @@ slug: how-to-track-youtube-shorts-competitors
 excerpt: "Track YouTube Shorts competitors from public videos and same-window view growth. Retention stays private. Review openings and unanswered comments weekly."
 seoTitle: "How to Track YouTube Shorts Competitors"
 date: "2026-02-18"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Playbooks
 readingMinutes: 13
 author: "ContHunt Team"
@@ -127,7 +127,7 @@ Do the same pass each week. The source of truth is the notes from last week, not
 6. Choose one structure to reuse and one thing you will not copy. Write both down before you script, so "research" does not become a remake.
 7. File the note where next week's pass will find it. A note that lives in a chat thread will be rewritten from scratch.
 
-Deep Search is the part of this that should not be done by scrolling alone. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A weekly question such as "What do the strongest public Shorts about cast-iron weeknight eggs do in the first seconds?" is the right shape. The answer is a set of videos you can open, not a score you can quote as a market share. Tracking remains experimental and public. Your own [YouTube Shorts analytics](/blog/youtube-shorts-analytics) are still the only retention you can act on with a real curve.
+Deep Search is the part of this that should not be done by scrolling alone. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A weekly question such as "What do the strongest public Shorts about cast-iron weeknight eggs do in the first seconds?" is the right shape. The answer is a set of videos you can open, not a score you can quote as a market share. Tracking remains experimental and public. Your own [YouTube Shorts analytics](/blog/youtube-shorts-analytics) are still the only retention you can act on with a real curve.
 
 ## What should the note from the week contain?
 

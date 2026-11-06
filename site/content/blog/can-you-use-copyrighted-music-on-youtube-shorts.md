@@ -4,6 +4,7 @@ slug: "can-you-use-copyrighted-music-on-youtube-shorts"
 excerpt: "Use copyrighted music on YouTube Shorts only with rights you can defend, or audio YouTube supplies. A Content ID claim can block, track, or monetize it."
 seoTitle: "Copyrighted Music on YouTube Shorts"
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 15
 author: "ContHunt Team"
@@ -72,7 +73,7 @@ Public usage is not proof of permission. The pattern feels persuasive because yo
 
 The practical test is a paper trail. Where did this audio come from, and what does that source say you may do with it? If the answer is "it was on a trending list," you do not have a trail. If the answer is "we recorded it," the trail is the session. If the answer is "the license PDF is in the project folder," the trail is the PDF. Keep the trail next to the project file, not in someone's memory.
 
-Seeing the same audio on public TikToks, Reels, and Shorts can still be useful as a creative observation. It tells you the sound is common. It does not tell you the sound is cleared for you. ContHunt can gather those public examples. It searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence, which is a way to see how a niche opens videos, including whether they lean on a music bed, a voiceover, or on-screen text. That research does not clear a song. Tracking in ContHunt is experimental and does not read your Content ID inbox. Rights stay a separate decision from the creative pattern.
+Seeing the same audio on public TikToks, Reels, and Shorts can still be useful as a creative observation. It tells you the sound is common. It does not tell you the sound is cleared for you. ContHunt can gather those public examples. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence, which is a way to see how a niche opens videos, including whether they lean on a music bed, a voiceover, or on-screen text. That research does not clear a song. Tracking in ContHunt is experimental and does not read your Content ID inbox. Rights stay a separate decision from the creative pattern.
 
 ## What should you do when a Content ID claim appears on a Short?
 

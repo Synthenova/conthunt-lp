@@ -3,7 +3,7 @@ title: "Best Time to Post YouTube Shorts in 2026"
 slug: "best-time-to-post-youtube-shorts-2026"
 excerpt: "There is no universal best time to post YouTube Shorts in 2026. Test morning, midday, and evening on similar Shorts, and keep only the window that repeats."
 date: "2026-04-16"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -58,7 +58,7 @@ A timing test is valid only when the Shorts are comparable. The window is the va
 
 If the hooks are still the weak part, fix that before you spend two weeks blaming the hour. [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) is the prior step: opening frame, promise, and pacing. A timing test on a weak hook measures the hook.
 
-Public Shorts from other channels can suggest which windows a niche uses. They cannot supply your first-hour curve. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. It can line up similar public Shorts. You can see whether a format shows up in a narrow part of the day or all day. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That rank is about the content and the question. It is not your Studio analytics, and it is not a measured "best hour" for your channel. Your first-hour views stay in YouTube.
+Public Shorts from other channels can suggest which windows a niche uses. They cannot supply your first-hour curve. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. It can line up similar public Shorts. You can see whether a format shows up in a narrow part of the day or all day. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That rank is about the content and the question. It is not your Studio analytics, and it is not a measured "best hour" for your channel. Your first-hour views stay in YouTube.
 
 ## What should you read in the first hour after a Short goes up?
 

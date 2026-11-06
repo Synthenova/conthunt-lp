@@ -3,6 +3,7 @@ title: "How to Find Winning Short-Form Content in 2026"
 slug: "find-winning-short-form-content"
 excerpt: "Winning short-form content beats that account's usual reach. Find it by comparing recent public posts, then keep only patterns that repeat."
 date: "2026-02-18"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -22,7 +23,7 @@ cover:
     badge: "Example curve, not measured"
 ---
 
-Winning short-form content is a public video that earns more attention than the account usually earns, not the clip with the biggest view count. A large account can post something ordinary and still collect a large number. A small account that jumps far above its own recent posts is showing a hook, topic, or format people are rewarding now. Find those videos by comparing a post with that account's recent posts, favoring fresh posts over old evergreens, and keeping a pattern only when it repeats. Check TikTok, Instagram Reels, and YouTube Shorts separately. A pattern can be common on one and rare on the others. ContHunt searches those three. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence.
+Winning short-form content is a public video that earns more attention than the account usually earns, not the clip with the biggest view count. A large account can post something ordinary and still collect a large number. A small account that jumps far above its own recent posts is showing a hook, topic, or format people are rewarding now. Find those videos by comparing a post with that account's recent posts, favoring fresh posts over old evergreens, and keeping a pattern only when it repeats. Check TikTok, Instagram Reels, and YouTube Shorts separately. A pattern can be common on one and rare on the others. ContHunt searches those three. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence.
 
 ## What "winning" means when private analytics are closed
 

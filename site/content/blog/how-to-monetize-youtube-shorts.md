@@ -4,7 +4,7 @@ slug: how-to-monetize-youtube-shorts
 excerpt: "Eligible creators monetize YouTube Shorts in YPP. Ads between Shorts fund a Creator Pool, and creators keep 45% of their allocation. There is no fixed rate."
 seoTitle: "How to Monetize YouTube Shorts: YPP Paths"
 date: "2024-10-14"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Playbooks
 readingMinutes: 16
 author: "ContHunt Team"
@@ -168,7 +168,7 @@ For each Short you hope will earn, record the questions Studio can actually answ
 
 A Short with a large public view count and no eligible views is a distribution event, not a revenue event. A Short with modest views and a clear next step can be the better business asset. Compare a Short with your own similar Shorts over the same number of days. A single spike does not name its cause.
 
-ContHunt can help the creative half of that review. It searches public videos on TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes. It returns a ranked answer with those videos as evidence. That is useful when you want to see how other public Shorts introduce a problem you sell against. It does not show another creator's revenue, eligible-view status, or private retention. Tracking in ContHunt is experimental, and it is still public data. None of that replaces the Earn tab.
+ContHunt can help the creative half of that review. It searches public videos on TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes. It returns a ranked answer with those videos as evidence. That is useful when you want to see how other public Shorts introduce a problem you sell against. It does not show another creator's revenue, eligible-view status, or private retention. Tracking in ContHunt is experimental, and it is still public data. None of that replaces the Earn tab.
 
 ## What should you check before you quote a number?
 

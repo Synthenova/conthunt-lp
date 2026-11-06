@@ -1,9 +1,9 @@
 ---
-title: "YouTube Shorts Hashtags in Title vs Description"
+title: "Put YouTube Shorts Hashtags in the Description, Not the Title"
 slug: youtube-shorts-hashtags-title-vs-description
-excerpt: "Where to put YouTube Shorts hashtags: title versus description, how many YouTube may show, and a simple test so you stop stuffing both fields."
+excerpt: "Put YouTube Shorts hashtags in the description, not the title. YouTube may show up to three description tags by the title, and a stuffed title still costs the click."
 date: "2026-08-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Research
 readingMinutes: 9
 author: "ContHunt Team"
@@ -112,7 +112,7 @@ A checklist before you publish:
 - The title and the tags name the same subject.
 - You looked at the title on a phone before you decided the title tag was fine.
 
-ContHunt is useful here as a way to read how competing Shorts write titles across TikTok, Instagram Reels, and YouTube Shorts. It is not a way to copy a long tag block. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you want to see which title sentences keep the promise in the first words. Do not scrape a 40-tag description into yours. Forty tags is a stuffed block in this example, not a measured average and not a target. The official display is still up to three description hashtags by the title. The rest of a long block is mostly noise, and past 60 it is ignored entirely.
+ContHunt is useful here as a way to read how competing Shorts write titles across TikTok, Instagram Reels, and YouTube Shorts. It is not a way to copy a long tag block. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you want to see which title sentences keep the promise in the first words. Do not scrape a 40-tag description into yours. Forty tags is a stuffed block in this example, not a measured average and not a target. The official display is still up to three description hashtags by the title. The rest of a long block is mostly noise, and past 60 it is ignored entirely.
 
 The same order is the remedy if you have been filling both fields because a template said to. Delete the title tags, keep one readable sentence, and put a few accurate hashtags under the description sentence. Then run the paired test once in your niche before you put a format tag back in the title.
 

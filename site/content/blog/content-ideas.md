@@ -3,6 +3,7 @@ title: "The Ultimate Content Ideas Guide for 2026"
 slug: "content-ideas"
 excerpt: "A content idea worth filming names a specific person, promise, and proof. Build the list from public short-form patterns, then cut what you cannot show."
 date: "2026-02-25"
+updated: "2026-11-07"
 category: "Playbooks"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -66,7 +67,7 @@ Content ideas come from four places. Use all four. A week built from only one of
 
 Search the specific phrase, not the giant category. On TikTok, Instagram Reels, and YouTube Shorts, look for a structure that appears more than once: the same kind of opening, the same kind of proof, the same missing step. Write the pattern in one sentence before you save a dozen links. "They show the price on screen in the first second" is a note. "This one did well" is not.
 
-When the niche is too large to scroll, Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you need a sample, and keep the videos attached to the claim. A pattern you cannot point at is a hunch. One spike is not a category. [Instagram Reels content ideas](/blog/instagram-reels-content-ideas) and [YouTube Shorts content ideas](/blog/youtube-shorts-content-ideas) apply the same filter on a single platform.
+When the niche is too large to scroll, [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use that when you need a sample, and keep the videos attached to the claim. A pattern you cannot point at is a hunch. One spike is not a category. [Instagram Reels content ideas](/blog/instagram-reels-content-ideas) and [YouTube Shorts content ideas](/blog/youtube-shorts-content-ideas) apply the same filter on a single platform.
 
 ### Questions people still ask
 

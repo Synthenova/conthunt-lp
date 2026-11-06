@@ -3,6 +3,7 @@ title: "The 3-second rule: a hook taxonomy for short-form video"
 slug: the-3-second-rule-a-hook-taxonomy
 excerpt: "Nine hook patterns, what each puts on screen in the first 3 seconds, when it fits, and how to tag your niche's videos to see which ones win."
 date: 2026-08-25
+updated: 2026-11-07
 category: Research
 readingMinutes: 11
 author: "ContHunt Team"
@@ -128,7 +129,7 @@ The ContHunt prompt later in this guide locks the agent to the same nine answers
 
 ## How do you run the taxonomy in ContHunt?
 
-Running the taxonomy in ContHunt means giving Deep Search the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Deep Search can tag every video it analyzes against a fixed label list.
+Running the taxonomy in ContHunt means giving Deep Search ([How Deep Search works](/resources/how-deep-search-works)) the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Deep Search can tag every video it analyzes against a fixed label list.
 
 > For each video, label the opening hook as one of: result-first, problem call-out, pattern interrupt, open loop, contrarian claim, in-use demo, POV scenario, numbered promise, credential line. Note the first frame and the spoken line. Then compare the pattern mix of the top-performing videos with the rest of the set.
 

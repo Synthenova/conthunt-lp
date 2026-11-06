@@ -4,7 +4,7 @@ slug: instagram-reels-algorithm
 excerpt: "Instagram ranks Reels with their own system, not one master algorithm. It predicts a full watch, a like, a reshare, and a visit to the audio page."
 seoTitle: "How the Instagram Reels Algorithm Ranks"
 date: "2026-08-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: Research
 readingMinutes: 11
 author: "ContHunt Team"
@@ -93,7 +93,7 @@ Use your own recent Reels as the comparison, not a celebrity account and not a v
 - Did the audio matter? A visit to the audio page is not something you can fully see as another creator's private stat. On your own Reel, a mismatch you can hear is enough reason to test a different track.
 - Did the Reel bring follows? Follows are useful and late. An entertainment Reel can be widely watched and still not give anyone a reason to follow. That is not automatically a distribution failure.
 
-[Instagram Reels analytics](/blog/instagram-reels-analytics) is the worksheet for watch time, reach, saves, and shares. ContHunt is a way to study public Reels that already exist in your topic. Look at what the first frame shows, what the caption repeats, and what people replied. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. It does not expose Instagram's ranker, and a ContHunt note is not a reach forecast. Deep Search watches 500 to 1,000 public videos in under five minutes and returns a ranked answer with the videos as evidence. Use that to see how similar Reels open. Use your insights to see whether your version held anyone.
+[Instagram Reels analytics](/blog/instagram-reels-analytics) is the worksheet for watch time, reach, saves, and shares. ContHunt is a way to study public Reels that already exist in your topic. Look at what the first frame shows, what the caption repeats, and what people replied. ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. It does not expose Instagram's ranker, and a ContHunt note is not a reach forecast. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 public videos in under five minutes and returns a ranked answer with the videos as evidence. Use that to see how similar Reels open. Use your insights to see whether your version held anyone.
 
 ## What should you change first?
 

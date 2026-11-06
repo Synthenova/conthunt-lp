@@ -3,6 +3,7 @@ title: "UGC ad formats that sell: a field guide with brief templates"
 slug: ugc-ad-formats-that-sell-a-field-guide
 excerpt: "Seven UGC formats, when each one fits, how the beats run, and a brief line for each. Plus the rights, disclosure and testing checklist buyers need."
 date: 2026-09-01
+updated: 2026-11-07
 category: Guides
 readingMinutes: 10
 author: "ContHunt Team"
@@ -108,7 +109,7 @@ An expert explainer is a UGC ad in which a person with relevant experience teach
 
 ## Where do you find the formats that work in your category?
 
-The formats that work in your category are the ones that dominate the strongest recent videos, counted against each creator's own median rather than copied from a mood board. Before briefing, run the same exercise as in the [hook research guide](/resources/research-tiktok-hooks-before-you-brief-a-creator), applied to format. Pull a recent set across TikTok, Reels and Shorts, normalize views against each creator's median, and count formats in the top quartile against the whole set. In ContHunt, a Deep Search prompt does this in one pass:
+The formats that work in your category are the ones that dominate the strongest recent videos, counted against each creator's own median rather than copied from a mood board. Before briefing, run the same exercise as in the [hook research guide](/resources/research-tiktok-hooks-before-you-brief-a-creator), applied to format. Pull a recent set across TikTok, Reels and Shorts, normalize views against each creator's median, and count formats in the top quartile against the whole set. In ContHunt, a Deep Search prompt ([How Deep Search works](/resources/how-deep-search-works)) does this in one pass:
 
 > For kitchen gadgets in the last 30 days, label each video's format (problem-solution demo, honest review, unboxing, routine integration, comparison, comment reply, expert explainer, other). Show the format mix of the top quartile versus all videos, with example links.
 

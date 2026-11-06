@@ -3,7 +3,7 @@ title: "YouTube Tags vs Hashtags: What to Use on Shorts"
 slug: "youtube-tags-vs-hashtags"
 excerpt: "YouTube tags are hidden keywords for misspellings. Hashtags are clickable labels in the title or description. Write the title, then a few hashtags."
 date: "2026-08-25"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -108,7 +108,7 @@ Publish a Short by locking the title first, then the description, then hashtags,
 4. Open the tags field only if you have a misspelling or a tight synonym. A handful of those is the whole job. Leave the field sparse if you have none.
 5. Read the title aloud against the first spoken line. If they name different topics, fix the video or the title before you add another tag.
 
-ContHunt can show public Shorts in a niche. You can see how other titles are written and which hashtags actually appear on videos a viewer can open. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That is evidence of public packaging, not a writer for your tags field, and not a private keyword-volume report. It is not an overlay that types tags into Studio. An overlay product is a separate workflow from public-video research. Do not expect a public-video search to fill the hidden box with demand data it does not have.
+ContHunt can show public Shorts in a niche. You can see how other titles are written and which hashtags actually appear on videos a viewer can open. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That is evidence of public packaging, not a writer for your tags field, and not a private keyword-volume report. It is not an overlay that types tags into Studio. An overlay product is a separate workflow from public-video research. Do not expect a public-video search to fill the hidden box with demand data it does not have.
 
 ## Which mix-ups are worth unlearning?
 
