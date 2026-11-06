@@ -2,7 +2,7 @@
 title: "Instagram Reels Analytics: Metrics and Review Workflow"
 slug: instagram-reels-analytics
 excerpt: "Review a Reel's watch time with reach, saves, and shares, and compare similar posts over the same window. Your account is the baseline, not a universal cutoff."
-seoTitle: "Instagram Reels Analytics: Watch Time, Reach, Saves, and Shares"
+seoTitle: "Instagram Reels: Watch Time, Reach, Saves, Shares"
 date: "2026-02-18"
 updated: "2026-11-07"
 category: Guides

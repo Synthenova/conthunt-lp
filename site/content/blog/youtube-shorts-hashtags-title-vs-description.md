@@ -1,5 +1,6 @@
 ---
 title: "Put YouTube Shorts Hashtags in the Description, Not the Title"
+seoTitle: "Shorts Hashtags: Description, Not the Title"
 slug: youtube-shorts-hashtags-title-vs-description
 excerpt: "Put YouTube Shorts hashtags in the description, not the title. YouTube may show up to three description tags by the title, and a stuffed title still costs the click."
 date: "2026-08-25"
