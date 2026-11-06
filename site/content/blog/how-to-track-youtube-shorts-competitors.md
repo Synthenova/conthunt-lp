@@ -4,6 +4,7 @@ slug: how-to-track-youtube-shorts-competitors
 excerpt: "Track YouTube Shorts competitors from public videos and same-window view growth. Retention stays private. Review openings and unanswered comments weekly."
 seoTitle: "How to Track YouTube Shorts Competitors"
 date: "2026-02-18"
+updated: "2026-11-06"
 category: Playbooks
 readingMinutes: 13
 author: "ContHunt Team"
@@ -24,11 +25,11 @@ cover:
     score: 7
 ---
 
-Tracking YouTube Shorts competitors means watching public videos, public counts, and the order of shots, then writing down what changed. It does not mean opening a rival's retention graph, revenue report, or subscriber source. YouTube keeps those private. A useful 2026 habit is a weekly pass over a small set of channels: which Shorts gained views after you last looked, how the first seconds are built, and which comments ask for something the video never answered. Subscriber totals are context. They are not the threat. A quiet channel that just found a repeatable opening can matter more than a large channel reposting last year's format.
+Tracking YouTube Shorts competitors means watching public videos, public counts, and the order of shots, then writing down what changed. Written by the ContHunt team. It does not mean opening a rival's retention graph, revenue report, or subscriber source. YouTube keeps those private. A useful 2026 habit is a weekly pass over a small set of channels. Note which Shorts gained views after you last looked. Note how the first seconds are built. Note which comments ask for something the video never answered. Subscriber totals are context. They are not the threat. A quiet channel that just found a repeatable opening can matter more than a large channel reposting last year's format.
 
 ## What is a YouTube Shorts competitor, for this kind of tracking?
 
-A YouTube Shorts competitor is a public channel whose Shorts compete for the same viewer you want, in the same topic, not merely a channel with a large subscriber count. The set usually has three kinds of accounts, and you should be able to say which kind each name is:
+A YouTube Shorts competitor is a public channel whose Shorts compete for the same viewer you want, in the same topic. A large subscriber count is not enough. The set usually has three kinds of accounts. You should be able to say which kind each name is.
 
 - A direct competitor makes the same offer to the same person. If you teach weeknight cooking for beginners, another beginner cooking Shorts channel is direct. A restaurant review channel is not, even if both films include food.
 - A category leader shows the packaging the topic already uses. You are not trying to become that channel. You are trying to see which promises the audience already understands.
@@ -36,7 +37,7 @@ A YouTube Shorts competitor is a public channel whose Shorts compete for the sam
 
 Write one sentence for why each channel is on the list. If you cannot, it is a celebrity you like watching, not a competitor. Keep the list short enough that a weekly pass is possible. A list you do not open is not tracking.
 
-Public data is the whole available record. Anyone can see the title, the description, the public view count, public likes and comments where YouTube shows them, the posting time you can read on the watch page, and the video itself. You cannot see a competitor's audience retention curve, traffic sources, revenue, or which viewers were subscribers. ContHunt does not unlock those fields either. It searches public videos on TikTok, Instagram Reels, and YouTube Shorts. When a number is missing, leave it missing.
+Public data is the whole available record. Anyone can see the title, the description, and the public view count. Anyone can see public likes and comments where YouTube shows them, the posting time on the watch page, and the video itself. You cannot see a competitor's audience retention curve, traffic sources, revenue, or which viewers were subscribers. ContHunt does not unlock those fields either. It searches public videos on TikTok, Instagram Reels, and YouTube Shorts. When a number is missing, leave it missing.
 
 ## Which signals are public, and which ones should you stop requesting?
 
@@ -68,24 +69,24 @@ This table is illustrative. The counts are not a channel, and they are not a Con
 | Day 4 | 18,500 | 1,500 |
 | Day 5 | 19,200 | 700 |
 
-Day 2's gain is 14,000 minus 8,000, which is 6,000. Day 3's gain is 17,000 minus 14,000, which is 3,000. Day 5's gain is 19,200 minus 18,500, which is 700. The Day 5 total of 19,200 hides the shape: most of the public views arrived in the first two days, and the daily gain fell each day in this example. A second Short with the same 19,200 views, but with the large gain on Day 4, is a different event. One of those shapes is an opening that was picked up immediately. The other might be a later push, a repost, or a topic that took time to be understood. You cannot know which from the total alone, and you should not name the cause until you have looked at the video, the comments, and the channel's other uploads that week.
+Day 2's gain is 14,000 minus 8,000, which is 6,000. Day 3's gain is 17,000 minus 14,000, which is 3,000. Day 5's gain is 19,200 minus 18,500, which is 700. The Day 5 total of 19,200 hides the shape. Most of the public views arrived in the first two days. The daily gain fell each day in this example. A second Short with the same 19,200 views, but with the large gain on Day 4, is a different event. One of those shapes is an opening that was picked up immediately. The other might be a later push, a repost, or a topic that took time to be understood. You cannot know which from the total alone. Do not name the cause until you have looked at the video, the comments, and the channel's other uploads that week.
 
-Compare videos of similar age. A Short posted yesterday and a Short posted three weeks ago do not share a "views so far" meaning. If you only have time for one pair of snapshots, record the count at the same age for each video, such as the morning of day 2 and the morning of day 7, and label the clock. Missed days stay blank. Do not average across a gap and call it a daily gain.
+Compare videos of similar age. A Short posted yesterday and a Short posted three weeks ago do not share a "views so far" meaning. If you only have time for one pair of snapshots, record the count at the same age for each video. Use the morning of day 2 and the morning of day 7, and label the clock. Missed days stay blank. Do not average across a gap and call it a daily gain.
 
-An outlier, in this workflow, means a Short whose public views sit far above that same channel's recent Shorts, judged by you, at the same age. There is no official multiple that makes a video an outlier. Write the channel's recent range next to the video so a reader of your notes can see the comparison. Then ask what the outlier does in the opening that the channel's ordinary Shorts do not. If the only difference is a news event you cannot repeat, file it as news, not as a format.
+An outlier, in this workflow, means a Short whose public views sit far above that same channel's recent Shorts. You judge that at the same age. There is no official multiple that makes a video an outlier. Write the channel's recent range next to the video so a reader of your notes can see the comparison. Then ask what the outlier does in the opening that the channel's ordinary Shorts do not. If the only difference is a news event you cannot repeat, file it as news, not as a format.
 
 ContHunt's tracking is experimental. Where it is available, it stores public snapshots so you can come back to a curve instead of trusting memory. The daily method, including what to do with a second spike, is laid out in [competitor content tracking](/resources/competitor-content-tracking-what-to-measure-daily). Experimental tracking still cannot see private analytics.
 
 ## How do you reverse-engineer a hook without copying the Short?
 
-Take the channel's top 5 public Shorts from the last 30 days, judged by the public view count you can see, and watch the opening with the sound on and then again with the sound off. Five is a review sample for a week of work, not a ranking YouTube publishes. For each Short, write four lines:
+Take the channel's top 5 public Shorts from the last 30 days, judged by the public view count you can see. Watch the opening with the sound on. Watch it again with the sound off. Five is a review sample for a week of work, not a ranking YouTube publishes. For each Short, write four lines:
 
 - The first image, before any logo card. If the first image is a face saying "hey guys," write that. It is data.
 - The first spoken sentence, as close to verbatim as your notes need, plus the first on-screen text.
 - When the picture changes in a way that adds information. You are not scoring an ideal cut length. You are noticing whether this channel holds one shot or keeps adding a new fact.
 - Where the payoff lands. A promise that arrives late is a different structure from a result shown immediately.
 
-An illustrative note, not a recommended edit: a 12-second Short that shows the finished plate at 0 seconds, the mistake at 2 seconds, and the corrected step at 5 seconds has revealed the result before the lesson. A 12-second Short that spends its first 5 seconds on a counter tour has not. Both can be counted on a clock you start yourself. Neither interval is a YouTube rule.
+An illustrative note, not a recommended edit, follows. A 12-second Short can show the finished plate at 0 seconds, the mistake at 2 seconds, and the corrected step at 5 seconds. That Short has revealed the result before the lesson. A 12-second Short that spends its first 5 seconds on a counter tour has not. Both can be counted on a clock you start yourself. Neither interval is a YouTube rule.
 
 Copy the structure into your own subject. Do not copy the footage, the wording, the thumbnail, or the music. Structure means the order of information: result, then the miss, then the fix. Your version still has to be a video you have the rights to post. A frame-for-frame remake is not research.
 
@@ -120,7 +121,7 @@ Do the same pass each week. The source of truth is the notes from last week, not
 
 1. List the top 10 public Shorts in the topic you can actually find this week. Ten is a cap for the meeting, not a complete census of YouTube. Note the channel, the date, the public view count, and your pillar label.
 2. Mark which pillar shows up most often in that ten. If how-to videos are seven of the ten, say so. If the ten are scattered, say that the week does not have a dominant pillar. Do not force a winner.
-3. For the channels on your standing list, record this week's public view snapshots on the Shorts you are following, using the same age window as last week.
+3. For the channels on your standing list, record this week's public view snapshots on the Shorts you are following. Use the same age window as last week.
 4. Rewatch the openings of any Short that gained faster than that channel's own recent Shorts. Write the four lines from the hook pass.
 5. Skim new comments for one unanswered question you can film. If there is not a real question, film nothing from this step.
 6. Choose one structure to reuse and one thing you will not copy. Write both down before you script, so "research" does not become a remake.
@@ -132,12 +133,12 @@ Deep Search is the part of this that should not be done by scrolling alone. Cont
 
 A finished weekly note is short. If it is longer than a page, it is a scrapbook.
 
-- The date of the pass and the age window you used, such as "public views on the morning of day 7."
+- The date of the pass and the age window you used, such as "public views on the morning of day 7".
 - The channels still on the list, and any channel you removed, with the reason.
 - The pillar that dominated the top 10, or a sentence that none did.
 - One opening structure you will test, described as an order of information, not as someone else's script.
 - One comment gap, quoted only as far as you need to remember the question.
-- What you will look up in your own Studio after your test posts: views at the same age, and the retention you can see only on your video.
+- What you will look up in your own Studio after your test posts. Record views at the same age, and the retention you can see only on your video.
 
 Leave out any percent you did not compute from counts you wrote down. Leave out revenue. Leave out a claim that the algorithm "loves" a hook. You observed a public video and a public count. That is the whole finding, and it is enough to decide the next Short.
 

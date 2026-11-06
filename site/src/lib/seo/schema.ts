@@ -4,7 +4,8 @@
  * Truthfulness rules for this file:
  * - Facts come from the site's own copy and data modules (plans.ts for offers). Nothing is invented.
  * - No aggregateRating or review markup: the testimonials are unverified (OWNER_DECISIONS C3).
- * - No `sameAs`: the social URLs in `links.ts` are marked `// verify`. Add them here once confirmed.
+ * - `sameAs` lists only profiles checked on 6 November 2026: x.com/conthunt and
+ *   github.com/Synthenova/conthunt-mcp. The guessed URLs in `links.ts` stay out.
  * - No contactPoint or email: the support address is also marked `// verify`.
  *
  * Pure module with no `server-only` import, so it can be unit-checked from a script.
@@ -24,6 +25,12 @@ export const IDS = {
   blog: `${SITE_URL}/resources#blog`,
 } as const;
 
+/** Profiles that resolved to this product on 6 November 2026. */
+const ORGANIZATION_SAME_AS = [
+  "https://x.com/conthunt",
+  "https://github.com/Synthenova/conthunt-mcp",
+] as const;
+
 /** Wraps nodes in one `@graph` document. */
 export const graph = (...nodes: JsonLdNode[]): JsonLdNode => ({ "@context": "https://schema.org", "@graph": nodes });
 
@@ -42,6 +49,7 @@ export function organizationNode(): JsonLdNode {
       height: 800,
     },
     description: PRODUCT_SUMMARY,
+    sameAs: [...ORGANIZATION_SAME_AS],
   };
 }
 
@@ -180,9 +188,13 @@ export function blogPostingNode(post: PostForSchema): JsonLdNode {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     image: [absoluteUrl(post.cover.plate1600)],
     datePublished: post.date,
-    // Posts carry one date; there is no separate "updated" field yet.
-    dateModified: post.date,
-    author: { "@type": "Organization", name: post.author, url: SITE_URL },
+    dateModified: post.updated,
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: SITE_URL,
+      sameAs: [...ORGANIZATION_SAME_AS],
+    },
     publisher: organizationNode(),
     articleSection: post.category,
     timeRequired: `PT${post.readingMinutes}M`,

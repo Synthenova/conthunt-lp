@@ -4,6 +4,7 @@ slug: "youtube-shorts-analytics"
 excerpt: "Read YouTube Shorts in Studio against your baseline: views, shown in feed, chose to view, retention, and traffic. No universal swipe benchmark exists."
 seoTitle: "YouTube Shorts analytics: metrics and tools"
 date: "2026-02-25"
+updated: "2026-11-06"
 category: "Guides"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -28,21 +29,21 @@ cover:
     score: 6
 ---
 
-YouTube Shorts analytics for a channel you manage start in YouTube Studio, the first-party source of those numbers. Read views, how often the Short was shown in the Shorts feed, how many viewers chose to view instead of swiping, audience retention, traffic sources, engagement, and subscribers gained. Compare each Short with your own typical performance on similar videos. YouTube does not publish a universal retention rate or a chose-to-view rate that guarantees distribution. Public research, including ContHunt, can show what other channels published and how viewers responded in public. It cannot recreate a competitor's retention graph, chose-to-view rate, audience demographics, or revenue. Keep the two evidence layers apart, and write down whether a report says views or engaged views before you turn either number into a rate.
+YouTube Shorts analytics for a channel you manage start in YouTube Studio, the first-party source of those numbers. Written by the ContHunt team. Read views and how often the Short was shown in the Shorts feed. Read how many viewers chose to view instead of swiping. Also read audience retention, traffic sources, engagement, and subscribers gained. Compare each Short with your own typical performance on similar videos. YouTube does not publish a universal retention rate or a chose-to-view rate that guarantees distribution. Public research, including ContHunt, can show what other channels published and how viewers responded in public. It cannot recreate a competitor's retention graph, chose-to-view rate, audience demographics, or revenue. Keep the two evidence layers apart, and write down whether a report says views or engaged views before you turn either number into a rate.
 
 ## Where to open Shorts analytics
 
 In YouTube Studio, open Analytics and go to the Content tab. YouTube's [Shorts content-tab help](https://support.google.com/youtube/answer/12942217?hl=en&co=YOUTUBE._YTVideoType%3Dshorts) says you will see a Shorts chip with data on views, comments, remixes, and other metrics. Start there for a channel you manage. In an August 26, 2026 first-page check for the query "youtube shorts analytics," that official help page ranked first. The ranking of a help page is not a performance metric. It is a reason to trust the intent of the query: people looking up Shorts analytics usually need the product that collected the data.
 
-YouTube renames cards and moves layouts. If a label on this page and a label in your Studio disagree, use the definition in your current interface and in the help document, not a memory of an older menu. The chip matters because audience behavior is not the same across formats. YouTube's Shorts help says to compare videos of the same type when you publish more than one format. A long-form average view duration is not a ruler for a Short.
+YouTube renames cards and moves layouts. If a label on this page and a label in your Studio disagree, use the definition in your current interface and in the help document. Do not use a memory of an older menu. The chip matters because audience behavior is not the same across formats. YouTube's Shorts help says to compare videos of the same type when you publish more than one format. A long-form average view duration is not a ruler for a Short.
 
 ## Views and engaged views are different counts
 
-Beginning August 24, 2026, [YouTube's engagement-metrics help](https://support.google.com/youtube/answer/2991785?hl=en) says views are counted the moment a video starts to play, across Shorts, long-form videos, and live streams. The YouTube blog post [What are engaged views?](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/), dated August 19, 2026, explains the split. A view now counts from the first frame, whether that is a Short starting in the feed or a long-form video autoplaying. An engaged view is a click or a tap to watch, or watching past the initial seconds. YouTube does not publish, on that page, a fixed number of seconds hiding inside the phrase "initial seconds." Do not invent one.
+From August 24, 2026, a view counts when playback starts. [YouTube's engagement-metrics help](https://support.google.com/youtube/answer/2991785?hl=en) says this for Shorts, long-form videos, and live streams. The YouTube blog post [What are engaged views?](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/), dated August 19, 2026, explains the split. A view now counts from the first frame, whether that is a Short starting in the feed or a long-form video autoplaying. An engaged view is a click or a tap to watch, or watching past the initial seconds. YouTube does not publish, on that page, a fixed number of seconds hiding inside the phrase "initial seconds." Do not invent one.
 
-The same post separates impressions from views. Seeing a thumbnail and not interacting is a thumbnail impression, not a view. Hovering so the thumbnail autoplays counts as a view from the first frame, and letting it continue past the initial seconds counts as an engaged view. A click or a tap that starts playback counts as both a view and an engaged view. For a Short in the feed, playback starting is a view. Continuing past the initial seconds is an engaged view.
+The same post separates impressions from views. Seeing a thumbnail and not interacting is a thumbnail impression, not a view. Hovering so the thumbnail autoplays counts as a view from the first frame. Letting it continue past the initial seconds counts as an engaged view. A click or a tap that starts playback counts as both a view and an engaged view. For a Short in the feed, playback starting is a view. Continuing past the initial seconds is an engaged view.
 
-YouTube says this counting change does not change recommendations. It also says the vast majority of analytics stay anchored on engaged views, so the way click-through rate, average view duration, and retention are calculated has not changed. The help page adds the monetization boundary in plain language: the update does not change YouTube Partner Program earnings or eligibility. Earnings stay on engaged views and engaged watch hours. Eligibility stays on qualified views. A jump in the public view counter, by itself, is not a raise and not an algorithm shift.
+YouTube says this counting change does not change recommendations. It also says the vast majority of analytics stay anchored on engaged views. The way click-through rate, average view duration, and retention are calculated has not changed. The help page adds the monetization boundary in plain language: the update does not change YouTube Partner Program earnings or eligibility. Earnings stay on engaged views and engaged watch hours. Eligibility stays on qualified views. A jump in the public view counter, by itself, is not a raise and not an algorithm shift.
 
 Two measurement cautions on that help page belong in every weekly review. Metrics are checked for real human engagement, and in the first hours after publishing they may not appear yet. YouTube may temporarily slow, freeze, or adjust a count, and it discards low-quality playbacks. Watching the same video on several devices, or streaming it across several windows and tabs, is the example it gives of low-quality playback. Realtime activity is an estimate of potential view activity and may not match the number on the watch page. Verified figures in Earn-tab milestones can take several days. Read a same-day number as unfinished.
 
@@ -52,7 +53,7 @@ An illustrative ratio, not a benchmark: a Short shows 20,000 views under the pos
 
 ## The Shorts cards, in YouTube's words
 
-YouTube's Shorts content-tab help defines the key cards. The insight lines on that page all point the same direction: compare with your own typical performance over time, and do not treat one upload as a verdict.
+YouTube's Shorts content-tab help defines the key cards. The insight lines on that page all point the same direction. Compare with your own typical performance over time. Do not treat one upload as a verdict.
 
 | Card | Definition on the Shorts help page | Useful question |
 | --- | --- | --- |
@@ -68,15 +69,15 @@ Likes, on YouTube's wording, are a change figure tied to likes and dislikes, not
 
 ## Retention, duration, and loops
 
-Audience retention shows where viewers leave, rewatch, or stay through the payoff. Average view duration, per the August 19, 2026 post, remains anchored on engaged views, so a change in the public view counter does not by itself rewrite the duration math. Compare retention across videos with similar lengths and similar topics. A loop can lift average percentage viewed. A figure above 100 percent does not mean every viewer watched to the end. It can mean some viewers replayed while others left.
+Audience retention shows where viewers leave, rewatch, or stay through the payoff. Average view duration, per the August 19, 2026 post, remains anchored on engaged views. A change in the public view counter does not by itself rewrite the duration math. Compare retention across videos with similar lengths and similar topics. A loop can lift average percentage viewed. A figure above 100 percent does not mean every viewer watched to the end. It can mean some viewers replayed while others left.
 
-Read a dip against the frame at that timestamp. A dip at a logo, a dip when the promise was due and did not arrive, and a dip when the audio stops are three different causes. The next section covers two causes that are easy to blame on the hook.
+Read a dip against the frame at that timestamp. A dip at a logo is one cause. A dip when the promise was due and did not arrive is another. A dip when the audio stops is a third. The next section covers two causes that are easy to blame on the hook.
 
 Rewatches are not automatically praise. A rewatch can mean the step was worth seeing again or that the step was unclear. Comments sometimes tell you which. If they do not, look at the frame.
 
 ## Traffic sources tell you which packaging the viewer saw
 
-The Shorts help page groups "how viewers find your Shorts" into overall sources, external sites and apps, YouTube search terms, suggested videos, and playlists. Overall is the most popular sources, on YouTube and off it. External includes people finding you from outside YouTube, including other social apps, which is a distribution choice you make by posting elsewhere, not a creative grade. Search terms are the words audiences used, and YouTube explicitly treats them as a glimpse of topics you might make next. Suggested-video traffic comes from suggestions beside or after other videos and from links in descriptions. Playlist traffic is any playlist that included the video, yours or another creator's.
+The help page groups how viewers find your Shorts. The groups are overall sources, external sites and apps, YouTube search terms, suggested videos, and playlists. Overall is the most popular sources, on YouTube and off it. External includes people finding you from outside YouTube, including other social apps. That is a distribution choice you make by posting elsewhere, not a creative grade. Search terms are the words audiences used, and YouTube explicitly treats them as a glimpse of topics you might make next. Suggested-video traffic comes from suggestions beside or after other videos and from links in descriptions. Playlist traffic is any playlist that included the video, yours or another creator's.
 
 A Short found through search can need a title and a description that match the query. A Short found through the feed is judged first by the opening, because the viewer did not type anything. Mixing those two populations into one "average Short" hides both lessons. If search terms are the largest source, go work on the words. If shown-in-feed is the story, go work on the opening and then re-read chose-to-view.
 
@@ -88,11 +89,11 @@ Review likes, comments, shares, and subscribers gained next to views and retenti
 
 The top-remixed report is separate again. YouTube describes it as remix views, total remixes, and top remixed content, filterable by remix type: Sound, Cut, or Green Screen. Remixes are evidence that other people used the Short as material. They are not a quality score, and a Short with no remixes can still be the right video for a product demo. YouTube suggests paying attention to Shorts that inspire creation. That is a creative observation, not a quota.
 
-When you try something new, the help page's recommendation is modest: watch views, likes, and comments, and look at both the Shorts that do well and the ones that do not. Avoid comparing every upload with a viral hit. The hit is a bad control. Your median is the control.
+When you try something new, the help page's recommendation is modest. Watch views, likes, and comments. Look at both the Shorts that do well and the ones that do not. Avoid comparing every upload with a viral hit. The hit is a bad control. Your median is the control.
 
 ## Do not use a universal benchmark
 
-Claims such as "70 percent chose to view guarantees reach" or "80 percent retention is elite" ignore topic, audience, length, traffic source, and how mature the channel is. YouTube's own cards are already phrased against your typical performance. A borrowed threshold with no dataset is not stricter. It is less honest.
+Claims of a universal 70 or 80 percent bar ignore the channel. A claim that 70 percent chose to view guarantees reach ignores the channel. So does a claim that 80 percent retention is elite. Both ignore topic, audience, length, traffic source, and how mature the channel is. YouTube's own cards are already phrased against your typical performance. A borrowed threshold with no dataset is not stricter. It is less honest.
 
 Build a baseline you can recompute:
 
@@ -108,7 +109,7 @@ A second piece of arithmetic, still illustrative: shown in feed is 10,000 and ch
 
 ## Length, claims, and audio can fake a retention story
 
-[YouTube's three-minute Shorts help](https://support.google.com/youtube/answer/15424877?hl=en) is an analytics document whether or not you care about the upload button. Shorts can be up to three minutes. On a standard channel, a square or vertical video uploaded on or after October 15, 2024, up to three minutes, is classified as a Short. Videos uploaded before that date stay long-form, on the watch page, even if they look vertical. Official Artist Channels have a later cutoff: on or after December 8, 2025, the same square-or-vertical, up-to-three-minutes rule classifies the upload as a Short; uploads before that date stay long-form. If you do not want a video classified as a Short, YouTube says to use a wider aspect ratio such as 16:9.
+[YouTube's three-minute Shorts help](https://support.google.com/youtube/answer/15424877?hl=en) is an analytics document too. That is true whether or not you care about the upload button. Shorts can be up to three minutes. On a standard channel, a square or vertical video uploaded on or after October 15, 2024, up to three minutes, is classified as a Short. Videos uploaded before that date stay long-form, on the watch page, even if they look vertical. Official Artist Channels have a later cutoff. On or after December 8, 2025, the same square-or-vertical, up-to-three-minutes rule classifies the upload as a Short. Uploads before that date stay long-form. If you do not want a video classified as a Short, YouTube says to use a wider aspect ratio such as 16:9.
 
 Compare retention only inside one of those groups. A percentage viewed on a 20-second Short and a percentage viewed on a three-minute Short do not describe the same viewer effort. A pre-cutoff vertical video that is still long-form is a different surface again.
 
@@ -118,7 +119,7 @@ Audio length can cut a video out from under the viewer. From the Shorts audio li
 
 ## Do not mix ad views with public views
 
-The engagement-metrics help page distinguishes two ad counts. TrueView views are billable. YouTube public views are not. For skippable in-stream ads, a TrueView view is a completed ad of 11 to 30 seconds, or at least 30 seconds of an ad longer than 30 seconds, or an interaction. On in-feed video ads, a TrueView view is a click that starts the video, or at least 10 seconds of an ad longer than 10 seconds. For Shorts ads, a TrueView view is a click, or at least 10 seconds of the ad. Public views of those ads, the ones that can contribute to a public view count, are counted when the ad starts to play, across Shorts and in-stream ads. If a report mixes paid playback with organic Shorts, label the source before you compare it with last month's organic median.
+The engagement-metrics help page distinguishes two ad counts. TrueView views are billable. YouTube public views are not. For skippable in-stream ads, a TrueView view is a completed ad of 11 to 30 seconds. It can also be at least 30 seconds of a longer ad, or an interaction. On in-feed video ads, a TrueView view is a click that starts the video. It can also be at least 10 seconds of a longer ad. For Shorts ads, a TrueView view is a click, or at least 10 seconds of the ad. Public views of those ads can contribute to a public view count. They are counted when the ad starts to play, across Shorts and in-stream ads. If a report mixes paid playback with organic Shorts, label the source before you compare it with last month's organic median.
 
 ## What you can learn about a competitor, and what you cannot
 
@@ -140,7 +141,7 @@ You cannot observe their retention, their chose-to-view rate, their audience dem
 | ContHunt | Finding public Shorts, Reels, and TikToks and reading visible patterns | Public creative research, not a competitor's Studio |
 | Google Trends | Directional topic interest, with the YouTube Search filter | A search-interest index, not a video's performance |
 | vidIQ | Topic, channel, and publishing research | A mix of public data, product analysis, and features on connected accounts |
-| YouTube search and channel pages | A small manual sample | Public observations only |
+| YouTube search and channel pages | A small manual sample | Public observations only. |
 
 ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. Deep Search watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to form a hypothesis about openings and topics. Use Studio to measure the Short you then publish. The rank is not measured retention. Tracking in ContHunt is experimental, so it is not a second analytics suite. vidIQ can help with YouTube topic and publishing research; it still cannot show you an unconnected channel's retention graph. Google Trends can suggest that a query is rising or fading. It cannot tell you that your last Short satisfied the people who searched it.
 

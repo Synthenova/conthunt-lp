@@ -1,9 +1,10 @@
 ---
-title: "How to Identify Market Trends: The 2026 Intelligence Guide"
+title: "How to Identify Market Trends on TikTok, Reels, and Shorts"
 slug: "how-to-identify-market-trends"
 excerpt: "Identify a market trend by watching which short-form topics are accelerating on TikTok, Reels, and Shorts, then testing that signal before you change the plan."
-seoTitle: "How to Identify Market Trends in 2026"
+seoTitle: "How to Identify Short-Form Market Trends"
 date: "2026-02-18"
+updated: "2026-11-06"
 category: "Playbooks"
 readingMinutes: 19
 author: "ContHunt Team"

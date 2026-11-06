@@ -99,8 +99,10 @@ export interface PostSummary {
   /** Short search title without the brand suffix, when the full title would not fit. */
   seoTitle: string | null;
   excerpt: string;
-  /** ISO date, YYYY-MM-DD. */
+  /** ISO date, YYYY-MM-DD. Published date. */
   date: string;
+  /** ISO date the words last changed. Equals `date` until a revision. */
+  updated: string;
   category: PostCategory;
   /** `resources` → `/resources/<slug>`. `blog` → `/blog/<slug>`. */
   section: PostSection;

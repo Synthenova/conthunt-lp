@@ -29,3 +29,88 @@
 
 <h2>Use it with MCP</h2>
 <p>Add the skill, then connect MCP from the <a href="/docs/integrations/mcp">MCP page</a>. After that, ask it to research a niche, pull competitor examples, or break down a Short.</p>
+<p>Written by the ContHunt team.</p>
+
+<h2>What the agent reads</h2>
+<p>The skill is a markdown playbook shipped with ContHunt. The install command copies it into the agent.</p>
+<p>The agent can then see when a job is social research. It can see that ContHunt covers TikTok, Reels, and Shorts. It can see that boards, analysis, and deeper research are part of the same product.</p>
+<p>The playbook does not contain your login. It does not store videos. It only tells the agent how to behave.</p>
+
+<h2>What it does not do</h2>
+<ul>
+    <li>It does not connect the agent to your account.</li>
+    <li>It does not search, save a board, or run analysis by itself.</li>
+    <li>It does not replace the MCP server at https://mcp.conthunt.app.</li>
+    <li>It does not change the ContHunt app, your boards, or your billing.</li>
+</ul>
+<p>If the skill is installed and MCP is not, the agent should stop and ask you to add MCP. That is the correct behavior.</p>
+
+<h2>When the agent should reach for it</h2>
+<p>Any ask about public short-form video belongs here. That includes a niche scan, a competitor's recent videos, a hook you want examples of, and a creator you want looked up.</p>
+<p>A single video link is an analysis ask. A pile of videos, or a question about a whole niche, is a research ask. The skill is what reminds the agent of that split.</p>
+<p>A question about your own saved boards is also in scope. The agent should read what you already saved before it runs a new search.</p>
+<p>A question about ordinary web pages is out of scope. The skill should not send that job to ContHunt.</p>
+
+<h2>How a chat should start</h2>
+<p>The agent should look at evidence you already have. Saved searches, boards, and earlier analysis answer some questions with no new search.</p>
+<p>If that evidence is enough, the agent should use it. If it is missing, the agent should say what it needs to fetch.</p>
+<p>A new search should name the niche in words you used. The agent can look across TikTok, Reels, and Shorts unless you name one platform.</p>
+<p>You can tell it to stay on one platform. You can tell it to stay inside a date range. Those limits should stick for the rest of the chat.</p>
+
+<h2>Search, creators, and single videos</h2>
+<p>Search is for discovery. You do not have the links yet. You have a topic, a product, or a phrase.</p>
+<p>A creator lookup is for one public profile. Use it when you already know who you want to watch.</p>
+<p>A video lookup is for a link you paste. Use it when the example is already in front of you. The agent should not search again for a video you just pasted.</p>
+<p>Keep those three apart in the way you ask. "Find" means search. "This creator" means a profile. "This link" means one video.</p>
+
+<h2>Boards</h2>
+<p>A board is a saved set of videos. Use one when you want the same examples tomorrow.</p>
+<p>The agent can create a board, add a video, or take a video off. It should do that only after you are signed in through MCP.</p>
+<p>Saving is not analysis. A board remembers the videos. Analysis reads what is in them. Ask for both if you want both.</p>
+
+<h2>Analysis and deeper research</h2>
+<p>Analysis is for one short video. Deeper research is for a set. The set might be a niche, a competitor group, or a board you already saved.</p>
+<p>Deeper research is the heavier job. The agent should tell you what it is about to run, then do that job. It should not quietly widen the job.</p>
+<p>A long video is a different read from a short one. If you paste a long source, say so. The agent should not treat it as a Short.</p>
+<p>The result should name the videos it actually used. A claim about a hook should point at a video. A missing count should stay missing.</p>
+
+<h2>Install details that matter</h2>
+<p>The command is <code>npx skills add https://conthunt.app</code>. It works in Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Windsurf, Grok Build, and other agents that accept skills.</p>
+<p>The prompt on this page is the same install, spoken as a sentence. Use it when you would rather paste than run a terminal.</p>
+<p>Reinstall if the agent acts as if it has never heard of ContHunt. The server can be fine while the playbook is missing. They fail in different ways.</p>
+<p>Updating the skill does not sign you in again. Your MCP login stays where your coding app stored it.</p>
+
+<h2>A good ask after install</h2>
+<p>Name the niche in the first sentence. Name the outcome in the second. Outcome means the thing you will do with the examples.</p>
+<p>One outcome is a list of hooks. Another is a comparison of two creators. Another is a board you will brief from.</p>
+<p>Leave counts and dates out unless you need them. If you need them, say the window in the ask. The agent should repeat that window back before a large research pass.</p>
+<p>Then read the answer and keep the videos you care about. The skill's job ends when the agent knows the path. The MCP connection does the work.</p>
+
+<h2>Where to go next</h2>
+<p>The connection steps are on the <a href="/docs/integrations/mcp">MCP page</a>. The short map of both pieces is on the <a href="/docs">docs overview</a>.</p>
+<p>Install the skill when you want the habit. Connect MCP when you want results.</p>
+
+<h2>Saved work comes first</h2>
+<p>Before a new search, the agent should look at what the account already holds. A board, an earlier search, or an analysis may already answer the question.</p>
+<p>If it does, the agent should use that. Say so in the answer. You should be able to tell old evidence from a new fetch.</p>
+<p>If it does not, the agent should name the gap. Then it should fetch only that gap. A full new sweep is for when the saved set cannot answer.</p>
+
+<h2>Limits you set are part of the job</h2>
+<p>A platform limit is a limit. If you say Reels only, TikTok and Shorts stay out of that ask.</p>
+<p>A date limit is a limit. If you say this month, older videos are not substitutes.</p>
+<p>A creator limit is a limit. If you name two profiles, a third profile is a different ask.</p>
+<p>The skill exists so the agent keeps those limits. If it drops one, correct it in the chat. The playbook does not override you.</p>
+
+<h2>Reinstall, reconnect, or both</h2>
+<p>If the agent does not know ContHunt, the skill is missing. Reinstall it. Your login can still be fine.</p>
+<p>If the agent knows ContHunt but cannot search, MCP is missing or signed out. Reconnect on the MCP page. The skill can stay.</p>
+<p>If both fail, do the server first. Sign in. Then reinstall the skill. Check with one small niche ask.</p>
+<p>One working ask is the test. A long research pass is a poor test, because a login problem and a research problem look alike.</p>
+
+<h2>What a careful answer looks like</h2>
+<p>The answer names the videos it used. It says whether they came from a new search or from something you saved.</p>
+<p>It keeps your niche, your platform, and your dates in the reply. You should not have to hunt for the scope.</p>
+<p>It leaves unknown numbers unknown. It does not turn a missing view count into zero, and it does not invent a link.</p>
+<p>That is the behavior the skill is there to remind the agent of. The server is what actually returns the videos.</p>
+<p>If you are unsure which piece failed, split the check. Ask the agent what ContHunt is. Then ask it to search one niche.</p>
+<p>A clear description with no videos means the skill is present and the server is not. Videos with no sense of the product mean the opposite. Fix only the piece that failed.</p>

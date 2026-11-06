@@ -128,3 +128,78 @@ codex mcp login conthunt</code></pre>
 
 <h2>Skill</h2>
 <p>Want the agent to already know how to use this, instead of you explaining ContHunt each time? Add the <a href="/docs/integrations/skill">ContHunt skill</a>.</p>
+<p>Written by the ContHunt team.</p>
+
+<h2>What this server is</h2>
+<p>The server address is https://mcp.conthunt.app. Your coding agent adds it as a remote MCP server. The name to use is ContHunt.</p>
+<p>MCP is the connection into your ContHunt account. It is not a second product. Searches, boards, and analyses show up on the account you sign in with.</p>
+<p>The agent talks to that server from chat. You do not paste an API token into the prompt. You sign in when the agent opens the login.</p>
+
+<h2>What you can do after sign-in</h2>
+<ul>
+    <li>Search TikTok, Instagram Reels, and YouTube Shorts.</li>
+    <li>Look up a creator's public profile and videos.</li>
+    <li>Save videos to a board, or take them off a board.</li>
+    <li>Run analysis on a short video.</li>
+    <li>Run deeper research on a niche or on a saved set.</li>
+</ul>
+<p>The first successful call is usually a search or a creator lookup. Start there. Move to a board or to deeper research once the login is clearly working.</p>
+
+<h2>Sign-in</h2>
+<p>The agent asks you to sign in the first time it needs your account. Approve that prompt. A browser step follows. Use the ContHunt account you want the work saved under.</p>
+<p>If you close the browser step, the agent cannot finish the call. Run the login again from the same app. You do not need to remove the server first.</p>
+<p>A later chat in the same app can reuse the login. A different app cannot. Cursor and Claude Code each keep their own sign-in. Add the server in each app you actually use.</p>
+<p>Signing out of ContHunt, or removing the server, stops new calls. Boards you already saved stay in the product until you delete them there.</p>
+
+<h2>Which install to use</h2>
+<p>Use the tab for the app you have open. The command and the prompt do the same job. The command is faster if you live in a terminal. The prompt is faster if you live in chat.</p>
+<p>Codex uses <code>codex mcp add</code>, then a login command. Claude Code uses <code>claude mcp add</code>, then <code>/mcp</code> to sign in. Gemini CLI uses <code>gemini mcp add</code>, then <code>/mcp auth conthunt</code>.</p>
+<p>Cursor, Claude.ai, and Grok.com take the server URL in their settings. VS Code takes a small JSON block. Grok Build takes <code>grok mcp add</code>. Grok Bot has no settings form, so use the prompt.</p>
+<p>If your agent is not on that list, run <code>npx add-mcp https://mcp.conthunt.app --name conthunt</code>. Then sign in when asked.</p>
+
+<h2>After the server is added</h2>
+<p>Ask for one concrete job. Name a niche, a creator, or paste one video link.</p>
+<p>A niche ask is a search. A creator ask is a profile lookup. A pasted link is analysis of that video. Say which one you want so the agent does not guess.</p>
+<p>If you want the examples kept, say to save them to a board. Say the board name if you already have one.</p>
+<p>If you want a pattern across many videos, say that this is research on the set. That job is larger than one search. The agent should tell you before it runs it.</p>
+
+<h2>How this differs from the skill</h2>
+<p>The server does the work. The skill tells the agent when to do the work. You can use the server with no skill.</p>
+<p>Without the skill, you may have to say "use ContHunt" yourself. With the skill, the agent should already know that social video research belongs here.</p>
+<p>Install the skill from the <a href="/docs/integrations/skill">skill page</a> when you want that habit. The overview on the <a href="/docs">docs home</a> puts the two pieces side by side.</p>
+<p>Neither install changes your boards by itself. Only a signed-in call can search or save.</p>
+
+<h2>If it does not connect</h2>
+<p>Check the URL character by character. A missing letter, or a different host, will not reach ContHunt. The host is mcp.conthunt.app.</p>
+<p>Check that the server name is ContHunt, or <code>conthunt</code> in commands that want a short id. The login step uses that name.</p>
+<p>Check that you finished sign-in. A server with no login can sit in the list and still refuse a search.</p>
+<p>Check that you edited the right file. Cursor reads <code>~/.cursor/mcp.json</code> for the JSON on this page. A project file with a different server will not help.</p>
+<p>If one tab's command fails, use the prompt panel. Paste the sentence into the agent. Then complete the same sign-in.</p>
+
+<h2>What the agent should not do</h2>
+<p>It should not invent view counts, dates, or video links. If the result does not include a number, the number is unknown.</p>
+<p>It should not send a normal web question through this server. The server is for public short-form video on TikTok, Reels, and Shorts.</p>
+<p>It should not skip sign-in and claim the account is empty. An unsigned call did not look. It only failed to look.</p>
+<p>A longer walkthrough of the same setup is in <a href="/blog/using-conthunt-with-ai-agents-through-mcp">Using ContHunt with AI agents through MCP</a>.</p>
+
+<h2>One server, each app on its own</h2>
+<p>The address is the same everywhere. The sign-in is not. Each coding app stores its own login to that server.</p>
+<p>Add ContHunt once per app you use. A working Cursor login does not sign Claude Code in. Repeat the login there.</p>
+<p>Chats inside one app can share that app's login. You should not have to sign in on every message. You do sign in again if the app drops the session.</p>
+
+<h2>What a finished call looks like</h2>
+<p>A search comes back with public videos. A creator call comes back with that public profile. An analysis comes back about the video you named.</p>
+<p>The agent should show you those results in the chat. It should say if it also saved them to a board.</p>
+<p>If the call returns nothing, that is a result. The niche may have no match under the limits you set. Widen the ask only if you want a wider ask.</p>
+<p>If the call errors before any result, the connection or the login failed. That is not an empty niche. Fix the server, then ask again.</p>
+
+<h2>People on the same team</h2>
+<p>Each person connects the agent to the ContHunt account they sign in to. There is no shared agent login on this page.</p>
+<p>If two people must see the same boards, they need access to the same ContHunt account. Connecting two agents to two accounts keeps the work apart.</p>
+<p>Removing the server from your editor does not remove a teammate's server. It only stops the agent on your machine.</p>
+
+<h2>A small test before a big one</h2>
+<p>After sign-in, ask for a handful of public videos in one niche. Wait for titles you can recognize.</p>
+<p>Then ask to save one of them to a board. Open ContHunt and see that the board is there.</p>
+<p>If both steps work, the server is ready. Deeper research and long reads can wait until you actually need them.</p>
+<p>If the small test fails, stay on this page. Check the URL, the app tab, and the sign-in. Do not add a second server name for the same host.</p>

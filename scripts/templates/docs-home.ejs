@@ -28,6 +28,95 @@
 <p>MCP is the connection. After you add it, the agent can actually run ContHunt on your account.</p>
 <p>The skill is optional. It does not connect anything by itself. It tells the agent what ContHunt is and how to use it, so you do not have to explain the product every time.</p>
 <p>Most people add MCP first, then the skill.</p>
+<p>Written by the ContHunt team.</p>
+
+<h2>What you are connecting</h2>
+<p>ContHunt finds and reads public short-form video. The platforms are TikTok, Instagram Reels, and YouTube Shorts.</p>
+<p>An agent can do that work in chat after you connect MCP. You stay signed in to your own ContHunt account. The agent does not get a separate account.</p>
+<p>The docs home is the map. The <a href="/docs/integrations/mcp">MCP page</a> is the connection. The <a href="/docs/integrations/skill">skill page</a> is the playbook.</p>
+
+<h2>What the agent can do</h2>
+<p>These are the jobs the connection is for. Each one uses your account.</p>
+<ul>
+    <li>Search TikTok, Reels, and Shorts for a niche, a phrase, or a competitor.</li>
+    <li>Look up a creator and the public videos on that profile.</li>
+    <li>Save videos to a board so you can come back to the same set.</li>
+    <li>Run analysis on a short video you already found.</li>
+    <li>Do deeper research across a set of videos in one niche.</li>
+</ul>
+<p>Ask in plain language. Name the niche, the creator, or the question. The agent chooses the ContHunt step that matches.</p>
+
+<h2>MCP, in one pass</h2>
+<p>MCP is the live server at https://mcp.conthunt.app. Your agent adds that server, then you sign in when it asks.</p>
+<p>Until you sign in, the agent cannot search or save anything on your account. The sign-in is the normal ContHunt login. You approve it in the browser.</p>
+<p>After that, the same chat can search, open a creator, save a board, and run analysis. You do not paste a password into the chat.</p>
+<p>Each coding app has its own add command. Codex, Claude Code, Cursor, Claude.ai, VS Code, Gemini CLI, and Grok are on the MCP page. If your app is missing, the MCP page has one fallback command.</p>
+
+<h2>The skill, in one pass</h2>
+<p>The skill is instructions the agent reads. Install it with <code>npx skills add https://conthunt.app</code>.</p>
+<p>It does not open a connection. A skill-only setup cannot search. The agent should tell you to add MCP first.</p>
+<p>What it does do is set the habit. Social research, viral examples, hooks, niches, boards, and analysis should go through ContHunt. You should not have to explain that in every chat.</p>
+<p>Add the skill after MCP if you use the agent often. Skip it if you only need one search.</p>
+
+<h2>A normal first session</h2>
+<p>Add the server. Sign in when the agent asks. Then ask for something small and specific.</p>
+<p>A good first ask names one niche and one outcome. For example, public videos about a product category, or the hooks a competitor keeps using.</p>
+<p>Read what comes back before you ask for a larger pass. A larger pass is the deeper research job. It looks across a set of videos, not one link.</p>
+<p>Save the videos you want to keep. A board is the set you return to. The agent can add to a board after you are signed in.</p>
+
+<h2>What to say in the ask</h2>
+<p>Include the platform only if you want to limit the search. Otherwise the agent can look across TikTok, Reels, and Shorts.</p>
+<p>Include a time window if the week matters. Say "this month" or name the dates. Leave it off if any recent public video is fine.</p>
+<p>Include the decision you are making. "Find examples" and "compare two creators" are different jobs. The second needs more than one profile.</p>
+<p>You can paste a video link when you already have the example. Analysis reads that video. Search is for when you do not have the link yet.</p>
+
+<h2>What stays on your account</h2>
+<p>Searches, boards, and analyses belong to the ContHunt account you signed in with. A teammate does not see them unless that person uses the same account.</p>
+<p>The agent can only do what that login allows. If a step needs a sign-in and you dismiss it, that step stops. Ask again after you approve the login.</p>
+<p>Disconnecting the server in your coding app stops new calls. It does not delete boards you already saved. Those stay in ContHunt until you remove them there.</p>
+
+<h2>When the agent should use ContHunt</h2>
+<p>Use it for public social video. Hooks, formats, creators, niches, and competitor examples are the usual asks.</p>
+<p>Do not use it as a general web search. It is not a replacement for pages, news, or a private analytics login you hold somewhere else.</p>
+<p>Do not use it to invent counts. If a view count is not in the result, the agent should say it is missing. A missing count is not zero.</p>
+
+<h2>If a step fails</h2>
+<p>If the agent says it cannot find the server, check the URL. It is https://mcp.conthunt.app. Then add the server again from the MCP page.</p>
+<p>If the agent can see the server but cannot search, the sign-in was skipped or it expired. Start the login again from the same chat.</p>
+<p>If search works and the skill still asks what ContHunt is, reinstall the skill. The command is on the skill page. The skill and the server are separate installs.</p>
+<p>If one app is awkward, try the prompt on this page. Paste the sentence into the agent and let it add the server. Then sign in.</p>
+
+<h2>Which page to open next</h2>
+<ul>
+    <li>Open the <a href="/docs/integrations/mcp">MCP page</a> to add the server in your app.</li>
+    <li>Open the <a href="/docs/integrations/skill">skill page</a> if you want the playbook installed too.</li>
+    <li>Read <a href="/blog/using-conthunt-with-ai-agents-through-mcp">Using ContHunt with AI agents through MCP</a> for a longer walkthrough of the same connection.</li>
+</ul>
+<p>Start with the server. Add the skill when you are tired of repeating yourself.</p>
+
+<h2>Boards versus the chat</h2>
+<p>The chat is where you ask. A board is where the videos stay. Closing the chat does not close the board.</p>
+<p>Ask the agent to name the board it saved to. Next time, start from that board instead of searching again.</p>
+<p>A board is a set you chose. A search is a set the platform returned. Do not treat them as the same list.</p>
+<p>If a video matters, save it. A later search may not bring the same video back.</p>
+
+<h2>What "public" means here</h2>
+<p>ContHunt reads public short-form video. Private accounts and private posts are not part of this connection.</p>
+<p>A creator lookup returns the public profile and the public videos. If a video is not public, it will not appear. The agent should not fill the gap with a guess.</p>
+<p>View counts and dates come from the result of that call. They are not estimated in the docs, and the agent should not estimate them either.</p>
+
+<h2>Three asks that stay specific</h2>
+<p>One ask is a niche. You name the category and ask for recent public examples. You are looking for patterns, not one winner.</p>
+<p>One ask is a creator. You name the person and ask what they posted. You are looking at one profile.</p>
+<p>One ask is a link. You paste it and ask what the opening does. That is analysis of one video.</p>
+<p>Send one of those at a time. A mixed ask is harder to check. You can run the next ask after you read the first answer.</p>
+
+<h2>Keep one question open</h2>
+<p>Tell the agent the decision the videos are for. A hook list, a competitor check, and a board for a brief are three decisions.</p>
+<p>If the decision changes, say so. The agent should not carry the old niche into the new question without you asking.</p>
+<p>If you only wanted one platform, repeat that limit when you change the question. Limits do not always survive a new chat.</p>
+<p>When the answer is enough, stop. Another pass is a new job. It is not required to finish the first one.</p>
+<p>You can return to the docs home any time you forget which install does which job. The server fetches. The skill reminds. The account holds the boards.</p>
 
 <h2>Tell the agent</h2>
 <p>If you would rather paste a sentence than run a command:</p>

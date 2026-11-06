@@ -3,6 +3,7 @@ title: "Best Hashtags for YouTube Shorts"
 slug: youtube-shorts-hashtags-guide
 excerpt: "Use a few YouTube Shorts hashtags that match the video. YouTube may show up to three from the description and ignores every hashtag once the count passes 60."
 date: "2026-02-18"
+updated: "2026-11-06"
 category: Research
 readingMinutes: 12
 author: "ContHunt Team"
@@ -20,11 +21,11 @@ cover:
       - { label: "Confirm the total is not over 60", status: "running" }
 ---
 
-The best hashtags for a YouTube Short are a few tags that accurately describe that video, not a block copied from a viral post. YouTube lets you add hashtags to the title or the description. They connect videos that share a topic and link to a results page. Out of the hashtags in the description, up to three that YouTube considers most engaging can appear by the title. YouTube does not publish an ideal count or promise that a tag will improve recommendations. Tags become less relevant as you add more, and if a video or playlist has more than 60 hashtags, every hashtag is ignored. A relevant tag cannot rescue a vague title, a misleading cover, or a weak opening.
+The best hashtags for a YouTube Short are a few tags that accurately describe that video, not a block copied from a viral post. Written by the ContHunt team. YouTube lets you add hashtags to the title or the description. They connect videos that share a topic and link to a results page. Out of the hashtags in the description, up to three that YouTube considers most engaging can appear by the title. YouTube does not publish an ideal count or promise that a tag will improve recommendations. Tags become less relevant as you add more, and if a video or playlist has more than 60 hashtags, every hashtag is ignored. A relevant tag cannot rescue a vague title, a misleading cover, or a weak opening.
 
 ## What does YouTube say about hashtags on Shorts?
 
-YouTube says hashtags are keywords preceded by a # symbol, and the published rules are about connection, display, and abuse, not about a ranking shortcut. [Find playlists and videos using hashtags](https://support.google.com/youtube/answer/6390658?hl=en-on) is the page to trust. You can add hashtags when you upload a video or record a Short. YouTube may suggest popular hashtags as you type. When you add text to a Short and start a hashtag, suggestions can draw on signals such as past uploads and, in some countries, the text you entered. A previously used suggestion can show a clock icon. That icon means you have used the tag before. It does not mean the tag performed.
+YouTube says hashtags are keywords preceded by a # symbol, and the published rules are about connection, display, and abuse, not about a ranking shortcut. [Find playlists and videos using hashtags](https://support.google.com/youtube/answer/6390658?hl=en-on) is the page to trust. You can add hashtags when you upload a video or record a Short. YouTube may suggest popular hashtags as you type. When you add text to a Short and start a hashtag, suggestions can draw on signals such as past uploads. In some countries they can also draw on the text you entered. A previously used suggestion can show a clock icon. That icon means you have used the tag before. It does not mean the tag performed.
 
 Display is specific. Out of all the hashtags you add to the description, up to three that are considered most engaging appear by the video title. The full set still sits in the description. Videos can still appear in search. Title hashtags and description hashtags both link to a page of other videos that share the tag. Nothing on that help page says a title hashtag is worth more than a description hashtag. Where to put the few tags you keep is a separate decision, covered in [YouTube Shorts hashtags in the title versus the description](/blog/youtube-shorts-hashtags-title-vs-description).
 
@@ -36,7 +37,7 @@ The policy lines are the part people skip and then trip over:
 - Harassment, hate, sexual content, and vulgar language in hashtags can remove the video, age-restrict it, or both, under the policies that page links.
 - Ordinary descriptive tags or repetitive sentences stuffed into the description are still prohibited. A hashtag is allowed. A keyword paragraph is not.
 
-No current statement on that help page says `#Shorts` is required. Use `#Shorts` only when it accurately describes the video. A clear title, a readable cover, and a true description do more for discovery than a format tag you added because a template said it was mandatory.
+No current statement on that help page says `#Shorts` is required. Use `#Shorts` only when it accurately describes the video. A clear title, a readable cover, and a true description do more for discovery. A format tag added because a template said it was mandatory does less.
 
 YouTube's help page [Add tags to your YouTube videos](https://support.google.com/youtube/answer/146402?hl=en) documents a different field. Tags are not hashtags. How the two differ on a Short is the subject of [YouTube tags vs hashtags](/blog/youtube-tags-vs-hashtags). Do not paste a hashtag block into the tags box, or a tag list into the description, and call them the same thing.
 
@@ -52,7 +53,7 @@ The safe conclusion is short. Use tags that describe the video. Keep the list fo
 | Less relevant as you add more | YouTube's own warning about long lists | Stop when the next tag is only vaguely related |
 | More than 60 | Every hashtag on that video or playlist is ignored | Never approach the limit. A focused set is the point |
 | 3 to 5 as a start | Editorial habit, not a published quota | Test it, then cut anything inaccurate |
-| Directly related | Misleading tags may be removed | If the Short is not about the word, do not use the tag |
+| Directly related | Misleading tags may be removed | If the Short is not about the word, do not use the tag. |
 
 ## How do you research hashtags from relevant videos?
 
@@ -61,7 +62,7 @@ You research YouTube Shorts hashtags from videos that are actually about your su
 A workable pass looks like this:
 
 1. Find several public Shorts in the same niche and the same kind of promise, not one viral outlier from a different topic.
-2. Write down the hashtags that show up on more than one of them, and write down the words they use in the title even when those words are not hashtags.
+2. Write down the hashtags that show up on more than one of them. Also write down the words they use in the title, even when those words are not hashtags.
 3. Cross out any tag your footage does not earn. A repeated tag is not a cause of views. It is a candidate.
 4. Prefer the specific subject over the category. `#Gaming` plus a game you did not play is worse than no game tag.
 5. Re-read YouTube's unrelated-metadata line before you publish. A visible burst of posts under a tag is a timely observation. It is not a search-volume number and not a promise of distribution.
@@ -106,23 +107,23 @@ Use a tech set only when you name the product or the problem the footage actuall
 
 ### Comedy
 
-Use a comedy set only when the Short is the joke, the sketch, or the fail, not when you want a serious tutorial to travel further.
+Use a comedy set only when the Short is the joke, the sketch, or the fail. Do not use it when you want a serious tutorial to travel further.
 
-- Essentials: `#Shorts` `#ComedyShorts` `#Funny`
-- A narrower stack: `#SketchComedy` `#Jokes` `#LOL` `#Relatable`
-- Prank focus: `#Pranks` `#Humor` `#ShortsFeed`
+- Essentials: `#Shorts` `#ComedyShorts` `#Funny`.
+- A narrower stack: `#SketchComedy` `#Jokes` `#LOL` `#Relatable`.
+- Prank focus: `#Pranks` `#Humor` `#ShortsFeed`.
 
 `#Pranks` on a video that is not a prank is unrelated metadata. `#Relatable` is vague enough that it rarely distinguishes your Short from the rest of the platform. Prefer the situation the joke is about, in words a viewer would search.
 
-These four groups are not the only niches that need tags. They are the starter vocabulary. A cooking Short, a finance explainer, or a travel recap needs its own specific tag, built the same way: one accurate category, one accurate subject, and nothing you cannot point to in the frame.
+These four groups are not the only niches that need tags. They are the starter vocabulary. A cooking Short, a finance explainer, or a travel recap needs its own specific tag. Build it the same way. Use one accurate category, one accurate subject, and nothing you cannot point to in the frame.
 
 ## Why pair a broad topic tag with a specific one?
 
-A broad topic tag and a specific tag work together when each one is true. The broad tag describes the category. The specific tag describes the subject of this file. `#Gaming` with a named game, `#Skincare` with a named step, `#TechReview` with a named device: that pairing helps a person and a hashtag page understand what they will get. The pairing is not a boost YouTube has published, and it fails as soon as one of the two tags is decorative.
+A broad topic tag and a specific tag work together when each one is true. The broad tag describes the category. The specific tag describes the subject of this file. `#Gaming` with a named game, `#Skincare` with a named step, and `#TechReview` with a named device can work together. That pairing helps a person and a hashtag page understand what they will get. The pairing is not a boost YouTube has published, and it fails as soon as one of the two tags is decorative.
 
 Inspect the specific tag on recent videos before you trust it. A tag can be busy and still be the wrong room. If the latest videos under it are clips, and you are publishing a tutorial, you are about to file the tutorial in the wrong drawer. Choose the tag the footage matches, even if a neighboring tag looks louder.
 
-Do not add a second broad tag to "cover more ground." `#Technology` and `#Innovation` and `#FutureTech` and `#TechTrends` on one gadget tip are four ways of saying the category and zero ways of saying the gadget. YouTube's warning is that more tags become less relevant. The specific noun is the one to keep.
+Do not add a second broad tag to cover more ground. `#Technology` and `#Innovation` and `#FutureTech` and `#TechTrends` on one gadget tip are four ways of saying the category. They are zero ways of saying the gadget. YouTube's warning is that more tags become less relevant. The specific noun is the one to keep.
 
 ## How do hashtags fit the rest of the package?
 
@@ -145,10 +146,10 @@ Check every hashtag against the footage, the count, and the title before you pub
 - Broad or unrelated tags that only add noise are gone, including format tags you do not need.
 - The title is clear with the hashtags removed.
 - You compared more than one relevant public Short before you locked the topic tags.
-- The count is far below YouTube's limit of 60, so a later edit cannot accidentally trip "ignore every hashtag."
+- The count is far below YouTube's limit of 60. A later edit must not accidentally trip the rule that ignores every hashtag.
 - There are no spaces inside a tag, and you did not paste a repetitive keyword sentence into the description.
 - The title, the on-screen text, and the tags name the same subject.
 
 If a tag fails one line, delete the tag. Do not negotiate with it because it was on a video that got views. Views are not evidence that the tag caused them, and an unrelated tag is a policy problem even when the view count is large.
 
-Pick the few tags the footage earns, put them where the placement page says, and spend the rest of the upload on the opening and the title. [Get started]({{GET_STARTED_URL}}) with a Deep Search on the subject of the Short you are tagging, and keep only the topic words your own video can defend.
+Pick the few tags the footage earns. Put them where the placement page says. Spend the rest of the upload on the opening and the title. Run a Deep Search on the subject of the Short you are tagging. [Get started]({{GET_STARTED_URL}}) there, and keep only the topic words your own video can defend.
