@@ -29,6 +29,9 @@ const nextConfig: NextConfig = {
   // Self-contained server (`.next/standalone/server.js`) for the production container, where it runs
   // on 127.0.0.1:3000 behind nginx (see the repo-root Dockerfile and nginx.conf).
   output: "standalone",
+  // Dev treats 127.0.0.1 as a different host from localhost and refuses the client script.
+  // The article then paints from the server and the cover never receives hover.
+  allowedDevOrigins: ["127.0.0.1"],
   // `pnpm dev` / `pnpm build` always run with cwd = this folder (`site/`). Pinning the tracing root here
   // keeps the standalone output flat (`server.js` at the top) and stops Next from climbing to the repo
   // root, which has its own package-lock.json for the legacy blog build.

@@ -98,7 +98,7 @@ Keep vidIQ if both of these are true. You publish long-form, or you care about Y
 
 Look elsewhere if you are primarily a Shorts, Reels, or TikTok publisher. Search keywords still matter when a Short is found through search, and Studio will show you those terms. They are a poor description of why a feed viewer stays or swipes. An overlay optimized for tags will keep recommending tags. That can be a distraction if the video's problem is the first frame.
 
-This page does not quote a price, a credit allotment, or a plan name. Those change, and a stale number is worse than no number. Read the current offer on the vendor's site the day you decide, and compare it with the job in the table above. If the paid features you would use are the ones Studio already shows you, do not pay.
+This page does not quote a price, a credit allotment, or a plan name. Those change, and a stale number is worse than no number. The dated public US prices live on [vidIQ pricing](/blog/vidiq-pricing). Read that page, then confirm the current offer on the vendor's site the day you decide, and compare it with the job in the table above. If the paid features you would use are the ones Studio already shows you, do not pay.
 
 ## A decoupled stack you can actually run
 

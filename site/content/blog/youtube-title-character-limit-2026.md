@@ -4,7 +4,7 @@ slug: "youtube-title-character-limit-2026"
 excerpt: "A YouTube title can be 100 characters. Write most titles in the 45 to 70 range and put the promise in the first 40 so a short preview still makes sense."
 seoTitle: "YouTube Title Character Limit for 2026"
 date: "2026-08-10"
-updated: "2026-11-06"
+updated: "2026-11-07"
 category: "Research"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -99,6 +99,19 @@ A Shorts title near 30 characters is a legitimate length when the visual is doin
 Front-load the words that identify the video. Platform words such as YouTube Shorts, Instagram Reels, or TikTok belong early when the viewer might be choosing among platforms. Topic words such as hashtags, thumbnails, analytics, or competitor analysis belong early because they are the search. Outcome words, such as a clearer cover or a faster check, belong as soon as the topic is named. Year, niche, and a secondary angle wait. A title that starts with "2026" spends the opening on a number every competing video can also use.
 
 The cover has to be able to say the same thing in a small image. [YouTube Shorts thumbnail best practices](/blog/youtube-shorts-thumbnail-best-practices-2026) is the visual half of this decision. A 70-character title cannot rescue a cover that shows an unrelated reaction. A perfect cover cannot rescue a title whose first 40 characters are throat-clearing.
+
+## YouTube Shorts title best practices
+
+A YouTube Shorts title works when it names one concrete idea in the first words and stays well under the 100-character cap. These are the same rules as the length section above, applied to a line that is scanned on a phone next to a vertical cover.
+
+- Lead with the topic, not with "I" or "you need to."
+- Put a finished promise inside the first 40 characters.
+- Stay nearer 30 characters when the cover already shows the subject. Move toward 45 to 70 only when a year or a comparison is required for the line to be true.
+- Match the spoken hook. If the first line says "captions," the title should not say "subtitles" unless you mean a different thing.
+- Leave hashtags out of the title when they push the promise past the opening. The description is the place for them.
+- Do not spend the spare characters under 100 on a second copy of the keyword, a channel name, or an episode number.
+
+The character counts and the before-and-after lines are in the sections around this one. The 100-character limit does not change for a Short.
 
 ## How do you check a title before you upload?
 

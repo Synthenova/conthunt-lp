@@ -1114,6 +1114,23 @@
     "dominant": "#EBDDD1",
     "text_tone": "ink"
   },
+  "vidiq-pricing": {
+    "plate1600": "/blog/plates/vidiq-pricing-1600.webp",
+    "plate800": "/blog/plates/vidiq-pricing-800.webp",
+    "mood": "dusk",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ vidiq prices --public --us --checked 2026-10-26",
+        "Free: $0",
+        "Boost: $19 a month, or $199 a year",
+        "Max: $49 a month, or $468 a year",
+        "status: confirm the checkout before you pay"
+      ]
+    },
+    "dominant": "#C2B4C1",
+    "text_tone": "ink"
+  },
   "what-is-content-intelligence": {
     "plate1600": "/blog/plates/what-is-content-intelligence-1600.webp",
     "plate800": "/blog/plates/what-is-content-intelligence-800.webp",
