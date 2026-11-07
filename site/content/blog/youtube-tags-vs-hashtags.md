@@ -1,7 +1,7 @@
 ---
-title: "YouTube Tags vs Hashtags: What to Use on Shorts"
+title: "YouTube Tags vs Hashtags: Tags Catch Misspellings"
 slug: "youtube-tags-vs-hashtags"
-excerpt: "YouTube tags are hidden keywords for misspellings. Hashtags are clickable labels in the title or description. Write the title, then a few hashtags."
+excerpt: "YouTube tags vs hashtags: tags are hidden keywords for misspellings. Hashtags are clickable labels in the title or description. Write the title first."
 date: "2026-08-25"
 updated: "2026-11-07"
 category: "Research"
@@ -20,7 +20,7 @@ cover:
     status: "Hashtags kept out of the tags box"
 ---
 
-YouTube tags and YouTube hashtags are different fields that both get called keywords. Written by the ContHunt team. A hashtag is a word or phrase with a # in the title or the description. YouTube's hashtag help says hashtags connect a video with other videos and playlists that share the label. Viewers can open a results page from the label. A tag is a keyword in the separate Tags box in YouTube Studio. Viewers do not see that box, and YouTube's tag help says the title, thumbnail, and description matter more for discovery. Tags help mainly when people misspell the topic. Otherwise they play a minimal role. For a Short, write a title a person can read. Add a few hashtags that name the video. Use the tags field only for real synonyms and misspellings.
+YouTube tags vs hashtags is a field split, not two names for one box. Written by the ContHunt team. Tags catch misspellings. Hashtags are labels people can click. A hashtag is a word or phrase with a # in the title or the description. YouTube's hashtag help says hashtags connect a video with other videos and playlists that share the label. Viewers can open a results page from the label. A tag is a keyword in the separate Tags box in YouTube Studio. Viewers do not see that box, and YouTube's tag help says the title, thumbnail, and description matter more for discovery. Tags help mainly when people misspell the topic. Otherwise they play a minimal role. For a Short, write a title a person can read. Add a few hashtags that name the video. Use the tags field only for real synonyms and misspellings.
 
 ## Are YouTube tags and hashtags the same?
 

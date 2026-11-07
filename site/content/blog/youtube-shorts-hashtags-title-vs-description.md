@@ -1,8 +1,8 @@
 ---
-title: "Put YouTube Shorts Hashtags in the Description, Not the Title"
-seoTitle: "Shorts Hashtags: Description, Not the Title"
+title: "YouTube Shorts Hashtags: Description, Not the Title"
+seoTitle: "YouTube Shorts Hashtags: Description, Not Title"
 slug: youtube-shorts-hashtags-title-vs-description
-excerpt: "Put YouTube Shorts hashtags in the description, not the title. YouTube may show up to three description tags by the title, and a stuffed title still costs the click."
+excerpt: "YouTube Shorts hashtags go in the description, not the title. YouTube may show up to three description tags by the title. A stuffed title still costs the click."
 date: "2026-08-25"
 updated: "2026-11-07"
 category: Research
@@ -23,7 +23,7 @@ cover:
     badge: "Not a live test"
 ---
 
-Put YouTube Shorts hashtags in the description first, and keep the title as a sentence a person can read. Written by the ContHunt team. YouTube lets creators add hashtags to the title or the description, and both link to a results page. Out of the description hashtags, up to three that YouTube considers most engaging can appear by the title. Extra tags can still sit in the description. They are not all shown. YouTube does not say a title hashtag ranks higher. A stuffed title still costs the click, because the promise is harder to read. If a video or playlist has more than 60 hashtags, YouTube ignores every hashtag on that content. This page decides the slot, not which tags to use.
+YouTube Shorts hashtags belong in the description, not the title. Written by the ContHunt team. Keep the title as a sentence a person can read. YouTube lets creators add hashtags to the title or the description, and both link to a results page. Out of the description hashtags, up to three that YouTube considers most engaging can appear by the title. Extra tags can still sit in the description. They are not all shown. YouTube does not say a title hashtag ranks higher. A stuffed title still costs the click, because the promise is harder to read. How to write that promise is in [YouTube Shorts best practices](/blog/youtube-shorts-best-practices). If a video or playlist has more than 60 hashtags, YouTube ignores every hashtag on that content. This page decides the slot, not which tags to use. A [15 September 2026 public search sample](/blog/youtube-shorts-public-search-benchmark-2026) collected 74 unique Shorts and stored their titles. It did not test title hashtags against description hashtags.
 
 ## What does YouTube document about hashtag placement?
 

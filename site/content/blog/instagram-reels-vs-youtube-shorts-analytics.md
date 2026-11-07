@@ -1,8 +1,7 @@
 ---
-title: "Instagram Reels vs. YouTube Shorts Analytics: The 2026 Comparison"
+title: "Instagram Reels vs YouTube Shorts: Views Differ"
 slug: "instagram-reels-vs-youtube-shorts-analytics"
-excerpt: "YouTube Studio shows whether a Short held viewers. Instagram Insights shows reach, saves, and shares. Do not compare raw Reels views with raw Shorts views."
-seoTitle: "Reels vs YouTube Shorts Analytics"
+excerpt: "Instagram Reels vs YouTube Shorts views are different counts. Studio shows if a Short held viewers. Insights shows reach, saves, and shares."
 date: "2026-02-18"
 updated: "2026-11-07"
 category: "Research"
@@ -23,7 +22,7 @@ cover:
       - "next: bench each post against your own recent posts"
 ---
 
-Instagram Reels analytics and YouTube Shorts analytics do not tell the same story, even when the file is the same. YouTube Studio is the stronger place to see whether a Short stopped the swipe and held people past the first seconds. Instagram Insights is the stronger place to see whether a Reel reached accounts, including non-followers, and whether those people saved, shared, or followed. A Reels view total and a Shorts view total are different measurements, so a larger number is not a win. Read each post against your other posts on that same app. YouTube documents Shorts in [Understand your YouTube content performance](https://support.google.com/youtube/answer/12220281) and [Content tab analytics tips](https://support.google.com/youtube/answer/12942217). Instagram documents Reels in [View insights on your Instagram reels](https://help.instagram.com/2058621927791506).
+Instagram Reels vs YouTube Shorts views are different measurements, so a larger number is not a win. Written by the ContHunt team. YouTube Studio is the stronger place to see whether a Short stopped the swipe and held people past the first seconds. Instagram Insights is the stronger place to see whether a Reel reached accounts, including non-followers, and whether those people saved, shared, or followed. Read each post against your other posts on that same app. YouTube documents Shorts in [Understand your YouTube content performance](https://support.google.com/youtube/answer/12220281) and [Content tab analytics tips](https://support.google.com/youtube/answer/12942217). Instagram documents Reels in [View insights on your Instagram reels](https://help.instagram.com/2058621927791506).
 
 ## Why Reels views and Shorts views are not the same number
 

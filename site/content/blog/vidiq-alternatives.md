@@ -130,9 +130,9 @@ A practical filter from channel operations: if you would not notice a feature di
 
 ## What no alternative on this list can do
 
-No tool in this comparison can force YouTube to recommend a Short that people swipe away from. None of them can make an unrelated tag relevant. None of them can show another channel's private retention, revenue, or subscriber quality without authorized access. None of them can repair a title that promises a different video from the one you uploaded.
+No tool in this comparison can force YouTube to recommend a Short that people swipe away from. None of them can make an unrelated tag relevant. The field difference is [YouTube tags vs hashtags](/blog/youtube-tags-vs-hashtags). The short-list rule is [best hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide). None of them can show another channel's private retention, revenue, or subscriber quality without authorized access. None of them can repair a title that promises a different video from the one you uploaded.
 
-If the problem is packaging on YouTube search, fix the title, thumbnail, and description, then read impressions and click-through in Studio. If the problem is "I do not know which topics are winning in this niche," collect public examples and then test one. If the problem is "I want a score on every upload," an overlay will sell you a heuristic. Accept that the score is a heuristic before you rearrange the channel around it.
+If the problem is packaging on YouTube search, fix the title, thumbnail, and description, then read impressions and click-through in Studio. Hashtags still belong in the description, as [YouTube Shorts hashtags: description, not the title](/blog/youtube-shorts-hashtags-title-vs-description) sets out. If the problem is "I do not know which topics are winning in this niche," collect public examples and then test one. If the problem is "I want a score on every upload," an overlay will sell you a heuristic. Accept that the score is a heuristic before you rearrange the channel around it.
 
 Shorts-specific packaging still has to obey the video you can actually make. [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) are the production constraints. A keyword tool does not waive them.
 

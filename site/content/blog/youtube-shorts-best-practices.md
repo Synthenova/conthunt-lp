@@ -1,8 +1,7 @@
 ---
-title: "YouTube Shorts Best Practices 2026: Hooks, Posting, Retention"
+title: "YouTube Shorts Best Practices: Hooks, Retention"
 slug: youtube-shorts-best-practices
-excerpt: "YouTube Shorts best practices in 2026 start with a clear first-second promise, tighter edits, and a weekly retention review before you add more uploads."
-seoTitle: "YouTube Shorts Best Practices for 2026"
+excerpt: "YouTube Shorts best practices start with the hook. State the promise in the first second, then review retention before you add more uploads."
 date: "2026-02-25"
 updated: "2026-11-07"
 category: Playbooks
@@ -22,7 +21,7 @@ cover:
     badge: "Example curve, not a measurement"
 ---
 
-YouTube Shorts best practices in 2026 are a weekly review of the opening, the edit, and the package, not a higher posting count. A YouTube Short is a vertical video built for fast discovery, and the version that improves is the one whose first one to two seconds states why a viewer should stay. Every cut after that has to earn its place. The title and the cover still matter in search, recommendations, and channel browsing, even when the first view comes from the Shorts feed. If a Short already earns impressions and the response is weak, start with the opening frame, the title promise, and audience fit before you change the posting time. Scale a format only after retention and rewatches repeat inside the niche you actually serve.
+YouTube Shorts best practices in 2026 are a weekly review of the opening, the edit, and the package, not a higher posting count. Written by the ContHunt team. A YouTube Short is a vertical video built for fast discovery, and the version that improves is the one whose first one to two seconds states why a viewer should stay. Every cut after that has to earn its place. The title and the cover still matter in search, recommendations, and channel browsing, even when the first view comes from the Shorts feed. If a Short already earns impressions and the response is weak, start with the opening frame, the title promise, and audience fit before you change the posting time. Scale a format only after retention and rewatches repeat inside the niche you actually serve.
 
 ## What is a YouTube Shorts best practice?
 
@@ -30,7 +29,7 @@ A YouTube Shorts best practice is a choice you can repeat on the next upload and
 
 YouTube's own [Enhance your Shorts](https://support.google.com/youtube/answer/16215842?hl=en-eu) help is about those tools: music from the in-app library, text, stickers, voiceover, trim, and visual guides that show where interface elements can cover the frame. The music and sounds in that library are free of charge for personal, non-commercial use unless you have the appropriate licences. Copyright-protected audio used outside YouTube's creation tools can draw a Content ID claim or a copyright removal. None of that replaces a clear opening. A filter on a vague first line is still a vague first line.
 
-Use the next topic from the [YouTube Shorts ideas hub](/blog/youtube-shorts-content-ideas) once the packaging rules below are in place. Use [YouTube Shorts analytics](/blog/youtube-shorts-analytics) when you are ready to read the result. For the current duration rules, use [how long a YouTube Short can be](/blog/how-long-can-youtube-shorts-be). This page stays on the operating check.
+Use the next topic from the [YouTube Shorts ideas hub](/blog/youtube-shorts-content-ideas) once the packaging rules below are in place. The same promise test on Instagram is [15 Reels ideas](/blog/instagram-reels-content-ideas). Use [YouTube Shorts analytics](/blog/youtube-shorts-analytics) when you are ready to read the result. If that file is also a Reel, [do not compare the view totals](/blog/instagram-reels-vs-youtube-shorts-analytics). For the current duration rules, use [how long a YouTube Short can be](/blog/how-long-can-youtube-shorts-be). This page stays on the operating check.
 
 ## How should a YouTube Short open?
 
@@ -61,7 +60,7 @@ Search and the Shorts feed share discovery, so a YouTube Short is not packaged f
 
 For stronger discovery, use a title that states the help, keep the topic specific enough to match a real use case, write a description that supports the topic instead of repeating buzzwords, and connect the Short to related videos when the connection is real. Align the title, the caption, and the on-screen text so a person and the platform can tell who the Short is for. A title about spreadsheets and on-screen text about a game is not a broader audience. It is a mismatch.
 
-Hashtags are supporting metadata after that alignment exists. They do not repair a vague title. Put them on only when they describe the video you uploaded.
+Hashtags are supporting metadata after that alignment exists. They do not repair a vague title. Put them in the description, which [YouTube Shorts hashtags: description, not the title](/blog/youtube-shorts-hashtags-title-vs-description) decides. Keep the set to tags that match the video, which [best hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide) covers.
 
 ## Do titles and covers still matter for YouTube Shorts?
 
