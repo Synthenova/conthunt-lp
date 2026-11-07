@@ -527,7 +527,7 @@ Read saved data with query_saved_data. Start from these views; fall back to the 
 | Per-search pool, selected and completed-answer coverage across a base operation and follow-up | supported per-search coverage recipe with two operations and owning chat |
 | Answers with evidence and labels | research_answers_v by operation and question |
 | Criterion predicates, statuses and match probabilities | research_matches_v by operation and criterion |
-| Example selection | LIMIT 25 sample of titles and views from cohort_v for one operation; answer text is a separate unjoined LIMIT 8 read of one question; about 100 distinct videos across every saved-data call; do not page the cohort |
+| Example selection | LIMIT 25 sample of titles and views from cohort_v for one operation; answer text is a separate unjoined LIMIT 8 read of one question; about 100 distinct videos across every saved-data call; do not page the cohort. For lineups, the lineup candidates read by chat: at most 40 distinct videos from cohort_v with completed video_evidence_v |
 | Tracked account or video history | tracking_history_v |
 | Something else | the base tables listed in the reference |
 
