@@ -53,7 +53,7 @@ async function get(path, init = {}) {
   return res;
 }
 
-async function check(label, path, { status = 200, type, includes, excludes, minBytes, notServerError = false, init } = {}) {
+async function check(label, path, { status = 200, type, includes, excludes, minBytes, headerIncludes, notServerError = false, init } = {}) {
   try {
     const res = await get(path, init);
     const body = includes || excludes || minBytes ? await res.text() : await res.arrayBuffer().then(() => "");
@@ -64,6 +64,13 @@ async function check(label, path, { status = 200, type, includes, excludes, minB
     if (includes && !body.includes(includes)) problems.push(`missing ${JSON.stringify(includes)}`);
     if (excludes && body.includes(excludes)) problems.push(`unexpected ${JSON.stringify(excludes)}`);
     if (minBytes && body.length < minBytes) problems.push(`only ${body.length} bytes`);
+    if (headerIncludes) {
+      const [name, needle] = headerIncludes;
+      const value = res.headers.get(name) ?? "";
+      if (!value.toLowerCase().includes(String(needle).toLowerCase())) {
+        problems.push(`header ${name} "${value}" missing ${JSON.stringify(needle)}`);
+      }
+    }
     record(problems.length === 0, `${label} ${path}`, problems.join(", "));
     return res;
   } catch (error) {
@@ -105,9 +112,10 @@ await check("page", "/resources", { type: "text/html" });
 await check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
 const posts = sitemapPaths.filter((p) => /^\/blog\/[a-z0-9-]+$/.test(p));
 const resourcePosts = sitemapPaths.filter((p) => /^\/resources\/[a-z0-9-]+$/.test(p));
-record(posts.length === 45, "sitemap lists 45 /blog articles", `found ${posts.length}`);
+record(posts.length === 46, "sitemap lists 46 /blog articles", `found ${posts.length}`);
 record(resourcePosts.length === 9, "sitemap lists 9 /resources articles", `found ${resourcePosts.length}`);
 record(!sitemapSet.has("/blog"), "sitemap omits the /blog index");
+record(!sitemapPaths.some((p) => p.includes(".md")), "sitemap omits markdown URLs");
 for (const post of posts.slice(0, 3)) {
   await check("blog article", post, { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
 }
@@ -178,7 +186,41 @@ await check("skill file", "/.well-known/skills/conthunt/SKILL.md", { type: "text
 console.log("\n# feeds and sitemap");
 await check("rss", "/rss.xml", { type: "xml", includes: "<rss" });
 await check("robots", "/robots.txt", { type: "text/plain", includes: "Sitemap:" });
-await check("llms", "/llms.txt", { type: "text/plain", minBytes: 100 });
+await check("robots signal", "/robots.txt", { type: "text/plain", includes: "Content-Signal: search=yes, ai-input=yes, ai-train=yes" });
+await check("robots preview", "/robots.txt", { type: "text/plain", includes: "Disallow: /preview/" });
+await check("robots internal", "/robots.txt", { type: "text/plain", includes: "Disallow: /llm-md" });
+await check("robots no allow-all", "/robots.txt", { type: "text/plain", excludes: "Allow: /" });
+await check("llms", "/llms.txt", { type: "text/markdown", minBytes: 100, includes: "/pricing.md" });
+await check("llms-full", "/llms-full.txt", { type: "text/markdown", minBytes: 5000, includes: "Canonical:" });
+await check("home markdown", "/index.md", { type: "text/markdown", includes: "Canonical:" });
+await check("pricing markdown", "/pricing.md", { type: "text/markdown", includes: "Pro", headerIncludes: ["link", "canonical"] });
+await check("article markdown", `${firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works")}.md`, {
+  type: "text/markdown",
+  includes: "Canonical:",
+});
+await check("accept markdown", "/pricing", {
+  type: "text/markdown",
+  includes: "Canonical:",
+  init: { headers: { Accept: "text/markdown" } },
+});
+await check("accept html", "/pricing", {
+  type: "text/html",
+  headerIncludes: ["link", "text/markdown"],
+  init: { headers: { Accept: "text/html" } },
+});
+await check("browser accept stays html", "/pricing", {
+  type: "text/html",
+  init: { headers: { Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" } },
+});
+await check("json accept", "/pricing", { status: 406, init: { headers: { Accept: "application/json" } } });
+{
+  // Next itself may answer 307 to add ?_rsc. The failure is a 406 from our Accept check.
+  const res = await get("/pricing", { headers: { Accept: "text/x-component", RSC: "1" } });
+  await res.arrayBuffer();
+  record(res.status !== 406 && res.status < 500, "rsc accept is not refused", `status ${res.status}`);
+}
+await check("llm-md hidden", "/llm-md", { status: 404 });
+await check("llm-md query hidden", "/llm-md?path=/pricing", { status: 404 });
 await check("sitemap", "/sitemap.xml", { type: "xml", includes: "<urlset" });
 if (sitemapPaths.length === 0) record(false, "sitemap lists URLs");
 else {

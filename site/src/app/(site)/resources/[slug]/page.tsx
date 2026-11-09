@@ -4,6 +4,7 @@ import { ResourceArticle } from "@/components/pages/resources";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 import { getPost, getResourceSlugs } from "@/lib/blog/posts";
 import { postSeoTitle } from "@/lib/blog/seo";
+import { markdownAlternate } from "@/lib/seo/metadata";
 import { DESCRIPTION_MAX, SITE_NAME, clamp } from "@/lib/seo/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: url },
+    alternates: markdownAlternate(url),
     authors: [{ name: post.author }],
     openGraph: {
       type: "article",

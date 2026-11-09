@@ -18,7 +18,16 @@
  * supplies og:image and twitter:image); otherwise the shared banner is used.
  */
 import type { Metadata } from "next";
+import { markdownPath } from "@/lib/llm/paths";
 import { DEFAULT_OG_IMAGE, SITE_NAME, clamp, DESCRIPTION_MAX, fullTitle } from "./site";
+
+/** Canonical HTML URL plus the Markdown twin. `metadataBase` makes the href absolute. */
+export function markdownAlternate(path: string): NonNullable<Metadata["alternates"]> {
+  return {
+    canonical: path,
+    types: { "text/markdown": markdownPath(path) },
+  };
+}
 
 export interface PageMetadataInput {
   /** Page title WITHOUT the brand suffix. The suffix is added when the result stays within 60 characters. */
@@ -37,7 +46,7 @@ export function pageMetadata({ title, description, path, image = true }: PageMet
   return {
     title: { absolute: seoTitle },
     description: desc,
-    alternates: { canonical: path },
+    alternates: markdownAlternate(path),
     openGraph: {
       type: "website",
       siteName: SITE_NAME,

@@ -16,8 +16,8 @@ import type { NextConfig } from "next";
  * - Two root files are cached on their own, shorter terms. `/og-default.jpg` is the share
  *   image: crawlers and social apps re-fetch it rarely, so a day fresh plus a week of
  *   background revalidation keeps previews fast, and a new image reaches visitors within
- *   a day (link unfurls elsewhere keep their own cache regardless). `/llms.txt` is editable
- *   copy for AI crawlers, so it stays fresh for an hour and revalidates for a day.
+ *   a day (link unfurls elsewhere keep their own cache regardless). `/llms.txt` and
+ *   `/llms-full.txt` are generated for agents, so they stay fresh for an hour and revalidate for a day.
  */
 const BACKEND_URL = (process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000").replace(/\/+$/, "");
 
@@ -46,6 +46,7 @@ const nextConfig: NextConfig = {
       ...["/media/:path*", "/brand/:path*", "/blog/plates/:path*"].map((source) => ({ source, headers: STATIC_ASSET_CACHE })),
       { source: "/og-default.jpg", headers: SHARE_IMAGE_CACHE },
       { source: "/llms.txt", headers: LLMS_TXT_CACHE },
+      { source: "/llms-full.txt", headers: LLMS_TXT_CACHE },
     ];
   },
   async rewrites() {

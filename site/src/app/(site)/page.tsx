@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { markdownAlternate } from "@/lib/seo/metadata";
 import { LazySection } from "@/components/layout/lazy-section";
 import { Rails } from "@/components/layout/rails";
 import { HomeJsonLd } from "@/components/seo/home-json-ld";
@@ -15,7 +16,7 @@ import TestimonialsSection from "@/components/sections/testimonials";
 import TrackingSection from "@/components/sections/tracking";
 
 /** The canonical lives here, not in the root layout, so the 404 page and other routes do not inherit "/". */
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = { alternates: markdownAlternate("/") };
 
 /**
  * Home — section order per docs/revamp/PLAN.md §3. The hero is full-bleed; every
