@@ -37,6 +37,15 @@ function rewriteMarkdown(request: NextRequest) {
   const url = request.nextUrl.clone();
   url.pathname = "/llm-md";
   url.search = "";
+  // nginx tells Next the public scheme is https, and the server is bound to 127.0.0.1.
+  // NextURL rewrites that address to localhost, so the rewrite no longer matches the
+  // internal base URL. Next then fetches https://localhost:3000, the plain HTTP server
+  // rejects the TLS handshake, and the page is a 500. Pin it back to 127.0.0.1 so the
+  // rewrite stays internal.
+  if (url.protocol === "https:" && url.hostname === "localhost") {
+    url.hostname = "127.0.0.1";
+    if (!url.port) url.port = process.env.PORT || "3000";
+  }
   const response = NextResponse.rewrite(url, { request: { headers } });
   response.headers.append("Vary", "Accept");
   return response;
