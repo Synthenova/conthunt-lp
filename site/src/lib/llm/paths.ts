@@ -8,6 +8,8 @@
 import { SITE_URL } from "../links.ts";
 
 export const MARKDOWN_REQUEST_HEADER = "x-conthunt-markdown";
+/** Original HTML path. The production rewrite is fetched as /llm-md, so the route cannot read it from the URL. */
+export const HTML_PATH_HEADER = "x-conthunt-html-path";
 
 const SLUG = "[a-z0-9]+(?:-[a-z0-9]+)*";
 const HTML_PATH = new RegExp(`^\\/(?:${SLUG})(?:\\/${SLUG})*$`);

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { acceptable, wantsMarkdown } from "@/lib/llm/accept";
-import { MARKDOWN_REQUEST_HEADER, htmlLinks, htmlPathFromMarkdown, isMarkdownDocument, normalizePath } from "@/lib/llm/paths";
+import { HTML_PATH_HEADER, MARKDOWN_REQUEST_HEADER, htmlLinks, htmlPathFromMarkdown, isMarkdownDocument, normalizePath } from "@/lib/llm/paths";
 import { CONTENT_SIGNAL } from "@/lib/llm/robots";
 
 /**
@@ -33,20 +33,19 @@ function isFlight(request: NextRequest): boolean {
 function rewriteMarkdown(request: NextRequest) {
   const headers = new Headers(request.headers);
   headers.set(MARKDOWN_REQUEST_HEADER, "1");
-  // The route sees the original URL, not this rewrite target, so the page path is read there.
+  const original = normalizePath(request.nextUrl.pathname);
+  const htmlPath = htmlPathFromMarkdown(original) ?? original;
+  headers.set(HTML_PATH_HEADER, htmlPath);
   const url = request.nextUrl.clone();
   url.pathname = "/llm-md";
   url.search = "";
-  // nginx tells Next the public scheme is https, and the server is bound to 127.0.0.1.
-  // NextURL rewrites that address to localhost, so the rewrite no longer matches the
-  // internal base URL. Next then fetches https://localhost:3000, the plain HTTP server
-  // rejects the TLS handshake, and the page is a 500. Pin it back to 127.0.0.1 so the
-  // rewrite stays internal.
-  if (url.protocol === "https:" && url.hostname === "localhost") {
-    url.hostname = "127.0.0.1";
-    if (!url.port) url.port = process.env.PORT || "3000";
-  }
-  const response = NextResponse.rewrite(url, { request: { headers } });
+  // Behind nginx the public scheme is https and Next is bound to 127.0.0.1. NextURL
+  // rewrites that address to localhost, so a same-app rewrite becomes a fetch of
+  // https://localhost:3000. The server is plain HTTP and the fetch 500s. Fetch it
+  // over HTTP instead. That fetch's URL is /llm-md, so the page path rides in the header.
+  const behindTls = url.protocol === "https:" && (url.hostname === "localhost" || url.hostname === "127.0.0.1");
+  const destination = behindTls ? new URL(`http://127.0.0.1:${process.env.PORT || "3000"}/llm-md`) : url;
+  const response = NextResponse.rewrite(destination, { request: { headers } });
   response.headers.append("Vary", "Accept");
   return response;
 }

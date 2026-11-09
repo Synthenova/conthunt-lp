@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { renderMarkdown } from "@/lib/llm/document";
-import { MARKDOWN_REQUEST_HEADER, htmlPathFromMarkdown, isMarkdownDocument, markdownLinks, normalizePath } from "@/lib/llm/paths";
+import { HTML_PATH_HEADER, MARKDOWN_REQUEST_HEADER, htmlPathFromMarkdown, isMarkdownDocument, markdownLinks, normalizePath } from "@/lib/llm/paths";
 import { CONTENT_SIGNAL, LLM_CACHE_CONTROL, MARKDOWN_MEDIA_TYPE } from "@/lib/llm/robots";
 
 export const runtime = "nodejs";
@@ -14,10 +14,12 @@ function plain(body: string, status: number) {
 
 /** Internal target for /.md and Accept: text/markdown. A direct hit without the proxy header is a 404. */
 export function GET(request: NextRequest) {
-  // A direct request never gets the proxy header. The rewritten request still carries the
-  // browser's URL: nextUrl is /pricing.md or /pricing, not /llm-md.
+  // A direct request never gets the proxy header. Behind TLS the rewrite is fetched as
+  // /llm-md, so the HTML path is the header. A local internal rewrite still has the
+  // browser URL on nextUrl.
   if (request.headers.get(MARKDOWN_REQUEST_HEADER) !== "1") return plain("Not found\n", 404);
-  const pathname = normalizePath(request.nextUrl.pathname);
+  const carried = request.headers.get(HTML_PATH_HEADER);
+  const pathname = normalizePath(carried && carried.startsWith("/") && !carried.includes("..") ? carried : request.nextUrl.pathname);
   const htmlPath = htmlPathFromMarkdown(pathname) ?? pathname;
   if (!isMarkdownDocument(htmlPath)) return plain("Not found\n", 404);
   const body = renderMarkdown(htmlPath);
