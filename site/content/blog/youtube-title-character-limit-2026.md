@@ -4,7 +4,7 @@ slug: "youtube-title-character-limit-2026"
 excerpt: "A YouTube title can be 100 characters. Write most titles in the 45 to 70 range and put the promise in the first 40 so a short preview still makes sense."
 seoTitle: "YouTube Title Character Limit for 2026"
 date: "2026-08-10"
-updated: "2026-11-07"
+updated: "2026-11-09"
 category: "Research"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -143,6 +143,10 @@ The first 40 characters of that line are `YouTube Shorts Hooks: 7 Fixes for Weak
 Apply the same check when you are looking at competitors. A title that keeps showing up on search is a public sentence you can read. It is not a measurement of that creator's click-through rate. Save the pattern, not a superstition about one exact length. "Names the object, then the payoff, under 70 characters" is a pattern. Hitting one magic character count is not.
 
 [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) is the wider packaging context once the line is the right length. Title length will not fix a hook that never states the promise the title just made. Read the title and the first spoken line together. If they could be about two different videos, one of them is wrong.
+
+## What is the YouTube tag character limit?
+
+The YouTube tag character limit is not the 100-character title limit on this page. Tags are a separate field. YouTube's help page on adding tags, checked on 9 November 2026, says tags are descriptive keywords, that the title, thumbnail, and description matter more for discovery, and that tags help mainly when the topic is commonly misspelled. That page does not publish a character cap. Do not spend the title's 100 characters repeating a tag.
 
 ## What should you stop doing with the extra characters?
 

@@ -3,7 +3,7 @@ title: "Best Hashtags for YouTube Shorts: Match the Video"
 slug: youtube-shorts-hashtags-guide
 excerpt: "Best hashtags for YouTube Shorts are a few that match the video. YouTube may show up to three from the description and ignores every hashtag past 60."
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-09"
 category: Research
 readingMinutes: 12
 author: "ContHunt Team"
@@ -21,7 +21,7 @@ cover:
       - { label: "Confirm the total is not over 60", status: "running" }
 ---
 
-The best hashtags for a YouTube Short are a few tags that accurately describe that video, not a block copied from a viral post. Written by the ContHunt team. Hook, caption, and retention are [YouTube Shorts best practices](/blog/youtube-shorts-best-practices), not a tag list. YouTube lets you add hashtags to the title or the description. They connect videos that share a topic and link to a results page. Out of the hashtags in the description, up to three that YouTube considers most engaging can appear by the title. YouTube does not publish an ideal count or promise that a tag will improve recommendations. Tags become less relevant as you add more, and if a video or playlist has more than 60 hashtags, every hashtag is ignored. A relevant tag cannot rescue a vague title, a misleading cover, or a weak opening.
+The best hashtags for YouTube Shorts are a few tags that accurately describe that video, not a block copied from a viral post. Written by the ContHunt team. Hook, caption, and retention on a Short are [YouTube Shorts best practices](/blog/youtube-shorts-best-practices). The same packaging across TikTok, Reels, and Shorts is [short-form video best practices](/blog/short-form-video-best-practices). Neither page is a tag list. YouTube lets you add hashtags to the title or the description. They connect videos that share a topic and link to a results page. Out of the hashtags in the description, up to three that YouTube considers most engaging can appear by the title. YouTube does not publish an ideal count or promise that a tag will improve recommendations. Tags become less relevant as you add more, and if a video or playlist has more than 60 hashtags, every hashtag is ignored. A relevant tag cannot rescue a vague title, a misleading cover, or a weak opening.
 
 ## What does YouTube say about hashtags on Shorts?
 

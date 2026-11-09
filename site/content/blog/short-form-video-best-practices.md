@@ -2,9 +2,9 @@
 title: "Short-Form Video Best Practices: Hooks, Captions, Hashtags"
 slug: "short-form-video-best-practices"
 excerpt: "A strong short-form video makes one promise, opens in the first second or two, uses a small hashtag set, and is judged on retention and saves."
-seoTitle: "Short-Form Hooks, Captions, Hashtags"
+seoTitle: "Short-Form Video Best Practices"
 date: "2026-08-10"
-updated: "2026-11-07"
+updated: "2026-11-09"
 category: "Playbooks"
 readingMinutes: 14
 author: "ContHunt Team"
