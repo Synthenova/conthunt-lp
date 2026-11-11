@@ -233,16 +233,15 @@ function HookTimeline({ data, active }: { data: HookTimelineData; active: boolea
       { x: 0, opacity: 1 },
       {
         x: width,
-        duration: 2.6,
+        duration: 2.8,
         ease: "none",
+        repeat: -1,
+        repeatDelay: 0.4,
         // `this` is the tween: the callback can fire during construction (immediate render)
         onUpdate(this: gsap.core.Tween) {
           const p = this.progress() * span;
           const idx = times.reduce((acc, t, i) => (p >= t - 0.02 ? i : acc), -1);
           setLit((prev) => (prev === idx ? prev : idx));
-        },
-        onComplete: () => {
-          gsap.to(head, { opacity: 0, duration: 0.3 });
         },
       },
     );
@@ -514,10 +513,12 @@ const BOARD_POSTERS = [
 
 function BoardGrid({ data }: { data: BoardGridData }) {
   return (
-    <div className="bc-glass bc-board">
+    <div className={data.loop ? "bc-glass bc-board loop" : "bc-glass bc-board"}>
       <div className="bc-board-head">
         <span className="bc-title">{data.board}</span>
-        <span className="bc-chip bc-chip-mono">{data.items.length} formats</span>
+        <span className="bc-chip bc-chip-mono">
+          {data.items.length} {data.unit ?? "formats"}
+        </span>
       </div>
       <div className="bc-board-grid">
         {data.items.map((item, i) => (
@@ -541,7 +542,7 @@ function AgentTrace({ data }: { data: AgentTraceData }) {
     <div className="bc-glass bc-trace">
       <div className="bc-trace-head">
         <div>
-          <span className="bc-chip bc-chip-ink">Deep Search</span>
+          <span className="bc-chip bc-chip-ink">{data.chip ?? "Deep Search"}</span>
           <span className="bc-label">
             {done} of {data.steps.length} steps
           </span>
@@ -658,7 +659,7 @@ function NicheChips({ data, active }: { data: NicheChipsData; active: boolean })
   return (
     <div className="bc-glass bc-niche">
       <div className="bc-niche-head">
-        <span className="bc-title">Weekly radar</span>
+        <span className="bc-title">{data.title ?? "Weekly radar"}</span>
         <span className="bc-chip bc-chip-mono">{data.window}</span>
       </div>
       <div className="bc-cloud">

@@ -1,4 +1,114 @@
 {
+  "how-to-score-a-ugc-video-you-do-not-own": {
+    "plate1600": "/blog/plates/how-to-score-a-ugc-video-you-do-not-own-1600.webp",
+    "plate800": "/blog/plates/how-to-score-a-ugc-video-you-do-not-own-800.webp",
+    "mood": "sea",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "title": "UGC score",
+      "window": "One video",
+      "active": "Proof in the first frame",
+      "chips": [
+        { "label": "Proof in the first frame", "state": "Peaking" },
+        { "label": "Disclosure on the post", "state": "Rising" },
+        { "label": "Ask spoken out loud", "state": "Emerging" },
+        { "label": "Code only in the caption", "state": "Fading" }
+      ]
+    },
+    "dominant": "#B9CCC8",
+    "text_tone": "ink"
+  },
+  "how-to-tell-a-product-question-in-tiktok-comments-from-a-joke": {
+    "plate1600": "/blog/plates/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke-1600.webp",
+    "plate800": "/blog/plates/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke-800.webp",
+    "mood": "dawn",
+    "fragment": "agent-trace",
+    "fragment_data": {
+      "chip": "Comment read",
+      "steps": [
+        { "label": "Copy the top comments, in their words", "status": "done" },
+        { "label": "Find a noun someone could buy", "status": "done" },
+        { "label": "Mark the tags and the punchline", "status": "done" },
+        { "label": "Check that noun against the frame", "status": "done" },
+        { "label": "Keep the question, or leave it blank", "status": "running" }
+      ]
+    },
+    "dominant": "#E4C9B6",
+    "text_tone": "ink"
+  },
+  "when-a-public-tiktok-caption-disagrees-with-the-footage": {
+    "plate1600": "/blog/plates/when-a-public-tiktok-caption-disagrees-with-the-footage-1600.webp",
+    "plate800": "/blog/plates/when-a-public-tiktok-caption-disagrees-with-the-footage-800.webp",
+    "mood": "dusk",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "0:00 - 0:06",
+      "hook_family": "Words split",
+      "segments": [
+        { "t": "0.0s", "label": "Frame: the patch test" },
+        { "t": "1.5s", "label": "Speech: it stung" },
+        { "t": "3.0s", "label": "On-screen: this morning" },
+        { "t": "4.5s", "label": "Caption: no sting" }
+      ],
+      "score": 34
+    },
+    "dominant": "#CDAFB6",
+    "text_tone": "ink"
+  },
+  "how-many-public-tiktoks-to-watch-before-a-brief": {
+    "plate1600": "/blog/plates/how-many-public-tiktoks-to-watch-before-a-brief-1600.webp",
+    "plate800": "/blog/plates/how-many-public-tiktoks-to-watch-before-a-brief-800.webp",
+    "mood": "mist",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "@public.pile",
+      "metric": "Videos scored, one job sentence",
+      "points": [8, 14, 21, 27, 32, 32, 32],
+      "labels": ["P1", "P2", "P3", "P4", "P5", "P6", "P7"],
+      "delta": "Held at 32",
+      "badge": "Stop"
+    },
+    "dominant": "#DEDAD6",
+    "text_tone": "ink"
+  },
+  "how-to-compare-two-tiktoks-without-analytics": {
+    "plate1600": "/blog/plates/how-to-compare-two-tiktoks-without-analytics-1600.webp",
+    "plate800": "/blog/plates/how-to-compare-two-tiktoks-without-analytics-800.webp",
+    "mood": "clay",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "Two public TikToks",
+      "unit": "checks",
+      "loop": true,
+      "items": [
+        { "label": "Proof in the first frame", "score": 94 },
+        { "label": "Job in three seconds", "score": 91 },
+        { "label": "Words match the frame", "score": 88 },
+        { "label": "Comments name a product", "score": 84 },
+        { "label": "Proof after a greeting", "score": 62 },
+        { "label": "Opens on the closet", "score": 41 }
+      ]
+    },
+    "dominant": "#E1C0A9",
+    "text_tone": "ink"
+  },
+  "how-to-score-a-tiktok-you-do-not-own": {
+    "plate1600": "/blog/plates/how-to-score-a-tiktok-you-do-not-own-1600.webp",
+    "plate800": "/blog/plates/how-to-score-a-tiktok-you-do-not-own-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ score a public tiktok  no private analytics",
+        "> opening  the job is in the first three seconds",
+        "> proof  the camera shows it  words match",
+        "> comments  they ask the next question",
+        "  8 of 10  keep the opening"
+      ]
+    },
+    "dominant": "#F1EBE4",
+    "text_tone": "ink"
+  },
   "how-deep-search-works": {
     "plate1600": "/blog/plates/how-deep-search-works-1600.webp",
     "plate800": "/blog/plates/how-deep-search-works-800.webp",

@@ -28,8 +28,9 @@
  *   style      Extra inline style, e.g. { aspectRatio: "auto", borderRadius: 32 } for a wide banner.
  *   children   Decorative overlay (the cover is aria-hidden, so never put links or text in it).
  *
- * Loops (spinner, caret) only run while the cover is in view (`data-inview`), and
- * every animation stops under prefers-reduced-motion.
+ * Fragment motion plays while the cover is in view or hovered (`data-play`).
+ * Plate zoom and the fragment lift stay on real hover (`data-hover`).
+ * Loops stop under prefers-reduced-motion.
  */
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
@@ -74,6 +75,7 @@ export function BlogCover({
   const fragRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState(false);
   const [inView, setInView] = useState(false);
+  const playing = hover || inView;
 
   // Hover (pointer or keyboard focus) on the host card, in-view tracking.
   useEffect(() => {
@@ -157,6 +159,7 @@ export function BlogCover({
       className={cn("bc", className)}
       style={{ "--bc-bg": cover.dominant, ...(stageSize ? { "--bc-stage-size": stageSize } : null), ...style } as CSSProperties}
       data-hover={hover}
+      data-play={playing ? "true" : "false"}
       data-inview={inView}
       data-anchor={anchor}
       data-fragment={fragment?.kind ?? "none"}
@@ -183,7 +186,7 @@ export function BlogCover({
           <div className="bc-anchor">
             <div ref={fragRef} className="bc-parallax">
               <div className="bc-lift">
-                <Fragment spec={fragment} active={hover} />
+                <Fragment spec={fragment} active={playing} />
               </div>
             </div>
           </div>

@@ -41,9 +41,15 @@ export interface TrendChartData {
 export interface BoardGridData {
   board: string;
   items: { label: string; score: number }[];
+  /** Chip after the count. Defaults to "formats", which the field-guide cover uses. */
+  unit?: string;
+  /** Keep the tile sweep running. Default plays once, as on the field-guide cover. */
+  loop?: boolean;
 }
 export interface AgentTraceData {
   steps: { label: string; status: "done" | "running" }[];
+  /** Header chip. Defaults to "Deep Search". */
+  chip?: string;
 }
 export interface TrackingChartData {
   account: string;
@@ -60,6 +66,8 @@ export interface NicheChipsData {
   chips: { label: string; state: string }[];
   active: string;
   window: string;
+  /** Header. Defaults to "Weekly radar". */
+  title?: string;
 }
 
 export type FragmentSpec =

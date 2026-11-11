@@ -6,8 +6,8 @@
  * as one piece from a 275px gallery card to a full-width article hero.
  * Design width: 40em x 25em (1em = 16px when the cover is 640px wide).
  *
- * Hover state is driven by `data-hover` on `.bc` (set by the component from its
- * host card, pointer or keyboard focus), and in-view looping by `data-inview`.
+ * Hover zoom is `data-hover`. Fragment motion is `data-play` (in view or hovered),
+ * so an article hero draws, types, and scans when it is on screen.
  * Every animation is transform / opacity / clip-path / stroke-dashoffset only.
  */
 
@@ -349,7 +349,7 @@
   vertical-align: top;
 }
 
-.bc[data-hover="true"] .bc-search-q > span {
+.bc[data-play="true"] .bc-search-q > span {
   animation: bc-wipe 1s steps(34, end) both;
 }
 
@@ -396,7 +396,7 @@
   transform-origin: left center;
 }
 
-.bc[data-hover="true"] .bc-progress > i {
+.bc[data-play="true"] .bc-progress > i {
   animation: bc-fill 1.1s var(--bc-ease) both;
 }
 
@@ -425,7 +425,7 @@
   font-size: max(0.58em, var(--bc-floor));
 }
 
-.bc[data-hover="true"] .bc-vid {
+.bc[data-play="true"] .bc-vid {
   animation: bc-rise 0.5s var(--bc-ease) both;
   animation-delay: calc(var(--i, 0) * 0.12s + 0.25s);
 }
@@ -560,7 +560,7 @@
   background: var(--ink);
 }
 
-.bc[data-hover="true"] .bc-pips i.on {
+.bc[data-play="true"] .bc-pips i.on {
   animation: bc-fill 0.5s var(--bc-ease) both;
   transform-origin: left center;
   animation-delay: calc(var(--i, 0) * 0.12s);
@@ -572,8 +572,14 @@
   stroke-dashoffset: 0;
 }
 
-.bc[data-hover="true"] .bc-draw {
-  animation: bc-draw 1s var(--bc-ease) both;
+@media (prefers-reduced-motion: no-preference) {
+  .bc:not([data-play="true"]) .bc-draw {
+    stroke-dashoffset: 1;
+  }
+}
+
+.bc[data-play="true"] .bc-draw {
+  animation: bc-draw 1.15s var(--bc-ease) both;
 }
 
 /* ---------------------------------------------------- hook-timeline */
@@ -889,7 +895,7 @@
   background: var(--breakout);
 }
 
-.bc[data-hover="true"] .bc-bars i {
+.bc[data-play="true"] .bc-bars i {
   animation: bc-rise 0.5s var(--bc-ease) both;
   animation-delay: calc(var(--i, 0) * 0.07s);
 }
@@ -928,7 +934,7 @@
   transition: scale 0.6s var(--bc-ease);
 }
 
-.bc[data-hover="true"] .bc-tile img {
+.bc[data-play="true"] .bc-tile img {
   scale: 1.06;
 }
 
@@ -940,9 +946,13 @@
   pointer-events: none;
 }
 
-.bc[data-hover="true"] .bc-tile::after {
+.bc[data-play="true"] .bc-tile::after {
   animation: bc-scan 2.4s var(--bc-ease) both;
   animation-delay: calc(var(--i, 0) * 0.16s);
+}
+
+.bc[data-play="true"] .bc-board.loop .bc-tile::after {
+  animation-iteration-count: infinite;
 }
 
 .bc-tile-score {
@@ -1064,12 +1074,12 @@
   color: var(--accent);
 }
 
-.bc[data-hover="true"] .bc-step:not(.running) .bc-step-ico {
+.bc[data-play="true"] .bc-step:not(.running) .bc-step-ico {
   animation: bc-pop 0.45s var(--bc-ease) both;
   animation-delay: calc(var(--i, 0) * 0.14s);
 }
 
-.bc[data-hover="true"] .bc-step {
+.bc[data-play="true"] .bc-step {
   animation: bc-rise 0.4s var(--bc-ease) both;
   animation-delay: calc(var(--i, 0) * 0.14s);
 }
@@ -1160,7 +1170,7 @@
   color: rgba(15, 15, 15, 0.5);
 }
 
-.bc[data-hover="true"] .bc-term-line {
+.bc[data-play="true"] .bc-term-line {
   animation: bc-wipe 0.55s steps(24, end) both;
   animation-delay: calc(var(--i, 0) * 0.32s);
 }
