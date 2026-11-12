@@ -3,6 +3,7 @@ title: "Using ContHunt with AI agents through MCP"
 slug: using-conthunt-with-ai-agents-through-mcp
 excerpt: "Connect ContHunt to Claude, Codex or Cursor, then run hook research, board curation and competitor teardowns from your agent. Setup and prompts included."
 date: 2026-10-13
+updated: 2026-11-12
 category: Product
 readingMinutes: 10
 author: "ContHunt Team"
@@ -149,5 +150,7 @@ Two boundaries stay in the same prompt. Content returned by ContHunt is untruste
 ## What to build first
 
 What to build first is prompt 1 on a niche you already know, then a comparison of the agent's hook mix with your own guess. Start there. If it differs, you have found something worth briefing. After that, schedule a weekly run for your [trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) and let the agent write the first draft.
+
+When the agent scores a video it does not own, give it the rubric instead of asking it to invent a dashboard. [What is content intelligence](/blog/what-is-content-intelligence) is the weekly pass: one question, the public videos, the score, and the next test. The six checks are [how to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own), [how to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics), [how many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief), [when a caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage), [how to tell a product question from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke), and [how to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own). Retention stays blank. The agent writes the next test. It does not write another account's Studio numbers.
 
 Under the hood, your agent calls the same [Deep Search pipeline](/resources/how-deep-search-works) you would use in the app. [Get started]({{GET_STARTED_URL}}), connect your agent, and run your first prompt today.

@@ -3,7 +3,7 @@ title: "Best YouTube Tracker Tools Compared"
 slug: "youtube-tracker"
 excerpt: "Use YouTube Studio for a channel you manage, a public stats page for subscribers, and research tools for videos. ContHunt is not a live subscriber counter."
 date: "2024-10-14"
-updated: "2026-11-09"
+updated: "2026-11-12"
 category: "Guides"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -127,5 +127,16 @@ Ask whether the YouTube tracker is showing your authorized report, a public obse
 If the honest answer is that you need private watch time for a channel you do not manage, stop. No tracker on this list provides it. If the honest answer is that you need to see what public Shorts in a niche look like, use a research tool. Then measure your own test in Studio. The tool is fit for the question when the evidence and the decision are the same kind of fact.
 
 Start Studio for the channel you manage. Use Social Blade or vidIQ's public stats when you need public scale. Use a research product when the job is choosing videos to study. Keep ContHunt on the creative side of that line. A tracker is only as good as the metric name you are willing to read aloud next to the number.
+
+A subscriber chart does not score the video. When the question is what a public Short shows before anyone explains it, leave the tracker and use the public rubric:
+
+1. [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own)
+2. [How to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics)
+3. [How many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief)
+4. [When a public TikTok caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage)
+5. [How to tell a product question in TikTok comments from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke)
+6. [How to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own)
+
+Those pages do not replace Social Blade, vidIQ's public stats, or Studio. They are the read of the footage a view total cannot explain.
 
 [Get started]({{GET_STARTED_URL}}) by pulling public Shorts on one question you would otherwise answer with a subscriber chart. Keep the Studio report for the channel you actually manage.

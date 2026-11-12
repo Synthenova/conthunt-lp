@@ -3,7 +3,7 @@ title: "Best Instagram Analytics Tools Compared"
 slug: "best-instagram-analytics-tools"
 excerpt: "Instagram analytics tools split by access: Insights for an account you manage, a reporting suite for exports, and public Reels research."
 date: "2026-02-18"
-updated: "2026-11-09"
+updated: "2026-11-12"
 category: "Guides"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -184,6 +184,17 @@ The safest Instagram analytics stack keeps three labels, and every number in a c
 ContHunt sits in the public-observation row. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That rank is an analysis of the content against the question you asked. It is not a private retention score, and it is not another account's Insights. Tracking in ContHunt is experimental, and it follows public videos. It does not open a competitor's dashboard.
 
 Use ContHunt when the missing piece is the creative pattern: hooks, pacing, overlays, captions, and structures that repeat on public Reels. Do not use it when the missing piece is your own reach, a follower breakdown, or a conversion. Those stay in Insights or in the ad account that actually received the click.
+
+Insights cannot open a Reel you do not own. Score that Reel on the public sheet, then come back to Insights for the test you publish:
+
+1. [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own)
+2. [How to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics)
+3. [How many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief)
+4. [When a public TikTok caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage)
+5. [How to tell a product question in TikTok comments from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke)
+6. [How to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own)
+
+The rubric was written on TikTok and it applies to a public Reel. The private column stays in Insights.
 
 A report that can say which label each sentence uses will survive a client who asks "how do you know?" A report that blends the three labels will not, even if every individual tool in the stack is a reasonable product.
 

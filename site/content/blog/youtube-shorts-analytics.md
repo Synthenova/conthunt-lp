@@ -4,7 +4,7 @@ slug: "youtube-shorts-analytics"
 excerpt: "Read YouTube Shorts in Studio against your baseline: views, shown in feed, chose to view, retention, and traffic. No universal swipe benchmark exists."
 seoTitle: "YouTube Shorts analytics: metrics and tools"
 date: "2026-02-25"
-updated: "2026-11-07"
+updated: "2026-11-12"
 category: "Guides"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -160,6 +160,17 @@ Run this on your own Shorts. The output is one sentence naming the next change, 
 7. Publish one test. Hook, pacing, topic, proof, or payoff. Record the result next week before you change a second variable.
 
 [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) are the production constraints on that test. Analytics tell you which constraint failed. They do not replace the footage.
+
+Step 6 is the only step that looks at videos you do not own. Studio still holds retention. The public score is a different sheet:
+
+1. [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own)
+2. [How to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics)
+3. [How many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief)
+4. [When a public TikTok caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage)
+5. [How to tell a product question in TikTok comments from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke)
+6. [How to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own)
+
+The same six checks apply to a public Short. The name on the first page is TikTok because that is where the rubric was written. The blank column is the same: you do not have their Studio. ContHunt can gather the public videos for the question. It cannot draw the retention graph in step 4.
 
 ## Questions worth answering with a named card
 

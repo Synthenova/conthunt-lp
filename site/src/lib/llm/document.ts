@@ -81,6 +81,25 @@ function articleLink(post: PostSummary): string {
   return `- [${linkLabel(post.title)}](${absoluteMarkdownUrl(post.href)}): ${oneLine(post.excerpt)}`;
 }
 
+const START_HERE_SLUGS = [
+  "what-is-content-intelligence",
+  "how-to-score-a-tiktok-you-do-not-own",
+  "how-to-compare-two-tiktoks-without-analytics",
+  "how-many-public-tiktoks-to-watch-before-a-brief",
+  "when-a-public-tiktok-caption-disagrees-with-the-footage",
+  "how-to-tell-a-product-question-in-tiktok-comments-from-a-joke",
+  "how-to-score-a-ugc-video-you-do-not-own",
+  "using-conthunt-with-ai-agents-through-mcp",
+];
+
+function startHereLinks(): string[] {
+  const bySlug = new Map(getAllPosts().map((post) => [post.slug, post]));
+  return START_HERE_SLUGS.flatMap((slug) => {
+    const post = bySlug.get(slug);
+    return post ? [articleLink(post)] : [];
+  });
+}
+
 function pageLinks(): string[] {
   return PAGE_BLURBS.map((page) => `- [${page.label}](${absoluteMarkdownUrl(page.path)}): ${page.blurb}`);
 }
@@ -221,6 +240,12 @@ export function renderLlmsTxt(): string {
     "## Pages",
     "",
     ...pageLinks(),
+    "",
+    "## Start here",
+    "",
+    "One worked pass, the six public-video checks, and the agent connection. The full lists follow.",
+    "",
+    ...startHereLinks(),
     "",
     "## Resources (articles)",
     "",

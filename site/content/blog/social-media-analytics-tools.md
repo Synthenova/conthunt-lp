@@ -4,7 +4,7 @@ slug: "social-media-analytics-tools"
 excerpt: "Choose social analytics by the data source: native dashboards for your accounts, connected reports for workflows, and public research for other posts."
 seoTitle: "Choose Social Analytics by Data Source"
 date: "2026-04-16"
-updated: "2026-11-07"
+updated: "2026-11-12"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -157,5 +157,18 @@ A simple structure:
 This structure stops a public research finding from being described as your retention, and it stops a scheduler's export from being described as a new measurement. The tools did different jobs. The report should say so.
 
 Choose native analytics for owned-account truth, connected reporting for team workflow, listening for conversation, and public research for what anyone can watch. The best social media analytics tool is the one that matches the question, used with the definition still attached to the number.
+
+## When the question is a public video you do not own
+
+A native dashboard scores an account you manage. It does not score a TikTok, Reel, or Short you do not own. That public pass is six checks, in this order:
+
+1. [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own) writes the opening, the proof, the words, the comment job, and the public ratio. Retention stays blank.
+2. [How to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics) picks a winner only when both videos share the job sentence.
+3. [How many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief) stops the scroll when the next ten do not move that sentence.
+4. [When a public TikTok caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage) fails the words check.
+5. [How to tell a product question in TikTok comments from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke) labels the comments you can actually see.
+6. [How to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own) writes the disclosure and the ask beside the score. They do not add points.
+
+ContHunt is the search across those public videos. It is not a fourth dashboard, and it does not sit above Instagram Insights, TikTok Studio, or YouTube Analytics for an account you manage.
 
 [Get started]({{GET_STARTED_URL}}) when the question is about public short-form video and you want the videos attached to the answer, not a blended score.

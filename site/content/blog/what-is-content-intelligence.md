@@ -1,9 +1,10 @@
 ---
-title: "What is Content Intelligence? The 2026 Strategic Blueprint"
+title: "What is Content Intelligence? One Question, the Videos, the Next Test"
 slug: "what-is-content-intelligence"
-excerpt: "Content intelligence turns your analytics and public short-form patterns into the next test you publish, instead of stopping at a view count."
+excerpt: "Content intelligence is one question about public videos, a score you can defend, and the single test you film next. A definition that stops before the test is a glossary."
 seoTitle: "What is content intelligence in 2026?"
 date: "2026-02-18"
+updated: "2026-11-12"
 category: "Research"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -27,7 +28,21 @@ cover:
     window: "Last 7 days"
 ---
 
-Content intelligence is the practice of turning content signals into the next thing you publish, not only into a description of what already happened. Analytics answer "what happened on this account?" Content intelligence answers "which topic, opening, and proof should we test next, and how will we know the test worked?" In 2026 that answer sits on two evidence layers that must not be blended. The first layer is first-party analytics for channels you manage. The second is public short-form research across TikTok, Instagram Reels, and YouTube Shorts for everyone else. A view count with no topic, no opening, and no comparison is a description. It is not a decision.
+Content intelligence is one pass you can film. The pass has four parts: one question, the public videos that answer it, a score you can defend without their analytics, and the single test you publish next. Analytics still answer "what happened on this account?" The pass answers "which opening should we test, and how will we know?" A view count with no topic, no opening, and no comparison is a description. A definition that ends before the test is a glossary.
+
+## One question, the public videos, the score, the next test
+
+This pass is invented so the steps can be checked. It is not a ContHunt result and not a target. The channel makes short videos about messy desks.
+
+The question: which public cable-failure demos show the broken cable before anyone explains it?
+
+The public videos are posts you do not own. You do not open their analytics. You score the ones you will actually use. [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own) is the rubric: the opening, the proof, whether the words match the footage, the comment job, and the public ratio when the post shows one. Retention stays blank. The account that posted the video has it. You do not.
+
+The score is a comparison, then a stop. Two videos that share the job sentence go on [How to compare two TikToks without analytics](/resources/how-to-compare-two-tiktoks-without-analytics). The winner is the video whose proof a viewer can see sooner. You stop when [How many public TikToks to watch before a brief](/resources/how-many-public-tiktoks-to-watch-before-a-brief) says the next ten do not move that sentence. If the caption promises a failure and the footage is a styled desk, [When a public TikTok caption disagrees with the footage](/resources/when-a-public-tiktok-caption-disagrees-with-the-footage) fails the words check. If the top comments ask "which clip is that?" that is a product question. If they are "cable lol" that is a joke. [How to tell a product question in TikTok comments from a joke](/resources/how-to-tell-a-product-question-in-tiktok-comments-from-a-joke) is the split. A video with a paid label uses [How to score a UGC video you do not own](/resources/how-to-score-a-ugc-video-you-do-not-own) for the disclosure and the ask. Those two lines do not add points.
+
+The next test, on the channel you manage: open on the tangled cable, not on the styled desk. Change only that. Read the result in your own analytics next week before you film a second change.
+
+ContHunt searches TikTok, Instagram Reels, and YouTube Shorts so that question is not trapped in the app you personally scroll. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. The rank is fit to the question. It is not retention, and it is not a prediction that the next upload will travel. An agent can run the same pass through [ContHunt MCP](/resources/using-conthunt-with-ai-agents-through-mcp). The six pages above are the rubric. The agent does not invent a private dashboard for a video you do not own.
 
 ## How content intelligence differs from analytics
 
