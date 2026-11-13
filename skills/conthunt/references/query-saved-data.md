@@ -43,7 +43,7 @@ Use actual returned video references in citations, never media_asset references.
 - `searches(id, query)` and `search_results(search_id, content_item_id, rank)`:
   saved search results. Rank ascending, content_item_id gives search order.
 - `content_items(id, title, platform, creator_handle, canonical_url, published_at,
-  views, likes, comments, shares, saves, plays, repins)`: join on content_item_id = id. Metrics
+  views, likes, comments, shares, saves, plays, repins, impressions, reach)`: join on content_item_id = id. Metrics
   are nullable integer counts. NULL means unknown, not zero. Use COUNT(views)
   alongside SUM/AVG to disclose missing observations. Use numeric casts for
   rates and multi-metric addition. These typed columns are the count authority; plays and views are separate.
