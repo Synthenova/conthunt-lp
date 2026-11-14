@@ -210,11 +210,11 @@ export interface ApiPublicBoardAsset {
   asset_type: string;
   /** stored, downloaded, pending, failed, ... */
   status: string;
-  /** Third-party URL, or the signed URL once stored. */
-  source_url: string | null;
-  /** Present only for objects in private R2 storage. Valid about 1 hour. */
-  signed_url: string | null;
-  expires_at: string | null;
+  /** Third-party URL, or the signed URL once stored. Null fields are omitted by the all-niches read. */
+  source_url?: string | null;
+  /** Present only for objects in private R2 storage. Valid about 1 hour. The all-niches read omits it; source_url carries the same URL. */
+  signed_url?: string | null;
+  expires_at?: string | null;
 }
 
 export interface ApiPublicBoardItem {
@@ -226,11 +226,12 @@ export interface ApiPublicBoardItem {
   rank: number;
   /** numeric(0..100) by the Viral Now convention. Null on legacy boards. */
   score: number | null;
-  /** The search query that found it. */
-  source_query: string | null;
+  /** The search query that found it. The all-niches read omits it. */
+  source_query?: string | null;
   /** YYYY-MM-DD of the last refresh that touched this row. */
-  snapshot_date: string | null;
-  added_at: string;
+  snapshot_date?: string | null;
+  /** The all-niches read omits it. */
+  added_at?: string;
   /** Against the previous published ranking. Null until that board has two saves. */
   mark?: "new" | "up" | "down" | "same" | null;
   /** Places moved. Positive is a climb. */

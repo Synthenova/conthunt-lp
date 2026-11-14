@@ -49,11 +49,17 @@ export const TRENDING_NICHE_SLUG = "trending";
 /** Public-board list endpoint caps: boards per page 20, preview items per board 24, items per page 80. */
 export const API_LIMITS = { boards: 20, preview: 24, items: 80 } as const;
 
+/**
+ * Videos per row in the all-niches read: the cards a row shows first (SSR_ROW_CARDS) and the
+ * count a live niche needs to replace the seed. A row on screen then loads its full board.
+ * The app's Viral Now page sends the same query, so both read one cached copy.
+ */
+export const LIVE_PREVIEW = 12;
+
 /** Signed URLs live about an hour. Renew when one minute is left (same window as the app). */
 export const RENEW_SKEW_MS = 60_000;
 
 const DEFAULT_TIMEOUT_MS = 15_000;
-const MAX_LIST_PAGES = 5;
 
 export const viralNowBoardSlug = (nicheSlug: string): string => `${VIRAL_NOW_BOARD_PREFIX}${nicheSlug}`;
 export const nicheSlugFromBoard = (boardSlug: string): string =>
@@ -232,10 +238,16 @@ export function isPlayable(asset: ViralNowAsset): boolean {
 /* Mapping: public-board items                                         */
 /* ------------------------------------------------------------------ */
 
+/** The signed R2 URL. The all-niches read sends it as source_url with its expiry and no signed_url. */
+function signedUrl(asset: ApiPublicBoardAsset): string | null {
+  return asset.signed_url ?? (asset.expires_at && asset.source_url ? asset.source_url : null);
+}
+
 function assetFrom(asset: ApiPublicBoardAsset | undefined): ViralNowAsset {
   if (!asset) return { ...EMPTY_ASSET };
-  if (asset.signed_url) {
-    return { asset_id: asset.id, url: asset.signed_url, expires_at: asset.expires_at, source: "r2" };
+  const signed = signedUrl(asset);
+  if (signed) {
+    return { asset_id: asset.id, url: signed, expires_at: asset.expires_at ?? null, source: "r2" };
   }
   const origin = asset.source_url && /^https?:\/\//i.test(asset.source_url) ? asset.source_url : null;
   return origin
@@ -247,7 +259,7 @@ const POSTER_ORDER = ["thumbnail", "cover", "image"] as const;
 
 function pickPoster(assets: ApiPublicBoardAsset[]): ViralNowAsset {
   for (const type of POSTER_ORDER) {
-    const hit = assets.find((asset) => asset.asset_type === type && asset.signed_url);
+    const hit = assets.find((asset) => asset.asset_type === type && signedUrl(asset));
     if (hit) return assetFrom(hit);
   }
   for (const type of POSTER_ORDER) {
@@ -435,30 +447,24 @@ export function mapAnalysis(fine: ApiFineGrainedAnalysis | null | undefined): Vi
 export interface LiveOptions extends FetchOptions {
   /** Niche facts from src/content/viral-now/niches.json. Sets display order and names. */
   metas?: ViralNowNicheMeta[];
-  /** Preview items per board, 1..24. Default 24. */
+  /** Preview items per board, 1..24. Default LIVE_PREVIEW. */
   previewLimit?: number;
 }
 
-/** Wire-level: every published board whose category is "viral-now". */
+/**
+ * Wire-level: every published board whose category is "viral-now", in one cached request.
+ * Keep the query in this order: the edge cache keys on the exact query string the app also sends.
+ */
 export async function listLiveBoards(opts: LiveOptions = {}): Promise<ApiPublicBoardList["boards"]> {
-  const boards: ApiPublicBoardList["boards"] = [];
-  let cursor: string | undefined;
-  for (let page = 0; page < MAX_LIST_PAGES; page += 1) {
-    const body = await requestJson<ApiPublicBoardList>("/v1/public-boards/search", opts, {
-      q: VIRAL_NOW_CATEGORY,
-      limit: API_LIMITS.boards,
-      preview_limit: Math.min(Math.max(opts.previewLimit ?? API_LIMITS.preview, 1), API_LIMITS.preview),
-      cursor,
-    });
-    boards.push(...body.boards);
-    if (!body.next_cursor) break;
-    cursor = body.next_cursor;
-  }
-  // The search is a substring match on title, description and category; keep only ours.
-  return boards.filter((board) => board.category === VIRAL_NOW_CATEGORY && board.slug.startsWith(VIRAL_NOW_BOARD_PREFIX));
+  const body = await requestJson<ApiPublicBoardList>("/v1/public-boards", opts, {
+    limit: API_LIMITS.boards,
+    preview_limit: Math.min(Math.max(opts.previewLimit ?? LIVE_PREVIEW, 1), API_LIMITS.preview),
+    category: VIRAL_NOW_CATEGORY,
+  });
+  return body.boards.filter((board) => board.slug.startsWith(VIRAL_NOW_BOARD_PREFIX));
 }
 
-/** Live niche rows: one request (plus paging). Each niche carries up to `previewLimit` videos. */
+/** Live niche rows: one request. Each niche carries up to `previewLimit` videos. */
 export async function fetchLiveNiches(opts: LiveOptions = {}): Promise<ViralNowNiche[]> {
   const boards = await listLiveBoards(opts);
   const metaBySlug = new Map((opts.metas ?? []).map((meta) => [meta.slug, meta] as const));
