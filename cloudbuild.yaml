@@ -8,7 +8,7 @@
 # a regular deploy always goes live and the service keeps following LATEST.
 # The _NEXT_PUBLIC_* values are public (they ship in the browser bundle).
 substitutions:
-  _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
+  _NEXT_PUBLIC_BACKEND_URL: 'https://mcp.conthunt.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
 # The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
 timeout: 1800s
