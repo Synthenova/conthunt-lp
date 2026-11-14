@@ -46,11 +46,18 @@ type BoardShape = Pick<ViralNowNiche, "videos" | "video_count" | "summary" | "so
 
 /**
  * Videos on a board as a visitor counts them. A published board and the snapshot both count the
- * whole board, at most BOARD_SIZE, while videos are still arriving. The list preview holds at
- * most 24, so a row keeps its empty slots until `videos` reaches this count.
+ * whole board, at most BOARD_SIZE, while videos are still arriving.
  */
 export function nicheSize(niche: Pick<ViralNowNiche, "videos" | "video_count">): number {
   return Math.max(niche.videos.length, Math.min(niche.video_count, BOARD_SIZE));
+}
+
+/**
+ * Empty slots a row keeps for videos still on their way. A live row has every video it will show:
+ * the all-niches read carries its preview, and the full board loads only on See all.
+ */
+export function rowPlaceholders(niche: Pick<ViralNowNiche, "videos" | "video_count" | "source">): number {
+  return niche.source === "live" ? 0 : Math.max(nicheSize(niche) - niche.videos.length, 0);
 }
 
 /** True once every video of the board is in `videos`. */

@@ -90,7 +90,7 @@ export async function loadLiveOverlay(current: ViralNowNiche[], signal?: AbortSi
 }
 
 /**
- * A live niche's board preview holds at most 24 videos. Fetch the full 30 for the grid.
+ * A live niche's row holds the all-niches preview. See all fetches the full 30 for the grid.
  * Returns null when the board is not published or the request fails.
  */
 export async function loadFullLiveNiche(niche: ViralNowNiche, signal?: AbortSignal): Promise<ViralNowNiche | null> {

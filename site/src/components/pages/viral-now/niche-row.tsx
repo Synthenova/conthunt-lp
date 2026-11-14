@@ -11,6 +11,8 @@
  * The server render holds only the first few cards of the first rows and the rest of the
  * snapshot streams in after hydration (see lib/viral-now/wire.ts). A row whose videos have not
  * all arrived keeps its final width with placeholder slots, so nothing shifts when they land.
+ * A live row shows the preview from the all-niches read and asks for nothing more; its full
+ * board loads only when the visitor opens See all.
  */
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +24,7 @@ import { prefersReducedMotion } from "@/lib/motion";
 import { GET_STARTED_URL } from "@/lib/links";
 import { countLabel } from "@/lib/viral-now/copy";
 import { formatCount } from "@/lib/viral-now/format";
-import { nicheLoaded, nicheSize, nicheViews } from "@/lib/viral-now/stats";
+import { nicheSize, nicheViews, rowPlaceholders } from "@/lib/viral-now/stats";
 import type { ViralNowNiche, ViralNowVideo } from "@/lib/viral-now/types";
 import { EAGER_ROWS } from "@/lib/viral-now/wire";
 import { nicheHue } from "@/content/viral-now/niche-hues";
@@ -41,7 +43,7 @@ export interface NicheRowProps {
 }
 
 export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
-  const { seedStatus, retrySeed, ensureFull } = useViralNow();
+  const { seedStatus, retrySeed } = useViralNow();
   const rootRef = useRef<HTMLElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(index < EAGER_ROWS);
@@ -49,7 +51,6 @@ export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
 
   const size = nicheSize(niche);
   const loaded = niche.videos.length;
-  const complete = nicheLoaded(niche);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -63,12 +64,6 @@ export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
       { rootMargin: "900px 0px" },
     );
   }, [mounted]);
-
-  // A row on screen needs all its videos now. `source` and `loaded` are in the dependency list
-  // because the first pass runs on an empty shell, before the live board has replaced it.
-  useEffect(() => {
-    if (mounted && !complete) ensureFull(niche.slug);
-  }, [mounted, complete, ensureFull, niche.slug, niche.source, loaded]);
 
   // Cards that mount while scrolling rise in; the first screen of a server-rendered row does not move.
   const hasCards = loaded > 0;
@@ -150,7 +145,7 @@ export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
               />
             ))}
             {/* Empty slots for the videos still on their way, so the row is already its final width. */}
-            {Array.from({ length: Math.max(size - loaded, 0) }, (_, i) => (
+            {Array.from({ length: rowPlaceholders(niche) }, (_, i) => (
               <li key={`slot-${i}`} data-snap="" aria-hidden="true" className={styles.item} data-digits={loaded + i + 1 >= 10 ? "2" : "1"}>
                 <span className={styles.skel} />
               </li>

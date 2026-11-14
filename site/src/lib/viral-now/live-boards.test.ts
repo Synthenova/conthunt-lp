@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fetchLiveNiches } from "./api";
+import { loadLiveReplacements } from "./live";
+import { rowPlaceholders } from "./stats";
 
 const EXPIRES = "2026-11-15T03:00:00Z";
 
@@ -46,4 +48,48 @@ test("all niches come from one list request the app shares, and slim signed asse
   assert.deepEqual(video.preview, { asset_id: "small", url: "https://r2/small.mp4?sig", expires_at: EXPIRES, source: "r2" });
   assert.equal(video.poster.url, "https://r2/cover.webp?sig");
   assert.equal(video.poster.source, "r2");
+});
+
+test("page load reads every row from the one list request and no row asks for its board", async () => {
+  const urls: string[] = [];
+  const board = (n: number) => ({
+    ...slimBoard,
+    id: `board-${n}`,
+    slug: `viral-now-niche-${n}`,
+    preview_items: Array.from({ length: 12 }, (_, rank) => ({
+      ...slimBoard.preview_items[0],
+      public_board_id: `board-${n}`,
+      rank: rank + 1,
+      content_item: { ...slimBoard.preview_items[0].content_item, id: `content-${n}-${rank}`, external_id: `clip-${n}-${rank}` },
+    })),
+  });
+  const realFetch = globalThis.fetch;
+  const realBase = process.env.NEXT_PUBLIC_BACKEND_URL;
+  process.env.NEXT_PUBLIC_BACKEND_URL = "https://api.test";
+  globalThis.fetch = (async (url: string) => {
+    urls.push(String(url));
+    return new Response(JSON.stringify({ boards: Array.from({ length: 20 }, (_, n) => board(n)), next_cursor: "20" }), { status: 200 });
+  }) as typeof fetch;
+  try {
+    const metas = Array.from({ length: 20 }, (_, n) => ({ slug: `niche-${n}`, name: `Niche ${n}`, label: `Niche ${n}`, description: "" }));
+    const rows = await loadLiveReplacements(metas);
+    assert.ok(rows);
+    assert.equal(rows.size, 20);
+    for (const niche of rows.values()) {
+      assert.equal(niche.videos.length, 12);
+      assert.equal(niche.video_count, 30);
+      assert.equal(rowPlaceholders(niche), 0, `${niche.slug} waits for videos it will never ask for`);
+    }
+  } finally {
+    globalThis.fetch = realFetch;
+    if (realBase === undefined) delete process.env.NEXT_PUBLIC_BACKEND_URL;
+    else process.env.NEXT_PUBLIC_BACKEND_URL = realBase;
+  }
+  assert.equal(urls.length, 1);
+  assert.match(urls[0], /\/v1\/public-boards\?limit=20&preview_limit=12&category=viral-now$/);
+});
+
+test("a snapshot row keeps slots for the videos still streaming in", () => {
+  assert.equal(rowPlaceholders({ source: "seed", video_count: 30, videos: new Array(4) }), 26);
+  assert.equal(rowPlaceholders({ source: "live", video_count: 30, videos: new Array(12) }), 0);
 });
