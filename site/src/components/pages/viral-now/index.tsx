@@ -18,7 +18,7 @@
  */
 import { Emphasis } from "@/components/ui/emphasis";
 import { SectionHeader } from "@/components/ui/section-header";
-import { loadViralNowData, loadViralNowInitial } from "@/lib/viral-now/load";
+import { loadNicheBoard, loadViralNowData, loadViralNowInitial } from "@/lib/viral-now/load";
 import { CtaBand } from "./cta-band";
 import { Explorer } from "./explorer";
 import { Facts, StatusLine, Subline } from "./header-parts";
@@ -31,10 +31,12 @@ export interface ViralNowPageProps {
   niche?: string | null;
 }
 
-export default function ViralNowPage({ niche = null }: ViralNowPageProps) {
-  const initialActive = niche && loadViralNowData().niches.some((n) => n.slug === niche) ? niche : null;
-  // Only what the first paint shows goes into the HTML; the rest of the snapshot streams in (see lib/viral-now/wire.ts).
-  const initial = loadViralNowInitial(initialActive);
+export default async function ViralNowPage({ niche = null }: ViralNowPageProps) {
+  const known = niche && loadViralNowData().niches.some((n) => n.slug === niche) ? niche : null;
+  const board = known ? await loadNicheBoard(known) : null;
+  const initialActive = board ? known : null;
+  // The index paints shells. A slug page paints that niche's videos so a crawler sees them.
+  const initial = loadViralNowInitial(initialActive, board);
 
   return (
     <ViralNowProvider initial={initial}>

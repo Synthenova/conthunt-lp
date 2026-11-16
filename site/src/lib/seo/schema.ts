@@ -299,6 +299,14 @@ export interface ViralNowNicheForSchema {
   slug: string;
 }
 
+export interface ViralNowVideoForSchema {
+  rank: number;
+  title: string;
+  url: string;
+  platform: string;
+  creator: string;
+}
+
 /** /viral-now. The heading and the niche names on the page. No view counts and no rating. */
 export function viralNowGraph(description: string, niches: ViralNowNicheForSchema[]): JsonLdNode {
   const url = absoluteUrl(ROUTES.viralNow);
@@ -330,6 +338,52 @@ export function viralNowGraph(description: string, niches: ViralNowNicheForSchem
       [
         { name: "Home", path: ROUTES.home },
         { name: "Viral Now", path: ROUTES.viralNow },
+      ],
+      `${url}#breadcrumb`,
+    ),
+  );
+}
+
+/** One `/viral-now/[slug]` page. The list is the videos in the HTML. No view counts and no rating. */
+export function viralNowNicheGraph(args: {
+  name: string;
+  slug: string;
+  description: string;
+  videos: ViralNowVideoForSchema[];
+}): JsonLdNode {
+  const path = `${ROUTES.viralNow}/${args.slug}`;
+  const url = absoluteUrl(path);
+  return graph(
+    {
+      "@type": "CollectionPage",
+      "@id": `${url}#webpage`,
+      name: `${args.name} short-form videos`,
+      description: args.description,
+      url,
+      inLanguage: "en",
+      isPartOf: { "@id": IDS.website },
+      publisher: { "@id": IDS.organization },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      mainEntity: {
+        "@type": "ItemList",
+        name: `${args.name} short-form videos`,
+        numberOfItems: args.videos.length,
+        itemListElement: args.videos.map((video) => ({
+          "@type": "ListItem",
+          position: video.rank,
+          name: video.title,
+          url: video.url,
+          description: `${video.creator} on ${video.platform}`,
+        })),
+      },
+    },
+    organizationNode(),
+    websiteNode(),
+    breadcrumbNode(
+      [
+        { name: "Home", path: ROUTES.home },
+        { name: "Viral Now", path: ROUTES.viralNow },
+        { name: args.name, path },
       ],
       `${url}#breadcrumb`,
     ),

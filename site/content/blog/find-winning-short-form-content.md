@@ -3,7 +3,7 @@ title: "How to Find Winning Short-Form Content in 2026"
 slug: "find-winning-short-form-content"
 excerpt: "Winning short-form content beats that account's usual reach. Find it by comparing recent public posts, then keep only patterns that repeat."
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-16"
 category: "Playbooks"
 readingMinutes: 13
 author: "ContHunt Team"
@@ -152,6 +152,29 @@ Copying the video is not research. A test has four lines.
 An illustrative hypothesis: "For renters who own a bike, open on a denied claim and show the locked-room clause the popular TikToks skipped. Publish on Reels. After seven days, compare views and average watch time with our last five Reels, inside Instagram's own analytics." There is no predicted multiplier. The result is allowed to be ordinary. A log of tests that failed is how you stop repeating a pattern that only worked for someone else.
 
 Build the habit on a weekly cadence so the log does not depend on memory. A [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) is one way to keep the same phrases, the same accounts, and the same worksheet instead of starting from a blank search every Monday.
+
+ContHunt also publishes a current board for twenty niches. Each board is its own page, with the videos that are public on that board this week.
+
+- [Comedy & Skits](/viral-now/comedy-skits)
+- [Gaming](/viral-now/gaming)
+- [Food & Recipes](/viral-now/food-recipes)
+- [Fitness & Gym](/viral-now/fitness-gym)
+- [Beauty & Skincare](/viral-now/beauty-skincare)
+- [Tech & Gadgets](/viral-now/tech-gadgets)
+- [Personal Finance](/viral-now/personal-finance)
+- [Dance & Music](/viral-now/dance-music)
+- [Lifestyle & Vlogs](/viral-now/lifestyle-vlogs)
+- [TikTok Shop & Product Finds](/viral-now/tiktok-shop-finds)
+- [Fashion & Style](/viral-now/fashion-style)
+- [Pets & Animals](/viral-now/pets-animals)
+- [Travel](/viral-now/travel)
+- [Home & DIY](/viral-now/home-diy)
+- [Parenting & Family](/viral-now/parenting-family)
+- [Sports](/viral-now/sports)
+- [Cars & Motors](/viral-now/cars-motors)
+- [Education & Science](/viral-now/education-science)
+- [Wellness & Mindset](/viral-now/wellness-mindset)
+- [Business & Creator Economy](/viral-now/business-creator)
 
 Before you film, you should be able to answer yes to all of these:
 

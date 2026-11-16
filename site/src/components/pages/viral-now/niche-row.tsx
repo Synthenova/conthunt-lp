@@ -114,7 +114,7 @@ export function NicheRow({ niche, index, onSelect, onOpen }: NicheRowProps) {
             </span>
           )}
           <a
-            href={`?niche=${niche.slug}`}
+            href={`/viral-now/${niche.slug}`}
             onClick={(event) => {
               if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
               event.preventDefault();

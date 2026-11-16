@@ -12,9 +12,10 @@
  * The first paint does not include the October snapshot. The client fills the shells from
  * the live boards after hydration (see ./live.ts).
  */
+import { cache } from "react";
 import nicheMetaJson from "@/content/viral-now/niches.json";
 import seedJson from "@/content/viral-now/seed.json";
-import { coerceSeed } from "./api";
+import { coerceSeed, fetchNicheVideos } from "./api";
 import { BOARD_SIZE } from "./ranking";
 import type { ViralNowNiche, ViralNowNicheMeta, ViralNowSource } from "./types";
 import { encodeVideos, nicheShell, WIRE_VERSION, type SeedChunk, type WireNiches } from "./wire";
@@ -79,19 +80,45 @@ function fullWire(): WireNiches {
 }
 
 /**
- * The page's first-paint data: niche names and a board size of 30, with no snapshot videos.
- * Rows render their existing skeletons until the live boards arrive.
+ * One niche for `/viral-now/[slug]`. The live board is preferred. The bundled snapshot
+ * is the fallback, so the HTML still has titles when the API is down. Deduped per request.
  */
-export function loadViralNowInitial(_activeSlug: string | null = null): ViralNowInitial {
+export const loadNicheBoard = cache(async (slug: string): Promise<ViralNowNiche | null> => {
+  const seed = loadViralNowData().niches.find((niche) => niche.slug === slug);
+  if (!seed) return null;
+  try {
+    const live = await fetchNicheVideos(slug, {
+      limit: BOARD_SIZE,
+      meta: { slug: seed.slug, name: seed.name, label: seed.label, description: seed.description },
+      revalidate: 3600,
+      timeoutMs: 8_000,
+    });
+    if (live && live.videos.length > 0) return live;
+  } catch {
+    // Snapshot titles stay in the HTML.
+  }
+  return seed.videos.length > 0 ? seed : null;
+});
+
+/**
+ * The page's first-paint data. The index is niche shells until the live boards arrive.
+ * A slug page passes `board` so that niche's videos are in the server HTML.
+ */
+export function loadViralNowInitial(activeSlug: string | null = null, board: ViralNowNiche | null = null): ViralNowInitial {
   const data = loadViralNowData();
   return {
     ...data,
-    niches: data.niches.map((niche) => ({
-      ...nicheShell(niche),
-      summary: undefined,
-      week_of: null,
-      video_count: BOARD_SIZE,
-    })),
+    niches: data.niches.map((niche) => {
+      if (board && niche.slug === activeSlug && niche.slug === board.slug && board.videos.length > 0) {
+        return { ...board, video_count: board.videos.length };
+      }
+      return {
+        ...nicheShell(niche),
+        summary: undefined,
+        week_of: null,
+        video_count: BOARD_SIZE,
+      };
+    }),
     wire: {},
     seedVersion: `${WIRE_VERSION}-${data.generatedAt}`,
   };

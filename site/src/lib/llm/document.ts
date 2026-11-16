@@ -104,6 +104,12 @@ function pageLinks(): string[] {
   return PAGE_BLURBS.map((page) => `- [${page.label}](${absoluteMarkdownUrl(page.path)}): ${page.blurb}`);
 }
 
+function nicheLinks(): string[] {
+  return loadViralNowData().niches.map(
+    (niche) => `- [${linkLabel(niche.name)}](${absoluteUrl(`/viral-now/${niche.slug}`)}): ${oneLine(niche.description)}`,
+  );
+}
+
 function renderHome(): string {
   const nicheCount = loadViralNowData().niches.length;
   return [
@@ -159,7 +165,7 @@ function renderViralNow(): string {
     "",
     "## Niches",
     "",
-    ...niches.map((niche) => `- ${niche.name}: ${oneLine(niche.description)}`),
+    ...nicheLinks(),
     "",
   ].join("\n");
 }
@@ -240,6 +246,12 @@ export function renderLlmsTxt(): string {
     "## Pages",
     "",
     ...pageLinks(),
+    "",
+    "## Viral Now niches",
+    "",
+    "Each niche has its own HTML page. The link is the canonical URL.",
+    "",
+    ...nicheLinks(),
     "",
     "## Start here",
     "",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import ViralNowPage from "@/components/pages/viral-now";
 import { FontPreloads } from "@/components/layout/font-preloads";
 import { ViralNowJsonLd } from "@/components/seo/viral-now-json-ld";
@@ -8,22 +9,12 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-// The page fills from the live boards. The description names the niches and leaves the week
-// off, so it does not claim the bundled snapshot's week.
-export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
-  const { niche } = await searchParams;
+// The index names the niches and leaves the week off. A niche has its own URL.
+export async function generateMetadata(): Promise<Metadata> {
   const { niches } = loadViralNowData();
-  const slug = parseNicheParam(niche, niches);
-  const active = slug ? niches.find((n) => n.slug === slug) : undefined;
-  // The route has its own opengraph-image file (`image: false`). The canonical stays /viral-now for every niche.
   return pageMetadata({
-    title: active ? `${active.name} short-form videos` : "Short-form videos ranked by niche",
-    description: snapshotDescription({
-      niches: niches.length,
-      weekOf: null,
-      nicheName: active?.name,
-      count: active?.videos.length,
-    }),
+    title: "Short-form videos ranked by niche",
+    description: snapshotDescription({ niches: niches.length, weekOf: null }),
     path: "/viral-now",
     image: false,
   });
@@ -32,6 +23,8 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
 export default async function Page({ searchParams }: { searchParams: SearchParams }) {
   const { niche } = await searchParams;
   const { niches } = loadViralNowData();
+  const slug = parseNicheParam(niche, niches);
+  if (slug) permanentRedirect(`/viral-now/${slug}`);
   return (
     <>
       {/* First viewport beyond the site faces: niche labels, rank numbers, the heading keyword (lib/fonts.ts). */}
@@ -40,7 +33,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
         description={snapshotDescription({ niches: niches.length, weekOf: null })}
         niches={niches.map((item) => ({ name: item.name, slug: item.slug }))}
       />
-      <ViralNowPage niche={parseNicheParam(niche, niches)} />
+      <ViralNowPage />
     </>
   );
 }

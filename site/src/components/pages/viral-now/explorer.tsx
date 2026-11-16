@@ -4,8 +4,7 @@
  * Explorer: the interactive body of /viral-now.
  *
  * - `All` shows one Netflix-style row per niche; a single niche shows its full grid.
- * - The selection lives in the URL as `?niche=<slug>` (history.pushState, so there is no
- *   server round trip) and follows Back and Forward.
+ * - The selection is the path `/viral-now/<slug>`. All is `/viral-now`.
  * - Changing the selection fades the content out, swaps it, fades it in, and smooth-scrolls
  *   back to the top of the content when the visitor was scrolled below it.
  * - Opening a card shows the dialog for the list it came from. A dialog opened from a row follows
@@ -53,12 +52,9 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
   /* -------------------------------------------------------------- URL state */
 
   const select = useCallback((slug: string | null) => {
-    if (slug === activeRef.current) return;
-    const url = new URL(window.location.href);
-    if (slug) url.searchParams.set("niche", slug);
-    else url.searchParams.delete("niche");
-    window.history.pushState(null, "", url);
-    setActive(slug);
+    const path = slug ? `/viral-now/${slug}` : "/viral-now";
+    if (window.location.pathname === path) return;
+    window.location.assign(path);
   }, []);
 
   useEffect(() => {

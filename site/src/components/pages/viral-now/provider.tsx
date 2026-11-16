@@ -80,7 +80,15 @@ export function ViralNowProvider({ initial, children }: { initial: ViralNowIniti
         return;
       }
       if (merged instanceof Map) {
-        setNiches((current) => current.map((niche) => merged.get(niche.slug) ?? niche));
+        setNiches((current) =>
+          current.map((niche) => {
+            const next = merged.get(niche.slug);
+            if (!next) return niche;
+            // A slug page already rendered the full live board. The shorter all-niches preview must not replace it.
+            if (niche.source === "live" && niche.videos.length >= next.videos.length) return niche;
+            return next;
+          }),
+        );
       } else {
         setNiches(merged);
       }
