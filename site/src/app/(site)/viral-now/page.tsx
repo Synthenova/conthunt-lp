@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 import ViralNowPage from "@/components/pages/viral-now";
 import { FontPreloads } from "@/components/layout/font-preloads";
@@ -24,7 +25,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
   const { niche } = await searchParams;
   const { niches } = loadViralNowData();
   const slug = parseNicheParam(niche, niches);
-  if (slug) permanentRedirect(`/viral-now/${slug}`);
+  // A fresh visit leaves the query URL. A click only writes ?niche= on this document, and that
+  // request carries the RSC header, so it must stay here instead of bouncing to the slug page.
+  if (slug && (await headers()).get("rsc") !== "1") permanentRedirect(`/viral-now/${slug}`);
   return (
     <>
       {/* First viewport beyond the site faces: niche labels, rank numbers, the heading keyword (lib/fonts.ts). */}
@@ -33,7 +36,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
         description={snapshotDescription({ niches: niches.length, weekOf: null })}
         niches={niches.map((item) => ({ name: item.name, slug: item.slug }))}
       />
-      <ViralNowPage />
+      <ViralNowPage niche={slug} />
     </>
   );
 }

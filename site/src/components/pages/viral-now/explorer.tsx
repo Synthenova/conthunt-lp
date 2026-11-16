@@ -4,7 +4,8 @@
  * Explorer: the interactive body of /viral-now.
  *
  * - `All` shows one Netflix-style row per niche; a single niche shows its full grid.
- * - The selection is the path `/viral-now/<slug>`. All is `/viral-now`.
+ * - A click keeps this document. The selection is `?niche=<slug>` (history.pushState, no load)
+ *   and follows Back and Forward. The path `/viral-now/<slug>` is a fresh visit, or a new tab.
  * - Changing the selection fades the content out, swaps it, fades it in, and smooth-scrolls
  *   back to the top of the content when the visitor was scrolled below it.
  * - Opening a card shows the dialog for the list it came from. A dialog opened from a row follows
@@ -29,9 +30,18 @@ import styles from "./viral-now.module.css";
 
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-function slugFromSearch(search: string, niches: ViralNowNiche[]): string | null {
-  const slug = new URLSearchParams(search).get("niche");
-  return slug && niches.some((n) => n.slug === slug) ? slug : null;
+/** The niche a click or a history entry is showing. A bare `/viral-now/<slug>` is that niche. */
+function slugFromLocation(loc: Pick<Location, "pathname" | "search">, niches: ViralNowNiche[]): string | null {
+  const params = new URLSearchParams(loc.search);
+  if (params.has("niche")) {
+    const slug = params.get("niche");
+    return slug && niches.some((n) => n.slug === slug) ? slug : null;
+  }
+  const path = loc.pathname.replace(/\/+$/, "");
+  const prefix = "/viral-now/";
+  if (!path.startsWith(prefix)) return null;
+  const slug = decodeURIComponent(path.slice(prefix.length));
+  return slug && !slug.includes("/") && niches.some((n) => n.slug === slug) ? slug : null;
 }
 
 export function Explorer({ initialActive }: { initialActive: string | null }) {
@@ -52,13 +62,23 @@ export function Explorer({ initialActive }: { initialActive: string | null }) {
   /* -------------------------------------------------------------- URL state */
 
   const select = useCallback((slug: string | null) => {
-    const path = slug ? `/viral-now/${slug}` : "/viral-now";
-    if (window.location.pathname === path) return;
-    window.location.assign(path);
+    if (slug === activeRef.current) return;
+    const url = new URL(window.location.href);
+    const onSlug = /^\/viral-now\/[^/]+$/.test(url.pathname.replace(/\/+$/, ""));
+    if (slug) url.searchParams.set("niche", slug);
+    else if (onSlug) url.searchParams.set("niche", "");
+    else url.searchParams.delete("niche");
+    window.history.pushState(null, "", url);
+    setActive(slug);
   }, []);
 
   useEffect(() => {
-    const onPop = () => setActive(slugFromSearch(window.location.search, niches));
+    const selected = slugFromLocation(window.location, niches);
+    if (selected !== activeRef.current) setActive(selected);
+  }, [niches]);
+
+  useEffect(() => {
+    const onPop = () => setActive(slugFromLocation(window.location, niches));
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, [niches]);
