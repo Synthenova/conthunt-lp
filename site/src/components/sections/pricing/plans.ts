@@ -6,8 +6,8 @@
  * silent fallback and never appears on the site. Allowances must match the app and backend exactly.
  *
  * Sources and rules:
- * - One credit is $0.00188 of provider cost. Hunt credits are one pool that searches and tracking both
- *   spend (a search costs one hunt credit per platform it queries, a tracked item one per refresh).
+ * - One credit is $0.00188 of provider cost. Three pools: hunt credits pay for searches (one per platform a
+ *   search queries), tracking credits for tracking (one per tracked item per refresh), AI credits for analysis.
  * - Yearly and monthly billing get the same credits; only the price differs.
  * - Prices: Pro $300/yr ($25/mo), Creator $756/yr ($63/mo), Research $151/mo yearly.
  * - Trial allowances are 7/30 of the month, rounded up to the nearest 500.
@@ -35,15 +35,15 @@ export interface PlanFeature {
 
 /** One row of the allowance spec: label, value and an optional note on the /pricing card. */
 export interface AllowanceRow {
-  key: "huntCredits" | "aiCredits";
+  key: keyof Allowance;
   label: string;
   value: number;
   note?: string;
 }
 
 export interface Allowance {
-  /** One pool for searches and tracking. */
   huntCredits: number;
+  trackingCredits: number;
   aiCredits: number;
 }
 
@@ -101,12 +101,12 @@ export const TRIAL_DAYS = 7;
 /** Trial allowance: the share of a 30-day month that the trial covers, rounded up to the nearest 500. */
 const trialOf = (a: Allowance): Allowance => {
   const share = (credits: number) => Math.ceil((credits * TRIAL_DAYS) / 30 / 500) * 500;
-  return { huntCredits: share(a.huntCredits), aiCredits: share(a.aiCredits) };
+  return { huntCredits: share(a.huntCredits), trackingCredits: share(a.trackingCredits), aiCredits: share(a.aiCredits) };
 };
 
-const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, aiCredits: 7_000 };
-const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, aiCredits: 20_000 };
-const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, aiCredits: 53_500 };
+const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, trackingCredits: 1_000, aiCredits: 6_000 };
+const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, trackingCredits: 3_000, aiCredits: 17_000 };
+const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, trackingCredits: 7_000, aiCredits: 46_500 };
 
 export const PLANS: readonly Plan[] = [
   {
@@ -203,9 +203,10 @@ export const yearlySavingUsd = (plan: Plan): number => plan.price.monthly * 12 -
 export const MAX_YEARLY_SAVING_PCT = Math.max(...PLANS.map(yearlySavingPct));
 
 export const allowanceRows = (plan: Plan): AllowanceRow[] => {
-  const { huntCredits, aiCredits } = plan.allowance;
+  const { huntCredits, trackingCredits, aiCredits } = plan.allowance;
   return [
-    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches and tracking" },
+    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches" },
+    { key: "trackingCredits", label: "Tracking credits", value: trackingCredits, note: "for tracking" },
     {
       key: "aiCredits",
       label: "AI credits",

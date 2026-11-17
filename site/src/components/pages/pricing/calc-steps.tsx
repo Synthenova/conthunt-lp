@@ -121,7 +121,7 @@ export const ExtrasStep = memo(function ExtrasStep({
   onAssumptionsReset,
 }: ExtrasStepProps) {
   return (
-    <Step n={3} last title="Extras" hint="Switch on what you will use. Both draw on your plan's monthly credits.">
+    <Step n={3} last title="Extras" hint="Switch on what you will use. Tracking draws on your plan's tracking credits.">
       <div className="@container">
         <div className={CHOICE_GRID} role="group" aria-label="Extras">
           <Choice
@@ -146,7 +146,7 @@ export const ExtrasStep = memo(function ExtrasStep({
           <div className="mt-3 rounded-btn border border-hairline p-5 md:p-6">
             <DialSlider
               label="Accounts and videos tracked"
-              readout={`${trackedItems} items · ${formatInt(trackingCredits)} hunt credits`}
+              readout={`${trackedItems} items · ${formatInt(trackingCredits)} tracking credits`}
               min={TRACKED_MIN}
               max={TRACKED_MAX}
               step={TRACKED_STEP}
@@ -157,8 +157,8 @@ export const ExtrasStep = memo(function ExtrasStep({
               valueText={trackedValueText}
             />
             <p className="mt-3 text-[12px] leading-snug text-ink-2/75">
-              {TRACKING_CREDITS_PER_ITEM} hunt credits per item for a 30-day window: one for the first refresh and one
-              for each day after.
+              {TRACKING_CREDITS_PER_ITEM} tracking credits per item for a 30-day window: one for the first refresh and
+              one for each day after.
             </p>
           </div>
         </div>
@@ -252,8 +252,9 @@ function AssumptionsPanel({
           set in the result.
         </li>
         <li>
-          {LARGEST.name} is the largest plan, at {formatInt(LARGEST.allowance.huntCredits)} hunt credits and{" "}
-          {formatInt(LARGEST.allowance.aiCredits)} AI credits a month.
+          {LARGEST.name} is the largest plan, at {formatInt(LARGEST.allowance.huntCredits)} hunt credits,{" "}
+          {formatInt(LARGEST.allowance.trackingCredits)} tracking credits and {formatInt(LARGEST.allowance.aiCredits)} AI
+          credits a month.
         </li>
       </ul>
       <button
