@@ -2,14 +2,14 @@
  * Reconciled plan data for the pricing section, the /pricing page and the calculator.
  * Pure module: safe to import from server and client components.
  *
- * Three plans, cheapest first: Pro ($29), Creator ($79) and Research ($189). The app's Free plan is a
+ * Three plans, cheapest first: Pro ($29), Creator ($79) and Research ($149). The app's Free plan is a
  * silent fallback and never appears on the site. Allowances must match the app and backend exactly.
  *
  * Sources and rules:
  * - One credit is $0.00188 of provider cost. Three pools: hunt credits pay for searches (one per platform a
  *   search queries), tracking credits for tracking (one per tracked item per refresh), AI credits for analysis.
  * - Yearly and monthly billing get the same credits; only the price differs.
- * - Prices: Pro $300/yr ($25/mo), Creator $756/yr ($63/mo), Research $151/mo yearly.
+ * - Prices: Pro $300/yr ($25/mo), Creator $756/yr ($63/mo), Research $1,428/yr ($119/mo).
  * - Trial allowances are 7/30 of the month, rounded up to the nearest 500.
  * - Features are a ladder: the entry plan lists its base, the others list only what they add.
  * - An analyzed video is planned at 7 AI credits. Measured production use is lower (base analysis about
@@ -106,7 +106,7 @@ const trialOf = (a: Allowance): Allowance => {
 
 const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, trackingCredits: 1_000, aiCredits: 6_000 };
 const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, trackingCredits: 3_000, aiCredits: 17_000 };
-const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, trackingCredits: 7_000, aiCredits: 46_500 };
+const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, trackingCredits: 7_000, aiCredits: 33_500 };
 
 export const PLANS: readonly Plan[] = [
   {
@@ -157,7 +157,7 @@ export const PLANS: readonly Plan[] = [
     featured: false,
     hue: "blue",
     blurb: "For agencies and brands researching multiple niches every day.",
-    price: { monthly: 189, yearly: 151 },
+    price: { monthly: 149, yearly: 119 },
     trialDays: TRIAL_DAYS,
     cta: { label: "Start free trial", href: GET_STARTED_URL },
     allowance: RESEARCH_ALLOWANCE,
