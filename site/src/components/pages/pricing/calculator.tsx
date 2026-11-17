@@ -16,7 +16,7 @@
  * headline numbers in view. The dock has no height of its own and only shows once the sliders have
  * scrolled into view, so a hidden dock leaves no band at the foot of the tray.
  *
- * Honesty rules: every limit is the plan's real allowance (`plans.ts`: hunt credits and AI credits), credits per
+ * Honesty rules: every limit is the plan's real allowance (`plans.ts`: hunt, tracking and AI credits), credits per
  * video follow the app's own planning estimate, and time saved uses assumptions the
  * user can edit. See `calculator-model.ts` for where each number comes from.
  *
@@ -277,7 +277,7 @@ export function PricingCalculator() {
                     videos analyzed
                   </p>
                   <p className="font-mono text-[11px] text-ink-2/75">
-                    {formatInt(usage.aiCredits)} AI credits · {formatInt(usage.searchUnits)} hunt credits
+                    {formatInt(usage.aiCredits)} AI credits · {formatInt(usage.huntCredits)} hunt credits
                   </p>
                 </div>
               </div>
@@ -598,16 +598,10 @@ function PlanResultCard({
       >
         <MonoLabel id="calc-usage-label">Expected monthly usage</MonoLabel>
         <UsageBar label="AI credits" used={usage.aiCredits} cap={allowance.aiCredits} primary />
-        <UsageBar
-          label="Hunt credits"
-          used={usage.huntCredits}
-          cap={allowance.huntCredits}
-          note={
-            inputs.tracking
-              ? `${formatInt(usage.searchUnits)} searches + ${formatInt(usage.trackingCredits)} tracking`
-              : undefined
-          }
-        />
+        <UsageBar label="Hunt credits" used={usage.huntCredits} cap={allowance.huntCredits} />
+        {inputs.tracking && (
+          <UsageBar label="Tracking credits" used={usage.trackingCredits} cap={allowance.trackingCredits} />
+        )}
       </div>
 
       {rec.overMax && (
@@ -683,8 +677,9 @@ function TrialNote({ plan, videosPerSearch }: { plan: Plan; videosPerSearch: num
   }
   return (
     <>
-      The trial runs on a smaller allowance: {formatInt(plan.trial.huntCredits)} hunt credits and {formatInt(credits)} AI
-      credits, about {formatInt(trialVideos)} videos. {advice}
+      The trial runs on a smaller allowance: {formatInt(plan.trial.huntCredits)} hunt credits,{" "}
+      {formatInt(plan.trial.trackingCredits)} tracking credits and {formatInt(credits)} AI credits, about{" "}
+      {formatInt(trialVideos)} videos. {advice}
     </>
   );
 }

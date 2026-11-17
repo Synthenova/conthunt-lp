@@ -46,7 +46,6 @@ const forEachPlan = (describe: (plan: Plan) => string): string => {
   return parts.length < 2 ? parts.join("") : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
 };
 
-/** The entry plan: the base of the "5x" and "20x" steps. */
 const ENTRY = PLANS[0];
 const huntMultiple = (plan: Plan): number => Math.round(plan.allowance.huntCredits / ENTRY.allowance.huntCredits);
 
@@ -65,20 +64,23 @@ const ITEMS: Item[] = [
     a: (
       <>
         No, it runs on a smaller one.{" "}
-        {PLANS.map((p) => `${p.name} gets ${formatInt(p.trial.huntCredits)} hunt credits and ${formatInt(p.trial.aiCredits)} AI credits.`).join(" ")}{" "}
+        {PLANS.map(
+          (p) =>
+            `${p.name} gets ${formatInt(p.trial.huntCredits)} hunt credits, ${formatInt(p.trial.trackingCredits)} tracking credits and ${formatInt(p.trial.aiCredits)} AI credits.`,
+        ).join(" ")}{" "}
         The full monthly allowance begins with your plan.
       </>
     ),
   },
   {
-    q: "What are hunt credits and AI credits?",
+    q: "What are hunt credits, tracking credits and AI credits?",
     a: (
       <>
-        Hunt credits pay for finding videos: searching and tracking spend one pool. A search costs one hunt credit per
-        platform it queries, so a keyword across TikTok, Instagram Reels and YouTube Shorts costs{" "}
-        {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking costs one per tracked item per refresh. AI credits pay for everything
-        model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one video costs about{" "}
-        {CREDITS_PER_VIDEO.toFixed(1)} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
+        Hunt credits pay for searches. A search costs one hunt credit per platform it queries, so a keyword across
+        TikTok, Instagram Reels and YouTube Shorts costs {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking credits pay for
+        tracking: one per tracked item per refresh. AI credits pay for everything
+        model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one analyzed video costs{" "}
+        {CREDITS_PER_VIDEO} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
         {formatInt(approx(videosForCredits(ENTRY.allowance.aiCredits)))} videos. Real use varies with video length and
         follow-up questions.
       </>
@@ -89,11 +91,11 @@ const ITEMS: Item[] = [
     a: (
       <>
         Yes. At monthly prices, each dollar buys about{" "}
-        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt credits scale the same way:{" "}
+        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt and tracking credits step up with each plan:{" "}
         {PLANS.slice(1)
-          .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the hunt credits of ${ENTRY.name}` : ""}`)
+          .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the credits of ${ENTRY.name}` : ""}`)
           .join(" and ")}
-        .
+        . Yearly and monthly billing get the same credits; only the price differs.
       </>
     ),
   },

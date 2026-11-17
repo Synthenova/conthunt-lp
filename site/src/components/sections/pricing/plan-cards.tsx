@@ -18,7 +18,7 @@
  *      units), at the proportions of the owner's Figma frame.
  *   2. The start row (reference 1): the white CTA "Start free trial →" on the left, the trial in two short
  *      lines flush right: "7 days free," in green, then what you pay after ($79/mo, or $756/yr when yearly).
- *   3. A dotted rule, then Every month: hunt credits and AI credits side by side, figure over label (the full
+ *   3. A dotted rule, then Every month: hunt, tracking and AI credits side by side, figure over label (the full
  *      card adds a note under each).
  *   4. The feature ladder under `plan.includes`: Pro lists its base, Creator and Research what they add.
  *      Lead figures take the value weight; a `badge` is a small chip in the plan's hue.
@@ -80,7 +80,7 @@ export interface PlanCardsProps {
   className?: string;
   /** "full" (default) for /pricing; "compact" for the Home section. */
   variant?: "full" | "compact";
-  /** Footnote under the cards (the trial's smaller allowance; on the full variant, how hunt credits are spent). Default true. */
+  /** Footnote under the cards (the trial's smaller allowance; on the full variant, what each credit pays for). Default true. */
   footnote?: boolean;
   /** Extra node on the right of the footnote row (Home puts the calculator link here). */
   footer?: ReactNode;
@@ -139,7 +139,7 @@ export function PlanCards({
             <p className="max-w-[72ch] text-[13px] leading-[1.6] text-ink-2/75">
               The trial runs on a smaller allowance, and your plan starts when the {TRIAL_DAYS} days end.
               {full &&
-                " Hunt credits pay for searches and tracking: a keyword search costs one per platform it queries, so 3 on TikTok, Reels and Shorts."}
+                " Hunt credits pay for searches: a keyword search costs one per platform it queries, so 3 on TikTok, Reels and Shorts. Tracking credits pay for tracking."}
             </p>
           ) : (
             <span />

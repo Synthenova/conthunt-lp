@@ -11,11 +11,20 @@ import {
   PLATFORM_UNITS_PER_KEYWORD_SEARCH,
   PLANS,
   TRIAL_DAYS,
+  approx,
   formatInt,
+  videosForCredits,
   yearlyTotal,
   type Plan,
   type PlanFeature,
 } from "@/components/sections/pricing/plans";
+import {
+  CONTACT,
+  MESSAGE_CHECKLIST,
+  SUPPORT_DESCRIPTION,
+  TOPICS,
+  type Paragraph,
+} from "@/components/pages/support/content";
 import { APP_URL, DOCS_URL, MCP_DOCS_URL, MCP_SERVER_URL, PRIVACY_URL, SITE_URL, TERMS_URL } from "@/lib/links";
 import { PRODUCT_SUMMARY, absoluteUrl } from "@/lib/seo/site";
 import { BOARD_SIZE } from "@/lib/viral-now/ranking";
@@ -29,6 +38,7 @@ const INTRO =
 const PAGE_BLURBS: { path: string; label: string; blurb: string }[] = [
   { path: "/", label: "Home", blurb: "what ContHunt does, how Deep Search works, the main features, plans and common questions." },
   { path: "/pricing", label: "Pricing", blurb: "the three plans, yearly or monthly billing, and a calculator that estimates the research hours you get back." },
+  { path: "/support", label: "Support", blurb: "how to reach support by email, what to include, and help topics." },
   { path: "/viral-now", label: "Viral Now", blurb: "the top viral short-form videos across the published niches." },
   {
     path: "/resources",
@@ -57,11 +67,11 @@ function featureLabel(feature: PlanFeature): string {
 function planSentence(plan: Plan): string {
   const features = plan.features.map(featureLabel).join(", ");
   const added = plan.includes === "Includes" ? features : `${plan.includes} ${features}`;
-  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month. ${added}.`;
+  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits, ${formatInt(plan.allowance.trackingCredits)} tracking credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month (about ${formatInt(approx(videosForCredits(plan.allowance.aiCredits)))} videos analyzed); the ${TRIAL_DAYS}-day trial gives ${formatInt(plan.trial.huntCredits)} hunt credits, ${formatInt(plan.trial.trackingCredits)} tracking credits and ${formatInt(plan.trial.aiCredits)} AI credits. ${added}.`;
 }
 
 function pricingIntro(): string {
-  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing. Hunt credits are one pool that searches and tracking both spend: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts. AI credits pay for video analysis, Deep Search, chat and insights.`;
+  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing; both get the same credits. Hunt credits pay for searches: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts. Tracking credits pay for tracking: one per tracked item per refresh. AI credits pay for video analysis, Deep Search, chat and insights.`;
 }
 
 function productFacts(nicheCount: number): string[] {
@@ -153,6 +163,28 @@ function renderPricing(): string {
   ].join("\n");
 }
 
+function paragraphMarkdown(runs: Paragraph): string {
+  return runs.map((run) => (typeof run === "string" ? run : `[${run.text}](${run.href})`)).join("");
+}
+
+function renderSupport(): string {
+  return [
+    "# Support",
+    "",
+    `> ${SUPPORT_DESCRIPTION}`,
+    "",
+    ...CONTACT.map(paragraphMarkdown),
+    "",
+    "## What to include",
+    "",
+    ...MESSAGE_CHECKLIST.map((item) => `- ${item}`),
+    "",
+    ...TOPICS.flatMap((topic) => [`## ${topic.title}`, "", ...topic.body.flatMap((runs) => [paragraphMarkdown(runs), ""])]),
+    canonicalLine("/support"),
+    "",
+  ].join("\n");
+}
+
 function renderViralNow(): string {
   const { niches } = loadViralNowData();
   const description = snapshotDescription({ niches: niches.length, weekOf: null });
@@ -203,6 +235,7 @@ export function renderMarkdown(htmlPath: string): string | null {
   if (!isMarkdownDocument(htmlPath)) return null;
   if (htmlPath === "/") return renderHome();
   if (htmlPath === "/pricing") return renderPricing();
+  if (htmlPath === "/support") return renderSupport();
   if (htmlPath === "/viral-now") return renderViralNow();
   if (htmlPath === "/resources") return renderResources();
   const post = articleAt(htmlPath);
@@ -284,9 +317,9 @@ export function renderLlmsTxt(): string {
     .join("\n");
 }
 
-/** Home, pricing, Viral Now, the resources index, and every article, in that order. */
+/** Home, pricing, support, Viral Now, the resources index, and every article, in that order. */
 export function renderLlmsFull(): string {
-  const pages = ["/", "/pricing", "/viral-now", "/resources", ...getAllPosts().map((post) => post.href)];
+  const pages = ["/", "/pricing", "/support", "/viral-now", "/resources", ...getAllPosts().map((post) => post.href)];
   const parts = pages.map((path) => renderMarkdown(path)).filter((part): part is string => Boolean(part));
   return `${parts.join("\n\n---\n\n").trim()}\n`;
 }

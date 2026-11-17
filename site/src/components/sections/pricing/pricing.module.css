@@ -228,16 +228,20 @@
   }
 }
 
-/* Every month: the two allowances side by side, figure over label, a hairline between them. The DOM keeps
-   label then figure (dt, dd) for screen readers; `order` shows the figure first. */
+/* Every month: the three allowances side by side, figure over label, a hairline between them. The DOM keeps
+   label then figure (dt, dd) for screen readers; `order` shows the figure first. Each stat spans the three
+   shared rows, so figures, labels and notes line up when one label wraps. */
 .stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, auto);
 }
 
 .stat {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-content: start;
   min-width: 0;
 }
 

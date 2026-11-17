@@ -167,11 +167,9 @@ export interface UsageBarProps {
   cap: number;
   /** Bigger label and bar for the primary resource. */
   primary?: boolean;
-  /** Short breakdown under the bar (e.g. "60 searches + 750 tracking"). */
-  note?: string;
 }
 
-export const UsageBar = memo(function UsageBar({ label, used, cap, primary = false, note }: UsageBarProps) {
+export const UsageBar = memo(function UsageBar({ label, used, cap, primary = false }: UsageBarProps) {
   const ratio = cap > 0 ? used / cap : 0;
   const over = ratio > 1;
   const pct = Math.round(ratio * 100);
@@ -201,7 +199,6 @@ export const UsageBar = memo(function UsageBar({ label, used, cap, primary = fal
           style={{ transform: `scaleX(${Math.min(1, ratio).toFixed(4)})` }}
         />
       </div>
-      {note && <p className="mt-1 font-mono text-[11px] leading-none text-ink-2/75">{note}</p>}
     </div>
   );
 });

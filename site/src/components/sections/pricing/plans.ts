@@ -2,31 +2,18 @@
  * Reconciled plan data for the pricing section, the /pricing page and the calculator.
  * Pure module: safe to import from server and client components.
  *
- * Pricing revision 3 (owner, 2026-10-18). Three plans, cheapest first: Pro ($29), Creator ($79) and
- * Research ($189). The app's Free plan is a silent fallback and never appears on the site.
- *
- * The owner gave rev 3 in two steps, and the order matters because two names swap places:
- *   1. New allowances and features, under the rev 2 names (Creator $29, Pro $79, Research):
- *      - Creator: 2 daily agents (was AI boards), Deep Search (x200), MCP access, mid-tier AI models,
- *        account tracking; 600 hunt credits, 3,000 AI credits.
- *      - Pro: everything in Creator plus 5 daily agents, frontier models, Deep Search (x500);
- *        3,000 hunt credits (x5), 15,000 AI credits (x5).
- *      - Research ($149 -> $189): 25 daily agents, Deep Search (x500), Deep Search (x1,000) coming soon,
- *        experimental features; 12,000 hunt credits (x20), 60,000 AI credits (x20).
- *   2. Then the names move by position: the first plan is renamed Pro, the second Creator, the third
- *      stays Research. Ids follow the names, and each "Everything in …, plus" names the new plan below.
- * Owner, 2026-10-19: "Account tracking" is "Competitor tracking", Pro no longer lists the platforms, and new blurbs.
+ * Three plans, cheapest first: Pro ($29), Creator ($79) and Research ($149). The app's Free plan is a
+ * silent fallback and never appears on the site. Allowances must match the app and backend exactly.
  *
  * Sources and rules:
- * - Hunt credits replace the separate search and tracking allowances: one pool that both spend (a search
- *   costs one hunt credit per platform it queries, a tracked item one per refresh, as the two meters did).
- * - Prices: Pro and Creator keep the app fixtures ($300/yr = $25/mo, $756/yr = $63/mo). Research's yearly
- *   price ($151/mo) keeps its old 20% yearly saving on the new $189 (owner to confirm).
- * - Trial allowances are 7/30 of the month, the rule the app's `_TRIALS` follow; rev 3 sets none yet.
- * - No struck list prices since rev 3 (the new card head shows the price alone).
+ * - One credit is $0.00188 of provider cost. Three pools: hunt credits pay for searches (one per platform a
+ *   search queries), tracking credits for tracking (one per tracked item per refresh), AI credits for analysis.
+ * - Yearly and monthly billing get the same credits; only the price differs.
+ * - Prices: Pro $300/yr ($25/mo), Creator $756/yr ($63/mo), Research $1,428/yr ($119/mo).
+ * - Trial allowances are 7/30 of the month, rounded up to the nearest 500.
  * - Features are a ladder: the entry plan lists its base, the others list only what they add.
- * - The credit-to-video conversion is the app's own planning estimator
- *   (`frontend/src/lib/researchBudget.ts`: 4 x (videos + ceil(videos / 10))).
+ * - An analyzed video is planned at 7 AI credits. Measured production use is lower (base analysis about
+ *   3, a full Deep Search about 6.6 per video), so the figure already carries the headroom.
  */
 import { GET_STARTED_URL } from "@/lib/links";
 
@@ -48,15 +35,15 @@ export interface PlanFeature {
 
 /** One row of the allowance spec: label, value and an optional note on the /pricing card. */
 export interface AllowanceRow {
-  key: "huntCredits" | "aiCredits";
+  key: keyof Allowance;
   label: string;
   value: number;
   note?: string;
 }
 
 export interface Allowance {
-  /** One pool for searches and tracking. */
   huntCredits: number;
+  trackingCredits: number;
   aiCredits: number;
 }
 
@@ -76,7 +63,7 @@ export interface Plan {
   cta: { label: string; href: string };
   /** Monthly allowance. */
   allowance: Allowance;
-  /** Smaller allowance during the 7-day trial (7/30 of the month). */
+  /** Smaller allowance during the 7-day trial (7/30 of the month, rounded up to 500). */
   trial: Allowance;
   /** Heading over the feature list: what the entry plan includes, or the plan this one builds on. */
   includes: string;
@@ -86,11 +73,11 @@ export interface Plan {
 
 // ---------------------------------------------------------------- credits math
 
-/** App planning estimate for AI credits spent analyzing `videos` videos, including the normal 10% buffer. */
-export const estimateAiCredits = (videos: number): number => 4 * (videos + Math.ceil(videos / 10));
+/** Planning figure for AI credits per analyzed video, headroom included. */
+export const CREDITS_PER_VIDEO = 7;
 
-/** Credits per video implied by the estimator, for 500 videos (4 x 550 / 500 = 4.4). */
-export const CREDITS_PER_VIDEO = estimateAiCredits(500) / 500;
+/** Planning estimate for AI credits spent analyzing `videos` videos. */
+export const estimateAiCredits = (videos: number): number => CREDITS_PER_VIDEO * videos;
 
 /** Videos a credit balance covers under the planning estimate. */
 export const videosForCredits = (credits: number): number => Math.floor(credits / CREDITS_PER_VIDEO);
@@ -111,21 +98,15 @@ export const formatInt = (n: number): string => Math.round(n).toLocaleString("en
 
 export const TRIAL_DAYS = 7;
 
-/** The entry plan's monthly allowance; Creator is 5x it and Research 20x (owner, rev 3). */
-const ENTRY_ALLOWANCE: Allowance = { huntCredits: 600, aiCredits: 3_000 };
-const times = (n: number): Allowance => ({
-  huntCredits: ENTRY_ALLOWANCE.huntCredits * n,
-  aiCredits: ENTRY_ALLOWANCE.aiCredits * n,
-});
-/** Trial allowance: the share of a 30-day month that the trial covers. */
-const trialOf = (a: Allowance): Allowance => ({
-  huntCredits: Math.round((a.huntCredits * TRIAL_DAYS) / 30),
-  aiCredits: Math.round((a.aiCredits * TRIAL_DAYS) / 30),
-});
+/** Trial allowance: the share of a 30-day month that the trial covers, rounded up to the nearest 500. */
+const trialOf = (a: Allowance): Allowance => {
+  const share = (credits: number) => Math.ceil((credits * TRIAL_DAYS) / 30 / 500) * 500;
+  return { huntCredits: share(a.huntCredits), trackingCredits: share(a.trackingCredits), aiCredits: share(a.aiCredits) };
+};
 
-const PRO_ALLOWANCE = times(1); // 600 hunt credits, 3,000 AI credits
-const CREATOR_ALLOWANCE = times(5); // 3,000 hunt credits, 15,000 AI credits
-const RESEARCH_ALLOWANCE = times(20); // 12,000 hunt credits, 60,000 AI credits
+const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, trackingCredits: 1_000, aiCredits: 6_000 };
+const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, trackingCredits: 3_000, aiCredits: 17_000 };
+const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, trackingCredits: 7_000, aiCredits: 33_500 };
 
 export const PLANS: readonly Plan[] = [
   {
@@ -176,7 +157,7 @@ export const PLANS: readonly Plan[] = [
     featured: false,
     hue: "blue",
     blurb: "For agencies and brands researching multiple niches every day.",
-    price: { monthly: 189, yearly: 151 },
+    price: { monthly: 149, yearly: 119 },
     trialDays: TRIAL_DAYS,
     cta: { label: "Start free trial", href: GET_STARTED_URL },
     allowance: RESEARCH_ALLOWANCE,
@@ -222,9 +203,10 @@ export const yearlySavingUsd = (plan: Plan): number => plan.price.monthly * 12 -
 export const MAX_YEARLY_SAVING_PCT = Math.max(...PLANS.map(yearlySavingPct));
 
 export const allowanceRows = (plan: Plan): AllowanceRow[] => {
-  const { huntCredits, aiCredits } = plan.allowance;
+  const { huntCredits, trackingCredits, aiCredits } = plan.allowance;
   return [
-    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches and tracking" },
+    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches" },
+    { key: "trackingCredits", label: "Tracking credits", value: trackingCredits, note: "for tracking" },
     {
       key: "aiCredits",
       label: "AI credits",
