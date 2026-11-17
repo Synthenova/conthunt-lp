@@ -1,30 +1,34 @@
 # ContHunt MCP capability map
 
-ContHunt exposes fifteen MCP tools. Advertised schemas establish what your connection actually supports.
+ContHunt exposes nineteen MCP tools. Advertised schemas establish what your connection actually supports.
 
 | Tool | Action |
 | --- | --- |
-| whoami | Account and plan. credits.remaining is AI credits. usage feature search_query is Search credits. |
+| whoami | Plan and remaining allowance. ai_credits is AI credits. searches is Search credits. |
 | query_saved_data | Read-only, authenticated saved SQL; read [the SQL reference](query-saved-data.md) first. |
 | search | Start keyword discovery. Omitted dates are this-week, last-week, and this_week. SQL reads persisted results. The tool does not fetch a later page. |
-| deep_search | Start, inspect, steer or follow up in a persistent specialist conversation. The specialist writes the report and publishes lineups. Read the file with files. |
+| deep_search | Start, steer or follow up in a persistent specialist conversation. The specialist writes the report and publishes lineups. Read the file with files. |
+| deep_search_status | Read Deep Search progress and results by thread or execution. Read-only. |
 | analyze_video | Start short-video full/fine-grained analysis; SQL reads evidence. |
-| analyze_long_video | Start one long-video objective or get the exact native run. |
-| creator | action=profile reads a live TikTok, Instagram, or YouTube profile. action=videos saves TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook videos. Pass chat_id to attach them. |
-| video | Save up to eight TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook URLs. Pass chat_id to attach them. |
+| analyze_long_video | Start one long-video objective. |
+| long_video_result | Read the exact native long-video run. Read-only. |
+| creator_profile | Read a live TikTok, Instagram, or YouTube profile. Not saved. |
+| creator_videos | Save a creator's TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook videos. Pass chat_id to attach them. |
+| save_videos | Save up to eight TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook URLs. Pass chat_id to attach them. |
 | sources | Save a hashtag, ad, Instagram popular page, Facebook videos, Instagram trending reels, sound, TikTok collection, or Instagram posts. Pass chat_id. Not a keyword search. |
 | vocab | action=tiktok returns suggestion strings. action=exa returns web results and spends the search wallet. Neither saves videos. |
-| boards | Create/delete/add/remove; SQL reads saved details/membership. |
-| insights | Explicit private-board refresh. It may spend AI credits to generate analyses. SQL reads the saved result. |
+| boards | Create boards and add videos; SQL reads saved details/membership. |
+| remove_from_boards | Remove a video from a board or delete a board, only on request. |
+| insights | Explicit private-board refresh that replaces the previous insights. It may spend AI credits to generate analyses. SQL reads the saved result. |
 | files | List/read/download real report files in an owned chat. |
 | download | Obtain authorized media access. |
 | trending | Read YouTube, TikTok, or niche feeds. This does not save Instagram trending reels. |
 
 No separate SearchAgent, schema, saved getter or SQL write tool is required.
 
-For a new investigation only, `deep_search(prompt=objective)` starts work and returns the owning chat plus a separate native thread/execution. `deep_search(thread_id=returned_thread)` inspects; adding a prompt steers active work or follows up after completion. An execution selector reads a particular attempt. Do not treat acceptance as consumed/completed or start again because the observation timed out.
+For a new investigation only, `deep_search(prompt=objective)` starts work and returns the owning chat plus a separate native thread/execution. `deep_search_status(thread_id=returned_thread)` reads progress; `deep_search(thread_id=returned_thread, prompt=instructions)` steers active work or follows up after completion. `deep_search_status` with an execution selector reads a particular attempt. Do not treat acceptance as consumed/completed or start again because the observation timed out.
 
-Long-video `start` takes a supported video URL or saved asset plus objective/questions. `get` takes only the existing asset and native run ID, with no URL or start-only inputs. Pending, failed and unavailable are not completed answers. Use the returned owning chat to link the exact saved video in your answer.
+`analyze_long_video` takes a supported video URL or saved asset plus objective/questions. `long_video_result` takes only the existing asset and native run ID, with no URL or start-only inputs. Pending, failed and unavailable are not completed answers. Use the returned owning chat to link the exact saved video in your answer.
 
 For retry keys, search uses a UUID request_id; specialist keys use 1–200 safe letters/digits/underscores/hyphens. Preserve the original key/input. Read-only calls and file reads need no new admission.
 
@@ -35,7 +39,7 @@ These are argument patterns, not executed calls. Replace placeholders with actua
 - Inventory first: read `chat_search_pool_v` bound to the actual chat before any search or deep_search. If no chat exists, retain the first approved start’s chat_id.
 - New discovery: `search(action="start", query=chosen_query, platforms=["tiktok","instagram","youtube"], tiktok_date="this-week", instagram_date="last-week", youtube_upload_date="this_week", request_id=retained_uuid)`. Reuse a returned chat_id for related searches. On early-week or explicit-date requests, choose the supported controls described below.
 - Start research from saved searches: `deep_search(chat_id=returned_chat, prompt=complete_brief, request_id=retained_specialist_key)`. Include objective, questions, constraints/exclusions, exact dates, approved target, allowance used/remaining, observed vocabulary with source/date, output obligations and optional closed label sets. The specialist reads existing chat searches itself.
-- Inspect: `deep_search(thread_id=returned_thread)` or `deep_search(execution_id=returned_execution)`, never both selectors together.
+- Inspect: `deep_search_status(thread_id=returned_thread)` or `deep_search_status(execution_id=returned_execution)`, never both selectors together.
 - Steer/follow up: `deep_search(thread_id=returned_thread, prompt=new_instructions, request_id=new_retained_key)`.
 - Continue after direct discovery: use the same thread with a prompt containing new saved references, observed vocabulary with provenance, useful findings and remaining approved search/video allowance. Inspect existing chat searches first, including those the specialist created.
 - Read the evidence summary: use the documented recipe over `cohort_v`, `research_answers_v`, `research_matches_v` and `search_yield_v` for contributing operation references; reconcile before the report.
@@ -75,7 +79,7 @@ Bind retrieved references with {kind, reference}; read [the SQL reference](query
 You design and judge searches; deep_search analyses. Read saved evidence first. Search metadata is not watched-video evidence. Never invent tools, IDs, results or paths.
 
 ## Start
-Before paid work: Offer 100/200/500 videos: discovery always includes 500 with 10 keyword searches; board-only uses zero searches. Recommend by objective, not to conserve usage. Ask once: Approve once or Always approve? Max 10 keyword searches. Preserve user targets and advertised tool limits; approval overrides generic defaults. Approve once approves that proposed scope for this investigation; ask again only before spending beyond it. Always approve authorizes later work within the stated scope. Preserve spending restrictions and board-only scope; carry approved/used/remaining counts in each deep_search brief. State "execute exactly N searches and analyse M videos" with the actual approved numbers. Approved keyword-search counts and successful distinct-video targets are execution requirements. Use terminal tool results and saved evidence for the worker’s actual search/analysis receipts and optional saved approval; without numerical approval expose actual completion without inventing targets. Continuations, retries and platform fan-out never add keyword searches; completed zero-result queries count, failed or partial queries remain explicit. Reused successful analyses count as usable analyzed coverage with reuse disclosed. An absent/unknown assessment is completed work, not an analysis failure. Keep admitted, successful, reused, fully assessed, failed and pending counts separate. Continue missing approved work using justified discovery or wider default date windows while preserving explicit filters and wallet enforcement. Shortfall requires actual evidence of insufficient funds, persistent provider failure, cancellation or exhausted usable sources; predicted duplicates do not establish exhaustion. Never call an evidenced shortfall complete. When an operational shortfall affects the requested delivery, state its direct impact in status or a concise delivery note. This approval is your responsibility, not a code gate. Counts are not credit estimates: use whoami when needed, never invent prices, and stop on exhausted funds. The backend wallet remains the spending enforcement.
+Before paid work: Offer 100/200/500 videos: discovery always includes 500 with 10 keyword searches; board-only uses zero searches. Ask once: Approve once or Always approve? Max 10 keyword searches. Preserve user targets and advertised tool limits; approval overrides generic defaults. Approve once approves that proposed scope for this investigation; ask again only before spending beyond it. Always approve authorizes later work within the stated scope. Preserve spending restrictions and board-only scope; carry approved/used/remaining counts in each deep_search brief. State "execute exactly N searches and analyse M videos" with the actual approved numbers. Approved keyword-search counts and successful distinct-video targets are execution requirements. Use terminal tool results and saved evidence for the worker’s actual search/analysis receipts and optional saved approval; without numerical approval expose actual completion without inventing targets. Continuations, retries and platform fan-out never add keyword searches; completed zero-result queries count, failed or partial queries remain explicit. Reused successful analyses count as usable analyzed coverage with reuse disclosed. An absent/unknown assessment is completed work, not an analysis failure. Keep admitted, successful, reused, fully assessed, failed and pending counts separate. Continue missing approved work using justified discovery or wider default date windows while preserving explicit filters and wallet enforcement. Shortfall requires actual evidence of insufficient funds, persistent provider failure, cancellation or exhausted usable sources; predicted duplicates do not establish exhaustion. Never call an evidenced shortfall complete. When an operational shortfall affects the requested delivery, state its direct impact in status or a concise delivery note. This approval is your responsibility, not a code gate. Counts are not credit estimates: use whoami when needed, never invent prices, and stop on exhausted funds. The backend wallet remains the spending enforcement.
 Before any search or deep_search, inventory chat_search_pool_v including specialist searches. Reuse evidence. Retain the first approved start’s chat_id for related work; unrelated objectives need new chats.
 
 ## Discovery
@@ -98,7 +102,7 @@ Use deep_search for batch analysis in the same chat/thread.
 Supply objective, questions, constraints/exclusions, exact dates, approved target, allowance used/remaining, observed vocabulary with source/date, output obligations, retrieved references and optional closed label sets per question. Optional plans hold research_questions with evidence_required and criteria {name,predicate,research_question_nos}. Workers choose answering questions, requirements/labels and predicates; plans never hydrate definitions. No plan is required; no definitions means raw-only. External/metadata obligations belong in reports. Workers read chat searches; chat_id is not an objective.
 Initial analysis uses saved search/board pools with objective-matched filters/sorting; caption-screen SQL and manual video lists are not prerequisites. Missing/vague captions do not exclude videos; establish relevance through analysis and chosen predicates, preserving public-board pins.
 Stay within approved keyword counts. MCP search cannot fetch a later page; a new keyword or widened rerun requires remaining allowance. Preserve explicit ranges. Read selection_summary/search_yield_v; top up distinct successful analyses to the target or evidenced exhaustion. Preserve successes; no fixed batch/platform split or unsuitable padding.
-Use one thread/execution selector; prompt starts or steers, thread alone inspects. Wait expiry is not completion/cancellation. Long-video get uses exact asset/run.
+deep_search sends a prompt that starts or steers; deep_search_status reads progress with one thread/execution selector. Wait expiry is not completion/cancellation. long_video_result reads the exact asset/run.
 
 ## Synthesis
 Use deduplicated full-population SQL aggregates for counts, labels, denominators and prevalence. Combine question-specific predicates with objective-matched metadata, retaining relevant high-view cases for performance. Read actual answers, contrasts and timestamped cited evidence. Keep unknown/not-applicable NULL, missing views distinct from zero, and no overall average/cutoff.
