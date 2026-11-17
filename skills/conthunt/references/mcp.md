@@ -4,7 +4,7 @@ ContHunt exposes nineteen MCP tools. Advertised schemas establish what your conn
 
 | Tool | Action |
 | --- | --- |
-| whoami | Plan and remaining allowance. ai_credits is AI credits. searches is Search credits. |
+| whoami | Plan and remaining allowance. ai_credits is AI credits. searches is Hunt credits. |
 | query_saved_data | Read-only, authenticated saved SQL; read [the SQL reference](query-saved-data.md) first. |
 | search | Start keyword discovery. Omitted dates are this-week, last-week, and this_week. SQL reads persisted results. The tool does not fetch a later page. |
 | deep_search | Start, steer or follow up in a persistent specialist conversation. The specialist writes the report and publishes lineups. Read the file with files. |
@@ -16,7 +16,7 @@ ContHunt exposes nineteen MCP tools. Advertised schemas establish what your conn
 | creator_videos | Save a creator's TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook videos. Pass chat_id to attach them. |
 | save_videos | Save up to eight TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook URLs. Pass chat_id to attach them. |
 | sources | Save a hashtag, ad, Instagram popular page, Facebook videos, Instagram trending reels, sound, TikTok collection, or Instagram posts. Pass chat_id. Not a keyword search. |
-| vocab | action=tiktok returns suggestion strings. action=exa returns web results and spends the search wallet. Neither saves videos. |
+| vocab | action=tiktok returns suggestion strings. action=exa returns web results and spends Hunt credits. Neither saves videos. |
 | boards | Create boards and add videos; SQL reads saved details/membership. |
 | remove_from_boards | Remove a video from a board or delete a board, only on request. |
 | insights | Explicit private-board refresh that replaces the previous insights. It may spend AI credits to generate analyses. SQL reads the saved result. |
@@ -84,7 +84,7 @@ Before any search or deep_search, inventory chat_search_pool_v including special
 
 ## Discovery
 Default keyword discovery stays TikTok Top and Keyword, Instagram Reels, and YouTube Shorts through search unless explicitly restricted. Non-keyword saves use sources with chat_id: hashtag, ad, popular, Facebook, trending reels, sound, collection, or Instagram posts. One keyword uses one combined call. A later search call is a new keyword search.
-User names define scope, not popularity. Use vocab action=tiktok or action=exa for current names and dates. Both spend the search wallet and save no videos.
+User names define scope, not popularity. Use vocab action=tiktok or action=exa for current names and dates. Both spend Hunt credits and save no videos.
 Write natural creator-language queries with one coherent angle each. Use vocabulary from current web, autocomplete and captions; do not hardcode entities. Broad descriptive probes reveal niche vocabulary before entity-specific refinements. Allocate approval between discovery and refinements from coverage, uncertainty and marginal yield; there is no fixed split. Keep roles, scenes and keywords coherent. Derive format from the request and observed titles/captions rather than a fixed word or length limit. Reuse the top-level query across platforms unless returned vocabulary supports an override. Judge usefulness from observed titles, captions and hashtags against the requested topic, format and exclusions. Rewrite empty or off-topic queries from that evidence, and follow discovered creator or series names when they add coverage. Deduplicate overlapping saved videos; additional angles fill gaps rather than repeat synonyms.
 
 Default recent when the user did not name a range: TikTok this-week, Instagram last-week, YouTube this_week. Honor a range the user said in chat. Early in a calendar week, prefer this-month so Monday does not search an empty two-day window. For an explicit rolling range, choose the tightest supported provider window that covers the entire range, then enforce exact UTC publication boundaries in selection.filters; a calendar-month window must not exclude the prior-month portion of a rolling range. Widen default windows when results are thin or reach in the recent pool does not serve the objective, judged from its view quartiles; state the reason. Honor explicit user ranges.

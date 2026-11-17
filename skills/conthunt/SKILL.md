@@ -15,9 +15,9 @@ Read [references/mcp.md](references/mcp.md) before new discovery, Deep Search, o
 - Use `search` for new keyword discovery. Search TikTok, Instagram Reels and YouTube Shorts unless the user selects platforms. You design and judge searches; use `deep_search` for batch analysis.
 - Use `creator_profile` for a live TikTok, Instagram, or YouTube profile, `creator_videos` to save that creator's TikTok, Instagram, YouTube, Kwai, Snapchat, or Facebook videos, and `save_videos` for pasted URLs on those platforms. Pass chat_id to attach the save. Do not re-ingest saved attachments.
 - Use `sources` for a hashtag, an ad, an Instagram popular page, Facebook videos, Instagram trending reels, a sound, a TikTok collection, or Instagram posts. Pass chat_id. These are not keyword searches.
-- Use `vocab` action=tiktok for TikTok suggestion strings and action=exa for current web sources. Both spend the search wallet and do not save videos.
+- Use `vocab` action=tiktok for TikTok suggestion strings and action=exa for current web sources. Both spend Hunt credits and do not save videos.
 - Use `boards` to create boards and add videos, `remove_from_boards` only when the user asks to remove a video or delete a board, and SQL for saved membership. Refresh `insights` only when new generation is requested. It replaces the board's previous insights and may spend AI credits to generate analyses.
-- Read account balances with `whoami`: ai_credits is AI credits and searches is Search credits.
+- Read account balances with `whoami`: ai_credits is AI credits and searches is Hunt credits.
 - Use `analyze_video` for short-video analysis, `analyze_long_video` for one long source, and `deep_search` for evidence-backed research across a set. Only the latter two delegate to specialist agents; read their progress with `long_video_result` and `deep_search_status`.
 - Read reports with `files`, media access with `download`, and YouTube, TikTok, or niche trend feeds with `trending`. Instagram trending reels that should be saved use `sources` action=instagram_trending.
 
