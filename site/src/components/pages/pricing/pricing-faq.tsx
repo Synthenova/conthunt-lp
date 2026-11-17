@@ -36,6 +36,10 @@ interface Item {
   a: ReactNode;
 }
 
+/** AI credits one dollar buys at the monthly price, rounded. */
+const creditsPerDollar = (plan: Plan): number =>
+  Math.round(plan.allowance.aiCredits / plan.price.monthly);
+
 /** "A, B and C", one entry per plan in `PLANS` order. */
 const forEachPlan = (describe: (plan: Plan) => string): string => {
   const parts = PLANS.map(describe);
@@ -43,6 +47,7 @@ const forEachPlan = (describe: (plan: Plan) => string): string => {
 };
 
 const ENTRY = PLANS[0];
+const huntMultiple = (plan: Plan): number => Math.round(plan.allowance.huntCredits / ENTRY.allowance.huntCredits);
 
 const ITEMS: Item[] = [
   {
@@ -79,14 +84,14 @@ const ITEMS: Item[] = [
     ),
   },
   {
-    q: "How many credits does each plan include?",
+    q: "Do bigger plans give me more for the money?",
     a: (
       <>
-        Every month,{" "}
-        {forEachPlan(
-          (p) =>
-            `${p.name} gets ${formatInt(p.allowance.huntCredits)} hunt credits and ${formatInt(p.allowance.aiCredits)} AI credits (about ${formatInt(approx(videosForCredits(p.allowance.aiCredits)))} videos analyzed)`,
-        )}
+        Yes. At monthly prices, each dollar buys about{" "}
+        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt credits scale the same way:{" "}
+        {PLANS.slice(1)
+          .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the hunt credits of ${ENTRY.name}` : ""}`)
+          .join(" and ")}
         . Yearly and monthly billing get the same credits; only the price differs.
       </>
     ),

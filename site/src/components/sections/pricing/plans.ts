@@ -105,8 +105,8 @@ const trialOf = (a: Allowance): Allowance => {
 };
 
 const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, aiCredits: 7_000 };
-const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, aiCredits: 18_500 };
-const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, aiCredits: 43_500 };
+const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, aiCredits: 20_000 };
+const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, aiCredits: 53_500 };
 
 export const PLANS: readonly Plan[] = [
   {
