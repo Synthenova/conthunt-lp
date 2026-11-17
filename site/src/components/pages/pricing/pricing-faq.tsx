@@ -91,7 +91,7 @@ const ITEMS: Item[] = [
     a: (
       <>
         Yes. At monthly prices, each dollar buys about{" "}
-        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt and tracking credits scale the same way:{" "}
+        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt and tracking credits step up with each plan:{" "}
         {PLANS.slice(1)
           .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the credits of ${ENTRY.name}` : ""}`)
           .join(" and ")}
