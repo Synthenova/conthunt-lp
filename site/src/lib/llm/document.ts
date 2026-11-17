@@ -11,7 +11,9 @@ import {
   PLATFORM_UNITS_PER_KEYWORD_SEARCH,
   PLANS,
   TRIAL_DAYS,
+  approx,
   formatInt,
+  videosForCredits,
   yearlyTotal,
   type Plan,
   type PlanFeature,
@@ -65,11 +67,11 @@ function featureLabel(feature: PlanFeature): string {
 function planSentence(plan: Plan): string {
   const features = plan.features.map(featureLabel).join(", ");
   const added = plan.includes === "Includes" ? features : `${plan.includes} ${features}`;
-  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month. ${added}.`;
+  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month (about ${formatInt(approx(videosForCredits(plan.allowance.aiCredits)))} videos analyzed); the ${TRIAL_DAYS}-day trial gives ${formatInt(plan.trial.huntCredits)} hunt credits and ${formatInt(plan.trial.aiCredits)} AI credits. ${added}.`;
 }
 
 function pricingIntro(): string {
-  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing. Hunt credits are one pool that searches and tracking both spend: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts. AI credits pay for video analysis, Deep Search, chat and insights.`;
+  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing; both get the same credits. Hunt credits are one pool that searches and tracking both spend: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts. AI credits pay for video analysis, Deep Search, chat and insights.`;
 }
 
 function productFacts(nicheCount: number): string[] {

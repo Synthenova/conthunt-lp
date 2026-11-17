@@ -244,8 +244,8 @@ function AssumptionsPanel({
       </div>
       <ul className="mt-4 flex flex-col gap-1.5 text-[12px] leading-snug text-ink-2/75">
         <li>
-          AI credits use ContHunt&apos;s own planning estimate: {CREDITS_PER_VIDEO.toFixed(1)} credits per video, with a
-          10% buffer included. Real use varies with video length, follow-up chat and re-runs.
+          AI credits use ContHunt&apos;s own planning estimate: {CREDITS_PER_VIDEO} credits per analyzed video. Real use
+          varies with video length, follow-up chat and re-runs.
         </li>
         <li>
           One keyword search runs on three platforms and costs 3 hunt credits, one per platform. Your hourly rate is

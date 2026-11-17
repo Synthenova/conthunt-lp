@@ -36,19 +36,13 @@ interface Item {
   a: ReactNode;
 }
 
-/** AI credits one dollar buys at the monthly price, rounded. */
-const creditsPerDollar = (plan: Plan): number =>
-  Math.round(plan.allowance.aiCredits / plan.price.monthly);
-
 /** "A, B and C", one entry per plan in `PLANS` order. */
 const forEachPlan = (describe: (plan: Plan) => string): string => {
   const parts = PLANS.map(describe);
   return parts.length < 2 ? parts.join("") : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
 };
 
-/** The entry plan: the base of the "5x" and "20x" steps. */
 const ENTRY = PLANS[0];
-const huntMultiple = (plan: Plan): number => Math.round(plan.allowance.huntCredits / ENTRY.allowance.huntCredits);
 
 const ITEMS: Item[] = [
   {
@@ -77,23 +71,23 @@ const ITEMS: Item[] = [
         Hunt credits pay for finding videos: searching and tracking spend one pool. A search costs one hunt credit per
         platform it queries, so a keyword across TikTok, Instagram Reels and YouTube Shorts costs{" "}
         {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking costs one per tracked item per refresh. AI credits pay for everything
-        model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one video costs about{" "}
-        {CREDITS_PER_VIDEO.toFixed(1)} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
+        model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one analyzed video costs{" "}
+        {CREDITS_PER_VIDEO} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
         {formatInt(approx(videosForCredits(ENTRY.allowance.aiCredits)))} videos. Real use varies with video length and
         follow-up questions.
       </>
     ),
   },
   {
-    q: "Do bigger plans give me more for the money?",
+    q: "How many credits does each plan include?",
     a: (
       <>
-        Yes. At monthly prices, each dollar buys about{" "}
-        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt credits scale the same way:{" "}
-        {PLANS.slice(1)
-          .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the hunt credits of ${ENTRY.name}` : ""}`)
-          .join(" and ")}
-        .
+        Every month,{" "}
+        {forEachPlan(
+          (p) =>
+            `${p.name} gets ${formatInt(p.allowance.huntCredits)} hunt credits and ${formatInt(p.allowance.aiCredits)} AI credits (about ${formatInt(approx(videosForCredits(p.allowance.aiCredits)))} videos analyzed)`,
+        )}
+        . Yearly and monthly billing get the same credits; only the price differs.
       </>
     ),
   },

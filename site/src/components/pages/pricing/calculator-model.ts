@@ -3,11 +3,10 @@
  * checked in isolation (type-stripped under node: plans.ts and this file have no browser imports).
  *
  * Where each number comes from:
- * - Plan allowances: `sections/pricing/plans.ts` (pricing rev 3: hunt credits and AI credits per plan).
+ * - Plan allowances: `sections/pricing/plans.ts` (hunt credits and AI credits per plan).
  * - Recommendation: the smallest plan, in `PLANS` order (cheapest first), whose limits hold the usage
  *   with headroom left. When none does, it stays on the largest plan and reports the share it covers.
- * - AI credits per run: the app's own planning estimate, 4 x (videos + ceil(videos / 10)),
- *   from `frontend/src/lib/researchBudget.ts`. It already includes a 10% video buffer.
+ * - AI credits per run: the planning estimate, 7 credits per analyzed video (`estimateAiCredits`).
  * - Hunt credits: one pool that searches and tracking both spend. Every keyword search runs on three
  *   platforms and costs one hunt credit per platform (`searchCreditEstimate: searches * 3`); tracking
  *   costs the credits below. `Usage` keeps both parts (`searchUnits`, `trackingCredits`) as the
