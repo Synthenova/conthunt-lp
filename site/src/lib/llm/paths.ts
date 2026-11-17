@@ -14,7 +14,7 @@ export const HTML_PATH_HEADER = "x-conthunt-html-path";
 const SLUG = "[a-z0-9]+(?:-[a-z0-9]+)*";
 const HTML_PATH = new RegExp(`^\\/(?:${SLUG})(?:\\/${SLUG})*$`);
 const ARTICLE_PATH = new RegExp(`^\\/(?:resources|blog)\\/${SLUG}$`);
-const STATIC_DOCUMENTS = new Set(["/", "/pricing", "/viral-now", "/resources"]);
+const STATIC_DOCUMENTS = new Set(["/", "/pricing", "/support", "/viral-now", "/resources"]);
 
 export function normalizePath(pathname: string): string {
   if (pathname.length > 1 && pathname.endsWith("/")) return pathname.slice(0, -1);

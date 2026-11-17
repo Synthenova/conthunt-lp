@@ -120,7 +120,10 @@ export const FOOTER_COLUMNS: ResolvedFooterColumn[] = [
     ],
   },
   { title: "Socials", links: PLACED.socials.filter((label) => CONFIRMED_SOCIALS.has(label)).map(legacy) },
-  { title: "Legal", links: PLACED.legal.map(legacy) },
+  {
+    title: "Legal",
+    links: [legacy("Privacy Policy"), legacy("Terms of Service"), link("Support", ROUTES.support), legacy("Contact")],
+  },
 ].filter((column) => column.links.length > 0);
 
 /** Retained social labels hidden until their URL is confirmed (for the build report). */

@@ -55,6 +55,7 @@ export const ROUTES = {
   pricing: "/pricing",
   viralNow: "/viral-now",
   resources: "/resources",
+  support: "/support",
   article: (slug: string) => `/resources/${slug}`,
 } as const;
 
