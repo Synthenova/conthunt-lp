@@ -766,7 +766,8 @@ export async function renewAsset(
 ): Promise<ViralNowRenewal> {
   const current = video[kind];
   const path = current.asset_id ? renewalPath(video, current.asset_id) : null;
-  if (!current.asset_id || !path || current.source === "local") {
+  // A card with no playable R2 file must not ask the signed-url route.
+  if (!current.asset_id || !current.url || current.source !== "r2" || !path) {
     return { status: "error", error: "Asset is not renewable" };
   }
   try {
