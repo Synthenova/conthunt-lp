@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { emdForHost, requestHost } from "@/lib/emd/host";
+import { isEmdLibraryPath } from "@/lib/emd/paths";
 import { acceptable, wantsMarkdown } from "@/lib/llm/accept";
 import { HTML_PATH_HEADER, MARKDOWN_REQUEST_HEADER, htmlLinks, htmlPathFromMarkdown, isMarkdownDocument, normalizePath } from "@/lib/llm/paths";
 import { CONTENT_SIGNAL } from "@/lib/llm/robots";
@@ -50,6 +52,51 @@ function rewriteMarkdown(request: NextRequest) {
   return response;
 }
 
+const EMD_FILES = /\.(?:avif|css|gif|ico|jpeg|jpg|js|json|map|mjs|mp4|png|svg|webm|webp|woff2?)$/i;
+
+const EMD_PASS = ["/_next", "/media", "/brand", "/v1", "/api", "/ingest", "/blog/plates", "/.well-known", "/public", "/assets"];
+
+function emdPassthrough(pathname: string): boolean {
+  if (EMD_FILES.test(pathname)) return true;
+  return EMD_PASS.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+}
+
+/** Rewrite inside this app. Behind nginx, https://localhost must be fetched as plain HTTP. */
+function internalRewrite(request: NextRequest, pathname: string) {
+  const url = request.nextUrl.clone();
+  url.pathname = pathname;
+  url.search = "";
+  const behindTls = url.protocol === "https:" && (url.hostname === "localhost" || url.hostname === "127.0.0.1");
+  const destination = behindTls ? new URL(`http://127.0.0.1:${process.env.PORT || "3000"}${pathname}`) : url;
+  return NextResponse.rewrite(destination);
+}
+
+/**
+ * A keyword domain serves its own directory. Brand paths go to conthunt.app.
+ * Returns null when this request is not for one of those domains.
+ */
+function emdGate(request: NextRequest): NextResponse | null {
+  const host = requestHost(request.headers.get("x-forwarded-host") ?? request.headers.get("host"));
+  const page = emdForHost(host);
+  if (!page) return null;
+
+  const pathname = normalizePath(request.nextUrl.pathname);
+  if (host.startsWith("www.")) {
+    return NextResponse.redirect(new URL(`${pathname === "/" ? "/" : pathname}${request.nextUrl.search}`, `https://${page.domain}`), 301);
+  }
+  if (pathname === `/emd/${page.slug}` || pathname.startsWith(`/emd/${page.slug}/`)) return null;
+  if (emdPassthrough(pathname)) return null;
+
+  const markdown = pathname === "/index.md" || pathname === "/llms.txt" || pathname === "/llms-full.txt" || (pathname === "/" && wantsMarkdown(request.headers.get("accept")));
+  if (markdown) return internalRewrite(request, `/emd/${page.slug}/md`);
+  if (pathname === "/") return internalRewrite(request, `/emd/${page.slug}`);
+  if (pathname === "/robots.txt") return internalRewrite(request, `/emd/${page.slug}/robots.txt`);
+  if (pathname === "/sitemap.xml") return internalRewrite(request, `/emd/${page.slug}/sitemap`);
+  if (isEmdLibraryPath(pathname)) return internalRewrite(request, `/emd/${page.slug}${pathname}`);
+
+  return NextResponse.redirect(new URL(`${pathname}${request.nextUrl.search}`, "https://conthunt.app"), 301);
+}
+
 function continueHtml(htmlPath: string) {
   const response = NextResponse.next();
   response.headers.append("Vary", "Accept");
@@ -60,6 +107,9 @@ function continueHtml(htmlPath: string) {
 
 export function proxy(request: NextRequest) {
   if (request.method !== "GET" && request.method !== "HEAD") return NextResponse.next();
+
+  const gated = emdGate(request);
+  if (gated) return gated;
 
   const pathname = normalizePath(request.nextUrl.pathname);
   if (isSkipped(pathname)) return NextResponse.next();
