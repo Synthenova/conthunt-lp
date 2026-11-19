@@ -67,6 +67,9 @@ COPY --from=site /app/.next/standalone ./
 COPY --from=site /app/.next/static ./.next/static
 COPY --from=site /app/public ./public
 COPY --from=site /app/content ./content
+# /sitemap.xml is regenerated at runtime (ISR) and reads this file again; without it the legacy docs and
+# legal pages drop out of the sitemap an hour after each deploy.
+COPY --from=site /app/legacy-sitemap.xml ./legacy-sitemap.xml
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
