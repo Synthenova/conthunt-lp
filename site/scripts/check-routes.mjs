@@ -2,16 +2,19 @@
 /**
  * Route check for the combined container (nginx in front, the Next site behind it).
  *
- *   node site/scripts/check-routes.mjs <baseUrl>
+ *   node site/scripts/check-routes.mjs <baseUrl> [--redirects-only] [--root <repo dir>]
  *   node site/scripts/check-routes.mjs http://127.0.0.1:8080
  *   node site/scripts/check-routes.mjs https://preview---conthunt-lp-xxxx.a.run.app
  *
  * Needs Node 18+ (global fetch) and no dependencies. Exit code 0 when every check passes, 1 otherwise.
- * Run it from anywhere; it finds `nginx.conf` at the repo root (two folders above this script).
+ * Expectations come from `nginx.conf` and `site/content/blog/` under the repo root: two folders above this
+ * script, or `--root`, which lets scripts/promote.sh check a deployed commit's own files.
  *
  * What it checks, in order:
- *  pages     `/` is the revamp (marker below), /pricing, /resources, one Resources article, three /blog articles
- *  redirects every 301 and 410 rule parsed from nginx.conf (status and Location), plus /mcp and /skill
+ *  redirects every exact-match `return 301/302/410` location in nginx.conf (status and Location path+query),
+ *            so a new short link is covered without editing this script. --redirects-only stops here.
+ *  pages     `/` is the revamp (marker below), /pricing, /resources, one Resources article, three /blog
+ *            articles, and the sitemap lists exactly the posts in site/content/blog
  *  legacy    /privacy, /terms, /docs, both integration pages, /.well-known/skills/index.json and SKILL.md
  *            with their content types
  *  feeds     /rss.xml, /robots.txt, /llms.txt, /sitemap.xml, and every URL inside the sitemap answers 200
@@ -21,18 +24,23 @@
  * Redirects are never followed. Absolute URLs in the sitemap and in Location headers are compared by
  * path, so the same run works against localhost, a Cloud Run preview tag and production.
  */
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { parseArgs } from "node:util";
 import { fileURLToPath } from "node:url";
 
-const base = (process.argv[2] ?? "").replace(/\/+$/, "");
+const { values: opts, positionals } = parseArgs({
+  allowPositionals: true,
+  options: { "redirects-only": { type: "boolean", default: false }, root: { type: "string" } },
+});
+const base = (positionals[0] ?? "").replace(/\/+$/, "");
 if (!/^https?:\/\//.test(base)) {
-  console.error("usage: node site/scripts/check-routes.mjs <baseUrl>   (for example http://127.0.0.1:8080)");
+  console.error("usage: node site/scripts/check-routes.mjs <baseUrl> [--redirects-only] [--root <repo dir>]");
   process.exit(2);
 }
 
-const here = dirname(fileURLToPath(import.meta.url));
-const nginxConf = readFileSync(join(here, "..", "..", "nginx.conf"), "utf8");
+const root = opts.root ?? join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const nginxConf = readFileSync(join(root, "nginx.conf"), "utf8");
 
 const REVAMP_MARKER = 'data-section="hero"';
 const LEGACY_MARKER = "glass-nav";
@@ -84,6 +92,27 @@ async function text(path) {
   return { res, body: await res.text() };
 }
 
+function finish() {
+  console.log(`\n${passed} passed, ${failures.length} failed`);
+  if (failures.length) {
+    console.log("\nfailures:");
+    for (const line of failures) console.log(` - ${line}`);
+  }
+  process.exit(failures.length ? 1 : 0);
+}
+
+/** The post URLs the site must list, from the files the Next loader reads (src/lib/blog/posts.ts). */
+function contentPostPaths() {
+  const dir = join(root, "site", "content", "blog");
+  return readdirSync(dir)
+    .filter((file) => file.endsWith(".md") && file.toLowerCase() !== "readme.md")
+    .map((file) => {
+      const frontmatter = readFileSync(join(dir, file), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
+      const section = frontmatter.match(/^section:\s*["']?(\w+)/m)?.[1] ?? "resources";
+      return `/${section === "blog" ? "blog" : "resources"}/${file.slice(0, -3)}`;
+    });
+}
+
 const pathOf = (url) => {
   try {
     const parsed = new URL(url, "http://x");
@@ -92,6 +121,31 @@ const pathOf = (url) => {
     return url;
   }
 };
+
+/* ---------------------------------------------------------------- redirects */
+console.log("\n# redirects (parsed from nginx.conf)");
+const rules = new Map();
+const ruleRe = /location\s*=\s*(\/\S*)\s*\{\s*return\s+(301|302|410)(?:\s+(\S+?))?\s*;/g;
+for (const m of nginxConf.matchAll(ruleRe)) {
+  const [, from, code, target] = m;
+  rules.set(from, { code: Number(code), target: target ? pathOf(target.replace("$host", "x")) : null });
+}
+if (rules.size === 0) record(false, "parsed redirect rules from nginx.conf", "none found");
+const counts = { 301: 0, 302: 0, 410: 0 };
+for (const [from, { code, target }] of rules) {
+  try {
+    const res = await get(from);
+    await res.arrayBuffer();
+    const location = res.headers.get("location");
+    const ok = res.status === code && (code === 410 || (location && pathOf(location) === target));
+    record(ok, `${code} ${from}${target ? ` -> ${target}` : ""}`, ok ? "" : `got ${res.status}${location ? ` -> ${location}` : ""}`);
+    counts[code] += 1;
+  } catch (error) {
+    record(false, `${code} ${from}`, error instanceof Error ? error.message : String(error));
+  }
+}
+console.log(`(${counts[301]} permanent, ${counts[302]} temporary, ${counts[410]} gone)`);
+if (opts["redirects-only"]) finish();
 
 /* ---------------------------------------------------------------- sitemap (read first: feeds the page checks) */
 let sitemapPaths = [];
@@ -111,50 +165,23 @@ await check("page", "/pricing", { type: "text/html" });
 await check("page", "/resources", { type: "text/html" });
 await check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
 const posts = sitemapPaths.filter((p) => /^\/blog\/[a-z0-9-]+$/.test(p));
-const resourcePosts = sitemapPaths.filter((p) => /^\/resources\/[a-z0-9-]+$/.test(p));
-record(posts.length === 46, "sitemap lists 46 /blog articles", `found ${posts.length}`);
-record(resourcePosts.length === 9, "sitemap lists 9 /resources articles", `found ${resourcePosts.length}`);
+{
+  const expected = new Set(contentPostPaths());
+  const listed = new Set(sitemapPaths.filter((p) => /^\/(blog|resources)\/[a-z0-9-]+$/.test(p)));
+  const missing = [...expected].filter((p) => !listed.has(p));
+  const extra = [...listed].filter((p) => !expected.has(p));
+  record(
+    missing.length === 0 && extra.length === 0,
+    `sitemap lists the ${expected.size} posts in site/content/blog`,
+    [missing.length && `missing ${missing.join(" ")}`, extra.length && `unexpected ${extra.join(" ")}`].filter(Boolean).join("; "),
+  );
+}
 record(!sitemapSet.has("/blog"), "sitemap omits the /blog index");
 record(!sitemapPaths.some((p) => p.includes(".md")), "sitemap omits markdown URLs");
 for (const post of posts.slice(0, 3)) {
   await check("blog article", post, { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
 }
 
-/* ---------------------------------------------------------------- redirects */
-console.log("\n# redirects (parsed from nginx.conf)");
-const rules = new Map();
-const ruleRe = /location\s*=\s*(\/\S*)\s*\{\s*return\s+(301|410)(?:\s+(\S+?))?\s*;/g;
-for (const m of nginxConf.matchAll(ruleRe)) {
-  const [, from, code, target] = m;
-  rules.set(from, { code: Number(code), target: target ? pathOf(target.replace("$host", "x")) : null });
-}
-if (rules.size === 0) record(false, "parsed 301/410 rules from nginx.conf", "none found");
-let redirects = 0;
-let gone = 0;
-for (const [from, { code, target }] of rules) {
-  // The /mcp and /skill rules are listed below with their targets; every other rule is a blog rule.
-  try {
-    const res = await get(from);
-    await res.arrayBuffer();
-    const location = res.headers.get("location");
-    const ok = res.status === code && (code === 410 || (location && pathOf(location) === target));
-    record(ok, `${code} ${from}${code === 301 ? ` -> ${target}` : ""}`, ok ? "" : `got ${res.status}${location ? ` -> ${location}` : ""}`);
-    if (code === 301) redirects += 1;
-    else gone += 1;
-  } catch (error) {
-    record(false, `${code} ${from}`, error instanceof Error ? error.message : String(error));
-  }
-}
-console.log(`(${redirects} redirects, ${gone} gone)`);
-for (const [from, to] of [
-  ["/mcp", "/docs/integrations/mcp"],
-  ["/skill", "/docs/integrations/skill"],
-]) {
-  const res = await get(from);
-  await res.arrayBuffer();
-  const location = res.headers.get("location");
-  record(res.status === 301 && !!location && pathOf(location) === to, `301 ${from} -> ${to}`, `got ${res.status}${location ? ` -> ${location}` : ""}`);
-}
 {
   // A post trailing slash is one hop to the canonical path. /blog/ itself is an exact 301 to /resources.
   const sample = posts[0];
@@ -274,12 +301,20 @@ await check("unknown path", "/this-page-does-not-exist", { status: 404 });
 await check("unknown blog path", "/blog/this-post-does-not-exist", { status: 404 });
 await check("not exposed", "/about", { status: 404 });
 await check("not exposed", "/authors", { status: 404 });
-await check("backend API is not proxied beyond the public read routes", "/v1/chats", { status: 404 });
-
-/* ---------------------------------------------------------------- summary */
-console.log(`\n${passed} passed, ${failures.length} failed`);
-if (failures.length) {
-  console.log("\nfailures:");
-  for (const line of failures) console.log(` - ${line}`);
-  process.exit(1);
+{
+  // On conthunt.app, Cloudflare routes /v1/* to the backend before Cloud Run sees it (the backend marks its
+  // responses with x-conthunt-api-timing-id). There it must demand credentials. From the container itself,
+  // only the public read routes are rewritten and the rest of /v1 answers 404.
+  const label = "backend API is not open beyond the public read routes /v1/chats";
+  try {
+    const res = await get("/v1/chats");
+    await res.arrayBuffer();
+    const fromBackend = res.headers.has("x-conthunt-api-timing-id");
+    const expected = fromBackend ? 401 : 404;
+    record(res.status === expected, label, `status ${res.status}, expected ${expected} ${fromBackend ? "from the edge-routed backend" : "from the container"}`);
+  } catch (error) {
+    record(false, label, error instanceof Error ? error.message : String(error));
+  }
 }
+
+finish();
