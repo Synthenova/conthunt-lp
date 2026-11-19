@@ -299,8 +299,9 @@ console.log("\n# errors");
 await check("preview is hidden", "/preview/hero", { status: 404 });
 await check("unknown path", "/this-page-does-not-exist", { status: 404 });
 await check("unknown blog path", "/blog/this-post-does-not-exist", { status: 404 });
-await check("not exposed", "/about", { status: 404 });
-await check("not exposed", "/authors", { status: 404 });
+await check("about", "/about", { status: 200 });
+await check("authors", "/authors", { status: 200 });
+await check("editorial", "/editorial", { status: 200 });
 {
   // On conthunt.app, Cloudflare routes /v1/* to the backend before Cloud Run sees it (the backend marks its
   // responses with x-conthunt-api-timing-id). There it must demand credentials. From the container itself,
