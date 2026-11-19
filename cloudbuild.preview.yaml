@@ -7,7 +7,7 @@
 # Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
 # Going live: see site/docs/revamp/MERGE_DEPLOY.md ("Promote"); the service must end up following LATEST again.
 substitutions:
-  _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
+  _NEXT_PUBLIC_BACKEND_URL: 'https://mcp.conthunt.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
 # The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
 timeout: 1800s
