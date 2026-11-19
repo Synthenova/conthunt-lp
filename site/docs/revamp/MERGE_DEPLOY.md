@@ -97,7 +97,7 @@ Production repo clone: `C:/Users/win10/Documents/GitHub/Conthunt/conthunt-lp`, b
   - If that isn't viable, say so.
 - Commit `site/scripts/check-routes.mjs <baseUrl>`:
   - pages: `/` (a revamp marker), `/pricing`, `/resources`, one resource, `/blog` and three posts;
-  - redirects: every 301/410 parsed from `nginx.conf`, plus `/mcp` and `/skill`;
+  - redirects: every exact-match 301/302/410 parsed from `nginx.conf`;
   - legacy: `/privacy`, `/terms`, `/docs`, both integration pages, and `/.well-known/skills/index.json` and
     `SKILL.md` with their content types;
   - feeds: `/rss.xml`, `/robots.txt`, `/llms.txt`, and `/sitemap.xml`, with every URL in it returning 200;
@@ -116,11 +116,14 @@ Production repo clone: `C:/Users/win10/Documents/GitHub/Conthunt/conthunt-lp`, b
 
 ## Cutover notes (orchestrator)
 
+Deploy with `scripts/deploy-preview.sh`, then promote with `scripts/promote.sh <revision>` (see AGENTS.md,
+"Deploy"). The notes below explain what those scripts guard against.
+
 ### Before submitting a build
 - The build source is the working tree of the directory you submit from, filtered by the root `.gcloudignore`
   (without it gcloud would upload `site/.next`, which has paths longer than MAX_PATH on Windows). Check it first:
   `gcloud meta list-files-for-upload .` must list no `site/.next`, `site/node_modules`, `SEO/` or `.scratch/` path.
-  Prefer submitting from a clean export of the reviewed commit (`git archive <commit> | tar -x -C <empty dir>`).
+  `scripts/deploy-preview.sh` always submits a clean export of HEAD (`git archive`), never the working tree.
 - Read the live service settings and make sure they fit two processes (nginx + Next, Next heap capped at 320 MB):
   memory 512Mi at least (1Gi recommended), container port 8080, ingress "all". Add `--memory=1Gi` to the deploy
   args in both cloudbuild files if the service is lower.
@@ -129,14 +132,15 @@ Production repo clone: `C:/Users/win10/Documents/GitHub/Conthunt/conthunt-lp`, b
 ### Traffic pinning
 - Today the service probably follows LATEST. The first `cloudbuild.preview.yaml` deploy (`--no-traffic`) pins the
   traffic that LATEST carried to the revision that was latest at that moment (the old static site).
-- Promote the tested revision with `gcloud run services update-traffic conthunt-lp --region us-central1 --to-revisions=<rev>=100`,
-  then, once it is confirmed to be the latest created revision
-  (`gcloud run services describe conthunt-lp --region us-central1 --format='value(status.latestCreatedRevisionName)'`),
-  run `gcloud run services update-traffic conthunt-lp --region us-central1 --to-latest`. Or skip the pin and run
-  `--to-latest` straight away. Otherwise every later `cloudbuild.yaml` deploy would serve 0%.
+- Promote: `scripts/promote.sh <rev>`. It uses `--to-latest` when `<rev>` is the latest created revision, so the
+  service follows LATEST again. For an older revision it pins with `--to-revisions=<rev>=100` and says so; every
+  later `cloudbuild.yaml` deploy would then serve 0% until a newer revision is promoted.
+- It refuses a revision without a `commit` label that contains `origin/main`. `deploy-preview.sh` sets that label.
+  The 17 Nov outage came from promoting a build of a checkout that lacked `origin/main`.
 - `cloudbuild.yaml` now ends with `update-traffic --to-latest`, so a regular deploy always goes live.
-- Rollback: `gcloud run services update-traffic conthunt-lp --region us-central1 --to-revisions=<old rev>=100`
-  (this pins again; run `--to-latest` after the fix is deployed).
+- Rollback: `promote.sh` rolls back by itself when a live check fails. By hand:
+  `gcloud run services update-traffic conthunt-lp --region us-central1 --to-revisions=<old rev>=100`
+  (this pins again; promote the fixed revision afterwards).
 
 ### After moving traffic
 - Cloudflare caches the old static responses. Purge `/robots.txt`, `/sitemap.xml`, `/og-default.jpg`, `/llms.txt`

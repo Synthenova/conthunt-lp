@@ -1,14 +1,16 @@
 # Same build as cloudbuild.yaml, deployed as a no-traffic revision behind the "preview" tag, so the real
-# container can be tested before any traffic moves:
-#   gcloud builds submit --config cloudbuild.preview.yaml .
+# container can be tested before any traffic moves. Run it only through scripts/deploy-preview.sh, which
+# builds a clean export of a commit that contains origin/main and passes _COMMIT_SHA.
 # Cloud Run serves that revision at a tagged URL of the form https://preview---conthunt-lp-<hash>-uc.a.run.app
 # (the deploy step prints the exact URL). Production traffic and the :latest image tag are untouched.
 # Check it with: node site/scripts/check-routes.mjs <that url>
 # Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
-# Going live: see site/docs/revamp/MERGE_DEPLOY.md ("Promote"); the service must end up following LATEST again.
+# Going live: scripts/promote.sh <revision> (background in site/docs/revamp/MERGE_DEPLOY.md, "Traffic pinning").
 substitutions:
-  _NEXT_PUBLIC_BACKEND_URL: 'https://conthunt-785174409154.us-central1.run.app'
+  _NEXT_PUBLIC_BACKEND_URL: 'https://mcp.conthunt.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'
+  # The revision's commit label. scripts/promote.sh refuses a revision labelled "unknown".
+  _COMMIT_SHA: 'unknown'
 # The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
 timeout: 1800s
 steps:
@@ -20,6 +22,8 @@ steps:
       - 'NEXT_PUBLIC_BACKEND_URL=${_NEXT_PUBLIC_BACKEND_URL}'
       - '--build-arg'
       - 'NEXT_PUBLIC_APP_URL=${_NEXT_PUBLIC_APP_URL}'
+      - '--label'
+      - 'org.opencontainers.image.revision=${_COMMIT_SHA}'
       - '-t'
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
       - '.'
@@ -44,6 +48,10 @@ steps:
       - '--memory=1Gi'
       - '--no-traffic'
       - '--tag=preview'
+      # Later revisions inherit the template's labels, so every image-changing deploy sets its own commit.
+      # source-commit was an earlier hand-set label that new revisions kept inheriting with a stale value.
+      - '--update-labels=commit=${_COMMIT_SHA}'
+      - '--remove-labels=source-commit'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/conthunt-lp/website:$BUILD_ID'
 options:
