@@ -46,13 +46,43 @@ const REVAMP_MARKER = 'data-section="hero"';
 const LEGACY_MARKER = "glass-nav";
 const TIMEOUT_MS = 30_000;
 
-let passed = 0;
-const failures = [];
+const CONCURRENCY = 16;
 
-function record(ok, label, detail = "") {
-  if (ok) passed += 1;
-  else failures.push(`${label}${detail ? `  (${detail})` : ""}`);
-  console.log(`${ok ? "ok  " : "FAIL"} ${label}${!ok && detail ? `  (${detail})` : ""}`);
+/** One slot per request; a finishing request hands its slot straight to the next waiter. */
+function limiter(size) {
+  let active = 0;
+  const waiting = [];
+  return async (fn) => {
+    if (active < size) active += 1;
+    else await new Promise((resolve) => waiting.push(resolve));
+    try {
+      return await fn();
+    } finally {
+      const next = waiting.shift();
+      if (next) next();
+      else active -= 1;
+    }
+  };
+}
+const limit = limiter(CONCURRENCY);
+
+// Checks run concurrently but print in the order they were queued: each entry is a promise of lines.
+const queued = [];
+const emit = (lines) => queued.push(Promise.resolve(lines).then((l) => [l].flat()));
+const say = (text) => emit({ text });
+const result = (ok, label, detail = "") => ({ ok, label, detail });
+const message = (error) => (error instanceof Error ? error.message : String(error));
+
+/** Runs fn (which returns [ok, detail]) in a request slot; a thrown error is a failure of that label. */
+function probe(label, fn) {
+  return limit(async () => {
+    try {
+      const [ok, detail = ""] = await fn();
+      return result(ok, label, detail);
+    } catch (error) {
+      return result(false, label, message(error));
+    }
+  });
 }
 
 async function get(path, init = {}) {
@@ -61,8 +91,8 @@ async function get(path, init = {}) {
   return res;
 }
 
-async function check(label, path, { status = 200, type, includes, excludes, minBytes, headerIncludes, notServerError = false, init } = {}) {
-  try {
+function check(label, path, { status = 200, type, includes, excludes, minBytes, headerIncludes, notServerError = false, init } = {}) {
+  return probe(`${label} ${path}`, async () => {
     const res = await get(path, init);
     const body = includes || excludes || minBytes ? await res.text() : await res.arrayBuffer().then(() => "");
     const problems = [];
@@ -79,12 +109,8 @@ async function check(label, path, { status = 200, type, includes, excludes, minB
         problems.push(`header ${name} "${value}" missing ${JSON.stringify(needle)}`);
       }
     }
-    record(problems.length === 0, `${label} ${path}`, problems.join(", "));
-    return res;
-  } catch (error) {
-    record(false, `${label} ${path}`, error instanceof Error ? error.message : String(error));
-    return null;
-  }
+    return [problems.length === 0, problems.join(", ")];
+  });
 }
 
 async function text(path) {
@@ -92,7 +118,21 @@ async function text(path) {
   return { res, body: await res.text() };
 }
 
-function finish() {
+async function finish() {
+  let passed = 0;
+  const failures = [];
+  for (const lines of queued) {
+    for (const line of await lines) {
+      if ("text" in line) {
+        console.log(line.text);
+        continue;
+      }
+      const { ok, label, detail } = line;
+      if (ok) passed += 1;
+      else failures.push(`${label}${detail ? `  (${detail})` : ""}`);
+      console.log(`${ok ? "ok  " : "FAIL"} ${label}${!ok && detail ? `  (${detail})` : ""}`);
+    }
+  }
   console.log(`\n${passed} passed, ${failures.length} failed`);
   if (failures.length) {
     console.log("\nfailures:");
@@ -123,29 +163,32 @@ const pathOf = (url) => {
 };
 
 /* ---------------------------------------------------------------- redirects */
-console.log("\n# redirects (parsed from nginx.conf)");
+say("\n# redirects (parsed from nginx.conf)");
 const rules = new Map();
 const ruleRe = /location\s*=\s*(\/\S*)\s*\{\s*return\s+(301|302|410)(?:\s+(\S+?))?\s*;/g;
 for (const m of nginxConf.matchAll(ruleRe)) {
   const [, from, code, target] = m;
   rules.set(from, { code: Number(code), target: target ? pathOf(target.replace("$host", "x")) : null });
 }
-if (rules.size === 0) record(false, "parsed redirect rules from nginx.conf", "none found");
+if (rules.size === 0) emit(result(false, "parsed redirect rules from nginx.conf", "none found"));
 const counts = { 301: 0, 302: 0, 410: 0 };
-for (const [from, { code, target }] of rules) {
-  try {
-    const res = await get(from);
-    await res.arrayBuffer();
-    const location = res.headers.get("location");
-    const ok = res.status === code && (code === 410 || (location && pathOf(location) === target));
-    record(ok, `${code} ${from}${target ? ` -> ${target}` : ""}`, ok ? "" : `got ${res.status}${location ? ` -> ${location}` : ""}`);
-    counts[code] += 1;
-  } catch (error) {
-    record(false, `${code} ${from}`, error instanceof Error ? error.message : String(error));
-  }
-}
-console.log(`(${counts[301]} permanent, ${counts[302]} temporary, ${counts[410]} gone)`);
-if (opts["redirects-only"]) finish();
+const redirectChecks = [...rules].map(([from, { code, target }]) =>
+  limit(async () => {
+    try {
+      const res = await get(from);
+      await res.arrayBuffer();
+      const location = res.headers.get("location");
+      const ok = res.status === code && (code === 410 || (location && pathOf(location) === target));
+      counts[code] += 1;
+      return result(ok, `${code} ${from}${target ? ` -> ${target}` : ""}`, ok ? "" : `got ${res.status}${location ? ` -> ${location}` : ""}`);
+    } catch (error) {
+      return result(false, `${code} ${from}`, message(error));
+    }
+  }),
+);
+for (const c of redirectChecks) emit(c);
+emit(Promise.all(redirectChecks).then(() => ({ text: `(${counts[301]} permanent, ${counts[302]} temporary, ${counts[410]} gone)` })));
+if (opts["redirects-only"]) await finish();
 
 /* ---------------------------------------------------------------- sitemap (read first: feeds the page checks) */
 let sitemapPaths = [];
@@ -153,169 +196,157 @@ try {
   const { body } = await text("/sitemap.xml");
   sitemapPaths = [...body.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => pathOf(m[1]));
 } catch (error) {
-  console.log(`note: could not read /sitemap.xml (${error instanceof Error ? error.message : error})`);
+  say(`note: could not read /sitemap.xml (${message(error)})`);
 }
 const sitemapSet = new Set(sitemapPaths);
 const firstOf = (re, fallback) => sitemapPaths.find((p) => re.test(p)) ?? fallback;
 
 /* ---------------------------------------------------------------- pages */
-console.log("\n# pages");
-await check("revamp home", "/", { type: "text/html", includes: REVAMP_MARKER, excludes: LEGACY_MARKER });
-await check("page", "/pricing", { type: "text/html" });
-await check("page", "/resources", { type: "text/html" });
-await check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
+say("\n# pages");
+emit(check("revamp home", "/", { type: "text/html", includes: REVAMP_MARKER, excludes: LEGACY_MARKER }));
+emit(check("page", "/pricing", { type: "text/html" }));
+emit(check("page", "/resources", { type: "text/html" }));
+emit(check("article", firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works"), { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER }));
 const posts = sitemapPaths.filter((p) => /^\/blog\/[a-z0-9-]+$/.test(p));
 {
   const expected = new Set(contentPostPaths());
   const listed = new Set(sitemapPaths.filter((p) => /^\/(blog|resources)\/[a-z0-9-]+$/.test(p)));
   const missing = [...expected].filter((p) => !listed.has(p));
   const extra = [...listed].filter((p) => !expected.has(p));
-  record(
+  emit(result(
     missing.length === 0 && extra.length === 0,
     `sitemap lists the ${expected.size} posts in site/content/blog`,
     [missing.length && `missing ${missing.join(" ")}`, extra.length && `unexpected ${extra.join(" ")}`].filter(Boolean).join("; "),
-  );
+  ));
 }
-record(!sitemapSet.has("/blog"), "sitemap omits the /blog index");
-record(!sitemapPaths.some((p) => p.includes(".md")), "sitemap omits markdown URLs");
+emit(result(!sitemapSet.has("/blog"), "sitemap omits the /blog index"));
+emit(result(!sitemapPaths.some((p) => p.includes(".md")), "sitemap omits markdown URLs"));
 for (const post of posts.slice(0, 3)) {
-  await check("blog article", post, { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER });
+  emit(check("blog article", post, { type: "text/html", includes: 'data-section="article"', excludes: LEGACY_MARKER }));
 }
 
 {
   // A post trailing slash is one hop to the canonical path. /blog/ itself is an exact 301 to /resources.
   const sample = posts[0];
-  if (!sample) record(false, "301 trailing slash on a blog post", "no post");
+  if (!sample) emit(result(false, "301 trailing slash on a blog post", "no post"));
   else {
-    const res = await get(`${sample}/`);
-    await res.arrayBuffer();
-    record(res.status === 301 && pathOf(res.headers.get("location") ?? "") === sample, `301 ${sample}/ -> ${sample}`, `got ${res.status}`);
+    emit(probe(`301 ${sample}/ -> ${sample}`, async () => {
+      const res = await get(`${sample}/`);
+      await res.arrayBuffer();
+      return [res.status === 301 && pathOf(res.headers.get("location") ?? "") === sample, `got ${res.status}`];
+    }));
   }
 }
 
-{
-  // The legacy blog is only reachable from the new site through a footer link; keep it crawlable.
-  const { body } = await text("/");
-  record(/href="[^"]*\/blog"/.test(body), "home page links to /blog");
-}
+// The legacy blog is only reachable from the new site through a footer link; keep it crawlable.
+emit(probe("home page links to /blog", async () => [/href="[^"]*\/blog"/.test((await text("/")).body)]));
 
 /* ---------------------------------------------------------------- legacy pages */
-console.log("\n# legacy pages");
-await check("legacy", "/privacy", { type: "text/html" });
-await check("legacy", "/terms", { type: "text/html" });
-await check("legacy", "/docs", { type: "text/html" });
-await check("legacy", "/docs/integrations/mcp", { type: "text/html" });
-await check("legacy", "/docs/integrations/skill", { type: "text/html" });
-await check("skills index", "/.well-known/skills/index.json", { type: "application/json", includes: '"skills"' });
-await check("skill file", "/.well-known/skills/conthunt/SKILL.md", { type: "text/markdown", includes: "name:" });
+say("\n# legacy pages");
+emit(check("legacy", "/privacy", { type: "text/html" }));
+emit(check("legacy", "/terms", { type: "text/html" }));
+emit(check("legacy", "/docs", { type: "text/html" }));
+emit(check("legacy", "/docs/integrations/mcp", { type: "text/html" }));
+emit(check("legacy", "/docs/integrations/skill", { type: "text/html" }));
+emit(check("skills index", "/.well-known/skills/index.json", { type: "application/json", includes: '"skills"' }));
+emit(check("skill file", "/.well-known/skills/conthunt/SKILL.md", { type: "text/markdown", includes: "name:" }));
 
 /* ---------------------------------------------------------------- feeds */
-console.log("\n# feeds and sitemap");
-await check("rss", "/rss.xml", { type: "xml", includes: "<rss" });
-await check("robots", "/robots.txt", { type: "text/plain", includes: "Sitemap:" });
-await check("robots signal", "/robots.txt", { type: "text/plain", includes: "Content-Signal: search=yes, ai-input=yes, ai-train=yes" });
-await check("robots preview", "/robots.txt", { type: "text/plain", includes: "Disallow: /preview/" });
-await check("robots internal", "/robots.txt", { type: "text/plain", includes: "Disallow: /llm-md" });
-await check("robots no allow-all", "/robots.txt", { type: "text/plain", excludes: "Allow: /" });
-await check("llms", "/llms.txt", { type: "text/markdown", minBytes: 100, includes: "/pricing.md" });
-await check("llms-full", "/llms-full.txt", { type: "text/markdown", minBytes: 5000, includes: "Canonical:" });
-await check("home markdown", "/index.md", { type: "text/markdown", includes: "Canonical:" });
-await check("pricing markdown", "/pricing.md", { type: "text/markdown", includes: "Pro", headerIncludes: ["link", "canonical"] });
-await check("article markdown", `${firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works")}.md`, {
+say("\n# feeds and sitemap");
+emit(check("rss", "/rss.xml", { type: "xml", includes: "<rss" }));
+emit(check("robots", "/robots.txt", { type: "text/plain", includes: "Sitemap:" }));
+emit(check("robots signal", "/robots.txt", { type: "text/plain", includes: "Content-Signal: search=yes, ai-input=yes, ai-train=yes" }));
+emit(check("robots preview", "/robots.txt", { type: "text/plain", includes: "Disallow: /preview/" }));
+emit(check("robots internal", "/robots.txt", { type: "text/plain", includes: "Disallow: /llm-md" }));
+emit(check("robots no allow-all", "/robots.txt", { type: "text/plain", excludes: "Allow: /" }));
+emit(check("llms", "/llms.txt", { type: "text/markdown", minBytes: 100, includes: "/pricing.md" }));
+emit(check("llms-full", "/llms-full.txt", { type: "text/markdown", minBytes: 5000, includes: "Canonical:" }));
+emit(check("home markdown", "/index.md", { type: "text/markdown", includes: "Canonical:" }));
+emit(check("pricing markdown", "/pricing.md", { type: "text/markdown", includes: "Pro", headerIncludes: ["link", "canonical"] }));
+emit(check("article markdown", `${firstOf(/^\/resources\/[^/]+$/, "/resources/how-deep-search-works")}.md`, {
   type: "text/markdown",
   includes: "Canonical:",
-});
-await check("accept markdown", "/pricing", {
+}));
+emit(check("accept markdown", "/pricing", {
   type: "text/markdown",
   includes: "Canonical:",
   init: { headers: { Accept: "text/markdown" } },
-});
-await check("accept html", "/pricing", {
+}));
+emit(check("accept html", "/pricing", {
   type: "text/html",
   headerIncludes: ["link", "text/markdown"],
   init: { headers: { Accept: "text/html" } },
-});
-await check("browser accept stays html", "/pricing", {
+}));
+emit(check("browser accept stays html", "/pricing", {
   type: "text/html",
   init: { headers: { Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" } },
-});
-await check("json accept", "/pricing", { status: 406, init: { headers: { Accept: "application/json" } } });
-{
-  // Next itself may answer 307 to add ?_rsc. The failure is a 406 from our Accept check.
+}));
+emit(check("json accept", "/pricing", { status: 406, init: { headers: { Accept: "application/json" } } }));
+// Next itself may answer 307 to add ?_rsc. The failure is a 406 from our Accept check.
+emit(probe("rsc accept is not refused", async () => {
   const res = await get("/pricing", { headers: { Accept: "text/x-component", RSC: "1" } });
   await res.arrayBuffer();
-  record(res.status !== 406 && res.status < 500, "rsc accept is not refused", `status ${res.status}`);
-}
-await check("llm-md hidden", "/llm-md", { status: 404 });
-await check("llm-md query hidden", "/llm-md?path=/pricing", { status: 404 });
-await check("sitemap", "/sitemap.xml", { type: "xml", includes: "<urlset" });
-if (sitemapPaths.length === 0) record(false, "sitemap lists URLs");
+  return [res.status !== 406 && res.status < 500, `status ${res.status}`];
+}));
+emit(check("llm-md hidden", "/llm-md", { status: 404 }));
+emit(check("llm-md query hidden", "/llm-md?path=/pricing", { status: 404 }));
+emit(check("sitemap", "/sitemap.xml", { type: "xml", includes: "<urlset" }));
+if (sitemapPaths.length === 0) emit(result(false, "sitemap lists URLs"));
 else {
   const must = ["/", "/pricing", "/resources", "/docs", "/privacy", "/terms"];
-  for (const p of must) record(sitemapSet.has(p === "/" ? "/" : p), `sitemap lists ${p}`);
-  console.log(`(checking ${sitemapPaths.length} sitemap URLs)`);
-  let bad = 0;
-  const queue = [...sitemapPaths];
-  const worker = async () => {
-    for (let p = queue.shift(); p !== undefined; p = queue.shift()) {
-      try {
-        const res = await get(p || "/");
-        await res.arrayBuffer();
-        if (res.status !== 200) {
-          bad += 1;
-          record(false, `sitemap URL ${p}`, `status ${res.status}`);
-        }
-      } catch (error) {
-        bad += 1;
-        record(false, `sitemap URL ${p}`, error instanceof Error ? error.message : String(error));
-      }
-    }
-  };
-  await Promise.all(Array.from({ length: 6 }, worker));
-  record(bad === 0, `all ${sitemapPaths.length} sitemap URLs answer 200`, `${bad} did not`);
+  for (const p of must) emit(result(sitemapSet.has(p === "/" ? "/" : p), `sitemap lists ${p}`));
+  say(`(checking ${sitemapPaths.length} sitemap URLs)`);
+  const urlChecks = sitemapPaths.map((p) =>
+    probe(`sitemap URL ${p}`, async () => {
+      const res = await get(p || "/");
+      await res.arrayBuffer();
+      return [res.status === 200, `status ${res.status}`];
+    }),
+  );
+  emit(Promise.all(urlChecks).then((results) => {
+    const bad = results.filter((r) => !r.ok);
+    return [...bad, result(bad.length === 0, `all ${sitemapPaths.length} sitemap URLs answer 200`, `${bad.length} did not`)];
+  }));
 }
 
 /* ---------------------------------------------------------------- assets */
-console.log("\n# assets and proxies");
-await check("share image", "/og-default.jpg", { type: "image/jpeg", minBytes: 1 });
-await check("media", "/media/hero/0/1.webp", { type: "image/webp" });
-await check("blog plate", "/blog/plates/_index-800.webp", { type: "image/webp" });
-await check("brand", "/brand/wordmark-ink.png", { type: "image/png" });
-await check("legacy css", "/assets/css/style.css", { type: "text/css", minBytes: 1 });
-await check("legacy public file", "/public/banner.png", { type: "image/png" });
-{
-  const { body } = await text("/");
-  const asset = body.match(/\/_next\/static\/[^"'\s)\\]+\.(?:css|js)/)?.[0];
-  if (asset) await check("next static", asset, { type: "", minBytes: 1 });
-  else record(false, "next static asset found in the home page");
-}
-await check("posthog proxy", "/ingest/", { notServerError: true });
-await check("posthog proxy", "/ingest/static/array.js", { notServerError: true });
-await check("backend proxy", "/v1/trending/niches", { notServerError: true });
-await check("backend proxy", "/v1/public-boards/search?q=viral-now&limit=1", { notServerError: true });
+say("\n# assets and proxies");
+emit(check("share image", "/og-default.jpg", { type: "image/jpeg", minBytes: 1 }));
+emit(check("media", "/media/hero/0/1.webp", { type: "image/webp" }));
+emit(check("blog plate", "/blog/plates/_index-800.webp", { type: "image/webp" }));
+emit(check("brand", "/brand/wordmark-ink.png", { type: "image/png" }));
+emit(check("legacy css", "/assets/css/style.css", { type: "text/css", minBytes: 1 }));
+emit(check("legacy public file", "/public/banner.png", { type: "image/png" }));
+emit(
+  limit(() => text("/"))
+    .then(({ body }) => {
+      const asset = body.match(/\/_next\/static\/[^"'\s)\\]+\.(?:css|js)/)?.[0];
+      return asset ? check("next static", asset, { type: "", minBytes: 1 }) : result(false, "next static asset found in the home page");
+    })
+    .catch((error) => result(false, "next static asset found in the home page", message(error))),
+);
+emit(check("posthog proxy", "/ingest/", { notServerError: true }));
+emit(check("posthog proxy", "/ingest/static/array.js", { notServerError: true }));
+emit(check("backend proxy", "/v1/trending/niches", { notServerError: true }));
+emit(check("backend proxy", "/v1/public-boards/search?q=viral-now&limit=1", { notServerError: true }));
 
 /* ---------------------------------------------------------------- errors */
-console.log("\n# errors");
-await check("preview is hidden", "/preview/hero", { status: 404 });
-await check("unknown path", "/this-page-does-not-exist", { status: 404 });
-await check("unknown blog path", "/blog/this-post-does-not-exist", { status: 404 });
-await check("about", "/about", { status: 200 });
-await check("authors", "/authors", { status: 200 });
-await check("editorial", "/editorial", { status: 200 });
-{
-  // On conthunt.app, Cloudflare routes /v1/* to the backend before Cloud Run sees it (the backend marks its
-  // responses with x-conthunt-api-timing-id). There it must demand credentials. From the container itself,
-  // only the public read routes are rewritten and the rest of /v1 answers 404.
-  const label = "backend API is not open beyond the public read routes /v1/chats";
-  try {
-    const res = await get("/v1/chats");
-    await res.arrayBuffer();
-    const fromBackend = res.headers.has("x-conthunt-api-timing-id");
-    const expected = fromBackend ? 401 : 404;
-    record(res.status === expected, label, `status ${res.status}, expected ${expected} ${fromBackend ? "from the edge-routed backend" : "from the container"}`);
-  } catch (error) {
-    record(false, label, error instanceof Error ? error.message : String(error));
-  }
-}
+say("\n# errors");
+emit(check("preview is hidden", "/preview/hero", { status: 404 }));
+emit(check("unknown path", "/this-page-does-not-exist", { status: 404 }));
+emit(check("unknown blog path", "/blog/this-post-does-not-exist", { status: 404 }));
+emit(check("about", "/about", { status: 200 }));
+emit(check("authors", "/authors", { status: 200 }));
+emit(check("editorial", "/editorial", { status: 200 }));
+// On conthunt.app, Cloudflare routes /v1/* to the backend before Cloud Run sees it (the backend marks its
+// responses with x-conthunt-api-timing-id). There it must demand credentials. From the container itself,
+// only the public read routes are rewritten and the rest of /v1 answers 404.
+emit(probe("backend API is not open beyond the public read routes /v1/chats", async () => {
+  const res = await get("/v1/chats");
+  await res.arrayBuffer();
+  const fromBackend = res.headers.has("x-conthunt-api-timing-id");
+  const expected = fromBackend ? 401 : 404;
+  return [res.status === expected, `status ${res.status}, expected ${expected} ${fromBackend ? "from the edge-routed backend" : "from the container"}`];
+}));
 
-finish();
+await finish();
