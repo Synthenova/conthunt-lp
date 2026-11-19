@@ -5,6 +5,7 @@
 # (the deploy step prints the exact URL). Production traffic and the :latest image tag are untouched.
 # Check it with: node site/scripts/check-routes.mjs <that url>
 # Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
+# deploy-preview.sh also sends public/ and site/public/ through a blob cache (the first step below).
 # Going live: scripts/promote.sh <revision> (background in site/docs/revamp/MERGE_DEPLOY.md, "Traffic pinning").
 substitutions:
   _NEXT_PUBLIC_BACKEND_URL: 'https://mcp.conthunt.app'
@@ -14,6 +15,30 @@ substitutions:
 # The default 600s is too short for the three-stage build (legacy build, pnpm install, next build).
 timeout: 1800s
 steps:
+  # scripts/deploy-preview.sh leaves public/ and site/public/ out of the upload and lists those files in
+  # .blob-manifest as "<git blob id> <path>". Put each one back from the blob cache, checking its blob id,
+  # with the export's mtime (taken from the Dockerfile). Without a manifest this step does nothing.
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - '-euc'
+      - |
+        [ -f .blob-manifest ] || exit 0
+        cache=$$(mktemp -d)
+        cut -d' ' -f1 .blob-manifest | sort -u | sed "s|^|gs://${PROJECT_ID}_cloudbuild/blobs/|" \
+          | gcloud storage cp -I "$$cache/"
+        for f in "$$cache"/*; do
+          blob=$${f##*/}
+          got=$$({ printf 'blob %d\0' "$$(stat -c %s "$$f")"; cat "$$f"; } | sha1sum | cut -d' ' -f1)
+          [ "$$got" = "$$blob" ] || { echo "blob $$blob has the wrong contents (blob id $$got)" >&2; exit 1; }
+        done
+        while read -r blob path; do
+          mkdir -p "$$(dirname "$$path")"
+          cp "$$cache/$$blob" "$$path"
+          touch -r Dockerfile "$$path"
+        done < .blob-manifest
+        echo "restored $$(wc -l < .blob-manifest) files from the blob cache"
+        rm .blob-manifest
   # Build and push the image with BuildKit. Every stage's layers (npm install, pnpm install, next build) go
   # to the shared :buildcache tag that preview and main builds both read, so an unchanged stage is pulled
   # instead of rebuilt. A missing cache tag is only a warning. The image goes straight to the registry, not

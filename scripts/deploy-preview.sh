@@ -5,12 +5,18 @@
 #
 # Refuses unless HEAD contains origin/main. Builds from `git archive HEAD`, never from the working tree,
 # and stamps the revision with the label commit=<full sha>, which scripts/promote.sh requires.
+#
+# The files under public/ and site/public/ (almost all of the source's bytes, and rarely changed) do not go
+# in the source upload. Each one is stored once in $BLOBS under its git blob id, and the upload carries
+# .blob-manifest ("<blob id> <path>" lines) instead. The first step of cloudbuild.preview.yaml puts the
+# files back before the Docker build, so the image is the same. Only blobs missing from $BLOBS are uploaded.
 set -euo pipefail
 
 PROJECT=conthunt-dev
 REGION=us-central1
 SERVICE=conthunt-lp
 BACKEND_URL=https://mcp.conthunt.app
+BLOBS=gs://${PROJECT}_cloudbuild/blobs
 
 die() { echo "deploy-preview: $*" >&2; exit 1; }
 
@@ -27,9 +33,23 @@ if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
 fi
 echo "deploy-preview: building commit $commit ($(git log -1 --format=%s "$commit"))"
 
-src=$(mktemp -d "${TMPDIR:-/tmp}/conthunt-lp-preview.XXXXXX")
-trap 'rm -rf "$src"' EXIT
+work=$(mktemp -d "${TMPDIR:-/tmp}/conthunt-lp-preview.XXXXXX")
+trap 'rm -rf "$work"' EXIT
+src=$work/src
+mkdir "$src" "$work/blobs"
 git archive "$commit" | tar -x -C "$src"
+
+git -c core.quotePath=false ls-tree -r "$commit" -- public site/public \
+  | awk -F'\t' '{ split($1, f, " "); print f[3], $2 }' > "$src/.blob-manifest"
+# A failed listing only means every blob is uploaded again.
+gcloud storage ls "$BLOBS/" 2>/dev/null | sed 's|.*/||' | sort -u > "$work/cached" || true
+cut -d' ' -f1 "$src/.blob-manifest" | sort -u | comm -23 - "$work/cached" > "$work/missing"
+while read -r blob; do git cat-file blob "$blob" > "$work/blobs/$blob"; done < "$work/missing"
+echo "deploy-preview: $(wc -l < "$work/missing" | tr -d ' ') new of $(wc -l < "$src/.blob-manifest" | tr -d ' ') files under public/ and site/public/"
+if [ -s "$work/missing" ]; then
+  gcloud storage cp --project "$PROJECT" "$work/blobs/*" "$BLOBS/"
+fi
+while read -r _ path; do rm "$src/$path"; done < "$src/.blob-manifest"
 
 gcloud builds submit "$src" \
   --project "$PROJECT" \
