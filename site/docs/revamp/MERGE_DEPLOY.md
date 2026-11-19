@@ -120,14 +120,36 @@ Deploy with `scripts/deploy-preview.sh`, then promote with `scripts/promote.sh <
 "Deploy"). The notes below explain what those scripts guard against.
 
 ### Before submitting a build
-- The build source is the working tree of the directory you submit from, filtered by the root `.gcloudignore`
-  (without it gcloud would upload `site/.next`, which has paths longer than MAX_PATH on Windows). Check it first:
-  `gcloud meta list-files-for-upload .` must list no `site/.next`, `site/node_modules`, `SEO/` or `.scratch/` path.
-  `scripts/deploy-preview.sh` always submits a clean export of HEAD (`git archive`), never the working tree.
+- The build source is the directory you submit, filtered by the root `.gcloudignore` (without it gcloud would
+  upload `site/.next`, which has paths longer than MAX_PATH on Windows). `scripts/deploy-preview.sh` always
+  submits a clean export of HEAD (`git archive`), never the working tree. Check the filter with
+  `gcloud meta list-files-for-upload .`.
 - Read the live service settings and make sure they fit two processes (nginx + Next, Next heap capped at 320 MB):
   memory 512Mi at least (1Gi recommended), container port 8080, ingress "all". Add `--memory=1Gi` to the deploy
   args in both cloudbuild files if the service is lower.
 - Do not run `cloudbuild.yaml` before the preview has been tested: its last step moves 100% of traffic.
+
+### Build speed
+A preview release takes about 3 minutes. Before the blob cache, 44 to 63 s of that went to uploading the
+source from the Mac.
+- Upload. At the root, `.gcloudignore` lists the paths to upload (`!/<path>`), and leaves out everything else.
+  The list matches the `Dockerfile`'s `COPY` sources, and `scripts/build-blog.js` reads nothing outside them.
+  Inside `site/`, which the `Dockerfile` copies whole, it leaves out only build output and `site/docs/`.
+  If you make the `Dockerfile` copy a new root path, add a `!/<path>` line. Without the line, the build fails with
+  `<path>: not found`.
+- Media. `public/` and `site/public/` hold 131 MB of the 136 MB source and rarely change.
+  `deploy-preview.sh` stores each of their files once as `gs://conthunt-dev_cloudbuild/blobs/<git blob id>`
+  and uploads only the blobs that are missing there. In the upload it replaces those files with
+  `.blob-manifest`. The first step of `cloudbuild.preview.yaml` downloads the blobs, checks each blob id, and
+  puts the files back before the Docker build. You can delete the `blobs/` folder between deploys. The next
+  deploy uploads every blob again.
+- Layer cache. Both cloudbuild files read and write BuildKit layers at the shared `website:buildcache` tag, so
+  a stage with unchanged inputs (`npm install`, `pnpm install`, `next build`) is pulled, not rebuilt. If that tag
+  is gone, the first build logs `ERROR: failed to configure registry cache importer ... not found`. That error is
+  expected. The build continues without the cache and writes the tag again.
+- Machine. The build runs on the default Cloud Build machine on purpose. An 8-vCPU worker
+  (`E2_HIGHCPU_8`) usually waited 46 to 62 s to start, and once 423 s. That cost more than the
+  60 s it saved on `pnpm build`.
 
 ### Traffic pinning
 - Today the service probably follows LATEST. The first `cloudbuild.preview.yaml` deploy (`--no-traffic`) pins the
