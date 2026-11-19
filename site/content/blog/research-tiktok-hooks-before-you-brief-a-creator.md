@@ -63,7 +63,7 @@ Tagging the opening means logging the first three seconds of every kept video wi
 - Product visible by second 3? In use or just held?
 - Hook family (use the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy)).
 
-Tag 80 to 200 videos, the same range the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy) guide uses. That is enough to see patterns. Count each hook family in your top quartile by outlier ratio, then compare with its share of the whole set. A family that makes up 25% of the set but 45% of the top quartile is worth briefing. Treat counts under 5 as leads to test, not conclusions.
+Tag 80 to 200 videos, the same range the [hook taxonomy](/resources/the-3-second-rule-a-hook-taxonomy) guide uses. Treat that as a working sample, not proof of a pattern: creator overlap and selection bias still matter. Count each hook family in your top quartile by outlier ratio, then compare with its share of the whole set. A family that makes up 25% of the set but 45% of the top quartile is worth briefing. Treat counts under 5 as leads to test, not conclusions.
 
 ## What is the proof beat?
 

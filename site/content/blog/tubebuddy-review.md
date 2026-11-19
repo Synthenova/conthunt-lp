@@ -30,7 +30,7 @@ TubeBuddy is a YouTube tool, delivered largely as a browser extension plus chann
 
 This review does not claim a formal safety certification. TubeBuddy is a long-standing extension for on-page metadata, and you should still read the permissions the browser shows before you install or keep it, the same way you would for any extension that can see a logged-in YouTube session. "We have used it for years" is not a security review. If a workspace policy bans extensions with account access, TubeBuddy does not get an exception because it is familiar.
 
-The 2026 question is not whether the extension loads. The question is whether YouTube's own studio features and the shift toward Shorts have taken the jobs TubeBuddy used to be hired for. Some of those jobs moved. The bulk-edit job did not.
+The 2026 question is which jobs still need an extension. [YouTube Studio supports bulk edits](https://support.google.com/youtube/answer/6249768), including descriptions. Compare the exact operation you need, such as a particular find-and-replace workflow, with TubeBuddy's current plan before paying.
 
 ## Where does TubeBuddy still win?
 

@@ -1,8 +1,8 @@
 ---
-title: "YouTube Shorts Hashtags: Description, Not the Title"
-seoTitle: "YouTube Shorts Hashtags: Description, Not Title"
+title: "YouTube Shorts Hashtags: Title or Description?"
+seoTitle: "YouTube Shorts Hashtags: Title or Description?"
 slug: youtube-shorts-hashtags-title-vs-description
-excerpt: "YouTube Shorts hashtags go in the description, not the title. YouTube may show up to three description tags by the title. A stuffed title still costs the click."
+excerpt: "YouTube permits hashtags in either field. A description-first approach keeps the title readable, and YouTube may show up to three tags by it."
 date: "2026-08-25"
 updated: "2026-11-09"
 category: Research
@@ -23,7 +23,7 @@ cover:
     badge: "Not a live test"
 ---
 
-YouTube Shorts hashtags belong in the description, not the title. If the question is whether it is better to put hashtags in the title or the description on YouTube Shorts, put them in the description. Written by the ContHunt team. Keep the title as a sentence a person can read. YouTube lets creators add hashtags to the title or the description, and both link to a results page. Out of the description hashtags, up to three that YouTube considers most engaging can appear by the title. Extra tags can still sit in the description. They are not all shown. YouTube does not say a title hashtag ranks higher. A stuffed title still costs the click, because the promise is harder to read. How to write that promise is in [YouTube Shorts best practices](/blog/youtube-shorts-best-practices). If a video or playlist has more than 60 hashtags, YouTube ignores every hashtag on that content. This page decides the slot, not which tags to use. A [15 September 2026 public search sample](/blog/youtube-shorts-public-search-benchmark-2026) collected 74 unique Shorts and stored their titles. It did not test title hashtags against description hashtags.
+YouTube lets creators put Shorts hashtags in the title or the description. Our practical default is the description, so the title stays a readable promise; it is an editorial preference, not a YouTube requirement or a proven click-through advantage. Both placements link to hashtag results, and YouTube may show up to three description hashtags by the title. YouTube does not say a title hashtag ranks higher. If a video or playlist has more than 60 hashtags, YouTube ignores every hashtag on that content. The [public search sample](/blog/youtube-shorts-public-search-benchmark-2026) did not test title hashtags against description hashtags.
 
 ## What does YouTube document about hashtag placement?
 
@@ -93,9 +93,9 @@ You test a title hashtag with a paired upload. You cannot A/B one live Short the
 4. Compare click-through on the title, where YouTube shows it, and compare average view duration.
 5. If Short B's title is truncated or looks like spam on a phone, stop using title hashtags even when the view counts are similar.
 
-The click cost is real even when the tag is allowed. Similar view counts do not excuse a title nobody can read.
+A crowded title can be harder to read, but this page has not measured a click-through cost.
 
-Here is illustrative arithmetic so the comparison has a shape. It is not a result from a channel. Suppose the title click-through YouTube shows is 16 clicks out of 80 times Short A's title was presented. The rate is 16 ÷ 80 = 0.20, or 20%. Suppose Short B shows 10 clicks out of 80. The rate is 10 ÷ 80 = 0.125, or 12.5%. The gap is 20 − 12.5 = 7.5 percentage points. If your real pair is that far apart, and the only deliberate change was the title tag, prefer the description-only title. Use it on the next upload in that hook family. If the rates are close and the title is harder to read, prefer the readable title anyway. The test is there to stop you stuffing both fields out of habit. It is not there to crown a tag.
+Here is illustrative arithmetic so the comparison has a shape. It is not a result from a channel. Suppose the title click-through YouTube shows is 16 clicks out of 80 times Short A's title was presented. The rate is 16 ÷ 80 = 0.20, or 20%. Suppose Short B shows 10 clicks out of 80. The rate is 10 ÷ 80 = 0.125, or 12.5%. The gap is 20 − 12.5 = 7.5 percentage points. A real difference can guide another test, but two different Shorts do not isolate the title tag: topic, audience and distribution may also differ. If the rates are close and the title is harder to read, prefer the readable title anyway. The test is there to stop you stuffing both fields out of habit. It is not there to crown a tag.
 
 Do not "win" the test by changing the hook, the length, and the topic at the same time. That is three tests. You will not know which one moved the click-through.
 

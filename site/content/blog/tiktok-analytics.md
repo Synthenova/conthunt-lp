@@ -21,7 +21,7 @@ cover:
     badge: "Illustrative curves"
 ---
 
-TikTok analytics is the account-owner view of how your videos reach people and whether those people stay. Written by the ContHunt team. The metrics that should change the next upload are completion, rewatches, shares, and whether the viewers look like the audience you meant to earn. A raw view count does not show that the hook worked. A like count is a weaker signal than a full watch or a send. Review the last 7 days, name the topic, opening line, and edit pattern behind the strongest signal for the effort, and repeat that structure. Ignore a view spike from the wrong people. TikTok analytics improves search visibility only indirectly, when a video people finish is easier for the platform to classify. Private TikTok analytics stay inside TikTok. Public video research is a separate job.
+TikTok analytics is the account-owner view of how your videos reach people and whether those people stay. Written by the ContHunt team. The metrics that should change the next upload are completion, rewatches, shares, and whether the viewers look like the audience you meant to earn. A raw view count does not show that the hook worked. A like count is a weaker signal than a full watch or a send. Review the last 7 days, name the topic, opening line, and edit pattern behind the strongest signal for the effort, and repeat that structure. Ignore a view spike from the wrong people. Analytics can help you test content and audience fit, but it does not by itself establish how TikTok classifies or ranks a video. Private TikTok analytics stay inside TikTok. Public video research is a separate job.
 
 ## What is TikTok analytics?
 

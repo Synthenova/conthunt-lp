@@ -74,7 +74,7 @@ Finding which patterns win means tagging 80 to 200 videos in one niche and one w
 
 1. **Pull 80 to 200 relevant videos** from one niche and one time window across TikTok, Reels and Shorts.
 2. **Tag each opening** with one primary pattern, plus the channel notes above. Resolve disagreements between taggers with a written rule, such as "the pattern is whatever the viewer experiences first."
-3. **Normalize performance.** Divide each video's views by its creator's median views. Rank by that ratio, not by raw views.
+3. **Normalize performance.** Compare videos within the same platform and at similar ages. Divide each video's views by a creator median calculated from comparable posts; if that baseline is unavailable, leave the ratio blank.
 4. **Compare shares.** For each pattern, compare its share of the top quartile with its share of the whole set.
 
 Lift is the top-quartile share divided by the overall share. An illustrative result from 80 tagged videos, where the top quartile holds 20:
@@ -129,10 +129,10 @@ The ContHunt prompt later in this guide locks the agent to the same nine answers
 
 ## How do you run the taxonomy in ContHunt?
 
-Running the taxonomy in ContHunt means giving Deep Search ([How Deep Search works](/resources/how-deep-search-works)) the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Deep Search can tag every video it analyzes against a fixed label list.
+Running the taxonomy in ContHunt means giving Deep Search ([How Deep Search works](/resources/how-deep-search-works)) the nine patterns as the only allowed labels, so a count of openings means the same thing on every video. Ask for these labels, then check a sample against the videos and apply the taxonomy manually where a label is missing or inconsistent.
 
 > For each video, label the opening hook as one of: result-first, problem call-out, pattern interrupt, open loop, contrarian claim, in-use demo, POV scenario, numbered promise, credential line. Note the first frame and the spoken line. Then compare the pattern mix of the top-performing videos with the rest of the set.
 
-ContHunt returns the analyzed set with the labels and links to the videos behind each count. Its scores come from analyzing the content and its fit to your question. They are not measured viewer retention, so keep the creator's own analytics as the final check.
+Check the returned evidence and video links before counting labels; the requested taxonomy may need a manual review. Its scores come from analyzing the content and its fit to your question. They are not measured viewer retention, so keep the creator's own analytics as the final check.
 
 Once you know which pattern leads your niche, put three variants of it into your next [creator brief](/resources/research-tiktok-hooks-before-you-brief-a-creator). [Get started]({{GET_STARTED_URL}}) with a Deep Search on your niche and see how your own hook mix compares.

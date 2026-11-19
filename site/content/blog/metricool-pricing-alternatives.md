@@ -36,9 +36,13 @@ Metricool does not become a short-form research tool because a plan includes ana
 
 Write the job in one sentence before you open a pricing page. An illustrative sentence, not a vendor slogan: "Three people schedule five brands on Instagram and TikTok and export a monthly report." Every later line on the plan page is a yes or no against that sentence.
 
+## What does Metricool cost?
+
+On November 19, 2026, [Metricool's pricing page](https://metricool.com/pricing/) showed Free at €0 and Starter from €16 per month in its euro view. Currency, brand allowance and billing selection affect the price; check the current toggle and checkout before comparing.
+
 ## What to copy off the live pricing page
 
-Copy facts from Metricool's own pricing page into a one-page note. Do not copy them from a roundup, including this one.
+Copy facts from [Metricool's pricing page](https://metricool.com/pricing/) into a one-page note, recording currency, billing period and the date checked. Do not copy them from a roundup, including this one.
 
 Use the same rows for every tool so the comparison is a table you control:
 

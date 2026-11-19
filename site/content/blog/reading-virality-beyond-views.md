@@ -37,14 +37,14 @@ Five ratios travel better than a view total: outlier ratio, velocity, share rate
 | Metric | Formula | What it answers | Watch-out |
 | --- | --- | --- | --- |
 | Outlier ratio | Views ÷ creator's median views on recent posts | Did this video beat its own account's norm? | Needs 10+ recent posts to be stable. |
-| Velocity | Views gained in first 24 hours, or views per hour since posting | Is it spreading fast right now? | Needs timestamps or daily snapshots |
+| Velocity | Change in views between two snapshots ÷ elapsed hours | How fast did views grow during that interval? | Needs two timestamps and view counts; views ÷ age is a lifetime average |
 | Share rate | Shares ÷ views | Did people pass it on? | Some platforms hide or rename shares and sends |
 | Save rate | Saves ÷ views | Is it useful enough to keep? | Strongest for tutorials, recipes, products |
 | Comment intent | Share of comments by type (see below) | What did the audience want to do? | Needs manual or analyzed sampling. |
 
 A sixth, reach beyond followers (views ÷ follower count), is a rough guide to whether a video escaped the creator's own audience. Use it as a screen, not a score.
 
-Each ratio has a different job. The outlier ratio finds the interesting videos. Velocity tells you how current the interest is. Share and save rates tell you why people cared. Comment intent tells you what they wanted next.
+Each ratio has a different job. The outlier ratio finds interesting videos. Interval velocity measures recent growth. Share and save rates describe actions per view, not unique people or why they acted. Comment intent summarizes a sampled set of comments.
 
 ## A worked example (illustrative numbers)
 
@@ -60,7 +60,7 @@ The worked example compares three illustrative videos so the ratios can overrule
 | Share rate | 0.1% | 3.0% | 0.1% |
 | Save rate | 0.2% | 4.0% | 0.16%. |
 
-Video A has the most views, and it is a good result for its creator. Video C has a decent total and barely moved against its own norm. Video B has a seventh of A's views, but it ran 15 times its creator's median, and one in 33 viewers shared it. If you could study one video, B is the one. It found an audience beyond the creator's own, and people sent it on.
+Video A has the most views. Video C has a decent total and barely moved against its own norm. Video B has about 15% of A's views, but it ran 15 times its creator's median and recorded 3 shares per 100 views. Views and shares are events, not a count of unique people. If you could study one video, B is a useful candidate.
 
 Cutoffs depend on the niche, so build your own baseline. Pull 100 videos in your niche, compute share rate for each, and use the top quartile's range as your bar.
 
@@ -107,9 +107,9 @@ The four-step triage keeps videos at 3x outlier ratio or more. It ranks those by
 
 ## Decide when the five ratios disagree.
 
-The five ratios will not always rank the same video first. Follow them in order instead of averaging them into one score. Outlier ratio picks the interesting videos. Velocity says whether that interest is current. Share rate and save rate say why people cared. Comment intent says what they wanted next. A blended number hides which of those jobs failed.
+The five ratios will not always rank the same video first. Follow them in order instead of averaging them into one score. Outlier ratio picks the interesting videos. Velocity says whether that interest is current. Share and save rates describe actions per view, not why people acted. Comment intent says what they wanted next. A blended number hides which of those jobs failed.
 
-The illustrative trio already in the worked example is enough to see a disagreement. Video A has 1,200,000 views and an outlier ratio of 3.0. Its share rate is 0.1% and its save rate is 0.2%. Video B has 180,000 views, an outlier ratio of 15.0, a share rate of 3.0% and a save rate of 4.0%. Video C has 640,000 views and an outlier ratio of 1.3. Its share rate is 0.1% and its save rate is 0.16%. A view ranking puts A first, then C, then B. Outlier ratio puts B first, then A, then C. Share rate and save rate also put B first. The ratios agree with each other and disagree with the view ranking. Study B. The share line in the worked example is reproducible: 180,000 ÷ 5,400 = 33.3, which is the "one in 33 viewers shared it" claim. The "seventh of A's views" line is a description, not a cell to copy. The arithmetic is 180,000 ÷ 1,200,000 = 0.15, while 1 ÷ 7 is about 0.143.
+The illustrative trio already in the worked example is enough to see a disagreement. Video A has 1,200,000 views and an outlier ratio of 3.0. Its share rate is 0.1% and its save rate is 0.2%. Video B has 180,000 views, an outlier ratio of 15.0, a share rate of 3.0% and a save rate of 4.0%. Video C has 640,000 views and an outlier ratio of 1.3. Its share rate is 0.1% and its save rate is 0.16%. A view ranking puts A first, then C, then B. Outlier ratio puts B first, then A, then C. Share rate and save rate also put B first. The ratios agree with each other and disagree with the view ranking. Study B. The share line in the worked example is reproducible: 180,000 ÷ 5,400 = 33.3, which is about one share per 33 views, not a count of unique viewers. The "seventh of A's views" line is a description, not a cell to copy. The arithmetic is 180,000 ÷ 1,200,000 = 0.15, while 1 ÷ 7 is about 0.143.
 
 Reproduce the ratios before you brief from a sheet. Outlier ratio is views divided by the creator's median. For A, 1,200,000 ÷ 400,000 = 3.0. For B, 180,000 ÷ 12,000 = 15.0. For C, 640,000 ÷ 500,000 = 1.28, which the table rounds to 1.3. Share rate is shares divided by views. For A, 1,200 ÷ 1,200,000 = 0.1%. For B, 5,400 ÷ 180,000 = 3.0%. For C, 640 ÷ 640,000 = 0.1%. Save rate is saves divided by views. For A, 2,400 ÷ 1,200,000 = 0.2%. For B, 7,200 ÷ 180,000 = 4.0%. For C, 1,000 ÷ 640,000 = 0.15625%, which the table shows as 0.16%. If your sheet does not reproduce the ratio, fix the sheet before you copy the opening.
 

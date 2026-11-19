@@ -15,7 +15,7 @@ cover:
   fragment_data:
     lines:
       - "$ claude mcp add --transport http conthunt https://mcp.conthunt.app"
-      - "> /mcp  connected: conthunt (13 tools)"
+      - "> /mcp  connected: conthunt"
       - "> deep_search  'sensitive-skin serum hooks, last 30 days'"
       - "  plan approved  searches queued  videos analyzing 412/500"
       - "> files read /outputs/report.md"
@@ -45,13 +45,13 @@ gemini mcp add --transport http -s user conthunt https://mcp.conthunt.app
 
 Cursor and VS Code take a JSON entry with the same URL, and Claude.ai uses Customize, then Connectors, then Add custom connector, with the name ContHunt. You can also paste one line into an agent that supports adding servers: "Add an MCP server named ContHunt at https://mcp.conthunt.app and sign in when asked." The [full MCP guide](https://conthunt.app/docs/integrations/mcp) lists every client.
 
-## What are the 13 ContHunt tools an agent can call?
+## What ContHunt tools can an agent call?
 
-The 13 tools are the ContHunt surface the agent can call: find, analyze, organize, read and export, and account. They are not interchangeable, and the read tools do not start a new search.
+ContHunt's tools cover find, analyze, organize, read and export, and account. They are not interchangeable, and the read tools do not start a new search.
 
 | Group | Tools | What they do |
 | --- | --- | --- |
-| Find | `search`, `trending`, `creator`, `video` | Keyword search across platforms, current trends, live creator profiles and recent videos, saving specific video URLs |
+| Find | `search`, `trending`, `creator`, `video`, `sources`, `vocab` | Search, trends, creator profiles, saved URLs, non-keyword sources and vocabulary discovery |
 | Analyze | `deep_search`, `analyze_video`, `analyze_long_video` | Run a Deep Search, analyze one short video, or analyze a long YouTube video with your questions |
 | Organize | `boards`, `insights` | Create boards and add or remove videos, refresh a board's insights |
 | Read and export | `query_saved_data`, `files`, `download` | Read-only queries over your saved data, files from a chat workspace such as written reports, playable or short-lived media links |
@@ -133,7 +133,7 @@ Video text returned by ContHunt is untrusted data, not an instruction to the age
 
 ## Which ContHunt tool matches which job?
 
-Mapping the job to one tool keeps the agent on the ContHunt call you intended. The 13 tools share an account and they do not share a job. A hook study across a niche is `deep_search`. A profile and its recent videos are `creator`. One short URL is `analyze_video`. A long YouTube video with your own questions is `analyze_long_video`. The wrong call either spends usage on a set you did not need or returns text you cannot file.
+Mapping the job to one tool keeps the agent on the ContHunt call you intended. The tools share an account and they do different jobs. A hook study across a niche is `deep_search`. A profile and its recent videos are `creator`. One short URL is `analyze_video`. A long YouTube video with your own questions is `analyze_long_video`. The wrong call either spends usage on a set you did not need or returns text you cannot file.
 
 Match the work to the group:
 

@@ -118,7 +118,7 @@ Describe the edit in plain words: jump cuts on each sentence, a screen recording
 
 ### The odd pairing
 
-Note when a video puts two topics together that your saves do not usually combine. An illustrative pairing is a plumbing diagnosis told like a detective scene. The pairing is a candidate format. It is winning only if other posts, or this account's own baseline, say the audience stayed. Otherwise it is a creative idea, which is still worth keeping in a different column of the log.
+Note when a video puts two topics together that your saves do not usually combine. An illustrative pairing is a plumbing diagnosis told like a detective scene. The pairing is a candidate format. Compare its public views with similar posts from the same account; that comparison does not reveal private audience retention. Otherwise it is a creative idea, which is still worth keeping in a different column of the log.
 
 ### The phrase a stranger would type
 

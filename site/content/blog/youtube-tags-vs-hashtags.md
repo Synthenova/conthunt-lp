@@ -24,7 +24,7 @@ YouTube tags vs hashtags is a field split, not two names for one box. Written by
 
 ## Are YouTube tags and hashtags the same?
 
-YouTube tags and YouTube hashtags are not the same field, and typing the same words in both places does not stack a ranking. Hashtags are visible. Tags are hidden metadata. The confusion is understandable because both are words about the topic, and older upload advice treated every box as a place to repeat a keyword. YouTube's current help pages split the jobs.
+YouTube tags and YouTube hashtags are not the same field, and YouTube does not document a ranking benefit from repeating the same words in both places. Hashtags are visible. Tags are hidden metadata. The confusion is understandable because both are words about the topic, and older upload advice treated every box as a place to repeat a keyword. YouTube's current help pages split the jobs.
 
 [Add tags to your YouTube videos](https://support.google.com/youtube/answer/146402) says tags are descriptive keywords you can add so viewers can find the content, then immediately qualifies that. The title, thumbnail, and description are more important pieces of metadata. Those are what viewers use to decide what to watch. Tags can be useful if the content is commonly misspelled. Otherwise, tags play a minimal role in discovery. The same help page says that adding excessive tags to the description is against YouTube's spam, deceptive practices, and scams policies. That warning is about the description, not a license to fill the hidden Tags box either.
 
@@ -41,7 +41,7 @@ A YouTube hashtag is a public label. A YouTube tag is a private hint for a missp
 | Where you type them | Title or description, each one starting with # | Studio Tags box, words only, no # |
 | Whether viewers see them | Yes. They can be clicked | No. Viewers do not get a tags control |
 | What YouTube's help emphasizes | Connecting videos that share a topic, and search | Misspellings. Otherwise a minimal role beside title, thumbnail, and description |
-| What breaks them | Unrelated labels, spaces inside a label, or more than 60 hashtags on the video | Repeating the title, or pasting hashtags with the # still attached |
+| What can go wrong | Unrelated labels, spaces inside a label, or more than 60 hashtags on the video | Redundant or irrelevant tags add little useful information |
 | What a Short should do | A few labels that match the video | A handful of synonyms or misspellings, or nothing. |
 
 The failure mode on the hashtag side is stricter than a style preference. YouTube's hashtag policy says that if a video or playlist has more than 60 hashtags, YouTube will ignore each hashtag on that content. The cutoff is not "the extras are dropped." Every hashtag on that upload is ignored. Over-tagging can also lead to the video being removed from uploads or from search. Sixty is allowed. Sixty-one is already more than 60. An illustrative description that adds a 61st hashtag is past the line where YouTube says it ignores them all. You do not need 61 labels to describe a Short. You need enough room under that line that a copied block from another video cannot push you over it by accident.

@@ -21,7 +21,7 @@ cover:
     badge: "Example curve, not a measurement"
 ---
 
-YouTube Shorts best practices in 2026 are a weekly review of the opening, the edit, and the package, not a higher posting count. Written by the ContHunt team. A YouTube Short is a vertical video built for fast discovery, and the version that improves is the one whose first one to two seconds states why a viewer should stay. Every cut after that has to earn its place. The title and the cover still matter in search, recommendations, and channel browsing, even when the first view comes from the Shorts feed. If a Short already earns impressions and the response is weak, start with the opening frame, the title promise, and audience fit before you change the posting time. Scale a format only after retention and rewatches repeat inside the niche you actually serve.
+YouTube Shorts best practices in 2026 are a weekly review of the opening, the edit, and the package, not a higher posting count. Written by the ContHunt team. A YouTube Short is a vertical video built for fast discovery, and one editorial hypothesis is that making the reason to watch clear early can help viewers understand the promise; test it against your own analytics. Every cut after that has to earn its place. The title and the cover still matter in search, recommendations, and channel browsing, even when the first view comes from the Shorts feed. If a Short already earns impressions and the response is weak, start with the opening frame, the title promise, and audience fit before you change the posting time. Scale a format only after retention and rewatches repeat inside the niche you actually serve.
 
 ## What is a YouTube Shorts best practice?
 
@@ -60,7 +60,7 @@ Search and the Shorts feed share discovery, so a YouTube Short is not packaged f
 
 For stronger discovery, use a title that states the help, keep the topic specific enough to match a real use case, write a description that supports the topic instead of repeating buzzwords, and connect the Short to related videos when the connection is real. Align the title, the caption, and the on-screen text so a person and the platform can tell who the Short is for. A title about spreadsheets and on-screen text about a game is not a broader audience. It is a mismatch.
 
-Hashtags are supporting metadata after that alignment exists. They do not repair a vague title. Put them in the description, which [YouTube Shorts hashtags: description, not the title](/blog/youtube-shorts-hashtags-title-vs-description) decides. Keep the set to tags that match the video, which [best hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide) covers.
+Hashtags are supporting metadata after that alignment exists. They do not repair a vague title. YouTube permits them in the title or description; [our placement guide](/blog/youtube-shorts-hashtags-title-vs-description) explains the tradeoff. Keep the set to tags that match the video, which [best hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide) covers.
 
 ## Do titles and covers still matter for YouTube Shorts?
 
@@ -118,7 +118,7 @@ Rewatches are a review signal, not a target to fake. A Short that people replay 
 
 The YouTube Shorts metrics that deserve a weekly review are the first-hour response, average percentage viewed, rewatches, saves and shares, and topics that win more than once. Vanity totals are a weaker guide. A large view count on one outlier does not tell you which opening to film next. A pattern across several Shorts in the same cluster does.
 
-Read those signals with YouTube's counting rules in mind. [How engagement metrics are counted](https://support.google.com/youtubecreatorstudio/answer/2991785?hl=en) says that beginning 24 August 2026, views are counted the moment a video starts to play across Shorts, long-form videos, and live streams. The note says this update does not change YouTube Partner Program earnings or eligibility. Earnings stay based on engaged views and engaged watch hours. Eligibility stays based on qualified views. Engagement metrics, in that help page's terms, cover views, likes, dislikes, and subscriptions. Counts can lag in the first few hours while YouTube checks that the events are legitimate, and realtime activity is an estimate that may not match the watch page. A first-hour read is directional. It is not a final verdict, and it is not a reason to delete a Short before verified counts settle.
+Read those signals with YouTube's counting rules in mind. [Shorts starts and replays began counting as views on March 31, 2025](https://support.google.com/youtube/thread/333869549?hl=en&msgid=346119854). YouTube's [August 2026 update](https://support.google.com/youtube/answer/9082582) describes playback-start counts across formats. Earnings and eligibility use separate qualified metrics. Counts can lag while YouTube checks events, and realtime activity is an estimate; a first-hour read is directional, not a final verdict.
 
 [Understand your YouTube audience](https://support.google.com/youtubecreatorstudio/answer/9314416?co=GENIE.Platform%3DDesktop&hl=en-ca) is the Studio side of the same review: who watched, not just how many starts you collected. Use it to test audience fit. Do not invent a demographic story the report does not show.
 

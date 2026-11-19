@@ -27,15 +27,15 @@ Growing a YouTube Shorts channel means earning a repeatable reason for a strange
 
 ## How does a Short get a wider audience?
 
-A YouTube Short gets a chance at a wider audience when the first people who see it stay and respond. It stalls when they leave. YouTube samples an audience.
+YouTube matches Shorts to viewers using performance and personalization signals. Retention and responses can help you assess a Short, but an outside observer cannot reconstruct a fixed distribution sequence.
 
 If those people watch and then like, comment, or share, the Short has evidence that a larger group might do the same. If they swipe immediately, a wider push has nothing useful to push. You cannot see the exact threshold from outside the product, and this guide will not invent one. What you can see is your own retention and your own response counts, in YouTube's analytics, after the Short is up. What you can control before that is the edit and the match between the topic and the people who were shown the video.
 
-That is the retention-to-reach loop in plain language. Retention is the first link. A Short nobody finishes does not get rescued by a clever title after the fact. Response is the second link. A Short people finish in silence is a weaker signal than a Short people finish and then answer a real question in the comments. You still should not beg for comments you did not earn. A pinned question that the video made natural is the version of this that respects the viewer. A pinned "comment YES if you agree" on a video that never asked them to think is noise.
+Use retention and response as clues, not a published recipe for reach. Retention is one useful signal. A Short nobody finishes does not get rescued by a clever title after the fact. Response is the second link. A Short people finish in silence is a weaker signal than a Short people finish and then answer a real question in the comments. You still should not beg for comments you did not earn. A pinned question that the video made natural is the version of this that respects the viewer. A pinned "comment YES if you agree" on a video that never asked them to think is noise.
 
 Two habits follow from the loop.
 
-- Never trade a held watch for a longer runtime. If you can say it in 40 seconds, do not stretch it to 60. The extra 20 seconds are places to leave, and leaving is the signal that stops the loop.
+- Never trade a held watch for a longer runtime. If you can say it in 40 seconds, do not stretch it to 60. The extra 20 seconds are places to leave, and a longer edit gives viewers more chances to leave.
 - Judge a Short on its own curve before you copy its packaging. A title that worked on a Short people finished is not a title that will carry a Short people abandon.
 
 How recommendation treats those signals is a deeper topic than this page can settle. The companion piece is [YouTube Shorts algorithm in 2026](/blog/youtube-shorts-algorithm-2026). Use this page for the operating habits. Use that one when you want the model of distribution. Do not confuse either page with a lever you can pull to force a wider test. The lever you have is the next Short.

@@ -82,9 +82,9 @@ The first eight scored videos are morning routines. The bottle shows up after a 
 
 Video nine opens on a forearm with two squares of product and says the patch test out loud. Video ten is a duet that keeps that frame and asks whether reactive skin can use it. Those two share the sentence. On the comparison sheet, the patch-test video wins. The proof is in the first frame, and the comments ask the next question.
 
-The next ten scored videos are more routines, one joke that never shows skin, and one more patch test. The joke is out, because the product is not the joke. The routines stay out. The extra patch test does not move the proof and does not change the sentence. The check holds. Stop.
+The next ten eligible scored videos all address the same job. Their openings and proof do not change the sentence. Off-job routines and the joke are excluded from those ten. The check holds as a practical stopping heuristic, not proof that the entire niche has been exhausted.
 
-Nineteen videos were scored in this illustration. The rest of a 500-video watch can stay in the pile. Those videos are not extra briefs. The brief gets the winning opening, the winning proof, and the sentence that survived the ten.
+Twenty videos were scored in this illustration: eight initial videos, the pair, and ten eligible follow-ups. The rest of a 500-video watch can stay in the pile. Those videos are not extra briefs. The brief gets the winning opening, the winning proof, and the sentence that survived the ten.
 
 If your product cannot show a patch test, the winner is still not your script. It is the standard. Film a proof you actually have, in the first shot, and keep the sentence you wrote before you pressed play.
 

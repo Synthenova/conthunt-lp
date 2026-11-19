@@ -1,7 +1,7 @@
 ---
 title: "Best Hashtags for YouTube Shorts: Match the Video"
 slug: youtube-shorts-hashtags-guide
-excerpt: "Best hashtags for YouTube Shorts are a few that match the video. YouTube may show up to three from the description and ignores every hashtag past 60."
+excerpt: "Choose relevant Shorts hashtags. YouTube may show three from the description; if a video has more than 60, it ignores all hashtags on it."
 date: "2026-02-18"
 updated: "2026-11-09"
 category: Research

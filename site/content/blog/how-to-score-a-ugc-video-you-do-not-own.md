@@ -40,7 +40,7 @@ You can score what a viewer can see. You cannot score what the ads manager would
 | A disclosure label, a code, or the absence of both | The contract, the usage window, and the fee |
 | The format, matched to one of the seven | Whether this post "won" the test |
 
-[How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own) is the five-check rubric, scored 0 to 2, out of 10. Use it unchanged:
+[How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own) is the five-check rubric, scored 0 to 2 per available check. Report earned points out of available points when a check is missing:
 
 1. The job is in the first three seconds.
 2. The proof is on camera.
@@ -54,7 +54,7 @@ TikTok's [commercial content disclosure setting](https://ads.tiktok.com/resource
 
 ## What do you write beside the score?
 
-Two lines sit next to the 10. They do not add points.
+Two lines sit next to the score. They do not add points.
 
 **Disclosure.** Copy the label, the hashtag, or the spoken "this is an ad" in the words on the post. If none of those are there, write "no disclosure on the post." Do not guess that a polished video was hired, and do not guess that a messy video was not.
 
@@ -104,7 +104,7 @@ The public video opens on a forearm with two squares of product. On-screen text 
 | Comment job | The top repeats a product question. One creator-rate comment does not lead | 2 |
 | Public ratio | The post does not show saves or shares | blank |
 
-The score is 7, with the ratio left blank rather than invented. Beside it: disclosure is the paid-partnership label plus the spoken line. The ask is "code GLOW," and it is not on camera.
+The score is 7 out of 8 available points, with the ratio left blank rather than invented. Beside it: disclosure is the paid-partnership label plus the spoken line. The ask is "code GLOW," and it is not on camera.
 
 Brief the opening and the proof. Do not brief the code. You have not seen the code work, and the camera never showed it. If your product cannot show a patch test, this video is the standard, not your script. Film a proof you have, in the first shot.
 
@@ -129,7 +129,7 @@ Compare two videos from the platform you will publish on. A TikTok disclosure is
 Six lines. The brief uses the proved line and the format name. It leaves out the ask when the camera did not show it.
 
 1. The job sentence.
-2. The score out of 10, with any blank check named.
+2. The points earned out of the available points, with any blank check named.
 3. The format name, or "none of these."
 4. Disclosure, in the words on the post, or "no disclosure on the post."
 5. The ask, and where it lives. Drop it from the brief when it is caption-only.

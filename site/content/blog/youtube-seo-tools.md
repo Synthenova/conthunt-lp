@@ -43,7 +43,7 @@ Read the rows as jobs. "Shorts-aware" means the product can say something useful
 | TubeBuddy | Tags, bulk edits, thumbnail tests | Partial | Yes |
 | Keyword Tool or a TubeBuddy-style explorer | Phrase lists | Weak | Limited |
 | Social Blade | Public channel graphs, which is not SEO | No | Yes |
-| ContHunt | Public short-form examples across Shorts, Reels, and TikTok | Yes | Yes |
+| ContHunt | Public short-form examples across Shorts, Reels, and TikTok | Yes | Free allowance and paid-plan trials; see [pricing](/pricing) |
 
 ContHunt is on the list because people who search "YouTube SEO tool" sometimes want "what should I publish," not "what tag do I type." It is not a live rank tracker, and it is not a vidIQ clone. Tracking inside ContHunt is experimental, so do not buy the product as a replacement for Studio. The rank you get back from a research question is a judgment of fit, with the videos attached so you can check the judgment. It is not your click-through rate.
 

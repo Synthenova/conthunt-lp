@@ -39,7 +39,7 @@ YouTube renames cards and moves layouts. If a label on this page and a label in 
 
 ## Views and engaged views are different counts
 
-From August 24, 2026, a view counts when playback starts. [YouTube's engagement-metrics help](https://support.google.com/youtube/answer/2991785?hl=en) says this for Shorts, long-form videos, and live streams. The YouTube blog post [What are engaged views?](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/), dated August 19, 2026, explains the split. A view now counts from the first frame, whether that is a Short starting in the feed or a long-form video autoplaying. An engaged view is a click or a tap to watch, or watching past the initial seconds. YouTube does not publish, on that page, a fixed number of seconds hiding inside the phrase "initial seconds." Do not invent one.
+YouTube began counting Shorts starts and replays as views on [March 31, 2025](https://support.google.com/youtube/thread/333869549?hl=en&msgid=346119854), with no minimum watch time. Its [later guidance](https://support.google.com/youtube/answer/9082582) describes a playback-start count across formats in August 2026. Keep those format-specific dates separate. Engaged views are a different metric: consult [YouTube's explanation](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/) and do not invent a fixed number of seconds.
 
 The same post separates impressions from views. Seeing a thumbnail and not interacting is a thumbnail impression, not a view. Hovering so the thumbnail autoplays counts as a view from the first frame. Letting it continue past the initial seconds counts as an engaged view. A click or a tap that starts playback counts as both a view and an engaged view. For a Short in the feed, playback starting is a view. Continuing past the initial seconds is an engaged view.
 
@@ -49,7 +49,7 @@ Two measurement cautions on that help page belong in every weekly review. Metric
 
 Before you calculate a rate, write which count is the denominator. A switch from engaged views to the newer view count can change an apparent engagement rate without any change in how people watched. Do not infer a recommendation-system change from a view-count change alone. YouTube has already said the recommendation side did not change with this definition.
 
-An illustrative ratio, not a benchmark: a Short shows 20,000 views under the post-August 24, 2026 definition and 8,000 engaged views. Engaged views divided by views are 8,000 / 20,000 = 0.4, which is 40 percent. That 40 percent is not automatically the "how many chose to view" card. Chose-to-view is about feed appearances where someone watched instead of swiping. Views can also come from search, a channel page, or a tap. If you need the feed decision, read the feed card. If you need the engaged-view share, label it as that share. One numeral cannot be both unless you have checked that the two reports match.
+An illustrative ratio, not a benchmark: a Short shows 20,000 views and 8,000 engaged views. Engaged views divided by views are 8,000 / 20,000 = 0.4, which is 40 percent. That 40 percent is not automatically the "how many chose to view" card. Chose-to-view is about feed appearances where someone watched instead of swiping. Views can also come from search, a channel page, or a tap. If you need the feed decision, read the feed card. If you need the engaged-view share, label it as that share.
 
 ## The Shorts cards, in YouTube's words
 

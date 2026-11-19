@@ -38,7 +38,7 @@ Four access models cover the tools teams mix up:
 - Public research. Anyone can see the post. A tool can help you find and compare those posts. It cannot see the uploader's private retention, follower demographics, or conversions.
 - Listening. You query public mentions and conversations. Coverage, languages, and query limits are part of the product. A listening hit is not a view count.
 
-No access model legally or technically includes "a competitor's private dashboard." Without authorization, competitor analysis stops at public information and at estimates that are labeled as estimates. If a sales page implies otherwise, ask which fields require a login from the competitor. The honest answer is the private fields.
+No access model legally or technically includes "a competitor's private dashboard." Without authorization, competitor analysis relies on public information and clearly labeled estimates; connected tools may also offer public competitor data, but not the private dashboard. If a sales page implies otherwise, ask which fields require a login from the competitor. The honest answer is the private fields.
 
 Choose by the decision you need this week, not by a single league table. A league table that scores a scheduler and a listening tool on one "analytics" axis is comparing different jobs.
 

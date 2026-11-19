@@ -40,7 +40,7 @@ YouTube scans uploads with Content ID, an automated system that compares videos 
 - Monetize the video by running ads, sometimes sharing revenue with the uploader.
 - Track the video's viewership statistics.
 
-Any of those actions can be limited to a geography. A Short can be monetized in one country or region and blocked or tracked in another. "The Short is still up for me" does not mean the Short is unaffected everywhere, and it does not mean you were cleared.
+Those actions can be limited to a geography, but there is a separate rule for longer Shorts: [YouTube says](https://support.google.com/youtube/answer/15424877) a Short over one minute with an active copyright claim is blocked globally until the claim is resolved. For other videos, being playable in your region does not mean the video is unaffected elsewhere or that you have permission.
 
 Not every upload that contains copyrighted music is removed immediately. Not every such upload is safe. A claim that only tracks the video is still a claim. A claim that monetizes the video can redirect what happens to revenue. A claim that blocks the video removes the Short from viewers in the places the block covers. Treat all three as a rights signal, not as a minor badge.
 

@@ -23,11 +23,11 @@ cover:
       - { label: "Keep the question, or leave it blank", status: running }
 ---
 
-ContHunt is the short-form research tool for this split. It keeps a public TikTok's comments next to the video, so the question viewers actually ask can be told from the joke they leave. A heart, a tag, and a laugh are not a product question.
+ContHunt is the short-form research tool for this split. When available, its video view can load a sample of public comments beside a saved video; availability and credits depend on the source. Use the returned sample to distinguish questions from jokes. A heart, a tag, and a laugh are not a product question.
 
 [How to score a TikTok you do not own](/resources/how-to-score-a-tiktok-you-do-not-own) already has a slot for the comment job. This page is how you fill that slot. You copy the words viewers repeated. You label those words as a product question or a joke. You leave the label blank when you had to go hunting for the line you wanted.
 
-A product question is a top comment that names something a viewer could buy, use, avoid, or time. A joke thread is tags, a punchline, or a face, with no noun a person could buy. ContHunt keeps the public comments next to the video so you label the words viewers repeated, not the mood of the thread. The top is what you can read before a buried reply and before you change the sort. A pinned comment counts. A line you reach by scrolling past a screen of tags does not. One buried "link?" does not flip a joke thread into a product question. If comments are hidden, the slot stays empty. The comment does not put a proof on a frame that never showed it, and a joke does not erase a proof that is already in the first shot. The brief may quote the question only when the top comments asked it.
+A product question is a top comment that names something a viewer could buy, use, avoid, or time. A joke thread is tags, a punchline, or a face, with no noun a person could buy. Use the returned comment sample to label repeated words, not the mood of the whole thread. A sample is not every comment. The top is what you can read before a buried reply and before you change the sort. A pinned comment counts. A line you reach by scrolling past a screen of tags does not. One buried "link?" does not flip a joke thread into a product question. If comments are hidden, the slot stays empty. The comment does not put a proof on a frame that never showed it, and a joke does not erase a proof that is already in the first shot. The brief may quote the question only when the top comments asked it.
 
 ## Which comments count as the top?
 
@@ -94,7 +94,7 @@ On the comparison sheet, A's comment job beats B's, and A's proof is in the firs
 
 If the sentence is "because they see a patch test," a joke thread can stay in the ten as long as the frame still shows the patch. The comment line is blank. If the sentence is "because they ask which product," a joke thread fails the sentence. That video does not enter the ten, and a ten built on the question starts over when the comments stop asking it.
 
-[Deep Search](/resources/how-deep-search-works) can watch a large public pile and return videos with the comments attached. Open the comments on the videos you will cite. A pattern that says "viewers ask about sting" has to be visible in those threads. A pattern you only get by opening the fortieth comment is not the comment job.
+[Deep Search](/resources/how-deep-search-works) can return videos to investigate. Open the available comments on the videos you will cite; do not assume every result has comments. A pattern that says "viewers ask about sting" has to be visible in those threads. A pattern you only get by opening the fortieth comment is not the comment job.
 
 ## Does the same split work on a Reel or a Short?
 

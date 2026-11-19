@@ -29,17 +29,17 @@ A YouTube Shorts thumbnail in 2026 is the still image a viewer uses when they ar
 
 A YouTube Short needs a deliberate cover even when many first views happen in the swipe feed. The feed is not the only place a Short is found. A viewer scrolling a channel, comparing search results, or opening a subscription shelf is looking at a still, and that still has to identify the video before any motion plays.
 
-YouTube's own [Create YouTube Shorts](https://support.google.com/youtube/answer/10343433) help describes choosing a frame as the thumbnail before or after upload. The July 24, 2026 post [Making thumbnails easier on YouTube](https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/) adds custom upload for Partner Program creators and says the point is that viewers can tell what to expect. Those two documents answer the "do I need one" question from different sides. Frame selection is part of publishing a Short. Custom upload is an extra control that is rolling out, not a reason to skip the cover until every account has it.
+YouTube's own [Create YouTube Shorts](https://support.google.com/youtube/answer/10343433) help describes choosing a frame as the thumbnail before or after upload. The July 24, 2026 post [Making thumbnails easier on YouTube](https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/) adds custom upload for Partner Program creators and says the point is that viewers can tell what to expect. Those two documents answer the "do I need one" question from different sides. Frame selection is part of publishing a Short. Current help says verified accounts can upload a custom Shorts thumbnail on desktop Studio; check the control on your account.
 
 Treat the cover as packaging for choice, and the opening seconds as packaging for the feed. If the first frame is a logo, a black frame, or a face that has not started the point, the feed version is weak. If the selected still is the same muddle, the search and channel versions are weak too. One strong frame can do both jobs. A separate custom image is worth the extra pass when the Short is meant to be found later, not only swiped past today.
 
 ## Who can upload a custom Shorts thumbnail?
 
-Custom YouTube Shorts thumbnails are available first to YouTube Partner Program creators, and YouTube said it would expand that control to more creators over time. Availability is account-specific. A missing upload button on one phone does not prove the channel can never use the feature, and a button in desktop Studio does not prove the same control is on every mobile path.
+[YouTube's current guidance](https://support.google.com/youtubecreatorstudio/answer/72431) says verified accounts can upload custom Shorts thumbnails in YouTube Studio on a computer. Availability of controls can vary by account and device. A missing upload button on one phone does not prove the channel can never use the feature, and a button in desktop Studio does not prove the same control is on every mobile path.
 
-The July 24, 2026 YouTube blog states three separate controls, and they should not be collapsed into one:
+YouTube's current Help and earlier announcement describe different controls:
 
-- Partner Program creators can upload a custom thumbnail for a Short. YouTube described this as a way to control how the Short looks so viewers know what to expect.
+- Verified accounts can upload a custom Shorts thumbnail in YouTube Studio on a computer, according to YouTube's current help.
 - On desktop, creators can choose from three suggested thumbnail frames for Shorts, the same kind of suggestion long-form videos already had.
 - In the YouTube app on mobile, a creator can still pick any frame from the video, not only the three suggestions.
 
@@ -66,12 +66,12 @@ The right YouTube Shorts cover is the one you can actually set on that upload, c
 | A frame you design as the opening | Fast publishing, and Shorts that should look native in the feed | The frame has to be planned in the edit, not hunted afterward |
 | Any frame chosen in the YouTube app | Accounts that can pick a still but cannot upload a file | Text and filters cannot be undone once that edit is finished |
 | One of three suggested desktop frames | A desktop upload when YouTube offers suggestions | A suggestion is a starting crop, not a verdict that the frame is clear |
-| A custom upload | Partner Program accounts that have the control, especially search and evergreen topics | An overdesigned long-form layout can fight a vertical cell |
+| A custom upload | Verified accounts using desktop Studio, especially search and evergreen topics | An overdesigned long-form layout can fight a vertical cell |
 | First frame left to chance | A pure feed test you are willing to lose outside the swipe | Search and channel grids inherit whatever that frame happens to be |
 
 For most uploads, the reliable path is one opening frame that also works as the cover. Build the custom file when the Short is a product demo, a search topic, or a video you expect people to choose from a grid weeks later. The suggested frames on desktop are useful because they force a choice among three stills, the way long-form suggestions already did. They are not a substitute for having shot a frame that contains the result.
 
-Ask Studio's long-form generator is outside this table on purpose. A generated long-form thumbnail can pick colors and a layout for a horizontal video. It is a different tool from the Shorts frame picker documented in the app, and from the custom Shorts upload limited at announcement to Partner Program creators.
+Ask Studio's long-form generator is outside this table on purpose. A generated long-form thumbnail can pick colors and a layout for a horizontal video. It is a different tool from the Shorts frame picker documented in the app, and from the custom Shorts upload now documented for verified accounts in desktop Studio.
 
 ## How do you choose a frame in the YouTube app?
 

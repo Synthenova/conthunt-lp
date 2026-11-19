@@ -23,7 +23,7 @@ cover:
       - "status: confirm the checkout before you pay"
 ---
 
-On 26 October 2026, vidIQ's own compare pages listed three public US prices. Written by the ContHunt team. Free is $0. Boost is $19 month to month, or $199 billed yearly, which is about $16.58 a month. Max is $49 month to month, or $468 billed yearly, which is $39 a month. Those figures are the dollar amounts to plan around. The checkout page is the amount you will actually be charged, because taxes, regional offers, and coupons move the total.
+On 26 October 2026, [vidIQ's plans page](https://vidiq.com/plans/) listed three public US prices. Written by the ContHunt team. Free is $0. Boost is $19 month to month, or $199 billed yearly, which is about $16.58 a month. Max is $49 month to month, or $468 billed yearly, which is $39 a month. Those figures are the dollar amounts to plan around. The checkout page is the amount you will actually be charged, because taxes, regional offers, and coupons move the total.
 
 ## The public prices
 

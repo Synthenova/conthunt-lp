@@ -38,7 +38,7 @@ The seven-signal scorecard gives each signal 0, 1 or 2 points, and the total dec
 | Signal | 2 points | 1 point | 0 points |
 | --- | --- | --- | --- |
 | Creator spread | 5+ unrelated creators posted it in the last 14 days | 2 to 4 creators | One creator or a single network of creators |
-| Platform spread | Appears on TikTok and on Reels or Shorts | Appears on two platforms with few videos | One platform only |
+| Platform spread | Several relevant videos on TikTok and on Reels or Shorts | Two platforms, but only a few relevant videos on the second | One platform only |
 | Velocity | Recent videos beat each creator's own median | Mixed | Recent videos below median |
 | Demo clarity | Benefit is visible in 5 seconds, no sound needed | Needs a voiceover to land | Benefit cannot be shown |
 | Comment intent | Many comments ask where to buy, price, or fit | Some | Mostly jokes and tags |
@@ -53,7 +53,7 @@ Collecting each signal means counting distinct creators, comparing a video with 
 
 **Creator spread and platform spread.** Search the product's category words and the buyer's problem words, not just the product name. Many items circulate without a stable name. Count distinct creators, then check whether the videos show the same SKU. Look at how each video was made, too. Ten near-identical videos from creators in one agency's roster count as one source.
 
-**Velocity.** For each video, divide views by the creator's median views on recent posts. A ratio above 2 in the last two weeks suggests the product, not the creator's audience, did the work. Daily snapshots show whether it is still rising. Compare day-3 views across videos posted a week apart.
+**Velocity.** For each video, divide views by the creator's median views on recent posts. A ratio above 2 in the last two weeks flags a video for review; it does not establish whether the product or creator caused the result. Daily snapshots show whether it is still rising. Compare day-3 views across videos posted a week apart.
 
 **Demo clarity.** Mute ten videos. If you can still say what the product does, it passes. Products that need a story to make sense are expensive to advertise.
 
@@ -68,7 +68,7 @@ Collecting each signal means counting distinct creators, comparing a video with 
 | Social | "tag your friend" | Awareness and shareability, weaker buying intent |
 | Joke | emojis, memes | Noise |
 
-A product with 20% or more purchase intent and fit comments is easier to sell than one with the same views and mostly social comments. Those cutoffs are working rules, so calibrate them against products you have sold.
+A product with 20% or more purchase-intent and fit comments is a candidate to investigate, not proof it will be easier to sell. Those cutoffs are working rules, so calibrate them against products you have sold.
 
 **Saturation.** Check the public ad libraries for the same product. Meta runs an [Ad Library](https://www.facebook.com/ads/library/) and TikTok's [Creative Center](https://ads.tiktok.com/business/creativecenter/) lists top ads. Count active advertisers selling the exact item, and compare their creative. If twenty sellers run the same unboxing, you will need a better angle than the product.
 

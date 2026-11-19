@@ -22,7 +22,7 @@ cover:
     badge: "Same chart, not volume"
 ---
 
-There is no public dashboard that lists every YouTube search with an exact volume. Written by the ContHunt team. Trending YouTube searches, and the practical question of how to find top searches on YouTube, are clues from tools that measure different things. Start with the Trends tab in YouTube Studio when your channel can see it, because it reflects your audience. Autocomplete suggests phrases as you type and does not say how often they are searched. Google Trends compares relative Google interest on a scale of 0 to 100 and is not a YouTube volume report. Current YouTube results show what is already published, which is not proof of demand. Keep each clue in its own column. A relative score, a suggestion, and a page of videos do not add up to a monthly search count.
+There is no public dashboard that lists every YouTube search with an exact volume. Written by the ContHunt team. Trending YouTube searches, and the practical question of how to find top searches on YouTube, are clues from tools that measure different things. Start with the Trends tab in YouTube Studio when your channel can see it, because it reflects your audience. Autocomplete suggests phrases as you type and does not say how often they are searched. Google Trends compares relative interest on a scale of 0 to 100; select YouTube Search for YouTube queries or Web Search for Google queries. Neither is an exact volume report. Current YouTube results show what is already published, which is not proof of demand. Keep each clue in its own column. A relative score, a suggestion, and a page of videos do not add up to a monthly search count.
 
 ## Where do you see YouTube search trends for your audience?
 
@@ -70,7 +70,7 @@ Google's Trends FAQ draws a related but separate line, and it is about Google Se
 
 ## What does Google Trends measure, and what does a zero mean?
 
-Google Trends measures relative interest in Google search, normalized to a scale of 0 to 100 for the time and place of the query. It does not measure YouTube search volume, and it does not report an absolute count of searches. The FAQ says each data point is divided by the total searches of that geography and time range. It is then scaled from 0 to 100 based on a topic's proportion of searches. Two regions can show the same interest number and still have different total volumes. A spike means the topic's share of searches rose in that sample. Google says Trends is not a scientific poll and that a spike does not mean a topic is "winning". It is one data point among others.
+Google Trends measures relative interest on a 0 to 100 scale for the selected search property, place and period. Select Web Search for Google web searches or YouTube Search for searches on YouTube; neither provides an absolute count of searches. Google normalizes each data point against searches in the chosen geography and time range. Two regions can show the same interest number and still have different total volumes. Record the selected property with the chart, and treat a spike as one signal, not proof a topic will win.
 
 A value of 0 does not mean nobody searched. Trends shows data for popular terms, and low-volume terms appear as 0. The FAQ also says very low-interest queries can display statistical noise. That noise is small random fluctuations that are not real search behavior. A one-off spike on a quiet query should not be read as evidence of individual searches. If you need a sense of scale, compare the term with something common, on the same chart. Google's advice is to do that rather than narrate the number alone.
 
@@ -105,13 +105,13 @@ A YouTube search brief records the phrase, the source of each clue, and the prom
 
 An illustrative brief, not a measured niche, shows the separation. Suppose the phrase is "choose a Shorts cover frame". Studio Trends, if the card is present, contributes one row. That row says whether the phrase or a neighbor appeared. The window is audience searches or Shorts gaps over the last 28 days. It also records when the phrase did not appear. Autocomplete contributes a row of suggested wordings and the stem that produced them, with no counts. Google Trends contributes a row such as "80 versus 40 on one chart, same region and dates, relative only". The results page contributes three public videos, their publish dates, and whether they show a frame being chosen or only talk about thumbnails in general. The promise row is a title and an opening that demonstrate the choice. None of those rows is allowed to borrow a number from another row.
 
-After you publish, judge the video with your own Analytics. Impressions and clicks speak to whether the packaging earned a watch from people who were shown it. Traffic source and the search terms YouTube reports speak to whether search was actually a path. Watch behavior speaks to whether the video satisfied the promise. A Google Trends curve will not update that judgment for you. A Trends score that stays high while your own search traffic stays absent is a mismatch. The Google query and the YouTube video were never the same evidence.
+After you publish, judge the video with your own Analytics. Impressions and clicks speak to whether the packaging earned a watch from people who were shown it. Traffic source and the search terms YouTube reports speak to whether search was actually a path. Watch behavior speaks to whether the video satisfied the promise. A Google Trends curve will not update that judgment for you. A Trends score that stays high while your own search traffic stays absent is a mismatch. A Trends index and your video's own analytics are different evidence, even when YouTube Search is selected.
 
 ## Which mistakes turn clues into false volumes?
 
 The mistakes that corrupt YouTube search research are almost all category errors. Each one has a specific correction.
 
-- Quoting a Google Trends number as monthly YouTube searches. Trends is a 0 to 100 index of relative Google interest. Say "relative interest on this chart," and name the region and the dates.
+- Quoting a Google Trends number as monthly YouTube searches. Trends is a 0 to 100 index of relative interest in the selected search property. Name the property, region and dates.
 - Reading a 0 as "no demand". Low-volume terms display as 0. The term may be too small for Trends, or it may be noise on a quiet query.
 - Treating audience interest of "very high," or the 1,000-watches-per-week threshold, as a search count. YouTube tied that threshold to videos watched, over the last 28 days.
 - Mixing a 7-day local-time Trends chart with a 30-day UTC chart and calling the peaks simultaneous.
@@ -122,6 +122,6 @@ The mistakes that corrupt YouTube search research are almost all category errors
 
 [How to identify market trends](/blog/how-to-identify-market-trends) is the wider habit for separating a real shift from a loud week. [Build a weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) is a routine for formats, sounds, topics, and products once you are ready to review the niche on a schedule. Neither routine needs a fake search volume to start. Both need you to label the source of every row.
 
-YouTube trending searches are findable as a set of partial reports. Studio covers your audience and documented gaps. Autocomplete covers wording. Google Trends covers relative Google interest. The results page covers what viewers can already open. The report you should refuse is the one nobody publishes, which is a universal list of exact YouTube search volume.
+YouTube trending searches are findable as a set of partial reports. Studio covers your audience and documented gaps. Autocomplete covers wording. Google Trends covers relative interest for the selected search property. The results page covers what viewers can already open. The report you should refuse is the one nobody publishes, which is a universal list of exact YouTube search volume.
 
 [Get started]({{GET_STARTED_URL}}) with one phrase from your Trends tab. Watch the public Shorts that already answer it. Write the brief before you film a video that only repeats them.

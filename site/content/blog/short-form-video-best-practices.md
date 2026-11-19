@@ -164,7 +164,7 @@ Then compare the groups on hook type, opening frame, topic, caption language, ha
 
 Your own analytics stay the authority for your retention. Another tool cannot see that curve. What another tool can do is put public videos next to your winners so you can see whether the structure you used is the structure the niche is using. If several public videos win with the same opening pattern and your version of it dies in the first second or two, suspect execution. If the niche is not using that pattern at all, suspect the idea. Tracking public accounts in ContHunt is experimental. It is a way to revisit the same creators. It is not their private analytics.
 
-[Reading virality beyond views](/resources/reading-virality-beyond-views) is the companion when a view count is flattering a video people did not finish or save.
+[Reading virality beyond views](/resources/reading-virality-beyond-views) is the companion when a view count needs context; public views alone do not reveal whether people finished or saved.
 
 ## Turn the practices into a weekly system
 

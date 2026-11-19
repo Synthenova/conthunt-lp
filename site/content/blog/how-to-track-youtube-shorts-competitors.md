@@ -79,7 +79,7 @@ ContHunt's tracking is experimental. Where it is available, it stores public sna
 
 ## How do you reverse-engineer a hook without copying the Short?
 
-Take the channel's top 5 public Shorts from the last 30 days, judged by the public view count you can see. Watch the opening with the sound on. Watch it again with the sound off. Five is a review sample for a week of work, not a ranking YouTube publishes. For each Short, write four lines:
+Choose five public Shorts from the last 30 days with strong view counts at comparable post ages; record their ages and view counts. Watch the opening with the sound on. Watch it again with the sound off. Five is a review sample for a week of work, not a ranking YouTube publishes. For each Short, write four lines:
 
 - The first image, before any logo card. If the first image is a face saying "hey guys," write that. It is data.
 - The first spoken sentence, as close to verbatim as your notes need, plus the first on-screen text.

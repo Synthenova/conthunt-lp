@@ -23,13 +23,13 @@ cover:
       - { label: "Public Shorts research", score: 8 }
 ---
 
-The best free TubeBuddy alternative depends on which paid habit you are trying not to fund. For general YouTube SEO, use YouTube Studio, especially the Trends tab, and add vidIQ's free extension if you still want on-page tag help. For YouTube Shorts, use ContHunt to study public videos instead of paying an extension for tags. TubeBuddy's free tier, as this comparison describes it, is mostly basic tag suggestions and a best-time-to-publish calculation. Native thumbnail tests and Studio analytics now cover jobs that used to justify a paid extension for a small channel. Confirm those controls on your channel, because access can still vary. None of these free options bulk-edits a huge back catalog.
+The best free TubeBuddy alternative depends on which paid habit you are trying not to fund. For general YouTube SEO, use YouTube Studio, especially the Trends tab, and add vidIQ's free extension if you still want on-page tag help. For YouTube Shorts, ContHunt studies public videos; a separate free allowance and paid-plan trials are configured; check current access and [pricing](/pricing) before choosing. TubeBuddy's free tier, as this comparison describes it, is mostly basic tag suggestions and a best-time-to-publish calculation. Native thumbnail tests and Studio analytics now cover jobs that used to justify a paid extension for a small channel. Confirm those controls on your channel, because access can still vary. Studio supports bulk description edits; compare the specific operation and scale you need.
 
 ## What does TubeBuddy's free tier still cover?
 
 [TubeBuddy](https://www.tubebuddy.com/pricing) is a long-running YouTube extension for metadata, audits, and bulk processing. The free tier is the narrow slice of that product. This comparison treats the free tier as basic tag suggestions plus a best-time-to-publish hint. It does not treat the free tier as keyword research, library-wide description edits, or a Shorts strategy tool.
 
-That boundary is the reason a "free TubeBuddy alternative" is usually a stack, not one logo. Tag hints answer a small on-page question. They do not tell you which subjects YouTube viewers search for, they do not test a thumbnail, and they do not explain why a Short kept or lost people. If your current use of TubeBuddy is the free extension and nothing else, you can replace that habit without a subscription. If your current use is bulk work across a large library, skip ahead to the limit section. Free tools do not become a bulk processor because a blog post wishes they would.
+That boundary is the reason a "free TubeBuddy alternative" is usually a stack, not one logo. Tag hints answer a small on-page question. They do not tell you which subjects YouTube viewers search for, they do not test a thumbnail, and they do not explain why a Short kept or lost people. If your current use of TubeBuddy is the free extension and nothing else, you can replace that habit without a subscription. If your current use is bulk work across a large library, skip ahead to the limit section. YouTube Studio itself offers bulk edits; compare the exact operation before choosing a paid tool.
 
 The paid product's reputation comes from housekeeping at scale: descriptions, links, end screens, and a health check for missing pieces. A zero-budget stack is honest only when it names the housekeeping it will not do.
 
@@ -43,7 +43,7 @@ Studio's analytics also cover the attention questions an extension sidebar often
 
 Thumbnail tests are the other native replacement. YouTube's own [title and thumbnail A/B testing](https://support.google.com/youtube/answer/13861714) compares up to three options, but it runs only on computers in YouTube Studio, needs advanced features enabled, and covers long-form videos and live archives, not Shorts. YouTube offering the test does not mean every channel sees the button today, and for a Shorts-first channel it will not apply at all. Open Studio and check. If the test is there, stop paying an extension to reproduce it. If the test is not there, do not invent a workaround that pretends to be a controlled test. Change one variable at a time on later uploads and read retention, which is weaker evidence than a real test and should be labeled that way.
 
-Studio will not bulk-rewrite a back catalog, suggest a tag while you type, or watch other people's Shorts for you. Those are the gaps the rest of the stack is for. Two of them have free or native answers. The bulk rewrite does not.
+[YouTube Studio can make bulk changes](https://support.google.com/youtube/answer/6249768), including to descriptions. Check whether its operation covers your specific back-catalog job before paying for a specialized bulk tool. Studio does not, by that fact alone, provide every extension workflow or analyze other people's Shorts.
 
 ## What does vidIQ's free extension replace?
 
@@ -65,24 +65,24 @@ A public research pass will not show your competitor's private retention curve. 
 
 ## Where does Google Trends fit?
 
-Google Trends is the free look at search interest outside YouTube. Use it when you suspect a subject is moving in web search before it is crowded on YouTube, or when you want to know whether a topic is a YouTube habit only. It will not score a YouTube title, suggest tags, or test a thumbnail. It is a macro check, not an SEO extension.
+Google Trends is a free look at relative interest: choose Web Search or YouTube Search for the relevant surface. Use it when you suspect a subject is moving in web search before it is crowded on YouTube, or when you want to know whether a topic is a YouTube habit only. It will not score a YouTube title, suggest tags, or test a thumbnail. It is a macro check, not an SEO extension.
 
 A practical use: you have a Studio Trends suggestion and a vidIQ daily idea that disagree. Look the subject up in Google Trends for direction, not for a score. Rising interest outside YouTube is a reason to consider the topic. A flat line is a reason to ask whether YouTube demand in Studio is enough on its own. Neither result is a promise of views. Trends does not know your retention.
 
-Do not stack Trends, Studio, vidIQ, and a research tool into four opinions of equal weight. Studio answers YouTube search. Trends answers broader search interest. vidIQ's free tier answers on-page help and a three-rival snapshot. ContHunt answers public short-form patterns. If two of them conflict, believe the one whose question you actually asked.
+Do not stack Trends, Studio, vidIQ, and a research tool into four opinions of equal weight. Studio offers audience-specific insights. Trends shows relative interest for the selected Web Search or YouTube Search property. vidIQ's free tier answers on-page help and a three-rival snapshot. ContHunt answers public short-form patterns. If two of them conflict, believe the one whose question you actually asked.
 
 ## What does a zero-budget stack contain?
 
-A zero-budget YouTube stack in this guide is four tools with four jobs. Cost here means money. Time is not free, which is why the weekly list is short.
+The free options below cover several jobs. ContHunt has a separate free allowance and paid-plan trials; check current limits and the price before a trial ends. Time is also a cost, so keep the weekly list short.
 
 | Tool | Job it covers | Money | What it will not do |
 | --- | --- | --- | --- |
-| YouTube Studio Trends | YouTube search terms and content gaps | No subscription | Bulk-edit old descriptions |
+| YouTube Studio Trends | YouTube search terms and content gaps | No subscription | Does not analyze public videos for you |
 | YouTube Studio analytics | Your retention, audience overlap, and results | No subscription | A competitor's private curve |
 | YouTube thumbnail test, if shown | A controlled thumbnail comparison | No subscription | A test the button does not offer |
 | vidIQ free extension | On-page ideas and 3 tracked rivals | Free tier as described | A full category watchlist |
-| Google Trends | Interest outside YouTube | No subscription | Title scores or tags |
-| ContHunt | Public TikTok, Reels, and Shorts research | Not a TubeBuddy price comparison | Editing your YouTube metadata |
+| Google Trends | Relative Web or YouTube Search interest | No subscription | Exact search volumes |
+| ContHunt | Public TikTok, Reels, and Shorts research | Free allowance; paid plans offer a trial—check current terms | Editing your YouTube metadata |
 
 The table includes six rows because two of them are Studio features, not extra vendors. The point of a free TubeBuddy alternative is fewer subscriptions, not fewer steps. If you only adopt one change, make it the Trends tab plus your own retention graph. Those two screens retire more paid habits than a new extension does.
 
@@ -95,7 +95,7 @@ Run this once a week. It replaces the feeling that you should "check the extensi
 3. If you are choosing a thumbnail and Studio offers a test, start the test. If it does not, note that you are changing one variable without a formal test.
 4. For Shorts, write the opening line before you look at tags. If you need examples, search public videos for that subject rather than adding tag variants.
 5. After publishing, read retention on the new video against your recent ones. A free stack fails when you never return to Studio.
-6. Once a month, ask whether any paid TubeBuddy feature would have changed a decision you actually made. If the answer is bulk edits you keep postponing, that is a paid-tool conversation. If the answer is "not really," stay on the free stack.
+6. Once a month, ask whether any paid TubeBuddy feature would have changed a decision you actually made. If the answer is bulk edits you keep postponing, try the native operation first and compare its limits. If the answer is "not really," stay on the free stack.
 
 Illustrative time box, not a measured average: Trends tab for 20 minutes, one title decision for 15 minutes, one public-pattern check for 25 minutes, and a retention read for 15 minutes. That is 20 + 15 + 25 + 15 = 75 minutes. If your week cannot spare that, cut the extension step first. Studio and the opening line are the parts that change the video.
 
@@ -118,8 +118,8 @@ If video 4 holds people as well as video 3, you do not need the extension's titl
 
 ## When is a paid TubeBuddy plan still the rational buy?
 
-Pay when the library is the problem. Bulk description, link, and end-screen updates across a large catalog are the jobs this comparison still assigns to TubeBuddy rather than to a free stack. A health check for broken links or missing metadata is the same family of work. YouTube Studio will not do that pass for you as a bulk edit. vidIQ's free tier will not either.
+Pay when the library is the problem. For a large catalog, compare the exact bulk description, link, or end-screen operation against the native tools before choosing TubeBuddy. A health check for broken links or missing metadata is the same family of work. YouTube Studio can bulk-edit descriptions; check whether it supports the particular link or end-screen operation before paying for another tool. Confirm what each tool supports for that exact operation.
 
 Do not pay for a keyword explorer, a thumbnail test, or a best-time widget if Studio already answers those questions for your channel. Do not pay for Shorts growth if the missing piece is hook research. Read [TubeBuddy review](/blog/tubebuddy-review) before you upgrade from the free tier, and use the free stack in this article as the thing you compare the upgrade against. A paid plan is relevant when it removes hours of library work you would otherwise do by hand. It is not relevant because an extension has been on the channel for years.
 
-The free path is Studio for search and retention, a native thumbnail test when you have it, vidIQ's free extension for on-page help and three rivals, Google Trends when the question is outside YouTube, and ContHunt when the question is public short-form patterns. Keep TubeBuddy's paid tools for bulk housekeeping if that job is real. Otherwise stop paying for features the free stack already covers, and [Get started]({{GET_STARTED_URL}}) on the public-video question your extension cannot see.
+The free path is Studio for search and retention, a native thumbnail test when you have it, vidIQ's free extension for on-page help and three rivals, Google Trends for relative search interest, and ContHunt's trial when the question is public short-form patterns. Keep TubeBuddy's paid tools for bulk housekeeping if that job is real. Otherwise stop paying for features the free stack already covers, and [Get started]({{GET_STARTED_URL}}) on the public-video question your extension cannot see.

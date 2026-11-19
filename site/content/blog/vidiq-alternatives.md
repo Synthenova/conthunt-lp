@@ -64,7 +64,7 @@ Use Studio before you pay for anything else:
 
 YouTube's own analytics have absorbed a lot of what legacy SEO extensions used to sell as premium. That is not a claim that Studio clones every button in an extension. It is a claim about order of operations: exhaust the free, first-party report before you rent a second opinion on the same report. Many "premium" workflows are a rearranged view of search interest, click-through, and watch time you can already open.
 
-Studio will not tell you how a competitor's viewers behaved in private. It will not bulk-rewrite a back catalog. It will not watch a niche's TikToks for you. Those gaps are why the other rows in the table exist. They are not reasons to skip Studio.
+Studio will not tell you how a competitor's viewers behaved in private. Studio can bulk-edit descriptions; compare the exact operation you need with each tool's current capabilities. It will not watch a niche's TikToks for you. Those gaps are why the other rows in the table exist. They are not reasons to skip Studio.
 
 ## TubeBuddy fits the library, not the trend hunt
 
@@ -138,7 +138,7 @@ The neighboring pages are the ones that answer a different question. [YouTube tr
 
 No tool in this comparison can force YouTube to recommend a Short that people swipe away from. None of them can make an unrelated tag relevant. The field difference is [YouTube tags vs hashtags](/blog/youtube-tags-vs-hashtags). The short-list rule is [best hashtags for YouTube Shorts](/blog/youtube-shorts-hashtags-guide). None of them can show another channel's private retention, revenue, or subscriber quality without authorized access. None of them can repair a title that promises a different video from the one you uploaded.
 
-If the problem is packaging on YouTube search, fix the title, thumbnail, and description, then read impressions and click-through in Studio. Hashtags still belong in the description, as [YouTube Shorts hashtags: description, not the title](/blog/youtube-shorts-hashtags-title-vs-description) sets out. If the problem is "I do not know which topics are winning in this niche," collect public examples and then test one. If the problem is "I want a score on every upload," an overlay will sell you a heuristic. Accept that the score is a heuristic before you rearrange the channel around it.
+If the problem is packaging on YouTube search, fix the title, thumbnail, and description, then read impressions and click-through in Studio. Hashtags can go in the title or description. A description-first approach is an editorial choice, as [YouTube Shorts hashtags: title or description](/blog/youtube-shorts-hashtags-title-vs-description) explains. If the problem is "I do not know which topics are winning in this niche," collect public examples and then test one. If the problem is "I want a score on every upload," an overlay will sell you a heuristic. Accept that the score is a heuristic before you rearrange the channel around it.
 
 Shorts-specific packaging still has to obey the video you can actually make. [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) are the production constraints. A keyword tool does not waive them.
 

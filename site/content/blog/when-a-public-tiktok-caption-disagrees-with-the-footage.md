@@ -89,7 +89,7 @@ Video B:
 - On-screen text, from the first frame: "48h patch, two squares."
 - Frame: a forearm with two squares of product, from the first second.
 
-The frame proves the patch. The on-screen line matches the frame. The caption describes a routine this video is not. Brief the first frame and the on-screen line. Put the caption in the note as the line the creator must not copy. If they copy the caption, the shoot drifts back into the routine you already dropped on Video A.
+The frame shows product on a forearm. The on-screen line claims a patch test, but a single frame does not establish its duration or outcome. The caption describes a routine this video is not. Brief the first frame and the on-screen line. Put the caption in the note as the line the creator must not copy. If they copy the caption, the shoot drifts back into the routine you already dropped on Video A.
 
 If your product cannot show that patch, B is the standard, not your script. Film a proof you have, in the first shot, and write the first line to match that proof. Leave the borrowed caption out.
 

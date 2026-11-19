@@ -138,7 +138,7 @@ Keep a one-line log so the next test does not rely on memory. An illustrative lo
 | B | Mixed set, same hook family as A | The same four notes, plus whether comments match the topic |
 | C | Winning set from A or B, new hook | Hook result only. Do not re-judge the tags. |
 
-The arithmetic of the comparison is which single change moved saves, shares, and the three-second hold. It is not which post got more views. If A and B differ in two ways, throw the pair out. You cannot split the credit.
+Compare saves, shares, three-second hold and comment themes as directional observations. Different uploads also vary in audience, topic and distribution, so a pair cannot isolate the effect of hashtags. Repeat across comparable posts before drawing conclusions.
 
 Do not run the test across a Reel and a Short and call it a hashtag result. The products count attention differently, and the caption is not even the same field. Platform comparisons belong in [Instagram Reels vs YouTube Shorts analytics](/blog/instagram-reels-vs-youtube-shorts-analytics), after each post has been read on its own dashboard.
 

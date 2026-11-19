@@ -76,7 +76,7 @@ Each format below is one test. Film one, review it, then decide whether to repea
 ### Entertainment formats
 
 6. **Day in the life.** One thread through the day, tied to the topic of the account. Five unrelated errands do not tell a new viewer what you are for. The opening frame should be the most recognizable moment, not the commute.
-7. **Transformation.** Before and after have to be the same kind of change, shot so the change is visible. The first frames can hold the after, then the before, then the step that connects them. Hiding the after until the end trains people to leave.
+7. **Transformation.** Before and after have to be the same kind of change, shot so the change is visible. The first frames can hold the after, then the before, then the step that connects them. Test whether revealing the after earlier helps viewers understand the promise.
 8. **A trending sound, used for your topic.** Take the sound only when the picture still states your subject. The twist is the point. Participation without a subject is a repost. If the sound fights the words, drop the sound.
 9. **Point of view.** One situation a specific person recognizes, played straight. The on-screen label should name the situation, not the acronym alone. If a stranger cannot tell who is speaking, the point of view is a costume.
 10. **Storytime.** A short narrative with a turn. Open on the turn, not on "so this happened." The story still has to belong to the topic of the account. A random anecdote teaches the ranker, and the viewer, nothing stable about you.

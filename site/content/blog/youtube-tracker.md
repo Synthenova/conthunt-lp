@@ -80,7 +80,7 @@ A focused way to watch other Shorts without pretending you have their Studio is 
 
 ## Why do two trackers disagree on views?
 
-Two YouTube trackers can disagree on views because they are not always counting the same event, at the same time, under the same definition. [How engagement metrics are counted](https://support.google.com/youtube/answer/2991785?hl=en) says that beginning August 24, 2026, views are counted the moment a video starts to play. The rule covers Shorts, long-form videos, and live streams. When you compare a figure from before that date with a figure from after it, label the metric and the period. Do not assume every third-party tracker adopted the same definition on the same day, or that it refreshed when YouTube did.
+Two YouTube trackers can disagree because they may count different events or refresh at different times. [YouTube changed Shorts views on March 31, 2025](https://support.google.com/youtube/thread/333869549?hl=en&msgid=346119854) to count starts and replays. Its [August 2026 update](https://support.google.com/youtube/answer/9082582) describes playback-start counts across formats. Label the format, metric and period; do not assume every third-party tracker changed on the same day.
 
 The same page says the change does not affect YouTube Partner Program earnings or eligibility. Earnings stay based on engaged views and engaged watch hours. Eligibility stays based on qualified views. A public view total and a monetization total are different series. A tracker that displays views, and a Studio revenue tab that displays earnings, are not two readings of one number. Quoting the public view count as if it were qualified views mixes those series. Quoting an estimated earnings badge as if it were an AdSense payment does the same.
 
@@ -121,7 +121,7 @@ Ask whether the YouTube tracker is showing your authorized report, a public obse
 - How far back does the stored history go, and do you have access to that history?
 - Are Shorts separated from long-form videos?
 - Do exports or alerts require access you do not have? Check the vendor's current page rather than an old screenshot.
-- Are you about to compare numbers taken under different view definitions, including across August 24, 2026?
+- Are you comparing numbers taken under different view definitions for the format and period?
 - Have estimated earnings been kept out of the same sentence as verified revenue?
 
 If the honest answer is that you need private watch time for a channel you do not manage, stop. No tracker on this list provides it. If the honest answer is that you need to see what public Shorts in a niche look like, use a research tool. Then measure your own test in Studio. The tool is fit for the question when the evidence and the decision are the same kind of fact.

@@ -58,9 +58,9 @@ Watch it once without pausing. Then score each line 0, 1, or 2. The total is out
 | Proof | The claim is only spoken | A prop or result appears late | The proof is in the first shot |
 | Words match the footage | Caption, speech, and text disagree | Two of the three agree | All three say the same thing |
 | Comment job | Comments are emoji, tags, or unrelated | Viewers react, but not to the promise | Viewers ask the next question the promise raised |
-| Public ratio, if shown | No saves or shares, and likes are the whole story | Saves or shares exist and are far below likes | Saves or shares are a large share of the likes on that post |
+| Public ratio, if shown | Visible saves or shares are zero | Visible saves or shares are far below likes | Visible saves or shares are a large share of likes |
 
-A video under 5 is a reference for what to avoid. A video from 5 to 7 is a pattern to test, not a script to copy. A video at 8 or above is a candidate for the brief, after you check that the product and the audience match.
+If saves or shares are unavailable, leave that check blank and report the score out of the available points. The following thresholds apply only when all five checks are observed. A video under 5 is a reference for what to avoid. A video from 5 to 7 is a pattern to test, not a script to copy. A video at 8 or above is a candidate for the brief, after you check that the product and the audience match.
 
 ### A worked example
 
