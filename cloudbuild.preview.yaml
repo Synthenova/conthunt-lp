@@ -5,7 +5,7 @@
 # (the deploy step prints the exact URL). Production traffic and the :latest image tag are untouched.
 # Check it with: node site/scripts/check-routes.mjs <that url>
 # Source upload is filtered by .gcloudignore; check it with: gcloud meta list-files-for-upload .
-# Going live: see site/docs/revamp/MERGE_DEPLOY.md ("Promote"); the service must end up following LATEST again.
+# Going live: scripts/promote.sh <revision> (background in site/docs/revamp/MERGE_DEPLOY.md, "Traffic pinning").
 substitutions:
   _NEXT_PUBLIC_BACKEND_URL: 'https://mcp.conthunt.app'
   _NEXT_PUBLIC_APP_URL: 'https://agent.conthunt.app'

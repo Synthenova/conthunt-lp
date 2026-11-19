@@ -6,6 +6,17 @@ ContHunt landing page + SEO automation system. Blog content for content creators
 
 ---
 
+## Deploy
+
+The landing site is Cloud Run service `conthunt-lp` (project `conthunt-dev`, region `us-central1`). Deploy it only with these two scripts:
+
+1. `scripts/deploy-preview.sh` builds the committed HEAD as a no-traffic revision behind the `preview` tag. It refuses unless HEAD contains `origin/main`. It prints the revision name and URL. Check the preview with `node site/scripts/check-routes.mjs <preview url>`.
+2. `scripts/promote.sh <revision>` moves live traffic to that revision, runs the route checks against `https://conthunt.app` and rolls back by itself if any check fails. Its last line is `RESULT ok <rev>` or `RESULT rolled back to <rev>: <reason>`.
+
+Never run `gcloud builds submit` from a working tree, and never move traffic by hand except for an emergency rollback. A checkout that lacks `origin/main` ships stale code. After a promote, confirm the short links still redirect: `node site/scripts/check-routes.mjs https://conthunt.app --redirects-only`. Background and traffic pinning: `site/docs/revamp/MERGE_DEPLOY.md`.
+
+---
+
 ## Blog Writing Format
 
 Location: `content/blog/*.md`
