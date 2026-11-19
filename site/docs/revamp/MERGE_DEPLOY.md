@@ -130,7 +130,7 @@ Deploy with `scripts/deploy-preview.sh`, then promote with `scripts/promote.sh <
 - Do not run `cloudbuild.yaml` before the preview has been tested: its last step moves 100% of traffic.
 
 ### Build speed
-A preview release takes about 3 minutes. Before the blob cache, 44 to 63 s of that went to uploading the
+A preview release takes about 3 minutes. Before the media cache, 44 to 63 s of that went to uploading the
 source from the Mac.
 - Upload. At the root, `.gcloudignore` lists the paths to upload (`!/<path>`), and leaves out everything else.
   The list matches the `Dockerfile`'s `COPY` sources, and `scripts/build-blog.js` reads nothing outside them.
@@ -138,11 +138,13 @@ source from the Mac.
   If you make the `Dockerfile` copy a new root path, add a `!/<path>` line. Without the line, the build fails with
   `<path>: not found`.
 - Media. `public/` and `site/public/` hold 131 MB of the 136 MB source and rarely change.
-  `deploy-preview.sh` stores each of their files once as `gs://conthunt-dev_cloudbuild/blobs/<git blob id>`
-  and uploads only the blobs that are missing there. In the upload it replaces those files with
-  `.blob-manifest`. The first step of `cloudbuild.preview.yaml` downloads the blobs, checks each blob id, and
-  puts the files back before the Docker build. You can delete the `blobs/` folder between deploys. The next
-  deploy uploads every blob again.
+  `deploy-preview.sh` stores the files of each of their directories once, as an uncompressed tar named
+  `gs://conthunt-dev_cloudbuild/media/<hash of the directory's file listing>.tar`, and uploads only the tars
+  that are missing there. In the upload it replaces those files with `.media-manifest/`. The first step of
+  `cloudbuild.preview.yaml` downloads the tars, unpacks them, and checks each file's git blob id before the
+  Docker build. The cache holds one object per directory (54 today) because Cloud Build pays for each
+  object it downloads: 1362 per-file objects took 50 to 80 s to fetch, and one 130 MB object takes 3 to 6 s.
+  You can delete the `media/` folder between deploys. The next deploy uploads every tar again.
 - Layer cache. Both cloudbuild files read and write BuildKit layers at the shared `website:buildcache` tag, so
   a stage with unchanged inputs (`npm install`, `pnpm install`, `next build`) is pulled, not rebuilt. If that tag
   is gone, the first build logs `ERROR: failed to configure registry cache importer ... not found`. That error is

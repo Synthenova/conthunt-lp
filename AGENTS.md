@@ -18,7 +18,7 @@ Never run `gcloud builds submit` from a working tree, and never move traffic by 
 Build speed (details in `MERGE_DEPLOY.md`, "Build speed"):
 
 - The upload carries only the root paths that the `Dockerfile` copies, listed as `!/<path>` lines in `.gcloudignore`. If you make the `Dockerfile` copy a new root path, add its line, or the build fails with `<path>: not found`.
-- `deploy-preview.sh` sends `public/` and `site/public/` through a blob cache in `gs://conthunt-dev_cloudbuild/blobs/`, so it uploads only files that Cloud Build has not seen.
+- `deploy-preview.sh` sends `public/` and `site/public/` through a media cache in `gs://conthunt-dev_cloudbuild/media/`, one tar per directory, so it uploads only directories that changed.
 - Docker layers come from the shared `website:buildcache` tag. If that tag is gone, the first build logs `ERROR: failed to configure registry cache importer ... not found`. That error is expected, and the build continues without the cache.
 - The build runs on the default Cloud Build machine on purpose. An 8-vCPU worker waited 46 to 423 s to start.
 
