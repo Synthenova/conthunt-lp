@@ -4,7 +4,7 @@ slug: how-to-monetize-youtube-shorts
 excerpt: "Eligible creators monetize YouTube Shorts in YPP. Ads between Shorts fund a Creator Pool, and creators keep 45% of their allocation. There is no fixed rate."
 seoTitle: "How to Monetize YouTube Shorts: YPP Paths"
 date: "2024-10-14"
-updated: "2026-11-07"
+updated: "2026-11-19"
 category: Playbooks
 readingMinutes: 16
 author: "ContHunt Team"
@@ -34,6 +34,8 @@ YouTube lists two full paths. One is 1,000 subscribers plus 4,000 qualified publ
 Rules dated February 1, 2027 are not today's application thresholds. Read [YouTube's Shorts monetization policies](https://support.google.com/youtube/answer/12504220?hl=en) before you quote earnings. Confirm the channel in YouTube Studio as well. Those policies and the [Partner Program overview](https://support.google.com/youtube/answer/72851?hl=en) were read again on November 6, 2026. The thresholds and the 45% share on those pages still match this guide.
 
 ## Can you make money on YouTube Shorts?
+
+Check the Earn tab before estimating revenue. Meeting an application threshold does not guarantee acceptance: YouTube reviews the channel, and Shorts Feed ads require the applicable monetization module. Views accrued before accepting that module do not earn Shorts ad revenue. [YouTube's policy](https://support.google.com/youtube/answer/12504220) also distinguishes eligible engaged views from the public view counter.
 
 Yes. The creator must be in the YouTube Partner Program. The creator must also have accepted the Shorts Monetization Module. Then the channel can earn from ads viewed between videos in the Shorts Feed. It can also earn from YouTube Premium revenue that YouTube allocates to Shorts. Seeing an ad on a Short is not the same event. YouTube's Partner Program overview says ads may run even when the channel cannot receive a share. The useful question is narrower. Is the channel eligible? Has the right module been accepted? Are the views on that Short eligible?
 

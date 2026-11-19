@@ -5,15 +5,14 @@ import { FontPreloads } from "@/components/layout/font-preloads";
 import { JsonLd } from "@/components/seo/json-ld";
 import { snapshotDescription } from "@/lib/viral-now/copy";
 import { creatorLabel } from "@/lib/viral-now/format";
-import { loadNicheBoard, loadViralNowData } from "@/lib/viral-now/load";
+import { loadNicheBoard } from "@/lib/viral-now/load";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { viralNowNicheGraph } from "@/lib/seo/schema";
 
 export const revalidate = 3600;
-export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return loadViralNowData().niches.map((niche) => ({ slug: niche.slug }));
+  // Generate on first request so a build does not launch 40 concurrent board reads.
+  return [];
 }
 
 function describe(name: string, count: number, weekOf: string | null): string {

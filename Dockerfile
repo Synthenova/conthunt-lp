@@ -38,7 +38,7 @@ COPY site/ ./
 COPY --from=legacy /app/sitemap.xml ./legacy-sitemap.xml
 
 # Public values (they end up in the client bundle and the rewrite table). Defaults are production.
-ARG NEXT_PUBLIC_BACKEND_URL=https://conthunt-785174409154.us-central1.run.app
+ARG NEXT_PUBLIC_BACKEND_URL=https://conthunt-cfprodv2-api.zach-c63.workers.dev
 ARG NEXT_PUBLIC_APP_URL=https://agent.conthunt.app
 ENV NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL \
     NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
@@ -46,6 +46,7 @@ RUN pnpm build
 
 # Stage 3: runtime (node + nginx)
 FROM node:22-alpine
+ARG NEXT_PUBLIC_BACKEND_URL=https://conthunt-cfprodv2-api.zach-c63.workers.dev
 RUN apk add --no-cache nginx \
     && mkdir -p /run/nginx /usr/share/nginx/html \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -67,11 +68,12 @@ COPY --from=site /app/.next/standalone ./
 COPY --from=site /app/.next/static ./.next/static
 COPY --from=site /app/public ./public
 COPY --from=site /app/content ./content
+COPY --from=site /app/legacy-sitemap.xml ./legacy-sitemap.xml
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN sed -i 's/\r$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh
 
-ENV NODE_ENV=production
+ENV NODE_ENV=production NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
 EXPOSE 8080
 ENTRYPOINT ["/docker-entrypoint.sh"]

@@ -4,7 +4,7 @@ slug: "youtube-shorts-analytics"
 excerpt: "Read YouTube Shorts in Studio against your baseline: views, shown in feed, chose to view, retention, and traffic. No universal swipe benchmark exists."
 seoTitle: "YouTube Shorts analytics: metrics and tools"
 date: "2026-02-25"
-updated: "2026-11-12"
+updated: "2026-11-19"
 category: "Guides"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -32,6 +32,8 @@ cover:
 YouTube Shorts analytics for a channel you manage start in YouTube Studio, the first-party source of those numbers. Written by the ContHunt team. Read views and how often the Short was shown in the Shorts feed. Read how many viewers chose to view instead of swiping. Also read audience retention, traffic sources, engagement, and subscribers gained. Compare each Short with your own typical performance on similar videos. YouTube does not publish a universal retention rate or a chose-to-view rate that guarantees distribution. Public research, including ContHunt, can show what other channels published and how viewers responded in public. It cannot recreate a competitor's retention graph, chose-to-view rate, audience demographics, or revenue. Keep the two evidence layers apart, and write down whether a report says views or engaged views before you turn either number into a rate.
 
 ## Where to open Shorts analytics
+
+For a quick diagnosis, open Studio → Analytics → Content → Shorts, choose a consistent date range, then compare shown in feed, chose to view and retention with similar Shorts on your channel. If exposure is low, check the topic and traffic sources; if people swipe, test the opening; if they stay initially but leave later, inspect the retention graph for the specific drop. These are hypotheses for the next edit, not proof of why YouTube recommended a video.
 
 In YouTube Studio, open Analytics and go to the Content tab. YouTube's [Shorts content-tab help](https://support.google.com/youtube/answer/12942217?hl=en&co=YOUTUBE._YTVideoType%3Dshorts) says you will see a Shorts chip with data on views, comments, remixes, and other metrics. Start there for a channel you manage. In an August 26, 2026 first-page check for the query "youtube shorts analytics," that official help page ranked first. The ranking of a help page is not a performance metric. It is a reason to trust the intent of the query: people looking up Shorts analytics usually need the product that collected the data.
 

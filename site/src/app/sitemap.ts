@@ -50,7 +50,7 @@ async function nicheEntries(): Promise<MetadataRoute.Sitemap> {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getAllPosts(); // newest first
-  const newest = posts[0]?.date;
+  const newest = posts.map((post) => post.updated).sort().at(-1);
   const owned = new Set(posts.map((post) => post.href));
   const legacy = readLegacyUrls()
     .filter((entry) => entry.path !== "/blog" && !owned.has(entry.path) && !entry.path.startsWith("/blog/"))
@@ -58,16 +58,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: absoluteUrl(entry.path),
       ...(entry.lastModified ? { lastModified: entry.lastModified } : {}),
     }));
+  // These routes are served by nginx, including when the legacy sitemap file is unavailable at runtime.
+  for (const path of ["/docs", "/docs/integrations/skill", "/docs/integrations/mcp"]) {
+    const url = absoluteUrl(path);
+    if (!legacy.some((entry) => entry.url === url)) legacy.push({ url });
+  }
   const niches = await nicheEntries();
 
   return [
     { url: absoluteUrl(ROUTES.home) },
     { url: absoluteUrl(ROUTES.pricing) },
     { url: absoluteUrl(ROUTES.support) },
+    { url: absoluteUrl("/about") },
+    { url: absoluteUrl("/authors") },
+    { url: absoluteUrl("/editorial") },
     { url: absoluteUrl(ROUTES.viralNow) },
     ...niches,
     { url: absoluteUrl(ROUTES.resources), ...(newest ? { lastModified: newest } : {}) },
-    ...posts.map((post) => ({ url: absoluteUrl(post.href), lastModified: post.date })),
+    ...posts.map((post) => ({ url: absoluteUrl(post.href), lastModified: post.updated })),
     ...legacy,
   ];
 }

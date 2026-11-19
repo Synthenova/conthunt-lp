@@ -3,7 +3,7 @@ title: "How Long Can an Instagram Reel Be? (2026 Guide)"
 slug: "how-long-can-an-instagram-reel-be"
 excerpt: "Instagram Reel length limits can vary by account and rollout. Start at 15 to 30 seconds for discovery, and go longer only when the story needs the extra time."
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-19"
 category: "Research"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -23,6 +23,8 @@ cover:
 An Instagram Reel is a short vertical video on Instagram, and how long one can be is two answers, not one. Written by the ContHunt team. The upload ceiling can vary by rollout and by account, so the composer on the publishing account is the limit that matters. That ceiling is not a target. For most creators, a 15 to 30 second Reel is the safest starting point for discovery. It is long enough for a hook and a payoff, and short enough to finish. Go longer only for a tutorial, a breakdown, or a narrated walkthrough, and only when every segment earns its place. If the opening does not show the value quickly, viewers leave before the point lands. Shorter Reels are usually easier to distribute. Longer ones need people to keep watching. The best length follows the story.
 
 ## What is the maximum length of an Instagram Reel?
+
+Before exporting, check the account's current composer. An upload limit and eligibility for recommendations are separate questions. For a production checklist, see [Instagram Reels content ideas and best practices](/blog/instagram-reels-content-ideas).
 
 The maximum length of an Instagram Reel is the limit shown in your own composer, and that limit is a ceiling, not a recommendation. Instagram Reel limits can change by rollout and by account.
 

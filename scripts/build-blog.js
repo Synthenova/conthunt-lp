@@ -813,14 +813,6 @@ ${sitemapUrls.map(url => `  <url>
     console.log('Generated: sitemap.xml');
 }
 
-// Ping Google that sitemap updated
-function pingGoogleSitemap() {
-    console.log('Pinging Google sitemap...');
-    fetch('https://www.google.com/ping?sitemap=https://conthunt.app/sitemap.xml')
-        .then(() => console.log('Google ping successful'))
-        .catch(err => console.log('Google ping failed (non-critical):', err.message));
-}
-
 function listSkillFiles(dir, prefix = '') {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     const files = [];
@@ -1094,9 +1086,6 @@ async function build() {
 
     // 9. Save author assignments (persist across rebuilds)
     saveAuthorAssignments(authorAssignments);
-
-    // 10. Ping Google (async, don't block)
-    setTimeout(() => pingGoogleSitemap(), 1000);
 
     console.log('Blog build complete!');
 }
