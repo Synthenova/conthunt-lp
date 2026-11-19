@@ -3,7 +3,8 @@
 #
 #   scripts/promote.sh <revision>
 #
-# Refuses unless the revision's commit label (set by scripts/deploy-preview.sh) contains origin/main.
+# Refuses unless the revision's commit label (set by scripts/deploy-preview.sh) is on origin/main and
+# contains it: pushed, and not behind.
 # The last line is always "RESULT ok <rev>" or "RESULT rolled back to <rev>: <reason>" (or a refusal).
 set -euo pipefail
 
@@ -46,6 +47,8 @@ commit=$(gc run revisions describe "$target" --format='value(metadata.labels.com
 git cat-file -e "$commit^{commit}" 2>/dev/null || refuse "commit $commit of $target is not in this clone; fetch it first"
 git merge-base --is-ancestor "$main" "$commit" \
   || refuse "revision $target was built from $commit, which does not contain origin/main ($main)"
+git merge-base --is-ancestor "$commit" "$main" \
+  || refuse "revision $target was built from $commit, which is not on origin/main; push it first so live stays reproducible"
 
 latest=$(gc run services describe "$SERVICE" --format='value(status.latestCreatedRevisionName)')
 echo "promote: $target (commit $commit), currently live: $previous"

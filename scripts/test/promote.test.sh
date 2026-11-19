@@ -41,7 +41,7 @@ echo "node full $(cat "$root/nginx.conf")" >> "$FAKE_LOG"; exit "${FAKE_CHECK_RC
 FAKE
 chmod +x "$tmp/bin/gcloud" "$tmp/bin/node"
 
-# origin has main at M. The clone has C (built on M) and B (a branch that never merged M).
+# origin has main at C. The clone has C (built on M and pushed), B (a branch that never merged M) and D (unpushed).
 git init -q --bare "$tmp/origin.git"
 git init -q -b main "$tmp/repo"
 cd "$tmp/repo"
@@ -56,6 +56,9 @@ git switch -q main
 M=$(commit main)
 git remote add origin "$tmp/origin.git" && git push -q origin main
 C=$(git switch -q -c feature && commit feature)
+git push -q origin feature:main
+D=$(git switch -q -c unpushed && commit unpushed)
+git switch -q feature
 
 pass=0 fail=0
 expect() {
@@ -90,7 +93,7 @@ expect "failed check: exit 1 and RESULT rolled back" \
 
 promote_case FAKE_LABEL_rev_new="$C" FAKE_LABEL_rev_old="" FAKE_CHECK_RC=1 FAKE_REDIRECTS_RC=1
 expect "failed rollback re-check is named; unlabelled previous falls back to origin/main" \
-  '[ $code = 1 ] && [[ "$last" == *"redirects still fail after the rollback" ]] && grep -qx "node redirects main" "$FAKE_LOG"'
+  '[ $code = 1 ] && [[ "$last" == *"redirects still fail after the rollback" ]] && grep -qx "node redirects feature" "$FAKE_LOG"'
 
 promote_case FAKE_LABEL_rev_new=""
 expect "missing commit label: refused, no traffic moved" '[ $code = 1 ] && [[ "$last" == "RESULT refused: revision rev-new has no commit label"* ]] && [ -z "$(traffic)" ]'
@@ -108,8 +111,12 @@ expect "unknown revision: refused, no traffic moved" '[ $code = 1 ] && [[ "$last
 promote_case FAKE_PREVIOUS="" FAKE_LABEL_rev_new="$C"
 expect "no single 100% revision: refused, no traffic moved" '[ $code = 1 ] && [[ "$last" == "RESULT refused: no single revision"* ]] && [ -z "$(traffic)" ]'
 
+promote_case FAKE_LABEL_rev_new="$D"
+expect "label not on origin/main (unpushed): refused, no traffic moved" \
+  '[ $code = 1 ] && [[ "$last" == *"push it first"* ]] && [ -z "$(traffic)" ]'
+
 # origin/main moves past the target after it was built: the fresh fetch must catch it.
-git switch -q main && commit main2 > /dev/null && git push -q origin main && git reset -q --hard "$M" && git switch -q feature
+git switch -q main && git reset -q --hard "$C" && commit main2 > /dev/null && git push -q origin main && git reset -q --hard "$M" && git switch -q feature
 promote_case FAKE_LABEL_rev_new="$C"
 expect "origin/main advanced since the build: refused after a fresh fetch" \
   '[ $code = 1 ] && [[ "$last" == *"does not contain origin/main"* ]] && [ -z "$(traffic)" ]'
