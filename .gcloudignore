@@ -24,7 +24,7 @@
 !/terms/
 !/site/
 # Written by scripts/deploy-preview.sh, read by the first step of cloudbuild.preview.yaml.
-!/.blob-manifest
+!/.media-manifest/
 #!include:.gitignore
 
 # Next app (site/): build output, installs, local env files and generated files

@@ -6,17 +6,17 @@
 # Refuses unless HEAD contains origin/main. Builds from `git archive HEAD`, never from the working tree,
 # and stamps the revision with the label commit=<full sha>, which scripts/promote.sh requires.
 #
-# The files under public/ and site/public/ (almost all of the source's bytes, and rarely changed) do not go
-# in the source upload. Each one is stored once in $BLOBS under its git blob id, and the upload carries
-# .blob-manifest ("<blob id> <path>" lines) instead. The first step of cloudbuild.preview.yaml puts the
-# files back before the Docker build, so the image is the same. Only blobs missing from $BLOBS are uploaded.
+# public/ and site/public/ hold almost all of the source's bytes and rarely change, so they skip the source
+# upload. Each directory's files go to $MEDIA once, as one tar named after the directory's git listing, and
+# the upload carries .media-manifest/ instead. The first step of cloudbuild.preview.yaml puts the files
+# back before the Docker build, so the image is the same. Only tars missing from $MEDIA are uploaded.
 set -euo pipefail
 
 PROJECT=conthunt-dev
 REGION=us-central1
 SERVICE=conthunt-lp
 BACKEND_URL=https://mcp.conthunt.app
-BLOBS=gs://${PROJECT}_cloudbuild/blobs
+MEDIA=gs://${PROJECT}_cloudbuild/media
 
 die() { echo "deploy-preview: $*" >&2; exit 1; }
 
@@ -39,17 +39,27 @@ src=$work/src
 mkdir "$src" "$work/blobs"
 git archive "$commit" | tar -x -C "$src"
 
+manifest=$src/.media-manifest
+mkdir "$manifest" "$work/media"
 git -c core.quotePath=false ls-tree -r "$commit" -- public site/public \
-  | awk -F'\t' '{ split($1, f, " "); print f[3], $2 }' > "$src/.blob-manifest"
-# A failed listing only means every blob is uploaded again.
-gcloud storage ls "$BLOBS/" 2>/dev/null | sed 's|.*/||' | sort -u > "$work/cached" || true
-cut -d' ' -f1 "$src/.blob-manifest" | sort -u | comm -23 - "$work/cached" > "$work/missing"
-while read -r blob; do git cat-file blob "$blob" > "$work/blobs/$blob"; done < "$work/missing"
-echo "deploy-preview: $(wc -l < "$work/missing" | tr -d ' ') new of $(wc -l < "$src/.blob-manifest" | tr -d ' ') files under public/ and site/public/"
-if [ -s "$work/missing" ]; then
-  gcloud storage cp --project "$PROJECT" "$work/blobs/*" "$BLOBS/"
+  | awk -F'\t' '{ split($1, f, " "); print f[3], $2 }' > "$manifest/files"
+cut -d' ' -f2- "$manifest/files" | sed 's|/[^/]*$||' | sort -u | while IFS= read -r dir; do
+  key=$(git --literal-pathspecs -c core.quotePath=false ls-tree "$commit" -- "$dir/" | awk '$2 == "blob"' | git hash-object --stdin)
+  echo "$key $dir"
+done > "$manifest/bundles"
+
+# A failed listing only means every tar is uploaded again.
+gcloud storage ls "$MEDIA/" 2>/dev/null | sed 's|.*/||; s|\.tar$||' | sort -u > "$work/cached" || true
+while read -r key dir; do
+  grep -qx "$key" "$work/cached" && continue
+  awk -v d="$dir" '{ p = substr($0, 42); sub(/\/[^\/]*$/, "", p) } p == d { print substr($0, 42) }' "$manifest/files" \
+    | tr '\n' '\0' | xargs -0 git --literal-pathspecs archive --format=tar -o "$work/media/$key.tar" "$commit" --
+done < "$manifest/bundles"
+echo "deploy-preview: uploading $(find "$work/media" -type f | wc -l | tr -d ' ') of $(wc -l < "$manifest/bundles" | tr -d ' ') media tars"
+if [ -n "$(ls "$work/media")" ]; then
+  gcloud storage cp --no-user-output-enabled --project "$PROJECT" "$work/media/*" "$MEDIA/"
 fi
-while read -r _ path; do rm "$src/$path"; done < "$src/.blob-manifest"
+cut -d' ' -f2- "$manifest/files" | (cd "$src" && tr '\n' '\0' | xargs -0 rm)
 
 gcloud builds submit "$src" \
   --project "$PROJECT" \
