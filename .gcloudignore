@@ -1,21 +1,29 @@
-# What `gcloud builds submit .` uploads to Cloud Build as the build source.
-# Without this file gcloud reads only the ROOT .gitignore (never site/.gitignore), so it would also upload
-# site/.next (hundreds of MB, with paths longer than MAX_PATH on Windows), SEO/ and local scratch.
-# The Docker build runs from this upload, so anything the Dockerfile COPYs must NOT be listed here.
+# What `gcloud builds submit` uploads to Cloud Build as the build source.
+# At the root only the paths the Dockerfile COPYs are uploaded (scripts/build-blog.js reads nothing else).
+# When the Dockerfile starts copying a new root path, add a `!/<path>` line for it. Until then the build
+# fails with "<path>: not found". site/ is copied whole, so inside it only build output is left out.
+# Without this file gcloud reads only the ROOT .gitignore (never site/.gitignore) and uploads site/.next.
 # .dockerignore is deliberately uploaded: Cloud Build's docker step reads it from the build context.
 # Check the result with: gcloud meta list-files-for-upload .
-.gcloudignore
-.git
-.gitignore
-.gitattributes
+/*
+!/Dockerfile
+!/.dockerignore
+!/docker-entrypoint.sh
+!/nginx.conf
+!/package.json
+!/package-lock.json
+!/rss.xml
+!/sitemap.xml
+!/robots.txt
+!/scripts/
+!/content/
+!/skills/
+!/assets/
+!/public/
+!/privacy/
+!/terms/
+!/site/
 #!include:.gitignore
-
-# Local-only folders and tooling
-.scratch/
-.cursor/
-# Anchored: an unanchored SEO/ also matches site/src/components/seo and site/src/lib/seo (gcloud matches
-# case-insensitively on Windows), which broke the build.
-/SEO/
 
 # Next app (site/): build output, installs, local env files and generated files
 site/.next/
@@ -28,6 +36,7 @@ site/*.tsbuildinfo
 site/next-env.d.ts
 site/legacy-sitemap.xml
 site/.scratch/
+site/.gitignore
 
 # Documentation only (the Dockerfile never copies it)
 site/docs/
