@@ -6,11 +6,11 @@
  * silent fallback and never appears on the site. Allowances must match the app and backend exactly.
  *
  * Sources and rules:
- * - One credit is $0.00188 of provider cost. Three pools: hunt credits pay for searches (one per platform a
- *   search queries), tracking credits for tracking (one per tracked item per refresh), AI credits for analysis.
+ * - One credit is $0.00188 of provider cost. Two pools: hunt credits pay for searches (one per platform a
+ *   search queries) and for tracking (one per tracked item per refresh), AI credits pay for analysis.
  * - Yearly and monthly billing get the same credits; only the price differs.
  * - Prices: Pro $300/yr ($25/mo), Creator $756/yr ($63/mo), Research $1,428/yr ($119/mo).
- * - Trial allowances are 7/30 of the month, rounded up to the nearest 500.
+ * - Trial allowances are 7/30 of the month, rounded up to the nearest 500. Research's trial is Creator's trial.
  * - Features are a ladder: the entry plan lists its base, the others list only what they add.
  * - An analyzed video is planned at 7 AI credits. Measured production use is lower (base analysis about
  *   3, a full Deep Search about 6.6 per video), so the figure already carries the headroom.
@@ -43,7 +43,6 @@ export interface AllowanceRow {
 
 export interface Allowance {
   huntCredits: number;
-  trackingCredits: number;
   aiCredits: number;
 }
 
@@ -98,15 +97,18 @@ export const formatInt = (n: number): string => Math.round(n).toLocaleString("en
 
 export const TRIAL_DAYS = 7;
 
-/** Trial allowance: the share of a 30-day month that the trial covers, rounded up to the nearest 500. */
+/**
+ * Trial allowance: the share of a 30-day month that the trial covers, rounded up to the nearest 500.
+ * Hunt credits are the search pool plus the tracking pool it absorbed, each half rounded as the app grants it.
+ */
 const trialOf = (a: Allowance): Allowance => {
   const share = (credits: number) => Math.ceil((credits * TRIAL_DAYS) / 30 / 500) * 500;
-  return { huntCredits: share(a.huntCredits), trackingCredits: share(a.trackingCredits), aiCredits: share(a.aiCredits) };
+  return { huntCredits: 2 * share(a.huntCredits / 2), aiCredits: share(a.aiCredits) };
 };
 
-const PRO_ALLOWANCE: Allowance = { huntCredits: 1_000, trackingCredits: 1_000, aiCredits: 6_000 };
-const CREATOR_ALLOWANCE: Allowance = { huntCredits: 3_000, trackingCredits: 3_000, aiCredits: 17_000 };
-const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 7_000, trackingCredits: 7_000, aiCredits: 33_500 };
+const PRO_ALLOWANCE: Allowance = { huntCredits: 2_000, aiCredits: 6_000 };
+const CREATOR_ALLOWANCE: Allowance = { huntCredits: 6_000, aiCredits: 17_000 };
+const RESEARCH_ALLOWANCE: Allowance = { huntCredits: 14_000, aiCredits: 33_500 };
 
 export const PLANS: readonly Plan[] = [
   {
@@ -161,7 +163,8 @@ export const PLANS: readonly Plan[] = [
     trialDays: TRIAL_DAYS,
     cta: { label: "Start free trial", href: GET_STARTED_URL },
     allowance: RESEARCH_ALLOWANCE,
-    trial: trialOf(RESEARCH_ALLOWANCE),
+    // Research's trial equals Creator's trial exactly.
+    trial: trialOf(CREATOR_ALLOWANCE),
     includes: "Everything in Creator, plus",
     features: [
       { lead: "25", text: "daily agents" },
@@ -203,10 +206,9 @@ export const yearlySavingUsd = (plan: Plan): number => plan.price.monthly * 12 -
 export const MAX_YEARLY_SAVING_PCT = Math.max(...PLANS.map(yearlySavingPct));
 
 export const allowanceRows = (plan: Plan): AllowanceRow[] => {
-  const { huntCredits, trackingCredits, aiCredits } = plan.allowance;
+  const { huntCredits, aiCredits } = plan.allowance;
   return [
-    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches" },
-    { key: "trackingCredits", label: "Tracking credits", value: trackingCredits, note: "for tracking" },
+    { key: "huntCredits", label: "Hunt credits", value: huntCredits, note: "for searches and tracking" },
     {
       key: "aiCredits",
       label: "AI credits",

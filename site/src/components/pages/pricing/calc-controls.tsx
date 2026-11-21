@@ -104,7 +104,7 @@ function DialSliderImpl({
 
   return (
     <div>
-      {/* flex-wrap: a long readout ("25 items · 750 tracking credits") drops under the label on a phone instead of
+      {/* flex-wrap: a long readout ("25 items · 750 hunt credits") drops under the label on a phone instead of
           squeezing the label into a column of one word per line. */}
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
         <label htmlFor={id} className="text-[14px] font-medium text-ink">

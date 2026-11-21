@@ -139,7 +139,7 @@ export function PlanCards({
             <p className="max-w-[72ch] text-[13px] leading-[1.6] text-ink-2/75">
               The trial runs on a smaller allowance, and your plan starts when the {TRIAL_DAYS} days end.
               {full &&
-                " Hunt credits pay for searches: a keyword search costs one per platform it queries, so 3 on TikTok, Reels and Shorts. Tracking credits pay for tracking."}
+                " Hunt credits pay for searches and tracking: a keyword search costs one per platform it queries, so 3 on TikTok, Reels and Shorts."}
             </p>
           ) : (
             <span />

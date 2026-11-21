@@ -17,8 +17,8 @@
  * Copy is grounded in the app (backend/alembic/versions/0049_tracking.py, the
  * TrackingView UI and plan_wallets.py): public TikTok / Instagram / YouTube links,
  * followers and totals for accounts, per-video views/likes/comments/shares/saves,
- * daily snapshots at a user-chosen time, 7/30/90-day history. Tracking spends its own tracking credits,
- * separate from the hunt credits search spends; the per-plan figures in the last item come from `plans.ts`
+ * daily snapshots at a user-chosen time, 7/30/90-day history. Tracking spends hunt credits,
+ * the same pool search spends; the per-plan figures in the last item come from `plans.ts`
  * (Pro, Creator, Research, cheapest first), so they follow the plans.
  */
 import { ArrowDown, ArrowDownRight, ArrowRight } from "lucide-react";
@@ -60,8 +60,8 @@ const FEATURES: Feature[] = [
     region: "growth",
   },
   {
-    title: "Tracking credits.",
-    body: `Tracking has its own monthly credits: ${PLANS.map((p) => `${formatInt(p.allowance.trackingCredits)} on ${p.name}`).join(", ")}.`,
+    title: "Hunt credits.",
+    body: `Tracking spends hunt credits, the same ones search uses: ${PLANS.map((p) => `${formatInt(p.allowance.huntCredits)} on ${p.name}`).join(", ")}.`,
     region: null,
   },
 ];

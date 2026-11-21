@@ -129,7 +129,7 @@ export function softwareApplicationNode(): JsonLdNode {
       "Ranked results scored for relevance to your question",
       "AI boards to save and organize research",
       "Public Viral Now boards across 20 niches",
-      "Account and video tracking (experimental)",
+      "Account and video tracking",
       `MCP server for AI agents (${MCP_SERVER_URL})`,
     ],
     offers: planOffers(),

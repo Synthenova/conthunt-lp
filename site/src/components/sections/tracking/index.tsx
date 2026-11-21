@@ -1,5 +1,5 @@
 /**
- * Tracking section: `[ 05 / 08 ] · TRACKING` with an Experimental badge.
+ * Tracking section: `[ 05 / 08 ] · TRACKING`.
  * Preview: /preview/tracking.
  *
  * Header (eyebrow + badge, two-tone heading, the shared muted sub, Get started on the
@@ -17,7 +17,6 @@
  * Server component. Interactive parts are client islands (feature-list, board).
  */
 import { Section } from "@/components/layout/section";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Emphasis } from "@/components/ui/emphasis";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -33,7 +32,6 @@ export default function TrackingSection() {
         <div className="flex flex-col gap-5">
           <div className="flex flex-wrap items-center gap-3">
             <Eyebrow index={5} label="Tracking" />
-            <Badge tone="purple">Experimental</Badge>
           </div>
           <SectionHeader
             title={

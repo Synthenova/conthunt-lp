@@ -287,7 +287,7 @@ export function PricingCalculator() {
               agents={inputs.agents}
               tracking={inputs.tracking}
               trackedItems={inputs.trackedItems}
-              trackingCredits={usage.trackingCredits}
+              trackingHuntCredits={usage.trackingHuntCredits}
               onAgents={onAgents}
               onTracking={onTracking}
               onTrackedItems={onTrackedItems}
@@ -599,9 +599,6 @@ function PlanResultCard({
         <MonoLabel id="calc-usage-label">Expected monthly usage</MonoLabel>
         <UsageBar label="AI credits" used={usage.aiCredits} cap={allowance.aiCredits} primary />
         <UsageBar label="Hunt credits" used={usage.huntCredits} cap={allowance.huntCredits} />
-        {inputs.tracking && (
-          <UsageBar label="Tracking credits" used={usage.trackingCredits} cap={allowance.trackingCredits} />
-        )}
       </div>
 
       {rec.overMax && (
@@ -677,8 +674,8 @@ function TrialNote({ plan, videosPerSearch }: { plan: Plan; videosPerSearch: num
   }
   return (
     <>
-      The trial runs on a smaller allowance: {formatInt(plan.trial.huntCredits)} hunt credits,{" "}
-      {formatInt(plan.trial.trackingCredits)} tracking credits and {formatInt(credits)} AI credits, about{" "}
+      The trial runs on a smaller allowance: {formatInt(plan.trial.huntCredits)} hunt credits and{" "}
+      {formatInt(credits)} AI credits, about{" "}
       {formatInt(trialVideos)} videos. {advice}
     </>
   );

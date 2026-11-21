@@ -27,7 +27,7 @@ export const LOGIN_URL = `${APP_URL}/login`;
  * Primary CTA, "Get started": the app home, whose search box is the deep-search
  * entry (app route `src/app/app/(public)/page.tsx`, guests allowed).
  */
-export const GET_STARTED_URL = `${APP_URL}/app`; // verify: no dedicated deep-search query param exists yet
+export const GET_STARTED_URL = `${APP_URL}/app`; // the app reads `?q=` on /app and puts it in the composer, even across login (hero search handoff)
 
 /** Docs. */
 export const DOCS_URL = `${SITE_URL}/docs`;

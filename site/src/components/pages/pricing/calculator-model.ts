@@ -3,16 +3,16 @@
  * checked in isolation (type-stripped under node: plans.ts and this file have no browser imports).
  *
  * Where each number comes from:
- * - Plan allowances: `sections/pricing/plans.ts` (hunt, tracking and AI credits per plan).
+ * - Plan allowances: `sections/pricing/plans.ts` (hunt and AI credits per plan).
  * - Recommendation: the smallest plan, in `PLANS` order (cheapest first), whose limits hold the usage
  *   with headroom left. When none does, it stays on the largest plan and reports the share it covers.
  * - AI credits per run: the planning estimate, 7 credits per analyzed video (`estimateAiCredits`).
  * - Hunt credits pay for searches. Every keyword search runs on three platforms and costs one hunt
  *   credit per platform (`searchCreditEstimate: searches * 3`).
- * - Tracking credits pay for tracking, at the rate below.
+ * - Tracking also spends hunt credits, at the rate below, so it adds to the hunt usage.
  * - Keyword searches per Deep Search: modeled as one per `videosPerKeywordSearch` videos
  *   (default 50, so a 500-video Deep Search is 10 searches). An editable assumption, not an app rule.
- * - Tracking: the app's tracking estimator charges one tracking credit for the first refresh and one
+ * - Tracking: the app's tracking estimator charges one hunt credit for the first refresh and one
  *   per day for the 30-day window, per tracked account or video (`tracking/schedule.py`).
  * - Time saved: videos x minutes per video / 60 - runs x run minutes / 60. Minutes per video,
  *   run minutes and hourly rate are editable assumptions with the defaults from the brief.
@@ -33,7 +33,7 @@ export const TRACKED_MIN = 5;
 export const TRACKED_MAX = 150;
 export const TRACKED_STEP = 5;
 /** App tracking window: first refresh plus one per day over 30 days. */
-export const TRACKING_CREDITS_PER_ITEM = 30;
+export const TRACKING_HUNT_CREDITS_PER_ITEM = 30;
 /** Hours of watching in one working day, for the calendar picture. */
 export const WORKDAY_HOURS = 8;
 /** Share of a plan's credits we keep free for follow-up chat and re-runs. */
@@ -132,26 +132,27 @@ export function blendUseCases(selected: readonly UseCaseId[], fallback: CalcInpu
 export interface Usage {
   videos: number;
   keywordSearches: number;
-  /** One per platform per keyword search. */
+  /** Searches (one per platform per keyword search) plus tracking: the one non-AI pool. */
   huntCredits: number;
-  /** 0 when tracking is off. */
-  trackingCredits: number;
+  /** The part of `huntCredits` that tracking spends; 0 when tracking is off. */
+  trackingHuntCredits: number;
   aiCredits: number;
 }
 
 export function computeUsage(inputs: CalcInputs, assumptions: Assumptions): Usage {
   const perRunSearches = Math.ceil(inputs.videosPerSearch / Math.max(1, assumptions.videosPerKeywordSearch));
   const keywordSearches = inputs.deepSearches * perRunSearches;
+  const trackingHuntCredits = inputs.tracking ? inputs.trackedItems * TRACKING_HUNT_CREDITS_PER_ITEM : 0;
   return {
     videos: inputs.deepSearches * inputs.videosPerSearch,
     keywordSearches,
-    huntCredits: keywordSearches * PLATFORM_UNITS_PER_KEYWORD_SEARCH,
-    trackingCredits: inputs.tracking ? inputs.trackedItems * TRACKING_CREDITS_PER_ITEM : 0,
+    huntCredits: keywordSearches * PLATFORM_UNITS_PER_KEYWORD_SEARCH + trackingHuntCredits,
+    trackingHuntCredits,
     aiCredits: inputs.deepSearches * estimateAiCredits(inputs.videosPerSearch),
   };
 }
 
-export type FitKey = "huntCredits" | "trackingCredits" | "aiCredits";
+export type FitKey = "huntCredits" | "aiCredits";
 
 export interface Fit {
   ratios: Record<FitKey, number>;
@@ -164,7 +165,6 @@ export function computeFit(plan: Plan, usage: Usage): Fit {
   const a = plan.allowance;
   const ratios: Record<FitKey, number> = {
     huntCredits: usage.huntCredits / a.huntCredits,
-    trackingCredits: usage.trackingCredits / a.trackingCredits,
     aiCredits: usage.aiCredits / a.aiCredits,
   };
   const entries = Object.entries(ratios) as [FitKey, number][];
@@ -174,7 +174,6 @@ export function computeFit(plan: Plan, usage: Usage): Fit {
 
 export const FIT_LABEL: Record<FitKey, string> = {
   huntCredits: "hunt credits",
-  trackingCredits: "tracking credits",
   aiCredits: "AI credits",
 };
 

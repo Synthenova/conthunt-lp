@@ -67,11 +67,11 @@ function featureLabel(feature: PlanFeature): string {
 function planSentence(plan: Plan): string {
   const features = plan.features.map(featureLabel).join(", ");
   const added = plan.includes === "Includes" ? features : `${plan.includes} ${features}`;
-  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits, ${formatInt(plan.allowance.trackingCredits)} tracking credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month (about ${formatInt(approx(videosForCredits(plan.allowance.aiCredits)))} videos analyzed); the ${TRIAL_DAYS}-day trial gives ${formatInt(plan.trial.huntCredits)} hunt credits, ${formatInt(plan.trial.trackingCredits)} tracking credits and ${formatInt(plan.trial.aiCredits)} AI credits. ${added}.`;
+  return `- ${plan.name}: $${plan.price.yearly} per month billed yearly ($${formatInt(yearlyTotal(plan))} a year) or $${plan.price.monthly} billed monthly. ${formatInt(plan.allowance.huntCredits)} hunt credits and ${formatInt(plan.allowance.aiCredits)} AI credits per month (about ${formatInt(approx(videosForCredits(plan.allowance.aiCredits)))} videos analyzed); the ${TRIAL_DAYS}-day trial gives ${formatInt(plan.trial.huntCredits)} hunt credits and ${formatInt(plan.trial.aiCredits)} AI credits. ${added}.`;
 }
 
 function pricingIntro(): string {
-  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing; both get the same credits. Hunt credits pay for searches: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts. Tracking credits pay for tracking: one per tracked item per refresh. AI credits pay for video analysis, Deep Search, chat and insights.`;
+  return `Prices are in US dollars and are as listed on ${absoluteUrl("/pricing")}, which is the source of truth. Every plan starts with a ${TRIAL_DAYS}-day free trial. Yearly billing is shown by default and costs less per month than monthly billing; both get the same credits. Hunt credits pay for searches and tracking: a keyword search costs one hunt credit per platform it queries, so ${PLATFORM_UNITS_PER_KEYWORD_SEARCH} across TikTok, Instagram Reels and YouTube Shorts, and tracking costs one per tracked item per refresh. AI credits pay for video analysis, Deep Search, chat and insights.`;
 }
 
 function productFacts(nicheCount: number): string[] {
@@ -80,7 +80,7 @@ function productFacts(nicheCount: number): string[] {
     "- Platforms: TikTok, Instagram Reels, YouTube Shorts. No other platform is supported today.",
     "- Deep Search: breaks a question into sub-questions to answer and parameters to score, builds keyword searches, analyzes 500 to 1,000 videos in under five minutes, then ranks them and answers with citations to the video data.",
     `- Viral Now: a public page of top-performing short-form videos across ${nicheCount} niches, with up to ${BOARD_SIZE} ranked videos per niche.`,
-    "- Tracking (experimental): follow public accounts and selected videos, and keep daily cumulative snapshots to review competitor growth.",
+    "- Tracking: follow public accounts and selected videos, and keep daily cumulative snapshots to review competitor growth.",
     "- AI boards: save and organize videos from your research.",
     `- MCP server: AI agents can use ContHunt through the hosted MCP server at ${MCP_SERVER_URL}. Sign-in is with a ContHunt account.`,
     `- App: ${APP_URL}`,

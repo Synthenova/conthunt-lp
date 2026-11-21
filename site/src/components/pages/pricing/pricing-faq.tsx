@@ -66,19 +66,19 @@ const ITEMS: Item[] = [
         No, it runs on a smaller one.{" "}
         {PLANS.map(
           (p) =>
-            `${p.name} gets ${formatInt(p.trial.huntCredits)} hunt credits, ${formatInt(p.trial.trackingCredits)} tracking credits and ${formatInt(p.trial.aiCredits)} AI credits.`,
+            `${p.name} gets ${formatInt(p.trial.huntCredits)} hunt credits and ${formatInt(p.trial.aiCredits)} AI credits.`,
         ).join(" ")}{" "}
         The full monthly allowance begins with your plan.
       </>
     ),
   },
   {
-    q: "What are hunt credits, tracking credits and AI credits?",
+    q: "What are hunt credits and AI credits?",
     a: (
       <>
-        Hunt credits pay for searches. A search costs one hunt credit per platform it queries, so a keyword across
-        TikTok, Instagram Reels and YouTube Shorts costs {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking credits pay for
-        tracking: one per tracked item per refresh. AI credits pay for everything
+        Hunt credits pay for searches and tracking. A search costs one hunt credit per platform it queries, so a keyword
+        across TikTok, Instagram Reels and YouTube Shorts costs {PLATFORM_UNITS_PER_KEYWORD_SEARCH}. Tracking costs one
+        per tracked item per refresh. AI credits pay for everything
         model-backed: video analysis, Deep Search, chat and insights. As a planning estimate, one analyzed video costs{" "}
         {CREDITS_PER_VIDEO} AI credits, so {formatInt(ENTRY.allowance.aiCredits)} credits cover about{" "}
         {formatInt(approx(videosForCredits(ENTRY.allowance.aiCredits)))} videos. Real use varies with video length and
@@ -91,7 +91,7 @@ const ITEMS: Item[] = [
     a: (
       <>
         Yes. At monthly prices, each dollar buys about{" "}
-        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt and tracking credits step up with each plan:{" "}
+        {forEachPlan((p) => `${creditsPerDollar(p)} AI credits on ${p.name}`)}. Hunt credits step up with each plan:{" "}
         {PLANS.slice(1)
           .map((p, i) => `${p.name} has ${huntMultiple(p)}x${i === 0 ? ` the credits of ${ENTRY.name}` : ""}`)
           .join(" and ")}

@@ -56,16 +56,15 @@ You must be at least 18 years of age (or the age of majority in your jurisdictio
 conthunt operates on a usage-based credit system. Credits are the currency of the platform used to perform actions. Different actions consume different amounts of credits based on the computational resources and third-party costs required.
 
 **Credit Consumption Rates:**
-*   **Search Query**: Consumes **1 Credit** per query. This includes keyword searches across our indexed content.
-*   **Video Analysis**: Consumes **2 Credits** per analysis event. This involves deep retrieval of insights from a specific video.
-*   **Video Indexing**: Consumes **5 Credits** per video indexed. This is a resource-intensive process where we process raw video data to make it searchable.
+*   **Hunt credits**: Pay for searches and tracking. A search consumes **1 hunt credit** per platform it queries, and tracking consumes **1 hunt credit** per tracked item per refresh.
+*   **AI credits**: Pay for model-backed work such as video analysis, Deep Search, chat and insights. The amount consumed varies with the video and the follow-up questions.
 
 These rates are subject to change at our discretion. We will make reasonable efforts to notify users of significant changes to credit consumption rates.
 
 ### 4.2. Subscriptions and Plans
-We offer various subscription tiers ("Plans"), including but not limited to "Free", "Creator", and "Pro/Research".
-*   **Free Tier**: Limited monthly credits (e.g., 50 credits) for trial and casual use.
-*   **Paid Tiers**: Higher credit limits (e.g., 1000 or 3000 credits) and access to advanced features.
+We offer various subscription tiers ("Plans"), including but not limited to "Pro", "Creator", and "Research".
+*   **Free Trial**: Every plan starts with a free trial that runs on a smaller credit allowance.
+*   **Paid Tiers**: Each plan includes a monthly allowance of hunt credits and AI credits, listed on our pricing page, and access to its features.
 
 Subscriptions are billed in advance on a recurring monthly or annual basis.
 
