@@ -233,7 +233,9 @@
    shared rows, so figures, labels and notes line up when one label wraps. */
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* One equal column per stat, so the hairline sits at the middle with two stats. */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   grid-template-rows: repeat(3, auto);
 }
 
