@@ -18,7 +18,7 @@ Read [references/mcp.md](references/mcp.md) before new discovery, Deep Search, o
 - Use `vocab` action=tiktok for TikTok suggestion strings and action=exa for current web sources. Both spend Hunt credits and do not save videos.
 - Use `boards` to create boards and add videos, `remove_from_boards` only when the user asks to remove a video or delete a board, and SQL for saved membership. Refresh `insights` only when new generation is requested. It replaces the board's previous insights and may spend AI credits to generate analyses.
 - Read account balances with `whoami`: ai_credits is AI credits and searches is Hunt credits.
-- Use `analyze_video` for short-video analysis, `analyze_long_video` for one long source, and `deep_search` for evidence-backed research across a set. Only the latter two delegate to specialist agents; read their progress with `long_video_result` and `deep_search_status`.
+- Use `analyze_video` for short-video analysis (pass the `video_` ID from search results or saved data; a pasted platform URL also works), `analyze_long_video` for one long source, and `deep_search` for evidence-backed research across a set. Only the latter two delegate to specialist agents; read their progress with `long_video_result` and `deep_search_status`.
 - Read reports with `files`, media access with `download`, and YouTube, TikTok, or niche trend feeds with `trending`. Instagram trending reels that should be saved use `sources` action=instagram_trending.
 
 ## Search and Deep Search

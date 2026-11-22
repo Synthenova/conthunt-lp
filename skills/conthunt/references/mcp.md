@@ -28,7 +28,7 @@ No separate SearchAgent, schema, saved getter or SQL write tool is required.
 
 For a new investigation only, `deep_search(prompt=objective)` starts work and returns the owning chat plus a separate native thread/execution. `deep_search_status(thread_id=returned_thread)` reads progress; `deep_search(thread_id=returned_thread, prompt=instructions)` steers active work or follows up after completion. `deep_search_status` with an execution selector reads a particular attempt. Do not treat acceptance as consumed/completed or start again because the observation timed out.
 
-`analyze_long_video` takes a supported video URL or saved asset plus objective/questions. `long_video_result` takes only the existing asset and native run ID, with no URL or start-only inputs. Pending, failed and unavailable are not completed answers. Use the returned owning chat to link the exact saved video in your answer.
+`analyze_long_video` takes a `video_` ID or a supported video URL plus objective/questions. `long_video_result` takes only the existing asset and native run ID, with no URL or start-only inputs. Pending, failed and unavailable are not completed answers. Use the returned owning chat to link the exact saved video in your answer.
 
 For retry keys, search uses a UUID request_id; specialist keys use 1–200 safe letters/digits/underscores/hyphens. Preserve the original key/input. Read-only calls and file reads need no new admission.
 
