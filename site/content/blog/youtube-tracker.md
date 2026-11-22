@@ -115,7 +115,7 @@ A weekly YouTube tracking habit records the same fields, from the same sources, 
 
 This illustrative log is not a real channel. It exists so the subtraction can be checked. On Monday, public view totals are 20,000 for Channel North and 20,000 for Channel South. The next Monday they are 23,000 and 21,500. Channel North's observed change is 23,000 minus 20,000, which is 3,000. Channel South's observed change is 21,500 minus 20,000, which is 1,500. The North change is twice the South change, because 3,000 is 2 times 1,500. That is the entire finding. It does not say the views arrived on Wednesday, and it does not say a thumbnail caused them. If a tool's chart disagrees with these endpoint totals, record the tool's timestamp. Do not average the two stories into a third number you never observed.
 
-For agent-assisted research, see the [ContHunt MCP integration](/docs/integrations/mcp).
+Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to record source URLs, observation times and evidence for the next creative test. For agent-assisted research, see the [ContHunt MCP integration](/docs/integrations/mcp).
 
 ## What should you ask before you keep a tracker?
 

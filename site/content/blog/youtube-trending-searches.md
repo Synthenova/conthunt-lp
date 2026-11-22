@@ -94,7 +94,7 @@ ContHunt can organize public short-form examples from TikTok, Instagram Reels, a
 
 A YouTube search brief records the phrase, the source of each clue, and the promise the video will keep. The point of the brief is to stop one fake volume. A relative chart, a suggestion, and a competitor's view count must not be rewritten as that volume.
 
-For public examples to inspect, [browse Viral Now](/viral-now); for a broader research workflow, [compare ContHunt plans](/pricing).
+For public examples to inspect, [browse Viral Now](/viral-now). Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to keep each example, observation time and proposed test in the same brief.
 
 | Field | What to write |
 | --- | --- |
