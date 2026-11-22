@@ -105,9 +105,13 @@ An illustrative reading, with invented counts so the arithmetic can be checked, 
 
 When the Short's stayed-to-watch is the weak line, the opening frame and the title are the usual levers, which [YouTube Shorts best practices](/blog/youtube-shorts-best-practices) covers. When the Reel reaches people and they do not save or share, the format may be the problem, and [Instagram Reels content ideas](/blog/instagram-reels-content-ideas) is a better next step than another hashtag pass.
 
+For public examples across niches, [browse Viral Now](/viral-now).
+
 ## What public research can add, and what it cannot
 
 Native dashboards stay the record for accounts you manage. Another product cannot reconstruct chose-to-view, engaged views, or a follower split you did not export.
+
+For ongoing public research, [check ContHunt pricing](/pricing).
 
 ContHunt searches TikTok, Instagram Reels, and YouTube Shorts for public videos. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it when a Short earns impressions but stayed-to-watch is weak, and you want to see how public videos in the niche open and title a similar idea. The rank is a judgment of the content against your question. It is not measured retention, and it is not a second copy of Studio or Insights. Tracking is experimental. It follows public posts over time. It does not reveal a competitor's private watch curve.
 

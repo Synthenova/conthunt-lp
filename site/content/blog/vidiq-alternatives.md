@@ -80,6 +80,8 @@ For a closer look at that rivalry, see [TubeBuddy vs vidIQ](/blog/tubebuddy-vs-v
 
 ContHunt is the vidIQ alternative for retention psychology only in a narrow, honest sense: it helps you study public videos before you film, so the next hook is a hypothesis instead of a guess. It does not read a competitor's private retention graph, and it does not outrank YouTube at describing your own channel. vidIQ suggests keywords. ContHunt searches public TikTok, Instagram Reels, and YouTube Shorts.
 
+For current plan details, [compare ContHunt pricing](/pricing).
+
 Deep Search is the feature that matches this job. You ask a question, and [How Deep Search works](/resources/how-deep-search-works) watches 500 to 1,000 videos in under five minutes, then returns a ranked answer with those videos attached as evidence. The rank is a judgment of how the videos fit the question you asked. It is not a measured viewer-retention number. Only the account owner has that curve. Treat the evidence as something you can open and disagree with.
 
 An illustrative brief, not a measured result: a charger brand asks which openings public creators use when a cable fails on camera, across Shorts, Reels, and TikTok, in the last month. The useful output is a handful of repeated structures (the failure first, the fix first, a warning first) with example videos beside each one. The brand then films one of those structures and reads the outcome in YouTube Studio. ContHunt does not score the brand's tags, and it does not replace the Research tab.
@@ -113,6 +115,8 @@ Tool splitting means one product per job, with Studio always present. It is the 
 An illustrative week, not a time-saving study: one sitting in Studio on the last uploads, then one Deep Search on the next topic before anyone writes a script. No second overlay installed "just in case." The test of the stack is whether the next video's retention or click-through moved after one deliberate change, which you can only see in Studio.
 
 Reinvesting a subscription into "more intelligence" is only rational if the new tool answers a question the old tool cannot. Switching from vidIQ to a second keyword extension fails that test. Switching from an unused keyword extension to a research step you will run before filming can pass it.
+
+For agent-assisted research, see the [ContHunt MCP integration](/docs/integrations/mcp).
 
 ## A decision you can finish in one sitting
 

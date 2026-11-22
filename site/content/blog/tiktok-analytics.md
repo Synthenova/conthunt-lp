@@ -122,6 +122,8 @@ The opening is where most of the lesson sits. [The 3-second rule](/resources/the
 
 Audience quality changes the brief even when attention looks fine. Read comments for the nouns people use. If you posted about a beginner mistake and the comments are from experts correcting edge cases, the video may have reached a neighboring audience. The fix is not "post more." The fix is a clearer subject in the first line so classification and human expectation match.
 
+To study public examples alongside your own analytics, [browse Viral Now](/viral-now).
+
 Saves and follows are quality signals when they show up around the right subject. A save suggests the viewer wanted the video later. A follow suggests they wanted the account, not only the clip. A buy is the commercial version of the same question, and TikTok analytics will not always show the purchase. If you sell elsewhere, match the post time to downstream orders in your own records. Do not invent a TikTok conversion rate the screen does not show.
 
 Search is the indirect effect. Better retention and a clearer topic help TikTok classify the video. Classification is what lets later viewers with that interest find it. Stuffing a caption with extra phrases does not repair a video people leave. When you change a topic, change the spoken subject and the visuals, not only the caption. Then watch whether completion on the new topic holds up against your own recent posts.
@@ -131,6 +133,8 @@ Compare TikTok with other short-form analytics only after each platform's defini
 ## What can TikTok analytics not decide?
 
 TikTok analytics cannot show a competitor's completion, rewatches, or audience breakdown. If a planning meeting needs that, you are in public research, not in your analytics tab. Watch the competitor's opening, caption, and visible response, and say plainly that you cannot see their retention. ContHunt is for that public pass across TikTok, Instagram Reels, and YouTube Shorts. It is not a second copy of TikTok analytics.
+
+For public short-form research, [compare ContHunt plans](/pricing).
 
 TikTok analytics also cannot tell you the effort a video took or the margin on the product. It cannot tell you whether a format will work in a paid ad. Add those from your own notes. A high-share video that took a week and cannot be produced again is a weak template. A modest video you can repeat every Tuesday is a stronger operating decision.
 

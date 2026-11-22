@@ -110,6 +110,8 @@ SparkToro looks at audience sources and affinities. It does not provide a compet
 
 ContHunt is a public short-form research layer. The job is finding and reading videos anyone can already open on TikTok, Instagram Reels, and YouTube Shorts, including hooks, pacing, overlays, and other visible creative patterns. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. That sample is the point. A single viral post is a weak basis for a claim about a niche.
 
+For current plan details, [see ContHunt pricing](/pricing).
+
 Use ContHunt when the question sounds like one of these:
 
 - Which public videos are ahead of the others you can find in this niche?
@@ -184,3 +186,5 @@ Ask these questions of any tool on the shortlist, including ContHunt. The useful
 If the demo cannot name a source, do not put the chart in front of a client. Pair one search tool with one social or short-form tool only when you truly have both questions. A second dashboard that repeats the first is not a better analysis.
 
 Build the three lists first, then check the content-competitor set against the video you plan to film. [Get started]({{GET_STARTED_URL}}) with a search across TikTok, Reels, and Shorts for the niches those content competitors already occupy.
+
+For agent workflows, see the [ContHunt MCP integration](/docs/integrations/mcp).

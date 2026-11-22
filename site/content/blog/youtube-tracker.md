@@ -76,6 +76,8 @@ Use these pages to record public scale. Do not use them to claim you know a comp
 
 Viewstats and ContHunt both help you decide what to study, and neither one is your Studio login. [Viewstats](https://www.viewstats.com/) describes tools for finding outlier videos, researching channel and video performance, comparing thumbnails, following competitors, and creating alerts and research boards. That set of jobs matters when the question is what to make next, not merely how large a subscriber count is. Confirm on the vendor's current site which of those features your access includes. A vendor's statement that a method grows channels is not evidence that using the tool will make your next video travel. Outlier-finding is a way to choose examples. It is not a causal proof that the outlier's thumbnail, length, or title produced the outlier.
 
+For current plan details, [see ContHunt pricing](/pricing).
+
 ContHunt is a content intelligence product for finding and analyzing public short-form video on TikTok, Instagram Reels, and YouTube Shorts. Use it to inspect choices a viewer can see: the opening, the pacing, the on-screen words, the topic, and the payoff. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as the evidence. That ranking is an analysis of the public videos against the question you asked. It is not another creator's private watch time, and it is not a subscriber ledger. ContHunt tracking is experimental. It is not a finished live YouTube subscriber tracker, and it should not be described as one.
 
 A focused way to watch other Shorts without pretending you have their Studio is [how to track YouTube Shorts competitors](/blog/how-to-track-youtube-shorts-competitors). The limit stays the same there. Public videos, public counts, and creative patterns are in bounds. Retention curves and revenue are not.
@@ -112,6 +114,8 @@ A weekly YouTube tracking habit records the same fields, from the same sources, 
 6. Change one variable in your next video. Read the result in Studio, not in a competitor's estimated earnings.
 
 This illustrative log is not a real channel. It exists so the subtraction can be checked. On Monday, public view totals are 20,000 for Channel North and 20,000 for Channel South. The next Monday they are 23,000 and 21,500. Channel North's observed change is 23,000 minus 20,000, which is 3,000. Channel South's observed change is 21,500 minus 20,000, which is 1,500. The North change is twice the South change, because 3,000 is 2 times 1,500. That is the entire finding. It does not say the views arrived on Wednesday, and it does not say a thumbnail caused them. If a tool's chart disagrees with these endpoint totals, record the tool's timestamp. Do not average the two stories into a third number you never observed.
+
+For agent-assisted research, see the [ContHunt MCP integration](/docs/integrations/mcp).
 
 ## What should you ask before you keep a tracker?
 

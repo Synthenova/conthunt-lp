@@ -118,6 +118,8 @@ Then put the correction in a series if you want a library instead of a one-off. 
 
 Both niches still owe the viewer a clean open, a single promise, and a runtime that does not repeat itself. The niche changes the picture. It does not cancel the loop.
 
+Compare public examples on the [gaming](/viral-now/gaming) and [fitness and gym](/viral-now/fitness-gym) boards.
+
 ## How do you promote a Short without sounding like an ad?
 
 Promote a YouTube Short by borrowing attention you already have a right to, and by re-editing for any other platform instead of exporting the watermark. Promotion that shouts at a cold audience usually looks like an ad for a video they have not asked to see.
@@ -164,6 +166,8 @@ Cross-pollination with long-form, or with a newsletter you actually send, is the
 ## What does a two-week growth test look like?
 
 A two-week growth test looks like one posting habit, two hook families, and a decision you write down at the end. It is illustrative planning math, not a forecast of views.
+
+If research is part of the test, [see ContHunt pricing](/pricing).
 
 At one Short a day for 14 days, you publish 14 Shorts. Split them into two families of 7. Seven plus seven is 14. Family A might be the correction hook. Family B might be the numbered tease. Hold the subject still so you are not testing topic and hook at the same time.
 

@@ -103,6 +103,8 @@ The educational set and the entertainment set can share one account if they serv
 
 Fitness Reels fail when the first image is a logo or a selfie and the exercise arrives late. Show the result or the mistake immediately. For this niche, a practical opening is the first 2 seconds. Show the form error, the before and after, or the single cue that changes the movement. Two seconds is a filming target in this guide, not an Instagram rule.
 
+The [fitness and gym board](/viral-now/fitness-gym) offers public examples to inspect.
+
 Formats that fit a training account, as tests rather than as a scoreboard:
 
 1. A short workout demonstration, around 30 seconds, one exercise, filmed so the joint you care about is visible.
@@ -135,6 +137,8 @@ A posting list that stays short:
 
 Other people's Reels are a pattern library, not a script library. Search one topic. Watch how the stronger public examples open, when the payoff arrives, and whether speech, text, and caption agree. Write the structure as an order of information: mistake, cue, corrected rep. Film that order with your own body, your own client, or your own product.
 
+[Explore short-form examples on Viral Now](/viral-now), then record the idea you would adapt rather than copying the video.
+
 ContHunt is built for that pass. It searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. A useful prompt names the format and the topic, such as form corrections for a squat, and asks what the opening shows. The answer is evidence you can open. It is not a guarantee that the same opening will be distributed on your account. Do not copy footage, wording, or a watermarked edit. Tracking in ContHunt is experimental and remains public data.
 
 After you post, the judgment moves to your insights. [Instagram Reels analytics](/blog/instagram-reels-analytics) is the sheet: similar length, same age, watch time next to saves and shares. A format that people finish and save is a format to repeat with a new example. A format that people skip is retired or reopened. Do not post it again only because the list called it an idea.
@@ -155,3 +159,5 @@ Repeat a format only when you can point at your own Reel and answer yes.
 A Reel that gets watched is easy to understand immediately and specific enough that someone keeps it or sends it. Pick one of the 15, keep the labels aligned, and let your own sheet decide the repeat. The list does not.
 
 [Get started]({{GET_STARTED_URL}}) with a search on the single format you will film this week. Save the public openings that state the topic immediately, and write your version before you scroll any further.
+
+For a broader research workflow, [compare ContHunt plans](/pricing).

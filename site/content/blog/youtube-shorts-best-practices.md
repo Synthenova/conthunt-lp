@@ -118,6 +118,8 @@ Rewatches are a review signal, not a target to fake. A Short that people replay 
 
 The YouTube Shorts metrics that deserve a weekly review are the first-hour response, average percentage viewed, rewatches, saves and shares, and topics that win more than once. Vanity totals are a weaker guide. A large view count on one outlier does not tell you which opening to film next. A pattern across several Shorts in the same cluster does.
 
+If public research is part of that review, [compare ContHunt plans](/pricing).
+
 Read those signals with YouTube's counting rules in mind. [Shorts starts and replays began counting as views on March 31, 2025](https://support.google.com/youtube/thread/333869549?hl=en&msgid=346119854). YouTube's [August 2026 update](https://support.google.com/youtube/answer/9082582) describes playback-start counts across formats. Earnings and eligibility use separate qualified metrics. Counts can lag while YouTube checks events, and realtime activity is an estimate; a first-hour read is directional, not a final verdict.
 
 [Understand your YouTube audience](https://support.google.com/youtubecreatorstudio/answer/9314416?co=GENIE.Platform%3DDesktop&hl=en-ca) is the Studio side of the same review: who watched, not just how many starts you collected. Use it to test audience fit. Do not invent a demographic story the report does not show.
@@ -127,6 +129,8 @@ Compare patterns, not only single winners. ContHunt searches TikTok, Instagram R
 ## How do you keep the same playbook inside one niche?
 
 You keep the same YouTube Shorts playbook inside one niche by changing the pacing and the proof, not the review questions. Gaming, education, commentary, and product demos do not move at the same speed. A lore recap can use a longer band. A single clutch cannot. Generic advice fails when it ignores that difference.
+
+You can [browse short-form examples by niche on Viral Now](/viral-now) when choosing what to study.
 
 Before you scale a format, answer four questions in writing. Who is this Short for? What promise is it making? What topic cluster does it belong to? Which similar public posts already worked for this audience? If you cannot name the cluster, you are topic-hopping, and the weekly review will not compound. Stay with the cluster until a format repeats. Then make the sequel. Do not celebrate one spike by inventing a new niche the next day.
 

@@ -207,6 +207,8 @@ Pick the faceless format because the proof is visual without your face, not beca
 
 You pick a YouTube Shorts idea by choosing one format you can publish again, then packaging it as a single promise. Stay in one parent niche so titles, covers, and follow-up Shorts stay consistent. A weak idea in a niche you can film every week beats a loud niche you cannot sustain. Education, process explainers, and tutorials are easy to save and to search. They still fail when the claim is fuzzy. Expand into a nearby pair, such as gaming plus tech, only after a format has already repeated. Topic-hopping resets what you learned.
 
+For examples to study by niche, [browse the Viral Now boards](/viral-now).
+
 Use the list with four rules:
 
 - One promise per Short. If the title needs two topics, split the idea into two videos.
@@ -229,6 +231,8 @@ An illustrative split, not a published video: "My desk setup and the app that fi
 ## How do you know which idea to film next?
 
 You know which YouTube Shorts idea to film next by comparing a few public outliers in the same niche and length range, reusing a hook pattern that already holds attention, and writing a new payoff. Do not guess from this list alone, and do not leave the cluster until a format has repeated. Topic-hopping feels productive and throws away the comparison.
+
+For a larger research workflow, [compare ContHunt plans and pricing](/pricing).
 
 Before you record, confirm six lines:
 

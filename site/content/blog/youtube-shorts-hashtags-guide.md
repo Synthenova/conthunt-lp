@@ -59,6 +59,8 @@ The safe conclusion is short. Use tags that describe the video. Keep the list fo
 
 You research YouTube Shorts hashtags from videos that are actually about your subject, because a static list ages the week you copy it. Start with Shorts that are currently standing out in the same niche. Record the topic language and the hashtags that recur. Keep a tag only when it matches your video's subject and the audience you mean. Recheck the pattern when the topic changes. A tag that was accurate for a product launch is not automatically accurate for a tutorial filmed the next month.
 
+For public videos to inspect by niche, [browse Viral Now](/viral-now).
+
 A workable pass looks like this:
 
 1. Find several public Shorts in the same niche and the same kind of promise, not one viral outlier from a different topic.
@@ -153,3 +155,5 @@ Check every hashtag against the footage, the count, and the title before you pub
 If a tag fails one line, delete the tag. Do not negotiate with it because it was on a video that got views. Views are not evidence that the tag caused them, and an unrelated tag is a policy problem even when the view count is large.
 
 Pick the few tags the footage earns. Put them where the placement page says. Spend the rest of the upload on the opening and the title. Run a Deep Search on the subject of the Short you are tagging. [Get started]({{GET_STARTED_URL}}) there, and keep only the topic words your own video can defend.
+
+For a larger research workflow, [compare ContHunt plans](/pricing).

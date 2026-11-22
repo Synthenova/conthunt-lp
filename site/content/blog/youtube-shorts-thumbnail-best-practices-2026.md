@@ -146,6 +146,8 @@ YouTube's creation help also puts a title on the same details step, with a maxim
 
 Other public YouTube Shorts are evidence of what covers are being published, not evidence of which cover earned a click. A still on a search result shows a choice the creator made. It does not show that creator's impressions or watch time. Use public covers to build a hypothesis, then test the hypothesis on your own channel.
 
+[Browse examples on Viral Now](/viral-now) to collect covers and openings for your own review.
+
 Look for older Shorts in a niche that are still present on search, not only Shorts posted today. A cover that keeps company with current results is a cover someone can still choose after the first feed spike. Note the pattern in words you could hand to an editor: one object, the result in frame, two or three words, the title repeating the same noun. Ignore covers you cannot describe. "It looks professional" is not a pattern you can repeat.
 
 ContHunt searches public TikTok videos, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with those videos as evidence. That is a way to gather cover patterns across a niche, including which stills keep showing up on videos that are no longer new. It is not a read of another creator's private analytics, and it does not rank your thumbnail file. ContHunt tracking is experimental, so an ongoing watch of accounts is not a substitute for the phone-grid check above or for your own YouTube Studio numbers.
@@ -168,3 +170,5 @@ Run this list on the still you are about to save. If a line fails, fix that line
 A Shorts thumbnail is the choice-layer of a video that also has to work in motion. Build the frame while you edit, use custom upload when your account has it, and keep the still honest at phone size.
 
 When the next Short has a frame worth keeping, [Get started]({{GET_STARTED_URL}}) with a Deep Search on the same topic and compare your cover's promise with the public Shorts already sitting on that search.
+
+For more public research, [review ContHunt pricing](/pricing).

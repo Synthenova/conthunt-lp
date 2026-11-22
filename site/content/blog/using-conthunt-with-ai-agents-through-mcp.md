@@ -27,7 +27,7 @@ Setup, the tools, five prompts and a few habits are what keep that connection us
 
 ## How do you connect ContHunt to an AI agent?
 
-Connecting a client points it at the remote MCP server at `https://mcp.conthunt.app` and signs in with your ContHunt account through OAuth when the client asks. The setup commands for common clients:
+Connecting a client points it at the remote MCP server at `https://mcp.conthunt.app` and signs in with your ContHunt account through OAuth when the client asks. The server URL is for an MCP client; opening it directly in a browser may return HTTP 405. Use the client setup below to connect and sign in. The setup commands for common clients:
 
 ```bash
 # Claude Code
@@ -62,6 +62,8 @@ A few details that save confusion. `analyze_video` handles short videos, and `an
 ## How does spend work when an agent uses ContHunt?
 
 How spend works is why an agent proposes a scope before it searches or analyzes, and why it reads saved work first.
+
+See [ContHunt pricing](/pricing) for current plans and usage allowances.
 
 Searching and analysis use your ContHunt usage, so the agent should plan before it spends. ContHunt's server instructions tell connected agents to propose a scope first, such as how many keyword searches and how many videos, and to ask whether you want to approve once or always. Reading what you have already saved is free, so a good agent checks that before starting anything new.
 

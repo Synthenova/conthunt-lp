@@ -62,6 +62,8 @@ Repeat the same phrase on Reels and on Shorts. A winner on one platform is a can
 
 Hand search is the right tool for a handful of videos. It is a poor tool for claiming that a pattern "is what works" across a niche. Deep Search is the larger pass: you ask a question, ContHunt searches TikTok, Instagram Reels, and YouTube Shorts, watches 500 to 1,000 videos in under five minutes, and returns a ranked answer with the videos as evidence.
 
+For the available research plans, [see ContHunt pricing](/pricing).
+
 Ask a relative question. "Which recent public videos in this niche are ahead of the accounts' usual posts, and what do the openings share?" is a research question. "Show me viral videos" is how you get famous clips and miss the outlier on a small account.
 
 Then do the part the software cannot finish. Open the videos the answer cites. Check that the rank still makes sense when you see the profile around each one. If few videos truly match the niche, keep the small set. Padding the sample with almost-related clips makes the pattern look stronger than it is. A ranked list without the videos is a slogan. The videos are the finding.
@@ -186,3 +188,5 @@ Before you film, you should be able to answer yes to all of these:
 - Your hypothesis says what you will change and where you will read the result.
 
 Find three public videos that beat the accounts that posted them, and write one hypothesis you could film without copying the edit. [Get started]({{GET_STARTED_URL}}) with a search on TikTok, Reels, and Shorts for the narrow phrase those three videos share.
+
+You can also [connect ContHunt to an AI agent through MCP](/docs/integrations/mcp) for a research workflow.

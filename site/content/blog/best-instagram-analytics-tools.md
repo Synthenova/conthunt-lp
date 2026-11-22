@@ -79,6 +79,8 @@ For a closer read of Reel-level metrics on accounts you control, use [Instagram 
 
 A third-party tool cannot show a competitor's retention or follower demographics without authorized account access. Competitor products can analyze public posts and visible engagement, or they can offer modeled benchmarks. They cannot open another account's private Insights dashboard.
 
+For public short-form examples, [browse Viral Now](/viral-now).
+
 Public competitor research can answer:
 
 - Which topics and formats competitors are publishing.
@@ -170,6 +172,8 @@ Ask these questions on the trial, and write the answers next to the plan name. A
 - Are benchmarks based on a disclosed peer set?
 
 History matters more than teams expect. A tool that shows the last 30 days cannot support a seasonal claim even if the charts look finished. Separate reporting for Reels, Stories, and carousels matters because a blended "post" average hides a format that is carrying the account. The export question is the unglamorous one: if the field you discuss in the Monday meeting is not in the file, the meeting will go back to screenshots.
+
+If public research fits the job, [compare ContHunt pricing](/pricing).
 
 ## How should a report label facts, observations, and estimates?
 

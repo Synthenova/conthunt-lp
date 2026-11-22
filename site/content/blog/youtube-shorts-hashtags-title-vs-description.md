@@ -99,9 +99,13 @@ Here is illustrative arithmetic so the comparison has a shape. It is not a resul
 
 Do not "win" the test by changing the hook, the length, and the topic at the same time. That is three tests. You will not know which one moved the click-through.
 
+For examples to inspect by topic, [browse Viral Now](/viral-now).
+
 ## What order should Shorts metadata follow?
 
 Shorts metadata should follow a fixed order so the hashtag slot is the last decision, not the first. Do the hook and the first frame. Write a readable title. Write the description sentence. Add a small hashtag set in the description. Add an optional title hashtag only if the title still reads as English. That order matches the hashtag guide. This page does not pick the words. It stops the words from landing in the wrong field.
+
+For public Shorts research, [compare ContHunt plans](/pricing).
 
 A checklist before you publish:
 
