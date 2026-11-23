@@ -57,7 +57,8 @@ Read saved data with query_saved_data. Start from these views; fall back to the 
 | How each search performed after analysis | search_yield_v by operation |
 | A board, public board or track and its videos | collection_items_v by source |
 | A video's metrics and their history | content_items, content_metric_observations |
-| A video's full analysis, enrichment, transcript | video_evidence_v by asset; acquired_at not created_at; ordinal not segment_index |
+| A video's full analysis and enrichment | video_evidence_v by media_asset_id; read status, markdown and enrichment. has_transcript is a boolean |
+| A video's saved transcript segments | video_transcripts and video_transcript_segments; acquired_at not created_at; ordinal not segment_index |
 | Optional supplied planning context | plan_v by plan |
 | Operations in this chat and their status | research_analysis_operations by chat |
 | Admitted cohort by platform | cohort_v by operation |
@@ -124,7 +125,8 @@ Read saved data with query_saved_data. Start from these views; fall back to the 
 | How each search performed after analysis | search_yield_v by operation |
 | A board, public board or track and its videos | collection_items_v by source |
 | A video's metrics and their history | content_items, content_metric_observations |
-| A video's full analysis, enrichment, transcript | video_evidence_v by asset; acquired_at not created_at; ordinal not segment_index |
+| A video's full analysis and enrichment | video_evidence_v by media_asset_id; read status, markdown and enrichment. has_transcript is a boolean |
+| A video's saved transcript segments | video_transcripts and video_transcript_segments; acquired_at not created_at; ordinal not segment_index |
 | Optional supplied planning context | plan_v by plan |
 | Operations in this chat and their status | research_analysis_operations by chat |
 | Admitted cohort by platform | cohort_v by operation |
