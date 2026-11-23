@@ -3,7 +3,7 @@ title: "15 Best Competitor Analysis Tools Compared"
 slug: "competitor-analysis-tools"
 excerpt: "Pick a competitor analysis tool by the evidence you need: search, traffic estimates, social reporting, audience research, or public short-form video."
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -105,6 +105,8 @@ SparkToro looks at audience sources and affinities. It does not provide a compet
 | SparkToro | Audience sources and affinities | No private conversion data |
 | BuzzSumo | Content, mentions, link-earning research | Not private social metrics |
 | vidIQ | YouTube channel and topic research | YouTube-specific, not cross-platform |
+
+For creators moving beyond public subscriber tables, see [Social Blade alternatives](/blog/social-blade-alternatives).
 
 ## Where ContHunt fits beside the other 14
 

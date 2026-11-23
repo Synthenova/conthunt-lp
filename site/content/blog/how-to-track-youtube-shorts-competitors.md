@@ -4,7 +4,7 @@ slug: how-to-track-youtube-shorts-competitors
 excerpt: "Track YouTube Shorts competitors from public videos and same-window view growth. Retention stays private. Review openings and unanswered comments weekly."
 seoTitle: "How to Track YouTube Shorts Competitors"
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: Playbooks
 readingMinutes: 13
 author: "ContHunt Team"
@@ -140,6 +140,6 @@ A finished weekly note is short. If it is longer than a page, it is a scrapbook.
 - One comment gap, quoted only as far as you need to remember the question.
 - What you will look up in your own Studio after your test posts. Record views at the same age, and the retention you can see only on your video.
 
-Leave out any percent you did not compute from counts you wrote down. Leave out revenue. Leave out a claim that the algorithm "loves" a hook. You observed a public video and a public count. That is the whole finding, and it is enough to decide the next Short.
+If you run multiple Shorts channels and do not want to grant one third-party app full YouTube Studio OAuth access across all of them, keep public competitor tracking completely read-only (five columns: Channel, Hook Type, Format, 48-hour Views, and Ratio vs. Median of the last 10 uploads) and check private retention only inside each channel's own Studio tab. For a comparison of dedicated YouTube outlier finders, see [1of10 and ViewStats alternatives](/blog/1of10-viewstats-alternatives). Leave out any percent you did not compute from counts you wrote down. Leave out revenue. Leave out a claim that the algorithm "loves" a hook. You observed a public video and a public count. That is the whole finding, and it is enough to decide the next Short.
 
 The channels worth tracking are the ones whose public Shorts keep teaching you a structure you can restate in your own footage. [Get started]({{GET_STARTED_URL}}) with one niche question, save the videos the answer cites, and put five openings into next week's note before you film.

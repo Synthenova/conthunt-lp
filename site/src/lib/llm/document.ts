@@ -27,6 +27,7 @@ import {
 } from "@/components/pages/support/content";
 import { APP_URL, DOCS_URL, MCP_DOCS_URL, MCP_SERVER_URL, PRIVACY_URL, SITE_URL, TERMS_URL } from "@/lib/links";
 import { PRODUCT_SUMMARY, absoluteUrl } from "@/lib/seo/site";
+import { loadPlatformBenchmarks } from "@/lib/tools/benchmarks";
 import { BOARD_SIZE } from "@/lib/viral-now/ranking";
 import { snapshotDescription } from "@/lib/viral-now/copy";
 import { loadViralNowData } from "@/lib/viral-now/load";
@@ -40,6 +41,21 @@ const PAGE_BLURBS: { path: string; label: string; blurb: string }[] = [
   { path: "/pricing", label: "Pricing", blurb: "the three plans, yearly or monthly billing, and a calculator that estimates the research hours you get back." },
   { path: "/support", label: "Support", blurb: "how to reach support by email, what to include, and help topics." },
   { path: "/viral-now", label: "Viral Now", blurb: "the top viral short-form videos across the published niches." },
+  {
+    path: "/tools",
+    label: "Free Creator Tools",
+    blurb: "free TikTok and Instagram Reels engagement rate and outlier calculators benchmarked against public Viral Now clips.",
+  },
+  {
+    path: "/tools/tiktok-engagement-rate-calculator",
+    label: "TikTok Engagement Rate Calculator",
+    blurb: "free TikTok engagement rate, like-to-view, save-to-view, share-to-view and outlier calculator with Viral Now niche benchmarks.",
+  },
+  {
+    path: "/tools/instagram-engagement-rate-calculator",
+    label: "Instagram Engagement Rate Calculator",
+    blurb: "free Instagram Reels engagement rate by views and followers, batch average and outlier calculator benchmarked against public Viral Now Reels.",
+  },
   {
     path: "/resources",
     label: "Resources",
@@ -202,6 +218,55 @@ function renderViralNow(): string {
   ].join("\n");
 }
 
+function renderTools(): string {
+  return [
+    "# Free Creator Tools",
+    "",
+    "> Free, no-login short-form video calculators benchmarked against ContHunt's public Viral Now dataset.",
+    "",
+    canonicalLine("/tools"),
+    "",
+    "## Calculators",
+    "",
+    `- [TikTok Engagement Rate Calculator](${absoluteUrl("/tools/tiktok-engagement-rate-calculator")}): Calculate TikTok engagement rate by views and followers, like-to-view, save-to-view, share-to-view, and breakout outlier multiplier against real Viral Now niche medians.`,
+    `- [Instagram Engagement Rate Calculator](${absoluteUrl("/tools/instagram-engagement-rate-calculator")}): Calculate Instagram Reels engagement rate by views and followers, batch 3-10 post averages, and outlier scores against public Viral Now Reels benchmarks.`,
+    "",
+  ].join("\n");
+}
+
+function renderCalculatorDoc(platform: "tiktok" | "instagram"): string {
+  const dataset = loadPlatformBenchmarks(platform);
+  const isTikTok = platform === "tiktok";
+  const path = isTikTok
+    ? "/tools/tiktok-engagement-rate-calculator"
+    : "/tools/instagram-engagement-rate-calculator";
+  const title = isTikTok
+    ? "TikTok Engagement Rate Calculator"
+    : "Instagram Engagement Rate Calculator";
+  return [
+    `# ${title}`,
+    "",
+    `> Free ${isTikTok ? "TikTok" : "Instagram Reels"} engagement rate and outlier calculator with single-post and batch (3-10 posts) modes, CSV export, and real Viral Now public niche medians.`,
+    "",
+    canonicalLine(path),
+    "",
+    "## Formulas",
+    "",
+    "- Full Engagement Rate by Views: ((Likes + Comments + Shares + Saves) / Views) * 100",
+    `- Public-Comparable Engagement Rate by Views: ${isTikTok ? "((Likes + Comments + Shares) / Views) * 100" : "((Likes + Comments) / Views) * 100"}`,
+    "- Engagement Rate by Followers: ((Likes + Comments + Shares + Saves) / Followers) * 100",
+    "- Outlier Multiplier: Video Views / Account Median Views",
+    "",
+    `## Viral Now Public Benchmark Snapshot (week of ${dataset.weekOf})`,
+    "",
+    `- Sample size: ${dataset.totalPlatformVideos} public ${isTikTok ? "TikTok" : "Instagram Reels"} clips across 20 niches`,
+    `- Median public engagement rate by views: ${dataset.overallMedianPublicErPct.toFixed(2)}%`,
+    `- 75th percentile public engagement rate by views: ${dataset.overallP75PublicErPct.toFixed(2)}%`,
+    `- Median like-to-view ratio: ${dataset.overallMedianLikeToViewPct.toFixed(2)}%`,
+    "",
+  ].join("\n");
+}
+
 function renderResources(): string {
   const posts = getAllPosts().filter((post) => post.section === "resources");
   return [
@@ -237,6 +302,9 @@ export function renderMarkdown(htmlPath: string): string | null {
   if (htmlPath === "/pricing") return renderPricing();
   if (htmlPath === "/support") return renderSupport();
   if (htmlPath === "/viral-now") return renderViralNow();
+  if (htmlPath === "/tools") return renderTools();
+  if (htmlPath === "/tools/tiktok-engagement-rate-calculator") return renderCalculatorDoc("tiktok");
+  if (htmlPath === "/tools/instagram-engagement-rate-calculator") return renderCalculatorDoc("instagram");
   if (htmlPath === "/resources") return renderResources();
   const post = articleAt(htmlPath);
   return post ? renderArticle(post) : null;
@@ -317,9 +385,19 @@ export function renderLlmsTxt(): string {
     .join("\n");
 }
 
-/** Home, pricing, support, Viral Now, the resources index, and every article, in that order. */
+/** Home, pricing, support, tools, Viral Now, the resources index, and every article, in that order. */
 export function renderLlmsFull(): string {
-  const pages = ["/", "/pricing", "/support", "/viral-now", "/resources", ...getAllPosts().map((post) => post.href)];
+  const pages = [
+    "/",
+    "/pricing",
+    "/support",
+    "/tools",
+    "/tools/tiktok-engagement-rate-calculator",
+    "/tools/instagram-engagement-rate-calculator",
+    "/viral-now",
+    "/resources",
+    ...getAllPosts().map((post) => post.href),
+  ];
   const parts = pages.map((path) => renderMarkdown(path)).filter((part): part is string => Boolean(part));
   return `${parts.join("\n\n---\n\n").trim()}\n`;
 }

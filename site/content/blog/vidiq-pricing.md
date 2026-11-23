@@ -3,7 +3,7 @@ title: "vidIQ Pricing in 2026"
 slug: "vidiq-pricing"
 excerpt: "On 26 Oct 2026 vidIQ listed Boost at $19 a month or $199 a year, and Max at $49 a month or $468 a year. Confirm the checkout."
 date: "2026-11-07"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 10
 author: "ContHunt Team"
@@ -118,6 +118,6 @@ Search Console has been sending "vidIQ pricing" to a URL that no longer exists. 
 
 If your question is retention on Shorts you already published, the next read is [YouTube Shorts analytics](/blog/youtube-shorts-analytics), in Studio, not a plan upgrade. A price cannot explain a drop-off at the first second.
 
-The practical order is unchanged by the invoice. Studio first, for the channel you own. One overlay if you use an overlay, at the tier whose limit you have actually hit. Public short-form research when the missing evidence is other people's videos. Confirm the charge on vidIQ's checkout, then keep the screenshot with the decision you named.
+The practical order is unchanged by the invoice. Studio first, for the channel you own. One overlay if you use an overlay, at the tier whose limit you have actually hit. Public short-form research when the missing evidence is other people's videos. Confirm the charge on vidIQ's checkout, then keep the screenshot with the decision you named. If the missing evidence is public Shorts, Reels, and TikTok examples rather than a YouTube overlay, [compare ContHunt pricing](/pricing) side by side.
 
 [Get started]({{GET_STARTED_URL}}) when the gap is public Shorts, Reels, and TikTok examples, which none of the rows in the price table are built to watch.

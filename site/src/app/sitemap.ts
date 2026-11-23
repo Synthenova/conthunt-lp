@@ -8,7 +8,7 @@ import { loadViralNowData } from "@/lib/viral-now/load";
 
 /**
  * /sitemap.xml: the one sitemap for conthunt.app. It holds the canonical, indexable URLs only: this
- * app's pages (Home, Pricing, Support, Viral Now, Resources, every Resources article, and every legacy
+ * app's pages (Home, Pricing, Support, Tools, Viral Now, Resources, every Resources article, and every legacy
  * article at its original `/blog/<slug>` URL) plus the legacy pages nginx still serves
  * (`/docs/**`, `/privacy`, `/terms`), read from the legacy build's own sitemap
  * (src/lib/seo/legacy-sitemap.ts). `/blog` itself redirects to `/resources`, so it is not listed.
@@ -16,7 +16,7 @@ import { loadViralNowData } from "@/lib/viral-now/load";
  * The legacy RSS feed (/rss.xml) is unchanged.
  *
  * `lastModified` comes from the post dates (ISO `YYYY-MM-DD`, a valid W3C date). /resources takes
- * the newest post date. Home, Pricing, Support and Viral Now carry no `lastModified`: nothing records when
+ * the newest post date. Home, Pricing, Support, Tools and Viral Now carry no `lastModified`: nothing records when
  * they last changed, and a wrong date is worse than none.
  */
 function day(value: string | null | undefined): string | undefined {
@@ -69,6 +69,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl(ROUTES.home) },
     { url: absoluteUrl(ROUTES.pricing) },
     { url: absoluteUrl(ROUTES.support) },
+    { url: absoluteUrl(ROUTES.tools) },
+    { url: absoluteUrl(ROUTES.tiktokCalculator) },
+    { url: absoluteUrl(ROUTES.instagramCalculator) },
     { url: absoluteUrl("/about") },
     { url: absoluteUrl("/authors") },
     { url: absoluteUrl("/editorial") },

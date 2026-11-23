@@ -4,7 +4,7 @@ slug: instagram-reels-analytics
 excerpt: "Review a Reel's watch time with reach, saves, and shares, and compare similar posts over the same window. Your account is the baseline, not a universal cutoff."
 seoTitle: "Instagram Reels: Watch Time, Reach, Saves, Shares"
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: Guides
 readingMinutes: 11
 author: "ContHunt Team"
@@ -114,7 +114,7 @@ Public research answers a different question: what are other Reels in this topic
 
 Use ContHunt to collect the public examples and keep the links. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Ask a question you can film, such as which public Reels about a form correction show the mistake before the cue. Then validate the idea on your next Reel's insights. Tracking in ContHunt is experimental and still limited to public data.
 
-If the job is a client report rather than a creative decision, say so. Owned-account reporting, public competitor research, and a monthly client deck are different products. [Instagram analytics tools](/blog/best-instagram-analytics-tools) separates those jobs. A tool that cannot show your watch time cannot answer the question in the first section of this guide. A tool that only shows public counts should not be described as analytics for an account you do not own.
+If the job is a client report rather than a creative decision, say so. Owned-account reporting, public competitor research, and a monthly client deck are different products. [Instagram analytics tools](/blog/best-instagram-analytics-tools) separates those jobs, and the [free Instagram Engagement Rate Calculator](/tools/instagram-engagement-rate-calculator) lets you benchmark a Reel's public likes, comments, saves, and shares against niche medians without connecting an account. A tool that cannot show your watch time cannot answer the question in the first section of this guide. A tool that only shows public counts should not be described as analytics for an account you do not own.
 
 ## What belongs on the review checklist?
 

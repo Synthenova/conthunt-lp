@@ -2,9 +2,9 @@
 title: "YouTube Search Trends: How to Find Topics People Search For"
 slug: "youtube-trending-searches"
 excerpt: "YouTube has no public list of exact search volume. Start with Studio Trends, then autocomplete and Google Trends, and keep each source's evidence separate."
-seoTitle: "YouTube Search Trends: How to Find Topics"
+seoTitle: "YouTube Trending Searches: Find Search & Browse Topics (2026)"
 date: "2026-02-18"
-updated: "2026-11-19"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 15
 author: "ContHunt Team"
@@ -23,6 +23,15 @@ cover:
 ---
 
 There is no public dashboard that lists every YouTube search with an exact volume. Written by the ContHunt team. Trending YouTube searches, and the practical question of how to find top searches on YouTube, are clues from tools that measure different things. Start with the Trends tab in YouTube Studio when your channel can see it, because it reflects your audience. Autocomplete suggests phrases as you type and does not say how often they are searched. Google Trends compares relative interest on a scale of 0 to 100; select YouTube Search for YouTube queries or Web Search for Google queries. Neither is an exact volume report. Current YouTube results show what is already published, which is not proof of demand. Keep each clue in its own column. A relative score, a suggestion, and a page of videos do not add up to a monthly search count.
+
+## Search-based vs. browse-based trending topics on YouTube
+
+YouTube topics surface through two distinct paths: search-based trends (viewers typing a question into the search bar) and browse-based trends (viewers discovering a topic on Home, Suggested, or the Shorts feed without searching). Run this 4-step loop without mixing the columns:
+
+1. **Studio Trends — Top searches & Content gaps:** Captures search-led phrases your audience already types.
+2. **Studio Trends — "Videos your audience watches" + public outlier scan:** Surfaces browse-based topics breaking out on small channels before search volume catches up.
+3. **YouTube autocomplete:** Confirms exact viewer wording (order is not volume).
+4. **Google Trends (set to YouTube Search):** Checks relative 0–100 momentum across dates and regions before you lock the brief.
 
 ## Where do you see YouTube search trends for your audience?
 
@@ -94,7 +103,7 @@ ContHunt can organize public short-form examples from TikTok, Instagram Reels, a
 
 A YouTube search brief records the phrase, the source of each clue, and the promise the video will keep. The point of the brief is to stop one fake volume. A relative chart, a suggestion, and a competitor's view count must not be rewritten as that volume.
 
-For public examples to inspect, [browse Viral Now](/viral-now). Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to keep each example, observation time and proposed test in the same brief.
+For public examples to inspect, [browse Viral Now](/viral-now) or [compare ContHunt plans and pricing](/pricing) if you run weekly cross-platform trend research. Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to keep each example, observation time and proposed test in the same brief.
 
 | Field | What to write |
 | --- | --- |

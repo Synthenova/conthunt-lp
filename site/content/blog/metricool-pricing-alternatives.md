@@ -4,7 +4,7 @@ slug: "metricool-pricing-alternatives"
 excerpt: "Metricool is a scheduling and reporting tool. Read the live plan page, compare alternatives by the job you need, and do not treat a blog price table as a quote."
 seoTitle: "Metricool Pricing and Alternatives"
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 11
 author: "ContHunt Team"
@@ -84,7 +84,7 @@ ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. It is a research 
 
 Tracking in ContHunt is experimental. It is for following public accounts and posts over time. It is not a connected-account report, and it is not a white-label client deck. If the contract you sell is "we schedule and we export your own numbers," Metricool's job is still the one to price. If the contract you sell is "we show you what public videos in the category are doing," price ContHunt as that second job, or as the only job, and do not force it through a brand-slot calculator built for schedulers.
 
-[ContHunt alternatives](/blog/conthunt-alternatives) is the right page when you have already decided the job is public short-form research and you want to see what else claims that job. It is the wrong page when you still need a content calendar.
+[ContHunt alternatives](/blog/conthunt-alternatives) is the right page when you have already decided the job is public short-form research and you want to see what else claims that job, and [ContHunt plan pricing](/pricing) lists the exact monthly and yearly credit tiers. Neither page replaces a content calendar.
 
 ## How to do the cost arithmetic without inventing a quote
 

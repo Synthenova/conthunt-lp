@@ -9,10 +9,22 @@
       "window": "One video",
       "active": "Proof in the first frame",
       "chips": [
-        { "label": "Proof in the first frame", "state": "Peaking" },
-        { "label": "Disclosure on the post", "state": "Rising" },
-        { "label": "Ask spoken out loud", "state": "Emerging" },
-        { "label": "Code only in the caption", "state": "Fading" }
+        {
+          "label": "Proof in the first frame",
+          "state": "Peaking"
+        },
+        {
+          "label": "Disclosure on the post",
+          "state": "Rising"
+        },
+        {
+          "label": "Ask spoken out loud",
+          "state": "Emerging"
+        },
+        {
+          "label": "Code only in the caption",
+          "state": "Fading"
+        }
       ]
     },
     "dominant": "#B9CCC8",
@@ -26,11 +38,26 @@
     "fragment_data": {
       "chip": "Comment read",
       "steps": [
-        { "label": "Copy the top comments, in their words", "status": "done" },
-        { "label": "Find a noun someone could buy", "status": "done" },
-        { "label": "Mark the tags and the punchline", "status": "done" },
-        { "label": "Check that noun against the frame", "status": "done" },
-        { "label": "Keep the question, or leave it blank", "status": "running" }
+        {
+          "label": "Copy the top comments, in their words",
+          "status": "done"
+        },
+        {
+          "label": "Find a noun someone could buy",
+          "status": "done"
+        },
+        {
+          "label": "Mark the tags and the punchline",
+          "status": "done"
+        },
+        {
+          "label": "Check that noun against the frame",
+          "status": "done"
+        },
+        {
+          "label": "Keep the question, or leave it blank",
+          "status": "running"
+        }
       ]
     },
     "dominant": "#E4C9B6",
@@ -45,10 +72,22 @@
       "window": "0:00 - 0:06",
       "hook_family": "Words split",
       "segments": [
-        { "t": "0.0s", "label": "Frame: the patch test" },
-        { "t": "1.5s", "label": "Speech: it stung" },
-        { "t": "3.0s", "label": "On-screen: this morning" },
-        { "t": "4.5s", "label": "Caption: no sting" }
+        {
+          "t": "0.0s",
+          "label": "Frame: the patch test"
+        },
+        {
+          "t": "1.5s",
+          "label": "Speech: it stung"
+        },
+        {
+          "t": "3.0s",
+          "label": "On-screen: this morning"
+        },
+        {
+          "t": "4.5s",
+          "label": "Caption: no sting"
+        }
       ],
       "score": 34
     },
@@ -63,8 +102,24 @@
     "fragment_data": {
       "account": "@public.pile",
       "metric": "Videos scored, one job sentence",
-      "points": [8, 14, 21, 27, 32, 32, 32],
-      "labels": ["P1", "P2", "P3", "P4", "P5", "P6", "P7"],
+      "points": [
+        8,
+        14,
+        21,
+        27,
+        32,
+        32,
+        32
+      ],
+      "labels": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7"
+      ],
       "delta": "Held at 32",
       "badge": "Stop"
     },
@@ -81,12 +136,30 @@
       "unit": "checks",
       "loop": true,
       "items": [
-        { "label": "Proof in the first frame", "score": 94 },
-        { "label": "Job in three seconds", "score": 91 },
-        { "label": "Words match the frame", "score": 88 },
-        { "label": "Comments name a product", "score": 84 },
-        { "label": "Proof after a greeting", "score": 62 },
-        { "label": "Opens on the closet", "score": 41 }
+        {
+          "label": "Proof in the first frame",
+          "score": 94
+        },
+        {
+          "label": "Job in three seconds",
+          "score": 91
+        },
+        {
+          "label": "Words match the frame",
+          "score": 88
+        },
+        {
+          "label": "Comments name a product",
+          "score": 84
+        },
+        {
+          "label": "Proof after a greeting",
+          "score": 62
+        },
+        {
+          "label": "Opens on the closet",
+          "score": 41
+        }
       ]
     },
     "dominant": "#E1C0A9",
@@ -814,7 +887,7 @@
     "mood": "dusk",
     "fragment": "hook-timeline",
     "fragment_data": {
-      "window": "0:00–0:03",
+      "window": "0:00\u20130:03",
       "hook_family": "Mistake then fix",
       "segments": [
         {
@@ -1645,6 +1718,192 @@
       "badge": "Same chart, not volume"
     },
     "dominant": "#E1E0E3",
+    "text_tone": "ink"
+  },
+  "social-blade-alternatives": {
+    "plate1600": "/blog/plates/youtube-tracker-1600.webp",
+    "plate800": "/blog/plates/youtube-tracker-800.webp",
+    "mood": "dusk",
+    "fragment": "tracking-chart",
+    "fragment_data": {
+      "account": "Public scale vs. video outliers",
+      "metric": "10-post median baseline",
+      "points": [
+        14,
+        16,
+        15,
+        19,
+        48,
+        36,
+        44
+      ],
+      "labels": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7"
+      ],
+      "delta": "3.2x median",
+      "badge": "Public signals only"
+    },
+    "dominant": "#C9C2D4",
+    "text_tone": "ink"
+  },
+  "virlo-alternatives": {
+    "plate1600": "/blog/plates/find-winning-short-form-content-1600.webp",
+    "plate800": "/blog/plates/find-winning-short-form-content-800.webp",
+    "mood": "sea",
+    "fragment": "search-bar",
+    "fragment_data": {
+      "query": "short-form outlier hooks, last 30 days",
+      "platforms": [
+        "TikTok",
+        "Reels",
+        "Shorts"
+      ],
+      "scope": "Cross-platform public search",
+      "status": "Boards & MCP included"
+    },
+    "dominant": "#B8CCC6",
+    "text_tone": "ink"
+  },
+  "1of10-viewstats-alternatives": {
+    "plate1600": "/blog/plates/how-to-track-youtube-shorts-competitors-1600.webp",
+    "plate800": "/blog/plates/how-to-track-youtube-shorts-competitors-800.webp",
+    "mood": "sky",
+    "fragment": "score-card",
+    "fragment_data": {
+      "title": "Outlier cross-check",
+      "score": 8,
+      "out_of": 10,
+      "verdict": "Validated across 3 small channels",
+      "metrics": [
+        {
+          "label": "Median ratio",
+          "value": "6.4x"
+        },
+        {
+          "label": "Upload age",
+          "value": "< 90d"
+        },
+        {
+          "label": "Access",
+          "value": "Read-only"
+        }
+      ]
+    },
+    "dominant": "#C4D3E0",
+    "text_tone": "ink"
+  },
+  "tiktok-shop-analytics-tools": {
+    "plate1600": "/blog/plates/finding-winning-products-from-short-form-signals-1600.webp",
+    "plate800": "/blog/plates/finding-winning-products-from-short-form-signals-800.webp",
+    "mood": "dawn",
+    "fragment": "board-grid",
+    "fragment_data": {
+      "board": "TikTok Shop research layers",
+      "unit": "layers",
+      "items": [
+        {
+          "label": "Seller Center facts",
+          "score": 95
+        },
+        {
+          "label": "Public hook demos",
+          "score": 84
+        },
+        {
+          "label": "Comment objections",
+          "score": 79
+        },
+        {
+          "label": "Modeled GMV estimates",
+          "score": 62
+        }
+      ]
+    },
+    "dominant": "#E4CBB8",
+    "text_tone": "ink"
+  },
+  "ugc-ad-research-tools": {
+    "plate1600": "/blog/plates/ugc-ad-formats-that-sell-a-field-guide-1600.webp",
+    "plate800": "/blog/plates/ugc-ad-formats-that-sell-a-field-guide-800.webp",
+    "mood": "amber",
+    "fragment": "hook-timeline",
+    "fragment_data": {
+      "window": "Pre-ad creative check",
+      "hook_family": "Problem-first demo",
+      "segments": [
+        {
+          "t": "0.0s",
+          "label": "Visual friction in frame"
+        },
+        {
+          "t": "2.0s",
+          "label": "Spoken objection line"
+        },
+        {
+          "t": "5.0s",
+          "label": "Hands-on product proof"
+        },
+        {
+          "t": "12.0s",
+          "label": "Landing-page message match"
+        }
+      ],
+      "score": 8
+    },
+    "dominant": "#E3CFAF",
+    "text_tone": "ink"
+  },
+  "kalodata-pricing-alternatives": {
+    "plate1600": "/blog/plates/finding-winning-products-from-short-form-signals-1600.webp",
+    "plate800": "/blog/plates/finding-winning-products-from-short-form-signals-800.webp",
+    "mood": "dawn",
+    "fragment": "niche-chips",
+    "fragment_data": {
+      "title": "Commerce vs. creative",
+      "window": "Checklist",
+      "active": "Verify live market tier",
+      "chips": [
+        {
+          "label": "Verify live market tier",
+          "state": "Required"
+        },
+        {
+          "label": "Label GMV as estimate",
+          "state": "Required"
+        },
+        {
+          "label": "Check Reels & Shorts",
+          "state": "Creative"
+        },
+        {
+          "label": "Test same 5 SKUs",
+          "state": "Trial"
+        }
+      ]
+    },
+    "dominant": "#E4CBB8",
+    "text_tone": "ink"
+  },
+  "shortimize-alternatives": {
+    "plate1600": "/blog/plates/competitor-analysis-tools-1600.webp",
+    "plate800": "/blog/plates/competitor-analysis-tools-800.webp",
+    "mood": "ink",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ claude mcp add --transport http conthunt https://mcp.conthunt.app",
+        "> search  'short-form hooks' --platforms tiktok,reels,shorts",
+        "> boards  create 'Q4 Outlier Benchmarks'",
+        "  MCP included on Pro ($25/mo yearly)"
+      ]
+    },
+    "dominant": "#CFD4D8",
     "text_tone": "ink"
   }
 }

@@ -171,6 +171,60 @@ codex mcp login conthunt</code></pre>
 <p>Install the skill from the <a href="/docs/integrations/skill">skill page</a> when you want that habit. The overview on the <a href="/docs">docs home</a> puts the two pieces side by side.</p>
 <p>Neither install changes your boards by itself. Only a signed-in call can search or save.</p>
 
+<h2>How ContHunt MCP compares with other social video MCP servers (2026)</h2>
+<p>If you are looking for a YouTube MCP server, TikTok MCP server, or Instagram Reels MCP server for Claude, Codex, Cursor, or ChatGPT, compare tools by platform coverage, metering model, and whether MCP is included in the base plan (verified against live vendor pages on 23 November 2026 where public).</p>
+<div class="docs-table-wrap">
+    <table class="docs-table">
+        <thead>
+            <tr>
+                <th>MCP Server</th>
+                <th>Platforms Covered</th>
+                <th>Primary Job</th>
+                <th>MCP Pricing &amp; Metering</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ContHunt MCP</strong> (<code>mcp.conthunt.app</code>)</td>
+                <td>TikTok, Instagram Reels, YouTube Shorts (plus long YouTube video analysis)</td>
+                <td>Cross-platform public video search, outlier discovery, boards, Deep Search, creative analysis</td>
+                <td>Included on all paid plans from $25/mo billed yearly ($29/mo monthly), 7-day free trial; uses plan Hunt + AI credits (read-only saved queries are free). <a href="/pricing">See pricing</a>.</td>
+            </tr>
+            <tr>
+                <td><strong>Shortimize MCP</strong></td>
+                <td>TikTok, Instagram Reels, YouTube Shorts</td>
+                <td>Tracking public accounts and videos in recurring tracking dashboards</td>
+                <td>Listed as an add-on on Launch ($99/mo) and Scale ($249/mo), included on Enterprise; verify current add-on fee on Shortimize.</td>
+            </tr>
+            <tr>
+                <td><strong>1of10 MCP</strong></td>
+                <td>YouTube (long-form &amp; Shorts)</td>
+                <td>YouTube outlier discovery, titles, thumbnails, and channel research</td>
+                <td>Included on 1of10 Pro ($69/mo billed yearly, $828/yr) alongside monthly AI credits.</td>
+            </tr>
+            <tr>
+                <td><strong>YouTube-only research MCPs</strong> (OutlierKit, TubeLab, NexLev, vidIQ)</td>
+                <td>YouTube only</td>
+                <td>YouTube keyword demand, RPM/niche scoring, or channel SEO</td>
+                <td>Tiered per vendor (shared AI credit pools or daily tool quotas); check each vendor's live pricing page.</td>
+            </tr>
+            <tr>
+                <td><strong>Sort Feed MCP</strong></td>
+                <td>Instagram, TikTok, YouTube, Facebook Reels (profile-level)</td>
+                <td>Sorting specific profiles by views or outliers and exporting to Sheets</td>
+                <td>Profile-sorting extension workflow; confirm current MCP tier on Sort Feed.</td>
+            </tr>
+            <tr>
+                <td><strong>Foreplay MCP</strong></td>
+                <td>Paid ad libraries (Meta, TikTok ads)</td>
+                <td>Paid ad creative swipe files and ad library research</td>
+                <td>Paid ad research plans; separate job from organic short-form video discovery.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p><strong>Chaining two MCP servers cleanly:</strong> Connecting two MCP servers in Claude or Cursor works well when their jobs do not overlap — for example, pairing a YouTube keyword/RPM server or a paid ad library server with ContHunt's cross-platform short-form discovery server. Tool selection degrades only when two connected servers expose near-identical generic video-search tools and the model burns steps calling both.</p>
+
 <h2>If it does not connect</h2>
 <p>Check the URL character by character. A missing letter, or a different host, will not reach ContHunt. The host is mcp.conthunt.app.</p>
 <p>Check that the server name is ContHunt, or <code>conthunt</code> in commands that want a short id. The login step uses that name.</p>

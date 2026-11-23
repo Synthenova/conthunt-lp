@@ -3,6 +3,7 @@ title: "Shortimize alternatives for short-form video research and tracking"
 slug: shortimize-alternatives
 excerpt: "Compare Shortimize with native analytics and ContHunt by tracking, public creative research, pricing and AI-agent access."
 date: 2026-11-22
+updated: 2026-11-23
 category: Guides
 readingMinutes: 5
 author: "ContHunt Team"
@@ -34,7 +35,7 @@ ContHunt helps when the decision comes earlier: which public examples should a t
 
 ContHunt provides a hosted MCP server for supported AI clients. The [setup guide](/resources/using-conthunt-with-ai-agents-through-mcp) covers sign-in, example prompts and the distinction between reading saved work and starting new searches. Specify the platforms, date range and research budget before asking an agent to search.
 
-Shortimize lists MCP as an option on Launch and Scale and as included in Enterprise. Ask Shortimize for current add-on terms and test the exact integration you need; the labels alone do not establish that the two products expose the same tools.
+Shortimize lists MCP as an option on Launch and Scale and as included in Enterprise. ContHunt includes its hosted [MCP integration](/docs/integrations/mcp) on every paid plan with no add-on fee. Ask each vendor for current metering terms and test the exact tools you need; the labels alone do not establish that two products expose the same endpoints.
 
 ## How should you compare the options?
 
@@ -44,4 +45,4 @@ Shortimize lists MCP as an option on Launch and Scale and as included in Enterpr
 4. Compare total cost, seats, billing terms and the usage your workflow consumes.
 5. Keep the product that answers the question; use both research and tracking tools if each earns its place.
 
-To inspect public examples first, [browse Viral Now](/viral-now), or [compare ContHunt plans](/pricing) for a deeper research workflow.
+To inspect public examples first, [browse Viral Now](/viral-now), read our [Virlo and SortFeed alternatives breakdown](/blog/virlo-alternatives), or [compare ContHunt plans](/pricing) for a deeper research workflow.

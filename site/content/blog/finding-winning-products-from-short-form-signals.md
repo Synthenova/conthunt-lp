@@ -3,7 +3,7 @@ title: "Finding winning products from short-form signals"
 slug: finding-winning-products-from-short-form-signals
 excerpt: "A seven-signal scorecard for judging whether a 'made me buy it' product has real demand or just one lucky video, with a worked example and a kill list."
 date: 2026-09-08
-updated: 2026-11-07
+updated: 2026-11-23
 category: Playbooks
 readingMinutes: 10
 author: "ContHunt Team"
@@ -108,7 +108,7 @@ Running the scorecard in ContHunt means one Deep Search ([How Deep Search works]
 
 > Find products that appear in the "made me buy it" style on TikTok, Reels and Shorts in the last 14 days in the home-office niche. For each product, count distinct creators and platforms, say whether the benefit is visible without sound, and summarize the buying questions in the comments. Rank by creator spread and recent velocity.
 
-ContHunt returns the analyzed videos with links, so you can open the evidence behind every score. Save the shortlist to a board, then use account tracking (an experimental feature) on the two or three creators who started the trend, and check next week whether velocity held. A [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) turns this into a routine.
+ContHunt returns the analyzed videos with links, so you can open the evidence behind every score. Save the shortlist to a board, then use account tracking (an experimental feature) on the two or three creators who started the trend, and check next week whether velocity held. A [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) turns this into a routine. To browse live public product videos before running a search, open the [TikTok Shop Finds viral board](/viral-now/tiktok-shop-finds), compare [TikTok Shop analytics tools](/blog/tiktok-shop-analytics-tools) and [Kalodata pricing and alternatives](/blog/kalodata-pricing-alternatives), or review [ContHunt plans and pricing](/pricing).
 
 ## Why rescore the watch list one week later?
 

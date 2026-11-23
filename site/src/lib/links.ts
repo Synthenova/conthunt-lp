@@ -55,6 +55,9 @@ export const ROUTES = {
   pricing: "/pricing",
   viralNow: "/viral-now",
   resources: "/resources",
+  tools: "/tools",
+  tiktokCalculator: "/tools/tiktok-engagement-rate-calculator",
+  instagramCalculator: "/tools/instagram-engagement-rate-calculator",
   support: "/support",
   article: (slug: string) => `/resources/${slug}`,
 } as const;

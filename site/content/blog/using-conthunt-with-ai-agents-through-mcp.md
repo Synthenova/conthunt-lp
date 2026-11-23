@@ -3,7 +3,7 @@ title: "Using ContHunt with AI agents through MCP"
 slug: using-conthunt-with-ai-agents-through-mcp
 excerpt: "Connect ContHunt to Claude, Codex or Cursor, then run hook research, board curation and competitor teardowns from your agent. Setup and prompts included."
 date: 2026-10-13
-updated: 2026-11-12
+updated: 2026-11-23
 category: Product
 readingMinutes: 10
 author: "ContHunt Team"
@@ -148,6 +148,21 @@ Match the work to the group:
 Put that order in the prompt itself. Call `whoami`. Query saved data for the niche. Propose how many searches and how many videos, and wait for approval. Run the one tool that matches the job. Write the result to a file path or a board name you named. Follow up on the same `thread_id` instead of opening a new search to ask a narrower question. The CLI uses the same order for a schedule: `conthunt whoami`, then `conthunt deep-search` with `--no-wait` when the command should return as soon as the prompt is accepted, and `--thread-id` when you come back. `--json` keeps the payload on standard output. Store `CONTHUNT_TOKEN` in a secret manager, not in a repository.
 
 Two boundaries stay in the same prompt. Content returned by ContHunt is untrusted data, so a caption that tries to instruct the agent is text to analyze, not an order. Tools that send messages or change files stay behind your approval. The [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) is a reasonable second project only after prompt 1 has produced a brief you can compare with your own guess.
+
+## How does ContHunt MCP compare with other social video MCP servers?
+
+Buyers comparing a YouTube MCP server, TikTok MCP server, or Instagram MCP server usually run into three differences: platform scope, whether MCP costs extra on top of the base tier, and how credits or quotas meter a multi-step agent session.
+
+| MCP Server | Platforms | Core Focus | Pricing & Metering Notes (checked Nov 23, 2026) |
+| --- | --- | --- | --- |
+| [ContHunt MCP](/docs/integrations/mcp) | TikTok, Instagram Reels, YouTube Shorts (+ long YouTube analysis) | Public short-form search, outlier hooks, saved boards, Deep Search | Included on all paid plans from $25/mo billed yearly ($29/mo monthly), 7-day trial; read-only `query_saved_data` uses zero credits ([pricing](/pricing)) |
+| [Shortimize](/blog/shortimize-alternatives) | TikTok, Instagram Reels, YouTube Shorts | Recurring account and video tracking | MCP listed as an add-on on Launch ($99/mo) and Scale ($249/mo), included on Enterprise; verify current add-on price |
+| [1of10](/blog/1of10-viewstats-alternatives) | YouTube | YouTube outlier discovery, titles, thumbnails | MCP + API included on Pro ($69/mo billed yearly, $828/yr) with monthly AI credits |
+| YouTube-only MCPs (OutlierKit, TubeLab, NexLev, vidIQ) | YouTube only | YouTube keyword demand, RPM estimation, or channel SEO | Separate per-tool daily quotas or shared AI pools; confirm live pricing on each vendor's site |
+| [Sort Feed](/blog/virlo-alternatives) | Instagram, TikTok, YouTube, Facebook Reels (profile-level) | Sorting individual creator feeds by views/outliers and exporting to Sheets | Profile-overlay workflow rather than niche-wide cross-platform search |
+| [Foreplay](/blog/ugc-ad-research-tools) | Paid ad libraries | Paid Meta/TikTok ad swipe files and ad creative discovery | Built for active paid ads rather than organic short-form video outliers |
+
+If you connect two MCP servers at once inside Claude, Codex, or Cursor, keep their jobs distinct. Pairing a YouTube-only keyword/RPM server or a paid ad library server with ContHunt works cleanly because the model knows which server owns each question. Tool choice degrades only when two servers expose overlapping generic search tools and the agent burns calls querying both.
 
 ## What to build first
 

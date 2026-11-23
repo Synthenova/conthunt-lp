@@ -3,7 +3,7 @@ title: "Reading virality: the metrics that matter beyond views"
 slug: reading-virality-beyond-views
 excerpt: "Views are the loudest number and the least comparable. Five ratios, with formulas and a worked example, to find the videos actually worth studying."
 date: 2026-09-22
-updated: 2026-11-07
+updated: 2026-11-23
 category: Research
 readingMinutes: 10
 author: "ContHunt Team"
@@ -44,7 +44,7 @@ Five ratios travel better than a view total: outlier ratio, velocity, share rate
 
 A sixth, reach beyond followers (views ÷ follower count), is a rough guide to whether a video escaped the creator's own audience. Use it as a screen, not a score.
 
-Each ratio has a different job. The outlier ratio finds interesting videos. Interval velocity measures recent growth. Share and save rates describe actions per view, not unique people or why they acted. Comment intent summarizes a sampled set of comments.
+In practice, use the **median** of a creator's last 10 uploads rather than the average (one breakout video distorts a 10-video mean), and cross-check whether the same angle outperforms on 2–3 unrelated small channels before scripting so you avoid one-off channel flukes. To run these ratios on your own posts or a competitor's clip right away, use the [TikTok Engagement Rate & Outlier Calculator](/tools/tiktok-engagement-rate-calculator) or compare dedicated outlier finders in our [1of10 and ViewStats alternatives guide](/blog/1of10-viewstats-alternatives). Each ratio has a different job. The outlier ratio finds interesting videos. Interval velocity measures recent growth. Share and save rates describe actions per view, not unique people or why they acted. Comment intent summarizes a sampled set of comments.
 
 ## A worked example (illustrative numbers)
 

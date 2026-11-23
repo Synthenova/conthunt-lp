@@ -4,7 +4,7 @@ slug: "conthunt-alternatives"
 excerpt: "ContHunt researches public short-form video. Choose Metricool, Hootsuite, or Sprout Social when the job is scheduling, listening, or enterprise reporting."
 seoTitle: "ContHunt alternatives by the job you need"
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 10
 author: "ContHunt Team"
@@ -110,7 +110,7 @@ Three illustrative teams, not case studies:
 - An agency that lives in client calendars and monthly reports. Metricool or Hootsuite fits the operating job. ContHunt fits only on the clients whose question is short-form creative research. Buying it for every client because the agency bought it once is how shelves fill up.
 - A company whose comms team must catch mentions on several networks and hand them to a person. Sprout Social, or Hootsuite with listening included, fits. ContHunt does not cover that queue. The team might still use ContHunt when the campaign itself is a short-form video and someone needs public examples.
 
-None of these sketches includes a budget. A current quote, the networks on the plan, and the names of the people who will use the tool decide the money. A feature you will not open this month is not a benefit.
+None of these sketches includes a budget. A current quote, the networks on the plan, and the names of the people who will use the tool decide the money. A feature you will not open this month is not a benefit. Compare [current ContHunt plans and pricing](/pricing) and [MCP integration docs](/docs/integrations/mcp) directly against your scheduler or listening quote before deciding.
 
 ## Mistakes that make an alternatives search useless
 

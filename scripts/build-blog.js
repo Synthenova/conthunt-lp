@@ -888,8 +888,8 @@ function buildDocs() {
             slug: 'integrations/mcp',
             template: 'docs-mcp.ejs',
             active: 'mcp',
-            pageTitle: 'ContHunt MCP',
-            description: 'Connect ContHunt to Codex, Claude, Cursor, and other agents.',
+            pageTitle: 'ContHunt MCP — TikTok, Instagram Reels & YouTube Shorts MCP Server',
+            description: 'Hosted MCP server for TikTok, Instagram Reels, and YouTube Shorts research. Connect Claude, Codex, Cursor, and Grok to search public videos, creators, and boards.',
             canonical: DOMAIN + '/docs/integrations/mcp'
         }
     ];

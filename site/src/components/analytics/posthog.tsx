@@ -110,6 +110,7 @@ function inferPlacement(anchor: HTMLAnchorElement, target: URL): string {
   const path = window.location.pathname || "/";
   if (path === "/pricing" || path.startsWith("/pricing/")) return "pricing_cta";
   if (path === "/viral-now" || path.startsWith("/viral-now/")) return "viral_now_cta";
+  if (path === "/tools" || path.startsWith("/tools/")) return "free_tool_cta";
   if (path.startsWith("/blog/") || path.startsWith("/resources/")) return "article_cta";
   if (anchor.closest("header, nav")) return "navbar_cta";
   return "landing_cta";

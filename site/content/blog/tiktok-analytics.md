@@ -3,7 +3,7 @@ title: "TikTok Analytics in 2026: What to Track and Why"
 slug: "tiktok-analytics"
 excerpt: "TikTok analytics should change the next video through completion, rewatches, shares, and audience fit. A view count does not show that the hook held attention."
 date: "2026-04-16"
-updated: "2026-11-19"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 14
 author: "ContHunt Team"
@@ -134,7 +134,7 @@ Compare TikTok with other short-form analytics only after each platform's defini
 
 TikTok analytics cannot show a competitor's completion, rewatches, or audience breakdown. If a planning meeting needs that, you are in public research, not in your analytics tab. Watch the competitor's opening, caption, and visible response, and say plainly that you cannot see their retention. ContHunt is for that public pass across TikTok, Instagram Reels, and YouTube Shorts. It is not a second copy of TikTok analytics.
 
-For public short-form research, [compare ContHunt plans](/pricing).
+To benchmark your public engagement rate, like-to-view ratio, and outlier score against live niche medians, use the [free TikTok Engagement Rate & Outlier Calculator](/tools/tiktok-engagement-rate-calculator). For product-focused TikTok Shop tracking, see [Kalodata pricing and alternatives](/blog/kalodata-pricing-alternatives), or [compare ContHunt plans](/pricing) for cross-platform research.
 
 TikTok analytics also cannot tell you the effort a video took or the margin on the product. It cannot tell you whether a format will work in a paid ad. Add those from your own notes. A high-share video that took a week and cannot be produced again is a weak template. A modest video you can repeat every Tuesday is a stronger operating decision.
 

@@ -3,7 +3,7 @@ title: "How to research TikTok hooks before you brief a creator"
 slug: research-tiktok-hooks-before-you-brief-a-creator
 excerpt: "A six-step process that turns 200+ videos in your niche into a hook brief a creator can shoot from, with a template you can copy."
 date: 2026-08-18
-updated: 2026-11-07
+updated: 2026-11-23
 category: Playbooks
 readingMinutes: 10
 author: "ContHunt Team"
@@ -111,7 +111,7 @@ ContHunt Deep Search ([How Deep Search works](/resources/how-deep-search-works))
 
 > Which opening hooks are working for sensitive-skin serums on TikTok, Reels and Shorts in the last 30 days? For each video, label the hook family. Note the first frame and spoken line. Say whether the product is visible by second 3. Describe the proof shown by second 10. Rank by how well the video fits "calm reactive skin without stinging". Compare top-performing videos against the rest.
 
-ContHunt searches the three platforms and analyzes 500 to 1,000 videos. It returns a ranked list with an answer that cites the videos behind each finding. You can then ask follow-ups against the same set, such as "show only videos where a patch test appears before the first claim". Save the best references to a board. Captions and metadata only show how creators talk. The claims in your brief should rest on the analyzed video evidence.
+ContHunt searches the three platforms and analyzes 500 to 1,000 videos. It returns a ranked list with an answer that cites the videos behind each finding. You can then ask follow-ups against the same set, such as "show only videos where a patch test appears before the first claim". Save the best references to a board. Captions and metadata only show how creators talk. The claims in your brief should rest on the analyzed video evidence. To browse public niche winners right now, open [Viral Now](/viral-now), compare [UGC and ad research tools](/blog/ugc-ad-research-tools), or [compare ContHunt pricing](/pricing).
 
 ## Which four mistakes waste the research?
 

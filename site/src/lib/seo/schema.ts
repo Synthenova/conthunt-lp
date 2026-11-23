@@ -389,3 +389,103 @@ export function viralNowNicheGraph(args: {
     ),
   );
 }
+
+/* ------------------------------------------------------------------- tools */
+
+export interface ToolFaqForSchema {
+  question: string;
+  answer: string;
+}
+
+/** /tools hub page graph. */
+export function toolsHubGraph(tools: { name: string; path: string; description: string }[]): JsonLdNode {
+  const url = absoluteUrl(ROUTES.tools);
+  return graph(
+    {
+      "@type": "CollectionPage",
+      "@id": `${url}#webpage`,
+      name: "Free Creator Tools",
+      description:
+        "Free, instant short-form video calculators for TikTok and Instagram Reels, benchmarked against ContHunt's public Viral Now dataset.",
+      url,
+      inLanguage: "en",
+      isPartOf: { "@id": IDS.website },
+      publisher: { "@id": IDS.organization },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: tools.length,
+        itemListElement: tools.map((tool, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: tool.name,
+          url: absoluteUrl(tool.path),
+          description: tool.description,
+        })),
+      },
+    },
+    organizationNode(),
+    websiteNode(),
+    breadcrumbNode(
+      [
+        { name: "Home", path: ROUTES.home },
+        { name: "Tools", path: ROUTES.tools },
+      ],
+      `${url}#breadcrumb`,
+    ),
+  );
+}
+
+/** Individual free calculator page graph: WebApplication + FAQPage + BreadcrumbList. No fake ratings. */
+export function calculatorToolGraph(args: {
+  name: string;
+  path: string;
+  description: string;
+  featureList: string[];
+  faqs: ToolFaqForSchema[];
+}): JsonLdNode {
+  const url = absoluteUrl(args.path);
+  return graph(
+    {
+      "@type": "WebApplication",
+      "@id": `${url}#webapp`,
+      name: args.name,
+      url,
+      description: args.description,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Any",
+      browserRequirements: "Requires JavaScript",
+      isAccessibleForFree: true,
+      inLanguage: "en",
+      publisher: { "@id": IDS.organization },
+      featureList: args.featureList,
+      offers: {
+        "@type": "Offer",
+        price: 0,
+        priceCurrency: "USD",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: args.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+    organizationNode(),
+    websiteNode(),
+    breadcrumbNode(
+      [
+        { name: "Home", path: ROUTES.home },
+        { name: "Tools", path: ROUTES.tools },
+        { name: args.name, path: args.path },
+      ],
+      `${url}#breadcrumb`,
+    ),
+  );
+}

@@ -4,7 +4,7 @@ slug: "social-media-analytics-tools"
 excerpt: "Choose social analytics by the data source: native dashboards for your accounts, connected reports for workflows, and public research for other posts."
 seoTitle: "Choose Social Analytics by Data Source"
 date: "2026-04-16"
-updated: "2026-11-12"
+updated: "2026-11-23"
 category: "Guides"
 readingMinutes: 12
 author: "ContHunt Team"
@@ -98,7 +98,7 @@ Public content research is the right tool when you need to see videos you do not
 
 Use ContHunt to build a set of public examples before a brief, a landing page, or a weekly content meeting. Do not use it as a second copy of YouTube Studio or Instagram Insights. It will not tell you your watch curve. Tracking in ContHunt is experimental. It stores a view of public accounts and posts over time so you can see a public curve instead of a single snapshot. Experimental means you treat it as a research aid, not as the system of record for a client's private performance. What to record on a public curve is covered in [competitor content tracking](/resources/competitor-content-tracking-what-to-measure-daily). How to read a view count that is not the whole story is covered in [reading virality beyond views](/resources/reading-virality-beyond-views).
 
-If the buying question is "which research tools see public posts," [competitor analysis tools](/blog/competitor-analysis-tools) is the wider list. Keep the access rule: public in, private out.
+If the buying question is "which research tools see public posts," [competitor analysis tools](/blog/competitor-analysis-tools) and [Social Blade alternatives](/blog/social-blade-alternatives) map the public layer. To see what public short-form video research costs beside your connected reporting stack, [review ContHunt pricing](/pricing). Keep the access rule: public in, private out.
 
 ## When a listening product is the right tool
 
