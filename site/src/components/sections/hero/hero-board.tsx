@@ -29,6 +29,7 @@ import { DEEP_SEARCH_CHIP, LiquidRampFill, LiquidRampText, VIRAL } from "@/compo
 import { MetalButton } from "@/components/ui/metal-button";
 import { cn } from "@/lib/cn";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { captureOutboundApp, decorateAppUrl } from "@/components/analytics/posthog";
 import { GET_STARTED_URL } from "@/lib/links";
 import { MOTION_OK, MOTION_REDUCED } from "@/lib/motion";
 import { CardBack, ChartDefs, Face } from "./card-parts";
@@ -449,8 +450,14 @@ export function HeroBoard({ glyphs, strip, videoBytes }: HeroBoardProps) {
     (e?: FormEvent) => {
       e?.preventDefault();
       const q = (value.trim() || PROMPT_SETS[indexRef.current].prompt).slice(0, 500);
-      const url = new URL(GET_STARTED_URL);
+      const url = decorateAppUrl(new URL(GET_STARTED_URL), "hero_search");
       url.searchParams.set("q", q);
+      window.posthog?.capture?.(
+        "hero_search_submitted",
+        { source_path: window.location.pathname || "/", query_length: q.length, used_example: !value.trim() },
+        { transport: "sendBeacon" },
+      );
+      captureOutboundApp(url, "hero_search", { used_example: !value.trim() });
       window.location.assign(url.toString());
     },
     [value],
