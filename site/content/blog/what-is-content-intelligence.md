@@ -165,3 +165,5 @@ The insight you take into production should be boring enough to brief. "Open on 
 A monthly check is only the weekly loop read four times in a row. If the relative performance of the topic you chose is not improving across those weeks, the node was wrong or the proof was wrong. Do not protect the theme because the planning doc liked it. The ocean of other people's videos matters only as evidence for the next test. Your channel is still the place you find out whether you were right.
 
 [Get started]({{GET_STARTED_URL}}) by writing one topic sentence for the last 7 days and running a single public-research question against it before you brief the next video.
+
+See how public engagement norms compare across platforms in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or view [ContHunt plans and pricing](/pricing) to run recurring public-video research.

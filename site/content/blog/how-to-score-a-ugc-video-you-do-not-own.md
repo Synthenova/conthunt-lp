@@ -136,3 +136,5 @@ Six lines. The brief uses the proved line and the format name. It leaves out the
 6. Keep, test, or drop. Keep means the brief may use the proved opening. Test means you will film your own proof in that place. Drop means the other lines, including a code you only read.
 
 [Get started]({{GET_STARTED_URL}}) by pulling one public UGC video, scoring the five checks, and writing the disclosure and the ask beside the score instead of inside it.
+
+When you want quick public engagement ratios beside your rubric, use the free [TikTok](/tools/tiktok-engagement-rate-calculator) and [Instagram engagement rate calculators](/tools/instagram-engagement-rate-calculator), or see [ContHunt plans and pricing](/pricing) for full niche searches.

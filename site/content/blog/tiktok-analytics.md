@@ -166,3 +166,5 @@ Review the sheet every 7 days. Compare top and bottom posts on completion and sh
 The table above is an illustrative decision, restated as a rule rather than a new metric. The next videos copy Post C's opening and edit. In the illustration, 50 percent completion and a 4 percent share rate beat Post B's 20 percent completion and 0.5 percent share rate. C also produced more follows per hour of effort. Your rule must cite your rows. If you cannot point at two posts, you are not done reviewing.
 
 TikTok analytics matters when it changes the next upload. Sort the last 7 days by completion, rewatches, and shares. Name the pattern those posts share. Leave the biggest view count in the denominator where it belongs. When the question moves from your account to the public feed, search that question. [Get started]({{GET_STARTED_URL}}) there, instead of forcing TikTok analytics to describe videos you do not own.
+
+To compare your public engagement numbers against 1,500 short-form videos across TikTok, Reels, and Shorts, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026).

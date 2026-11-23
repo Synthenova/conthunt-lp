@@ -132,3 +132,5 @@ Run this before you change the content plan:
 Instagram Reels analytics is a comparison you can repeat. Use watch time, reach, saves, and shares, on similar Reels, at the same age, with your account as the baseline. The April 2023 definitions and the November 2023 Plays and retention notes tell you what those words were built to mean. They do not set a score that makes a Reel spread.
 
 [Get started]({{GET_STARTED_URL}}) by pulling public Reels that match the format you are about to reshoot. Then fill one row of the worksheet from your own insights before you film the next version.
+
+For cross-platform engagement rate medians across 1,500 public videos, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or review [ContHunt plans and pricing](/pricing) if you track public Reels regularly.

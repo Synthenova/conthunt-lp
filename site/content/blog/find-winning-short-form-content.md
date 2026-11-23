@@ -192,3 +192,5 @@ Before you film, you should be able to answer yes to all of these:
 Find three public videos that beat the accounts that posted them, and write one hypothesis you could film without copying the edit. [Get started]({{GET_STARTED_URL}}) with a search on TikTok, Reels, and Shorts for the narrow phrase those three videos share.
 
 You can also [connect ContHunt to an AI agent through MCP](/docs/integrations/mcp) for a research workflow.
+
+Compare your niche outliers against cross-platform medians in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026) or check individual posts with our [free engagement calculators](/tools).

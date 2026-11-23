@@ -117,3 +117,5 @@ One video can be a fluke. A set is the decision. Pull 30 to 50 public videos on 
 Daily movement on accounts you follow is a different job. [What to measure daily](/resources/competitor-content-tracking-what-to-measure-daily) is that page. Do not mix a one-video score with a week of follower counts.
 
 [Get started]({{GET_STARTED_URL}}) with one job sentence and a pull of public videos you do not own. Score ten of them with the rubric before you write the brief.
+
+To pair your five-check score with public engagement ratios, try the free [TikTok engagement rate calculator](/tools/tiktok-engagement-rate-calculator), reference our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or check [ContHunt pricing](/pricing).

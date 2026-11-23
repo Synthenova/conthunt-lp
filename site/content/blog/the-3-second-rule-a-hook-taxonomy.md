@@ -136,3 +136,5 @@ Running the taxonomy in ContHunt means giving Deep Search ([How Deep Search work
 Check the returned evidence and video links before counting labels; the requested taxonomy may need a manual review. Its scores come from analyzing the content and its fit to your question. They are not measured viewer retention, so keep the creator's own analytics as the final check.
 
 Once you know which pattern leads your niche, put three variants of it into your next [creator brief](/resources/research-tiktok-hooks-before-you-brief-a-creator). [Get started]({{GET_STARTED_URL}}) with a Deep Search on your niche and see how your own hook mix compares.
+
+For engagement benchmarks across 1,500 public TikToks, Reels, and Shorts, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or check [ContHunt plans and pricing](/pricing) to run hook analysis across your niche.

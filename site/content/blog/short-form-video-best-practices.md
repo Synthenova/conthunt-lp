@@ -196,3 +196,5 @@ That loop beats a content calendar full of unrelated ideas, because each new vid
 These practices are a production loop, not a hack. Clear promise, fast hook, readable text, a small hashtag set, native packaging, and an honest review will outperform a trending tag on a video that never states its point.
 
 [Get started]({{GET_STARTED_URL}}) with a pass over public videos in one niche, write the promise each winner makes, and film one version you can actually review next week.
+
+Before setting targets for your next batch, check the medians in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), run quick checks with the free [TikTok](/tools/tiktok-engagement-rate-calculator) and [Instagram engagement rate calculators](/tools/instagram-engagement-rate-calculator), or review [ContHunt pricing](/pricing).

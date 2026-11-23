@@ -172,3 +172,5 @@ A native dashboard scores an account you manage. It does not score a TikTok, Ree
 ContHunt is the search across those public videos. It is not a fourth dashboard, and it does not sit above Instagram Insights, TikTok Studio, or YouTube Analytics for an account you manage.
 
 [Get started]({{GET_STARTED_URL}}) when the question is about public short-form video and you want the videos attached to the answer, not a blended score.
+
+To benchmark public short-form performance before picking a tool, read our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026) or try our [free engagement rate calculators](/tools).

@@ -126,3 +126,5 @@ Doing this in ContHunt means asking Deep Search ([How Deep Search works](/resour
 Track the winners over several days with account and video tracking (experimental) to see whether velocity holds or decays. The [competitor tracking guide](/resources/competitor-content-tracking-what-to-measure-daily) covers the daily metrics.
 
 [Get started]({{GET_STARTED_URL}}) and rerun your last "best performing videos" list with ratios instead of views.
+
+Benchmark your view and engagement ratios against 1,500 public videos in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), check Reels ratios with the free [Instagram engagement rate calculator](/tools/instagram-engagement-rate-calculator), or review [ContHunt pricing](/pricing).

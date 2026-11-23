@@ -189,3 +189,5 @@ Ask questions a card can answer. If you cannot name the card, you are not doing 
 If the answer requires a competitor's private graph, stop. You do not have that graph. Film from public patterns and measure on your channel. The [Shorts algorithm guide](/blog/youtube-shorts-algorithm-2026) is about the opening and the packaging you change between those measurements. It is not a second source of numbers.
 
 [Get started]({{GET_STARTED_URL}}) by pairing one Studio baseline with a public-research pass, so the next Short changes a single variable you can actually re-measure.
+
+For cross-platform engagement baselines across Shorts, Reels, and TikTok, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or compare [ContHunt plans and pricing](/pricing) for public Shorts research.

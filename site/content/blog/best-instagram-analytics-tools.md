@@ -215,3 +215,5 @@ The rubric was written on TikTok and it applies to a public Reel. The private co
 A report that can say which label each sentence uses will survive a client who asks "how do you know?" A report that blends the three labels will not, even if every individual tool in the stack is a reasonable product.
 
 [Get started]({{GET_STARTED_URL}}) by naming the access you actually have, then research the public Reels your Insights export cannot see.
+
+For current public engagement medians across Reels, TikTok, and Shorts before evaluating tools, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026).

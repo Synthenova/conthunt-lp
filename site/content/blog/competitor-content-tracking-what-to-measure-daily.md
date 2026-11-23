@@ -153,3 +153,5 @@ Starting in ContHunt means a Deep Search ([How Deep Search works](/resources/how
 ContHunt stores the snapshots, so the history is there when you return. A [weekly trend radar](/resources/build-a-weekly-trend-radar-for-your-niche) pairs well with this, since tracking shows how known accounts behave and the radar shows what is arriving.
 
 [Get started]({{GET_STARTED_URL}}) by finding the accounts that matter in your niche, then set up your first tracked set.
+
+Compare tracked competitor ratios against cross-platform medians in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or see [ContHunt plans and pricing](/pricing) for team tracking limits.
