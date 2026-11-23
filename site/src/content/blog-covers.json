@@ -887,7 +887,7 @@
     "mood": "dusk",
     "fragment": "hook-timeline",
     "fragment_data": {
-      "window": "0:00\u20130:03",
+      "window": "0:00–0:03",
       "hook_family": "Mistake then fix",
       "segments": [
         {
@@ -1904,6 +1904,22 @@
       ]
     },
     "dominant": "#CFD4D8",
+    "text_tone": "ink"
+  },
+  "short-form-video-engagement-benchmark-2026": {
+    "plate1600": "/blog/plates/youtube-shorts-public-search-benchmark-2026-1600.webp",
+    "plate800": "/blog/plates/youtube-shorts-public-search-benchmark-2026-800.webp",
+    "mood": "sand",
+    "fragment": "mcp-terminal",
+    "fragment_data": {
+      "lines": [
+        "$ extract 1,500 public clips (5 niches x 3 platforms)",
+        "> TikTok med L/V: 4.85%  | p90 views: 202.5K (71.9x)",
+        "> Reels  med L/V: 5.20%  | p90 views:  78.9K (25.7x)",
+        "> Shorts med L/V: 1.77%  | p90 views:  29.3K (29.3x)"
+      ]
+    },
+    "dominant": "#E4CBB8",
     "text_tone": "ink"
   }
 }

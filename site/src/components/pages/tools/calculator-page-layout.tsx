@@ -240,7 +240,7 @@ export function CalculatorPageLayout({ content }: { content: CalculatorPageConte
       >
         <PageEyebrow className="mb-3">Keep researching</PageEyebrow>
         <h2 className="text-xl font-medium text-ink sm:text-2xl">Related tools &amp; guides</h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
           {content.relatedLinks.map((item) => (
             <Link
               key={item.href}

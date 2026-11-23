@@ -117,6 +117,11 @@ export default function InstagramEngagementRateCalculatorPage() {
           faqs,
           relatedLinks: [
             {
+              label: "2026 Short-Form Video Benchmark (1,500 Clips)",
+              href: "/blog/short-form-video-engagement-benchmark-2026",
+              description: "Verified cross-platform medians across TikTok, Instagram Reels, and YouTube Shorts in 5 commercial niches.",
+            },
+            {
               label: "TikTok Engagement Rate Calculator",
               href: ROUTES.tiktokCalculator,
               description: "Calculate TikTok engagement rate, like-to-view, saves, shares, and niche medians across 20 categories.",
