@@ -55,6 +55,8 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
   const cardRef = useRef<HTMLButtonElement>(null);
   const onScreen = useInView(cardRef, { rootMargin: "200px" });
   const youtubeId = video.platform === "youtube" ? youtubeVideoId(video.url) : null;
+  const shouldClear = !!youtubeId || reduced || (!onScreen && !active);
+  if (shouldClear && src !== null) setSrc(null);
   const file = useMemo(() => (youtubeId ? video : cardFile(video)), [video, youtubeId]);
   const canPlay = isPlayable(file.video);
 
@@ -62,10 +64,7 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
 
   // Buffer the stored file while the card is on screen. Hover only starts playback.
   useEffect(() => {
-    if (youtubeId || reduced || (!onScreen && !active)) {
-      setSrc(null);
-      return;
-    }
+    if (shouldClear) return;
     if (!canPlay || failed || src) return;
     let cancelled = false;
     void freshVideoUrl(file).then((url) => {
@@ -74,7 +73,7 @@ export function VideoCard({ video, variant, eager = false, early = false, tabSto
     return () => {
       cancelled = true;
     };
-  }, [active, canPlay, failed, file, onScreen, reduced, src, youtubeId]);
+  }, [canPlay, failed, file, shouldClear, src]);
 
   // Play while active, pause otherwise. Seek only after the file has metadata.
   useEffect(() => {

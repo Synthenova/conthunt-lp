@@ -555,14 +555,11 @@ function CreatorPhoto({ creator }: { creator: ViralNowCreator }) {
   const [failed, setFailed] = useState(false);
   const [lookedUp, setLookedUp] = useState<string | null>(null);
   const channel = creator.avatar ? null : youtubeChannelUrl(creator.url);
+  const cached = channel ? youtubeAvatarCache.get(channel) : undefined;
 
   useEffect(() => {
     if (!channel) return;
-    const cached = youtubeAvatarCache.get(channel);
-    if (cached !== undefined) {
-      setLookedUp(cached);
-      return;
-    }
+    if (youtubeAvatarCache.has(channel)) return;
     let cancelled = false;
     fetch(`/api/youtube-avatar?url=${encodeURIComponent(channel)}`)
       .then((response) => (response.ok ? response.json() : null))
@@ -579,7 +576,7 @@ function CreatorPhoto({ creator }: { creator: ViralNowCreator }) {
     };
   }, [channel]);
 
-  const photo = !failed ? creator.avatar || lookedUp : null;
+  const photo = !failed ? creator.avatar || (cached !== undefined ? cached : lookedUp) : null;
   return (
     <span
       aria-hidden="true"

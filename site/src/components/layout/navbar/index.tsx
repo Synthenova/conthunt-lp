@@ -58,13 +58,17 @@ function useNavScroll(
 ) {
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
+  const [previousLock, setPreviousLock] = useState(lockExpanded);
+  if (previousLock !== lockExpanded) {
+    setPreviousLock(lockExpanded);
     if (lockExpanded) {
       setCompact(false);
       setHidden(false);
-      return;
     }
+  }
+
+  useEffect(() => {
+    if (lockExpanded) return;
     let frame = 0;
     let lastY = window.scrollY;
     let run = 0; // distance traveled in the current direction (+down, -up)
