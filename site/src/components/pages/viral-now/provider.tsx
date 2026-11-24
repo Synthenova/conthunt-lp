@@ -55,9 +55,6 @@ const latest = (values: Array<string | null>): string | null =>
 
 export function ViralNowProvider({ initial, children }: { initial: ViralNowInitial; children: ReactNode }) {
   const [niches, setNiches] = useState<ViralNowNiche[]>(() => initial.niches);
-  const nichesRef = useRef(niches);
-  // Written during render so a row effect in the same commit sees the niche that just arrived.
-  nichesRef.current = niches;
   const requested = useRef(new Set<string>());
   const [seedStatus, setSeedStatus] = useState<SeedStatus>("loading");
   const [attempt, setAttempt] = useState(0);
@@ -103,7 +100,7 @@ export function ViralNowProvider({ initial, children }: { initial: ViralNowIniti
   }, [initial.niches, attempt]);
 
   const ensureFull = useCallback((slug: string) => {
-    const niche = nichesRef.current.find((n) => n.slug === slug);
+    const niche = niches.find((n) => n.slug === slug);
     if (!niche || niche.source !== "live" || niche.videos.length >= Math.min(30, niche.video_count)) return;
     if (requested.current.has(slug)) return;
     requested.current.add(slug);
@@ -111,7 +108,7 @@ export function ViralNowProvider({ initial, children }: { initial: ViralNowIniti
       if (!full || full.videos.length <= niche.videos.length) return;
       setNiches((current) => current.map((n) => (n.slug === slug ? full : n)));
     });
-  }, []);
+  }, [niches]);
 
   const value = useMemo<ViralNowContextValue>(() => {
     const live = niches.filter((n) => n.source === "live");
