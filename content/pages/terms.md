@@ -1,9 +1,9 @@
 ---
 title: "Terms of Conditions"
-description: "Terms and conditions for Conthunt."
+description: "Review the ContHunt Terms and Conditions from Synthenova Enterprises LLP governing account usage, billing, acceptable use, and service terms."
 updated: "2026-01-12"
 ---
-# Terms of Conditions
+## Terms of Conditions
 
 **Last Updated: January 12, 2026**
 

@@ -1,9 +1,9 @@
 ---
 title: "Privacy Policy"
-description: "Privacy Policy for Conthunt."
+description: "Read the ContHunt Privacy Policy from Synthenova Enterprises LLP covering data collection, cookies, retention, and user privacy rights."
 updated: "2026-01-13"
 ---
-# Privacy Policy (conthunt)
+## Privacy Policy (conthunt)
 
 **Last Updated: January 13, 2026**
 
