@@ -3,7 +3,7 @@ title: "YouTube Shorts Best Practices: Hooks, Retention"
 slug: youtube-shorts-best-practices
 excerpt: "YouTube Shorts best practices start with the hook. State the promise in the first second, then review retention before you add more uploads."
 date: "2026-02-25"
-updated: "2026-11-07"
+updated: "2026-11-25"
 category: Playbooks
 readingMinutes: 14
 author: "ContHunt Team"
@@ -29,7 +29,7 @@ A YouTube Shorts best practice is a choice you can repeat on the next upload and
 
 YouTube's own [Enhance your Shorts](https://support.google.com/youtube/answer/16215842?hl=en-eu) help is about those tools: music from the in-app library, text, stickers, voiceover, trim, and visual guides that show where interface elements can cover the frame. The music and sounds in that library are free of charge for personal, non-commercial use unless you have the appropriate licences. Copyright-protected audio used outside YouTube's creation tools can draw a Content ID claim or a copyright removal. None of that replaces a clear opening. A filter on a vague first line is still a vague first line.
 
-Use the next topic from the [YouTube Shorts ideas hub](/blog/youtube-shorts-content-ideas) once the packaging rules below are in place. The same promise test on Instagram is [15 Reels ideas](/blog/instagram-reels-content-ideas). Use [YouTube Shorts analytics](/blog/youtube-shorts-analytics) when you are ready to read the result. If that file is also a Reel, [do not compare the view totals](/blog/instagram-reels-vs-youtube-shorts-analytics). For the current duration rules, use [how long a YouTube Short can be](/blog/how-long-can-youtube-shorts-be). This page stays on the operating check.
+Want to study real hooks before you script? Browse live public Shorts outliers on [Viral Now](/viral-now), or compare measurement stacks in our [YouTube tracker tools guide](/blog/youtube-tracker). Use the next topic from the [YouTube Shorts ideas hub](/blog/youtube-shorts-content-ideas) once the packaging rules below are in place. The same promise test on Instagram is [15 Reels ideas](/blog/instagram-reels-content-ideas). Use [YouTube Shorts analytics](/blog/youtube-shorts-analytics) when you are ready to read the result. If that file is also a Reel, [do not compare the view totals](/blog/instagram-reels-vs-youtube-shorts-analytics). For the current duration rules, use [how long a YouTube Short can be](/blog/how-long-can-youtube-shorts-be). This page stays on the operating check.
 
 ## How should a YouTube Short open?
 

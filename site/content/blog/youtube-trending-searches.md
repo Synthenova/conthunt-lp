@@ -1,10 +1,10 @@
 ---
 title: "YouTube Search Trends: How to Find Topics People Search For"
 slug: "youtube-trending-searches"
-excerpt: "YouTube has no public list of exact search volume. Start with Studio Trends, then autocomplete and Google Trends, and keep each source's evidence separate."
-seoTitle: "YouTube Trending Searches: Find Search & Browse Topics (2026)"
+excerpt: "Find YouTube search trends using four methods: Studio Trends tab, autocomplete, Google Trends, and public Shorts outlier scans, kept in separate columns."
+seoTitle: "YouTube Search Trends (2026): How to Find Trending Topics"
 date: "2026-02-18"
-updated: "2026-11-23"
+updated: "2026-11-25"
 category: "Guides"
 readingMinutes: 15
 author: "ContHunt Team"
@@ -32,6 +32,13 @@ YouTube topics surface through two distinct paths: search-based trends (viewers 
 2. **Studio Trends — "Videos your audience watches" + public outlier scan:** Surfaces browse-based topics breaking out on small channels before search volume catches up.
 3. **YouTube autocomplete:** Confirms exact viewer wording (order is not volume).
 4. **Google Trends (set to YouTube Search):** Checks relative 0–100 momentum across dates and regions before you lock the brief.
+
+| Lookup method | What it shows | Best for | What it does not show |
+| --- | --- | --- | --- |
+| Studio Trends tab | Audience top searches and Shorts content gaps (last 28 days) | Search-led topics tied to your own viewers | Exact monthly search volume |
+| YouTube autocomplete | Live phrase completions viewers type into search | Exact viewer wording and sub-topics | Volume rank or click share |
+| Google Trends (YouTube Search) | Relative 0–100 search interest by date and region | Checking seasonality and momentum across terms | Absolute query counts |
+| Public Shorts outlier scan | Small-channel videos breaking out on public feeds | Spotting browse-led topics before search catches up | A competitor's private Studio retention |
 
 ## Where do you see YouTube search trends for your audience?
 
@@ -103,7 +110,7 @@ ContHunt can organize public short-form examples from TikTok, Instagram Reels, a
 
 A YouTube search brief records the phrase, the source of each clue, and the promise the video will keep. The point of the brief is to stop one fake volume. A relative chart, a suggestion, and a competitor's view count must not be rewritten as that volume.
 
-For public examples to inspect, [browse Viral Now](/viral-now) or [compare ContHunt plans and pricing](/pricing) if you run weekly cross-platform trend research. Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to keep each example, observation time and proposed test in the same brief.
+For public examples to inspect, [browse Viral Now](/viral-now) or [compare ContHunt plans and pricing](/pricing) if you run weekly cross-platform trend research. Once you lock a topic, use a [YouTube tracker](/blog/youtube-tracker) to monitor channel and video performance over time, or compare [vidIQ alternatives](/blog/vidiq-alternatives) if you want public short-form research alongside YouTube Studio. Use the [short-form research scorecard](/blog/short-form-video-research-scorecard) to keep each example, observation time and proposed test in the same brief.
 
 | Field | What to write |
 | --- | --- |

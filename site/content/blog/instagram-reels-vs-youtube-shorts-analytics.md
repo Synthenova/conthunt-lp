@@ -1,9 +1,10 @@
 ---
-title: "Instagram Reels vs YouTube Shorts: Views Differ"
+title: "Instagram Reels vs YouTube Shorts (2026): Views, Reach & Analytics"
 slug: "instagram-reels-vs-youtube-shorts-analytics"
-excerpt: "Instagram Reels vs YouTube Shorts views are different counts. Studio shows if a Short held viewers. Insights shows reach, saves, and shares."
+excerpt: "Compare Instagram Reels vs YouTube Shorts across views, reach, retention, saves, shares, and cross-posting workflows using Insights and YouTube Studio."
+seoTitle: "Instagram Reels vs YouTube Shorts (2026): Reach & Analytics"
 date: "2026-02-18"
-updated: "2026-11-07"
+updated: "2026-11-25"
 category: "Research"
 readingMinutes: 11
 author: "ContHunt Team"

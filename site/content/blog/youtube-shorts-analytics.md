@@ -4,7 +4,7 @@ slug: "youtube-shorts-analytics"
 excerpt: "Read YouTube Shorts in Studio against your baseline: views, shown in feed, chose to view, retention, and traffic. No universal swipe benchmark exists."
 seoTitle: "YouTube Shorts analytics: metrics and tools"
 date: "2026-02-25"
-updated: "2026-11-19"
+updated: "2026-11-25"
 category: "Guides"
 readingMinutes: 17
 author: "ContHunt Team"
@@ -144,6 +144,8 @@ You cannot observe their retention, their chose-to-view rate, their audience dem
 | Google Trends | Directional topic interest, with the YouTube Search filter | A search-interest index, not a video's performance |
 | vidIQ | Topic, channel, and publishing research | A mix of public data, product analysis, and features on connected accounts |
 | YouTube search and channel pages | A small manual sample | Public observations only. |
+
+For a side-by-side look at channel growth counters, rank trackers, and public video research tools, see our [YouTube tracker tools comparison](/blog/youtube-tracker).
 
 ContHunt searches TikTok, Instagram Reels, and YouTube Shorts. [How Deep Search works](/resources/how-deep-search-works). It watches 500 to 1,000 videos in under five minutes and returns a ranked answer with the videos as evidence. Use it to form a hypothesis about openings and topics. Use Studio to measure the Short you then publish. The rank is not measured retention. Tracking in ContHunt is experimental, so it is not a second analytics suite. vidIQ can help with YouTube topic and publishing research; it still cannot show you an unconnected channel's retention graph. Google Trends can suggest that a query is rising or fading. It cannot tell you that your last Short satisfied the people who searched it.
 
