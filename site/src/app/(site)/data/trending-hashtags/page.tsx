@@ -1,0 +1,6 @@
+import { GrowthPage } from "@/components/growth/GrowthPage";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getPublicHashtagsData,getPublicHooksData } from "@/lib/growth/viral-data";
+import { pageMetadata } from "@/lib/growth/metadata";
+export const metadata=pageMetadata({title:"Hashtags in the public snapshot",description:"Hashtags appearing in titles of a dated selection of public videos.",path:"/data/trending-hashtags"});
+export default function Page(){const tags=getPublicHashtagsData();const date=getPublicHooksData().snapshotDate;return <GrowthPage title="Hashtags in the public snapshot" description={`Tags found in selected video titles as of ${date.slice(0,10)}. Counts are not a live trend measure or platform-wide frequency.`}><JsonLd data={{"@context":"https://schema.org","@type":"Dataset",name:"Hashtags in a public video snapshot",description:"Counts of hashtags in selected public video titles",url:"https://conthunt.app/data/trending-hashtags",dateModified:date}}/><div className="overflow-x-auto"><table className="w-full text-left"><thead><tr><th>Hashtag</th><th>Videos</th><th>Median views</th></tr></thead><tbody>{tags.map(t=><tr key={t.hashtag} className="border-t border-hairline"><td>{t.hashtag}</td><td>{t.frequency}</td><td>{t.medianViews?.toLocaleString() ?? "Unavailable"}</td></tr>)}</tbody></table></div></GrowthPage>;}

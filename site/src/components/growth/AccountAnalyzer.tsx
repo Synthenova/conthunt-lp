@@ -1,0 +1,22 @@
+"use client";
+import { useState } from "react";
+import benchmarks from "@/lib/growth/benchmark-2026.json";
+import { NumberField, Panel, field, link, platformNames, positive, type Platform } from "./shared";
+
+export interface IndexedCreatorPreview { handle: string; platforms: string[]; videoCount: number; medianViews: number | null; bestVideo: { url: string; title: string; metrics: { views: number | null; likes: number | null } }; indexable: boolean }
+function parseHandle(value: string, platform: Platform): string {
+  const input = value.trim();
+  try { const url = new URL(input); const host = url.hostname.toLowerCase().replace(/^www\./, ""); const allowed = platform === "tiktok" ? ["tiktok.com"] : platform === "instagram" ? ["instagram.com"] : ["youtube.com", "m.youtube.com"]; if (!allowed.includes(host)) return ""; const part = url.pathname.split("/").filter(Boolean)[0] ?? ""; return part.replace(/^@/, "").toLowerCase(); } catch { return input.replace(/^@/, "").toLowerCase(); }
+}
+export function AccountAnalyzer({ platform, indexedCreators }: { platform: Platform; indexedCreators: IndexedCreatorPreview[] }) {
+  const [input, setInput] = useState(""); const [followers, setFollowers] = useState(""); const [rows, setRows] = useState([{views:"",likes:""},{views:"",likes:""},{views:"",likes:""}]);
+  const handle = parseHandle(input, platform); const validHandle = /^[a-z0-9_.-]+$/i.test(handle);
+  const creator = validHandle ? indexedCreators.find(c => c.indexable && c.handle.toLowerCase() === handle && c.platforms.includes(platform)) : undefined;
+  const validRows = rows.filter(r => positive(r.views) && r.likes.trim() !== "" && Number(r.likes) >= 0 && Number.isFinite(Number(r.likes)));
+  const views = validRows.map(r => Number(r.views)).sort((a,b)=>a-b); const middle = Math.floor(views.length/2); const med = views.length ? views.length % 2 ? views[middle] : (views[middle-1]+views[middle])/2 : null;
+  const likes = validRows.reduce((a,r)=>a+Number(r.likes),0); const totalViews = views.reduce((a,b)=>a+b,0); const benchmark = benchmarks.by_platform[platform];
+  const best = creator?.bestVideo; const indexedRate = best?.metrics.views && best.metrics.likes != null ? best.metrics.likes / best.metrics.views * 100 : null;
+  const url = new URL("https://agent.conthunt.app/"); url.searchParams.set("utm_source","conthunt_analyzer"); url.searchParams.set("utm_medium","tool"); url.searchParams.set("utm_campaign",`analyze_${platform}`); if (validHandle) url.searchParams.set("handle",handle);
+  return <Panel><h2 className="text-xl font-medium">{platformNames[platform]} account analyzer</h2><label className="block text-sm">Handle or profile URL<input className={field} value={input} onChange={e=>setInput(e.target.value)} placeholder="@creator" /></label>{input && !validHandle && <p>Enter a valid handle or {platformNames[platform]} profile URL.</p>}{creator ? <div><p>{creator.videoCount} indexed videos · median {creator.medianViews?.toLocaleString() ?? "unavailable"} views.</p><a className={link} href={creator.bestVideo.url}>Best indexed clip: {creator.bestVideo.title}</a>{indexedRate != null && <p>Best clip like-to-view: {indexedRate.toFixed(2)}%; 2026 platform median: {benchmark.like_to_view_pct.median.toFixed(2)}%. The indexed sample contains selected breakout videos.</p>}</div> : <div className="space-y-3"><p>Enter 3–5 recent posts for a manual audit.</p><NumberField label="Followers" value={followers} onChange={setFollowers}/>{rows.map((r,i)=><div key={i} className="grid gap-2 sm:grid-cols-2"><NumberField label={`Post ${i+1} views`} value={r.views} onChange={v=>setRows(rows.map((row,j)=>i===j?{...row,views:v}:row))}/><NumberField label={`Post ${i+1} likes`} value={r.likes} onChange={v=>setRows(rows.map((row,j)=>i===j?{...row,likes:v}:row))}/></div>)}{rows.length<5 && <button type="button" className={link} onClick={()=>setRows([...rows,{views:"",likes:""}])}>Add post</button>}{validRows.length>=3 && med != null && <p>Median views: {med.toLocaleString()}; like-to-view: {(likes/totalViews*100).toFixed(2)}% versus {benchmark.like_to_view_pct.median.toFixed(2)}% in the 2026 platform sample. {positive(followers)>0 ? `Median views / followers: ${(med/positive(followers)*100).toFixed(2)}%.` : ""} Best post: {(Math.max(...views)/med).toFixed(1)}× your recent median.</p>}</div>}<a className={link} href={url.toString()}>Open a deeper search in ContHunt</a></Panel>;
+}
+export default AccountAnalyzer;

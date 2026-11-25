@@ -50,7 +50,7 @@ export default function ResourcesPage() {
   );
 }
 
-export function ResourceArticle({ slug }: { slug: string }) {
+export function ResourceArticle({ slug, children }: { slug: string; children?: React.ReactNode }) {
   const post = getPost(slug);
   if (!post) notFound();
   const related = getRelatedPosts(slug, 3);
@@ -68,6 +68,7 @@ export function ResourceArticle({ slug }: { slug: string }) {
         >
           <ArticleToc items={post.toc} category={post.category} />
           <ArticleBody markdown={post.body} />
+          {children}
           <ArticleFoot post={post} />
         </Section>
         <ArticleEnd post={post} related={related} />

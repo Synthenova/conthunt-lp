@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { GET_STARTED_URL, ROUTES } from "@/lib/links";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { toolsHubGraph } from "@/lib/seo/schema";
+import { FREE_UTILITY_PAGES, GATED_TOOL_PAGES, ANALYZER_PAGES } from "@/content/seo-growth/analyzers-and-tools";
 import { loadPlatformBenchmarks } from "@/lib/tools/benchmarks";
 
 const DESCRIPTION =
@@ -103,6 +104,7 @@ export default function ToolsHubPage() {
             ))}
           </div>
 
+          <div className="mt-10 space-y-4"><h2 className="text-2xl font-medium">More research tools</h2><p className="text-sm text-ink-2">Calculators use your inputs. Gated tools show illustrative examples, and account analyzers use a limited snapshot or manual entry.</p><ul className="grid gap-3 sm:grid-cols-2">{[...FREE_UTILITY_PAGES, ...GATED_TOOL_PAGES, ...ANALYZER_PAGES].map(item => <li key={item.slug} className="rounded-card border border-hairline p-4"><Link className="underline underline-offset-4" href={"platform" in item && item.slug.startsWith("analyze-") ? `/${item.slug}` : `/tools/${item.slug}`}>{item.h1}</Link></li>)}</ul></div>
           <div className="mt-10 flex flex-col gap-4 rounded-card border border-hairline bg-surface p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="max-w-2xl space-y-1">
               <p className="font-mono text-xs uppercase tracking-wider text-muted">Full research workflow</p>

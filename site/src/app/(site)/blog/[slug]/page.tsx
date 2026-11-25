@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ResourceArticle } from "@/components/pages/resources";
+import { BenchmarkPercentileWidget } from "@/components/growth/BenchmarkPercentileWidget";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 import { getBlogSlugs, getPost } from "@/lib/blog/posts";
 import { postSeoTitle } from "@/lib/blog/seo";
@@ -55,7 +56,11 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <ArticleJsonLd post={post} />
-      <ResourceArticle slug={slug} />
+      <ResourceArticle slug={slug}>
+        {["short-form-video-engagement-benchmark-2026", "how-many-views-is-viral-tiktok-reels-shorts-2026"].includes(slug) && (
+          <BenchmarkPercentileWidget />
+        )}
+      </ResourceArticle>
     </>
   );
 }
