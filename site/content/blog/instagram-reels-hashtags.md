@@ -173,3 +173,5 @@ Use this list on the caption, not as a strategy deck.
 Hashtags remain the last part of the edit. Spend the rest of the effort on the opening, the payoff, and a topic you can defend when someone taps the tag.
 
 [Get started]({{GET_STARTED_URL}}) by pulling public Reels in one niche and writing down the tags that actually match the video you are about to post.
+
+Compare current cross-platform tag momentum in the [Trending Hashtags directory](/data/trending-hashtags).

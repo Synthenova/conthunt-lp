@@ -151,3 +151,5 @@ Shorts-specific packaging still has to obey the video you can actually make. [Yo
 The choice in short form: Studio for the channel you own, TubeBuddy for the library, ContHunt for public short-form evidence, Social Insider for the client pack, and vidIQ when its ideas workflow is genuinely how you title long-form. Build the stack around the decision. Do not rent a second copy of a job you already have.
 
 [Get started]({{GET_STARTED_URL}}) with one public-research question your keyword tool cannot watch, then check the result against your own Studio retention.
+
+If you are choosing specifically between YouTube outlier tools, read [vidIQ vs 1of10](/compare/vidiq-vs-1of10) or browse all [side-by-side tool comparisons](/compare).

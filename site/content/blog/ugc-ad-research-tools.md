@@ -58,3 +58,5 @@ AI-generated B-roll or synthetic presenters can be cheap for rapid hook-copy str
 - **Growth creative stack:** Meta Ad Library (or Foreplay when you need team swipe boards) + **ContHunt Pro ($25/mo billed yearly)** for weekly cross-platform organic outlier research and [creator hook briefs](/resources/research-tiktok-hooks-before-you-brief-a-creator).
 
 [Get started]({{GET_STARTED_URL}}) to pull public short-form outliers before your next creative sprint, or [compare ContHunt plans and pricing](/pricing).
+
+See full workflow playbooks for [UGC agencies](/use-cases/ugc-agencies) and [e-commerce brands](/use-cases/ecommerce-brands), or review how paid amplification works in our [UGC whitelisting glossary entry](/glossary/ugc-whitelisting).

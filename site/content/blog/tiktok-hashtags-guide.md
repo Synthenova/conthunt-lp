@@ -41,3 +41,5 @@ For an illustrative home-cooking video about a quick bean lunch, a creator might
 5. Keep a record of the examples and the decision you make for the next video.
 
 For your own account, [TikTok analytics](/blog/tiktok-analytics) explains what to review. For a wider public research workflow, [compare ContHunt plans](/pricing). Private retention and sales for another account are not available from public hashtag pages.
+
+Track which niche tags are actively climbing right now on our [Trending Hashtags directory](/data/trending-hashtags).

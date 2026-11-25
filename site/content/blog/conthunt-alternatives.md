@@ -130,3 +130,5 @@ Stay with ContHunt if the work you repeat is finding and explaining public short
 Leaving ContHunt because a scheduler is cheaper, or leaving a scheduler because ContHunt cites videos, solves the wrong complaint. Name the complaint in one sentence. The table above is the alternatives list for that sentence.
 
 Write the weekly job in one sentence, then keep the product that finishes it and rent nothing else yet. [Get started]({{GET_STARTED_URL}}) if that sentence is about public short-form video, and use the cited videos as the brief rather than as a leaderboard.
+
+Compare specific tool pairs on our [comparisons hub](/compare) — including [ContHunt vs Sandcastles](/compare/conthunt-vs-sandcastles) — or see how different teams structure research across [ContHunt use cases](/use-cases).

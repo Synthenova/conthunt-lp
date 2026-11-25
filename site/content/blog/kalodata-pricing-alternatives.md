@@ -41,3 +41,5 @@ For a creative team asking how products are presented in public videos across pl
 5. Decide whether you also need creative research on Reels and Shorts, rather than assuming a commerce dashboard covers every platform.
 
 If you have not made your first TikTok Shop sales yet, start manually with public search, the [TikTok Shop Finds viral board](/viral-now/tiktok-shop-finds), and a simple 10-video hook spreadsheet before paying $40–$60+/month for any tool — upgrade once you are testing products weekly and saving at least a few hours per week. For a wider category breakdown, see our [TikTok Shop analytics tools guide](/blog/tiktok-shop-analytics-tools), [browse public niche examples](/viral-now), or [compare ContHunt plans](/pricing).
+
+For detailed feature and pricing matchups, compare [ContHunt vs Kalodata](/compare/conthunt-vs-kalodata), [Kalodata vs FastMoss](/compare/kalodata-vs-fastmoss), and [Kalodata vs Shoplus](/compare/kalodata-vs-shoplus).

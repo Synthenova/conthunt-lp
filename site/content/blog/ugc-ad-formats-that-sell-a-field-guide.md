@@ -173,3 +173,5 @@ Walk the seven formats against the footage you actually have:
 After the format is real, keep the audience stage from the table above and write three openings on that same body. The test order in this guide separates hook, format and offer. Changing the format and the opening in one shoot makes a loss impossible to read, because you will not know which change the viewer responded to. The template has one line for the format and one line for the three openings so those decisions stay apart. Rights, disclosure and the ban on fake testimonials still apply to whichever format you pick. They are not a reason to choose a format. They are the conditions under which any of the seven can run.
 
 [Get started]({{GET_STARTED_URL}}) with a Deep Search on your category, find which formats lead it, and fill this template with videos you can point to.
+
+For team-specific research playbooks, see [ContHunt for UGC agencies](/use-cases/ugc-agencies) and [ContHunt for e-commerce brands](/use-cases/ecommerce-brands), or inspect live openings in the [Viral Hooks Database](/data/viral-hooks).

@@ -1,7 +1,7 @@
 import { CompanyPage } from "@/components/pages/company-page";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata = pageMetadata({ title: "About ContHunt", description: "Learn what ContHunt does and who operates it.", path: "/about" });
+export const metadata = pageMetadata({ title: "About ContHunt", description: "Learn what ContHunt does for TikTok, Instagram Reels, and YouTube Shorts research, who operates it at Synthenova Enterprises LLP, and how to contact us.", path: "/about" });
 
 export default function About() {
   return <CompanyPage label="About" title="About ContHunt" intro="ContHunt helps creators and marketers research short-form video content.">

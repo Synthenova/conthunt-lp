@@ -128,3 +128,5 @@ Track the winners over several days with account and video tracking (experimenta
 [Get started]({{GET_STARTED_URL}}) and rerun your last "best performing videos" list with ratios instead of views.
 
 Benchmark your view and engagement ratios against 1,500 public videos in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), check Reels ratios with the free [Instagram engagement rate calculator](/tools/instagram-engagement-rate-calculator), or review [ContHunt pricing](/pricing).
+
+Track cross-platform breakout benchmarks in the [ContHunt Viral Index](/viral-index), score any video with the [Viral Outlier Score Calculator](/tools/viral-outlier-score-calculator), and review our definitions of [outlier video](/glossary/outlier-video) and [virality score](/glossary/virality-score).

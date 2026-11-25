@@ -1,7 +1,7 @@
 import { CompanyPage } from "@/components/pages/company-page";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata = pageMetadata({ title: "Editorial Standards", description: "How ContHunt approaches sources, reviews and corrections.", path: "/editorial" });
+export const metadata = pageMetadata({ title: "Editorial Standards", description: "How the ContHunt editorial team verifies platform documentation, separates public video observations from private analytics, and handles article updates.", path: "/editorial" });
 
 export default function Editorial() {
   return <CompanyPage label="Editorial" title="Editorial standards" intro="Our aim is to make ContHunt articles practical, clear and easy to verify.">

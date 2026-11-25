@@ -138,3 +138,5 @@ Check the returned evidence and video links before counting labels; the requeste
 Once you know which pattern leads your niche, put three variants of it into your next [creator brief](/resources/research-tiktok-hooks-before-you-brief-a-creator). [Get started]({{GET_STARTED_URL}}) with a Deep Search on your niche and see how your own hook mix compares.
 
 For engagement benchmarks across 1,500 public TikToks, Reels, and Shorts, see our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or check [ContHunt plans and pricing](/pricing) to run hook analysis across your niche.
+
+Explore live opening patterns in the [Viral Hooks Database](/data/viral-hooks), draft fresh variations with the [Viral Hook Generator](/tools/viral-hook-generator), or review definitions for [hook rate](/glossary/hook-rate) and [3-second retention](/glossary/3-second-retention).

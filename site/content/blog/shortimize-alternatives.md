@@ -46,3 +46,5 @@ Shortimize lists MCP as an option on Launch and Scale and as included in Enterpr
 5. Keep the product that answers the question; use both research and tracking tools if each earns its place.
 
 To inspect public examples first, [browse Viral Now](/viral-now), read our [Virlo and SortFeed alternatives breakdown](/blog/virlo-alternatives), or [compare ContHunt plans](/pricing) for a deeper research workflow.
+
+For direct side-by-side comparisons, see [ContHunt vs Shortimize](/compare/conthunt-vs-shortimize), [Exolyt vs Shortimize](/compare/exolyt-vs-shortimize), and [Shortimize vs Virlo](/compare/shortimize-vs-virlo).

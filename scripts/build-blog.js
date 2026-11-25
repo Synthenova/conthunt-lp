@@ -873,7 +873,7 @@ function buildDocs() {
             template: 'docs-home.ejs',
             active: 'overview',
             pageTitle: 'ContHunt Docs',
-            description: 'Connect ContHunt to your coding agent and install the ContHunt skill.',
+            description: 'Connect ContHunt to Claude Code, Cursor, Codex, and other AI coding agents via hosted MCP, and install the ContHunt skill for short-form video research.',
             canonical: DOMAIN + '/docs'
         },
         {

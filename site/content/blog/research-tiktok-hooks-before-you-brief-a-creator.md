@@ -138,3 +138,5 @@ Then check the counts behind the families you kept. Tag 80 to 200 videos. Compar
 If an option fails, go back to the tagged openings rather than starting a new search. Pick a different family that the outlier comparison favored, and rewrite that option only. The job sentence and the proof beat can stay when they still match the log. The creator should receive three mechanisms you can point at in the set, plus the proof to show by second 10.
 
 Research once, brief three hooks, and test them against each other. [Get started]({{GET_STARTED_URL}}) with one Deep Search on your own niche and bring the tagged results to your next creator brief.
+
+Pull real opening lines from the [Viral Hooks Database](/data/viral-hooks), inspect scripts with the free [TikTok Hook & Transcript Extractor](/tools/tiktok-hook-transcript-extractor), or see how creative teams run this workflow in [ContHunt for UGC agencies](/use-cases/ugc-agencies).

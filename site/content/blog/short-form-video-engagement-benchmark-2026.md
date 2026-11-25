@@ -176,3 +176,5 @@ Static benchmarks tell you whether a metric is normal or an outlier; your next s
 - **Check a single video or batch of 3–10 posts right now:** Use the free [TikTok Engagement Rate Calculator](/tools/tiktok-engagement-rate-calculator) or [Instagram Engagement Rate Calculator](/tools/instagram-engagement-rate-calculator).
 - **Browse top public clips across 20 categories:** Open [ContHunt Viral Now](/viral-now) (free, no sign-up).
 - **Automate cross-platform hook & outlier research:** Connect Claude, Cursor, or Codex directly to ContHunt via our [hosted MCP server](/docs/integrations/mcp) or [compare ContHunt plans and 7-day free trial options](/pricing).
+
+You can also follow live cross-platform trends in the [ContHunt Viral Index](/viral-index), inspect top opening patterns in the [Viral Hooks Database](/data/viral-hooks), or check metric definitions in the [short-form glossary](/glossary).

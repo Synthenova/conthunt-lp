@@ -194,3 +194,5 @@ Find three public videos that beat the accounts that posted them, and write one 
 You can also [connect ContHunt to an AI agent through MCP](/docs/integrations/mcp) for a research workflow.
 
 Compare your niche outliers against cross-platform medians in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026) or check individual posts with our [free engagement calculators](/tools).
+
+Inspect live breakouts in the [ContHunt Viral Index](/viral-index) and [Viral Hooks Database](/data/viral-hooks), or see tailored workflows for [short-form creators](/use-cases/short-form-creators) and [faceless channels](/use-cases/faceless-channels).

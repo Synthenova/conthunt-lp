@@ -130,3 +130,5 @@ Put the new total beside last week's total. The gap is the decision. A product t
 Moving from the shortlist to a test means the scorecard has finished its job and your own numbers take over. Order samples before inventory. Shoot your own demo, and brief creators with the proof beats the comment analysis revealed. Judge the test by your own numbers: cost per purchase, return rate, refund reasons. The scorecard only earns the right to run that test.
 
 [Get started]({{GET_STARTED_URL}}) with one Deep Search in your category and score your first three candidates today.
+
+See how DTC teams combine organic signal research with product testing in [ContHunt for e-commerce brands](/use-cases/ecommerce-brands), or compare commerce trackers in [ContHunt vs Kalodata](/compare/conthunt-vs-kalodata) and [Kalodata vs FastMoss](/compare/kalodata-vs-fastmoss).

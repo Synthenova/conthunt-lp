@@ -57,3 +57,5 @@ Creators on Reddit routinely ask whether paying for a short-form spy or outlier 
 Whether you pick Virlo, SortFeed, Shortimize, or ContHunt, every public research tool shares the same boundary: **none of them can see another account's private retention curve, watch-time drop-off, follower demographics, or ad ROAS.** Pair public outlier research (what to test next) with your own native TikTok Analytics, Instagram Insights, and YouTube Studio (what actually held viewers after you posted).
 
 [Get started]({{GET_STARTED_URL}}) with a 7-day free trial, or [compare ContHunt plans and pricing](/pricing) side by side.
+
+For direct head-to-head breakdowns, compare [ContHunt vs Virlo](/compare/conthunt-vs-virlo), [Shortimize vs Virlo](/compare/shortimize-vs-virlo), or browse all [short-form research tool comparisons](/compare).

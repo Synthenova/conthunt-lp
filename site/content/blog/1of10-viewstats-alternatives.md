@@ -54,3 +54,5 @@ See [how to track YouTube Shorts competitors](/blog/how-to-track-youtube-shorts-
 - **Start free first** using YouTube Studio's Trends tab ("Top searches", "Content gaps for Shorts", and "Videos your audience watches") plus a clean incognito research account subscribed only to ~25 rising small channels in your niche — see our [YouTube trending searches guide](/blog/youtube-trending-searches).
 
 [Get started]({{GET_STARTED_URL}}) to search cross-platform short-form outliers across YouTube Shorts, TikTok, and Reels, or [compare ContHunt plans](/pricing).
+
+For head-to-head matchups, read [ContHunt vs 1of10](/compare/conthunt-vs-1of10) and [vidIQ vs 1of10](/compare/vidiq-vs-1of10), or test our free [YouTube Shorts Outlier Finder](/tools/youtube-shorts-outlier-finder).

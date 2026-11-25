@@ -55,3 +55,5 @@ Affiliates frequently receive product samples and struggle to get past 300 views
 - Keep your **sales database** separate from your **creative brief workflow** — see [Kalodata pricing and alternatives](/blog/kalodata-pricing-alternatives) for a deeper pricing checklist.
 
 [Browse live TikTok Shop Finds on Viral Now](/viral-now/tiktok-shop-finds) for free, or [compare ContHunt plans and pricing](/pricing) to research product hooks across TikTok, Reels, and Shorts.
+
+For side-by-side breakdowns of TikTok Shop tools, compare [ContHunt vs Kalodata](/compare/conthunt-vs-kalodata), [Kalodata vs FastMoss](/compare/kalodata-vs-fastmoss), and [Kalodata vs Shoplus](/compare/kalodata-vs-shoplus), or see [ContHunt for e-commerce brands](/use-cases/ecommerce-brands).

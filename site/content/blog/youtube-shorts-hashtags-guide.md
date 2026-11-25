@@ -157,3 +157,5 @@ If a tag fails one line, delete the tag. Do not negotiate with it because it was
 Pick the few tags the footage earns. Put them where the placement page says. Spend the rest of the upload on the opening and the title. Run a Deep Search on the subject of the Short you are tagging. [Get started]({{GET_STARTED_URL}}) there, and keep only the topic words your own video can defend.
 
 For a larger research workflow, [compare ContHunt plans](/pricing).
+
+See which short-form niche tags are gaining traction across platforms on our [Trending Hashtags directory](/data/trending-hashtags).

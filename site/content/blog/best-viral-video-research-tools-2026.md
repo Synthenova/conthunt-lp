@@ -183,3 +183,5 @@ Measure the video’s views against the **median of that creator’s last 10 upl
 ---
 
 Want to test cross-platform viral hook research on your own niche right now? Browse free public winners on [Viral Now](/viral-now), score your own clips with the [Viral Outlier Score Calculator](/tools/viral-outlier-score-calculator), or [start a 7-day free trial on ContHunt]({{GET_STARTED_URL}}).
+
+Explore head-to-head matchups on our [comparisons hub](/compare), track live breakouts in the [ContHunt Viral Index](/viral-index), and browse role-specific playbooks for [short-form creators](/use-cases/short-form-creators), [faceless channels](/use-cases/faceless-channels), and [SaaS growth teams](/use-cases/saas-growth-teams).

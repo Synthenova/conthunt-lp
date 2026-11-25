@@ -167,3 +167,5 @@ A monthly check is only the weekly loop read four times in a row. If the relativ
 [Get started]({{GET_STARTED_URL}}) by writing one topic sentence for the last 7 days and running a single public-research question against it before you brief the next video.
 
 See how public engagement norms compare across platforms in our [2026 short-form video engagement benchmark](/blog/short-form-video-engagement-benchmark-2026), or view [ContHunt plans and pricing](/pricing) to run recurring public-video research.
+
+For quick team definitions, see [content intelligence in the glossary](/glossary/content-intelligence) and the full [short-form video glossary](/glossary), or browse workflows by role on [ContHunt use cases](/use-cases).
