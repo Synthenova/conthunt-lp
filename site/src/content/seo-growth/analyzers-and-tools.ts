@@ -109,7 +109,7 @@ export const ANALYZER_PAGES: readonly AnalyzerPageSpec[] = [
   {
     slug: "analyze-tiktok-account",
     platform: "tiktok",
-    seoTitle: "Free TikTok Account Analyzer — Median Views, Outliers & Engagement | ContHunt",
+    seoTitle: "Free TikTok Account Analyzer & Outlier Tool | ContHunt",
     metaDescription:
       "Audit any public TikTok account: calculate median views, spot 3x+ outlier videos, compare like/comment/share ratios, and uncover repeatable content formats.",
     h1: "Analyze any public TikTok account in seconds.",
@@ -200,7 +200,7 @@ export const ANALYZER_PAGES: readonly AnalyzerPageSpec[] = [
   {
     slug: "analyze-instagram-reels-account",
     platform: "instagram",
-    seoTitle: "Free Instagram Reels Account Analyzer — Outliers, Views & Engagement | ContHunt",
+    seoTitle: "Free Instagram Reels Account Analyzer | ContHunt",
     metaDescription:
       "Audit any public Instagram Reels account: benchmark median Reel views, identify 3x+ breakout Reels, compare comment/share triggers, and diagnose format performance.",
     h1: "Analyze any public Instagram Reels account without guessing.",
@@ -291,7 +291,7 @@ export const ANALYZER_PAGES: readonly AnalyzerPageSpec[] = [
   {
     slug: "analyze-youtube-shorts-account",
     platform: "youtube",
-    seoTitle: "Free YouTube Shorts Channel Analyzer — Median Views & Outliers | ContHunt",
+    seoTitle: "Free YouTube Shorts Channel Analyzer | ContHunt",
     metaDescription:
       "Analyze any public YouTube Shorts channel: isolate Shorts median views, spot 3x+ outlier Shorts, check like-to-view ratios, and find repeatable Shorts series.",
     h1: "Analyze any public YouTube Shorts channel for repeatable winners.",
@@ -385,7 +385,7 @@ export const GATED_TOOL_PAGES: readonly GatedToolPageSpec[] = [
   {
     slug: "tiktok-hook-transcript-extractor",
     platform: "tiktok",
-    seoTitle: "TikTok Hook & Transcript Extractor — Dissect the First 3 Seconds | ContHunt",
+    seoTitle: "TikTok Hook & Transcript Extractor | ContHunt",
     metaDescription:
       "Extract spoken transcripts, opening 3-second visual hooks, pacing beats, and CTA structures from any public TikTok video inside ContHunt.",
     h1: "Extract TikTok hooks, transcripts, and beat structure in one workflow.",
@@ -454,7 +454,7 @@ export const GATED_TOOL_PAGES: readonly GatedToolPageSpec[] = [
   {
     slug: "instagram-reels-script-breakdown",
     platform: "instagram",
-    seoTitle: "Instagram Reels Script Breakdown Tool — Hooks, Pacing & CTAs | ContHunt",
+    seoTitle: "Instagram Reels Script Breakdown Tool | ContHunt",
     metaDescription:
       "Break down any public Instagram Reel into opening visual hook, on-screen text, spoken script, retention beats, and comment/DM CTA inside ContHunt.",
     h1: "Turn any public Instagram Reel into a beat-by-beat script breakdown.",
@@ -523,7 +523,7 @@ export const GATED_TOOL_PAGES: readonly GatedToolPageSpec[] = [
   {
     slug: "youtube-shorts-outlier-finder",
     platform: "youtube",
-    seoTitle: "YouTube Shorts Outlier Finder — Discover 3x–10x Breakout Shorts | ContHunt",
+    seoTitle: "YouTube Shorts Outlier Finder (Free Preview) | ContHunt",
     metaDescription:
       "Find high-multiplier YouTube Shorts outliers by topic or channel inside ContHunt. Compare breakout Shorts against TikTok and Reels winners in one workspace.",
     h1: "Find breakout YouTube Shorts outliers before your niche saturates.",
@@ -594,7 +594,7 @@ export const GATED_TOOL_PAGES: readonly GatedToolPageSpec[] = [
 export const FREE_UTILITY_PAGES: readonly FreeUtilityPageSpec[] = [
   {
     slug: "youtube-shorts-engagement-rate-calculator",
-    seoTitle: "Free YouTube Shorts Engagement Rate Calculator & Benchmarks | ContHunt",
+    seoTitle: "YouTube Shorts Engagement Rate Calculator | ContHunt",
     metaDescription:
       "Calculate YouTube Shorts engagement rate by views or subscribers, like-to-view ratio, comment-to-view ratio, and outlier multiplier — free, no login required.",
     h1: "YouTube Shorts engagement rate & outlier calculator.",
@@ -659,7 +659,7 @@ export const FREE_UTILITY_PAGES: readonly FreeUtilityPageSpec[] = [
   },
   {
     slug: "viral-outlier-score-calculator",
-    seoTitle: "Free Viral Outlier Score Calculator (TikTok, Reels & Shorts) | ContHunt",
+    seoTitle: "Viral Outlier Score Calculator (Free) | ContHunt",
     metaDescription:
       "Compute any video true viral outlier multiplier using account median views (not distorted averages) across TikTok, Instagram Reels, and YouTube Shorts — free, no signup.",
     h1: "Viral outlier score calculator for TikTok, Reels, and Shorts.",
@@ -718,7 +718,7 @@ export const FREE_UTILITY_PAGES: readonly FreeUtilityPageSpec[] = [
   },
   {
     slug: "short-form-cpm-rpm-calculator",
-    seoTitle: "Free Short-Form CPM, RPM & Creator Payout Calculator | ContHunt",
+    seoTitle: "Short-Form CPM, RPM & Payout Calculator | ContHunt",
     metaDescription:
       "Estimate YouTube Shorts RPM, TikTok Creator Rewards earnings, UGC brand deal CPMs, and required views to hit revenue targets — transparent, editable assumptions, no login.",
     h1: "Short-form CPM, RPM & creator revenue calculator.",
@@ -777,7 +777,7 @@ export const FREE_UTILITY_PAGES: readonly FreeUtilityPageSpec[] = [
   },
   {
     slug: "viral-hook-generator",
-    seoTitle: "Free Viral Short-Form Hook Generator & 24 Proven Templates | ContHunt",
+    seoTitle: "Free Viral Hook Generator (24 Templates) | ContHunt",
     metaDescription:
       "Generate scroll-stopping opening hooks for TikTok, Instagram Reels, and YouTube Shorts from 24 structured templates across 7 niches and 6 hook styles — free, no signup.",
     h1: "Viral short-form hook generator & template library.",

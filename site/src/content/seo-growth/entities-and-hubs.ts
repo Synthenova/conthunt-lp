@@ -184,7 +184,7 @@ export const USE_CASE_PAGES: readonly UseCasePageSpec[] = [
   {
     slug: "ecommerce-brands",
     name: "Ecommerce & DTC Brands",
-    seoTitle: "Short-Form Creative Intelligence for Ecommerce & DTC Brands | ContHunt",
+    seoTitle: "Short-Form Video Research for DTC Brands | ContHunt",
     metaDescription:
       "Spot winning product demo hooks, unboxing angles, and competitor outliers across TikTok, Instagram Reels, and YouTube Shorts with ContHunt.",
     h1: "Find product video angles that earn organic reach before you put spend behind them.",
@@ -248,7 +248,7 @@ export const USE_CASE_PAGES: readonly UseCasePageSpec[] = [
   {
     slug: "saas-growth-teams",
     name: "SaaS & B2B Growth Teams",
-    seoTitle: "Short-Form Content Intelligence for SaaS & B2B Growth Teams | ContHunt",
+    seoTitle: "Short-Form Video Research for SaaS Teams | ContHunt",
     metaDescription:
       "Discover winning founder-led, product-walkthrough, and B2B educational short-form formats across TikTok, Instagram Reels, and YouTube Shorts.",
     h1: "Build a repeatable short-form engine for SaaS without copying consumer fluff.",
@@ -312,7 +312,7 @@ export const USE_CASE_PAGES: readonly UseCasePageSpec[] = [
   {
     slug: "faceless-channels",
     name: "Faceless Video Channels",
-    seoTitle: "Outlier & Format Research for Faceless Video Channels | ContHunt",
+    seoTitle: "Outlier Research for Faceless Channels | ContHunt",
     metaDescription:
       "Find high-retention faceless storytelling niches, repeatable pacing structures, and cross-platform breakout formats on YouTube Shorts, TikTok, and Reels.",
     h1: "Spot repeatable faceless formats before a niche gets saturated.",
@@ -376,7 +376,7 @@ export const USE_CASE_PAGES: readonly UseCasePageSpec[] = [
   {
     slug: "short-form-creators",
     name: "Short-Form Creators",
-    seoTitle: "Viral Hook & Outlier Research for Short-Form Creators | ContHunt",
+    seoTitle: "Viral Hook Research for Short-Form Creators | ContHunt",
     metaDescription:
       "Beat blank-page syndrome with real outlier research. Find winning hooks, analyze peers, and save swipe boards across TikTok, Instagram Reels, and YouTube Shorts.",
     h1: "Know what hooks your audience before you hit record.",
@@ -440,7 +440,7 @@ export const USE_CASE_PAGES: readonly UseCasePageSpec[] = [
   {
     slug: "ai-agent-builders",
     name: "AI Agent Builders",
-    seoTitle: "Social Video Intelligence MCP Server for AI Agent Builders | ContHunt",
+    seoTitle: "Social Video MCP Server for AI Agents | ContHunt",
     metaDescription:
       "Give Claude, ChatGPT, Cursor, Codex, and custom MCP agents live access to TikTok, Instagram Reels, and YouTube Shorts discovery, boards, and video evidence.",
     h1: "Give your AI agents structured short-form video intelligence via hosted MCP.",
@@ -507,7 +507,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "outlier-video",
     term: "Outlier Video",
-    seoTitle: "What Is an Outlier Video? Formula, Benchmarks & Examples | ContHunt Glossary",
+    seoTitle: "What Is an Outlier Video? Formula & Examples | ContHunt",
     metaDescription:
       "Learn what an outlier video is on TikTok, Instagram Reels, and YouTube Shorts, how to calculate the outlier multiplier against median views, and why strategists track it.",
     shortDefinition:
@@ -541,7 +541,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "hook-rate",
     term: "Hook Rate",
-    seoTitle: "What Is Hook Rate (Thumbstop Rate) in Short-Form Video? | ContHunt Glossary",
+    seoTitle: "What Is Hook Rate (Thumbstop Rate)? | ContHunt Glossary",
     metaDescription:
       "Understand hook rate (thumbstop rate) on TikTok, Instagram Reels, and YouTube Shorts, how it is calculated, and how to improve your first three seconds.",
     shortDefinition:
@@ -575,7 +575,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "3-second-retention",
     term: "3-Second Retention",
-    seoTitle: "What Is 3-Second Retention in Short-Form Video? | ContHunt Glossary",
+    seoTitle: "What Is 3-Second Retention in Video? | ContHunt Glossary",
     metaDescription:
       "Learn how 3-second retention works in TikTok, Instagram Reels, and YouTube Shorts analytics, why early drop-off kills reach, and how to audit opening frames.",
     shortDefinition:
@@ -609,7 +609,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "engagement-rate",
     term: "Engagement Rate",
-    seoTitle: "Short-Form Video Engagement Rate: Formula & Platform Benchmarks | ContHunt Glossary",
+    seoTitle: "Short-Form Engagement Rate Formula | ContHunt Glossary",
     metaDescription:
       "Calculate short-form video engagement rate by views across TikTok, Instagram Reels, and YouTube Shorts, and compare public like and comment ratios accurately.",
     shortDefinition:
@@ -643,7 +643,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "virality-score",
     term: "Virality Score",
-    seoTitle: "What Is a Virality Score in Short-Form Video Analytics? | ContHunt Glossary",
+    seoTitle: "What Is a Virality Score? Formula & Guide | ContHunt",
     metaDescription:
       "Learn how virality scores combine outlier view multiples, engagement ratios, and view velocity to rank breakout short-form videos—and what to check behind the score.",
     shortDefinition:
@@ -677,7 +677,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "mcp-content-research",
     term: "MCP Content Research",
-    seoTitle: "What Is MCP Content Research? AI-Agent Video Intelligence | ContHunt Glossary",
+    seoTitle: "What Is MCP Content Research? | ContHunt Glossary",
     metaDescription:
       "Learn how Model Context Protocol (MCP) content research lets AI assistants like Claude, ChatGPT, and Cursor query real short-form video data, boards, and transcripts directly.",
     shortDefinition:
@@ -710,7 +710,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "ugc-whitelisting",
     term: "UGC Whitelisting",
-    seoTitle: "What Is UGC Whitelisting (Spark Ads & Partnership Ads)? | ContHunt Glossary",
+    seoTitle: "What Is UGC Whitelisting (Spark Ads)? | ContHunt",
     metaDescription:
       "Understand UGC whitelisting—running paid social ads through a creator's handle via Meta Partnership Ads or TikTok Spark Ads—plus licensing and creative research best practices.",
     shortDefinition:
@@ -743,7 +743,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "watch-time-ratio",
     term: "Watch Time Ratio",
-    seoTitle: "What Is Watch Time Ratio (Average Percentage Viewed)? | ContHunt Glossary",
+    seoTitle: "What Is Watch Time Ratio (APV)? | ContHunt Glossary",
     metaDescription:
       "Learn how watch time ratio (average percentage viewed) drives TikTok, Instagram Reels, and YouTube Shorts distribution, including how loops push ratios above 100%.",
     shortDefinition:
@@ -777,7 +777,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "view-velocity",
     term: "View Velocity",
-    seoTitle: "What Is View Velocity in Short-Form Video? | ContHunt Glossary",
+    seoTitle: "What Is View Velocity in Video? | ContHunt Glossary",
     metaDescription:
       "Understand view velocity (views per hour or day), why early momentum signals active algorithmic expansion, and how teams spot rising trends before saturation.",
     shortDefinition:
@@ -811,7 +811,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "save-rate",
     term: "Save Rate",
-    seoTitle: "What Is Save Rate on TikTok & Instagram Reels? | ContHunt Glossary",
+    seoTitle: "What Is Save Rate on TikTok & Reels? | ContHunt",
     metaDescription:
       "Learn what save rate measures in short-form video, why tutorials and frameworks drive bookmarks, and how to use save rate alongside shares and comments.",
     shortDefinition:
@@ -879,7 +879,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "fyp-algorithm",
     term: "FYP Algorithm",
-    seoTitle: "How the FYP Algorithm Works Across TikTok, Reels & Shorts | ContHunt Glossary",
+    seoTitle: "How the FYP Algorithm Works | ContHunt Glossary",
     metaDescription:
       "Understand how interest-graph For You Page (FYP) recommendation systems test, score, and expand short-form videos across TikTok, Instagram Reels, and YouTube Shorts.",
     shortDefinition:
@@ -912,7 +912,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "scroll-stopper",
     term: "Scroll-Stopper",
-    seoTitle: "What Is a Scroll-Stopper in Short-Form Video? | ContHunt Glossary",
+    seoTitle: "What Is a Scroll-Stopper in Video? | ContHunt Glossary",
     metaDescription:
       "Learn what makes an effective visual and verbal scroll-stopper in the first 1–3 seconds of TikTok, Instagram Reels, and YouTube Shorts clips.",
     shortDefinition:
@@ -945,7 +945,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "faceless-shorts",
     term: "Faceless Shorts",
-    seoTitle: "What Are Faceless Shorts? Formats, Workflows & Research | ContHunt Glossary",
+    seoTitle: "What Are Faceless Shorts? Formats & Guide | ContHunt",
     metaDescription:
       "Understand faceless short-form video channels across YouTube Shorts, TikTok, and Instagram Reels—common formats, retention mechanics, and how operators research topics.",
     shortDefinition:
@@ -978,7 +978,7 @@ export const GLOSSARY_TERMS: readonly GlossaryTermSpec[] = [
   {
     slug: "content-intelligence",
     term: "Content Intelligence",
-    seoTitle: "What Is Content Intelligence for Short-Form Video? | ContHunt Glossary",
+    seoTitle: "What Is Content Intelligence? | ContHunt Glossary",
     metaDescription:
       "Learn what content intelligence means for TikTok, Instagram Reels, and YouTube Shorts teams—combining cross-platform discovery, outlier analytics, hook analysis, and MCP workflows.",
     shortDefinition:
@@ -1077,7 +1077,7 @@ export const GLOSSARY_HUB: HubPageCopy = {
 export const HUB_COPY: GrowthHubCopyMap = {
   dataHub: {
     path: "/data",
-    seoTitle: "Short-Form Video Data Hub — Hooks, Hashtags & Benchmarks | ContHunt",
+    seoTitle: "Short-Form Video Data Hub: Hooks & Hashtags | ContHunt",
     metaDescription:
       "Explore ContHunt's public short-form video data hub: sampled viral hooks, recurring hashtags, curated boards, featured creators, and the 2026 Virality Index across TikTok, Reels, and Shorts.",
     eyebrow: "Public Data Hub",
@@ -1116,7 +1116,7 @@ export const HUB_COPY: GrowthHubCopyMap = {
   },
   viralHooks: {
     path: "/data/viral-hooks",
-    seoTitle: "Viral Hooks Database — TikTok, Reels & YouTube Shorts | ContHunt",
+    seoTitle: "Viral Hooks Database: TikTok, Reels & Shorts | ContHunt",
     metaDescription:
       "Browse real short-form video hooks from ContHunt's public Viral Now snapshot across TikTok, Instagram Reels, and YouTube Shorts—filter by platform and niche.",
     eyebrow: "Data Hub · Viral Hooks",
@@ -1154,7 +1154,7 @@ export const HUB_COPY: GrowthHubCopyMap = {
   },
   trendingHashtags: {
     path: "/data/trending-hashtags",
-    seoTitle: "Trending Short-Form Hashtags — TikTok, Reels & Shorts | ContHunt",
+    seoTitle: "Trending Short-Form Hashtags Directory | ContHunt",
     metaDescription:
       "Inspect recurring hashtags extracted from ContHunt's public breakout video snapshot—frequency, median views, top platform, and niche overlap across TikTok, Reels, and Shorts.",
     eyebrow: "Data Hub · Hashtags",
@@ -1230,7 +1230,7 @@ export const HUB_COPY: GrowthHubCopyMap = {
   },
   creators: {
     path: "/creators",
-    seoTitle: "Public Short-Form Creator Snapshots — TikTok, Reels & Shorts | ContHunt",
+    seoTitle: "Public Short-Form Creator Snapshots | ContHunt",
     metaDescription:
       "Browse public creator profiles featured in ContHunt's breakout short-form video snapshots—compare platforms, featured clip counts, median views, and top videos.",
     eyebrow: "Creator Directory",
@@ -1429,7 +1429,7 @@ export const HUB_COPY: GrowthHubCopyMap = {
   },
   viralIndex: {
     path: "/viral-index",
-    seoTitle: "Short-Form Virality Index — 2026 Platform Snapshot | ContHunt",
+    seoTitle: "Short-Form Virality Index (2026 Snapshot) | ContHunt",
     metaDescription:
       "Compare breakout short-form video snapshots against ContHunt's November 2026 platform baseline medians across TikTok, Instagram Reels, and YouTube Shorts.",
     eyebrow: "Virality Index · 2026 Snapshot",

@@ -3,7 +3,7 @@ import { AccountAnalyzer } from "@/components/growth/AccountAnalyzer";
 import { getPublicCreatorsDirectory, getPublicHooksData } from "@/lib/growth/viral-data";
 import { pageMetadata } from "@/lib/growth/metadata";
 
-const description = "Compare manually entered recent post metrics, or explore the limited public snapshot available for indexed accounts.";
+const description = "Analyze public TikTok account metrics by entering recent posts or browsing ContHunt's dated snapshot of selected breakout TikTok creators.";
 export const metadata = pageMetadata({ title: "TikTok account analyzer", description, path: "/analyze-tiktok-account" });
 export default function Page() {
   const creators = getPublicCreatorsDirectory().filter(c => c.indexable && c.platforms.includes("tiktok"));

@@ -53,7 +53,7 @@ export interface ComparisonsHubCopy {
 export const COMPARISONS_UPDATED = "2026-11-24" as const;
 
 export const COMPARISONS_HUB: ComparisonsHubCopy = {
-  seoTitle: "Compare Short-Form Video & Social Intelligence Tools (2026) | ContHunt",
+  seoTitle: "Compare Short-Form Video Research Tools (2026) | ContHunt",
   metaDescription:
     "Side-by-side 2026 comparisons of ContHunt, Shortimize, Virlo, Kalodata, Sandcastles, 1of10, FastMoss, Shoplus, vidIQ, and Exolyt — verified pricing, platform coverage, and MCP access.",
   eyebrow: "Tool Comparisons · Updated Nov 2026",
@@ -88,7 +88,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "Shortimize",
     rightName: "Virlo",
-    seoTitle: "Shortimize vs Virlo (2026): Pricing, Tracking, Trend Discovery & MCP | ContHunt",
+    seoTitle: "Shortimize vs Virlo (2026): Pricing & Features | ContHunt",
     metaDescription:
       "Compare Shortimize ($99/mo) vs Virlo ($49/mo) vs ContHunt ($25/mo yearly) across TikTok, Reels, and Shorts tracking, trend discovery, creator payouts, and MCP access.",
     h1: "Shortimize vs Virlo (2026): tracking dashboards vs trend agents.",
@@ -171,7 +171,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "ContHunt",
     rightName: "Shortimize",
-    seoTitle: "ContHunt vs Shortimize (2026): Pricing, Deep Search & MCP Compared",
+    seoTitle: "ContHunt vs Shortimize (2026): Pricing & MCP Compared",
     metaDescription:
       "Detailed 2026 comparison of ContHunt ($25/mo yearly) vs Shortimize ($99/mo): pre-production research, Deep Search, account tracking, Contra payouts, and MCP add-on costs.",
     h1: "ContHunt vs Shortimize (2026): research intelligence vs fleet tracking.",
@@ -254,7 +254,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "ContHunt",
     rightName: "Virlo",
-    seoTitle: "ContHunt vs Virlo (2026): AI Video Research, Pricing & MCP Compared",
+    seoTitle: "ContHunt vs Virlo (2026): Research, Pricing & MCP",
     metaDescription:
       "Compare ContHunt ($25–$119/mo yearly) vs Virlo ($49–$499/mo) across TikTok, Reels, Shorts, Meta Ads, Deep Search, saved boards, and hosted MCP workflows.",
     h1: "ContHunt vs Virlo (2026): Deep Search + MCP vs trend agents + Meta Ads.",
@@ -337,7 +337,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "ContHunt",
     rightName: "Kalodata",
-    seoTitle: "ContHunt vs Kalodata (2026): Creative Intelligence vs TikTok Shop Analytics",
+    seoTitle: "ContHunt vs Kalodata (2026): Creative vs Shop Data",
     metaDescription:
       "Compare ContHunt vs Kalodata in 2026: TikTok, Reels & Shorts hook research and MCP vs TikTok Shop GMV estimates, affiliate rankings, and livestream sales data.",
     h1: "ContHunt vs Kalodata (2026): cross-platform creative research vs TikTok Shop GMV.",
@@ -420,7 +420,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "ContHunt",
     rightName: "Sandcastles.ai",
-    seoTitle: "ContHunt vs Sandcastles.ai (2026): Short-Form Research, Scripting & MCP",
+    seoTitle: "ContHunt vs Sandcastles.ai (2026): Research & MCP",
     metaDescription:
       "Compare ContHunt ($25/mo yearly) vs Sandcastles.ai ($49/mo) across TikTok, Instagram Reels, and YouTube Shorts research, scriptwriting, credit allowances, and MCP access.",
     h1: "ContHunt vs Sandcastles.ai (2026): evidence-first research vs AI script studio.",
@@ -503,7 +503,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "ContHunt",
     rightName: "1of10",
-    seoTitle: "ContHunt vs 1of10 (2026): Cross-Platform Short-Form vs YouTube Outliers",
+    seoTitle: "ContHunt vs 1of10 (2026): Short-Form vs YouTube",
     metaDescription:
       "Compare ContHunt vs 1of10 in 2026: TikTok, Reels & Shorts Deep Search and MCP ($25/mo yearly) vs YouTube outlier search, AI thumbnail generation, and packaging ($19–$89/mo).",
     h1: "ContHunt vs 1of10 (2026): 3-platform short-form vs YouTube packaging.",
@@ -586,7 +586,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "Kalodata",
     rightName: "FastMoss",
-    seoTitle: "Kalodata vs FastMoss (2026): Pricing, Historical Data & TikTok Shop Depth",
+    seoTitle: "Kalodata vs FastMoss (2026): TikTok Shop Comparison",
     metaDescription:
       "Compare Kalodata vs FastMoss in 2026: US and global TikTok Shop pricing, 90-day vs 1,200+ day history, affiliate data, and where ContHunt fits for Reels & Shorts.",
     h1: "Kalodata vs FastMoss (2026): two TikTok Shop leaders compared.",
@@ -669,7 +669,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "Kalodata",
     rightName: "Shoplus",
-    seoTitle: "Kalodata vs Shoplus (2026): Pricing, Service Status & Alternatives",
+    seoTitle: "Kalodata vs Shoplus (2026): Pricing & Alternatives",
     metaDescription:
       "Compare Kalodata vs Shoplus in 2026 — including verified pricing tiers, the August 2026 Shoplus service-status notice, and when to choose ContHunt for cross-platform creative research.",
     h1: "Kalodata vs Shoplus (2026): pricing, features, and service status check.",
@@ -752,7 +752,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "vidIQ",
     rightName: "1of10",
-    seoTitle: "vidIQ vs 1of10 (2026): YouTube Outliers, AI Credits, Pricing & MCP",
+    seoTitle: "vidIQ vs 1of10 (2026): YouTube Outliers & Pricing",
     metaDescription:
       "Compare vidIQ ($0–$49/mo) vs 1of10 ($0–$89/mo) vs ContHunt ($25/mo yearly) for YouTube keyword SEO, outlier packaging, AI thumbnails, Shorts research, and MCP access.",
     h1: "vidIQ vs 1of10 (2026): all-in-one YouTube suite vs outlier packaging.",
@@ -835,7 +835,7 @@ export const COMPARISON_PAGES: readonly ComparisonPageSpec[] = [
     updated: COMPARISONS_UPDATED,
     leftName: "Exolyt",
     rightName: "Shortimize",
-    seoTitle: "Exolyt vs Shortimize (2026): TikTok Enterprise Intelligence vs Multi-Platform Tracking",
+    seoTitle: "Exolyt vs Shortimize (2026): TikTok vs Multi-Platform",
     metaDescription:
       "Compare Exolyt ($330–$950/mo) vs Shortimize ($99–$249/mo) vs ContHunt ($25–$119/mo yearly) for TikTok social listening, cross-platform Reels & Shorts tracking, and MCP.",
     h1: "Exolyt vs Shortimize (2026): enterprise TikTok listening vs cross-platform tracking.",

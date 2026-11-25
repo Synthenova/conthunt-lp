@@ -132,7 +132,7 @@ export default function TikTokEngagementRateCalculatorPage() {
             },
             {
               label: "Reading Virality Beyond Views",
-              href: "/blog/reading-virality-beyond-views",
+              href: "/resources/reading-virality-beyond-views",
               description: "Why view count alone misleads teams — and which public signals predict repeatable hooks.",
             },
           ],

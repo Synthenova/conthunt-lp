@@ -3,7 +3,7 @@ import { AccountAnalyzer } from "@/components/growth/AccountAnalyzer";
 import { getPublicCreatorsDirectory, getPublicHooksData } from "@/lib/growth/viral-data";
 import { pageMetadata } from "@/lib/growth/metadata";
 
-const description = "Compare manually entered recent post metrics, or explore the limited public snapshot available for indexed accounts.";
+const description = "Analyze Instagram Reels account metrics by entering recent posts or browsing ContHunt's dated snapshot of selected breakout Reels creators.";
 export const metadata = pageMetadata({ title: "Instagram Reels account analyzer", description, path: "/analyze-instagram-reels-account" });
 export default function Page() {
   const creators = getPublicCreatorsDirectory().filter(c => c.indexable && c.platforms.includes("instagram"));

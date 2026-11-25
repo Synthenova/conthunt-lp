@@ -63,7 +63,7 @@ export const MCP_ENDPOINT = "https://mcp.conthunt.app/mcp" as const;
 export const MCP_SERVER_ROOT = "https://mcp.conthunt.app" as const;
 
 export const INTEGRATIONS_HUB: IntegrationsHubCopy = {
-  seoTitle: "ContHunt Integrations — Hosted MCP for TikTok, Reels & Shorts",
+  seoTitle: "ContHunt Integrations: Hosted MCP for Video Research",
   metaDescription:
     "Connect ContHunt hosted MCP server (mcp.conthunt.app/mcp) to Claude, Claude Code, Cursor, Codex, ChatGPT, Gemini, n8n, Zapier, and autonomous AI agents.",
   eyebrow: "Integrations & MCP",
@@ -123,7 +123,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "mcp-tiktok",
     name: "TikTok MCP Server",
     category: "platform-mcp",
-    seoTitle: "TikTok MCP Server — Search & Analyze Public TikToks in AI Agents | ContHunt",
+    seoTitle: "TikTok MCP Server for AI Agents | ContHunt",
     metaDescription:
       "Connect ContHunt hosted TikTok MCP server (mcp.conthunt.app/mcp) to Claude, Cursor, Codex, and AI agents to search public TikTok videos, creators, hooks, and saved boards.",
     h1: "Hosted TikTok MCP server for AI agents and content research.",
@@ -212,7 +212,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "mcp-instagram-reels",
     name: "Instagram Reels MCP Server",
     category: "platform-mcp",
-    seoTitle: "Instagram Reels MCP Server — AI Agent Reels Discovery & Analysis | ContHunt",
+    seoTitle: "Instagram Reels MCP Server for AI Agents | ContHunt",
     metaDescription:
       "Use ContHunt hosted Instagram Reels MCP server (mcp.conthunt.app/mcp) in Claude, Cursor, Codex, and AI workflows to search public Reels, audit creators, and dissect hooks.",
     h1: "Hosted Instagram Reels MCP server for creator and brand research.",
@@ -301,7 +301,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "mcp-youtube-shorts",
     name: "YouTube Shorts MCP Server",
     category: "platform-mcp",
-    seoTitle: "YouTube Shorts MCP Server — Search Shorts Outliers in AI Agents | ContHunt",
+    seoTitle: "YouTube Shorts MCP Server for AI Agents | ContHunt",
     metaDescription:
       "Connect ContHunt hosted YouTube Shorts MCP server (mcp.conthunt.app/mcp) to Claude, Cursor, Codex, and Gemini to find breakout Shorts, analyze hooks, and run Deep Search.",
     h1: "Hosted YouTube Shorts MCP server for outlier and format research.",
@@ -390,7 +390,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "claude",
     name: "Claude (Claude.ai & Desktop)",
     category: "ai-assistant",
-    seoTitle: "ContHunt + Claude MCP Integration — Short-Form Video Research in Claude.ai",
+    seoTitle: "ContHunt + Claude MCP Integration: Video Research",
     metaDescription:
       "Connect ContHunt hosted MCP connector (mcp.conthunt.app/mcp) to Claude.ai in two clicks. Research TikTok, Instagram Reels, and YouTube Shorts hooks directly in Claude.",
     h1: "Connect ContHunt to Claude for live short-form video research.",
@@ -479,7 +479,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "claude-code",
     name: "Claude Code",
     category: "coding-agent",
-    seoTitle: "ContHunt + Claude Code MCP Setup — Terminal Short-Form Video Research",
+    seoTitle: "ContHunt + Claude Code MCP Setup: Video Research",
     metaDescription:
       "Add ContHunt hosted MCP server to Claude Code with one command. Research TikTok, Instagram Reels, and YouTube Shorts outliers and generate briefs from your terminal.",
     h1: "Add ContHunt MCP to Claude Code in one terminal command.",
@@ -569,7 +569,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "cursor",
     name: "Cursor",
     category: "coding-agent",
-    seoTitle: "ContHunt + Cursor MCP Integration — Video Intelligence Inside Your IDE",
+    seoTitle: "ContHunt + Cursor MCP Integration: Video Research",
     metaDescription:
       "Install ContHunt hosted MCP server in Cursor via one-click deeplink or ~/.cursor/mcp.json. Search TikTok, Instagram Reels, and YouTube Shorts without leaving your IDE.",
     h1: "Use ContHunt MCP inside Cursor for data-backed growth engineering.",
@@ -658,7 +658,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "codex",
     name: "OpenAI Codex CLI",
     category: "coding-agent",
-    seoTitle: "ContHunt + Codex MCP Setup — Short-Form Video Research in Codex CLI",
+    seoTitle: "ContHunt + Codex MCP Setup: Video Research in CLI",
     metaDescription:
       "Connect ContHunt hosted MCP server to OpenAI Codex CLI with codex mcp add and codex mcp login. Search TikTok, Reels, and Shorts directly from Codex.",
     h1: "Connect ContHunt MCP to OpenAI Codex CLI in two commands.",
@@ -748,7 +748,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "chatgpt",
     name: "ChatGPT",
     category: "ai-assistant",
-    seoTitle: "ContHunt + ChatGPT MCP Integration — Research TikTok, Reels & Shorts in ChatGPT",
+    seoTitle: "ContHunt + ChatGPT MCP Integration: Video Research",
     metaDescription:
       "Connect ContHunt hosted MCP server (mcp.conthunt.app/mcp) to ChatGPT via custom remote MCP connectors to search TikTok, Instagram Reels, and YouTube Shorts.",
     h1: "Bring live TikTok, Reels, and Shorts research into ChatGPT.",
@@ -837,7 +837,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "gemini",
     name: "Gemini CLI & Gemini Agents",
     category: "ai-assistant",
-    seoTitle: "ContHunt + Gemini CLI MCP Integration — Short-Form Video Research",
+    seoTitle: "ContHunt + Gemini CLI MCP Setup: Video Research",
     metaDescription:
       "Connect ContHunt hosted MCP server to Gemini CLI with gemini mcp add and /mcp auth conthunt. Research TikTok, Reels, and YouTube Shorts in Gemini.",
     h1: "Connect ContHunt MCP to Gemini CLI for cross-platform video research.",
@@ -927,7 +927,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "n8n",
     name: "n8n",
     category: "automation",
-    seoTitle: "ContHunt + n8n MCP Integration — Automate Short-Form Video Research",
+    seoTitle: "ContHunt + n8n MCP Integration: Video Workflows",
     metaDescription:
       "Connect ContHunt hosted MCP server (mcp.conthunt.app/mcp) to n8n AI Agent workflows using n8n MCP Client Tool node to automate TikTok, Reels, and Shorts intelligence.",
     h1: "Automate TikTok, Reels, and Shorts research in n8n via MCP.",
@@ -1016,7 +1016,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "zapier",
     name: "Zapier",
     category: "automation",
-    seoTitle: "ContHunt + Zapier MCP Integration — Short-Form Video Workflows",
+    seoTitle: "ContHunt + Zapier MCP: Short-Form Video Workflows",
     metaDescription:
       "Connect ContHunt hosted MCP server (mcp.conthunt.app/mcp) with Zapier Agents and MCP workflows to route TikTok, Reels, and Shorts research into Slack, Notion, and CRMs.",
     h1: "Connect ContHunt to Zapier Agents and MCP workflows.",
@@ -1104,7 +1104,7 @@ export const INTEGRATION_PAGES: readonly IntegrationPageSpec[] = [
     slug: "openclaw-agents",
     name: "OpenClaw & Autonomous Agents",
     category: "automation",
-    seoTitle: "ContHunt + OpenClaw & Autonomous AI Agents — Hosted Video MCP & Skill",
+    seoTitle: "ContHunt + OpenClaw & AI Agents: Hosted Video MCP",
     metaDescription:
       "Equip OpenClaw, OpenMausBot, Grok Bot, and custom autonomous AI agents with ContHunt hosted MCP server (mcp.conthunt.app/mcp) and official Agent Skill.",
     h1: "Equip OpenClaw and autonomous AI agents with short-form video intelligence.",

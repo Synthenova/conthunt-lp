@@ -15,7 +15,7 @@ export function generateStaticParams() { return getPublicCreatorsDirectory().fil
 export async function generateMetadata({ params }: Props) {
   const c = lookup((await params).handle);
   if (!c) notFound();
-  return pageMetadata({ title: `@${c.handle} public video snapshot`, description: `Selected public short-form videos for @${c.handle} in ContHunt's dated snapshot, with sample counts and median public views.`, path: `/creators/${c.handle}` });
+  return { ...pageMetadata({ title: `@${c.handle} video snapshot`, description: `Selected public short-form videos for @${c.handle} in ContHunt's dated snapshot, with sample counts and median public views.`, path: `/creators/${c.handle}` }), robots: { index: false, follow: true } };
 }
 export default async function Page({ params }: Props) {
   const c = lookup((await params).handle);

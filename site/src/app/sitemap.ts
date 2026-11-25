@@ -9,7 +9,6 @@ import { INTEGRATION_PAGES } from "@/content/seo-growth/integrations";
 import { COMPARISON_PAGES } from "@/content/seo-growth/comparisons";
 import { USE_CASE_PAGES, GLOSSARY_TERMS } from "@/content/seo-growth/entities-and-hubs";
 import { ANALYZER_PAGES, FREE_UTILITY_PAGES, GATED_TOOL_PAGES } from "@/content/seo-growth/analyzers-and-tools";
-import { getPublicCreatorsDirectory, getPublicCreatorByHandle } from "@/lib/growth/viral-data";
 
 /**
  * /sitemap.xml: the one sitemap for conthunt.app. It holds the canonical, indexable URLs only: this
@@ -77,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl(ROUTES.tools) },
     { url: absoluteUrl(ROUTES.tiktokCalculator) },
     { url: absoluteUrl(ROUTES.instagramCalculator) },
-    ...["/integrations", "/compare", "/data", "/data/viral-hooks", "/data/trending-hashtags", "/boards", "/creators", "/use-cases", "/glossary", "/newsletter", "/partners", "/viral-index", ...INTEGRATION_PAGES.map(p => `/integrations/${p.slug}`), ...COMPARISON_PAGES.map(p => `/compare/${p.slug}`), ...USE_CASE_PAGES.map(p => `/use-cases/${p.slug}`), ...GLOSSARY_TERMS.map(p => `/glossary/${p.slug}`), ...ANALYZER_PAGES.map(p => `/${p.slug}`), ...[...FREE_UTILITY_PAGES, ...GATED_TOOL_PAGES].map(p => `/tools/${p.slug}`), ...getPublicCreatorsDirectory().filter(c => c.indexable && c.videoCount >= 3 && getPublicCreatorByHandle(c.handle)).map(c => `/creators/${c.handle}`)].map(path => ({ url: absoluteUrl(path) })),
+    ...["/integrations", "/compare", "/data", "/data/viral-hooks", "/data/trending-hashtags", "/boards", "/creators", "/use-cases", "/glossary", "/newsletter", "/partners", "/viral-index", ...INTEGRATION_PAGES.map(p => `/integrations/${p.slug}`), ...COMPARISON_PAGES.map(p => `/compare/${p.slug}`), ...USE_CASE_PAGES.map(p => `/use-cases/${p.slug}`), ...GLOSSARY_TERMS.map(p => `/glossary/${p.slug}`), ...ANALYZER_PAGES.map(p => `/${p.slug}`), ...[...FREE_UTILITY_PAGES, ...GATED_TOOL_PAGES].map(p => `/tools/${p.slug}`)].map(path => ({ url: absoluteUrl(path) })),
     { url: absoluteUrl("/about") },
     { url: absoluteUrl("/authors") },
     { url: absoluteUrl("/editorial") },
