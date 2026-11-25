@@ -38,6 +38,7 @@ export function absoluteUrl(path: string): string {
  * 60 characters, otherwise the title alone. Pass the result as `title: { absolute }`.
  */
 export function fullTitle(title: string): string {
+  if (title.toLowerCase().includes(SITE_NAME.toLowerCase())) return title;
   const withBrand = `${title}${TITLE_SUFFIX}`;
   return withBrand.length <= TITLE_MAX ? withBrand : title;
 }
